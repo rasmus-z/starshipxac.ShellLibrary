@@ -10,9 +10,6 @@ namespace starshipxac.Shell
 	/// </summary>
 	public static class ShellLibraries
 	{
-		public static ShellKnownFolder libraries = null;
-		public static ShellKnownFolder publicLibraries = null;
-
 		/// <summary>
 		/// すべてのライブラリを取得します。
 		/// </summary>
@@ -20,11 +17,7 @@ namespace starshipxac.Shell
 		{
 			get
 			{
-				if (libraries == null)
-				{
-					libraries = ShellKnownFolders.Libraries;
-				}
-				return libraries.GetItems().OfType<ShellLibrary>();
+				return ShellKnownFolders.Libraries.GetItems().OfType<ShellLibrary>();
 			}
 		}
 
@@ -35,11 +28,7 @@ namespace starshipxac.Shell
 		{
 			get
 			{
-				if (publicLibraries == null)
-				{
-					publicLibraries = ShellKnownFolders.PublicLibraries;
-				}
-				return publicLibraries.GetItems().OfType<ShellLibrary>();
+				return ShellKnownFolders.PublicLibraries.GetItems().OfType<ShellLibrary>();
 			}
 		}
 

@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{75CF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{6CC4EA30-DE46-4FD2-A365-44FB46EEF97B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.Shell.UnitTest", "UnitTest\starshipxac.Shell.UnitTest\starshipxac.Shell.UnitTest.csproj", "{6B548BCC-7AAB-485E-A21C-7227872ECB09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.ShellTest", "starshipxac.ShellTest\starshipxac.ShellTest.csproj", "{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,8 +23,20 @@ Global
 		{81A98110-CD02-4692-8329-A875969E66DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81A98110-CD02-4692-8329-A875969E66DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81A98110-CD02-4692-8329-A875969E66DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B548BCC-7AAB-485E-A21C-7227872ECB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B548BCC-7AAB-485E-A21C-7227872ECB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B548BCC-7AAB-485E-A21C-7227872ECB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B548BCC-7AAB-485E-A21C-7227872ECB09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B548BCC-7AAB-485E-A21C-7227872ECB09} = {6CC4EA30-DE46-4FD2-A365-44FB46EEF97B}
+		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14} = {6CC4EA30-DE46-4FD2-A365-44FB46EEF97B}
 	EndGlobalSection
 EndGlobal
