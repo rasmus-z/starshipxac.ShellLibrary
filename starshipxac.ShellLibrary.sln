@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{6C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.Shell.UnitTest", "UnitTest\starshipxac.Shell.UnitTest\starshipxac.Shell.UnitTest.csproj", "{6B548BCC-7AAB-485E-A21C-7227872ECB09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.ShellTest", "starshipxac.ShellTest\starshipxac.ShellTest.csproj", "{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.ShellTest", "UnitTest\starshipxac.ShellTest\starshipxac.ShellTest.csproj", "{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

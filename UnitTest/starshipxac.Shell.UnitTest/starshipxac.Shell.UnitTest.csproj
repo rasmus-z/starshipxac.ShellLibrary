@@ -69,7 +69,7 @@
       <Project>{81a98110-cd02-4692-8329-a875969e66dd}</Project>
       <Name>starshipxac.Shell</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\starshipxac.ShellTest\starshipxac.ShellTest.csproj">
+    <ProjectReference Include="..\starshipxac.ShellTest\starshipxac.ShellTest.csproj">
       <Project>{fc51e8af-6273-4246-b7e5-bad4fe005f14}</Project>
       <Name>starshipxac.ShellTest</Name>
     </ProjectReference>
