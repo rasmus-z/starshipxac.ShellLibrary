@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{03574C
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.Windows.Shell", "Source\starshipxac.Windows.Shell\starshipxac.Windows.Shell.csproj", "{D1EC7E1A-983F-44DA-B0AD-4D48348686A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1EC7E1A-983F-44DA-B0AD-4D48348686A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EC7E1A-983F-44DA-B0AD-4D48348686A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EC7E1A-983F-44DA-B0AD-4D48348686A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EC7E1A-983F-44DA-B0AD-4D48348686A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
