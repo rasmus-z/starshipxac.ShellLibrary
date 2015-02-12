@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using starshipxac.ShellTest;
+using starshipxac.Shell.TestConfiguration;
 using Xunit;
 
 namespace starshipxac.Shell

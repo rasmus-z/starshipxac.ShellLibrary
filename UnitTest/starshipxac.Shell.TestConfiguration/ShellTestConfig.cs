@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace starshipxac.ShellTest
+namespace starshipxac.Shell.TestConfiguration
 {
 	public class ShellTestConfig : IDisposable
 	{
@@ -12,7 +12,7 @@ namespace starshipxac.ShellTest
 			{
 				dir = dir.Parent;
 			}
-			TestDirectory = new DirectoryInfo(Path.Combine(dir.FullName, TestDirectoryName));
+			this.TestDirectory = new DirectoryInfo(Path.Combine(dir.FullName, this.TestDirectoryName));
 		}
 
 		public void Dispose()

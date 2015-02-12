@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{6C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.Shell.UnitTest", "UnitTest\starshipxac.Shell.UnitTest\starshipxac.Shell.UnitTest.csproj", "{6B548BCC-7AAB-485E-A21C-7227872ECB09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.ShellTest", "UnitTest\starshipxac.ShellTest\starshipxac.ShellTest.csproj", "{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{03574CA3-86B5-4420-B276-916F9D0DDE2B}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -21,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{03574C
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.Windows.Shell", "Source\starshipxac.Windows.Shell\starshipxac.Windows.Shell.csproj", "{D1EC7E1A-983F-44DA-B0AD-4D48348686A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.Shell.TestConfiguration", "UnitTest\starshipxac.Shell.TestConfiguration\starshipxac.Shell.TestConfiguration.csproj", "{5FB08661-6342-420F-ACA5-009591AC1ACB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,20 +36,20 @@ Global
 		{6B548BCC-7AAB-485E-A21C-7227872ECB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B548BCC-7AAB-485E-A21C-7227872ECB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B548BCC-7AAB-485E-A21C-7227872ECB09}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D1EC7E1A-983F-44DA-B0AD-4D48348686A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D1EC7E1A-983F-44DA-B0AD-4D48348686A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1EC7E1A-983F-44DA-B0AD-4D48348686A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1EC7E1A-983F-44DA-B0AD-4D48348686A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FB08661-6342-420F-ACA5-009591AC1ACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB08661-6342-420F-ACA5-009591AC1ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB08661-6342-420F-ACA5-009591AC1ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB08661-6342-420F-ACA5-009591AC1ACB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6B548BCC-7AAB-485E-A21C-7227872ECB09} = {6CC4EA30-DE46-4FD2-A365-44FB46EEF97B}
-		{FC51E8AF-6273-4246-B7E5-BAD4FE005F14} = {6CC4EA30-DE46-4FD2-A365-44FB46EEF97B}
+		{5FB08661-6342-420F-ACA5-009591AC1ACB} = {6CC4EA30-DE46-4FD2-A365-44FB46EEF97B}
 	EndGlobalSection
 EndGlobal

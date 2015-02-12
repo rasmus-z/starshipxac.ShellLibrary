@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace starshipxac.ShellTest
+namespace starshipxac.Shell.TestConfiguration
 {
 	public static class STATask
 	{

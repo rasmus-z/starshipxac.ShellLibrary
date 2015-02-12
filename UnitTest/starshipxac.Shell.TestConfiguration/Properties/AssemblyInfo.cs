@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("starshipxac.ShellTest")]
+[assembly: AssemblyTitle("starshipxac.Shell.TestConfiguration")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("starshipxac.ShellTest")]
+[assembly: AssemblyProduct("starshipxac.Shell.TestConfiguration")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 次の GUID は、このプロジェクトが COM に公開される場合の、typelib の ID です
-[assembly: Guid("7b4b3aa2-42b5-40f4-90f8-e594606b48ea")]
+[assembly: Guid("ee53049b-4aa2-4ab0-aaa5-280b90d6ca85")]
 
 // アセンブリのバージョン情報は、以下の 4 つの値で構成されています:
 //
