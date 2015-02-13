@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.Shell.TestConfi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellFileDialogSample", "Samples\ShellFileDialogSample\ShellFileDialogSample.csproj", "{6A63D736-ECE8-4B05-858A-88A8AF773C93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellKnownFoldersSample", "Samples\ShellKnownFoldersSample\ShellKnownFoldersSample.csproj", "{ED082A7E-5B9E-442C-9C5A-2E530A0AB3CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +86,16 @@ Global
 		{6A63D736-ECE8-4B05-858A-88A8AF773C93}.Release|Mixed Platforms.Build.0 = Release|x86
 		{6A63D736-ECE8-4B05-858A-88A8AF773C93}.Release|x86.ActiveCfg = Release|x86
 		{6A63D736-ECE8-4B05-858A-88A8AF773C93}.Release|x86.Build.0 = Release|x86
+		{ED082A7E-5B9E-442C-9C5A-2E530A0AB3CD}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{ED082A7E-5B9E-442C-9C5A-2E530A0AB3CD}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{ED082A7E-5B9E-442C-9C5A-2E530A0AB3CD}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{ED082A7E-5B9E-442C-9C5A-2E530A0AB3CD}.Debug|x86.ActiveCfg = Debug|x86
+		{ED082A7E-5B9E-442C-9C5A-2E530A0AB3CD}.Debug|x86.Build.0 = Debug|x86
+		{ED082A7E-5B9E-442C-9C5A-2E530A0AB3CD}.Release|Any CPU.ActiveCfg = Release|x86
+		{ED082A7E-5B9E-442C-9C5A-2E530A0AB3CD}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{ED082A7E-5B9E-442C-9C5A-2E530A0AB3CD}.Release|Mixed Platforms.Build.0 = Release|x86
+		{ED082A7E-5B9E-442C-9C5A-2E530A0AB3CD}.Release|x86.ActiveCfg = Release|x86
+		{ED082A7E-5B9E-442C-9C5A-2E530A0AB3CD}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,5 +104,6 @@ Global
 		{6B548BCC-7AAB-485E-A21C-7227872ECB09} = {6CC4EA30-DE46-4FD2-A365-44FB46EEF97B}
 		{5FB08661-6342-420F-ACA5-009591AC1ACB} = {6CC4EA30-DE46-4FD2-A365-44FB46EEF97B}
 		{6A63D736-ECE8-4B05-858A-88A8AF773C93} = {75CF897B-9BED-4778-928A-B187315CD037}
+		{ED082A7E-5B9E-442C-9C5A-2E530A0AB3CD} = {75CF897B-9BED-4778-928A-B187315CD037}
 	EndGlobalSection
 EndGlobal
