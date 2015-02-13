@@ -19,7 +19,7 @@ namespace starshipxac.Shell
 		{
 			await STATask.Run(() =>
 			{
-				foreach (var library in ShellLibraries.AllLibraries)
+				foreach (var library in ShellLibraries.EnumerateLibraries())
 				{
 					Dump(library);
 				}
@@ -31,7 +31,7 @@ namespace starshipxac.Shell
 		{
 			await STATask.Run(() =>
 			{
-				foreach (var library in ShellLibraries.AllPublicLibraries)
+				foreach (var library in ShellLibraries.EnumeratePublicLibraries())
 				{
 					Dump(library);
 				}
@@ -110,10 +110,10 @@ namespace starshipxac.Shell
 			{
 				try
 				{
-					foreach (var library in ShellLibraries.AllLibraries)
+					foreach (var library in ShellLibraries.EnumerateLibraries())
 					{
 						Console.WriteLine("Library: {0}", library.DisplayName);
-						foreach (var item in library.GetItems())
+						foreach (var item in library.EnumerateItems())
 						{
 							Console.WriteLine("  {0}", item.DisplayName);
 						}

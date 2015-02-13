@@ -720,13 +720,13 @@ namespace starshipxac.Shell
 		{
 			await STATask.Run(() =>
 			{
-				foreach (var folder in ShellKnownFolders.Computer.GetFolders())
+				foreach (var folder in ShellKnownFolders.Computer.EnumerateFolders())
 				{
 					Console.WriteLine("{0}", folder.DisplayName);
 
 					try
 					{
-						foreach (var item in folder.GetFolders())
+						foreach (var item in folder.EnumerateFolders())
 						{
 							Console.WriteLine("  {0}", item.DisplayName);
 						}
