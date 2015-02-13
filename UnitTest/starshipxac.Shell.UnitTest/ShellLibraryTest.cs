@@ -33,7 +33,7 @@ namespace starshipxac.Shell
 		{
 			await STATask.Run(() =>
 			{
-				foreach (var library in ShellKnownFolders.Libraries.GetFiles())
+				foreach (var library in ShellKnownFolders.Libraries.EnumerateFiles())
 				{
 					Assert.NotNull(library);
 					Assert.IsType<ShellLibrary>(library);

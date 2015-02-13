@@ -94,7 +94,7 @@ namespace starshipxac.Shell
 		/// <see cref="ShellFolder"/>内のアイテムコレクションを取得します。
 		/// </summary>
 		/// <returns><see cref="ShellFolder"/>内のアイテムコレクション。</returns>
-		public virtual IEnumerable<ShellObject> GetItems()
+		public virtual IEnumerable<ShellObject> EnumerateItems()
 		{
 			Contract.Ensures(Contract.Result<IEnumerable<ShellObject>>() != null);
 			return new ShellItems(new ShellFolderEnumerator(this));
@@ -104,7 +104,7 @@ namespace starshipxac.Shell
 		/// <see cref="ShellFolder"/>内のファイルコレクションを取得します。
 		/// </summary>
 		/// <returns><see cref="ShellFolder"/>内のファイルコレクション。</returns>
-		public virtual IEnumerable<ShellObject> GetFiles()
+		public virtual IEnumerable<ShellObject> EnumerateFiles()
 		{
 			Contract.Ensures(Contract.Result<IEnumerable<ShellObject>>() != null);
 			return new ShellItems(new ShellFolderEnumerator(this, SHCONTF.SHCONTF_NONFOLDERS));
@@ -114,7 +114,7 @@ namespace starshipxac.Shell
 		/// <see cref="ShellFolder"/>内のフォルダーコレクションを取得します。
 		/// </summary>
 		/// <returns><see cref="ShellFolder"/>内のフォルダーコレクション。</returns>
-		public virtual IEnumerable<ShellFolder> GetFolders()
+		public virtual IEnumerable<ShellFolder> EnumerateFolders()
 		{
 			Contract.Ensures(Contract.Result<IEnumerable<ShellFolder>>() != null);
 			return new ShellFolders(new ShellFolderEnumerator(this, SHCONTF.SHCONTF_FOLDERS));

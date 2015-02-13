@@ -194,7 +194,7 @@ namespace starshipxac.Shell
 			this.Dispose();
 		}
 
-		public override IEnumerable<ShellFolder> GetFolders()
+		public override IEnumerable<ShellFolder> EnumerateFolders()
 		{
 			Contract.Ensures(Contract.Result<IEnumerable<ShellFolder>>() != null);
 

@@ -11,28 +11,6 @@ namespace starshipxac.Shell
 	public static class ShellLibraries
 	{
 		/// <summary>
-		/// すべてのライブラリを取得します。
-		/// </summary>
-		public static IEnumerable<ShellLibrary> AllLibraries
-		{
-			get
-			{
-				return ShellKnownFolders.Libraries.GetItems().OfType<ShellLibrary>();
-			}
-		}
-
-		/// <summary>
-		/// すべてのパブリックライブラリを取得します。
-		/// </summary>
-		public static IEnumerable<ShellLibrary> AllPublicLibraries
-		{
-			get
-			{
-				return ShellKnownFolders.PublicLibraries.GetItems().OfType<ShellLibrary>();
-			}
-		}
-
-		/// <summary>
 		/// ドキュメントライブラリを取得します。
 		/// </summary>
 		public static ShellLibrary DocumentsLibrary
@@ -90,6 +68,24 @@ namespace starshipxac.Shell
 				Contract.Ensures(Contract.Result<ShellLibrary>() != null);
 				return ShellLibraryFactory.Load(ShellKnownFolderFactory.FromCanonicalName("RecordedTVLibrary"));
 			}
+		}
+
+		/// <summary>
+		/// 全てのライブラリを列挙します。
+		/// </summary>
+		/// <returns></returns>
+		public static IEnumerable<ShellLibrary> EnumerateLibraries()
+		{
+			return ShellKnownFolders.Libraries.EnumerateItems().OfType<ShellLibrary>();
+		}
+
+		/// <summary>
+		/// 全てのパブリックライブラリを列挙します。
+		/// </summary>
+		/// <returns></returns>
+		public static IEnumerable<ShellLibrary> EnumeratePublicLibraries()
+		{
+			return ShellKnownFolders.PublicLibraries.EnumerateItems().OfType<ShellLibrary>();
 		}
 	}
 }

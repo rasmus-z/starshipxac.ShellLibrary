@@ -68,7 +68,7 @@ namespace starshipxac.Shell
 			{
 				var path = TestConfig.TestDirectory.FullName;
 				var folder = ShellFactory.FromFolderPath(path);
-				var actual = folder.GetItems().ToList();
+				var actual = folder.EnumerateItems().ToList();
 
 				var folder1 = actual.Find(item => ShellTestConfig.CompareFileName(item.Name, "Pictures"));
 				Assert.NotNull(folder1);
