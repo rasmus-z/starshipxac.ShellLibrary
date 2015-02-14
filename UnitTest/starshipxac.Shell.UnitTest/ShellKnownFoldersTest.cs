@@ -17,11 +17,11 @@ namespace starshipxac.Shell
 		public ShellTestConfig TestConfig { get; private set; }
 
 		[Fact]
-		public async Task AllFoldersTest()
+		public async Task EnumerateKnownFoldersTest()
 		{
 			await STATask.Run(() =>
 			{
-				foreach (var folder in ShellKnownFolders.AllFolders)
+				foreach (var folder in ShellKnownFolders.EnumerateKnownFolders())
 				{
 					Dump(folder);
 				}

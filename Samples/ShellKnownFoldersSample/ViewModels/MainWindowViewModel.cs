@@ -14,7 +14,7 @@ namespace ShellKnownFoldersSample.ViewModels
 			#region Reactive Property
 
 			this.KnownFolders = new ReactiveCollection<ShellKnownFolderViewModel>(
-				ShellKnownFolders.AllFolders.Select(x => new ShellKnownFolderViewModel(x)).ToObservable());
+				ShellKnownFolders.EnumerateKnownFolders().Select(x => new ShellKnownFolderViewModel(x)).ToObservable());
 
 			#endregion
 		}

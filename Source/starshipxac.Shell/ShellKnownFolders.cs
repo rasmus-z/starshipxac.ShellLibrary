@@ -13,18 +13,6 @@ namespace starshipxac.Shell
 	public static class ShellKnownFolders
 	{
 		/// <summary>
-		/// すべての標準フォルダーを取得します。
-		/// </summary>
-		public static IEnumerable<ShellKnownFolder> AllFolders
-		{
-			get
-			{
-				Contract.Ensures(Contract.Result<IEnumerable<ShellKnownFolder>>() != null);
-				return ShellKnownFolderFactory.GetAllFolders();
-			}
-		}
-
-		/// <summary>
 		/// ローミングユーザーのアプリケーション固有データ
 		/// </summary>
 		/// <remarks>
@@ -877,6 +865,15 @@ namespace starshipxac.Shell
 			{
 				return ShellKnownFolderFactory.FromCanonicalName("My Video");
 			}
+		}
+
+		/// <summary>
+		/// すべての標準フォルダーを取得します。
+		/// </summary>
+		public static IEnumerable<ShellKnownFolder> EnumerateKnownFolders()
+		{
+			Contract.Ensures(Contract.Result<IEnumerable<ShellKnownFolder>>() != null);
+			return ShellKnownFolderFactory.GetAllFolders();
 		}
 	}
 }
