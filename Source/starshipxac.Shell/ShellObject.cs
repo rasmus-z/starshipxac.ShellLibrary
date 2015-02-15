@@ -191,7 +191,7 @@ namespace starshipxac.Shell
 		}
 
 		/// <summary>
-		/// アイテム作成日時を取得します。
+		/// アイテム作成日時(UTC)を取得します。
 		/// </summary>
 		public virtual DateTime DateCreated
 		{
@@ -207,7 +207,7 @@ namespace starshipxac.Shell
 		}
 
 		/// <summary>
-		/// アイテム更新日時を取得します。
+		/// アイテム更新日時(UTC)を取得します。
 		/// </summary>
 		public virtual DateTime DateModified
 		{
@@ -223,7 +223,7 @@ namespace starshipxac.Shell
 		}
 
 		/// <summary>
-		/// アイテムアクセス日時を取得します。
+		/// アイテムアクセス日時(UTC)を取得します。
 		/// </summary>
 		public virtual DateTime DateAccessed
 		{
