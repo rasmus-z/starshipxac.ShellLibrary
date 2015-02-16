@@ -3,12 +3,12 @@ using starshipxac.Shell.Interop;
 
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
-	public enum ShellThumbnailFormatOptions
-	{
-		Default,
+    public enum ShellThumbnailFormatOptions
+    {
+        Default,
 
-		ThumbnailOnly = SIIGBF.SIIGBF_THUMBNAILONLY,
+        ThumbnailOnly = SIIGBF.SIIGBF_THUMBNAILONLY,
 
-		IconOnly = SIIGBF.SIIGBF_ICONONLY,
-	}
+        IconOnly = SIIGBF.SIIGBF_ICONONLY,
+    }
 }

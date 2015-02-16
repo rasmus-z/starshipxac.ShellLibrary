@@ -4,10 +4,10 @@ using starshipxac.Shell.Interop;
 
 namespace starshipxac.Windows.Shell.Dialogs.Interop
 {
-	[ComImport]
-	[Guid(ShellIID.IFileOpenDialog)]
-	[CoClass(typeof(FileOpenDialogCoClass))]
-	internal interface FileOpenDialogNative : IFileOpenDialog
-	{
-	}
+    [ComImport]
+    [Guid(ShellIID.IFileOpenDialog)]
+    [CoClass(typeof(FileOpenDialogCoClass))]
+    internal interface FileOpenDialogNative : IFileOpenDialog
+    {
+    }
 }

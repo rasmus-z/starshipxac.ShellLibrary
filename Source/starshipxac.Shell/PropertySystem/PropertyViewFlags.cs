@@ -3,38 +3,38 @@ using starshipxac.Shell.PropertySystem.Interop;
 
 namespace starshipxac.Shell.PropertySystem
 {
-	/// <summary>
-	/// プロパティ表示方法を定義します。
-	/// </summary>
-	[Flags]
-	public enum PropertyViewFlags
-	{
-		Default = PROPDESC_VIEW_FLAGS.PDVF_DEFAULT,
+    /// <summary>
+    /// プロパティ表示方法を定義します。
+    /// </summary>
+    [Flags]
+    public enum PropertyViewFlags
+    {
+        Default = PROPDESC_VIEW_FLAGS.PDVF_DEFAULT,
 
-		CenterAlign = PROPDESC_VIEW_FLAGS.PDVF_CENTERALIGN,
+        CenterAlign = PROPDESC_VIEW_FLAGS.PDVF_CENTERALIGN,
 
-		RightAlign = PROPDESC_VIEW_FLAGS.PDVF_RIGHTALIGN,
+        RightAlign = PROPDESC_VIEW_FLAGS.PDVF_RIGHTALIGN,
 
-		BeginNewGroup = PROPDESC_VIEW_FLAGS.PDVF_BEGINNEWGROUP,
+        BeginNewGroup = PROPDESC_VIEW_FLAGS.PDVF_BEGINNEWGROUP,
 
-		FillArea = PROPDESC_VIEW_FLAGS.PDVF_FILLAREA,
+        FillArea = PROPDESC_VIEW_FLAGS.PDVF_FILLAREA,
 
-		SortDescending = PROPDESC_VIEW_FLAGS.PDVF_SORTDESCENDING,
+        SortDescending = PROPDESC_VIEW_FLAGS.PDVF_SORTDESCENDING,
 
-		ShowOnlyIfPresent = PROPDESC_VIEW_FLAGS.PDVF_SHOWONLYIFPRESENT,
+        ShowOnlyIfPresent = PROPDESC_VIEW_FLAGS.PDVF_SHOWONLYIFPRESENT,
 
-		ShowByDefault = PROPDESC_VIEW_FLAGS.PDVF_SHOWBYDEFAULT,
+        ShowByDefault = PROPDESC_VIEW_FLAGS.PDVF_SHOWBYDEFAULT,
 
-		ShowInPrimaryList = PROPDESC_VIEW_FLAGS.PDVF_SHOWINPRIMARYLIST,
+        ShowInPrimaryList = PROPDESC_VIEW_FLAGS.PDVF_SHOWINPRIMARYLIST,
 
-		ShowInSecondaryList = PROPDESC_VIEW_FLAGS.PDVF_SHOWINSECONDARYLIST,
+        ShowInSecondaryList = PROPDESC_VIEW_FLAGS.PDVF_SHOWINSECONDARYLIST,
 
-		HideLabel = PROPDESC_VIEW_FLAGS.PDVF_HIDELABEL,
+        HideLabel = PROPDESC_VIEW_FLAGS.PDVF_HIDELABEL,
 
-		Hidden = PROPDESC_VIEW_FLAGS.PDVF_HIDDEN,
+        Hidden = PROPDESC_VIEW_FLAGS.PDVF_HIDDEN,
 
-		CanWrap = PROPDESC_VIEW_FLAGS.PDVF_CANWRAP,
+        CanWrap = PROPDESC_VIEW_FLAGS.PDVF_CANWRAP,
 
-		MaskAll = PROPDESC_VIEW_FLAGS.PDVF_MASK_ALL,
-	}
+        MaskAll = PROPDESC_VIEW_FLAGS.PDVF_MASK_ALL,
+    }
 }

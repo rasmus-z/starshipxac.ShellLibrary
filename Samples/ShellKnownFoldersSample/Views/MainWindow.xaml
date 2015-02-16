@@ -9,20 +9,20 @@
         Title="Shell KownFolders Sample"
         Width="800"
         Height="600">
-    
+
     <Window.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Window.DataContext>
-    
+
     <i:Interaction.Triggers>
         <!--WindowのContentRenderedイベントのタイミングでViewModelのInitializeメソッドが呼ばれます-->
         <i:EventTrigger EventName="ContentRendered">
-            <l:LivetCallMethodAction MethodTarget="{Binding}" MethodName="Initialize"/>
+            <l:LivetCallMethodAction MethodTarget="{Binding}" MethodName="Initialize" />
         </i:EventTrigger>
 
         <!--Windowが閉じたタイミングでViewModelのDisposeメソッドが呼ばれます-->
         <i:EventTrigger EventName="Closed">
-            <l:DataContextDisposeAction/>
+            <l:DataContextDisposeAction />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
@@ -34,15 +34,15 @@
                             <DataTemplate>
                                 <Image Source="{Binding Thumbnail.Value.ImageSource}"
                                        Width="{Binding Thumbnail.Value.Size.Width}"
-                                       Height="{Binding Thumbnail.Value.Size.Height}"/>
+                                       Height="{Binding Thumbnail.Value.Size.Height}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="DisplayName" DisplayMemberBinding="{Binding DisplayName.Value}"/>
-                    <GridViewColumn Header="CanonicalName" DisplayMemberBinding="{Binding CanonicalName.Value}"/>
-                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category.Value}"/>
-                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description.Value}"/>
-                    <GridViewColumn Header="Path" DisplayMemberBinding="{Binding Path.Value}"/>
+                    <GridViewColumn Header="DisplayName" DisplayMemberBinding="{Binding DisplayName.Value}" />
+                    <GridViewColumn Header="CanonicalName" DisplayMemberBinding="{Binding CanonicalName.Value}" />
+                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category.Value}" />
+                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description.Value}" />
+                    <GridViewColumn Header="Path" DisplayMemberBinding="{Binding Path.Value}" />
                 </GridView>
             </ListView.View>
         </ListView>

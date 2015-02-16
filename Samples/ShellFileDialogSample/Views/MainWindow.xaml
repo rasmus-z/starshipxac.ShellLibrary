@@ -10,20 +10,20 @@
         Title="Shell File Dialog Sample"
         Width="525"
         Height="600">
-    
+
     <Window.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Window.DataContext>
-    
+
     <i:Interaction.Triggers>
         <!--WindowのContentRenderedイベントのタイミングでViewModelのInitializeメソッドが呼ばれます-->
         <i:EventTrigger EventName="ContentRendered">
-            <l:LivetCallMethodAction MethodTarget="{Binding}" MethodName="Initialize"/>
+            <l:LivetCallMethodAction MethodTarget="{Binding}" MethodName="Initialize" />
         </i:EventTrigger>
 
         <!--Windowが閉じたタイミングでViewModelのDisposeメソッドが呼ばれます-->
         <i:EventTrigger EventName="Closed">
-            <l:DataContextDisposeAction/>
+            <l:DataContextDisposeAction />
         </i:EventTrigger>
 
         <l:InteractionMessageTrigger MessageKey="SelectOpenFile" Messenger="{Binding Messenger}">
@@ -39,18 +39,18 @@
             <Dialogs:CustomFileDialogInteractionMessageAction />
         </l:InteractionMessageTrigger>
     </i:Interaction.Triggers>
-    
+
     <Grid>
         <Grid>
             <Grid.Resources>
                 <Style TargetType="Button">
-                    <Setter Property="Margin" Value="16,2"/>
-                    <Setter Property="Padding" Value="8,4"></Setter>
+                    <Setter Property="Margin" Value="16,2" />
+                    <Setter Property="Padding" Value="8,4" />
                 </Style>
             </Grid.Resources>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Vertical">
                 <Button Command="{Binding SelectOpenFileCommand, Mode=OneWay}">OpenFileSelector</Button>
@@ -64,8 +64,8 @@
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>
-                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding CanonicalName}"/>
-                            <GridViewColumn Header="Value" DisplayMemberBinding="{Binding ValueAsObject}"/>
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding CanonicalName}" />
+                            <GridViewColumn Header="Value" DisplayMemberBinding="{Binding ValueAsObject}" />
                         </GridView.Columns>
                     </GridView>
                 </ListView.View>

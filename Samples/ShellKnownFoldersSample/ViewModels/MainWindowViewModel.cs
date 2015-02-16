@@ -7,22 +7,22 @@ using starshipxac.Shell;
 
 namespace ShellKnownFoldersSample.ViewModels
 {
-	public class MainWindowViewModel : ViewModel
-	{
-		public MainWindowViewModel()
-		{
-			#region Reactive Property
+    public class MainWindowViewModel : ViewModel
+    {
+        public MainWindowViewModel()
+        {
+            #region Reactive Property
 
-			this.KnownFolders = new ReactiveCollection<ShellKnownFolderViewModel>(
-				ShellKnownFolders.EnumerateKnownFolders().Select(x => new ShellKnownFolderViewModel(x)).ToObservable());
+            this.KnownFolders = new ReactiveCollection<ShellKnownFolderViewModel>(
+                ShellKnownFolders.EnumerateKnownFolders().Select(x => new ShellKnownFolderViewModel(x)).ToObservable());
 
-			#endregion
-		}
+            #endregion
+        }
 
-		public void Initialize()
-		{
-		}
+        public void Initialize()
+        {
+        }
 
-		public ReactiveCollection<ShellKnownFolderViewModel> KnownFolders { get; private set; }
-	}
+        public ReactiveCollection<ShellKnownFolderViewModel> KnownFolders { get; private set; }
+    }
 }

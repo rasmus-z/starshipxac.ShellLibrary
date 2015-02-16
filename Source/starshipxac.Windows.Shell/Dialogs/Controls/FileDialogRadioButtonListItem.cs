@@ -2,18 +2,18 @@ using System;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
-	public class FileDialogRadioButtonListItem
-	{
-		public FileDialogRadioButtonListItem()
-			: this(string.Empty)
-		{
-		}
+    public class FileDialogRadioButtonListItem
+    {
+        public FileDialogRadioButtonListItem()
+            : this(string.Empty)
+        {
+        }
 
-		public FileDialogRadioButtonListItem(string text)
-		{
-			this.Text = text;
-		}
+        public FileDialogRadioButtonListItem(string text)
+        {
+            this.Text = text;
+        }
 
-		public string Text { get; set; }
-	}
+        public string Text { get; set; }
+    }
 }

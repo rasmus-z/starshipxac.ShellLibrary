@@ -7,142 +7,142 @@ using starshipxac.Shell;
 
 namespace starshipxac.Windows.Shell.Dialogs
 {
-	/// <summary>
-	/// ファイル選択ダイアログを表示します。
-	/// </summary>
-	public sealed class OpenFileSelector : FileOpenDialogBase
-	{
-		private bool multiSelect = false;
+    /// <summary>
+    /// ファイル選択ダイアログを表示します。
+    /// </summary>
+    public sealed class OpenFileSelector : FileOpenDialogBase
+    {
+        private bool multiSelect = false;
 
-		/// <summary>
-		/// <see cref="OpenFileSelector"/>クラスを初期化します。
-		/// </summary>
-		static OpenFileSelector()
-		{
-			EmptyShellFiles = new List<ShellFile>();
-		}
+        /// <summary>
+        /// <see cref="OpenFileSelector"/>クラスを初期化します。
+        /// </summary>
+        static OpenFileSelector()
+        {
+            EmptyShellFiles = new List<ShellFile>();
+        }
 
-		/// <summary>
-		/// <see cref="OpenFileSelector"/>クラスの新しいインスタンスを初期化します。
-		/// </summary>
-		public OpenFileSelector()
-		{
-		}
+        /// <summary>
+        /// <see cref="OpenFileSelector"/>クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        public OpenFileSelector()
+        {
+        }
 
-		/// <summary>
-		/// ダイアログのタイトルを指定して、
-		/// <see cref="OpenFileSelector"/>クラスの新しいインスタンスを初期化します。
-		/// </summary>
-		/// <param name="title">ダイアログのタイトル。</param>
-		public OpenFileSelector(string title)
-			: base(title)
-		{
-		}
+        /// <summary>
+        /// ダイアログのタイトルを指定して、
+        /// <see cref="OpenFileSelector"/>クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="title">ダイアログのタイトル。</param>
+        public OpenFileSelector(string title)
+            : base(title)
+        {
+        }
 
-		/// <summary>
-		/// 読み込み専用ファイルのみ選択可能にするかどうかを示す値を取得または設定します。
-		/// </summary>
-		public bool EnsureReadOnly { get; set; }
+        /// <summary>
+        /// 読み込み専用ファイルのみ選択可能にするかどうかを示す値を取得または設定します。
+        /// </summary>
+        public bool EnsureReadOnly { get; set; }
 
-		/// <summary>
-		/// ファイルシステム以外のアイテムを選択可能にするかどうかを示す値を取得または設定します。
-		/// </summary>
-		public bool AllowNonFileSystemItem { get; set; }
+        /// <summary>
+        /// ファイルシステム以外のアイテムを選択可能にするかどうかを示す値を取得または設定します。
+        /// </summary>
+        public bool AllowNonFileSystemItem { get; set; }
 
-		/// <summary>
-		/// 空のファイルコレクションを取得または設定します。
-		/// </summary>
-		private static IEnumerable<ShellFile> EmptyShellFiles { get; set; }
+        /// <summary>
+        /// 空のファイルコレクションを取得または設定します。
+        /// </summary>
+        private static IEnumerable<ShellFile> EmptyShellFiles { get; set; }
 
-		private ShellFile SelectSingleFile()
-		{
-			this.multiSelect = false;
-			var dialogResult = ShowDialog();
-			if (dialogResult != FileDialogResult.Ok)
-			{
-				return null;
-			}
-			return GetShellFiles().FirstOrDefault();
-		}
+        private ShellFile SelectSingleFile()
+        {
+            this.multiSelect = false;
+            var dialogResult = ShowDialog();
+            if (dialogResult != FileDialogResult.Ok)
+            {
+                return null;
+            }
+            return GetShellFiles().FirstOrDefault();
+        }
 
-		/// <summary>
-		/// 1つのファイルを選択できるダイアログを表示します。
-		/// </summary>
-		/// <returns>選択したファイル情報。ユーザーがキャンセルした場合は<c>null</c>。</returns>
-		public async Task<ShellFile> SelectSingleFileAsync()
-		{
-			ShellFile result = null;
+        /// <summary>
+        /// 1つのファイルを選択できるダイアログを表示します。
+        /// </summary>
+        /// <returns>選択したファイル情報。ユーザーがキャンセルした場合は<c>null</c>。</returns>
+        public async Task<ShellFile> SelectSingleFileAsync()
+        {
+            ShellFile result = null;
 
-			this.multiSelect = false;
+            this.multiSelect = false;
 
-			await InvokeAsync(() =>
-			{
-				var dialogResult = ShowDialog();
-				if (dialogResult == FileDialogResult.Ok)
-				{
-					result = GetShellFiles().FirstOrDefault();
-				}
-			});
+            await InvokeAsync(() =>
+            {
+                var dialogResult = ShowDialog();
+                if (dialogResult == FileDialogResult.Ok)
+                {
+                    result = GetShellFiles().FirstOrDefault();
+                }
+            });
 
-			return result;
-		}
+            return result;
+        }
 
-		/// <summary>
-		/// 複数のファイルを選択できるダイアログを表示します。
-		/// </summary>
-		/// <returns>選択したファイル情報のコレクション。</returns>
-		public async Task<IEnumerable<ShellFile>> SelectMultipleFilesAsync()
-		{
-			var result = EmptyShellFiles;
+        /// <summary>
+        /// 複数のファイルを選択できるダイアログを表示します。
+        /// </summary>
+        /// <returns>選択したファイル情報のコレクション。</returns>
+        public async Task<IEnumerable<ShellFile>> SelectMultipleFilesAsync()
+        {
+            var result = EmptyShellFiles;
 
-			this.multiSelect = true;
+            this.multiSelect = true;
 
-			await InvokeAsync(() =>
-			{
-				var dialogResult = ShowDialog();
-				if (dialogResult == FileDialogResult.Ok)
-				{
-					result = GetShellFiles();
-				}
-			});
+            await InvokeAsync(() =>
+            {
+                var dialogResult = ShowDialog();
+                if (dialogResult == FileDialogResult.Ok)
+                {
+                    result = GetShellFiles();
+                }
+            });
 
-			return result;
-		}
+            return result;
+        }
 
-		protected override FileDialogOptions GetDialogOptions()
-		{
-			var result = base.GetDialogOptions();
+        protected override FileDialogOptions GetDialogOptions()
+        {
+            var result = base.GetDialogOptions();
 
-			if (this.multiSelect)
-			{
-				result |= FileDialogOptions.MultiSelect;
-			}
-			if (this.EnsureReadOnly)
-			{
-				result |= FileDialogOptions.EnsureReadOnly;
-			}
-			if (!this.AllowNonFileSystemItem)
-			{
-				result |= FileDialogOptions.ForceFileSystem;
-			}
-			else
-			{
-				result |= FileDialogOptions.AllNonStotageItems;
-			}
+            if (this.multiSelect)
+            {
+                result |= FileDialogOptions.MultiSelect;
+            }
+            if (this.EnsureReadOnly)
+            {
+                result |= FileDialogOptions.EnsureReadOnly;
+            }
+            if (!this.AllowNonFileSystemItem)
+            {
+                result |= FileDialogOptions.ForceFileSystem;
+            }
+            else
+            {
+                result |= FileDialogOptions.AllNonStotageItems;
+            }
 
-			return result;
-		}
+            return result;
+        }
 
-		private async Task InvokeAsync(Action action)
-		{
-			if (Application.Current.Dispatcher.CheckAccess())
-			{
-				action();
-			}
-			else
-			{
-				await Application.Current.Dispatcher.InvokeAsync(action);
-			}
-		}
-	}
+        private async Task InvokeAsync(Action action)
+        {
+            if (Application.Current.Dispatcher.CheckAccess())
+            {
+                action();
+            }
+            else
+            {
+                await Application.Current.Dispatcher.InvokeAsync(action);
+            }
+        }
+    }
 }

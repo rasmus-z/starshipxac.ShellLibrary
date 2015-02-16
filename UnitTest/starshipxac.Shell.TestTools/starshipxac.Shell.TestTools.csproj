@@ -7,7 +7,7 @@
     <ProjectGuid>{5FB08661-6342-420F-ACA5-009591AC1ACB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>starshipxac.Shell.TestConfiguration</RootNamespace>
+    <RootNamespace>starshipxac.Shell.TestTools</RootNamespace>
     <AssemblyName>starshipxac.Shell.TestConfiguration</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -67,9 +67,9 @@
       <Project>{81a98110-cd02-4692-8329-a875969e66dd}</Project>
       <Name>starshipxac.Shell</Name>
     </ProjectReference>
-    <ProjectReference Include="..\starshipxac.Shell.TestConfiguration\starshipxac.Shell.TestConfiguration.csproj">
+    <ProjectReference Include="..\starshipxac.Shell.TestTools\starshipxac.Shell.TestTools.csproj">
       <Project>{5fb08661-6342-420f-aca5-009591ac1acb}</Project>
-      <Name>starshipxac.Shell.TestConfiguration</Name>
+      <Name>starshipxac.Shell.TestTools</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

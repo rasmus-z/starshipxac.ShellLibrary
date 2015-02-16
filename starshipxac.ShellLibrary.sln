@@ -20,7 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{03574C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.Windows.Shell", "Source\starshipxac.Windows.Shell\starshipxac.Windows.Shell.csproj", "{D1EC7E1A-983F-44DA-B0AD-4D48348686A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.Shell.TestConfiguration", "UnitTest\starshipxac.Shell.TestConfiguration\starshipxac.Shell.TestConfiguration.csproj", "{5FB08661-6342-420F-ACA5-009591AC1ACB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.Shell.TestTools", "UnitTest\starshipxac.Shell.TestTools\starshipxac.Shell.TestTools.csproj", "{5FB08661-6342-420F-ACA5-009591AC1ACB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellFileDialogSample", "Samples\ShellFileDialogSample\ShellFileDialogSample.csproj", "{6A63D736-ECE8-4B05-858A-88A8AF773C93}"
 EndProject
