@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
+using Codeplex.Reactive;
 using starshipxac.Shell;
 
 namespace ShellExplorerSample.ViewModels.Shell
@@ -11,6 +12,8 @@ namespace ShellExplorerSample.ViewModels.Shell
         {
             Contract.Requires<ArgumentNullException>(shellFile != null);
             Contract.Requires<ArgumentNullException>(parentFolder != null);
+
+            this.Path = new ReactiveProperty<string>(this.ShellFile.Path);
         }
 
         public ShellFile ShellFile
@@ -22,20 +25,13 @@ namespace ShellExplorerSample.ViewModels.Shell
             }
         }
 
-        public string Path
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<string>() != null);
-                return this.ShellFile.Path;
-            }
-        }
+        public ReactiveProperty<string> Path { get; private set; }
 
         public override string ToString()
         {
             return String.Format("{0}: {{ Path={1} }}",
                 this.GetType().Name,
-                this.Path);
+                this.Path.Value);
         }
     }
 }

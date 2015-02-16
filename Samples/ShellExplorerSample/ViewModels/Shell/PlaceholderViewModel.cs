@@ -10,21 +10,5 @@ namespace ShellExplorerSample.ViewModels.Shell
         {
             Contract.Requires<ArgumentNullException>(parentFolder != null);
         }
-
-        public override string ParsingName
-        {
-            get
-            {
-                return ":::";
-            }
-        }
-
-        public override string DisplayName
-        {
-            get
-            {
-                return String.Empty;
-            }
-        }
     }
 }

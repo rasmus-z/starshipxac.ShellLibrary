@@ -50,6 +50,14 @@ namespace ShellExplorerSample.ViewModels.Shell
             }
         }
 
+        public static ShellFolderViewModel CreateFolder(ShellFolder folder, ShellFolderViewModel parentFolder)
+        {
+            Contract.Requires<ArgumentNullException>(folder != null);
+            Contract.Requires<ArgumentNullException>(parentFolder != null);
+
+            return new ShellFolderViewModel(folder, parentFolder);
+        }
+
         public static ShellFolderViewModel CreateRoot(ShellFolder rootFolder)
         {
             Contract.Requires<ArgumentNullException>(rootFolder != null);
