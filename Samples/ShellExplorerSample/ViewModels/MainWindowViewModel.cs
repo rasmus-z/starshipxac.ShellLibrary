@@ -18,6 +18,9 @@ namespace ShellExplorerSample.ViewModels
     /// </remarks>
     public class MainWindowViewModel : ViewModel
     {
+        /// <summary>
+        /// <see cref="MainWindowViewModel"/>クラスの新しいインスタンスを初期化します。
+        /// </summary>
         public MainWindowViewModel()
         {
             #region ReactiveProperty
@@ -33,6 +36,9 @@ namespace ShellExplorerSample.ViewModels
             #endregion
         }
 
+        /// <summary>
+        /// <c>ContentRendered</c>イベントが発生すると呼ばれます。
+        /// </summary>
         public void Initialize()
         {
             ShellViewModelFactory.Initialize();
@@ -47,10 +53,19 @@ namespace ShellExplorerSample.ViewModels
             this.RootFolderCollectionView = CollectionViewSource.GetDefaultView(this.RootFolders.Value);
         }
 
+        /// <summary>
+        /// ルートフォルダーのコレクションを取得します。
+        /// </summary>
         public ReactiveProperty<ObservableSynchronizedCollection<ShellFolderViewModel>> RootFolders { get; private set; }
 
+        /// <summary>
+        /// 選択中のフォルダーを取得します。
+        /// </summary>
         public ReactiveProperty<ShellFolderViewModel> SelectedFolder { get; private set; }
 
+        /// <summary>
+        /// 選択中のフォルダーに含まれるファイルまたはフォルダーのコレクションを取得します。
+        /// </summary>
         public ReactiveProperty<ObservableSynchronizedCollection<ShellObjectViewModel>> ShellItems { get; private set; }
 
         private ICollectionView RootFolderCollectionView { get; set; }
@@ -59,10 +74,6 @@ namespace ShellExplorerSample.ViewModels
 
         private ObservableSynchronizedCollection<ShellObjectViewModel> CreateShellItems(ShellFolderViewModel folder)
         {
-            if (this.ShellItemCollectionView != null)
-            {
-            }
-
             var result = new ObservableSynchronizedCollection<ShellObjectViewModel>();
             if (folder != null)
             {
@@ -71,6 +82,8 @@ namespace ShellExplorerSample.ViewModels
                     result.Add(item);
                 }
             }
+
+            this.ShellItemCollectionView = CollectionViewSource.GetDefaultView(result);
 
             return result;
         }
