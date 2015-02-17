@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
+using System.ComponentModel;
+using System.Reactive.Linq;
+using System.Windows.Data;
+using Codeplex.Reactive;
 using Livet;
 using ShellExplorerSample.ViewModels.Shell;
 using starshipxac.Shell;
@@ -17,86 +18,74 @@ namespace ShellExplorerSample.ViewModels
     /// </remarks>
     public class MainWindowViewModel : ViewModel
     {
+        /// <summary>
+        /// <see cref="MainWindowViewModel"/>クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        public MainWindowViewModel()
+        {
+            #region ReactiveProperty
+
+            this.RootFolders = new ReactiveProperty<ObservableSynchronizedCollection<ShellFolderViewModel>>();
+
+            this.SelectedFolder = new ReactiveProperty<ShellFolderViewModel>();
+
+            this.ShellItems = this.SelectedFolder
+                .Select(CreateShellItems)
+                .ToReactiveProperty();
+
+            #endregion
+        }
+
+        /// <summary>
+        /// <c>ContentRendered</c>イベントが発生すると呼ばれます。
+        /// </summary>
         public void Initialize()
         {
             ShellViewModelFactory.Initialize();
 
-            this.RootFolders = new List<ShellFolderViewModel>()
+            this.RootFolders.Value = new ObservableSynchronizedCollection<ShellFolderViewModel>()
             {
                 ShellViewModelFactory.CreateRoot(ShellKnownFolders.OneDrive),
                 ShellViewModelFactory.CreateRoot(ShellKnownFolders.HomeGroup),
                 ShellViewModelFactory.CreateRoot(ShellKnownFolders.Computer),
-                ShellViewModelFactory.CreateRoot(ShellKnownFolders.Libraries)
+                ShellViewModelFactory.CreateRoot(ShellKnownFolders.Libraries),
             };
+            this.RootFolderCollectionView = CollectionViewSource.GetDefaultView(this.RootFolders.Value);
         }
 
-        #region RootFolders変更通知プロパティ
+        /// <summary>
+        /// ルートフォルダーのコレクションを取得します。
+        /// </summary>
+        public ReactiveProperty<ObservableSynchronizedCollection<ShellFolderViewModel>> RootFolders { get; private set; }
 
-        private IReadOnlyList<ShellFolderViewModel> rootFolders;
+        /// <summary>
+        /// 選択中のフォルダーを取得します。
+        /// </summary>
+        public ReactiveProperty<ShellFolderViewModel> SelectedFolder { get; private set; }
 
-        public IReadOnlyList<ShellFolderViewModel> RootFolders
+        /// <summary>
+        /// 選択中のフォルダーに含まれるファイルまたはフォルダーのコレクションを取得します。
+        /// </summary>
+        public ReactiveProperty<ObservableSynchronizedCollection<ShellObjectViewModel>> ShellItems { get; private set; }
+
+        private ICollectionView RootFolderCollectionView { get; set; }
+
+        private ICollectionView ShellItemCollectionView { get; set; }
+
+        private ObservableSynchronizedCollection<ShellObjectViewModel> CreateShellItems(ShellFolderViewModel folder)
         {
-            get
+            var result = new ObservableSynchronizedCollection<ShellObjectViewModel>();
+            if (folder != null)
             {
-                return this.rootFolders;
-            }
-            private set
-            {
-                this.rootFolders = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        #endregion
-
-        #region SelectedFolder変更通知プロパティ
-
-        private ShellFolderViewModel selectedFolder;
-
-        public ShellFolderViewModel SelectedFolder
-        {
-            get
-            {
-                return this.selectedFolder;
-            }
-            set
-            {
-                if (this.selectedFolder == value)
+                foreach (var item in folder.EnumerateItems())
                 {
-                    return;
+                    result.Add(item);
                 }
-                this.selectedFolder = value;
-                RaisePropertyChanged();
-
-                Debug.WriteLine("selectedFolder={0}", this.selectedFolder);
-
-                this.ShellItems = this.SelectedFolder.ShellItems;
             }
+
+            this.ShellItemCollectionView = CollectionViewSource.GetDefaultView(result);
+
+            return result;
         }
-
-        #endregion
-
-        #region ShellItems変更通知プロパティ
-
-        private ObservableCollection<ShellObjectViewModel> shellItems;
-
-        public ObservableCollection<ShellObjectViewModel> ShellItems
-        {
-            get
-            {
-                return this.shellItems;
-            }
-            private set
-            {
-                if (this.shellItems == value)
-                {
-                    return;
-                }
-                this.shellItems = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        #endregion
     }
 }

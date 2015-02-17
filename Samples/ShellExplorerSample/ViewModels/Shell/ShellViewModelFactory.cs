@@ -6,6 +6,9 @@ using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
+    /// <summary>
+    /// <see cref="ShellObject"/>の<c>ViewModel</c>を作成します。
+    /// </summary>
     public static class ShellViewModelFactory
     {
         static ShellViewModelFactory()
@@ -30,6 +33,12 @@ namespace ShellExplorerSample.ViewModels.Shell
             ThumbnailFactory = new ShellThumbnailFactory(new Size(64, 64));
         }
 
+        /// <summary>
+        /// <see cref="ShellObject"/>から、ファイルまたはフォルダーの<c>ViewModel</c>を作成します。
+        /// </summary>
+        /// <param name="shellObject"></param>
+        /// <param name="parentFolder"></param>
+        /// <returns></returns>
         public static ShellObjectViewModel Create(ShellObject shellObject, ShellFolderViewModel parentFolder)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
@@ -50,6 +59,25 @@ namespace ShellExplorerSample.ViewModels.Shell
             }
         }
 
+        /// <summary>
+        /// <see cref="ShellFolder"/>から、フォルダーの<c>ViewModel</c>を作成します。
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="parentFolder"></param>
+        /// <returns></returns>
+        public static ShellFolderViewModel CreateFolder(ShellFolder folder, ShellFolderViewModel parentFolder)
+        {
+            Contract.Requires<ArgumentNullException>(folder != null);
+            Contract.Requires<ArgumentNullException>(parentFolder != null);
+
+            return new ShellFolderViewModel(folder, parentFolder);
+        }
+
+        /// <summary>
+        /// ルートフォルダーの<c>ViewModel</c>を作成します。
+        /// </summary>
+        /// <param name="rootFolder"></param>
+        /// <returns></returns>
         public static ShellFolderViewModel CreateRoot(ShellFolder rootFolder)
         {
             Contract.Requires<ArgumentNullException>(rootFolder != null);

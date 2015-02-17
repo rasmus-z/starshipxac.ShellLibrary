@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
+using Codeplex.Reactive;
 using Livet;
 using starshipxac.Shell;
 using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
+    /// <summary>
+    /// <see cref="ShellObject"/>の<c>ViewModel</c>クラスを定義します。
+    /// </summary>
     public class ShellObjectViewModel : ViewModel
     {
-        private readonly string parsingName;
-        private string displayName;
-        private string itemTypeText;
-        private DateTime? dateCreated;
-        private DateTime? dateModified;
-
+        /// <summary>
+        /// <see cref="ShellObject"/>および親フォルダーの<c>ViewModel</c>を指定して、
+        /// <see cref="ShellObjectViewModel"/>クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="shellObject"></param>
+        /// <param name="parentFolder"></param>
         public ShellObjectViewModel(ShellObject shellObject, ShellFolderViewModel parentFolder)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
@@ -23,37 +27,78 @@ namespace ShellExplorerSample.ViewModels.Shell
             this.ParentFolder = parentFolder;
             this.ThumbnailFactory = this.ParentFolder.ThumbnailFactory;
 
-            this.parsingName = this.ShellObject.ParsingName;
+            InitializeReactiveProperties();
         }
 
+        /// <summary>
+        /// <see cref="ShellObject"/>と<see cref="ShellThumbnailFactory"/>を指定して、
+        /// <see cref="ShellObjectViewModel"/>クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="shellObject"></param>
+        /// <param name="thumbnailFactory"></param>
         protected ShellObjectViewModel(ShellObject shellObject, ShellThumbnailFactory thumbnailFactory)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
+            Contract.Requires<ArgumentNullException>(thumbnailFactory != null);
 
             this.ShellObject = shellObject;
             this.ParentFolder = null;
             this.ThumbnailFactory = thumbnailFactory;
 
-            this.parsingName = this.ShellObject.ParsingName;
+            InitializeReactiveProperties();
         }
 
-        internal ShellObjectViewModel(ShellFolderViewModel parentFolder)
+        /// <summary>
+        /// 親フォルダーを指定して、
+        /// <see cref="ShellObjectViewModel"/>クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="parentFolder"></param>
+        protected ShellObjectViewModel(ShellFolderViewModel parentFolder)
         {
+            Contract.Requires<ArgumentNullException>(parentFolder != null);
+
             this.ShellObject = null;
             this.ParentFolder = parentFolder;
             this.ThumbnailFactory = parentFolder.ThumbnailFactory;
 
-            this.parsingName = String.Empty;
-            this.displayName = String.Empty;
-            this.itemTypeText = String.Empty;
-            this.dateCreated = DateTime.MinValue;
-            this.dateModified = DateTime.MinValue;
+            InitializeReactiveProperties();
         }
+
+        #region ReactiveProperty
+
+        /// <summary>
+        /// <c>ReactiveProperty</c>を初期化します。
+        /// </summary>
+        private void InitializeReactiveProperties()
+        {
+            if (this.ShellObject == null)
+            {
+                this.ParsingName = new ReactiveProperty<string>(String.Empty);
+                this.DisplayName = new ReactiveProperty<string>(String.Empty);
+                this.DateCreated = new ReactiveProperty<DateTime>(DateTime.MinValue);
+                this.DateModified = new ReactiveProperty<DateTime>(DateTime.MinValue);
+            }
+            else
+            {
+                this.ParsingName = new ReactiveProperty<string>(":::");
+                this.DisplayName = new ReactiveProperty<string>(this.ShellObject.DisplayName);
+                var itemTypeTextProperty = this.ShellObject.Properties.Create<string>("System.ItemTypeText");
+                this.ItemTypeText = new ReactiveProperty<string>(itemTypeTextProperty.Value);
+                
+                if (this.ThumbnailFactory != null)
+                {
+                    this.Thumbnail = new ReactiveProperty<ShellThumbnail>(
+                        new ShellThumbnail(this.ShellObject, this.ThumbnailFactory));
+                }
+            }
+        }
+
+        #endregion
 
         [ContractInvariantMethod]
         private void ObjectInvariant()
         {
-            Contract.Invariant(this.parsingName != null);
+            Contract.Invariant(this.ParsingName != null);
         }
 
         public ShellObject ShellObject { get; private set; }
@@ -62,91 +107,41 @@ namespace ShellExplorerSample.ViewModels.Shell
 
         public ShellThumbnailFactory ThumbnailFactory { get; private set; }
 
-        public virtual string ParsingName
-        {
-            get
-            {
-                return this.parsingName;
-            }
-        }
+        /// <summary>
+        /// 解析名を取得します。
+        /// </summary>
+        public ReactiveProperty<string> ParsingName { get; protected set; }
 
-        public virtual string DisplayName
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<string>() != null);
-                if (this.displayName == null)
-                {
-                    this.displayName = this.ShellObject.DisplayName;
-                }
-                return this.displayName;
-            }
-        }
+        /// <summary>
+        /// 表示名を取得します。
+        /// </summary>
+        public ReactiveProperty<string> DisplayName { get; private set; }
 
-        public string ItemTypeText
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<string>() != null);
-                if (this.itemTypeText == null)
-                {
-                    var itemTypeTextProperty = this.ShellObject.Properties.Create<string>("System.ItemTypeText");
-                    this.itemTypeText = itemTypeTextProperty.Value;
-                }
-                return this.itemTypeText;
-            }
-        }
+        /// <summary>
+        /// アイテム種別のテキストを取得します。
+        /// </summary>
+        public ReactiveProperty<string> ItemTypeText { get; private set; }
 
-        public DateTime DateCreated
-        {
-            get
-            {
-                if (!this.dateCreated.HasValue)
-                {
-                    this.dateCreated = this.ShellObject.DateCreated.ToLocalTime();
-                }
-                return this.dateCreated.Value;
-            }
-        }
+        /// <summary>
+        /// 作成日時を取得します。
+        /// </summary>
+        public ReactiveProperty<DateTime> DateCreated { get; private set; }
 
-        public DateTime DateModified
-        {
-            get
-            {
-                if (!this.dateModified.HasValue)
-                {
-                    this.dateModified = this.ShellObject.DateModified.ToLocalTime();
-                }
-                return this.dateModified.Value;
-            }
-        }
+        /// <summary>
+        /// 更新日時を取得します。
+        /// </summary>
+        public ReactiveProperty<DateTime> DateModified { get; private set; }
 
-        #region Thumbnail Property
-
-        private ShellThumbnail thumbnail;
-
-        public ShellThumbnail Thumbnail
-        {
-            get
-            {
-                if (this.ShellObject != null && this.thumbnail == null)
-                {
-                    if (this.ThumbnailFactory != null)
-                    {
-                        this.thumbnail = new ShellThumbnail(this.ShellObject, this.ThumbnailFactory);
-                    }
-                }
-                return this.thumbnail;
-            }
-        }
-
-        #endregion
+        /// <summary>
+        /// サムネイルイメージを取得します。
+        /// </summary>
+        public ReactiveProperty<ShellThumbnail> Thumbnail { get; private set; }
 
         public override string ToString()
         {
             return String.Format("{0}: {{ ParsingName={1} }}",
                 this.GetType().Name,
-                this.ParsingName);
+                this.DisplayName.Value);
         }
     }
 }

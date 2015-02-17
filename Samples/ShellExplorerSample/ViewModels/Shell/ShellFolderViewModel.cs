@@ -1,167 +1,164 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
+using System.Reactive.Linq;
+using System.Windows.Data;
+using Codeplex.Reactive;
+using Livet;
 using starshipxac.Shell;
 using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
+    /// <summary>
+    /// フォルダー情報の<c>ViewModel</c>を定義します。
+    /// </summary>
     public class ShellFolderViewModel : ShellObjectViewModel
     {
-        public ShellFolderViewModel(ShellFolder folder, ShellFolderViewModel parentFolder)
-            : base(folder, parentFolder)
+        /// <summary>
+        /// <see cref="ShellFolder"/>および親フォルダーを指定して、
+        /// <see cref="ShellFolderViewModel"/>クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="shellFolder"></param>
+        /// <param name="parentFolder"></param>
+        public ShellFolderViewModel(ShellFolder shellFolder, ShellFolderViewModel parentFolder)
+            : base(shellFolder, parentFolder)
         {
-            Contract.Requires<ArgumentNullException>(folder != null);
+            Contract.Requires<ArgumentNullException>(shellFolder != null);
             Contract.Requires<ArgumentNullException>(parentFolder != null);
 
-            this.ShellFolder = folder;
+            this.ShellFolder = shellFolder;
+            InitializeReactiveProperties();
         }
 
-        public ShellFolderViewModel(ShellFolder folder, ShellThumbnailFactory thumbnailFactory)
-            : base(folder, thumbnailFactory)
+        /// <summary>
+        /// <see cref="ShellFolder"/>および<see cref="ShellThumbnailFactory"/>を指定して、
+        /// <see cref="ShellFolderViewModel"/>クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="shellFolder"></param>
+        /// <param name="thumbnailFactory"></param>
+        public ShellFolderViewModel(ShellFolder shellFolder, ShellThumbnailFactory thumbnailFactory)
+            : base(shellFolder, thumbnailFactory)
         {
-            Contract.Requires<ArgumentNullException>(folder != null);
+            Contract.Requires<ArgumentNullException>(shellFolder != null);
+            Contract.Requires<ArgumentNullException>(thumbnailFactory != null);
 
-            this.ShellFolder = folder;
+            this.ShellFolder = shellFolder;
+            InitializeReactiveProperties();
         }
 
-        internal ShellFolderViewModel(ShellFolderViewModel parentFolder)
+        /// <summary>
+        /// 親フォルダーを指定して、
+        /// <see cref="ShellFolderViewModel"/>クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="parentFolder"></param>
+        protected ShellFolderViewModel(ShellFolderViewModel parentFolder)
             : base(parentFolder)
         {
             Contract.Requires<ArgumentNullException>(parentFolder != null);
 
             this.ShellFolder = null;
+            InitializeReactiveProperties();
         }
+
+        #region ReactiveProperty
+
+        /// <summary>
+        /// <c>ReactiveProperty</c>を初期化します。
+        /// </summary>
+        private void InitializeReactiveProperties()
+        {
+            this.IsExpanded = new ReactiveProperty<bool>(false);
+
+            this.IsSelected = new ReactiveProperty<bool>(false);
+
+            if (this.ShellFolder == null)
+            {
+                this.ShellFolders = new ReactiveProperty<ObservableSynchronizedCollection<ShellFolderViewModel>>(
+                    new ObservableSynchronizedCollection<ShellFolderViewModel>());
+            }
+            else
+            {
+                this.ShellFolders = this.IsExpanded
+                    .Select(CreateShellFolders)
+                    .ToReactiveProperty();
+            }
+        }
+
+        #endregion
 
         public ShellFolder ShellFolder { get; private set; }
 
-        #region IsExpanded変更通知プロパティ
+        /// <summary>
+        /// フォルダーツリーで、フォルダーが展開されているかどうかを判定する値を取得します。
+        /// </summary>
+        public ReactiveProperty<bool> IsExpanded { get; private set; }
 
-        private bool isExpanded;
+        /// <summary>
+        /// フォルダーツリー上で、フォルダーが選択されているかどうかを判定する値を取得します。
+        /// </summary>
+        public ReactiveProperty<bool> IsSelected { get; private set; }
 
-        public bool IsExpanded
+        /// <summary>
+        /// 子フォルダーのコレクションを取得します。
+        /// </summary>
+        public ReactiveProperty<ObservableSynchronizedCollection<ShellFolderViewModel>> ShellFolders { get; private set; }
+
+        private ICollectionView ShellItemCollectionView { get; set; }
+
+        private ICollectionView ShellFolderCollectionView { get; set; }
+
+        /// <summary>
+        /// フォルダー内のファイル/フォルダーを列挙します。
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ShellObjectViewModel> EnumerateItems()
         {
-            get
-            {
-                return this.isExpanded;
-            }
-            set
-            {
-                if (this.isExpanded == value)
-                {
-                    return;
-                }
-                this.isExpanded = value;
-
-                if (this.isExpanded)
-                {
-                    this.shellFolders = GetShellFolders();
-                    RaisePropertyChanged(() => this.ShellFolders);
-                }
-
-                RaisePropertyChanged();
-
-                Debug.WriteLine("IsExpanded={0}: {1}", this.IsExpanded, this.ShellFolder);
-            }
+            return this.ShellFolder.EnumerateItems()
+                .Select(x => ShellViewModelFactory.Create(x, this));
         }
 
-        #endregion
-
-        #region IsSelected変更通知プロパティ
-
-        private bool isSelected;
-
-        public bool IsSelected
+        /// <summary>
+        /// フォルダー内のフォルダーを列挙します。
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ShellFolderViewModel> EnumerateFolders()
         {
-            get
-            {
-                return this.isSelected;
-            }
-            set
-            {
-                if (this.isSelected == value)
-                {
-                    return;
-                }
-                this.isSelected = value;
-                RaisePropertyChanged();
-
-                Debug.WriteLine("IsSelected={0}: {1}", this.IsSelected, this.ShellFolder);
-            }
+            return this.ShellFolder.EnumerateFolders()
+                .Select(x => ShellViewModelFactory.CreateFolder(x, this));
         }
 
-        #endregion
-
-        #region ShellItems変更通知プロパティ
-
-        private ObservableCollection<ShellObjectViewModel> shellItems;
-
-        public ObservableCollection<ShellObjectViewModel> ShellItems
+        private ObservableSynchronizedCollection<ShellFolderViewModel> CreateShellFolders(bool expanded)
         {
-            get
+            var result = new ObservableSynchronizedCollection<ShellFolderViewModel>();
+            if (expanded)
             {
-                Contract.Ensures(Contract.Result<ObservableCollection<ShellObjectViewModel>>() != null);
-                if (this.shellItems == null)
+                try
                 {
-                    this.shellItems = new ObservableCollection<ShellObjectViewModel>(this.ShellFolder.EnumerateItems()
-                        .Select(x => ShellViewModelFactory.Create(x, this)));
-                }
-                return this.shellItems;
-            }
-        }
-
-        #endregion
-
-        #region ShellFolders変更通知プロパティ
-
-        private ObservableCollection<ShellFolderViewModel> shellFolders;
-
-        public ObservableCollection<ShellFolderViewModel> ShellFolders
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<ObservableCollection<ShellFolderViewModel>>() != null);
-                Debug.WriteLine(String.Format("Get ShellFolders: {0}", this.DisplayName));
-                if (this.shellFolders == null)
-                {
-                    this.shellFolders = new ObservableCollection<ShellFolderViewModel>()
+                    foreach (var folder in EnumerateFolders())
                     {
-                        new PlaceholderViewModel(this)
-                    };
+                        Debug.WriteLine(String.Format("  -> {0}", folder.DisplayName.Value));
+                        result.Add(folder);
+                    }
                 }
-                Debug.WriteLine(String.Format("    Count = {0}", this.shellFolders.Count));
-
-                return this.shellFolders;
-            }
-        }
-
-        private ObservableCollection<ShellFolderViewModel> GetShellFolders()
-        {
-            var result = new ObservableCollection<ShellFolderViewModel>();
-            try
-            {
-                foreach (var folder in this.ShellFolder.EnumerateFolders())
+                catch (DirectoryNotFoundException ex)
                 {
-                    Debug.WriteLine(String.Format("  -> {0}", folder.DisplayName));
-                    result.Add(new ShellFolderViewModel(folder, this));
+                    Debug.WriteLine(String.Format("{0}: {1}", ex.GetType().Name, ex.Message));
+                    result.Clear();
                 }
             }
-            catch (DirectoryNotFoundException ex)
+            else
             {
-                Debug.WriteLine(String.Format("{0}: {1}", ex.GetType().Name, ex.Message));
-                this.shellFolders = new ObservableCollection<ShellFolderViewModel>();
+                result.Add(new PlaceholderViewModel(this));
             }
+
+            this.ShellFolderCollectionView = CollectionViewSource.GetDefaultView(result);
+
             return result;
-        }
-
-        #endregion
-
-        public override string ToString()
-        {
-            return this.DisplayName;
         }
     }
 }
