@@ -14,7 +14,8 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         private static int nextId = MinDialogControlId;
 
         /// <summary>
-        /// コントロール名を指定して、<see cref="FileDialogControl"/>クラスの新しいインスタンスを初期化します。
+        /// コントロール名を指定して、
+        /// <see cref="FileDialogControl"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="name">コントロール名。</param>
         protected FileDialogControl(string name)
