@@ -1,0 +1,35 @@
+﻿<Window x:Class="TaskDialogSample.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+        xmlns:v="clr-namespace:TaskDialogSample.Views"
+        xmlns:vm="clr-namespace:TaskDialogSample.ViewModels"
+        Title="TaskDialog Sample"
+        Width="525"
+        Height="350">
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Margin" Value="16,4" />
+                <Setter Property="Padding" Value="8,4" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Button Command="{Binding SimpleTaskDialogCommand}">Simple</Button>
+            <Button Command="{Binding AllPartsTaskDialogCommand}">All Parts</Button>
+            <Button Command="{Binding CustomButtonTaskDialogCommand}">Custom Button</Button>
+            <Button Command="{Binding CommonLinkTaskDialogCommand}">Command Link</Button>
+            <Button Command="{Binding RadioButtonTaskDialogCommand}">Radio Button</Button>
+        </StackPanel>
+    </Grid>
+</Window>

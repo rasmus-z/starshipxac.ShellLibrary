@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B6DD3F21-3A2D-4E6E-836C-4991ADE7AE9C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>starshipxac.Windows</RootNamespace>
+    <AssemblyName>starshipxac.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>True</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>True</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>True</CodeContractsRedundantAssumptions>
+    <CodeContractsAssertsToContractsCheckBox>True</CodeContractsAssertsToContractsCheckBox>
+    <CodeContractsRedundantTests>True</CodeContractsRedundantTests>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsMissingPublicEnsuresAsWarnings>False</CodeContractsMissingPublicEnsuresAsWarnings>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferEnsuresAutoProperties>True</CodeContractsInferEnsuresAutoProperties>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestAssumptionsForCallees>False</CodeContractsSuggestAssumptionsForCallees>
+    <CodeContractsSuggestRequires>False</CodeContractsSuggestRequires>
+    <CodeContractsNecessaryEnsures>True</CodeContractsNecessaryEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsSuggestReadonly>True</CodeContractsSuggestReadonly>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsSQLServerOption />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsSkipAnalysisIfCannotConnectToCache>False</CodeContractsSkipAnalysisIfCannotConnectToCache>
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
+    <CodeContractsBeingOptimisticOnExternal>True</CodeContractsBeingOptimisticOnExternal>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>True</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>True</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>True</CodeContractsRedundantAssumptions>
+    <CodeContractsAssertsToContractsCheckBox>True</CodeContractsAssertsToContractsCheckBox>
+    <CodeContractsRedundantTests>True</CodeContractsRedundantTests>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsMissingPublicEnsuresAsWarnings>False</CodeContractsMissingPublicEnsuresAsWarnings>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferEnsuresAutoProperties>True</CodeContractsInferEnsuresAutoProperties>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestAssumptionsForCallees>False</CodeContractsSuggestAssumptionsForCallees>
+    <CodeContractsSuggestRequires>False</CodeContractsSuggestRequires>
+    <CodeContractsNecessaryEnsures>True</CodeContractsNecessaryEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsSuggestReadonly>True</CodeContractsSuggestReadonly>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsSQLServerOption />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsSkipAnalysisIfCannotConnectToCache>False</CodeContractsSkipAnalysisIfCannotConnectToCache>
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
+    <CodeContractsBeingOptimisticOnExternal>True</CodeContractsBeingOptimisticOnExternal>
+    <CodeContractsRuntimeCheckingLevel>ReleaseRequires</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ProgressRing.cs">
+      <DependentUpon>ProgressRing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProgressLinear.cs">
+      <DependentUpon>ProgressLinear.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Devices\Interop\MonitorFlags.cs" />
+    <Compile Include="Devices\Interop\MONITORINFO.cs" />
+    <Compile Include="Devices\Interop\MONITORINFOEX.cs" />
+    <Compile Include="Devices\Interop\MultiMonitorNativeMethods.cs" />
+    <Compile Include="Devices\Monitor.cs" />
+    <Compile Include="Devices\MultiMonitor.cs" />
+    <Compile Include="Dialogs\Controls\DialogControl.cs" />
+    <Compile Include="Dialogs\Controls\TaskDialogControlCollection.cs" />
+    <Compile Include="Dialogs\DialogShowStates.cs" />
+    <Compile Include="Dialogs\IDialogControlHost.cs" />
+    <Compile Include="Dialogs\Controls\TaskDialogButton.cs" />
+    <Compile Include="Dialogs\Controls\TaskDialogButtonBase.cs" />
+    <Compile Include="Dialogs\Controls\TaskDialogCommandLink.cs" />
+    <Compile Include="Dialogs\Controls\TaskDialogControl.cs" />
+    <Compile Include="Dialogs\Controls\TaskDialogProgressBar.cs" />
+    <Compile Include="Dialogs\Controls\TaskDialogRadioButton.cs" />
+    <Compile Include="Dialogs\Internal\TaskDialogControlCollectionInternal.cs" />
+    <Compile Include="Dialogs\Internal\TaskDialogCommands.cs" />
+    <Compile Include="Dialogs\Internal\TaskDialogInternal.cs" />
+    <Compile Include="Dialogs\Internal\TaskDialogTextElements.cs" />
+    <Compile Include="Dialogs\Interop\ProgressBarStates.cs" />
+    <Compile Include="Dialogs\Interop\TASKDIALOGCALLBACK.cs" />
+    <Compile Include="Dialogs\Interop\TASKDIALOGCONFIG.cs" />
+    <Compile Include="Dialogs\Interop\TASKDIALOGCONFIG_ICON.cs" />
+    <Compile Include="Dialogs\Interop\TaskDialogNativeMethods.cs" />
+    <Compile Include="Dialogs\Interop\TASKDIALOG_BUTTON.cs" />
+    <Compile Include="Dialogs\Interop\TASKDIALOG_COMMON_BUTTON_FLAGS.cs" />
+    <Compile Include="Dialogs\Interop\TASKDIALOG_ELEMENTS.cs" />
+    <Compile Include="Dialogs\Interop\TASKDIALOG_FLAGS.cs" />
+    <Compile Include="Dialogs\Interop\TASKDIALOG_ICONS.cs" />
+    <Compile Include="Dialogs\Interop\TASKDIALOG_ICON_ELEMENTS.cs" />
+    <Compile Include="Dialogs\Interop\TASKDIALOG_MESSAGES.cs" />
+    <Compile Include="Dialogs\Interop\TASKDIALOG_NOTIFICATIONS.cs" />
+    <Compile Include="Dialogs\TaskDialog.cs" />
+    <Compile Include="Dialogs\TaskDialogBase.cs" />
+    <Compile Include="Dialogs\TaskDialogClosingEventArgs.cs" />
+    <Compile Include="Dialogs\TaskDialogCommonButtons.cs" />
+    <Compile Include="Dialogs\TaskDialogCommonButtonId.cs" />
+    <Compile Include="Dialogs\TaskDialogExpandChangedEventArgs.cs" />
+    <Compile Include="Dialogs\TaskDialogExpandedInfoMode.cs" />
+    <Compile Include="Dialogs\TaskDialogHyperlinkClickedEventArgs.cs" />
+    <Compile Include="Dialogs\TaskDialogIcon.cs" />
+    <Compile Include="Dialogs\TaskDialogOptions.cs" />
+    <Compile Include="Dialogs\TaskDialogProgressBarState.cs" />
+    <Compile Include="Dialogs\TaskDialogResult.cs" />
+    <Compile Include="Dialogs\TaskDialogSelectedButton.cs" />
+    <Compile Include="Dialogs\TaskDialogStartupLocation.cs" />
+    <Compile Include="Dialogs\TaskDialogTimerEventArgs.cs" />
+    <Compile Include="Dialogs\TaskDialogVerificationChangedEventArgs.cs" />
+    <Compile Include="Extensions\DependencyObjectExtension.cs" />
+    <Compile Include="Extensions\ScrollViewerExtension.cs" />
+    <Compile Include="Extensions\VisualExtension.cs" />
+    <Compile Include="Extensions\WindowExtension.cs" />
+    <Compile Include="Properties\DialogErrorMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DialogErrorMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\ErrorMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Interop\HWND.cs" />
+    <Compile Include="Interop\ImageTypes.cs" />
+    <Compile Include="Interop\LPARAM.cs" />
+    <Compile Include="Interop\MINMAXINFO.cs" />
+    <Compile Include="Interop\POINT.cs" />
+    <Compile Include="Interop\RECT.cs" />
+    <Compile Include="Interop\ShowWindowCommands.cs" />
+    <Compile Include="Interop\WindowMessages.cs" />
+    <Compile Include="Interop\WindowsNativeMethods.cs" />
+    <Compile Include="Interop\WNDCLASSEX.cs" />
+    <Compile Include="Interop\WPARAM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\DialogErrorMessages.ja-JP.resx" />
+    <EmbeddedResource Include="Properties\DialogErrorMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DialogErrorMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ErrorMessages.ja-JP.resx" />
+    <EmbeddedResource Include="Properties\ErrorMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\ProgressLinear.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ProgressRing.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
