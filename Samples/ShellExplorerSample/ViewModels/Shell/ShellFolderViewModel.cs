@@ -7,8 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Windows.Data;
-using Codeplex.Reactive;
 using Livet;
+using Reactive.Bindings;
 using starshipxac.Shell;
 using starshipxac.Windows.Shell.Media.Imaging;
 

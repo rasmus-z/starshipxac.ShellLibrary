@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using Codeplex.Reactive;
+using Reactive.Bindings;
 using starshipxac.Shell;
 
 namespace ShellExplorerSample.ViewModels.Shell

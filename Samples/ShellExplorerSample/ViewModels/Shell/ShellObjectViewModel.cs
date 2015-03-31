@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using Codeplex.Reactive;
 using Livet;
+using Reactive.Bindings;
 using starshipxac.Shell;
 using starshipxac.Windows.Shell.Media.Imaging;
 
@@ -84,7 +84,7 @@ namespace ShellExplorerSample.ViewModels.Shell
                 this.DisplayName = new ReactiveProperty<string>(this.ShellObject.DisplayName);
                 var itemTypeTextProperty = this.ShellObject.Properties.Create<string>("System.ItemTypeText");
                 this.ItemTypeText = new ReactiveProperty<string>(itemTypeTextProperty.Value);
-                
+
                 if (this.ThumbnailFactory != null)
                 {
                     this.Thumbnail = new ReactiveProperty<ShellThumbnail>(

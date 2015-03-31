@@ -2,8 +2,8 @@
 using System.ComponentModel;
 using System.Reactive.Linq;
 using System.Windows.Data;
-using Codeplex.Reactive;
 using Livet;
+using Reactive.Bindings;
 using ShellExplorerSample.ViewModels.Shell;
 using starshipxac.Shell;
 

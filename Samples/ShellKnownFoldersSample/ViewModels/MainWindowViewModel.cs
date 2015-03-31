@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Reactive.Linq;
-using Codeplex.Reactive;
 using Livet;
+using Reactive.Bindings;
 using starshipxac.Shell;
 
 namespace ShellKnownFoldersSample.ViewModels

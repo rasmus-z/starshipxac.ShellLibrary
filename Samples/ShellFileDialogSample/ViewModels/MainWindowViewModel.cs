@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using Codeplex.Reactive;
 using Livet;
+using Reactive.Bindings;
 using ShellFileDialogSample.Messaging.Dialogs;
 using starshipxac.Shell.PropertySystem;
 

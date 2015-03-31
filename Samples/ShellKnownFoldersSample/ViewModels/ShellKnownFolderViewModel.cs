@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Reactive.Linq;
 using System.Windows;
-using Codeplex.Reactive;
 using Livet;
+using Reactive.Bindings;
 using starshipxac.Shell;
 using starshipxac.Windows.Shell.Media.Imaging;
 
