@@ -123,7 +123,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// アイテム名前を取得します。
+        /// アイテム名を取得します。
         /// </summary>
         public virtual string Name
         {
