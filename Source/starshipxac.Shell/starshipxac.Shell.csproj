@@ -166,7 +166,7 @@
     <Compile Include="IO\Interop\STREAM_SEEK.cs" />
     <Compile Include="IO\ShellStream.cs" />
     <Compile Include="KnownFolderCategories.cs" />
-    <Compile Include="LibraryFolderType.cs" />
+    <Compile Include="LibraryFolderTypes.cs" />
     <Compile Include="Media\Imaging\ShellIcon.cs" />
     <Compile Include="Media\Imaging\ShellImageSize.cs" />
     <Compile Include="Media\Imaging\ShellItemImageFactory.cs" />

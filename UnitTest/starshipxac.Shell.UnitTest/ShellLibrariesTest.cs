@@ -45,7 +45,7 @@ namespace starshipxac.Shell
             {
                 var actual = ShellLibraries.DocumentsLibrary;
 
-                Assert.Equal(LibraryFolderType.Documents, actual.LibraryType);
+                Assert.Equal(LibraryFolderTypes.Documents, actual.LibraryType);
 
                 Dump(actual);
             });
@@ -58,7 +58,7 @@ namespace starshipxac.Shell
             {
                 var actual = ShellLibraries.MusicLibrary;
 
-                Assert.Equal(LibraryFolderType.Music, actual.LibraryType);
+                Assert.Equal(LibraryFolderTypes.Music, actual.LibraryType);
 
                 Dump(actual);
             });
@@ -71,7 +71,7 @@ namespace starshipxac.Shell
             {
                 var actual = ShellLibraries.PicturesLibrary;
 
-                Assert.Equal(LibraryFolderType.Pictures, actual.LibraryType);
+                Assert.Equal(LibraryFolderTypes.Pictures, actual.LibraryType);
 
                 Dump(actual);
             });
@@ -84,7 +84,7 @@ namespace starshipxac.Shell
             {
                 var actual = ShellLibraries.VideosLibrary;
 
-                Assert.Equal(LibraryFolderType.Videos, actual.LibraryType);
+                Assert.Equal(LibraryFolderTypes.Videos, actual.LibraryType);
 
                 Dump(actual);
             });
@@ -97,7 +97,7 @@ namespace starshipxac.Shell
             {
                 var actual = ShellLibraries.RecordedTVLibrary;
 
-                Assert.Equal(LibraryFolderType.Videos, actual.LibraryType);
+                Assert.Equal(LibraryFolderTypes.Videos, actual.LibraryType);
 
                 Dump(actual);
             });

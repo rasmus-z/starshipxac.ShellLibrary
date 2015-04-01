@@ -22,7 +22,7 @@ namespace starshipxac.Shell
                 var actual = ShellLibraryFactory.Load(ShellKnownFolderFactory.FromCanonicalName("PicturesLibrary"));
 
                 Assert.NotNull(actual);
-                Assert.Equal(LibraryFolderType.Pictures, actual.LibraryType);
+                Assert.Equal(LibraryFolderTypes.Pictures, actual.LibraryType);
 
                 Dump(actual);
             });
@@ -73,7 +73,7 @@ namespace starshipxac.Shell
                 var actual = ShellLibraries.DocumentsLibrary;
 
                 Assert.NotNull(actual);
-                Assert.Equal(LibraryFolderType.Documents, actual.LibraryType);
+                Assert.Equal(LibraryFolderTypes.Documents, actual.LibraryType);
                 Assert.Equal("Documents.library-ms", actual.Name);
                 Assert.Equal(@"::{031E4825-7B94-4DC3-B131-E946B44C8DD5}\Documents.library-ms", actual.ParsingName);
 
@@ -89,7 +89,7 @@ namespace starshipxac.Shell
                 var actual = ShellLibraries.MusicLibrary;
 
                 Assert.NotNull(actual);
-                Assert.Equal(LibraryFolderType.Music, actual.LibraryType);
+                Assert.Equal(LibraryFolderTypes.Music, actual.LibraryType);
                 Assert.Equal("Music.library-ms", actual.Name);
                 Assert.Equal(@"::{031E4825-7B94-4DC3-B131-E946B44C8DD5}\Music.library-ms", actual.ParsingName);
 
@@ -105,7 +105,7 @@ namespace starshipxac.Shell
                 var actual = ShellLibraries.PicturesLibrary;
 
                 Assert.NotNull(actual);
-                Assert.Equal(LibraryFolderType.Pictures, actual.LibraryType);
+                Assert.Equal(LibraryFolderTypes.Pictures, actual.LibraryType);
                 Assert.Equal("Pictures.library-ms", actual.Name);
                 Assert.Equal(@"::{031E4825-7B94-4DC3-B131-E946B44C8DD5}\Pictures.library-ms", actual.ParsingName);
 
@@ -121,7 +121,7 @@ namespace starshipxac.Shell
                 var actual = ShellLibraries.VideosLibrary;
 
                 Assert.NotNull(actual);
-                Assert.Equal(LibraryFolderType.Videos, actual.LibraryType);
+                Assert.Equal(LibraryFolderTypes.Videos, actual.LibraryType);
                 Assert.Equal("Videos.library-ms", actual.Name);
                 Assert.Equal(@"::{031E4825-7B94-4DC3-B131-E946B44C8DD5}\Videos.library-ms", actual.ParsingName);
 

@@ -6,7 +6,7 @@ namespace starshipxac.Shell
     /// <summary>
     /// ライブラリフォルダー種別を定義します。
     /// </summary>
-    public static class LibraryFolderType
+    public static class LibraryFolderTypes
     {
         /// <summary>
         /// 全般
