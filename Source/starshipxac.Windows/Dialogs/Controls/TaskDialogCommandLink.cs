@@ -1,20 +1,20 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using System.Text;
 
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// ƒRƒ}ƒ“ƒhƒŠƒ“ƒNƒ{ƒ^ƒ“‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚³ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚¯ãƒœã‚¿ãƒ³ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class TaskDialogCommandLink : TaskDialogButtonBase
     {
         /// <summary>
-        /// <see cref="TaskDialogCommandLink"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialogCommandLink"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="id">•W€ƒ{ƒ^ƒ“IDB</param>
-        /// <param name="name">ƒRƒ“ƒgƒ[ƒ‹–¼B</param>
-        /// <param name="text">ƒRƒ“ƒgƒ[ƒ‹ƒeƒLƒXƒgB</param>
+        /// <param name="id">æ¨™æº–ãƒœã‚¿ãƒ³IDã€‚</param>
+        /// <param name="name">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã€‚</param>
+        /// <param name="text">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
         public TaskDialogCommandLink(TaskDialogCommonButtonId id, string name, string text)
             : base((int)id, name, text)
         {
@@ -22,12 +22,12 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// <see cref="TaskDialogCommandLink"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialogCommandLink"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="id">ƒRƒ“ƒgƒ[ƒ‹IDB</param>
-        /// <param name="name">ƒRƒ“ƒgƒ[ƒ‹–¼B</param>
-        /// <param name="text">ƒRƒ“ƒgƒ[ƒ‹ƒeƒLƒXƒgB</param>
-        /// <param name="dialogClosable">ƒ_ƒCƒAƒƒO‚ğ•Â‚¶‚é‚±‚Æ‚ª‚Å‚«‚é‚©‚Ç‚¤‚©‚ğ¦‚·’lB</param>
+        /// <param name="id">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDã€‚</param>
+        /// <param name="name">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã€‚</param>
+        /// <param name="text">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="dialogClosable">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’é–‰ã˜ã‚‹ã“ã¨ãŒã§ãã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã€‚</param>
         public TaskDialogCommandLink(int id, string name, string text, bool dialogClosable = false)
             : base(id, name, text, dialogClosable)
         {
@@ -36,12 +36,12 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// <see cref="TaskDialogCommandLink"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialogCommandLink"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="id">•W€ƒ{ƒ^ƒ“IDB</param>
-        /// <param name="name">ƒRƒ“ƒgƒ[ƒ‹–¼B</param>
-        /// <param name="text">ƒRƒ“ƒgƒ[ƒ‹ƒeƒLƒXƒgB</param>
-        /// <param name="instruction">à–¾ƒeƒLƒXƒgB</param>
+        /// <param name="id">æ¨™æº–ãƒœã‚¿ãƒ³IDã€‚</param>
+        /// <param name="name">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã€‚</param>
+        /// <param name="text">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="instruction">èª¬æ˜ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
         public TaskDialogCommandLink(TaskDialogCommonButtonId id, string name, string text, string instruction)
             : base((int)id, name, text)
         {
@@ -51,13 +51,13 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// <see cref="TaskDialogCommandLink"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialogCommandLink"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="id">ƒRƒ“ƒgƒ[ƒ‹IDB</param>
-        /// <param name="name">ƒRƒ“ƒgƒ[ƒ‹–¼B</param>
-        /// <param name="text">ƒRƒ“ƒgƒ[ƒ‹ƒeƒLƒXƒgB</param>
-        /// <param name="instruction">à–¾ƒeƒLƒXƒgB</param>
-        /// <param name="dialogClosable">ƒ_ƒCƒAƒƒO‚ğ•Â‚¶‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’lB</param>
+        /// <param name="id">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDã€‚</param>
+        /// <param name="name">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã€‚</param>
+        /// <param name="text">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="instruction">èª¬æ˜ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="dialogClosable">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’é–‰ã˜ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã€‚</param>
         public TaskDialogCommandLink(int id, string name, string text, string instruction, bool dialogClosable = false)
             : base(id, name, text, dialogClosable)
         {
@@ -68,14 +68,14 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ƒRƒ}ƒ“ƒhƒŠƒ“ƒNƒ{ƒ^ƒ“‚Ìà–¾ƒeƒLƒXƒg‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã‚³ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚¯ãƒœã‚¿ãƒ³ã®èª¬æ˜ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public string Instruction { get; set; }
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“ƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒœã‚¿ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒ{ƒ^ƒ“ƒeƒLƒXƒgB</returns>
+        /// <returns>ãƒœã‚¿ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚</returns>
         public override string GetButtonText()
         {
             return String.Format("{0}{1}{2}",
@@ -85,9 +85,9 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// <see cref="TaskDialogCommandLink"/>ƒNƒ‰ƒX‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚µ‚Ü‚·B
+        /// <see cref="TaskDialogCommandLink"/>ã‚¯ãƒ©ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns><see cref="TaskDialogCommandLink"/>ƒNƒ‰ƒX‚Ì•¶š—ñ•\Œ»B</returns>
+        /// <returns><see cref="TaskDialogCommandLink"/>ã‚¯ãƒ©ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã€‚</returns>
         public override string ToString()
         {
             var result = new StringBuilder();

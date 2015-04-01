@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.PropertySystem.Interop;
@@ -6,7 +6,7 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// ƒVƒFƒ‹ƒAƒCƒeƒ€”z—ñƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚·ã‚§ãƒ«ã‚¢ã‚¤ãƒ†ãƒ é…åˆ—ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761106(v=vs.85).aspx

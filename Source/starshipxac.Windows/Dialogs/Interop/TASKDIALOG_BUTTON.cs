@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Windows.Dialogs.Interop
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOƒ{ƒ^ƒ“\‘¢‘Ì‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒœã‚¿ãƒ³æ§‹é€ ä½“ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb787475(v=vs.85).aspx

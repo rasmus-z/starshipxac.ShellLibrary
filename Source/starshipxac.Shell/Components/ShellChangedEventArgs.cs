@@ -1,18 +1,18 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using starshipxac.Shell.Components.Internal;
 
 namespace starshipxac.Shell.Components
 {
     /// <summary>
-    /// ƒVƒFƒ‹•ÏXƒCƒxƒ“ƒgƒf[ƒ^‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚·ã‚§ãƒ«å¤‰æ›´ã‚¤ãƒ™ãƒ³ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class ShellChangedEventArgs : ShellNotificationEventArgs
     {
         /// <summary>
-        /// <see cref="ShellChangedEventArgs"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="ShellChangedEventArgs"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="changeNotify">ƒVƒFƒ‹•ÏX’Ê’mî•ñB</param>
+        /// <param name="changeNotify">ã‚·ã‚§ãƒ«å¤‰æ›´é€šçŸ¥æƒ…å ±ã€‚</param>
         internal ShellChangedEventArgs(ShellChangeNotify changeNotify)
             : base(changeNotify)
         {
@@ -29,7 +29,7 @@ namespace starshipxac.Shell.Components
         }
 
         /// <summary>
-        /// ƒCƒxƒ“ƒg‚ª”­¶‚µ‚½<see cref="ShellObject"/>‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¤ãƒ™ãƒ³ãƒˆãŒç™ºç”Ÿã—ãŸ<see cref="ShellObject"/>ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public ShellObject ShellObject { get; private set; }
     }

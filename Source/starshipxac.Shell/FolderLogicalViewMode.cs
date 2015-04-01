@@ -1,15 +1,15 @@
-using System;
+﻿using System;
 using starshipxac.Shell.Interop;
 
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// �r���[���[�h���`���܂��B
+    /// ビューモードを定義します。
     /// </summary>
     public enum FolderLogicalViewMode
     {
         /// <summary>
-        /// �r���[�͎w�肳��Ă��܂���B
+        /// ビューは指定されていません。
         /// </summary>
         Unspecified = FOLDERLOGICALVIEWMODE.FLVM_UNSPECIFIED,
 
@@ -19,37 +19,37 @@ namespace starshipxac.Shell
         None = 0,
 
         /// <summary>
-        /// �ŏ��l�B���؂̖ړI�ł̂ݎg�p����܂��B
+        /// 最小値。検証の目的でのみ使用されます。
         /// </summary>
         First = FOLDERLOGICALVIEWMODE.FLVM_FIRST,
 
         /// <summary>
-        /// �K��̃r���[�B
+        /// 規定のビュー。
         /// </summary>
         Details = FOLDERLOGICALVIEWMODE.FLVM_DETAILS,
 
         /// <summary>
-        /// �^�C���\���B
+        /// タイル表示。
         /// </summary>
         Tiles = FOLDERLOGICALVIEWMODE.FLVM_TILES,
 
         /// <summary>
-        /// �A�C�R���\���B
+        /// アイコン表示。
         /// </summary>
         Icons = FOLDERLOGICALVIEWMODE.FLVM_ICONS,
 
         /// <summary>
-        /// ���X�g�\���B
+        /// リスト表示。
         /// </summary>
         List = FOLDERLOGICALVIEWMODE.FLVM_LIST,
 
         /// <summary>
-        /// �R���e���c�\���B
+        /// コンテンツ表示。
         /// </summary>
         Content = FOLDERLOGICALVIEWMODE.FLVM_CONTENT,
 
         /// <summary>
-        /// �ő�l�B���؂̖ړI�ł̂ݎg�p����܂��B
+        /// 最大値。検証の目的でのみ使用されます。
         /// </summary>
         Last = FOLDERLOGICALVIEWMODE.FLVM_LAST,
     }

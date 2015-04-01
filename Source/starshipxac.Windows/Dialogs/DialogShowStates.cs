@@ -1,29 +1,29 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// ƒ_ƒCƒAƒƒO•\¦ó‘Ô‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¡¨ç¤ºçŠ¶æ…‹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public enum DialogShowStates
     {
         /// <summary>
-        /// •\¦‘OB
+        /// è¡¨ç¤ºå‰ã€‚
         /// </summary>
         PreShow,
 
         /// <summary>
-        /// •\¦’†B
+        /// è¡¨ç¤ºä¸­ã€‚
         /// </summary>
         Showing,
 
         /// <summary>
-        /// I—¹’†B
+        /// çµ‚äº†ä¸­ã€‚
         /// </summary>
         Closing,
 
         /// <summary>
-        /// I—¹B
+        /// çµ‚äº†ã€‚
         /// </summary>
         Closed
     }

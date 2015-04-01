@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
     /// <summary>
-    /// ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒO‚ÌƒRƒ“ƒgƒ[ƒ‹Šî’êƒNƒ‰ƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åŸºåº•ã‚¯ãƒ©ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     [ContractClass(typeof(FileDialogControlContract))]
     public abstract class FileDialogControl : IEquatable<FileDialogControl>
@@ -14,10 +14,10 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         private static int nextId = MinDialogControlId;
 
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹–¼‚ğw’è‚µ‚ÄA
-        /// <see cref="FileDialogControl"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="FileDialogControl"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="name">ƒRƒ“ƒgƒ[ƒ‹–¼B</param>
+        /// <param name="name">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã€‚</param>
         protected FileDialogControl(string name)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
@@ -35,17 +35,17 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         public FileDialogBase Dialog { get; private set; }
 
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹–¼‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public string Name { get; private set; }
 
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹ID‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public int Id { get; private set; }
 
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹‚ª—LŒø‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãŒæœ‰åŠ¹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool Enabled
         {
@@ -62,7 +62,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         }
 
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹‚ğ•\¦‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚’è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool Visible
         {
@@ -79,14 +79,14 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         }
 
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹ƒeƒLƒXƒg‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public abstract string Text { get; set; }
 
         /// <summary>
-        /// Ÿ‚ÌƒRƒ“ƒgƒ[ƒ‹ID‚ğæ“¾‚µ‚Ü‚·B
+        /// æ¬¡ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒRƒ“ƒgƒ[ƒ‹IDB</returns>
+        /// <returns>ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDã€‚</returns>
         private static int GetNextId()
         {
             var result = nextId;

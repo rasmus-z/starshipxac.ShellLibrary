@@ -1,19 +1,19 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOƒ‰ƒWƒIƒ{ƒ^ƒ“‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class TaskDialogRadioButton : TaskDialogButtonBase
     {
         /// <summary>
-        /// <see cref="TaskDialogRadioButton"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialogRadioButton"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="id">ƒRƒ“ƒgƒ[ƒ‹IDB</param>
-        /// <param name="name">ƒRƒ“ƒgƒ[ƒ‹–¼B</param>
-        /// <param name="text">ƒeƒLƒXƒgB</param>
+        /// <param name="id">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDã€‚</param>
+        /// <param name="name">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã€‚</param>
+        /// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
         public TaskDialogRadioButton(int id, string name, string text)
             : base(id, name, text)
         {
@@ -22,9 +22,9 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ƒ‰ƒWƒIƒ{ƒ^ƒ“‚Ì•\¦ƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ã®è¡¨ç¤ºãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒ‰ƒWƒIƒ{ƒ^ƒ“‚Ì•\¦ƒeƒLƒXƒgB</returns>
+        /// <returns>ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ã®è¡¨ç¤ºãƒ†ã‚­ã‚¹ãƒˆã€‚</returns>
         public override string GetButtonText()
         {
             return this.Text;

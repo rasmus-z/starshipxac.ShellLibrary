@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using starshipxac.Shell;
 using starshipxac.Shell.Internal;
@@ -21,7 +21,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ƒVƒXƒeƒ€ã‚ÌƒtƒHƒ‹ƒ_[‚Ì‚İ‘I‘ğ‰Â”\‚É‚·‚é‚©‚Ç‚¤‚©‚ğ¦‚·’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã‚·ã‚¹ãƒ†ãƒ ä¸Šã®ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã®ã¿é¸æŠå¯èƒ½ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool ForceFileSystem
         {
@@ -37,9 +37,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒ†[ƒU[‚ª‘I‘ğ‚µ‚½ƒtƒHƒ‹ƒ_[î•ñ‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒé¸æŠã—ãŸãƒ•ã‚©ãƒ«ãƒ€ãƒ¼æƒ…å ±ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒtƒHƒ‹ƒ_[î•ñ‚ÌƒRƒŒƒNƒVƒ‡ƒ“B</returns>
+        /// <returns>ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼æƒ…å ±ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã€‚</returns>
         public IEnumerable<ShellFolder> GetShellFolders()
         {
             var fileDialogNative = (IFileOpenDialog)this.FileDialogInternal.FileDialogNative;

@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using System.Text;
 
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOƒ{ƒ^ƒ“‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒœã‚¿ãƒ³ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class TaskDialogButton : TaskDialogButtonBase
     {

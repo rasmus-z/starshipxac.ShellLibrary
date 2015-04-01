@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
 using starshipxac.Shell;
@@ -6,7 +6,7 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// �ۑ�����t�@�C����I������_�C�A���O��\�����܂��B
+    /// 保存するファイルを選択するダイアログを表示します。
     /// </summary>
     public sealed class SaveFileSelector : FileSaveDialogBase
     {
@@ -15,25 +15,25 @@ namespace starshipxac.Windows.Shell.Dialogs
         private bool isExpandedMode = false;
 
         /// <summary>
-        /// <see cref="SaveFileSelector"/>�N���X�̐V�����C���X�^���X�����������܂��B
+        /// <see cref="SaveFileSelector"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
         public SaveFileSelector()
         {
         }
 
         /// <summary>
-        /// �_�C�A���O�̃^�C�g�����w�肵�āA
-        /// <see cref="SaveFileSelector"/>�N���X�̐V�����C���X�^���X�����������܂��B
+        /// ダイアログのタイトルを指定して、
+        /// <see cref="SaveFileSelector"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="title">�_�C�A���O�̃^�C�g���B</param>
+        /// <param name="title">ダイアログのタイトル。</param>
         public SaveFileSelector(string title)
             : base(title)
         {
         }
 
         /// <summary>
-        /// ���[�U�[���A���łɑ��݂���t�@�C�����w�肵���ꍇ�ɁA
-        /// �x�����b�Z�[�W��\�����邩�ǂ����������l���擾�܂��͐ݒ肵�܂��B
+        /// ユーザーが、すでに存在するファイルを指定した場合に、
+        /// 警告メッセージを表示するかどうかを示す値を取得または設定します。
         /// </summary>
         public bool OverwritePrompt
         {
@@ -49,8 +49,8 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ���[�U�[���A���݂��Ȃ��t�@�C�����w�肵���ꍇ�ɁA
-        /// �t�@�C�����쐬���邱�Ƃ��m�F���郁�b�Z�[�W��\�����邩�ǂ����������l���擾�܂��͐ݒ肵�܂��B
+        /// ユーザーが、存在しないファイルを指定した場合に、
+        /// ファイルを作成することを確認するメッセージを表示するかどうかを示す値を取得または設定します。
         /// </summary>
         public bool CreatePrompt
         {
@@ -66,7 +66,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// �_�C�A���O���g�����[�h�ŕ\�����邩�ǂ����������l���擾�܂��͐ݒ肵�܂��B
+        /// ダイアログを拡張モードで表示するかどうかを示す値を取得または設定します。
         /// </summary>
         public bool IsExpandedMode
         {
@@ -82,9 +82,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// �ۑ�����t�@�C����I������_�C�A���O��\�����܂��B
+        /// 保存するファイルを選択するダイアログを表示します。
         /// </summary>
-        /// <returns>�ۑ�����t�@�C���B</returns>
+        /// <returns>保存するファイル。</returns>
         public async Task<ShellFile> SelectSaveFileAsync()
         {
             ShellFile result = null;

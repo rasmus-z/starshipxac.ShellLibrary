@@ -1,39 +1,39 @@
-using System;
+﻿using System;
 using System.Diagnostics.Contracts;
 using starshipxac.Windows.Dialogs.Controls;
 
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// �_�C�A���O�R���g���[���z�X�g�̃C���^�[�t�F�C�X���`���܂��B
+    /// ダイアログコントロールホストのインターフェイスを定義します。
     /// </summary>
     [ContractClass(typeof(DialogControlHostContract))]
     public interface IDialogControlHost
     {
         /// <summary>
-        /// �R���N�V�����̕ύX��������Ă��邩�ǂ����𔻒肵�܂��B
+        /// コレクションの変更が許可されているかどうかを判定します。
         /// </summary>
-        /// <returns>�R���N�V�����̕ύX��������Ă���ꍇ��<c>true</c>�B</returns>
+        /// <returns>コレクションの変更が許可されている場合は<c>true</c>。</returns>
         bool IsCollectionChangeAllowed();
 
         /// <summary>
-        /// �R���N�V�����̕ύX��K�p���܂��B
+        /// コレクションの変更を適用します。
         /// </summary>
         void ApplyCollectionChanged();
 
         /// <summary>
-        /// �v���p�e�B�l�̕ύX��������Ă��邩�ǂ����𔻒肵�܂��B
+        /// プロパティ値の変更が許可されているかどうかを判定します。
         /// </summary>
-        /// <param name="propertyName">���肷��v���p�e�B���B</param>
-        /// <param name="control">���肷��R���g���[���B</param>
-        /// <returns>�v���p�e�B�l�̕ύX��������Ă���ꍇ��<c>true</c>�B</returns>
+        /// <param name="propertyName">判定するプロパティ名。</param>
+        /// <param name="control">判定するコントロール。</param>
+        /// <returns>プロパティ値の変更が許可されている場合は<c>true</c>。</returns>
         bool IsControlPropertyChangeAllowed(string propertyName, DialogControl control);
 
         /// <summary>
-        /// �v���p�e�B�l�̕ύX��K�p���܂��B
+        /// プロパティ値の変更を適用します。
         /// </summary>
-        /// <param name="propertyName">�v���p�e�B���B</param>
-        /// <param name="control">�R���g���[���B</param>
+        /// <param name="propertyName">プロパティ名。</param>
+        /// <param name="control">コントロール。</param>
         void ApplyControlPropertyChange(string propertyName, DialogControl control);
     }
 

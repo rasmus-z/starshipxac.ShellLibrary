@@ -1,22 +1,22 @@
-using System;
+ï»¿using System;
 using starshipxac.Shell.Interop;
 
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    /// ƒVƒFƒ‹ƒCƒ[ƒWæ“¾ƒIƒvƒVƒ‡ƒ“‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚·ã‚§ãƒ«ã‚¤ãƒ¡ãƒ¼ã‚¸å–å¾—ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public enum ShellItemImageFormatOptions
     {
         Default,
 
         /// <summary>
-        /// ƒTƒ€ƒlƒCƒ‹‚Ì‚İB
+        /// ã‚µãƒ ãƒã‚¤ãƒ«ã®ã¿ã€‚
         /// </summary>
         ThumbnailOnly = SIIGBF.SIIGBF_THUMBNAILONLY,
 
         /// <summary>
-        /// ƒAƒCƒRƒ“‚Ì‚İB
+        /// ã‚¢ã‚¤ã‚³ãƒ³ã®ã¿ã€‚
         /// </summary>
         IconOnly = SIIGBF.SIIGBF_ICONONLY,
     }

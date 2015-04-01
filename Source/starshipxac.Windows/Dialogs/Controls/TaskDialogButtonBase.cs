@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using System.Threading;
 
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOƒ{ƒ^ƒ“Šî’êƒNƒ‰ƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒœã‚¿ãƒ³åŸºåº•ã‚¯ãƒ©ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public abstract class TaskDialogButtonBase : TaskDialogControl
     {
@@ -15,9 +15,9 @@ namespace starshipxac.Windows.Dialogs.Controls
         private bool useElevationIcon;
 
         /// <summary>
-        /// <see cref="TaskDialogButtonBase"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialogButtonBase"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="id">•W€ƒ{ƒ^ƒ“IDB</param>
+        /// <param name="id">æ¨™æº–ãƒœã‚¿ãƒ³IDã€‚</param>
         /// <param name="name"></param>
         protected TaskDialogButtonBase(TaskDialogCommonButtonId id, string name)
             : base((int)id, name)
@@ -28,11 +28,11 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// <see cref="TaskDialogButtonBase"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialogButtonBase"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="id">ƒ{ƒ^ƒ“IDB</param>
-        /// <param name="name">ƒ{ƒ^ƒ“–¼B</param>
-        /// <param name="dialogClosable">ƒ_ƒCƒAƒƒO‚ğ•Â‚¶‚é‚©‚Ç‚¤‚©‚ğ¦‚·’lB</param>
+        /// <param name="id">ãƒœã‚¿ãƒ³IDã€‚</param>
+        /// <param name="name">ãƒœã‚¿ãƒ³åã€‚</param>
+        /// <param name="dialogClosable">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’é–‰ã˜ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã€‚</param>
         protected TaskDialogButtonBase(int id, string name, bool dialogClosable = false)
             : base(id, name)
         {
@@ -43,11 +43,11 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// <see cref="TaskDialogButtonBase"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialogButtonBase"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="id">•W€ƒ{ƒ^ƒ“IDB</param>
-        /// <param name="name">ƒ{ƒ^ƒ“–¼B</param>
-        /// <param name="text">ƒ{ƒ^ƒ“ƒeƒLƒXƒgB</param>
+        /// <param name="id">æ¨™æº–ãƒœã‚¿ãƒ³IDã€‚</param>
+        /// <param name="name">ãƒœã‚¿ãƒ³åã€‚</param>
+        /// <param name="text">ãƒœã‚¿ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
         protected TaskDialogButtonBase(TaskDialogCommonButtonId id, string name, string text)
             : base((int)id, name)
         {
@@ -58,12 +58,12 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// <see cref="TaskDialogButtonBase"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialogButtonBase"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="id">ƒ{ƒ^ƒ“IDB</param>
-        /// <param name="name">ƒ{ƒ^ƒ“–¼B</param>
-        /// <param name="text">ƒ{ƒ^ƒ“ƒeƒLƒXƒgB</param>
-        /// <param name="dialogClosable">ƒ_ƒCƒAƒƒO‚ğ•Â‚¶‚é‚©‚Ç‚¤‚©‚ğ¦‚·’lB</param>
+        /// <param name="id">ãƒœã‚¿ãƒ³IDã€‚</param>
+        /// <param name="name">ãƒœã‚¿ãƒ³åã€‚</param>
+        /// <param name="text">ãƒœã‚¿ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
+        /// <param name="dialogClosable">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’é–‰ã˜ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã€‚</param>
         protected TaskDialogButtonBase(int id, string name, string text, bool dialogClosable = false)
             : base(id, name)
         {
@@ -75,7 +75,7 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“ƒeƒLƒXƒg‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒœã‚¿ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public string Text
         {
@@ -94,7 +94,7 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“‚ª—LŒø‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒœã‚¿ãƒ³ãŒæœ‰åŠ¹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool Enabled
         {
@@ -114,7 +114,7 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ƒfƒtƒHƒ‹ƒgƒ{ƒ^ƒ“‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒœã‚¿ãƒ³ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool Default
         {
@@ -133,12 +133,12 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ‚±‚Ìƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚µ‚½ê‡‚ÉAƒ_ƒCƒAƒƒO‚ğ•Â‚¶‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã“ã®ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ãŸå ´åˆã«ã€ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’é–‰ã˜ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool DialogClosable { get; set; }
 
         /// <summary>
-        /// ŠÇ—Ò¸ŠiƒAƒCƒRƒ“‚ğg—p‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ç®¡ç†è€…æ˜‡æ ¼ã‚¢ã‚¤ã‚³ãƒ³ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool UseElevationIcon
         {
@@ -160,7 +160,7 @@ namespace starshipxac.Windows.Dialogs.Controls
         #region Click Event
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚·‚é‚Æ”­¶‚µ‚Ü‚·B
+        /// ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã¨ç™ºç”Ÿã—ã¾ã™ã€‚
         /// </summary>
         public event EventHandler Click;
 
@@ -186,9 +186,9 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“‚ÌƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒœã‚¿ãƒ³ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒ{ƒ^ƒ“‚ÌƒeƒLƒXƒgB</returns>
+        /// <returns>ãƒœã‚¿ãƒ³ã®ãƒ†ã‚­ã‚¹ãƒˆã€‚</returns>
         public abstract string GetButtonText();
     }
 }

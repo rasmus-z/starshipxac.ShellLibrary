@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒO•W€ƒ{ƒ^ƒ“ID‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°æ¨™æº–ãƒœã‚¿ãƒ³IDã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public enum TaskDialogCommonButtonId
     {

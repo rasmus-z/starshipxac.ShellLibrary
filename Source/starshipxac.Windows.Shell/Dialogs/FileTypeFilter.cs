@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
@@ -7,7 +7,7 @@ using starshipxac.Windows.Shell.Dialogs.Interop;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒO‚Åƒtƒ@ƒCƒ‹‚ğƒtƒBƒ‹ƒ^ƒŠƒ“ƒO‚·‚é‚½‚ß‚ÌŠg’£q‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğ•Û‚µ‚Ü‚·B
+    /// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã™ã‚‹ãŸã‚ã®æ‹¡å¼µå­ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’ä¿æŒã—ã¾ã™ã€‚
     /// </summary>
     public class FileTypeFilter
     {
@@ -15,29 +15,29 @@ namespace starshipxac.Windows.Shell.Dialogs
         private readonly List<string> extensions;
 
         /// <summary>
-        /// ƒtƒBƒ‹ƒ^[–¼Ì‚ÆŠg’£q‚Ìˆê——‚ğw’è‚µ‚ÄA
-        /// <see cref="FileTypeFilter"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼åç§°ã¨æ‹¡å¼µå­ã®ä¸€è¦§ã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="FileTypeFilter"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="filterName">ƒtƒBƒ‹ƒ^[–¼ÌB</param>
-        /// <param name="extensionsString">Šg’£q‚Ìˆê——B</param>
+        /// <param name="filterName">ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼åç§°ã€‚</param>
+        /// <param name="extensionsString">æ‹¡å¼µå­ã®ä¸€è¦§ã€‚</param>
         /// <remarks>
-        /// <param name="extensionsString"/>‚ÍAŠg’£q‚ğƒZƒ~ƒRƒƒ“(';')‚Ü‚½‚ÍƒJƒ“ƒ}(',')‚Å‹æØ‚Á‚Äw’è‚µ‚Ü‚·B
-        /// Šg’£q‚ÍAƒsƒŠƒIƒh('.')‚Ü‚½‚ÍƒƒCƒ‹ƒhƒJ[ƒh "*."‚ğæ“ª‚É‚Â‚¯‚Äw’è‚·‚é‚©A‰½‚à‚Â‚¯‚¸‚Éw’è‚Å‚«‚Ü‚·B
+        /// <param name="extensionsString"/>ã¯ã€æ‹¡å¼µå­ã‚’ã‚»ãƒŸã‚³ãƒ­ãƒ³(';')ã¾ãŸã¯ã‚«ãƒ³ãƒ(',')ã§åŒºåˆ‡ã£ã¦æŒ‡å®šã—ã¾ã™ã€‚
+        /// æ‹¡å¼µå­ã¯ã€ãƒ”ãƒªã‚ªãƒ‰('.')ã¾ãŸã¯ãƒ¯ã‚¤ãƒ«ãƒ‰ã‚«ãƒ¼ãƒ‰ "*."ã‚’å…ˆé ­ã«ã¤ã‘ã¦æŒ‡å®šã™ã‚‹ã‹ã€ä½•ã‚‚ã¤ã‘ãšã«æŒ‡å®šã§ãã¾ã™ã€‚
         /// </remarks>
         /// <example>
         /// <code>
-        /// var filter = new CommonFileDialogFilter("‰æ‘œƒtƒ@ƒCƒ‹", "*.bmp, *.jpg, *.gif, *.png");
+        /// var filter = new CommonFileDialogFilter("ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«", "*.bmp, *.jpg, *.gif, *.png");
         /// </code>
         /// </example>
         /// <exception cref="ArgumentNullException">
-        /// <para><param name="filterName"/>‚ª<c>null</c>‚Å‚·B</para>
-        /// <para>‚Ü‚½‚Í</para>
-        /// <para><param name="extensionsString"/>‚ª<c>null</c>‚Å‚·B</para>
+        /// <para><param name="filterName"/>ãŒ<c>null</c>ã§ã™ã€‚</para>
+        /// <para>ã¾ãŸã¯</para>
+        /// <para><param name="extensionsString"/>ãŒ<c>null</c>ã§ã™ã€‚</para>
         /// </exception>
         /// <exception cref="ArgumentException">
-        /// <para><param name="filterName"/>‚ª‹ó‚Ì•¶š—ñ‚Å‚·B</para>
-        /// <para>‚Ü‚½‚Í</para>
-        /// <para><param name="extensionsString"/>‚ª‹ó‚Ì•¶š—ñ‚Å‚·B</para>
+        /// <para><param name="filterName"/>ãŒç©ºã®æ–‡å­—åˆ—ã§ã™ã€‚</para>
+        /// <para>ã¾ãŸã¯</para>
+        /// <para><param name="extensionsString"/>ãŒç©ºã®æ–‡å­—åˆ—ã§ã™ã€‚</para>
         /// </exception>
         public FileTypeFilter(string filterName, string extensionsString)
         {
@@ -78,12 +78,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒtƒBƒ‹ƒ^[–¼Ì‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼åç§°ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public string FilterName { get; private set; }
 
         /// <summary>
-        /// Šg’£q‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚µ‚Ü‚·B
+        /// æ‹¡å¼µå­ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public IReadOnlyList<string> Extensions
         {
@@ -94,7 +94,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒtƒBƒ‹ƒ^[‚Ì•\¦–¼‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã®è¡¨ç¤ºåã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public string DisplayName
         {
@@ -122,9 +122,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// w’è‚µ‚½Šg’£q•¶š—ñ‚ğ³‹K‰»‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸæ‹¡å¼µå­æ–‡å­—åˆ—ã‚’æ­£è¦åŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="extensionString">Šg’£q•¶š—ñB</param>
+        /// <param name="extensionString">æ‹¡å¼µå­æ–‡å­—åˆ—ã€‚</param>
         /// <returns></returns>
         private static string NormalizeExtensionString(string extensionString)
         {
@@ -137,7 +137,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// •\¦—p‚ÌŠg’£qƒRƒŒƒNƒVƒ‡ƒ“‚Ì•¶š—ñ‚ğì¬‚µ‚Ü‚·B
+        /// è¡¨ç¤ºç”¨ã®æ‹¡å¼µå­ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã®æ–‡å­—åˆ—ã‚’ä½œæˆã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="extensions"></param>
         /// <returns></returns>
@@ -149,9 +149,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="FileTypeFilter"/>‚©‚çACOM API‚Åg—p‚·‚é<see cref="COMDLG_FILTERSPEC"/>‚ğì¬‚µ‚Ü‚·B
+        /// <see cref="FileTypeFilter"/>ã‹ã‚‰ã€COM APIã§ä½¿ç”¨ã™ã‚‹<see cref="COMDLG_FILTERSPEC"/>ã‚’ä½œæˆã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ì¬‚µ‚½<see cref="COMDLG_FILTERSPEC"/>B</returns>
+        /// <returns>ä½œæˆã—ãŸ<see cref="COMDLG_FILTERSPEC"/>ã€‚</returns>
         /// 
         internal COMDLG_FILTERSPEC CreateFilterSpec()
         {
@@ -161,9 +161,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="FileTypeFilter"/>‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚µ‚Ü‚·B
+        /// <see cref="FileTypeFilter"/>ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns><see cref="FileTypeFilter"/>‚Ì•¶š—ñ•\Œ»B</returns>
+        /// <returns><see cref="FileTypeFilter"/>ã®æ–‡å­—åˆ—è¡¨ç¾ã€‚</returns>
         public override string ToString()
         {
             return this.DisplayName;

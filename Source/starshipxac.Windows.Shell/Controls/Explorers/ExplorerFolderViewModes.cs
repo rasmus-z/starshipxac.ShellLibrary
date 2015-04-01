@@ -1,44 +1,44 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Shell.Controls.Explorers
 {
     /// <summary>
-    /// ƒAƒCƒeƒ€•\¦ƒ‚[ƒh‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¢ã‚¤ãƒ†ãƒ è¡¨ç¤ºãƒ¢ãƒ¼ãƒ‰ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public enum ExplorerFolderViewModes
     {
         /// <summary>
-        /// ƒtƒHƒ‹ƒ_[‚ÉÅ“K‚È•\¦ƒ‚[ƒh‚ğ‘I‘ğ‚µ‚Ü‚·B
+        /// ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã«æœ€é©ãªè¡¨ç¤ºãƒ¢ãƒ¼ãƒ‰ã‚’é¸æŠã—ã¾ã™ã€‚
         /// </summary>
         Auto = -1,
 
         /// <summary>
-        /// ƒRƒ“ƒeƒ“ƒc•\¦B
+        /// ã‚³ãƒ³ãƒ†ãƒ³ãƒ„è¡¨ç¤ºã€‚
         /// </summary>
         Content = 8,
 
         /// <summary>
-        /// Ú×•\¦B
+        /// è©³ç´°è¡¨ç¤ºã€‚
         /// </summary>
         Details = 4,
 
         /// <summary>
-        /// ƒAƒCƒRƒ“•\¦B
+        /// ã‚¢ã‚¤ã‚³ãƒ³è¡¨ç¤ºã€‚
         /// </summary>
         Icon = 1,
 
         /// <summary>
-        /// ƒŠƒXƒg•\¦B
+        /// ãƒªã‚¹ãƒˆè¡¨ç¤ºã€‚
         /// </summary>
         List = 3,
 
         /// <summary>
-        /// ¬ƒAƒCƒRƒ“•\¦B
+        /// å°ã‚¢ã‚¤ã‚³ãƒ³è¡¨ç¤ºã€‚
         /// </summary>
         SmallIcon = 2,
 
         /// <summary>
-        /// k¬‰æ‘œ•\¦B
+        /// ç¸®å°ç”»åƒè¡¨ç¤ºã€‚
         /// </summary>
         Thumbnail = 5,
 
@@ -48,7 +48,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         ThumbStrip = 7,
 
         /// <summary>
-        /// ƒ^ƒCƒ‹•\¦B
+        /// ã‚¿ã‚¤ãƒ«è¡¨ç¤ºã€‚
         /// </summary>
         Tile = 6
     }

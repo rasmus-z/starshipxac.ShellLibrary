@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    /// <c>IPropertyEnumType2</c>ƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// <c>IPropertyEnumType2</c>ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/dd378274(v=vs.85).aspx

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using starshipxac.Windows.Shell.Controls.Explorers.Interop;
 
 namespace starshipxac.Windows.Shell.Controls.Explorers
@@ -22,12 +22,12 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         public PaneVisibilityStates AdvancedQuery { get; set; }
 
         /// <summary>
-        /// ƒXƒe[ƒ^ƒXƒo[(Windows8)
+        /// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒãƒ¼(Windows8)
         /// </summary>
         public PaneVisibilityStates StatusBar { get; set; }
 
         /// <summary>
-        /// ƒŠƒ{ƒ“(Windows8)
+        /// ãƒªãƒœãƒ³(Windows8)
         /// </summary>
         public PaneVisibilityStates Ribbon { get; set; }
 

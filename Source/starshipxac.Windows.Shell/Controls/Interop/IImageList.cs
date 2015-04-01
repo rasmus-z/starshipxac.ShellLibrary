@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 using starshipxac.Windows.Shell.Interop;
 
 namespace starshipxac.Windows.Shell.Controls.Interop
 {
     /// <summary>
-    /// ƒCƒ[ƒWƒŠƒXƒgƒRƒ“ƒgƒ[ƒ‹‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     [ComImport]
     [Guid(ControlIID.IImageList)]

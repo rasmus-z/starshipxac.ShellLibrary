@@ -1,24 +1,24 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    /// ƒXƒgƒbƒNƒAƒCƒRƒ“‚ÌƒTƒCƒY‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¹ãƒˆãƒƒã‚¯ã‚¢ã‚¤ã‚³ãƒ³ã®ã‚µã‚¤ã‚ºã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public enum StockIconSize
     {
         /// <summary>
-        /// ¬‚³‚¢ƒTƒCƒYB
+        /// å°ã•ã„ã‚µã‚¤ã‚ºã€‚
         /// </summary>
         Small,
 
         /// <summary>
-        /// ‘å‚«‚¢ƒTƒCƒYB
+        /// å¤§ãã„ã‚µã‚¤ã‚ºã€‚
         /// </summary>
         Large,
 
         /// <summary>
-        /// ƒVƒFƒ‹ƒTƒCƒYB
+        /// ã‚·ã‚§ãƒ«ã‚µã‚¤ã‚ºã€‚
         /// </summary>
         ShellSize,
     }

@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// ƒnƒ“ƒhƒ‰[ì¬ID‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒãƒ³ãƒ‰ãƒ©ãƒ¼ä½œæˆIDã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761134(v=vs.85).aspx

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.PropertySystem.Interop;
@@ -7,7 +7,7 @@ namespace starshipxac.Shell.Interop
 {
 #pragma warning disable 108,114
     /// <summary>
-    /// ƒVƒFƒ‹ƒtƒHƒ‹ƒ_[ƒCƒ“ƒ^[ƒtƒFƒCƒX2‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚·ã‚§ãƒ«ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹2ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb775055(v=vs.85).aspx

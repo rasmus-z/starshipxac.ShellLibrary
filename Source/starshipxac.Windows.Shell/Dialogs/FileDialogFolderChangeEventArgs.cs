@@ -1,25 +1,25 @@
-using System;
+ï»¿using System;
 using System.ComponentModel;
 using starshipxac.Shell;
 
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ƒtƒHƒ‹ƒ_•ÏXƒCƒxƒ“ƒgƒf[ƒ^‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ•ã‚©ãƒ«ãƒ€å¤‰æ›´ã‚¤ãƒ™ãƒ³ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class FileDialogFolderChangeEventArgs : CancelEventArgs
     {
         /// <summary>
-        /// <see cref="FileDialogFolderChangeEventArgs"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="FileDialogFolderChangeEventArgs"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="folder">ƒtƒHƒ‹ƒ_[î•ñB</param>
+        /// <param name="folder">ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼æƒ…å ±ã€‚</param>
         public FileDialogFolderChangeEventArgs(ShellFolder folder)
         {
             this.ShellFolder = folder;
         }
 
         /// <summary>
-        /// ƒtƒHƒ‹ƒ_[î•ñ‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public ShellFolder ShellFolder { get; private set; }
     }

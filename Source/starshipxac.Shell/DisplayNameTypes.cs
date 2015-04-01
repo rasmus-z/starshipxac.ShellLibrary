@@ -1,40 +1,40 @@
-using System;
+﻿using System;
 using starshipxac.Shell.Interop;
 
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// <see cref="ShellObject"/>�̕\������ʂ��`���܂��B
+    /// <see cref="ShellObject"/>の表示名種別を定義します。
     /// </summary>
     public enum DisplayNameTypes
     {
         /// <summary>
-        /// �f�X�N�g�b�v����̑��ΓI�ȕ\�����B
+        /// デスクトップからの相対的な表示名。
         /// </summary>
         Default = SIGDN.SIGDN_NORMALDISPLAY,
 
         /// <summary>
-        /// �e�t�H���_����̑��ΓI�ȕ\�����B
+        /// 親フォルダからの相対的な表示名。
         /// </summary>
         RelativeToParent = SIGDN.SIGDN_PARENTRELATIVEPARSING,
 
         /// <summary>
-        /// �A�h���X�o�[�ɕ\������e�t�H���_�[����̑��ΓI�ȕ\�����B
+        /// アドレスバーに表示する親フォルダーからの相対的な表示名。
         /// </summary>
         RelativeToParentAddressBar = SIGDN.SIGDN_PARENTRELATIVEFORADDRESSBAR,
 
         /// <summary>
-        /// �f�X�N�g�b�v����̑��ΓI�ȃp�X���B
+        /// デスクトップからの相対的なパス名。
         /// </summary>
         RelativeToDesktop = SIGDN.SIGDN_DESKTOPABSOLUTEPARSING,
 
         /// <summary>
-        /// �e�t�H���_����̑��ΓI�ȕҏW�\�Ȗ��O�B
+        /// 親フォルダからの相対的な編集可能な名前。
         /// </summary>
         RelativeToParentEditing = SIGDN.SIGDN_PARENTRELATIVEEDITING,
 
         /// <summary>
-        /// �f�X�N�g�b�v����̑��ΓI�ȕҏW�\�Ȗ��O�B
+        /// デスクトップからの相対的な編集可能な名前。
         /// </summary>
         RelativeToDesktopEditing = SIGDN.SIGDN_DESKTOPABSOLUTEEDITING,
 
@@ -44,12 +44,12 @@ namespace starshipxac.Shell
         RelativeForUI = SIGDN.SIGDN_PARENTRELATIVEFORUI,
 
         /// <summary>
-        /// �t�@�C���V�X�e����̃p�X���B
+        /// ファイルシステム上のパス名。
         /// </summary>
         FileSystemPath = SIGDN.SIGDN_FILESYSPATH,
 
         /// <summary>
-        /// ���ΓI��URL�B
+        /// 相対的なURL。
         /// </summary>
         Url = SIGDN.SIGDN_URL,
     }

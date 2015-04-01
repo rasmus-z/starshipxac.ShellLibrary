@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Windows;
@@ -7,14 +7,14 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ƒtƒHƒ‹ƒ_[‘I‘ğ‚·‚éƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+    /// ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼é¸æŠã™ã‚‹ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
     /// </summary>
     public sealed class FolderSelectDialog : FolderSelectDialogBase
     {
         private IEnumerable<ShellFolder> shellFolders;
 
         /// <summary>
-        /// <see cref="FolderSelectDialog"/>ƒNƒ‰ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="FolderSelectDialog"/>ã‚¯ãƒ©ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         static FolderSelectDialog()
         {
@@ -22,7 +22,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="FolderSelectDialog"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="FolderSelectDialog"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         public FolderSelectDialog()
         {
@@ -30,22 +30,22 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹‚ğw’è‚µ‚ÄA
-        /// <see cref="FolderSelectDialog"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="FolderSelectDialog"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="title">ƒ_ƒCƒAƒƒOƒ^ƒCƒgƒ‹B</param>
+        /// <param name="title">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚¿ã‚¤ãƒˆãƒ«ã€‚</param>
         public FolderSelectDialog(string title)
             : base(title)
         {
         }
 
         /// <summary>
-        /// ƒtƒHƒ‹ƒ_[‚ğ•¡”‘I‘ğ‰Â”\‚©‚Ç‚¤‚©‚ğ¦‚·’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚’è¤‡æ•°é¸æŠå¯èƒ½ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool Multiselect { get; set; }
 
         /// <summary>
-        /// ‘I‘ğ‚µ‚½ƒtƒHƒ‹ƒ_[‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚µ‚Ü‚·B
+        /// é¸æŠã—ãŸãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public IEnumerable<ShellFolder> ShellFolders
         {
@@ -60,24 +60,24 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ‹ó‚ÌƒtƒHƒ‹ƒ_[ƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ç©ºã®ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private static IEnumerable<ShellFolder> EmptyShellFolders { get; set; }
 
         /// <summary>
-        /// ƒtƒHƒ‹ƒ_[‘I‘ğƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+        /// ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼é¸æŠãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒ_ƒCƒAƒƒOÀsŒ‹‰ÊB</returns>
+        /// <returns>ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å®Ÿè¡Œçµæœã€‚</returns>
         public FileDialogResult Show()
         {
             return ShowDialog();
         }
 
         /// <summary>
-        /// eƒEƒBƒ“ƒhƒE‚ğw’è‚µ‚ÄAƒtƒHƒ‹ƒ_[‘I‘ğƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+        /// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’æŒ‡å®šã—ã¦ã€ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼é¸æŠãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="parentWindow">eƒEƒBƒ“ƒhƒEB</param>
-        /// <returns>ƒ_ƒCƒAƒƒOÀsŒ‹‰ÊB</returns>
+        /// <param name="parentWindow">è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã€‚</param>
+        /// <returns>ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å®Ÿè¡Œçµæœã€‚</returns>
         public FileDialogResult Show(Window parentWindow)
         {
             Contract.Requires<ArgumentNullException>(parentWindow != null);

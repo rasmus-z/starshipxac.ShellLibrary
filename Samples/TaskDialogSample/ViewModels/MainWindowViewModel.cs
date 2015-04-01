@@ -1,6 +1,6 @@
 ﻿using System;
-using Codeplex.Reactive;
 using Livet;
+using Reactive.Bindings;
 using TaskDialogSample.Manipulations;
 
 namespace TaskDialogSample.ViewModels

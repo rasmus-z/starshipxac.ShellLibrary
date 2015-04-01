@@ -1,17 +1,17 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOƒRƒ“ƒgƒ[ƒ‹Šî’êƒNƒ‰ƒX‚ð’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åŸºåº•ã‚¯ãƒ©ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public abstract class TaskDialogControl : DialogControl
     {
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹–¼‚ðŽw’è‚µ‚ÄA<see cref="TaskDialogControl"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ð‰Šú‰»‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã‚’æŒ‡å®šã—ã¦ã€<see cref="TaskDialogControl"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="name">ƒRƒ“ƒgƒ[ƒ‹–¼B</param>
+        /// <param name="name">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã€‚</param>
         protected TaskDialogControl(string name)
             : base(name)
         {
@@ -19,10 +19,10 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹ID‚¨‚æ‚ÑƒRƒ“ƒgƒ[ƒ‹–¼‚ðŽw’è‚µ‚ÄA<see cref="TaskDialogControl"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ð‰Šú‰»‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDãŠã‚ˆã³ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã‚’æŒ‡å®šã—ã¦ã€<see cref="TaskDialogControl"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="id">ƒRƒ“ƒgƒ[ƒ‹IDB</param>
-        /// <param name="name">ƒRƒ“ƒgƒ[ƒ‹–¼B</param>
+        /// <param name="id">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDã€‚</param>
+        /// <param name="name">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã€‚</param>
         protected TaskDialogControl(int id, string name)
             : base(id, name)
         {

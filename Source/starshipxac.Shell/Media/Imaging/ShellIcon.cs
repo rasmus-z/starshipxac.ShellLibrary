@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    /// ƒVƒFƒ‹ƒAƒCƒRƒ“‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚·ã‚§ãƒ«ã‚¢ã‚¤ã‚³ãƒ³ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class ShellIcon : IDisposable
     {
@@ -40,7 +40,7 @@ namespace starshipxac.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// ƒAƒCƒRƒ“ƒnƒ“ƒhƒ‹‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¢ã‚¤ã‚³ãƒ³ãƒãƒ³ãƒ‰ãƒ«ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         internal IntPtr Handle { get; private set; }
 

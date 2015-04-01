@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 using System.Windows;
@@ -52,10 +52,10 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         public ShellThumbnailFormatOptions FormatOption { get; set; }
 
         /// <summary>
-        /// <see cref="ShellObject"/>‚ÌƒAƒCƒRƒ“EƒTƒ€ƒlƒCƒ‹ƒCƒ[ƒW‚ğæ“¾‚µA
-        /// w’è‚µ‚½<see cref="ShellThumbnail"/>‚ÌŠeƒvƒƒpƒeƒB‚Éİ’è‚µ‚Ü‚·B
+        /// <see cref="ShellObject"/>ã®ã‚¢ã‚¤ã‚³ãƒ³ãƒ»ã‚µãƒ ãƒã‚¤ãƒ«ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’å–å¾—ã—ã€
+        /// æŒ‡å®šã—ãŸ<see cref="ShellThumbnail"/>ã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="shellThumbnail">æ“¾‚µ‚½ƒAƒCƒRƒ“EƒTƒ€ƒlƒCƒ‹ƒCƒ[ƒW‚ğİ’è‚·‚é<see cref="ShellThumbnail"/>B</param>
+        /// <param name="shellThumbnail">å–å¾—ã—ãŸã‚¢ã‚¤ã‚³ãƒ³ãƒ»ã‚µãƒ ãƒã‚¤ãƒ«ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’è¨­å®šã™ã‚‹<see cref="ShellThumbnail"/>ã€‚</param>
         /// <returns></returns>
         public virtual async Task LoadAsync(ShellThumbnail shellThumbnail)
         {
@@ -71,12 +71,12 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// <see cref="ShellObject"/>‚ÌƒfƒtƒHƒ‹ƒgƒAƒCƒRƒ“‚ğæ“¾‚µ‚Ü‚·B
+        /// <see cref="ShellObject"/>ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¢ã‚¤ã‚³ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="shellThumbnail"></param>
         /// <returns></returns>
         /// <remarks>
-        /// <see cref="ShellThumbnail"/>‚Ì<c>ImageSource</c>‚¨‚æ‚Ñ<c>DefaultImage</c>ƒvƒƒpƒeƒB‚Éæ“¾‚µ‚½ƒCƒ[ƒW‚ğİ’è‚µ‚Ü‚·B
+        /// <see cref="ShellThumbnail"/>ã®<c>ImageSource</c>ãŠã‚ˆã³<c>DefaultImage</c>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å–å¾—ã—ãŸã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </remarks>
         public virtual async Task GetDefaultIconAsync(ShellThumbnail shellThumbnail)
         {
@@ -89,12 +89,12 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// <see cref="ShellObject"/>‚ÌƒAƒCƒRƒ“‚ÆƒI[ƒo[ƒŒƒCƒAƒCƒRƒ“‚ğæ“¾‚µ‚Ü‚·B
+        /// <see cref="ShellObject"/>ã®ã‚¢ã‚¤ã‚³ãƒ³ã¨ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤ã‚¢ã‚¤ã‚³ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="shellThumbnail"></param>
         /// <returns></returns>
         /// <remarks>
-        /// <see cref="ShellThumbnail"/>‚Ì<c>ImageSource</c>‚¨‚æ‚Ñ<c>DefaultImage</c>ƒvƒƒpƒeƒB‚Éæ“¾‚µ‚½ƒCƒ[ƒW‚ğİ’è‚µ‚Ü‚·B
+        /// <see cref="ShellThumbnail"/>ã®<c>ImageSource</c>ãŠã‚ˆã³<c>DefaultImage</c>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å–å¾—ã—ãŸã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </remarks>
         public virtual async Task GetDefaultIconWithOverlayAsync(ShellThumbnail shellThumbnail)
         {
@@ -107,12 +107,12 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// <see cref="ShellObject"/>‚ÌƒTƒ€ƒlƒCƒ‹ƒCƒ[ƒW‚ğæ“¾‚µ‚Ü‚·B
+        /// <see cref="ShellObject"/>ã®ã‚µãƒ ãƒã‚¤ãƒ«ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="shellThumbnail"></param>
         /// <returns></returns>
         /// <remarks>
-        /// <see cref="ShellThumbnail"/>‚Ì<c>ImageSource</c>‚¨‚æ‚Ñ<c>ThumbnailImage</c>ƒvƒƒpƒeƒB‚Éæ“¾‚µ‚½ƒCƒ[ƒW‚ğİ’è‚µ‚Ü‚·B
+        /// <see cref="ShellThumbnail"/>ã®<c>ImageSource</c>ãŠã‚ˆã³<c>ThumbnailImage</c>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å–å¾—ã—ãŸã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </remarks>
         public virtual async Task GetThumbnailAsync(ShellThumbnail shellThumbnail)
         {
@@ -120,23 +120,23 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
             var dg = new DrawingGroup();
 
-            // ƒTƒ€ƒlƒCƒ‹ƒCƒ[ƒWæ“¾
+            // ã‚µãƒ ãƒã‚¤ãƒ«ã‚¤ãƒ¡ãƒ¼ã‚¸å–å¾—
             var thumbnailBitmapSource = await GetThumbnailBitmapSourceAsync(shellThumbnail.ShellObject);
 
-            // ƒtƒŒ[ƒ€
+            // ãƒ•ãƒ¬ãƒ¼ãƒ 
             var thumbnailFrame =
                 new RectangleGeometry(new Rect(0, 0, thumbnailBitmapSource.Width + 2, thumbnailBitmapSource.Height + 2));
             dg.Children.Add(new GeometryDrawing(Brushes.Transparent, null, thumbnailFrame));
 
-            // ƒTƒ€ƒlƒCƒ‹
+            // ã‚µãƒ ãƒã‚¤ãƒ«
             var thumbnailRect = new Rect(1, 1, thumbnailBitmapSource.PixelWidth, thumbnailBitmapSource.PixelHeight);
             dg.Children.Add(new ImageDrawing(thumbnailBitmapSource, thumbnailRect));
 
-            // ƒI[ƒo[ƒŒƒCƒAƒCƒRƒ“
+            // ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤ã‚¢ã‚¤ã‚³ãƒ³
             DrawingImage overlayDrawingImage = null;
             if (shellThumbnail.OverlayIndex > 0)
             {
-                // ƒI[ƒo[ƒŒƒCƒAƒCƒRƒ“æ“¾
+                // ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤ã‚¢ã‚¤ã‚³ãƒ³å–å¾—
                 var overlayBitmapSource = await GetOverlayIconBitmapSourceAsync(shellThumbnail);
                 var overlayIconRect = new Rect(0, 0, overlayBitmapSource.PixelWidth, overlayBitmapSource.PixelHeight);
 
@@ -160,7 +160,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
                 dg.Children.Add(new ImageDrawing(overlayBitmapSource, overlayIconRect));
 
-                // OverlayImageì¬
+                // OverlayImageä½œæˆ
                 var dgOverlay = new DrawingGroup();
 
                 dgOverlay.Children.Add(new GeometryDrawing(Brushes.Transparent, null, new RectangleGeometry(thumbnailRect)));
@@ -190,7 +190,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         #region Private Methods
 
         /// <summary>
-        /// æ“¾‚·‚éƒAƒCƒRƒ“‚ÌƒTƒCƒYƒIƒvƒVƒ‡ƒ“‚ğŒvZ‚µ‚Ü‚·B
+        /// å–å¾—ã™ã‚‹ã‚¢ã‚¤ã‚³ãƒ³ã®ã‚µã‚¤ã‚ºã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’è¨ˆç®—ã—ã¾ã™ã€‚
         /// </summary>
         /// <returns></returns>
         private int GetSizeOption()
@@ -211,7 +211,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// æ“¾‚·‚éƒI[ƒo[ƒŒƒCƒAƒCƒRƒ“‚ÌƒTƒCƒYƒIƒvƒVƒ‡ƒ“‚ğæ“¾‚µ‚Ü‚·B
+        /// å–å¾—ã™ã‚‹ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤ã‚¢ã‚¤ã‚³ãƒ³ã®ã‚µã‚¤ã‚ºã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         /// <returns></returns>
         private int GetOverlayIconSizeOption()

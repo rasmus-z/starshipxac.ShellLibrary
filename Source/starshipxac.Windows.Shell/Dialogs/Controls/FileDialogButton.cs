@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using System.Threading;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
     /// <summary>
-    /// ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒOƒ{ƒ^ƒ“‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒœã‚¿ãƒ³ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class FileDialogButton : FileDialogControl
     {

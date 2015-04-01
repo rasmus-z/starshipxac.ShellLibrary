@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.Interop;
@@ -7,7 +7,7 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    /// ƒVƒFƒ‹ƒCƒ[ƒWƒtƒ@ƒNƒgƒŠ‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚·ã‚§ãƒ«ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class ShellItemImageFactory
     {

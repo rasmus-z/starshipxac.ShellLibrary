@@ -1,30 +1,30 @@
-using System;
+ï»¿using System;
 using starshipxac.Windows.Dialogs.Interop;
 
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// ƒvƒƒOƒŒƒXƒo[‚Ìó‘Ô‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®çŠ¶æ…‹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>        
     public enum TaskDialogProgressBarState : uint
     {
         /// <summary>
-        /// ’Êí‚Ìó‘ÔB
+        /// é€šå¸¸ã®çŠ¶æ…‹ã€‚
         /// </summary>
         Normal = ProgressBarStates.PBST_NORMAL,
 
         /// <summary>
-        /// ƒGƒ‰[ó‘ÔB
+        /// ã‚¨ãƒ©ãƒ¼çŠ¶æ…‹ã€‚
         /// </summary>
         Error = ProgressBarStates.PBST_ERROR,
 
         /// <summary>
-        /// ˆê’â~ó‘ÔB
+        /// ä¸€æ™‚åœæ­¢çŠ¶æ…‹ã€‚
         /// </summary>
         Paused = ProgressBarStates.PBST_PAUSED,
 
         /// <summary>
-        /// ƒ}[ƒL[ƒXƒ^ƒCƒ‹B
+        /// ãƒãƒ¼ã‚­ãƒ¼ã‚¹ã‚¿ã‚¤ãƒ«ã€‚
         /// </summary>
         Marquee
     }

@@ -1,15 +1,15 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// <see cref="TaskDialog.HyperlinkClicked"/>ƒCƒxƒ“ƒgƒf[ƒ^‚ğ’è‹`‚µ‚Ü‚·B
+    /// <see cref="TaskDialog.HyperlinkClicked"/>ã‚¤ãƒ™ãƒ³ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class TaskDialogHyperlinkClickedEventArgs : EventArgs
     {
         /// <summary>
-        /// ƒnƒCƒp[ƒŠƒ“ƒN‚ÌƒeƒLƒXƒg‚ğw’è‚µ‚ÄA
-        /// <see cref="TaskDialogHyperlinkClickedEventArgs"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ãƒã‚¤ãƒ‘ãƒ¼ãƒªãƒ³ã‚¯ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="TaskDialogHyperlinkClickedEventArgs"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="linkText"></param>
         public TaskDialogHyperlinkClickedEventArgs(string linkText)
@@ -18,7 +18,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ƒNƒŠƒbƒN‚µ‚½ƒnƒCƒp[ƒŠƒ“ƒN‚ÌƒeƒLƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¯ãƒªãƒƒã‚¯ã—ãŸãƒã‚¤ãƒ‘ãƒ¼ãƒªãƒ³ã‚¯ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public string LinkText { get; private set; }
     }

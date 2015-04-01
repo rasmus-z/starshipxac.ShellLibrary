@@ -1,14 +1,14 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Shell.Controls.Interop
 {
     /// <summary>
-    /// WindowsƒRƒ“ƒgƒ[ƒ‹ID‚ğ’è‹`‚µ‚Ü‚·B
+    /// Windowsã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     internal static class ControlIID
     {
         /// <summary>
-        /// ƒCƒ[ƒWƒŠƒXƒgƒRƒ“ƒgƒ[ƒ‹IDB
+        /// ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒªã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDã€‚
         /// </summary>
         internal const string IImageList = "46EB5926-582E-4017-9FDF-E8998DAA0950";
     }

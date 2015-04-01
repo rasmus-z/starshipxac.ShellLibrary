@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using starshipxac.Windows.Shell.Dialogs.Interop;
 
 namespace starshipxac.Windows.Shell.Dialogs

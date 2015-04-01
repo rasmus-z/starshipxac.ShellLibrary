@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Interop
 {
     /// <summary>
-    /// ƒEƒBƒ“ƒhƒEƒƒbƒZ[ƒW‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     internal static class WindowMessages
     {
@@ -234,7 +234,7 @@ namespace starshipxac.Windows.Interop
 
         public const UInt32 MaxAppMessage = 0xBFFF;
 
-        // 0xC000 - 0xFFFF: RegisterWindowMessage‚Åg—p
-        // 0x10000ˆÈã    : ƒVƒXƒeƒ€‚Å—\–ñ
+        // 0xC000 - 0xFFFF: RegisterWindowMessageã§ä½¿ç”¨
+        // 0x10000ä»¥ä¸Š    : ã‚·ã‚¹ãƒ†ãƒ ã§äºˆç´„
     }
 }

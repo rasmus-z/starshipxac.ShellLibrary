@@ -1,18 +1,18 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using starshipxac.Shell.Components.Internal;
 
 namespace starshipxac.Shell.Components
 {
     /// <summary>
-    /// ƒVƒXƒeƒ€ƒCƒ[ƒW•ÏXƒCƒxƒ“ƒgƒf[ƒ^‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚·ã‚¹ãƒ†ãƒ ã‚¤ãƒ¡ãƒ¼ã‚¸å¤‰æ›´ã‚¤ãƒ™ãƒ³ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class SystemImageUpdatedEventArgs : ShellNotificationEventArgs
     {
         /// <summary>
-        /// <see cref="SystemImageUpdatedEventArgs"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="SystemImageUpdatedEventArgs"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="changeNotify">ƒVƒFƒ‹•ÏX’Ê’mî•ñB</param>
+        /// <param name="changeNotify">ã‚·ã‚§ãƒ«å¤‰æ›´é€šçŸ¥æƒ…å ±ã€‚</param>
         internal SystemImageUpdatedEventArgs(ShellChangeNotify changeNotify)
             : base(changeNotify)
         {
@@ -22,7 +22,7 @@ namespace starshipxac.Shell.Components
         }
 
         /// <summary>
-        /// XV‚³‚ê‚½ƒVƒXƒeƒ€ƒCƒ[ƒW‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚µ‚Ü‚·B
+        /// æ›´æ–°ã•ã‚ŒãŸã‚·ã‚¹ãƒ†ãƒ ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public int ImageIndex { get; private set; }
     }

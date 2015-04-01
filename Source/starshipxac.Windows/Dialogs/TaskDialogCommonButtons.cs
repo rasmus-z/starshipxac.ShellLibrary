@@ -1,46 +1,46 @@
-using System;
+ï»¿using System;
 using starshipxac.Windows.Dialogs.Interop;
 
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒO•W€ƒ{ƒ^ƒ“‚ð’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°æ¨™æº–ãƒœã‚¿ãƒ³ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     [Flags]
     public enum TaskDialogCommonButtons
     {
         /// <summary>
-        /// –¢’è‹`‚Ìƒ{ƒ^ƒ“B
+        /// æœªå®šç¾©ã®ãƒœã‚¿ãƒ³ã€‚
         /// </summary>
         None = 0,
 
         /// <summary>
-        /// OKƒ{ƒ^ƒ“B
+        /// OKãƒœã‚¿ãƒ³ã€‚
         /// </summary>
         Ok = TASKDIALOG_COMMON_BUTTON_FLAGS.TDCBF_OK_BUTTON,
 
         /// <summary>
-        /// u‚Í‚¢vƒ{ƒ^ƒ“B
+        /// ã€Œã¯ã„ã€ãƒœã‚¿ãƒ³ã€‚
         /// </summary>
         Yes = TASKDIALOG_COMMON_BUTTON_FLAGS.TDCBF_YES_BUTTON,
 
         /// <summary>
-        /// u‚¢‚¢‚¦vƒ{ƒ^ƒ“B
+        /// ã€Œã„ã„ãˆã€ãƒœã‚¿ãƒ³ã€‚
         /// </summary>
         No = TASKDIALOG_COMMON_BUTTON_FLAGS.TDCBF_NO_BUTTON,
 
         /// <summary>
-        /// ƒLƒƒƒ“ƒZƒ‹ƒ{ƒ^ƒ“B
+        /// ã‚­ãƒ£ãƒ³ã‚»ãƒ«ãƒœã‚¿ãƒ³ã€‚
         /// </summary>
         Cancel = TASKDIALOG_COMMON_BUTTON_FLAGS.TDCBF_CANCEL_BUTTON,
 
         /// <summary>
-        /// uÄŽŽsvƒ{ƒ^ƒ“B
+        /// ã€Œå†è©¦è¡Œã€ãƒœã‚¿ãƒ³ã€‚
         /// </summary>
         Retry = TASKDIALOG_COMMON_BUTTON_FLAGS.TDCBF_RETRY_BUTTON,
 
         /// <summary>
-        /// •Â‚¶‚éƒ{ƒ^ƒ“B
+        /// é–‰ã˜ã‚‹ãƒœã‚¿ãƒ³ã€‚
         /// </summary>
         Close = TASKDIALOG_COMMON_BUTTON_FLAGS.TDCBF_CLOSE_BUTTON,
     }

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
@@ -8,21 +8,21 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.Internal
 {
     /// <summary>
-    /// ƒtƒHƒ‹ƒ_[“à‚ÌƒAƒCƒeƒ€‚ğ”½•œˆ—‚µ‚Ü‚·B
+    /// ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼å†…ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’åå¾©å‡¦ç†ã—ã¾ã™ã€‚
     /// </summary>
     internal class ShellFolderEnumerator : IEnumerator<ShellObject>
     {
         private IEnumIDList enumIdList;
 
         /// <summary>
-        /// <see cref="ShellFolderEnumerator"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="ShellFolderEnumerator"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="parentFolder">eƒtƒHƒ‹ƒ_[B</param>
-        /// <param name="options">ƒtƒHƒ‹ƒ_[”½•œˆ—ƒIƒvƒVƒ‡ƒ“B </param>
+        /// <param name="parentFolder">è¦ªãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚</param>
+        /// <param name="options">ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼åå¾©å‡¦ç†ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã€‚ </param>
         /// <remarks>
         /// <para>
-        /// <see cref="System.IO.FileNotFoundException"/>‚ª”­¶‚·‚éê‡‚ÍA
-        /// ƒvƒƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB -> ƒrƒ‹ƒh‚Ìu32ƒrƒbƒg‚ğ—Dæv‚Ìƒ`ƒFƒbƒN‚ğŠO‚·B
+        /// <see cref="System.IO.FileNotFoundException"/>ãŒç™ºç”Ÿã™ã‚‹å ´åˆã¯ã€
+        /// ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ -> ãƒ“ãƒ«ãƒ‰ã®ã€Œ32ãƒ“ãƒƒãƒˆã‚’å„ªå…ˆã€ã®ãƒã‚§ãƒƒã‚¯ã‚’å¤–ã™ã€‚
         /// </para>
         /// </remarks>
         internal ShellFolderEnumerator(ShellFolder parentFolder, SHCONTF options)
@@ -44,13 +44,13 @@ namespace starshipxac.Shell.Internal
             {
                 throw ShellException.FromHRESULT(hr);
             }
-            // hr == S_FALSE‚Ìê‡‚ÍAq‚ª‘¶İ‚µ‚È‚¢B(enumIdList = null)
+            // hr == S_FALSEã®å ´åˆã¯ã€å­ãŒå­˜åœ¨ã—ãªã„ã€‚(enumIdList = null)
         }
 
         /// <summary>
-        /// <see cref="ShellFolderEnumerator"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="ShellFolderEnumerator"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="parentFolder">eƒtƒHƒ‹ƒ_[B</param>
+        /// <param name="parentFolder">è¦ªãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚</param>
         internal ShellFolderEnumerator(ShellFolder parentFolder)
             : this(parentFolder, SHCONTF.SHCONTF_FOLDERS | SHCONTF.SHCONTF_NONFOLDERS)
         {
@@ -73,7 +73,7 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// eƒtƒHƒ‹ƒ_[‚ğæ“¾‚µ‚Ü‚·B
+        /// è¦ªãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public ShellFolder Parent { get; private set; }
 

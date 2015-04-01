@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.Interop;

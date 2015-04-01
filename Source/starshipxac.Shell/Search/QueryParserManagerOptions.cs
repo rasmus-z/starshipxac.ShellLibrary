@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using starshipxac.Shell.Search.Interop;
 
 namespace starshipxac.Shell.Search

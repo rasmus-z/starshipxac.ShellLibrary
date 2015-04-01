@@ -1,24 +1,24 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// Šg’£•\¦•û–@‚ğ’è‹`‚µ‚Ü‚·B
+    /// æ‹¡å¼µè¡¨ç¤ºæ–¹æ³•ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public enum TaskDialogExpansionMode
     {
         /// <summary>
-        /// •\¦‚µ‚È‚¢B
+        /// è¡¨ç¤ºã—ãªã„ã€‚
         /// </summary>
         Hide,
 
         /// <summary>
-        /// ƒRƒ“ƒeƒ“ƒc‚ğ•\¦‚·‚éB
+        /// ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
         /// </summary>
         ExpandContent,
 
         /// <summary>
-        /// ƒtƒbƒ^[‚ğŠg’£‚·‚éB
+        /// ãƒ•ãƒƒã‚¿ãƒ¼ã‚’æ‹¡å¼µã™ã‚‹ã€‚
         /// </summary>
         ExpandFooter
     }

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Windows.Dialogs.Interop
@@ -19,7 +19,7 @@ namespace starshipxac.Windows.Dialogs.Interop
         public readonly IntPtr spacer;
 
         /// <summary>
-        /// ƒAƒCƒRƒ“ƒnƒ“ƒhƒ‹‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¢ã‚¤ã‚³ãƒ³ãƒãƒ³ãƒ‰ãƒ«ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public int IconHandle
         {

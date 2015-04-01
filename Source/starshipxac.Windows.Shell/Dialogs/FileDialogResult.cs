@@ -1,24 +1,24 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ƒ_ƒCƒAƒƒO‚ÌÀsŒ‹‰Ê‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®å®Ÿè¡Œçµæœã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public enum FileDialogResult
     {
         /// <summary>
-        /// –¢Àsó‘ÔB
+        /// æœªå®Ÿè¡ŒçŠ¶æ…‹ã€‚
         /// </summary>
         None = 0,
 
         /// <summary>
-        /// OK‚Ü‚½‚Í•Û‘¶B
+        /// OKã¾ãŸã¯ä¿å­˜ã€‚
         /// </summary>
         Ok = 1,
 
         /// <summary>
-        /// ƒLƒƒƒ“ƒZƒ‹B
+        /// ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã€‚
         /// </summary>
         Cancel = 2,
     }

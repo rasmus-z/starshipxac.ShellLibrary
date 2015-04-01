@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Shell.Controls.Interop
 {
     /// <summary>
-    /// ƒCƒ[ƒWƒŠƒXƒg•`‰æƒtƒ‰ƒO‚ğ•\‚µ‚Ü‚·B
+    /// ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒªã‚¹ãƒˆæç”»ãƒ•ãƒ©ã‚°ã‚’è¡¨ã—ã¾ã™ã€‚
     /// </summary>
     internal static class IMAGELISTDRAWFLAGS
     {

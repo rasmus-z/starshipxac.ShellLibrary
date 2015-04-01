@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    /// ƒvƒƒpƒeƒBƒL[‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚­ãƒ¼ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb773381(v=vs.85).aspx
@@ -13,10 +13,10 @@ namespace starshipxac.Shell.PropertySystem.Interop
     public struct PROPERTYKEY : IEquatable<PROPERTYKEY>
     {
         /// <summary>
-        /// <see cref="PROPERTYKEY"/>‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="PROPERTYKEY"/>ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="formatId">ƒvƒƒpƒeƒB‚Ì<see cref="Guid"/>B</param>
-        /// <param name="propId">ƒvƒƒpƒeƒBID(PID)B</param>
+        /// <param name="formatId">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®<see cref="Guid"/>ã€‚</param>
+        /// <param name="propId">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ID(PID)ã€‚</param>
         public PROPERTYKEY(Guid formatId, UInt32 propId)
             : this()
         {
@@ -25,22 +25,22 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// ƒvƒƒpƒeƒB‚Ì<see cref="Guid"/>‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®<see cref="Guid"/>ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public Guid fmtid { get; private set; }
 
         /// <summary>
-        ///  ƒvƒƒpƒeƒBID‚ğæ“¾‚µ‚Ü‚·B
+        ///  ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£IDã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public UInt32 pid { get; private set; }
 
         /// <summary>
-        /// w’è‚µ‚½<see cref="PROPERTYKEY"/>‚Ì’l‚ªAŒ»İ‚Ì<see cref="PROPERTYKEY"/>‚Æ“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸ<see cref="PROPERTYKEY"/>ã®å€¤ãŒã€ç¾åœ¨ã®<see cref="PROPERTYKEY"/>ã¨ç­‰ã—ã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="other">Œ»İ‚Ì<see cref="PROPERTYKEY"/>‚Æ”äŠr‚·‚é<see cref="PROPERTYKEY"/>B</param>
+        /// <param name="other">ç¾åœ¨ã®<see cref="PROPERTYKEY"/>ã¨æ¯”è¼ƒã™ã‚‹<see cref="PROPERTYKEY"/>ã€‚</param>
         /// <returns>
-        /// <paramref name="other"/>‚ÆŒ»İ‚Ì<see cref="PROPERTYKEY"/>‚ª“™‚µ‚¢ê‡‚Í<c>true</c>B
-        /// ‚»‚êˆÈŠO‚Ìê‡‚Í<c>false</c>B
+        /// <paramref name="other"/>ã¨ç¾åœ¨ã®<see cref="PROPERTYKEY"/>ãŒç­‰ã—ã„å ´åˆã¯<c>true</c>ã€‚
+        /// ãã‚Œä»¥å¤–ã®å ´åˆã¯<c>false</c>ã€‚
         /// </returns>
         public bool Equals(PROPERTYKEY other)
         {
@@ -48,12 +48,12 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ì’l‚ªAŒ»İ‚Ì<see cref="PROPERTYKEY"/>‚Æ“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å€¤ãŒã€ç¾åœ¨ã®<see cref="PROPERTYKEY"/>ã¨ç­‰ã—ã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="obj">Œ»İ‚Ì<see cref="PROPERTYKEY"/>‚Æ”äŠr‚·‚éƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="obj">ç¾åœ¨ã®<see cref="PROPERTYKEY"/>ã¨æ¯”è¼ƒã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
         /// <returns>
-        /// <paramref name="obj"/>‚ÆŒ»İ‚Ì<see cref="PROPERTYKEY"/>‚ª“™‚µ‚¢ê‡‚Í<c>true</c>B
-        /// ‚»‚êˆÈŠO‚Ìê‡‚Í<c>false</c>B
+        /// <paramref name="obj"/>ã¨ç¾åœ¨ã®<see cref="PROPERTYKEY"/>ãŒç­‰ã—ã„å ´åˆã¯<c>true</c>ã€‚
+        /// ãã‚Œä»¥å¤–ã®å ´åˆã¯<c>false</c>ã€‚
         /// </returns>
         public override bool Equals(object obj)
         {
@@ -67,13 +67,13 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// 2‚Â‚Ì<see cref="PROPERTYKEY"/>‚ğ”äŠr‚µ‚ÄA“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚µ‚Ü‚·B
+        /// 2ã¤ã®<see cref="PROPERTYKEY"/>ã‚’æ¯”è¼ƒã—ã¦ã€ç­‰ã—ã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="left">1‚Â‚ß‚Ì<see cref="PROPERTYKEY"/>B</param>
-        /// <param name="right">2‚Â‚ß‚Ì<see cref="PROPERTYKEY"/>B</param>
+        /// <param name="left">1ã¤ã‚ã®<see cref="PROPERTYKEY"/>ã€‚</param>
+        /// <param name="right">2ã¤ã‚ã®<see cref="PROPERTYKEY"/>ã€‚</param>
         /// <returns>
-        /// 2‚Â‚Ì<see cref="PROPERTYKEY"/>‚ª“™‚µ‚¢ê‡‚Í<c>true</c>B
-        /// ‚»‚êˆÈŠO‚Ìê‡‚Í<c>false</c>B
+        /// 2ã¤ã®<see cref="PROPERTYKEY"/>ãŒç­‰ã—ã„å ´åˆã¯<c>true</c>ã€‚
+        /// ãã‚Œä»¥å¤–ã®å ´åˆã¯<c>false</c>ã€‚
         /// </returns>
         public static bool operator ==(PROPERTYKEY left, PROPERTYKEY right)
         {
@@ -81,13 +81,13 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// 2‚Â‚Ì<see cref="PROPERTYKEY"/>‚ğ”äŠr‚µ‚ÄA“™‚µ‚­‚È‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚µ‚Ü‚·B
+        /// 2ã¤ã®<see cref="PROPERTYKEY"/>ã‚’æ¯”è¼ƒã—ã¦ã€ç­‰ã—ããªã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="left">1‚Â‚ß‚Ì<see cref="PROPERTYKEY"/>B</param>
-        /// <param name="right">2‚Â‚ß‚Ì<see cref="PROPERTYKEY"/>B</param>
+        /// <param name="left">1ã¤ã‚ã®<see cref="PROPERTYKEY"/>ã€‚</param>
+        /// <param name="right">2ã¤ã‚ã®<see cref="PROPERTYKEY"/>ã€‚</param>
         /// <returns>
-        /// 2‚Â‚Ì<see cref="PROPERTYKEY"/>‚ª“™‚µ‚¢ê‡‚Í<c>true</c>B
-        /// ‚»‚êˆÈŠO‚Ìê‡‚Í<c>false</c>B
+        /// 2ã¤ã®<see cref="PROPERTYKEY"/>ãŒç­‰ã—ã„å ´åˆã¯<c>true</c>ã€‚
+        /// ãã‚Œä»¥å¤–ã®å ´åˆã¯<c>false</c>ã€‚
         /// </returns>
         public static bool operator !=(PROPERTYKEY left, PROPERTYKEY right)
         {
@@ -95,18 +95,18 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒnƒbƒVƒ…ƒR[ƒh‚ğæ“¾‚µ‚Ü‚·B
+        /// ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒnƒbƒVƒ…ƒR[ƒhB</returns>
+        /// <returns>ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰ã€‚</returns>
         public override int GetHashCode()
         {
             return this.fmtid.GetHashCode() ^ this.pid.GetHashCode();
         }
 
         /// <summary>
-        /// ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚µ‚Ü‚·B
+        /// ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»B</returns>
+        /// <returns>ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã€‚</returns>
         public override string ToString()
         {
             return string.Format(System.Globalization.CultureInfo.InvariantCulture,

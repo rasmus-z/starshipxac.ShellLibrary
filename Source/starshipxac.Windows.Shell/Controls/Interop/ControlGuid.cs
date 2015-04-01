@@ -1,14 +1,14 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Shell.Controls.Interop
 {
     /// <summary>
-    /// WindowsƒRƒ“ƒgƒ[ƒ‹‚Ì<c>GUID</c>‚ğ’è‹`‚µ‚Ü‚·B
+    /// Windowsã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®<c>GUID</c>ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     internal class ControlGuid
     {
         /// <summary>
-        /// ƒCƒ[ƒWƒŠƒXƒg<c>GUID</c>B
+        /// ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒªã‚¹ãƒˆ<c>GUID</c>ã€‚
         /// </summary>
         public static readonly Guid IID_IImageList = new Guid(ControlIID.IImageList);
     }

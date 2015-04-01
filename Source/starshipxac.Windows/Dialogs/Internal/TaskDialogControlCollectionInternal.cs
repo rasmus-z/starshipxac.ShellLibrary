@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -9,7 +9,7 @@ using starshipxac.Windows.Dialogs.Interop;
 namespace starshipxac.Windows.Dialogs.Internal
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOƒlƒCƒeƒBƒuƒRƒ“ƒgƒ[ƒ‹‚Ìƒƒ‚ƒŠ‚ğ•Û‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒã‚¤ãƒ†ã‚£ãƒ–ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®ãƒ¡ãƒ¢ãƒªã‚’ä¿æŒã—ã¾ã™ã€‚
     /// </summary>
     internal class TaskDialogControlCollectionInternal<TControl> : IDisposable, IEnumerable<TControl>
         where TControl : TaskDialogButtonBase
@@ -17,8 +17,8 @@ namespace starshipxac.Windows.Dialogs.Internal
         private bool disposed = false;
 
         /// <summary>
-        /// ƒlƒCƒeƒBƒuƒRƒ“ƒgƒ[ƒ‹ƒnƒ“ƒhƒ‹‚ğw’è‚µ‚ÄA
-        /// <see cref="TaskDialogControlCollectionInternal&lt;TControl&gt;"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ãƒã‚¤ãƒ†ã‚£ãƒ–ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="TaskDialogControlCollectionInternal&lt;TControl&gt;"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         public TaskDialogControlCollectionInternal(IReadOnlyList<TControl> controls)
         {
@@ -56,7 +56,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒlƒCƒeƒBƒuƒRƒ“ƒgƒ[ƒ‹ƒnƒ“ƒhƒ‹‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒã‚¤ãƒ†ã‚£ãƒ–ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         internal IntPtr Handle { get; private set; }
 
@@ -71,7 +71,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒlƒCƒeƒBƒuƒRƒ“ƒgƒ[ƒ‹ƒnƒ“ƒhƒ‹‚ğ‰ğ•ú‚µ‚Ü‚·B
+        /// ãƒã‚¤ãƒ†ã‚£ãƒ–ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚’è§£æ”¾ã—ã¾ã™ã€‚
         /// </summary>
         public void Release()
         {
@@ -93,10 +93,10 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒlƒCƒeƒBƒuƒ{ƒ^ƒ“”z—ñ‚ğì¬‚µ‚Ü‚·B
+        /// ãƒã‚¤ãƒ†ã‚£ãƒ–ãƒœã‚¿ãƒ³é…åˆ—ã‚’ä½œæˆã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="controls">ƒ{ƒ^ƒ“ƒRƒ“ƒgƒ[ƒ‹‚ÌƒRƒŒƒNƒVƒ‡ƒ“B</param>
-        /// <returns>ì¬‚µ‚½ƒlƒCƒeƒBƒuƒ{ƒ^ƒ“”z—ñB</returns>
+        /// <param name="controls">ãƒœã‚¿ãƒ³ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã€‚</param>
+        /// <returns>ä½œæˆã—ãŸãƒã‚¤ãƒ†ã‚£ãƒ–ãƒœã‚¿ãƒ³é…åˆ—ã€‚</returns>
         private static TASKDIALOG_BUTTON[] CreateNativeButtonArray(IReadOnlyCollection<TaskDialogButtonBase> controls)
         {
             Contract.Requires<ArgumentNullException>(controls != null);
@@ -113,10 +113,10 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒlƒCƒeƒBƒuƒ{ƒ^ƒ“”z—ñƒƒ‚ƒŠ‚ğŠm•Û‚µ‚Ü‚·B
+        /// ãƒã‚¤ãƒ†ã‚£ãƒ–ãƒœã‚¿ãƒ³é…åˆ—ãƒ¡ãƒ¢ãƒªã‚’ç¢ºä¿ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="nativeControls">ƒlƒCƒeƒBƒuƒ{ƒ^ƒ“”z—ñB</param>
-        /// <returns>Šm•Û‚µ‚½ƒlƒCƒeƒBƒuƒ{ƒ^ƒ“”z—ñƒƒ‚ƒŠB</returns>
+        /// <param name="nativeControls">ãƒã‚¤ãƒ†ã‚£ãƒ–ãƒœã‚¿ãƒ³é…åˆ—ã€‚</param>
+        /// <returns>ç¢ºä¿ã—ãŸãƒã‚¤ãƒ†ã‚£ãƒ–ãƒœã‚¿ãƒ³é…åˆ—ãƒ¡ãƒ¢ãƒªã€‚</returns>
         private static IntPtr AllocateButtons(TASKDIALOG_BUTTON[] nativeControls)
         {
             Contract.Requires(nativeControls != null);

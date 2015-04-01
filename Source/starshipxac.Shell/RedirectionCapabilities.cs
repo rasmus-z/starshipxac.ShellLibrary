@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using starshipxac.Shell.Interop.KnownFolder;
 
 namespace starshipxac.Shell

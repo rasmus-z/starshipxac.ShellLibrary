@@ -1,5 +1,4 @@
-using System;
-using System.Collections.Generic;
+ï»¿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics.Contracts;
 using starshipxac.Windows.Shell.Properties;
@@ -7,7 +6,7 @@ using starshipxac.Windows.Shell.Properties;
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
     /// <summary>
-    /// ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒOƒRƒ“ƒgƒ[ƒ‹‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğ•Û‚µ‚Ü‚·B
+    /// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’ä¿æŒã—ã¾ã™ã€‚
     /// </summary>
     public sealed class FileDialogControlCollection : Collection<FileDialogControl>
     {

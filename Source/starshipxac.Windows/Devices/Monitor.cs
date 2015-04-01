@@ -1,19 +1,19 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using System.Windows;
 
 namespace starshipxac.Windows.Devices
 {
     /// <summary>
-    /// ƒ‚ƒjƒ^[î•ñ‚ğ•Û‚µ‚Ü‚·B
+    /// ãƒ¢ãƒ‹ã‚¿ãƒ¼æƒ…å ±ã‚’ä¿æŒã—ã¾ã™ã€‚
     /// </summary>
     public class Monitor : IEquatable<Monitor>
     {
         /// <summary>
-        /// ƒ‚ƒjƒ^[ƒnƒ“ƒhƒ‹‚ğw’è‚µ‚ÄA
-        /// <see cref="Monitor"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ãƒ¢ãƒ‹ã‚¿ãƒ¼ãƒãƒ³ãƒ‰ãƒ«ã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="Monitor"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="hMonitor">ƒ‚ƒjƒ^[ƒnƒ“ƒhƒ‹B</param>
+        /// <param name="hMonitor">ãƒ¢ãƒ‹ã‚¿ãƒ¼ãƒãƒ³ãƒ‰ãƒ«ã€‚</param>
         internal Monitor(IntPtr hMonitor)
         {
             Contract.Requires<ArgumentNullException>(hMonitor != IntPtr.Zero);
@@ -22,27 +22,27 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// ƒ‚ƒjƒ^[ƒnƒ“ƒhƒ‹‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ¢ãƒ‹ã‚¿ãƒ¼ãƒãƒ³ãƒ‰ãƒ«ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         internal IntPtr Handle { get; private set; }
 
         /// <summary>
-        /// ƒfƒoƒCƒX–¼‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ‡ãƒã‚¤ã‚¹åã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public string DeviceName { get; internal set; }
 
         /// <summary>
-        /// ‘æˆêƒ‚ƒjƒ^[‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚µ‚Ü‚·B
+        /// ç¬¬ä¸€ãƒ¢ãƒ‹ã‚¿ãƒ¼ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public bool IsPrimary { get; internal set; }
 
         /// <summary>
-        /// ƒ‚ƒjƒ^[‚ÌƒTƒCƒY‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ¢ãƒ‹ã‚¿ãƒ¼ã®ã‚µã‚¤ã‚ºã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public Rect Bounds { get; internal set; }
 
         /// <summary>
-        /// ƒ‚ƒjƒ^[“à‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ““®ì—Ìˆæ‚ÌƒTƒCƒY‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ¢ãƒ‹ã‚¿ãƒ¼å†…ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å‹•ä½œé ˜åŸŸã®ã‚µã‚¤ã‚ºã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public Rect WorkingArea { get; internal set; }
 

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.Contracts;
@@ -8,7 +8,7 @@ using starshipxac.Windows.Shell.Dialogs.Interop;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒO‚Ìƒtƒ@ƒCƒ‹í•ÊƒtƒBƒ‹ƒ^[‚ğ•Û‚µ‚Ü‚·B
+    /// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ãƒ•ã‚¡ã‚¤ãƒ«ç¨®åˆ¥ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã‚’ä¿æŒã—ã¾ã™ã€‚
     /// </summary>
     public class FileTypeFilterCollection : Collection<FileTypeFilter>
     {
@@ -17,7 +17,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒRƒŒƒNƒVƒ‡ƒ“‚ÉƒtƒBƒ‹ƒ^[‚ğ’Ç‰Á‚µ‚Ü‚·B
+        /// ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã‚’è¿½åŠ ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="filterName"></param>
         /// <param name="extensionStrings"></param>
@@ -30,7 +30,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒRƒŒƒNƒVƒ‡ƒ“‚ÉƒtƒBƒ‹ƒ^[‚ğ’Ç‰Á‚µ‚Ü‚·B
+        /// ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã«ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã‚’è¿½åŠ ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="filterName"></param>
         /// <param name="extensions"></param>

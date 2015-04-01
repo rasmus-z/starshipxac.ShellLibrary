@@ -1,19 +1,19 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒO‚Ì‰Šú•\¦ˆÊ’u‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®åˆæœŸè¡¨ç¤ºä½ç½®ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public enum TaskDialogStartupLocation
     {
         /// <summary>
-        /// ‰æ–Ê‚Ì’†‰›‚É•\¦‚µ‚Ü‚·B
+        /// ç”»é¢ã®ä¸­å¤®ã«è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
         CenterScreen,
 
         /// <summary>
-        /// ƒI[ƒi[ƒEƒBƒ“ƒhƒE‚Ì’†‰›‚É•\¦‚µ‚Ü‚·B
+        /// ã‚ªãƒ¼ãƒŠãƒ¼ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä¸­å¤®ã«è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
         CenterOwner
     }

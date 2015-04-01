@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
@@ -10,7 +10,7 @@ using starshipxac.Windows.Interop;
 namespace starshipxac.Windows.Devices
 {
     /// <summary>
-    /// PC‚ÉÚ‘±‚µ‚Ä‚¢‚é‚·‚×‚Ä‚Ìƒ‚ƒjƒ^[î•ñ‚ğ•Û‚µ‚Ü‚·B
+    /// PCã«æ¥ç¶šã—ã¦ã„ã‚‹ã™ã¹ã¦ã®ãƒ¢ãƒ‹ã‚¿ãƒ¼æƒ…å ±ã‚’ä¿æŒã—ã¾ã™ã€‚
     /// </summary>
     public static class MultiMonitor
     {
@@ -22,12 +22,12 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// ƒƒCƒ“ƒ‚ƒjƒ^[î•ñ‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ¡ã‚¤ãƒ³ãƒ¢ãƒ‹ã‚¿ãƒ¼æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public static Monitor PrimaryMonitor { get; private set; }
 
         /// <summary>
-        /// ‚·‚×‚Ä‚Ìƒ‚ƒjƒ^[î•ñ‚ğæ“¾‚µ‚Ü‚·B
+        /// ã™ã¹ã¦ã®ãƒ¢ãƒ‹ã‚¿ãƒ¼æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public static IReadOnlyList<Monitor> AllMonitors
         {
@@ -38,7 +38,7 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// ‚·‚×‚Ä‚ÌƒTƒuƒ‚ƒjƒ^[î•ñ‚ğæ“¾‚µ‚Ü‚·B
+        /// ã™ã¹ã¦ã®ã‚µãƒ–ãƒ¢ãƒ‹ã‚¿ãƒ¼æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public static IReadOnlyList<Monitor> SubMonitors
         {
@@ -88,10 +88,10 @@ namespace starshipxac.Windows.Devices
         #endregion
 
         /// <summary>
-        /// w’è‚µ‚½ƒEƒBƒ“ƒhƒE‚ª•\¦‚³‚ê‚Ä‚¢‚éƒ‚ƒjƒ^[‚ğæ“¾‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒè¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ãƒ¢ãƒ‹ã‚¿ãƒ¼ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="windowHandle">ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹B</param>
-        /// <returns>ƒ‚ƒjƒ^[î•ñB</returns>
+        /// <param name="windowHandle">ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«ã€‚</param>
+        /// <returns>ãƒ¢ãƒ‹ã‚¿ãƒ¼æƒ…å ±ã€‚</returns>
         internal static Monitor FromHandle(IntPtr windowHandle)
         {
             var hMonitor = MultiMonitorNativeMethods.MonitorFromWindow(windowHandle, MonitorFlags.MONITOR_DEFAULTTONEAREST);
@@ -99,10 +99,10 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒEƒBƒ“ƒhƒE‚ª•\¦‚³‚ê‚Ä‚¢‚éƒ‚ƒjƒ^[‚ğæ“¾‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒè¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ãƒ¢ãƒ‹ã‚¿ãƒ¼ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="window">ƒEƒBƒ“ƒhƒEB</param>
-        /// <returns>ƒ‚ƒjƒ^[î•ñB</returns>
+        /// <param name="window">ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã€‚</param>
+        /// <returns>ãƒ¢ãƒ‹ã‚¿ãƒ¼æƒ…å ±ã€‚</returns>
         public static Monitor FromWindow(Window window)
         {
             Contract.Requires<ArgumentNullException>(window != null);
@@ -116,10 +116,10 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// w’è‚µ‚½À•W‚ªŠÜ‚Ü‚ê‚éƒ‚ƒjƒ^[‚ğæ“¾‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸåº§æ¨™ãŒå«ã¾ã‚Œã‚‹ãƒ¢ãƒ‹ã‚¿ãƒ¼ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="point">ŒŸ¸‚·‚éÀ•WB</param>
-        /// <returns>ƒ‚ƒjƒ^[î•ñB</returns>
+        /// <param name="point">æ¤œæŸ»ã™ã‚‹åº§æ¨™ã€‚</param>
+        /// <returns>ãƒ¢ãƒ‹ã‚¿ãƒ¼æƒ…å ±ã€‚</returns>
         public static Monitor FromPoint(Point point)
         {
             var pt = new POINT
@@ -132,10 +132,10 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// w’è‚µ‚½lŠpŒ`‚ªŠÜ‚Ü‚ê‚éƒ‚ƒjƒ^[‚ğæ“¾‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸå››è§’å½¢ãŒå«ã¾ã‚Œã‚‹ãƒ¢ãƒ‹ã‚¿ãƒ¼ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="rect">ŒŸ¸‚·‚élŠpŒ`</param>
-        /// <returns>ƒ‚ƒjƒ^[î•ñB</returns>
+        /// <param name="rect">æ¤œæŸ»ã™ã‚‹å››è§’å½¢</param>
+        /// <returns>ãƒ¢ãƒ‹ã‚¿ãƒ¼æƒ…å ±ã€‚</returns>
         public static Monitor FromRectangle(Rect rect)
         {
             var rc = new RECT

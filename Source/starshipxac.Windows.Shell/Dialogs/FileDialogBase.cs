@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using System.Linq;
@@ -17,7 +17,7 @@ using starshipxac.Windows.Shell.Properties;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒO‚ÌŠî’êƒNƒ‰ƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     [ContentProperty("Controls")]
     public abstract class FileDialogBase : IDisposable
@@ -30,7 +30,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         private string cancelButtonText;
 
         /// <summary>
-        /// <see cref="FileDialogBase"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="FileDialogBase"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         protected FileDialogBase()
         {
@@ -39,9 +39,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹‚ğw’è‚µ‚ÄA<see cref="FileDialogBase"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’æŒ‡å®šã—ã¦ã€<see cref="FileDialogBase"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="title">ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹B</param>
+        /// <param name="title">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã€‚</param>
         protected FileDialogBase(string title)
             : this()
         {
@@ -49,7 +49,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒiƒ‰ƒCƒU[B
+        /// ãƒ•ã‚¡ã‚¤ãƒŠãƒ©ã‚¤ã‚¶ãƒ¼ã€‚
         /// </summary>
         ~FileDialogBase()
         {
@@ -57,7 +57,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="FileDialogBase"/>‚É‚æ‚Á‚Äg—p‚³‚ê‚Ä‚¢‚é‚·‚×‚Ä‚ÌƒŠƒ\[ƒX‚ğ‰ğ•ú‚µ‚Ü‚·B
+        /// <see cref="FileDialogBase"/>ã«ã‚ˆã£ã¦ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹ã™ã¹ã¦ã®ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã—ã¾ã™ã€‚
         /// </summary>        
         public void Dispose()
         {
@@ -66,12 +66,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="FileDialogBase"/>‚É‚æ‚Á‚Äg—p‚³‚ê‚Ä‚¢‚é‚·‚×‚Ä‚ÌƒŠƒ\[ƒX‚ğ‰ğ•ú‚µA
-        /// ƒIƒvƒVƒ‡ƒ“‚Åƒ}ƒl[ƒWƒŠƒ\[ƒX‚à‰ğ•ú‚µ‚Ü‚·B
+        /// <see cref="FileDialogBase"/>ã«ã‚ˆã£ã¦ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹ã™ã¹ã¦ã®ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã—ã€
+        /// ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§ãƒãƒãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹ã‚‚è§£æ”¾ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="disposing">
-        /// ƒ}ƒl[ƒWƒŠƒ\[ƒX‚ÆƒAƒ“ƒ}ƒl[ƒWƒŠƒ\[ƒX‚Ì—¼•û‚ğ‰ğ•ú‚·‚éê‡‚Í<c>true</c>B
-        /// ƒAƒ“ƒ}ƒl[ƒWƒŠƒ\[ƒX‚¾‚¯‚ğ‰ğ•ú‚·‚éê‡‚Í<c>false</c>B
+        /// ãƒãƒãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹ã¨ã‚¢ãƒ³ãƒãƒãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹ã®ä¸¡æ–¹ã‚’è§£æ”¾ã™ã‚‹å ´åˆã¯<c>true</c>ã€‚
+        /// ã‚¢ãƒ³ãƒãƒãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹ã ã‘ã‚’è§£æ”¾ã™ã‚‹å ´åˆã¯<c>false</c>ã€‚
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
@@ -91,7 +91,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ì•\¦ó‘Ô‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®è¡¨ç¤ºçŠ¶æ…‹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         protected DialogShowStates DialogShowStates
         {
@@ -102,7 +102,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚ª•\¦’†‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒè¡¨ç¤ºä¸­ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public bool DialogShowing
         {
@@ -113,12 +113,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚ÌÀsŒ‹‰Ê‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®å®Ÿè¡Œçµæœã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         protected FileDialogResult DialogResult { get; private set; }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public string Title
         {
@@ -149,7 +149,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// OKƒ{ƒ^ƒ“‚ÌƒeƒLƒXƒg‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// OKãƒœã‚¿ãƒ³ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public string OkButtonText
         {
@@ -180,7 +180,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒLƒƒƒ“ƒZƒ‹ƒ{ƒ^ƒ“‚ÌƒeƒLƒXƒg‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã‚­ãƒ£ãƒ³ã‚»ãƒ«ãƒœã‚¿ãƒ³ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public string CancelButtonText
         {
@@ -213,24 +213,24 @@ namespace starshipxac.Windows.Shell.Dialogs
         public bool ShowPlacesList { get; set; }
 
         ///<summary>
-        /// ‰B‚µƒAƒCƒeƒ€‚ğ•\¦‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// éš ã—ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool ShowHiddenItems { get; set; }
 
         public bool NavigateToShortcut { get; set; }
 
         /// <summary>
-        /// ‰Šú•\¦ƒtƒHƒ‹ƒ_[‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// åˆæœŸè¡¨ç¤ºãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public ShellFolder InitialFolder { get; set; }
 
         /// <summary>
-        /// ‹K’èƒtƒHƒ‹ƒ_[‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// è¦å®šãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public ShellFolder DefaultFolder { get; set; }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒOƒRƒ“ƒgƒ[ƒ‹‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public FileDialogControlCollection Controls { get; private set; }
 
@@ -412,9 +412,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒ_ƒCƒAƒƒO‚ÌÀsŒ‹‰ÊB</returns>
+        /// <returns>ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®å®Ÿè¡Œçµæœã€‚</returns>
         protected FileDialogResult ShowDialog()
         {
             var parentWindowHandle = IntPtr.Zero;
@@ -427,10 +427,10 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// eƒEƒBƒ“ƒhƒE‚ğw’è‚µ‚ÄAƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+        /// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’æŒ‡å®šã—ã¦ã€ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="window">eƒEƒBƒ“ƒhƒEB</param>
-        /// <returns>ƒ_ƒCƒAƒƒO‚ÌÀsŒ‹‰ÊB</returns>
+        /// <param name="window">è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã€‚</param>
+        /// <returns>ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®å®Ÿè¡Œçµæœã€‚</returns>
         protected FileDialogResult ShowDialog(Window window)
         {
             Contract.Requires<ArgumentNullException>(window != null);
@@ -440,18 +440,18 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// eƒEƒBƒ“ƒhƒE‚Ìƒnƒ“ƒhƒ‹‚ğw’è‚µ‚ÄAƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+        /// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ãƒãƒ³ãƒ‰ãƒ«ã‚’æŒ‡å®šã—ã¦ã€ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="parentWindowHandle">eƒEƒBƒ“ƒhƒE‚Ìƒnƒ“ƒhƒ‹B</param>
-        /// <returns>ƒ_ƒCƒAƒƒO‚ÌÀsŒ‹‰ÊB</returns>
+        /// <param name="parentWindowHandle">è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ãƒãƒ³ãƒ‰ãƒ«ã€‚</param>
+        /// <returns>ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®å®Ÿè¡Œçµæœã€‚</returns>
         private FileDialogResult ShowDialog(IntPtr parentWindowHandle)
         {
-            // ƒ_ƒCƒAƒƒOì¬
+            // ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ä½œæˆ
             this.FileDialogInternal.SetOptions(GetDialogOptions());
             SetNativeSettings();
             SetNativeEvents();
 
-            // ƒ_ƒCƒAƒƒO•\¦
+            // ãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¡¨ç¤º
             var hresult = this.FileDialogInternal.ShowDialog(parentWindowHandle);
             if (hresult == COMErrorCodes.Cancelled)
             {
@@ -466,13 +466,13 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="IFileDialog2"/>‚ğì¬‚µ‚Ü‚·B
+        /// <see cref="IFileDialog2"/>ã‚’ä½œæˆã—ã¾ã™ã€‚
         /// </summary>
         /// <returns></returns>
         internal abstract IFileDialog2 CreateNativeFileDialog();
 
         /// <summary>
-        /// <see cref="FileDialogOptions"/>‚ğæ“¾‚µ‚Ü‚·B
+        /// <see cref="FileDialogOptions"/>ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         /// <returns></returns>
         protected virtual FileDialogOptions GetDialogOptions()
@@ -498,7 +498,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒlƒCƒeƒBƒuƒ_ƒCƒAƒƒO‚Éİ’è‚ğ“K—p‚µ‚Ü‚·B
+        /// ãƒã‚¤ãƒ†ã‚£ãƒ–ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã«è¨­å®šã‚’é©ç”¨ã—ã¾ã™ã€‚
         /// </summary>
         protected virtual void SetNativeSettings()
         {
@@ -529,7 +529,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒlƒCƒeƒBƒuƒ_ƒCƒAƒƒO‚ÉƒCƒxƒ“ƒg‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒã‚¤ãƒ†ã‚£ãƒ–ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã«ã‚¤ãƒ™ãƒ³ãƒˆã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private void SetNativeEvents()
         {

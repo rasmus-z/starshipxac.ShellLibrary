@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Windows;
@@ -8,7 +8,7 @@ using starshipxac.Windows.Properties;
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒO‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class TaskDialog : TaskDialogBase
     {
@@ -28,14 +28,14 @@ namespace starshipxac.Windows.Dialogs
         private TaskDialogCommonButtons commonButtons = TaskDialogCommonButtons.None;
 
         /// <summary>
-        /// <see cref="TaskDialog"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialog"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         public TaskDialog()
         {
             this.HyperlinksEnabled = false;
             this.Expanded = false;
             this.ExpansionMode = TaskDialogExpansionMode.Hide;
-            
+
             this.CustomButtons = new TaskDialogControlCollection<TaskDialogButton>(this);
             this.CommandLinks = new TaskDialogControlCollection<TaskDialogCommandLink>(this);
             this.RadioButtons = new TaskDialogControlCollection<TaskDialogRadioButton>(this);
@@ -74,7 +74,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public string Title
         {
@@ -95,7 +95,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// à–¾•¶‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// èª¬æ˜æ–‡ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public string MainInstructionText
         {
@@ -116,7 +116,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// –{•¶‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// æœ¬æ–‡ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public string ContentText
         {
@@ -137,7 +137,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ƒtƒbƒ^[ƒeƒLƒXƒg‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ•ãƒƒã‚¿ãƒ¼ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public string FooterText
         {
@@ -210,7 +210,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// Šm”Fƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚ªƒ`ƒFƒbƒN‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ç¢ºèªãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ãŒãƒã‚§ãƒƒã‚¯ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool? VerificationChecked
         {
@@ -226,7 +226,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// Šm”F•¶‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ç¢ºèªæ–‡ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public string VerificationText
         {
@@ -247,7 +247,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ƒAƒCƒRƒ“‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã‚¢ã‚¤ã‚³ãƒ³ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public TaskDialogIcon MainIcon
         {
@@ -268,7 +268,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ƒtƒbƒ^[ƒAƒCƒRƒ“‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ•ãƒƒã‚¿ãƒ¼ã‚¢ã‚¤ã‚³ãƒ³ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public TaskDialogIcon FooterIcon
         {
@@ -289,7 +289,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// •W€ƒ{ƒ^ƒ“‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// æ¨™æº–ãƒœã‚¿ãƒ³ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public TaskDialogCommonButtons CommonButtons
         {
@@ -308,7 +308,7 @@ namespace starshipxac.Windows.Dialogs
                 SetCommonButtons(this.commonButtons);
             }
         }
-        
+
         public bool HyperlinksEnabled { get; set; }
 
         public bool Expanded { get; set; }
@@ -316,22 +316,22 @@ namespace starshipxac.Windows.Dialogs
         public TaskDialogExpansionMode ExpansionMode { get; set; }
 
         /// <summary>
-        /// ƒJƒXƒ^ƒ€ƒ{ƒ^ƒ“‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚«ã‚¹ã‚¿ãƒ ãƒœã‚¿ãƒ³ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public TaskDialogControlCollection<TaskDialogButton> CustomButtons { get; private set; }
 
         /// <summary>
-        /// ƒRƒ}ƒ“ƒhƒŠƒ“ƒN‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚³ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚¯ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public TaskDialogControlCollection<TaskDialogCommandLink> CommandLinks { get; private set; }
 
         /// <summary>
-        /// ƒ‰ƒWƒIƒ{ƒ^ƒ“‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public TaskDialogControlCollection<TaskDialogRadioButton> RadioButtons { get; private set; }
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public TaskDialogProgressBar ProgressBar { get; set; }
 
@@ -340,7 +340,7 @@ namespace starshipxac.Windows.Dialogs
         #region Opened Event
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚ªŠJ‚­‚Æ”­¶‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒé–‹ãã¨ç™ºç”Ÿã—ã¾ã™ã€‚
         /// </summary>
         public event EventHandler Opened;
 
@@ -358,7 +358,7 @@ namespace starshipxac.Windows.Dialogs
         #region Closing Event
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚ª•Â‚¶‚é‘O‚É”­¶‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒé–‰ã˜ã‚‹å‰ã«ç™ºç”Ÿã—ã¾ã™ã€‚
         /// </summary>
         public event EventHandler<TaskDialogClosingEventArgs> Closing;
 
@@ -376,7 +376,7 @@ namespace starshipxac.Windows.Dialogs
         #region HperlinkClicked Event
 
         /// <summary>
-        /// ƒnƒCƒp[ƒŠƒ“ƒN‚ªƒNƒŠƒbƒN‚³‚ê‚é‚Æ”­¶‚µ‚Ü‚·B
+        /// ãƒã‚¤ãƒ‘ãƒ¼ãƒªãƒ³ã‚¯ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚Œã‚‹ã¨ç™ºç”Ÿã—ã¾ã™ã€‚
         /// </summary>
         public event EventHandler<TaskDialogHyperlinkClickedEventArgs> HyperlinkClicked;
 
@@ -394,7 +394,7 @@ namespace starshipxac.Windows.Dialogs
         #region VerificationChanged Event
 
         /// <summary>
-        /// Šm”Fƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚ª•ÏX‚³‚ê‚é‚Æ”­¶‚µ‚Ü‚·B
+        /// ç¢ºèªãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ãŒå¤‰æ›´ã•ã‚Œã‚‹ã¨ç™ºç”Ÿã—ã¾ã™ã€‚
         /// </summary>
         public event EventHandler<TaskDialogVerificationChangedEventArgs> VerificationChanged;
 
@@ -412,7 +412,7 @@ namespace starshipxac.Windows.Dialogs
         #region ExpandChanged Event
 
         /// <summary>
-        /// Šg’£—Ìˆæ‚Ì•\¦ó‘Ô‚ª•ÏX‚³‚ê‚é‚Æ”­¶‚µ‚Ü‚·B
+        /// æ‹¡å¼µé ˜åŸŸã®è¡¨ç¤ºçŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚Œã‚‹ã¨ç™ºç”Ÿã—ã¾ã™ã€‚
         /// </summary>
         public event EventHandler<TaskDialogExpandChangedEventArgs> ExpandChanged;
 
@@ -430,7 +430,7 @@ namespace starshipxac.Windows.Dialogs
         #region HelpInvoked Event
 
         /// <summary>
-        /// ƒwƒ‹ƒv‚ªÀs‚³‚ê‚é‚Æ”­¶‚µ‚Ü‚·B
+        /// ãƒ˜ãƒ«ãƒ—ãŒå®Ÿè¡Œã•ã‚Œã‚‹ã¨ç™ºç”Ÿã—ã¾ã™ã€‚
         /// </summary>
         public event EventHandler HelpInvoked;
 
@@ -448,7 +448,7 @@ namespace starshipxac.Windows.Dialogs
         #region Timer Evnt
 
         /// <summary>
-        /// ƒ^ƒCƒ}[ƒCƒxƒ“ƒg‚ğ”­¶‚µ‚Ü‚·B
+        /// ã‚¿ã‚¤ãƒãƒ¼ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºç”Ÿã—ã¾ã™ã€‚
         /// </summary>
         public event EventHandler<TaskDialogTimerEventArgs> Timer;
 
@@ -466,19 +466,19 @@ namespace starshipxac.Windows.Dialogs
         #endregion
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒ^ƒXƒNƒ_ƒCƒAƒƒOÀsŒ‹‰ÊB</returns>
+        /// <returns>ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å®Ÿè¡Œçµæœã€‚</returns>
         public TaskDialogResult Show()
         {
             return Show(null);
         }
 
         /// <summary>
-        /// eƒEƒBƒ“ƒhƒE‚ğw’è‚µ‚ÄAƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+        /// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’æŒ‡å®šã—ã¦ã€ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="parentWindow">eƒEƒBƒ“ƒhƒEB</param>
-        /// <returns>ƒ^ƒXƒNƒ_ƒCƒAƒƒOÀsŒ‹‰ÊB</returns>
+        /// <param name="parentWindow">è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã€‚</param>
+        /// <returns>ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å®Ÿè¡Œçµæœã€‚</returns>
         public TaskDialogResult Show(Window parentWindow)
         {
             if (this.CustomButtons.Any())
@@ -504,7 +504,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚ğ•Â‚¶‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’é–‰ã˜ã¾ã™ã€‚
         /// </summary>
         public void Close()
         {
@@ -512,7 +512,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// <see cref="TaskDialogSelectedButton"/>‚ğw’è‚µ‚ÄAƒ_ƒCƒAƒƒO‚ğ•Â‚¶‚Ü‚·B
+        /// <see cref="TaskDialogSelectedButton"/>ã‚’æŒ‡å®šã—ã¦ã€ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’é–‰ã˜ã¾ã™ã€‚
         /// </summary>
         /// <param name="commonButton"></param>
         public void Close(TaskDialogCommonButtons commonButton)

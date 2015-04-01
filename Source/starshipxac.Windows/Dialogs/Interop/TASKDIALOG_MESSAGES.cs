@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using starshipxac.Windows.Interop;
 
 namespace starshipxac.Windows.Dialogs.Interop
@@ -8,10 +8,10 @@ namespace starshipxac.Windows.Dialogs.Interop
         TDM_NAVIGATE_PAGE = WindowMessages.WM_USER + 101,
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“ƒNƒŠƒbƒN
+        /// ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯
         /// </summary>
         /// <remarks>
-        /// <c>wParam</c> = ƒ{ƒ^ƒ“ID
+        /// <c>wParam</c> = ãƒœã‚¿ãƒ³ID
         /// </remarks>
         TDM_CLICK_BUTTON = WindowMessages.WM_USER + 102,
 
@@ -24,15 +24,15 @@ namespace starshipxac.Windows.Dialogs.Interop
         TDM_SET_MARQUEE_PROGRESS_BAR = WindowMessages.WM_USER + 103,
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[ó‘Ô
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼çŠ¶æ…‹
         /// </summary>
         /// <remarks>
-        /// <c>wParam</c> = ƒvƒƒOƒŒƒXƒo[ó‘Ô
+        /// <c>wParam</c> = ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼çŠ¶æ…‹
         /// </remarks>
         TDM_SET_PROGRESS_BAR_STATE = WindowMessages.WM_USER + 104,
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[”ÍˆÍ
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ç¯„å›²
         /// </summary>
         /// <remarks>
         /// <c>lParam</c> = MAKELPARAM(nMinRange, nMaxRange)
@@ -40,121 +40,121 @@ namespace starshipxac.Windows.Dialogs.Interop
         TDM_SET_PROGRESS_BAR_RANGE = WindowMessages.WM_USER + 105,
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[ˆÊ’u
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ä½ç½®
         /// </summary>
         /// <remarks>
-        /// <c>wParam</c> = V‚µ‚¢ˆÊ’u
+        /// <c>wParam</c> = æ–°ã—ã„ä½ç½®
         /// </remarks>
         TDM_SET_PROGRESS_BAR_POS = WindowMessages.WM_USER + 106,
 
         /// <summary>
-        /// ƒ}[ƒL[İ’è
+        /// ãƒãƒ¼ã‚­ãƒ¼è¨­å®š
         /// </summary>
         /// <remarks>
         /// <para>
-        /// <c>wParam</c> = 0(’â~), != 0(ŠJn)
+        /// <c>wParam</c> = 0(åœæ­¢), != 0(é–‹å§‹)
         /// </para>
         /// <para>
-        /// <c>lParam</c> = ƒ~ƒŠs’PˆÊ‚ÌƒXƒs[ƒh
+        /// <c>lParam</c> = ãƒŸãƒªè¡Œå˜ä½ã®ã‚¹ãƒ”ãƒ¼ãƒ‰
         /// </para>
         /// </remarks>
         TDM_SET_PROGRESS_BAR_MARQUEE = WindowMessages.WM_USER + 107,
 
         /// <summary>
-        /// ƒGƒŒƒƒ“ƒgƒeƒLƒXƒg
+        /// ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆãƒ†ã‚­ã‚¹ãƒˆ
         /// </summary>
         /// <remarks>
         /// <para>
         /// <c>wParam</c> = TASKDIALOG_ELEMENTS
         /// </para>
         /// <para>
-        /// <c>lParam</c> = V‚µ‚¢ƒeƒLƒXƒg
+        /// <c>lParam</c> = æ–°ã—ã„ãƒ†ã‚­ã‚¹ãƒˆ
         /// </para>
         /// </remarks>
         TDM_SET_ELEMENT_TEXT = WindowMessages.WM_USER + 108,
 
         /// <summary>
-        /// ƒ‰ƒWƒIƒ{ƒ^ƒ“ƒNƒŠƒbƒN
+        /// ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯
         /// </summary>
         /// <remarks>
-        /// <c>wParam</c> = ƒ‰ƒWƒIƒ{ƒ^ƒ“ID
+        /// <c>wParam</c> = ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ID
         /// </remarks>
         TDM_CLICK_RADIO_BUTTON = WindowMessages.WM_USER + 110,
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“—LŒø/–³Œøİ’è
+        /// ãƒœã‚¿ãƒ³æœ‰åŠ¹/ç„¡åŠ¹è¨­å®š
         /// </summary>
         /// <remarks>
         /// <para>
-        /// <c>wParam</c> = ƒ{ƒ^ƒ“ID
+        /// <c>wParam</c> = ãƒœã‚¿ãƒ³ID
         /// </para>
         /// <para>
-        /// <c>lParam</c> = 0(–³Œø), != 0(—LŒø)
+        /// <c>lParam</c> = 0(ç„¡åŠ¹), != 0(æœ‰åŠ¹)
         /// </para>
         /// </remarks>
         TDM_ENABLE_BUTTON = WindowMessages.WM_USER + 111,
 
         /// <summary>
-        /// ƒ‰ƒWƒIƒ{ƒ^ƒ“—LŒø/–³Œøİ’è
+        /// ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³æœ‰åŠ¹/ç„¡åŠ¹è¨­å®š
         /// </summary>
         /// <remarks>
         /// <para>
-        /// <c>wParam</c> = ƒ‰ƒWƒIƒ{ƒ^ƒ“ID
+        /// <c>wParam</c> = ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ID
         /// </para>
         /// <para>
-        /// <c>lParam</c> = 0(–³Œø), != 0(—LŒø)
+        /// <c>lParam</c> = 0(ç„¡åŠ¹), != 0(æœ‰åŠ¹)
         /// </para>
         /// </remarks>
         TDM_ENABLE_RADIO_BUTTON = WindowMessages.WM_USER + 112,
 
         /// <summary>
-        /// Šm”Fƒ`ƒFƒbƒNƒ{ƒbƒNƒXƒNƒŠƒbƒN
+        /// ç¢ºèªãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã‚¯ãƒªãƒƒã‚¯
         /// </summary>
         /// <remarks>
         /// <para>
-        /// <c>wParam</c> = 0(ƒ`ƒFƒbƒN‚µ‚È‚¢), 1(ƒ`ƒFƒbƒN)
+        /// <c>wParam</c> = 0(ãƒã‚§ãƒƒã‚¯ã—ãªã„), 1(ãƒã‚§ãƒƒã‚¯)
         /// </para>
         /// <para>
-        /// <c>lParam</c> = 1(ƒtƒH[ƒJƒXİ’è)
+        /// <c>lParam</c> = 1(ãƒ•ã‚©ãƒ¼ã‚«ã‚¹è¨­å®š)
         /// </para>
         /// </remarks>
         TDM_CLICK_VERIFICATION = WindowMessages.WM_USER + 113,
 
         /// <summary>
-        /// ƒGƒŒƒƒ“ƒgƒeƒLƒXƒgXV
+        /// ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆãƒ†ã‚­ã‚¹ãƒˆæ›´æ–°
         /// </summary>
         /// <remarks>
         /// <para>
         /// <c>wParam</c> = TASKDIALOG_ELEMENTS
         /// </para>
         /// <para>
-        /// <c>lParam</c> = V‚µ‚¢ƒGƒŒƒƒ“ƒgƒeƒLƒXƒg
+        /// <c>lParam</c> = æ–°ã—ã„ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆãƒ†ã‚­ã‚¹ãƒˆ
         /// </para>
         /// </remarks>
         TDM_UPDATE_ELEMENT_TEXT = WindowMessages.WM_USER + 114,
 
         /// <summary>
-        /// ¸Šiƒ{ƒ^ƒ“—v‹ó‘Ôİ’è
+        /// æ˜‡æ ¼ãƒœã‚¿ãƒ³è¦æ±‚çŠ¶æ…‹è¨­å®š
         /// </summary>
         /// <remarks>
         /// <para>
-        /// <c>wParam</c> = ƒ{ƒ^ƒ“ID
+        /// <c>wParam</c> = ãƒœã‚¿ãƒ³ID
         /// </para>
         /// <para>
-        /// <c>lParam</c> = 0(—v‹‚µ‚È‚¢), 1(—v‹)
+        /// <c>lParam</c> = 0(è¦æ±‚ã—ãªã„), 1(è¦æ±‚)
         /// </para>
         /// </remarks>
         TDM_SET_BUTTON_ELEVATION_REQUIRED_STATE = WindowMessages.WM_USER + 115,
 
         /// <summary>
-        /// ƒAƒCƒRƒ“XV
+        /// ã‚¢ã‚¤ã‚³ãƒ³æ›´æ–°
         /// </summary>
         /// <remarks>
         /// <para>
         /// <c>wParam</c> = TASKDIALOG_ICON_ELEMENTS
         /// </para>
         /// <para>
-        /// <c>lParam</c> = V‚µ‚¢ƒAƒCƒRƒ“(hIcon if TDF_USE_HICON_* was set, PCWSTR otherwise)
+        /// <c>lParam</c> = æ–°ã—ã„ã‚¢ã‚¤ã‚³ãƒ³(hIcon if TDF_USE_HICON_* was set, PCWSTR otherwise)
         /// </para>
         /// </remarks>
         TDM_UPDATE_ICON = WindowMessages.WM_USER + 116

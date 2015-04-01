@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -7,7 +7,7 @@ namespace starshipxac.Shell.Interop.KnownFolder
 #pragma warning disable 0108
 
     /// <summary>
-    /// ‹K’èƒtƒHƒ‹ƒ_[ŠÇ—ƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// è¦å®šãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ç®¡ç†ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761744(v=vs.85).aspx

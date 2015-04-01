@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -9,7 +9,7 @@ using starshipxac.Windows.Shell.Properties;
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    /// •W€ƒAƒCƒRƒ“‚ğ•Û‚µ‚Ü‚·B
+    /// æ¨™æº–ã‚¢ã‚¤ã‚³ãƒ³ã‚’ä¿æŒã—ã¾ã™ã€‚
     /// </summary>
     public class StockIcon : IDisposable
     {
@@ -48,27 +48,27 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// •W€ƒAƒCƒRƒ“ID‚ğæ“¾‚µ‚Ü‚·B
+        /// æ¨™æº–ã‚¢ã‚¤ã‚³ãƒ³IDã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         internal SHSTOCKICONID Id { get; private set; }
 
         /// <summary>
-        /// ƒAƒCƒRƒ“ƒTƒCƒY‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¢ã‚¤ã‚³ãƒ³ã‚µã‚¤ã‚ºã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public StockIconSize Size { get; private set; }
 
         /// <summary>
-        /// ƒŠƒ“ƒNƒI[ƒo[ƒŒƒC‚ğæ“¾‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒªãƒ³ã‚¯ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤ã‚’å–å¾—ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public bool LinkOverlay { get; private set; }
 
         /// <summary>
-        /// ‘I‘ğó‘ÔƒAƒCƒRƒ“‚ğæ“¾‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚µ‚Ü‚·B
+        /// é¸æŠçŠ¶æ…‹ã‚¢ã‚¤ã‚³ãƒ³ã‚’å–å¾—ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public bool Selected { get; private set; }
 
         /// <summary>
-        /// ƒAƒCƒRƒ“‚Ì<see cref="BitmapSource"/>‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¢ã‚¤ã‚³ãƒ³ã®<see cref="BitmapSource"/>ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public BitmapSource BitmapSource
         {

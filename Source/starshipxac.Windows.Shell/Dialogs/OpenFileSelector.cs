@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,14 +8,14 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ƒtƒ@ƒCƒ‹‘I‘ðƒ_ƒCƒAƒƒO‚ð•\Ž¦‚µ‚Ü‚·B
+    /// ãƒ•ã‚¡ã‚¤ãƒ«é¸æŠžãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
     /// </summary>
     public sealed class OpenFileSelector : FileOpenDialogBase
     {
         private bool multiSelect = false;
 
         /// <summary>
-        /// <see cref="OpenFileSelector"/>ƒNƒ‰ƒX‚ð‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="OpenFileSelector"/>ã‚¯ãƒ©ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         static OpenFileSelector()
         {
@@ -23,34 +23,34 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="OpenFileSelector"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ð‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="OpenFileSelector"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         public OpenFileSelector()
         {
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹‚ðŽw’è‚µ‚ÄA
-        /// <see cref="OpenFileSelector"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ð‰Šú‰»‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="OpenFileSelector"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="title">ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹B</param>
+        /// <param name="title">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã€‚</param>
         public OpenFileSelector(string title)
             : base(title)
         {
         }
 
         /// <summary>
-        /// “Ç‚Ýž‚Ýê—pƒtƒ@ƒCƒ‹‚Ì‚Ý‘I‘ð‰Â”\‚É‚·‚é‚©‚Ç‚¤‚©‚ðŽ¦‚·’l‚ðŽæ“¾‚Ü‚½‚ÍÝ’è‚µ‚Ü‚·B
+        /// èª­ã¿è¾¼ã¿å°‚ç”¨ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿é¸æŠžå¯èƒ½ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool EnsureReadOnly { get; set; }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ƒVƒXƒeƒ€ˆÈŠO‚ÌƒAƒCƒeƒ€‚ð‘I‘ð‰Â”\‚É‚·‚é‚©‚Ç‚¤‚©‚ðŽ¦‚·’l‚ðŽæ“¾‚Ü‚½‚ÍÝ’è‚µ‚Ü‚·B
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã‚·ã‚¹ãƒ†ãƒ ä»¥å¤–ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’é¸æŠžå¯èƒ½ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool AllowNonFileSystemItem { get; set; }
 
         /// <summary>
-        /// ‹ó‚Ìƒtƒ@ƒCƒ‹ƒRƒŒƒNƒVƒ‡ƒ“‚ðŽæ“¾‚Ü‚½‚ÍÝ’è‚µ‚Ü‚·B
+        /// ç©ºã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private static IEnumerable<ShellFile> EmptyShellFiles { get; set; }
 
@@ -66,9 +66,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 1‚Â‚Ìƒtƒ@ƒCƒ‹‚ð‘I‘ð‚Å‚«‚éƒ_ƒCƒAƒƒO‚ð•\Ž¦‚µ‚Ü‚·B
+        /// 1ã¤ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é¸æŠžã§ãã‚‹ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>‘I‘ð‚µ‚½ƒtƒ@ƒCƒ‹î•ñBƒ†[ƒU[‚ªƒLƒƒƒ“ƒZƒ‹‚µ‚½ê‡‚Í<c>null</c>B</returns>
+        /// <returns>é¸æŠžã—ãŸãƒ•ã‚¡ã‚¤ãƒ«æƒ…å ±ã€‚ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ãŸå ´åˆã¯<c>null</c>ã€‚</returns>
         public async Task<ShellFile> SelectSingleFileAsync()
         {
             ShellFile result = null;
@@ -88,9 +88,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// •¡”‚Ìƒtƒ@ƒCƒ‹‚ð‘I‘ð‚Å‚«‚éƒ_ƒCƒAƒƒO‚ð•\Ž¦‚µ‚Ü‚·B
+        /// è¤‡æ•°ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é¸æŠžã§ãã‚‹ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>‘I‘ð‚µ‚½ƒtƒ@ƒCƒ‹î•ñ‚ÌƒRƒŒƒNƒVƒ‡ƒ“B</returns>
+        /// <returns>é¸æŠžã—ãŸãƒ•ã‚¡ã‚¤ãƒ«æƒ…å ±ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã€‚</returns>
         public async Task<IEnumerable<ShellFile>> SelectMultipleFilesAsync()
         {
             var result = EmptyShellFiles;

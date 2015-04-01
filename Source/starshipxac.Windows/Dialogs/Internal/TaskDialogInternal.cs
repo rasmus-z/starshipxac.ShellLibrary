@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
@@ -10,7 +10,7 @@ using starshipxac.Windows.Properties;
 namespace starshipxac.Windows.Dialogs.Internal
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒO‚Ìİ’è‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®è¨­å®šã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     internal sealed class TaskDialogInternal : IDisposable
     {
@@ -21,9 +21,9 @@ namespace starshipxac.Windows.Dialogs.Internal
         private const int Ignored = S_OK;
 
         /// <summary>
-        /// <see cref="TaskDialogInternal"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialogInternal"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="dialog"><see cref="TaskDialogBase"/>B</param>
+        /// <param name="dialog"><see cref="TaskDialogBase"/>ã€‚</param>
         public TaskDialogInternal(TaskDialogBase dialog)
         {
             Contract.Requires<ArgumentNullException>(dialog != null);
@@ -83,17 +83,17 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// <see cref="TaskDialogBase"/>‚ğæ“¾‚µ‚Ü‚·B
+        /// <see cref="TaskDialogBase"/>ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         private TaskDialogBase Dialog { get; set; }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ì•\¦ó‘Ô‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®è¡¨ç¤ºçŠ¶æ…‹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public DialogShowStates DialogShowStates { get; internal set; }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚ª•\¦’†‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒè¡¨ç¤ºä¸­ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public bool DialogShowing
         {
@@ -105,27 +105,27 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOƒtƒ‰ƒO‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒ•ãƒ©ã‚°ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private TASKDIALOG_FLAGS Flags { get; set; }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private string WindowTitle { get; set; }
 
         /// <summary>
-        /// à–¾•¶‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// èª¬æ˜æ–‡ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private string InstructionText { get; set; }
 
         /// <summary>
-        /// –{•¶‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// æœ¬æ–‡ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private string ContentText { get; set; }
 
         /// <summary>
-        /// ƒtƒbƒ^[ƒeƒLƒXƒg‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ•ãƒƒã‚¿ãƒ¼ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private string FooterText { get; set; }
 
@@ -140,46 +140,46 @@ namespace starshipxac.Windows.Dialogs.Internal
         private string VerificationText { get; set; }
 
         /// <summary>
-        /// ƒƒCƒ“ƒAƒCƒRƒ“‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ¡ã‚¤ãƒ³ã‚¢ã‚¤ã‚³ãƒ³ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private TaskDialogIcon MainIcon { get; set; }
 
         /// <summary>
-        /// ƒtƒbƒ^[ƒAƒCƒRƒ“‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ•ãƒƒã‚¿ãƒ¼ã‚¢ã‚¤ã‚³ãƒ³ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private TaskDialogIcon FooterIcon { get; set; }
 
         /// <summary>
-        /// •W€ƒ{ƒ^ƒ“ƒtƒ‰ƒO‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// æ¨™æº–ãƒœã‚¿ãƒ³ãƒ•ãƒ©ã‚°ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private TASKDIALOG_COMMON_BUTTON_FLAGS CommonButtons { get; set; }
 
         /// <summary>
-        /// ƒJƒXƒ^ƒ€ƒ{ƒ^ƒ“‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã‚«ã‚¹ã‚¿ãƒ ãƒœã‚¿ãƒ³ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private TaskDialogControlCollectionInternal<TaskDialogButton> CustomButtons { get; set; }
 
         /// <summary>
-        /// ƒRƒ}ƒ“ƒhƒŠƒ“ƒN‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã‚³ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚¯ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private TaskDialogControlCollectionInternal<TaskDialogCommandLink> CommandLinks { get; set; }
 
         /// <summary>
-        /// ƒ‰ƒWƒIƒ{ƒ^ƒ“‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private TaskDialogControlCollectionInternal<TaskDialogRadioButton> RadioButtons { get; set; }
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private TaskDialogProgressBar ProgressBar { get; set; }
 
         private TaskDialogCommands Commands { get; set; }
 
         /// <summary>
-        /// ƒ^ƒXƒNƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+        /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="parentWindowHandle">eƒEƒBƒ“ƒhƒE‚Ìƒnƒ“ƒhƒ‹B</param>
+        /// <param name="parentWindowHandle">è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ãƒãƒ³ãƒ‰ãƒ«ã€‚</param>
         public TaskDialogResult ShowDialog(IntPtr parentWindowHandle)
         {
             this.DialogShowStates = DialogShowStates.Showing;
@@ -201,9 +201,9 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// è“®‚Åƒ_ƒCƒAƒƒO‚ğ•Â‚¶‚Ü‚·B
+        /// æ‰‹å‹•ã§ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’é–‰ã˜ã¾ã™ã€‚
         /// </summary>
-        /// <param name="commonButtonId">‰Ÿ‚³‚ê‚½‚Æ‰¼’è‚·‚éƒ{ƒ^ƒ“‚ÌIDB</param>
+        /// <param name="commonButtonId">æŠ¼ã•ã‚ŒãŸã¨ä»®å®šã™ã‚‹ãƒœã‚¿ãƒ³ã®IDã€‚</param>
         public void CloseDialog(TaskDialogCommonButtons commonButtonId)
         {
             this.DialogShowStates = DialogShowStates.Closing;
@@ -213,9 +213,9 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// è“®‚Åƒ_ƒCƒAƒƒO‚ğ•Â‚¶‚Ü‚·B
+        /// æ‰‹å‹•ã§ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’é–‰ã˜ã¾ã™ã€‚
         /// </summary>
-        /// <param name="buttonId">‰Ÿ‚³‚ê‚½‚Æ‰¼’è‚·‚éƒ{ƒ^ƒ“‚ÌIDB</param>
+        /// <param name="buttonId">æŠ¼ã•ã‚ŒãŸã¨ä»®å®šã™ã‚‹ãƒœã‚¿ãƒ³ã®IDã€‚</param>
         public void CloseDialog(int buttonId)
         {
             this.DialogShowStates = DialogShowStates.Closing;
@@ -227,10 +227,10 @@ namespace starshipxac.Windows.Dialogs.Internal
         #region Create Native Config
 
         /// <summary>
-        /// <see cref="TASKDIALOGCONFIG"/>‚ğì¬‚µ‚Ü‚·B
+        /// <see cref="TASKDIALOGCONFIG"/>ã‚’ä½œæˆã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="parentWindowHandle">eƒEƒBƒ“ƒhƒE‚Ìƒnƒ“ƒhƒ‹B</param>
-        /// <returns>ì¬‚µ‚½<see cref="TASKDIALOGCONFIG"/>B</returns>
+        /// <param name="parentWindowHandle">è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ãƒãƒ³ãƒ‰ãƒ«ã€‚</param>
+        /// <returns>ä½œæˆã—ãŸ<see cref="TASKDIALOGCONFIG"/>ã€‚</returns>
         private TASKDIALOGCONFIG CreateConfig(IntPtr parentWindowHandle)
         {
             var result = TASKDIALOGCONFIG.Create();
@@ -295,12 +295,12 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒfƒtƒHƒ‹ƒgƒRƒ“ƒgƒ[ƒ‹‚Ì ID‚ğŒŸõ‚µ‚Ü‚·B
+        /// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã® IDã‚’æ¤œç´¢ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="controls">ƒRƒ“ƒgƒ[ƒ‹‚ÌƒRƒŒƒNƒVƒ‡ƒ“B</param>
+        /// <param name="controls">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã€‚</param>
         /// <returns>
-        /// ƒfƒtƒHƒ‹ƒgƒRƒ“ƒgƒ[ƒ‹‚Ì IDB
-        /// ƒfƒtƒHƒ‹ƒgƒRƒ“ƒgƒ[ƒ‹‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍA<see cref="TaskDialogNativeMethods.NoDefaultButtonSpecified"/>B
+        /// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã® IDã€‚
+        /// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€<see cref="TaskDialogNativeMethods.NoDefaultButtonSpecified"/>ã€‚
         /// </returns>
         private static int FindDefaultButtonId(IEnumerable<TaskDialogButtonBase> controls)
         {
@@ -322,17 +322,17 @@ namespace starshipxac.Windows.Dialogs.Internal
         #endregion
 
         /// <summary>
-        /// w’è‚µ‚½ƒtƒ‰ƒO‚ªİ’è‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸãƒ•ãƒ©ã‚°ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="checkFlag">”»’è‚·‚éƒtƒ‰ƒOB</param>
-        /// <returns>ƒtƒ‰ƒO‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚Í<c>true</c>B‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Í<c>false</c>B</returns>
+        /// <param name="checkFlag">åˆ¤å®šã™ã‚‹ãƒ•ãƒ©ã‚°ã€‚</param>
+        /// <returns>ãƒ•ãƒ©ã‚°ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯<c>true</c>ã€‚ã•ã‚Œã¦ã„ãªã„å ´åˆã¯<c>false</c>ã€‚</returns>
         internal bool GetFlag(TASKDIALOG_FLAGS checkFlag)
         {
             return (this.Flags & checkFlag) == checkFlag;
         }
 
         /// <summary>
-        /// ƒtƒ‰ƒO‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒ•ãƒ©ã‚°ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="options"></param>
         internal void SetFlags(TaskDialogOptions options)
@@ -341,18 +341,18 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="title">ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹B</param>
+        /// <param name="title">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã€‚</param>
         public void SetTitle(string title)
         {
             this.WindowTitle = title ?? String.Empty;
         }
 
         /// <summary>
-        /// à–¾•¶‚ğİ’è‚µ‚Ü‚·B
+        /// èª¬æ˜æ–‡ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="instructionText">à–¾•¶B</param>
+        /// <param name="instructionText">èª¬æ˜æ–‡ã€‚</param>
         public void SetMainInstructionText(string instructionText)
         {
             this.InstructionText = instructionText ?? String.Empty;
@@ -363,9 +363,9 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// –{•¶‚ğİ’è‚µ‚Ü‚·B
+        /// æœ¬æ–‡ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="contentText">–{•¶B</param>
+        /// <param name="contentText">æœ¬æ–‡ã€‚</param>
         public void SetContentText(string contentText)
         {
             this.ContentText = contentText ?? String.Empty;
@@ -376,9 +376,9 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒtƒbƒ^[ƒeƒLƒXƒg‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒ•ãƒƒã‚¿ãƒ¼ãƒ†ã‚­ã‚¹ãƒˆã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="footerText">ƒtƒbƒ^[ƒeƒLƒXƒgB</param>
+        /// <param name="footerText">ãƒ•ãƒƒã‚¿ãƒ¼ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
         public void SetFooterText(string footerText)
         {
             this.FooterText = footerText ?? String.Empty;
@@ -422,9 +422,9 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒƒCƒ“ƒAƒCƒRƒ“‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒ¡ã‚¤ãƒ³ã‚¢ã‚¤ã‚³ãƒ³ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="mainIcon">ƒƒCƒ“ƒAƒCƒRƒ“B</param>
+        /// <param name="mainIcon">ãƒ¡ã‚¤ãƒ³ã‚¢ã‚¤ã‚³ãƒ³ã€‚</param>
         public void SetMainIcon(TaskDialogIcon mainIcon)
         {
             this.MainIcon = mainIcon;
@@ -435,9 +435,9 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒtƒbƒ^[ƒAƒCƒRƒ“‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒ•ãƒƒã‚¿ãƒ¼ã‚¢ã‚¤ã‚³ãƒ³ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="footerIcon">ƒtƒbƒ^[ƒAƒCƒRƒ“B</param>
+        /// <param name="footerIcon">ãƒ•ãƒƒã‚¿ãƒ¼ã‚¢ã‚¤ã‚³ãƒ³ã€‚</param>
         public void SetFooterIcon(TaskDialogIcon footerIcon)
         {
             this.FooterIcon = footerIcon;
@@ -448,18 +448,18 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// •W€ƒ{ƒ^ƒ“‚ğİ’è‚µ‚Ü‚·B
+        /// æ¨™æº–ãƒœã‚¿ãƒ³ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="commonButtons">•W€ƒ{ƒ^ƒ“ƒtƒ‰ƒOB</param>
+        /// <param name="commonButtons">æ¨™æº–ãƒœã‚¿ãƒ³ãƒ•ãƒ©ã‚°ã€‚</param>
         public void SetCommonButtons(TaskDialogCommonButtons commonButtons)
         {
             this.CommonButtons = (TASKDIALOG_COMMON_BUTTON_FLAGS)commonButtons;
         }
 
         /// <summary>
-        /// ƒJƒXƒ^ƒ€ƒ{ƒ^ƒ“‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğİ’è‚µ‚Ü‚·B
+        /// ã‚«ã‚¹ã‚¿ãƒ ãƒœã‚¿ãƒ³ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="customButtons">ƒJƒXƒ^ƒ€ƒ{ƒ^ƒ“‚ÌƒRƒŒƒNƒVƒ‡ƒ“B</param>
+        /// <param name="customButtons">ã‚«ã‚¹ã‚¿ãƒ ãƒœã‚¿ãƒ³ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã€‚</param>
         public void SetCustomButtons(TaskDialogControlCollection<TaskDialogButton> customButtons)
         {
             if (this.CustomButtons != null)
@@ -475,9 +475,9 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒRƒ}ƒ“ƒhƒŠƒ“ƒN‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğİ’è‚µ‚Ü‚·B
+        /// ã‚³ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚¯ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="commandLinks">ƒRƒ}ƒ“ƒhƒŠƒ“ƒN‚ÌƒRƒŒƒNƒVƒ‡ƒ“B</param>
+        /// <param name="commandLinks">ã‚³ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚¯ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã€‚</param>
         public void SetCommandLinks(TaskDialogControlCollection<TaskDialogCommandLink> commandLinks)
         {
             if (this.CommandLinks != null)
@@ -493,9 +493,9 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒ‰ƒWƒIƒ{ƒ^ƒ“‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="radioButtons">ƒ‰ƒWƒIƒ{ƒ^ƒ“‚ÌƒRƒŒƒNƒVƒ‡ƒ“B</param>
+        /// <param name="radioButtons">ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã€‚</param>
         public void SetRadioButtons(TaskDialogControlCollection<TaskDialogRadioButton> radioButtons)
         {
             if (this.RadioButtons != null)
@@ -511,9 +511,9 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="progressBar">ƒvƒƒOƒŒƒXƒo[B</param>
+        /// <param name="progressBar">ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã€‚</param>
         public void SetProgressBar(TaskDialogProgressBar progressBar)
         {
             if (this.ProgressBar != null)
@@ -530,31 +530,31 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[‚Ìó‘Ô‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®çŠ¶æ…‹ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="control">ƒvƒƒOƒŒƒXƒo[B</param>
-        /// <param name="state">ƒvƒƒOƒŒƒXƒo[ó‘ÔB</param>
+        /// <param name="control">ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã€‚</param>
+        /// <param name="state">ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼çŠ¶æ…‹ã€‚</param>
         public void SetProgressBarState(TaskDialogProgressBar control, TaskDialogProgressBarState state)
         {
             this.Commands.SetProgressBarStateCommand(state);
         }
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[‚ÌˆÊ’u‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®ä½ç½®ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="control">ƒvƒƒOƒŒƒXƒo[B</param>
-        /// <param name="position">ƒvƒƒOƒŒƒXƒo[‚ÌˆÊ’uB</param>
+        /// <param name="control">ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã€‚</param>
+        /// <param name="position">ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®ä½ç½®ã€‚</param>
         public void SetProgressBarPosition(TaskDialogProgressBar control, int position)
         {
             this.Commands.SetProgressBarPosCommand(position);
         }
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[‚Ì”ÍˆÍ‚ğİ’è‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®ç¯„å›²ã‚’è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="control">ƒvƒƒOƒŒƒXƒo[B</param>
-        /// <param name="minimum">ƒvƒƒOƒŒƒXƒo[‚ÌÅ¬’lB</param>
-        /// <param name="maxmum">ƒvƒƒOƒŒƒXƒo[‚ÌÅ‘å’lB</param>
+        /// <param name="control">ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã€‚</param>
+        /// <param name="minimum">ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®æœ€å°å€¤ã€‚</param>
+        /// <param name="maxmum">ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®æœ€å¤§å€¤ã€‚</param>
         public void SetProgressBarRange(TaskDialogProgressBar control, int minimum, int maxmum)
         {
             this.Commands.SetProgressBarRangeCommand(minimum, maxmum);
@@ -643,7 +643,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒ^ƒXƒNƒ_ƒCƒAƒƒO•\¦‘Oì¬ƒCƒxƒ“ƒg‚ğˆ—‚µ‚Ü‚·B
+        /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¡¨ç¤ºå‰ä½œæˆã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã—ã¾ã™ã€‚
         /// </summary>
         /// <returns></returns>
         private int TaskDialogConstructedEvent()
@@ -652,14 +652,14 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOì¬ƒCƒxƒ“ƒg‚ğˆ—‚µ‚Ü‚·B
+        /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ä½œæˆã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã—ã¾ã™ã€‚
         /// </summary>
         /// <returns></returns>
         private int TaskDialogCreatedEvent()
         {
             if (this.ProgressBar != null)
             {
-                // ƒvƒƒOƒŒƒXƒo[İ’è
+                // ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼è¨­å®š
                 if (GetFlag(TASKDIALOG_FLAGS.TDF_SHOW_PROGRESS_BAR))
                 {
                     this.Commands.SetProgressBarRangeCommand(this.ProgressBar.Minimum, this.ProgressBar.Maximum);
@@ -675,7 +675,7 @@ namespace starshipxac.Windows.Dialogs.Internal
 
             if (this.CustomButtons != null)
             {
-                // ƒJƒXƒ^ƒ€ƒ{ƒ^ƒ“İ’è
+                // ã‚«ã‚¹ã‚¿ãƒ ãƒœã‚¿ãƒ³è¨­å®š
                 foreach (var button in this.CustomButtons.Where(x => x.UseElevationIcon))
                 {
                     this.Commands.SetButtonElevationRequiredStateCommand(button, true);
@@ -683,14 +683,14 @@ namespace starshipxac.Windows.Dialogs.Internal
             }
             else if (this.CommandLinks != null)
             {
-                // ƒRƒ}ƒ“ƒhƒŠƒ“ƒNİ’èB
+                // ã‚³ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚¯è¨­å®šã€‚
                 foreach (var commandLink in this.CommandLinks.Where(x => x.UseElevationIcon))
                 {
                     this.Commands.SetButtonElevationRequiredStateCommand(commandLink, true);
                 }
             }
 
-            // ƒAƒCƒRƒ“İ’è
+            // ã‚¢ã‚¤ã‚³ãƒ³è¨­å®š
             if (this.MainIcon != TaskDialogIcon.None)
             {
                 this.Commands.SetMainIcon(this.MainIcon);
@@ -712,25 +712,25 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOƒ{ƒ^ƒ“ƒNƒŠƒbƒNƒCƒxƒ“ƒg‚ğˆ—‚µ‚Ü‚·B
+        /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="buttonId">ƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚ÌIDB</param>
+        /// <param name="buttonId">ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸãƒœã‚¿ãƒ³ã®IDã€‚</param>
         /// <returns></returns>
         private int TaskDialogButtonClickedEvent(int buttonId)
         {
             if (this.DialogShowStates == DialogShowStates.Showing)
             {
-                // ƒ_ƒCƒAƒƒO•\¦’†‚Ìƒ{ƒ^ƒ“ƒNƒŠƒbƒN
+                // ãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¡¨ç¤ºä¸­ã®ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯
                 this.Dialog.RaiseButtonClickedEvent(buttonId);
 
                 if (buttonId < (int)TaskDialogCommonButtonId.MinCustomControlId)
                 {
-                    // •W€ƒ{ƒ^ƒ“
+                    // æ¨™æº–ãƒœã‚¿ãƒ³
                     return this.Dialog.RaiseClosingEvent(buttonId) ? S_OK : S_FALSE;
                 }
                 else if (this.CustomButtons != null && this.CustomButtons.Any())
                 {
-                    // ƒJƒXƒ^ƒ€ƒ{ƒ^ƒ“
+                    // ã‚«ã‚¹ã‚¿ãƒ ãƒœã‚¿ãƒ³
                     var button = this.CustomButtons.FirstOrDefault(x => x.Id == buttonId);
                     if (button != null && button.DialogClosable)
                     {
@@ -739,7 +739,7 @@ namespace starshipxac.Windows.Dialogs.Internal
                 }
                 else if (this.CommandLinks != null && this.CommandLinks.Any())
                 {
-                    // ƒRƒ}ƒ“ƒhƒŠƒ“ƒN
+                    // ã‚³ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚¯
                     var control = this.CommandLinks.FirstOrDefault(x => x.Id == buttonId);
                     if (control != null)
                     {
@@ -749,7 +749,7 @@ namespace starshipxac.Windows.Dialogs.Internal
             }
             else if (this.DialogShowStates == DialogShowStates.Closing)
             {
-                // è“®‚Å•Â‚¶‚é‚½‚ß‚Ìƒ{ƒ^ƒ“ƒNƒŠƒbƒN: ƒ_ƒCƒAƒƒO‚ğ•Â‚¶‚éB
+                // æ‰‹å‹•ã§é–‰ã˜ã‚‹ãŸã‚ã®ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯: ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’é–‰ã˜ã‚‹ã€‚
                 return S_OK;
             }
             return S_FALSE;

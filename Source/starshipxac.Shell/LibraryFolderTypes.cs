@@ -1,15 +1,15 @@
-using System;
+ï»¿using System;
 using starshipxac.Shell.Interop;
 
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// ƒ‰ƒCƒuƒ‰ƒŠƒtƒHƒ‹ƒ_[í•Ê‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ç¨®åˆ¥ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public static class LibraryFolderTypes
     {
         /// <summary>
-        /// ‘S”Ê
+        /// å…¨èˆ¬
         /// </summary>
         public static Guid Generic
         {
@@ -20,7 +20,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// ƒhƒLƒ…ƒƒ“ƒgƒtƒHƒ‹ƒ_[
+        /// ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ•ã‚©ãƒ«ãƒ€ãƒ¼
         /// </summary>
         public static Guid Documents
         {
@@ -31,7 +31,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// ƒ~ƒ…[ƒWƒbƒNƒtƒHƒ‹ƒ_[
+        /// ãƒŸãƒ¥ãƒ¼ã‚¸ãƒƒã‚¯ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼
         /// </summary>
         public static Guid Music
         {
@@ -42,7 +42,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// ƒsƒNƒ`ƒƒ[ƒtƒHƒ‹ƒ_[
+        /// ãƒ”ã‚¯ãƒãƒ£ãƒ¼ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼
         /// </summary>
         public static Guid Pictures
         {
@@ -53,7 +53,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// ƒrƒfƒIƒtƒHƒ‹ƒ_[
+        /// ãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ«ãƒ€ãƒ¼
         /// </summary>
         public static Guid Videos
         {

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
@@ -9,14 +9,14 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ƒtƒHƒ‹ƒ_[‚ğ‘I‘ğ‚·‚éƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+    /// ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚’é¸æŠã™ã‚‹ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
     /// </summary>
     public sealed class FolderSelector : FolderSelectDialogBase
     {
         private bool multiSelect = false;
 
         /// <summary>
-        /// <see cref="FolderSelector"/>ƒNƒ‰ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="FolderSelector"/>ã‚¯ãƒ©ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         static FolderSelector()
         {
@@ -24,31 +24,31 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="FolderSelector"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="FolderSelector"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         public FolderSelector()
         {
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹‚ğw’è‚µ‚ÄA
-        /// <see cref="FolderSelector"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="FolderSelector"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="title">ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹B</param>
+        /// <param name="title">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã€‚</param>
         public FolderSelector(string title)
             : base(title)
         {
         }
 
         /// <summary>
-        /// ‹ó‚ÌƒtƒHƒ‹ƒ_ƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ç©ºã®ãƒ•ã‚©ãƒ«ãƒ€ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         private static IEnumerable<ShellFolder> EmptyShellFolders { get; set; }
 
         /// <summary>
-        /// 1‚Â‚ÌƒtƒHƒ‹ƒ_‚ğ‘I‘ğ‚·‚éƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+        /// 1ã¤ã®ãƒ•ã‚©ãƒ«ãƒ€ã‚’é¸æŠã™ã‚‹ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>‘I‘ğ‚µ‚½ƒtƒHƒ‹ƒ_Bƒ†[ƒU[‚ªƒLƒƒƒ“ƒZƒ‹‚µ‚½ê‡‚Í<c>null</c>B</returns>
+        /// <returns>é¸æŠã—ãŸãƒ•ã‚©ãƒ«ãƒ€ã€‚ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ãŸå ´åˆã¯<c>null</c>ã€‚</returns>
         public async Task<ShellFolder> SelectSingleFolderAsync()
         {
             ShellFolder result = null;
@@ -68,9 +68,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// •¡”‚ÌƒtƒHƒ‹ƒ_‚ğ‘I‘ğ‚·‚éƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+        /// è¤‡æ•°ã®ãƒ•ã‚©ãƒ«ãƒ€ã‚’é¸æŠã™ã‚‹ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>‘I‘ğ‚µ‚½ƒtƒHƒ‹ƒ_‚ÌƒRƒŒƒNƒVƒ‡ƒ“B</returns>
+        /// <returns>é¸æŠã—ãŸãƒ•ã‚©ãƒ«ãƒ€ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã€‚</returns>
         public async Task<IEnumerable<ShellFolder>> SelectMultipleFoldersAsync()
         {
             Contract.Ensures(Contract.Result<IEnumerable<ShellFolder>>() != null);

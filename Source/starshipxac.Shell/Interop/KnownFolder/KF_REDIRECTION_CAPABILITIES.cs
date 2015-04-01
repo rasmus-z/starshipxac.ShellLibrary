@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Shell.Interop.KnownFolder
 {
     /// <summary>
-    /// •W€ƒtƒHƒ‹ƒ_[ƒŠƒ_ƒCƒŒƒNƒgƒtƒ‰ƒO‚ğ’è‹`‚µ‚Ü‚·B
+    /// æ¨™æº–ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆãƒ•ãƒ©ã‚°ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762514(v=vs.85).aspx

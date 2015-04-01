@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 using starshipxac.Windows.Interop;
 
 namespace starshipxac.Windows.Devices.Interop
 {
     /// <summary>
-    /// ƒ‚ƒjƒ^[î•ñ‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ¢ãƒ‹ã‚¿ãƒ¼æƒ…å ±ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/dd145066(v=vs.85).aspx
@@ -23,27 +23,27 @@ namespace starshipxac.Windows.Devices.Interop
         }
 
         /// <summary>
-        /// <see cref="MONITORINFOEX"/>\‘¢‘Ì‚ÌƒTƒCƒYB
+        /// <see cref="MONITORINFOEX"/>æ§‹é€ ä½“ã®ã‚µã‚¤ã‚ºã€‚
         /// </summary>
         public int cbSize;
 
         /// <summary>
-        /// ƒ‚ƒjƒ^[‚ÌƒTƒCƒYB
+        /// ãƒ¢ãƒ‹ã‚¿ãƒ¼ã®ã‚µã‚¤ã‚ºã€‚
         /// </summary>
         public RECT rcMonitor;
 
         /// <summary>
-        /// ƒ[ƒNƒGƒŠƒA‚ÌƒTƒCƒYB
+        /// ãƒ¯ãƒ¼ã‚¯ã‚¨ãƒªã‚¢ã®ã‚µã‚¤ã‚ºã€‚
         /// </summary>
         public RECT rcWork;
 
         /// <summary>
-        /// ƒ‚ƒjƒ^[‚Ì‘®«B
+        /// ãƒ¢ãƒ‹ã‚¿ãƒ¼ã®å±æ€§ã€‚
         /// </summary>
         public uint dwFlags;
 
         /// <summary>
-        /// ƒfƒoƒCƒX–¼B
+        /// ãƒ‡ãƒã‚¤ã‚¹åã€‚
         /// </summary>
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MultiMonitorNativeMethods.CCHDEVICENAME)]
         public string szDevice;

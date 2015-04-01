@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.Components.Interop;
 using starshipxac.Shell.Interop;
@@ -6,15 +6,15 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.Components.Internal
 {
     /// <summary>
-    /// ƒVƒFƒ‹•ÏX’Ê’mî•ñ‚ğ•Û‚µ‚Ü‚·B
+    /// ã‚·ã‚§ãƒ«å¤‰æ›´é€šçŸ¥æƒ…å ±ã‚’ä¿æŒã—ã¾ã™ã€‚
     /// </summary>
     internal class ShellChangeNotify
     {
         /// <summary>
-        /// <see cref="ShellChangeNotify"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="ShellChangeNotify"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="wParam"><c>WPARAM</c>B</param>
-        /// <param name="lParam"><c>LPARAM</c>B</param>
+        /// <param name="wParam"><c>WPARAM</c>ã€‚</param>
+        /// <param name="lParam"><c>LPARAM</c>ã€‚</param>
         internal ShellChangeNotify(IntPtr wParam, IntPtr lParam)
         {
             var hwnd = wParam;
@@ -64,12 +64,12 @@ namespace starshipxac.Shell.Components.Internal
         }
 
         /// <summary>
-        /// ƒVƒFƒ‹•ÏX’Ê’mí•Ê‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚·ã‚§ãƒ«å¤‰æ›´é€šçŸ¥ç¨®åˆ¥ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public ShellChangeTypes ChangeType { get; private set; }
 
         /// <summary>
-        /// ”­¶‚µ‚½ƒCƒxƒ“ƒg‚ªƒVƒXƒeƒ€ƒCƒxƒ“ƒg‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚µ‚Ü‚·B
+        /// ç™ºç”Ÿã—ãŸã‚¤ãƒ™ãƒ³ãƒˆãŒã‚·ã‚¹ãƒ†ãƒ ã‚¤ãƒ™ãƒ³ãƒˆã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public bool FromSystemInterrupt
         {
@@ -80,25 +80,25 @@ namespace starshipxac.Shell.Components.Internal
         }
 
         /// <summary>
-        /// <see cref="ShellObject"/>‚ğæ“¾‚µ‚Ü‚·B
+        /// <see cref="ShellObject"/>ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public ShellObject ShellObject { get; private set; }
 
         /// <summary>
-        /// 2‚Â‚ß‚Ì<see cref="ShellObject"/>‚ğæ“¾‚µ‚Ü‚·B
+        /// 2ã¤ã‚ã®<see cref="ShellObject"/>ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public ShellObject ShellObject2 { get; private set; }
 
         /// <summary>
-        /// ƒCƒ[ƒW‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public int ImageIndex { get; private set; }
 
         /// <summary>
-        /// <see cref="ShellObject"/>‚ğì¬‚µ‚Ü‚·B
+        /// <see cref="ShellObject"/>ã‚’ä½œæˆã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="pidl"><c>PIDL</c>B</param>
-        /// <param name="riid"><c>GUID</c>B</param>
+        /// <param name="pidl"><c>PIDL</c>ã€‚</param>
+        /// <param name="riid"><c>GUID</c>ã€‚</param>
         /// <returns></returns>
         private static ShellObject CreateShellObject(IntPtr pidl, ref Guid riid)
         {

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using System.Threading;
 
@@ -17,8 +17,8 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name">ƒRƒ“ƒgƒ[ƒ‹–¼B</param>
-        /// <param name="text">ƒRƒ“ƒgƒ[ƒ‹ƒeƒLƒXƒgB</param>
+        /// <param name="name">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã€‚</param>
+        /// <param name="text">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒ†ã‚­ã‚¹ãƒˆã€‚</param>
         public FileDialogMenuItem(string name, string text)
             : base(name)
         {

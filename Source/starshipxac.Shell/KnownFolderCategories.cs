@@ -1,35 +1,35 @@
-using System;
+ï»¿using System;
 using starshipxac.Shell.Interop.KnownFolder;
 
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// •W€ƒtƒHƒ‹ƒ_[ƒJƒeƒSƒŠ[‚ð’è‹`‚µ‚Ü‚·B
+    /// æ¨™æº–ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public enum KnownFolderCategories
     {
         /// <summary>
-        /// –¢’è‹`‚ÌƒtƒHƒ‹ƒ_[ƒJƒeƒSƒŠ[B
+        /// æœªå®šç¾©ã®ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚«ãƒ†ã‚´ãƒªãƒ¼ã€‚
         /// </summary>
         None = 0,
 
         /// <summary>
-        /// ‰¼‘zƒtƒHƒ‹ƒ_[B
+        /// ä»®æƒ³ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚
         /// </summary>
         Virtual = KF_CATEGORY.KF_CATEGORY_VIRTUAL,
 
         /// <summary>
-        /// ŒÅ’èƒtƒHƒ‹ƒ_[B
+        /// å›ºå®šãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚
         /// </summary>
         Fixed = KF_CATEGORY.KF_CATEGORY_FIXED,
 
         /// <summary>
-        /// ‹¤’ÊƒtƒHƒ‹ƒ_[B
+        /// å…±é€šãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚
         /// </summary>
         Common = KF_CATEGORY.KF_CATEGORY_COMMON,
 
         /// <summary>
-        /// ƒ†[ƒU[‚²‚Æ‚ÌƒtƒHƒ‹ƒ_[B
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼ã”ã¨ã®ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚
         /// </summary>
         PerUser = KF_CATEGORY.KF_CATEGORY_PERUSER
     }

@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Shell.Media.Imaging.Interop
 {
     /// <summary>
-    /// •W€ƒAƒCƒRƒ“‚ÌID‚ð’è‹`‚µ‚Ü‚·B
+    /// æ¨™æº–ã‚¢ã‚¤ã‚³ãƒ³ã®IDã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762542(v=vs.85).aspx
@@ -12,107 +12,107 @@ namespace starshipxac.Windows.Shell.Media.Imaging.Interop
     internal enum SHSTOCKICONID
     {
         /// <summary>
-        /// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÉŠÖ˜A‚Ã‚¯‚ç‚ê‚Ä‚¢‚È‚¢ƒtƒ@ƒCƒ‹B
+        /// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã«é–¢é€£ã¥ã‘ã‚‰ã‚Œã¦ã„ãªã„ãƒ•ã‚¡ã‚¤ãƒ«ã€‚
         /// </summary>
         SIID_DOCNOASSOC = 0,
 
         /// <summary>
-        /// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÉŠÖ˜A‚Ã‚¯‚ç‚ê‚Ä‚¢‚éƒtƒ@ƒCƒ‹B
+        /// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã«é–¢é€£ã¥ã‘ã‚‰ã‚Œã¦ã„ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã€‚
         /// </summary>
         SIID_DOCASSOC = 1,
 
         /// <summary>
-        /// ˆê”Ê“I‚ÈƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌƒAƒCƒRƒ“B
+        /// ä¸€èˆ¬çš„ãªã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         SIID_APPLICATION = 2,
 
         /// <summary>
-        /// •Â‚¶‚Ä‚¢‚éƒtƒHƒ‹ƒ_[B
+        /// é–‰ã˜ã¦ã„ã‚‹ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚
         /// </summary>
         SIID_FOLDER = 3,
 
         /// <summary>
-        /// ŠJ‚¢‚Ä‚¢‚éƒtƒHƒ‹ƒ_[B
+        /// é–‹ã„ã¦ã„ã‚‹ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚
         /// </summary>
         SIID_FOLDEROPEN = 4,
 
         /// <summary>
-        /// 5.25ƒCƒ“ƒ`ƒtƒƒbƒs[ƒfƒBƒXƒNƒhƒ‰ƒCƒuB
+        /// 5.25ã‚¤ãƒ³ãƒãƒ•ãƒ­ãƒƒãƒ”ãƒ¼ãƒ‡ã‚£ã‚¹ã‚¯ãƒ‰ãƒ©ã‚¤ãƒ–ã€‚
         /// </summary>
         SIID_DRIVE525 = 5,
 
         /// <summary>
-        /// 3.5ƒCƒ“ƒ`ƒtƒƒbƒs[ƒfƒBƒXƒNƒhƒ‰ƒCƒuB
+        /// 3.5ã‚¤ãƒ³ãƒãƒ•ãƒ­ãƒƒãƒ”ãƒ¼ãƒ‡ã‚£ã‚¹ã‚¯ãƒ‰ãƒ©ã‚¤ãƒ–ã€‚
         /// </summary>
         SIID_DRIVE35 = 6,
 
         /// <summary>
-        /// ƒŠƒ€[ƒoƒuƒ‹ƒhƒ‰ƒCƒuB
+        /// ãƒªãƒ ãƒ¼ãƒãƒ–ãƒ«ãƒ‰ãƒ©ã‚¤ãƒ–ã€‚
         /// </summary>
         SIID_DRIVEREMOVE = 7,
 
         /// <summary>
-        /// ŒÅ’èƒhƒ‰ƒCƒuB
+        /// å›ºå®šãƒ‰ãƒ©ã‚¤ãƒ–ã€‚
         /// </summary>
         SIID_DRIVEFIXED = 8,
 
         /// <summary>
-        /// ƒlƒbƒgƒ[ƒNƒhƒ‰ƒCƒuB
+        /// ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãƒ‰ãƒ©ã‚¤ãƒ–ã€‚
         /// </summary>
         SIID_DRIVENET = 9,
 
         /// <summary>
-        /// Ø’f‚³‚ê‚½ƒlƒbƒgƒ[ƒNƒhƒ‰ƒCƒuB
+        /// åˆ‡æ–­ã•ã‚ŒãŸãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãƒ‰ãƒ©ã‚¤ãƒ–ã€‚
         /// </summary>
         SIID_DRIVENETDISABLED = 10,
 
         /// <summary>
-        /// CDƒhƒ‰ƒCƒuB
+        /// CDãƒ‰ãƒ©ã‚¤ãƒ–ã€‚
         /// </summary>
         SIID_DRIVECD = 11,
 
         /// <summary>
-        /// RAMƒhƒ‰ƒCƒuB
+        /// RAMãƒ‰ãƒ©ã‚¤ãƒ–ã€‚
         /// </summary>
         SIID_DRIVERAM = 12,
 
         /// <summary>
-        /// ƒlƒbƒgƒ[ƒNB
+        /// ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã€‚
         /// </summary>
         SIID_WORLD = 13,
 
         /// <summary>
-        /// ƒlƒbƒgƒ[ƒNã‚ÌƒRƒ“ƒsƒ…[ƒ^[B
+        /// ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ä¸Šã®ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ãƒ¼ã€‚
         /// </summary>
         SIID_SERVER = 15,
 
         /// <summary>
-        /// ƒvƒŠƒ“ƒ^[B
+        /// ãƒ—ãƒªãƒ³ã‚¿ãƒ¼ã€‚
         /// </summary>
         SIID_PRINTER = 16,
 
         /// <summary>
-        /// ƒlƒbƒgƒ[ƒNƒtƒHƒ‹ƒ_[B
+        /// ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚
         /// </summary>
         SIID_MYNETWORK = 17,
 
         /// <summary>
-        /// ŒŸõB
+        /// æ¤œç´¢ã€‚
         /// </summary>
         SIID_FIND = 22,
 
         /// <summary>
-        /// ƒwƒ‹ƒvB
+        /// ãƒ˜ãƒ«ãƒ—ã€‚
         /// </summary>
         SIID_HELP = 23,
 
         /// <summary>
-        /// ‹¤—LB
+        /// å…±æœ‰ã€‚
         /// </summary>
         SIID_SHARE = 28,
 
         /// <summary>
-        /// ƒVƒ‡[ƒgƒJƒbƒgB
+        /// ã‚·ãƒ§ãƒ¼ãƒˆã‚«ãƒƒãƒˆã€‚
         /// </summary>
         SIID_LINK = 29,
 
@@ -122,22 +122,22 @@ namespace starshipxac.Windows.Shell.Media.Imaging.Interop
         SIID_SLOWFILE = 30,
 
         /// <summary>
-        /// ‹ó‚Ì‚²‚Ý” B
+        /// ç©ºã®ã”ã¿ç®±ã€‚
         /// </summary>
         SIID_RECYCLER = 31,
 
         /// <summary>
-        /// ‚²‚Ý” B
+        /// ã”ã¿ç®±ã€‚
         /// </summary>
         SIID_RECYCLERFULL = 32,
 
         /// <summary>
-        /// ƒI[ƒfƒBƒICDB
+        /// ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªCDã€‚
         /// </summary>
         SIID_MEDIACDAUDIO = 40,
 
         /// <summary>
-        /// ƒZƒLƒ…ƒŠƒeƒB[ƒƒbƒNB
+        /// ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ãƒ¼ãƒ­ãƒƒã‚¯ã€‚
         /// </summary>
         SIID_LOCK = 47,
 
@@ -147,127 +147,127 @@ namespace starshipxac.Windows.Shell.Media.Imaging.Interop
         SIID_AUTOLIST = 49,
 
         /// <summary>
-        /// ƒlƒbƒgƒ[ƒNƒvƒŠƒ“ƒ^[B
+        /// ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãƒ—ãƒªãƒ³ã‚¿ãƒ¼ã€‚
         /// </summary>
         SIID_PRINTERNET = 50,
 
         /// <summary>
-        /// ‹¤—Lƒlƒbƒgƒ[ƒNƒtƒHƒ‹ƒ_[B
+        /// å…±æœ‰ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚
         /// </summary>
         SIID_SERVERSHARE = 51,
 
         /// <summary>
-        /// ƒtƒ@ƒbƒNƒXB
+        /// ãƒ•ã‚¡ãƒƒã‚¯ã‚¹ã€‚
         /// </summary>
         SIID_PRINTERFAX = 52,
 
         /// <summary>
-        /// ƒlƒbƒgƒ[ƒNƒtƒ@ƒbƒNƒXB
+        /// ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãƒ•ã‚¡ãƒƒã‚¯ã‚¹ã€‚
         /// </summary>
         SIID_PRINTERFAXNET = 53,
 
         /// <summary>
-        /// ˆóüƒtƒ@ƒCƒ‹B
+        /// å°åˆ·ãƒ•ã‚¡ã‚¤ãƒ«ã€‚
         /// </summary>
         SIID_PRINTERFILE = 54,
 
         /// <summary>
-        /// ƒXƒ^ƒbƒNB
+        /// ã‚¹ã‚¿ãƒƒã‚¯ã€‚
         /// </summary>
         SIID_STACK = 55,
 
         /// <summary>
-        /// SVCDƒƒfƒBƒAB
+        /// SVCDãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIASVCD = 56,
 
         /// <summary>
-        /// ‘¼‚ÌƒAƒCƒeƒ€‚ðŠÜ‚ÞƒtƒHƒ‹ƒ_B
+        /// ä»–ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’å«ã‚€ãƒ•ã‚©ãƒ«ãƒ€ã€‚
         /// </summary>
         SIID_STUFFEDFOLDER = 57,
 
         /// <summary>
-        /// •s–¾‚Èƒhƒ‰ƒCƒuB
+        /// ä¸æ˜Žãªãƒ‰ãƒ©ã‚¤ãƒ–ã€‚
         /// </summary>
         SIID_DRIVEUNKNOWN = 58,
 
         /// <summary>
-        /// DVDƒhƒ‰ƒCƒuB
+        /// DVDãƒ‰ãƒ©ã‚¤ãƒ–ã€‚
         /// </summary>
         SIID_DRIVEDVD = 59,
 
         /// <summary>
-        /// DVDƒƒfƒBƒAB
+        /// DVDãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIADVD = 60,
 
         /// <summary>
-        /// DVD-RAMƒƒfƒBƒAB
+        /// DVD-RAMãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIADVDRAM = 61,
 
         /// <summary>
-        /// DVD-RWƒƒfƒBƒAB
+        /// DVD-RWãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIADVDRW = 62,
 
         /// <summary>
-        /// DVD-RƒƒfƒBƒAB
+        /// DVD-Rãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIADVDR = 63,
 
         /// <summary>
-        /// DVD-ROMƒƒfƒBƒAB
+        /// DVD-ROMãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIADVDROM = 64,
 
         /// <summary>
-        /// CD+(Enhanced CD)ƒƒfƒBƒAB
+        /// CD+(Enhanced CD)ãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIACDAUDIOPLUS = 65,
 
         /// <summary>
-        /// CD-RWƒƒfƒBƒAB
+        /// CD-RWãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIACDRW = 66,
 
         /// <summary>
-        /// CD-RƒƒfƒBƒAB
+        /// CD-Rãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIACDR = 67,
 
         /// <summary>
-        /// ‘‚«ž‚ÝCDƒƒfƒBƒAB
+        /// æ›¸ãè¾¼ã¿CDãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIACDBURN = 68,
 
         /// <summary>
-        /// ƒuƒ‰ƒ“ƒNCDƒƒfƒBƒAB
+        /// ãƒ–ãƒ©ãƒ³ã‚¯CDãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIABLANKCD = 69,
 
         /// <summary>
-        /// CD-ROMƒƒfƒBƒAB
+        /// CD-ROMãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIACDROM = 70,
 
         /// <summary>
-        /// ƒI[ƒfƒBƒIƒtƒ@ƒCƒ‹B
+        /// ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚¡ã‚¤ãƒ«ã€‚
         /// </summary>
         SIID_AUDIOFILES = 71,
 
         /// <summary>
-        /// ‰æ‘œƒtƒ@ƒCƒ‹B
+        /// ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ã€‚
         /// </summary>
         SIID_IMAGEFILES = 72,
 
         /// <summary>
-        /// ƒrƒfƒIƒtƒ@ƒCƒ‹B
+        /// ãƒ“ãƒ‡ã‚ªãƒ•ã‚¡ã‚¤ãƒ«ã€‚
         /// </summary>
         SIID_VIDEOFILES = 73,
 
         /// <summary>
-        /// ¬‡ƒtƒ@ƒCƒ‹B
+        /// æ··åˆãƒ•ã‚¡ã‚¤ãƒ«ã€‚
         /// </summary>
         SIID_MIXEDFILES = 74,
 
@@ -282,202 +282,202 @@ namespace starshipxac.Windows.Shell.Media.Imaging.Interop
         SIID_FOLDERFRONT = 76,
 
         /// <summary>
-        /// UAC‚ÅŽg—p‚·‚é‚ƒAƒCƒRƒ“B
+        /// UACã§ä½¿ç”¨ã™ã‚‹ç›¾ã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         SIID_SHIELD = 77,
 
         /// <summary>
-        /// ŒxƒAƒCƒRƒ“B
+        /// è­¦å‘Šã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         SIID_WARNING = 78,
 
         /// <summary>
-        /// î•ñƒAƒCƒRƒ“B
+        /// æƒ…å ±ã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         SIID_INFO = 79,
 
         /// <summary>
-        /// ƒGƒ‰[ƒAƒCƒRƒ“B
+        /// ã‚¨ãƒ©ãƒ¼ã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         SIID_ERROR = 80,
 
         /// <summary>
-        /// Œ®ƒAƒCƒRƒ“B
+        /// éµã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         SIID_KEY = 81,
 
         /// <summary>
-        /// ƒ\ƒtƒgƒEƒFƒAƒAƒCƒRƒ“B
+        /// ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         SIID_SOFTWARE = 82,
 
         /// <summary>
-        /// –¼‘O•ÏXƒAƒCƒRƒ“B
+        /// åå‰å¤‰æ›´ã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         SIID_RENAME = 83,
 
         /// <summary>
-        /// íœƒAƒCƒRƒ“B
+        /// å‰Šé™¤ã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         SIID_DELETE = 84,
 
         /// <summary>
-        /// ƒI[ƒfƒBƒIDVDƒƒfƒBƒAB
+        /// ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªDVDãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIAAUDIODVD = 85,
 
         /// <summary>
-        /// ‰f‘œDVDƒƒfƒBƒAB
+        /// æ˜ åƒDVDãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIAMOVIEDVD = 86,
 
         /// <summary>
-        /// ƒGƒ“ƒnƒ“ƒXƒhCDƒƒfƒBƒAB
+        /// ã‚¨ãƒ³ãƒãƒ³ã‚¹ãƒ‰CDãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIAENHANCEDCD = 87,
 
         /// <summary>
-        /// ƒGƒ“ƒnƒ“ƒXƒhDVDƒƒfƒBƒAB
+        /// ã‚¨ãƒ³ãƒãƒ³ã‚¹ãƒ‰DVDãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIAENHANCEDDVD = 88,
 
         /// <summary>
-        /// HD-DVDƒƒfƒBƒAB
+        /// HD-DVDãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIAHDDVD = 89,
 
         /// <summary>
-        /// BluRayƒƒfƒBƒAB
+        /// BluRayãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIABLURAY = 90,
 
         /// <summary>
-        /// VCDƒƒfƒBƒAB
+        /// VCDãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIAVCD = 91,
 
         /// <summary>
-        /// DVD+RƒƒfƒBƒAB
+        /// DVD+Rãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIADVDPLUSR = 92,
 
         /// <summary>
-        /// DVD+RWƒƒfƒBƒAB
+        /// DVD+RWãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIADVDPLUSRW = 93,
 
         /// <summary>
-        /// ƒfƒXƒNƒgƒbƒvƒRƒ“ƒsƒ…[ƒ^[B
+        /// ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ãƒ¼ã€‚
         /// </summary>
         SIID_DESKTOPPC = 94,
 
         /// <summary>
-        /// ƒ‚ƒoƒCƒ‹ƒRƒ“ƒsƒ…[ƒ^[B
+        /// ãƒ¢ãƒã‚¤ãƒ«ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ãƒ¼ã€‚
         /// </summary>
         SIID_MOBILEPC = 95,
 
         /// <summary>
-        /// ƒ†[ƒU[ƒAƒJƒEƒ“ƒgƒRƒ“ƒgƒ[ƒ‹ƒpƒlƒ‹B
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒ‘ãƒãƒ«ã€‚
         /// </summary>
         SIID_USERS = 96,
 
         /// <summary>
-        /// ƒXƒ}[ƒgƒƒfƒBƒAB
+        /// ã‚¹ãƒžãƒ¼ãƒˆãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIASMARTMEDIA = 97,
 
         /// <summary>
-        /// ƒRƒ“ƒpƒNƒgƒtƒ‰ƒbƒVƒ…ƒƒfƒBƒAB
+        /// ã‚³ãƒ³ãƒ‘ã‚¯ãƒˆãƒ•ãƒ©ãƒƒã‚·ãƒ¥ãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIACOMPACTFLASH = 98,
 
         /// <summary>
-        /// Œg‘Ñ“d˜bB
+        /// æºå¸¯é›»è©±ã€‚
         /// </summary>
         SIID_DEVICECELLPHONE = 99,
 
         /// <summary>
-        /// ƒJƒƒ‰B
+        /// ã‚«ãƒ¡ãƒ©ã€‚
         /// </summary>
         SIID_DEVICECAMERA = 100,
 
         /// <summary>
-        /// ƒrƒfƒIƒJƒƒ‰B
+        /// ãƒ“ãƒ‡ã‚ªã‚«ãƒ¡ãƒ©ã€‚
         /// </summary>
         SIID_DEVICEVIDEOCAMERA = 101,
 
         /// <summary>
-        /// ƒI[ƒfƒBƒIƒvƒŒ[ƒ„[B
+        /// ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ—ãƒ¬ãƒ¼ãƒ¤ãƒ¼ã€‚
         /// </summary>
         SIID_DEVICEAUDIOPLAYER = 102,
 
         /// <summary>
-        /// ƒlƒbƒgƒ[ƒNÚ‘±B
+        /// ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯æŽ¥ç¶šã€‚
         /// </summary>
         SIID_NETWORKCONNECT = 103,
 
         /// <summary>
-        /// ƒlƒbƒgƒ[ƒN‚ÆƒCƒ“ƒ^[ƒlƒbƒgƒRƒ“ƒgƒ[ƒ‹ƒpƒlƒ‹B
+        /// ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã¨ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒƒãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒ‘ãƒãƒ«ã€‚
         /// </summary>
         SIID_INTERNET = 104,
 
         /// <summary>
-        /// ZIPƒtƒ@ƒCƒ‹B
+        /// ZIPãƒ•ã‚¡ã‚¤ãƒ«ã€‚
         /// </summary>
         SIID_ZIPFILE = 105,
 
         /// <summary>
-        /// Ý’èB
+        /// è¨­å®šã€‚
         /// </summary>
         SIID_SETTINGS = 106,
 
         /// <summary>
-        /// HDDVDƒhƒ‰ƒCƒuB
+        /// HDDVDãƒ‰ãƒ©ã‚¤ãƒ–ã€‚
         /// </summary>
         SIID_DRIVEHDDVD = 132,
 
         /// <summary>
-        /// BluRayƒhƒ‰ƒCƒuB
+        /// BluRayãƒ‰ãƒ©ã‚¤ãƒ–ã€‚
         /// </summary>
         SIID_DRIVEBD = 133,
 
         /// <summary>
-        /// HDDVD-ROMƒƒfƒBƒAB
+        /// HDDVD-ROMãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIAHDDVDROM = 134,
 
         /// <summary>
-        /// HDDVD-RƒƒfƒBƒAB
+        /// HDDVD-Rãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIAHDDVDR = 135,
 
         /// <summary>
-        /// HDDVD-RAMƒƒfƒBƒAB
+        /// HDDVD-RAMãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIAHDDVDRAM = 136,
 
         /// <summary>
-        /// BluRay ROMƒƒfƒBƒAB
+        /// BluRay ROMãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIABDROM = 137,
 
         /// <summary>
-        /// BluRay RƒƒfƒBƒAB
+        /// BluRay Rãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIABDR = 138,
 
         /// <summary>
-        /// BluRay REƒƒfƒBƒAB
+        /// BluRay REãƒ¡ãƒ‡ã‚£ã‚¢ã€‚
         /// </summary>
         SIID_MEDIABDRE = 139,
 
         /// <summary>
-        /// ƒNƒ‰ƒXƒ^[‰»‚³‚ê‚½ƒfƒBƒXƒNB
+        /// ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¼åŒ–ã•ã‚ŒãŸãƒ‡ã‚£ã‚¹ã‚¯ã€‚
         /// </summary>
         SIID_CLUSTEREDDRIVE = 140,
 
         /// <summary>
-        /// —ñ‹“’l‚ÌÅ‘å’lB
+        /// åˆ—æŒ™å€¤ã®æœ€å¤§å€¤ã€‚
         /// </summary>
         SIID_MAX_ICONS = 174,
     }

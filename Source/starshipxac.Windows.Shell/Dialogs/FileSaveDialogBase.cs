@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using starshipxac.Shell;
@@ -34,9 +34,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// �t�@�C���������؂��邩�ǂ����������l���擾�܂��͐ݒ肵�܂��B
+        /// ファイル名を検証するかどうかを示す値を取得または設定します。
         /// </summary>
-        /// <exception cref="InvalidOperationException">�_�C�A���O�\�����͕ύX�ł��܂���B</exception>
+        /// <exception cref="InvalidOperationException">ダイアログ表示中は変更できません。</exception>
         public bool ValidateNames
         {
             get
@@ -51,9 +51,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ���[�U�[���g���q���w�肵�Ȃ��ꍇ�A�t�@�C�����Ɏ����I�Ɋg���q��t�����邩�ǂ����������l���擾�܂��͐ݒ肵�܂��B
+        /// ユーザーが拡張子を指定しない場合、ファイル名に自動的に拡張子を付加するかどうかを示す値を取得または設定します。
         /// </summary>
-        /// <exception cref="InvalidOperationException">�_�C�A���O�\�����͕ύX�ł��܂���B</exception>
+        /// <exception cref="InvalidOperationException">ダイアログ表示中は変更できません。</exception>
         public bool AppendExtension
         {
             get
@@ -68,9 +68,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// �I����Ƀf�B���N�g�������̈ʒu�ɖ߂����ǂ����������l���擾�܂��͐ݒ肵�܂��B
+        /// 終了後にディレクトリを元の位置に戻すかどうかを示す値を取得または設定します。
         /// </summary>
-        /// <exception cref="InvalidOperationException">�_�C�A���O�\�����͕ύX�ł��܂���B</exception>
+        /// <exception cref="InvalidOperationException">ダイアログ表示中は変更できません。</exception>
         public bool RestoreDirectory
         {
             get
@@ -85,9 +85,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// �w�肵���t�@�C�����ŋߎg�p�����t�@�C���ꗗ�ɒǉ����邩�ǂ����𔻒肷��l���擾�܂��͐ݒ肵�܂��B
+        /// 指定したファイルを最近使用したファイル一覧に追加するかどうかを判定する値を取得または設定します。
         /// </summary>
-        /// <exception cref="InvalidOperationException">�_�C�A���O�\�����͕ύX�ł��܂���B</exception>
+        /// <exception cref="InvalidOperationException">ダイアログ表示中は変更できません。</exception>
         public bool AddToMostRecentlyUsedList
         {
             get
@@ -102,18 +102,18 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// �v���p�e�B��ҏW�ł��邩�ǂ����𔻒肷��l���擾�܂��͐ݒ肵�܂��B
+        /// プロパティを編集できるかどうかを判定する値を取得または設定します。
         /// </summary>
         public bool AllowPropertyEditing { get; set; }
 
         /// <summary>
-        /// �K��̃t�@�C�������擾�܂��͐ݒ肵�܂��B
+        /// 規定のファイル名を取得または設定します。
         /// </summary>
         public string DefaultFileName { get; set; }
 
         /// <summary>
-        /// �t�@�C�����ɒǉ�����g���q���擾�܂��͐ݒ肵�܂��B
-        /// <c>null</c>�܂��͋󕶎���̏ꍇ�́A�t�@�C�����Ɋg���q��ǉ����܂���B
+        /// ファイル名に追加する拡張子を取得または設定します。
+        /// <c>null</c>または空文字列の場合は、ファイル名に拡張子を追加しません。
         /// </summary>
         public string DefaultFileExtension
         {
@@ -136,12 +136,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// �t�@�C���_�C�A���O�{�b�N�X�̃t�@�C���̎�ނɕ\�������t�B���^�[�̃R���N�V�������擾���܂��B
+        /// ファイルダイアログボックスのファイルの種類に表示されるフィルターのコレクションを取得します。
         /// </summary>
         public FileTypeFilterCollection FileTypeFilters { get; private set; }
 
         /// <summary>
-        /// �t�@�C���_�C�A���O�{�b�N�X�Ō��ݑI������Ă���t�B���^�[���擾���܂��B
+        /// ファイルダイアログボックスで現在選択されているフィルターを取得します。
         /// </summary>
         public FileTypeFilter SelectedFileTypeFilter
         {
@@ -160,7 +160,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// �t�@�C���_�C�A���O�{�b�N�X�Ō��ݑI������Ă���t�B���^�[�̃C���f�b�N�X���擾���܂��B
+        /// ファイルダイアログボックスで現在選択されているフィルターのインデックスを取得します。
         /// </summary>
         public int SelectedFileTypeFilterIndex
         {
@@ -179,7 +179,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ���[�U�[���w�肵���t�@�C�������擾���܂��B
+        /// ユーザーが指定したファイル情報を取得します。
         /// </summary>
         /// <returns></returns>
         public ShellFile GetShellFile()
@@ -195,9 +195,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// �㏑���ۑ��_�C�A���O�̏����t�@�C������ݒ肵�܂��B
+        /// 上書き保存ダイアログの初期ファイル情報を設定します。
         /// </summary>
-        /// <param name="shellFile">�����t�@�C�����B</param>
+        /// <param name="shellFile">初期ファイル情報。</param>
         public void SetSaveAsFile(ShellFile shellFile)
         {
             Contract.Requires<ArgumentNullException>(shellFile != null);
@@ -230,25 +230,25 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// �l�C�e�B�u�_�C�A���O�ɐݒ��K�p���܂��B
+        /// ネイティブダイアログに設定を適用します。
         /// </summary>
         protected override void SetNativeSettings()
         {
             base.SetNativeSettings();
 
-            // �t�B���^�[
+            // フィルター
             if (this.FileTypeFilters.Any() && !this.setFilter)
             {
                 SetFilter();
             }
 
-            // �f�t�H���g�t�@�C����
+            // デフォルトファイル名
             if (!String.IsNullOrWhiteSpace(this.DefaultFileName))
             {
                 this.FileDialogInternal.SetDefaultFileName(this.DefaultFileName);
             }
 
-            // �f�t�H���g�g���q
+            // デフォルト拡張子
             if (!String.IsNullOrEmpty(this.DefaultFileExtension))
             {
                 this.FileDialogInternal.SetDefaultExtension(this.DefaultFileExtension);
@@ -256,7 +256,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// �t�@�C���_�C�A���O�Ƀt�B���^�[��ݒ肵�܂��B
+        /// ファイルダイアログにフィルターを設定します。
         /// </summary>
         private void SetFilter()
         {

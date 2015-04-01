@@ -1,49 +1,49 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒO‚ÌŽÀsŒ‹‰Ê‚ð’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®å®Ÿè¡Œçµæžœã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>        
     public enum TaskDialogSelectedButton
     {
         /// <summary>
-        /// ’è‹`ŠO‚Ìƒ{ƒ^ƒ“ƒNƒŠƒbƒNB
+        /// å®šç¾©å¤–ã®ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã€‚
         /// </summary>
         None = 0x0000,
 
         /// <summary>
-        /// OKƒ{ƒ^ƒ“ƒNƒŠƒbƒNB
+        /// OKãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã€‚
         /// </summary>
         Ok = 0x0001,
 
         /// <summary>
-        /// u‚Í‚¢vƒ{ƒ^ƒ“ƒNƒŠƒbƒNB
+        /// ã€Œã¯ã„ã€ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã€‚
         /// </summary>
         Yes = 0x0002,
 
         /// <summary>
-        /// u‚¢‚¢‚¦vƒ{ƒ^ƒ“ƒNƒŠƒbƒNB
+        /// ã€Œã„ã„ãˆã€ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã€‚
         /// </summary>
         No = 0x0004,
 
         /// <summary>
-        /// ƒLƒƒƒ“ƒZƒ‹ƒ{ƒ^ƒ“ƒNƒŠƒbƒNB
+        /// ã‚­ãƒ£ãƒ³ã‚»ãƒ«ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã€‚
         /// </summary>
         Cancel = 0x0008,
 
         /// <summary>
-        /// uÄŽŽsvƒ{ƒ^ƒ“ƒNƒŠƒbƒNB
+        /// ã€Œå†è©¦è¡Œã€ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã€‚
         /// </summary>
         Retry = 0x0010,
 
         /// <summary>
-        /// •Â‚¶‚éƒ{ƒ^ƒ“ƒNƒŠƒbƒNB
+        /// é–‰ã˜ã‚‹ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã€‚
         /// </summary>
         Close = 0x0020,
 
         /// <summary>
-        /// ƒJƒXƒ^ƒ€ƒ{ƒ^ƒ“ƒNƒŠƒbƒNB
+        /// ã‚«ã‚¹ã‚¿ãƒ ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã€‚
         /// </summary>
         CustomButtonClicked = 0x0100,
     }

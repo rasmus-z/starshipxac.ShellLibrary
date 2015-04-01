@@ -1,16 +1,16 @@
-using System;
+ï»¿using System;
 using starshipxac.Shell.Interop.KnownFolder;
 
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// ƒtƒHƒ‹ƒ_[‚Ì“®ì‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã®å‹•ä½œã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     [Flags]
     public enum FolderDefinitionFlags : uint
     {
         /// <summary>
-        /// ’è‹`‚È‚µB
+        /// å®šç¾©ãªã—ã€‚
         /// </summary>
         None = 0,
 

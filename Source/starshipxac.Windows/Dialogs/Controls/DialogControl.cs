@@ -1,11 +1,10 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
-using System.Runtime.CompilerServices;
 
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// ƒ_ƒCƒAƒƒOƒRƒ“ƒgƒ[ƒ‹‚ÌŠî’êƒNƒ‰ƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public abstract class DialogControl : IEquatable<DialogControl>
     {
@@ -14,10 +13,10 @@ namespace starshipxac.Windows.Dialogs.Controls
         private static int nextId = MinDialogControlId;
 
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹–¼‚ğw’è‚µ‚ÄA
-        /// <see cref="DialogControl"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="DialogControl"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="name">ƒRƒ“ƒgƒ[ƒ‹–¼B</param>
+        /// <param name="name">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã€‚</param>
         protected DialogControl(string name)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
@@ -36,44 +35,19 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹–¼‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public string Name { get; private set; }
 
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹ID‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public int Id { get; private set; }
 
-        ///// <summary>
-        ///// ‚±‚Ì<see cref="DialogControl"/>‚ğ•Û‚µ‚Ä‚¢‚é<see cref="IDialogControlHost"/>‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
-        ///// </summary>
-        //public IDialogControlHost Dialog { get; set; }
-
-        ///// <summary>
-        ///// ƒvƒƒpƒeƒB‚Ì•ÏX‚ğŠJn‚µ‚Ü‚·B
-        ///// </summary>
-        ///// <param name="propertyName"></param>
-        //protected ChangePropertyTransaction BeginChangeProperty([CallerMemberName] string propertyName = "")
-        //{
-        //    return new ChangePropertyTransaction(this, propertyName);
-        //}
-
-        ///// <summary>
-        ///// ƒvƒƒpƒeƒB‚Ì•ÏX‚ğ’Ê’m‚µ‚Ü‚·B
-        ///// </summary>
-        ///// <param name="propertyName">’Ê’m‚·‚éƒvƒƒpƒeƒB–¼B</param>
-        //protected void ApplyPropertyChange([CallerMemberName] string propertyName = "")
-        //{
-        //    Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(propertyName));
-
-        //    this.Dialog.ApplyControlPropertyChange(propertyName, this);
-        //}
-
         /// <summary>
-        /// Ÿ‚ÌƒRƒ“ƒgƒ[ƒ‹ID‚ğæ“¾‚µ‚Ü‚·B
+        /// æ¬¡ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒRƒ“ƒgƒ[ƒ‹IDB</returns>
+        /// <returns>ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«IDã€‚</returns>
         private static int GetNextId()
         {
             var result = nextId;
@@ -137,37 +111,5 @@ namespace starshipxac.Windows.Dialogs.Controls
         {
             return String.Format("DialogControl{{id: {0}, name: {1}}}", this.Id, this.Name);
         }
-
-        //protected class ChangePropertyTransaction : IDisposable
-        //{
-        //    public ChangePropertyTransaction(DialogControl control, [CallerMemberName] string propertyName = "")
-        //    {
-        //        Contract.Requires<ArgumentNullException>(control != null);
-
-        //        this.Control = control;
-        //        this.PropertyName = propertyName;
-
-        //        if (this.Control.Dialog != null)
-        //        {
-        //            this.Control.Dialog.IsControlPropertyChangeAllowed(this.PropertyName, this.Control);
-        //        }
-        //    }
-
-        //    ~ChangePropertyTransaction()
-        //    {
-        //        Dispose();
-        //    }
-
-        //    public void Dispose()
-        //    {
-        //        if (this.Control.Dialog != null)
-        //        {
-        //            this.Control.Dialog.ApplyControlPropertyChange(this.PropertyName, this.Control);
-        //        }
-        //    }
-
-        //    public DialogControl Control { get; private set; }
-        //    public string PropertyName { get; private set; }
-        //}
     }
 }

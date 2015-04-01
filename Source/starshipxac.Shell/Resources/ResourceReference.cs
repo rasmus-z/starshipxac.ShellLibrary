@@ -1,19 +1,19 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 
 namespace starshipxac.Shell.Resources
 {
     /// <summary>
-    /// ƒŠƒ\[ƒXQÆî•ñ‚ğ•Û‚µ‚Ü‚·B
+    /// ãƒªã‚½ãƒ¼ã‚¹å‚ç…§æƒ…å ±ã‚’ä¿æŒã—ã¾ã™ã€‚
     /// </summary>
     [ContractClass(typeof(ResourceReferenceContract))]
     public abstract class ResourceReference : IEquatable<ResourceReference>
     {
         /// <summary>
-        /// ƒ‰ƒCƒuƒ‰ƒŠ–¼‚ÆƒŠƒ\[ƒXID‚ğw’è‚µ‚ÄA<see cref="ResourceReference"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ãƒ©ã‚¤ãƒ–ãƒ©ãƒªåã¨ãƒªã‚½ãƒ¼ã‚¹IDã‚’æŒ‡å®šã—ã¦ã€<see cref="ResourceReference"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="libraryName">Àsƒtƒ@ƒCƒ‹‚Ü‚½‚Í DLLƒtƒ@ƒCƒ‹AƒAƒCƒRƒ“ƒtƒ@ƒCƒ‹‚Ìƒ‰ƒCƒuƒ‰ƒŠ–¼B</param>
-        /// <param name="resourceId">ƒAƒCƒRƒ“‚ÌƒCƒ“ƒfƒbƒNƒXB</param>
+        /// <param name="libraryName">å®Ÿè¡Œãƒ•ã‚¡ã‚¤ãƒ«ã¾ãŸã¯ DLLãƒ•ã‚¡ã‚¤ãƒ«ã€ã‚¢ã‚¤ã‚³ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªåã€‚</param>
+        /// <param name="resourceId">ã‚¢ã‚¤ã‚³ãƒ³ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
         protected ResourceReference(string libraryName, int resourceId)
         {
             this.LibraryPath = libraryName;
@@ -22,9 +22,9 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        /// ƒJƒ“ƒ}‚Å‹æØ‚ç‚ê‚½ƒ‰ƒCƒuƒ‰ƒŠ–¼‚ÆƒŠƒ\[ƒXID‚ğw’è‚µ‚ÄA<see cref="ResourceReference"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ã‚«ãƒ³ãƒã§åŒºåˆ‡ã‚‰ã‚ŒãŸãƒ©ã‚¤ãƒ–ãƒ©ãƒªåã¨ãƒªã‚½ãƒ¼ã‚¹IDã‚’æŒ‡å®šã—ã¦ã€<see cref="ResourceReference"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="referencePath">ƒJƒ“ƒ}‚Å‹æØ‚ç‚ê‚½ƒ‰ƒCƒuƒ‰ƒŠ–¼‚ÆƒŠƒ\[ƒXIDB</param>
+        /// <param name="referencePath">ã‚«ãƒ³ãƒã§åŒºåˆ‡ã‚‰ã‚ŒãŸãƒ©ã‚¤ãƒ–ãƒ©ãƒªåã¨ãƒªã‚½ãƒ¼ã‚¹IDã€‚</param>
         protected ResourceReference(string referencePath)
         {
             this.ReferencePath = referencePath;
@@ -32,20 +32,20 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        /// Àsƒtƒ@ƒCƒ‹‚Ü‚½‚Í DLLƒtƒ@ƒCƒ‹‚ÌƒpƒX–¼‚ğæ“¾‚µ‚Ü‚·B
+        /// å®Ÿè¡Œãƒ•ã‚¡ã‚¤ãƒ«ã¾ãŸã¯ DLLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹åã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public string LibraryPath { get; private set; }
 
         /// <summary>
-        /// ƒŠƒ\[ƒXID‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒªã‚½ãƒ¼ã‚¹IDã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public int ResourceId { get; private set; }
 
         /// <summary>
-        /// ƒŠƒ\[ƒXQÆî•ñ‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒªã‚½ãƒ¼ã‚¹å‚ç…§æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         /// <remarks>
-        /// ƒŠƒ\[ƒXQÆî•ñ‚ÍAƒ‰ƒCƒuƒ‰ƒŠ–¼‚ÆƒŠƒ\[ƒXID‚ğƒJƒ“ƒ}‚ÅŒ‹‡‚µ‚½•¶š—ñ‚Å‚·B
+        /// ãƒªã‚½ãƒ¼ã‚¹å‚ç…§æƒ…å ±ã¯ã€ãƒ©ã‚¤ãƒ–ãƒ©ãƒªåã¨ãƒªã‚½ãƒ¼ã‚¹IDã‚’ã‚«ãƒ³ãƒã§çµåˆã—ãŸæ–‡å­—åˆ—ã§ã™ã€‚
         /// </remarks>
         public string ReferencePath { get; private set; }
 
@@ -69,12 +69,12 @@ namespace starshipxac.Shell.Resources
         protected abstract void ParseReferencePath(out string libraryPath, out int resourceId);
 
         /// <summary>
-        /// 2‚Â‚Ì<see cref="ResourceReference"/>‚ğ”äŠr‚µ‚ÄA“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚µ‚Ü‚·B
+        /// 2ã¤ã®<see cref="ResourceReference"/>ã‚’æ¯”è¼ƒã—ã¦ã€ç­‰ã—ã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="left">1‚Â‚ß‚Ì<see cref="ResourceReference"/>B</param>
-        /// <param name="right">2‚Â‚ß‚Ì<see cref="ResourceReference"/>B</param>
+        /// <param name="left">1ã¤ã‚ã®<see cref="ResourceReference"/>ã€‚</param>
+        /// <param name="right">2ã¤ã‚ã®<see cref="ResourceReference"/>ã€‚</param>
         /// <returns>
-        /// 2‚Â‚Ì<see cref="ResourceReference"/>‚ª“™‚µ‚¢ê‡‚Í<c>true</c>B‚»‚êˆÈŠO‚Ìê‡‚Í<c>false</c>B
+        /// 2ã¤ã®<see cref="ResourceReference"/>ãŒç­‰ã—ã„å ´åˆã¯<c>true</c>ã€‚ãã‚Œä»¥å¤–ã®å ´åˆã¯<c>false</c>ã€‚
         /// </returns>
         public static bool operator ==(ResourceReference left, ResourceReference right)
         {
@@ -82,12 +82,12 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        /// 2‚Â‚Ì<see cref="ResourceReference"/>‚ğ”äŠr‚µ‚ÄA“™‚µ‚­‚È‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚µ‚Ü‚·B
+        /// 2ã¤ã®<see cref="ResourceReference"/>ã‚’æ¯”è¼ƒã—ã¦ã€ç­‰ã—ããªã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="left">1‚Â‚ß‚Ì<see cref="ResourceReference"/>B</param>
-        /// <param name="right">2‚Â‚ß‚Ì<see cref="ResourceReference"/>B</param>
+        /// <param name="left">1ã¤ã‚ã®<see cref="ResourceReference"/>ã€‚</param>
+        /// <param name="right">2ã¤ã‚ã®<see cref="ResourceReference"/>ã€‚</param>
         /// <returns>
-        /// 2‚Â‚Ì<see cref="ResourceReference"/>‚ª“™‚µ‚­‚È‚¢ê‡‚Í<c>true</c>B‚»‚êˆÈŠO‚Ìê‡‚Í<c>false</c>B
+        /// 2ã¤ã®<see cref="ResourceReference"/>ãŒç­‰ã—ããªã„å ´åˆã¯<c>true</c>ã€‚ãã‚Œä»¥å¤–ã®å ´åˆã¯<c>false</c>ã€‚
         /// </returns>
         public static bool operator !=(ResourceReference left, ResourceReference right)
         {
@@ -95,12 +95,12 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        /// w’è‚µ‚½<see cref="ResourceReference"/>‚Ì’l‚ªAŒ»İ‚Ì<see cref="ResourceReference"/>‚Æ“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸ<see cref="ResourceReference"/>ã®å€¤ãŒã€ç¾åœ¨ã®<see cref="ResourceReference"/>ã¨ç­‰ã—ã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="other">Œ»İ‚Ì<see cref="ResourceReference"/>‚Æ”äŠr‚·‚é<see cref="ResourceReference"/>B</param>
+        /// <param name="other">ç¾åœ¨ã®<see cref="ResourceReference"/>ã¨æ¯”è¼ƒã™ã‚‹<see cref="ResourceReference"/>ã€‚</param>
         /// <returns>
-        /// <paramref name="other"/>‚ÆŒ»İ‚Ì<see cref="ResourceReference"/>‚ª“™‚µ‚¢ê‡‚Í<c>true</c>B
-        /// ‚»‚êˆÈŠO‚Ìê‡‚Í<c>false</c>B
+        /// <paramref name="other"/>ã¨ç¾åœ¨ã®<see cref="ResourceReference"/>ãŒç­‰ã—ã„å ´åˆã¯<c>true</c>ã€‚
+        /// ãã‚Œä»¥å¤–ã®å ´åˆã¯<c>false</c>ã€‚
         /// </returns>
         public bool Equals(ResourceReference other)
         {
@@ -118,12 +118,12 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ì’l‚ªAŒ»İ‚Ì<see cref="ResourceReference"/>‚Æ“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å€¤ãŒã€ç¾åœ¨ã®<see cref="ResourceReference"/>ã¨ç­‰ã—ã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="obj">Œ»İ‚Ì<see cref="ResourceReference"/>‚Æ”äŠr‚·‚éƒIƒuƒWƒFƒNƒgB</param>
+        /// <param name="obj">ç¾åœ¨ã®<see cref="ResourceReference"/>ã¨æ¯”è¼ƒã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚</param>
         /// <returns>
-        /// <paramref name="obj"/>‚ÆŒ»İ‚Ì<see cref="ResourceReference"/>‚ª“™‚µ‚¢ê‡‚Í<c>true</c>B
-        /// ‚»‚êˆÈŠO‚Ìê‡‚Í<c>false</c>B
+        /// <paramref name="obj"/>ã¨ç¾åœ¨ã®<see cref="ResourceReference"/>ãŒç­‰ã—ã„å ´åˆã¯<c>true</c>ã€‚
+        /// ãã‚Œä»¥å¤–ã®å ´åˆã¯<c>false</c>ã€‚
         /// </returns>
         public override bool Equals(object obj)
         {
@@ -131,18 +131,18 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        /// ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒnƒbƒVƒ…ƒR[ƒh‚ğæ“¾‚µ‚Ü‚·B
+        /// ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒnƒbƒVƒ…ƒR[ƒhB</returns>
+        /// <returns>ãƒãƒƒã‚·ãƒ¥ã‚³ãƒ¼ãƒ‰ã€‚</returns>
         public override int GetHashCode()
         {
             return this.ReferencePath.GetHashCode();
         }
 
         /// <summary>
-        /// ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚µ‚Ü‚·B
+        /// ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»B</returns>
+        /// <returns>ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã€‚</returns>
         public override string ToString()
         {
             return this.ReferencePath;

@@ -1,25 +1,25 @@
-using System;
+ï»¿using System;
 using starshipxac.Shell.Interop;
 
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// ƒAƒCƒeƒ€‚Ìƒ\[ƒg•ûŒü‚ð’è‹`‚µ‚Ü‚·B
+    /// ã‚¢ã‚¤ãƒ†ãƒ ã®ã‚½ãƒ¼ãƒˆæ–¹å‘ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public enum SortDirection
     {
         /// <summary>
-        /// ƒfƒtƒHƒ‹ƒg‚Ìƒ\[ƒg•ûŒüB
+        /// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚½ãƒ¼ãƒˆæ–¹å‘ã€‚
         /// </summary>
         Default = 0,
 
         /// <summary>
-        /// ‹t‡‚Ìƒ\[ƒg•ûŒüB
+        /// é€†é †ã®ã‚½ãƒ¼ãƒˆæ–¹å‘ã€‚
         /// </summary>
         Descending = SORTDIRECTION.SORT_DESCENDING,
 
         /// <summary>
-        /// ³‡‚Ìƒ\[ƒg•ûŒüB
+        /// æ­£é †ã®ã‚½ãƒ¼ãƒˆæ–¹å‘ã€‚
         /// </summary>
         Ascending = SORTDIRECTION.SORT_ASCENDING,
     }

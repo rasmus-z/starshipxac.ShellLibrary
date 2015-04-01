@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    /// ƒVƒFƒ‹ƒCƒ[ƒWƒTƒCƒY‚ğ•Û‚µ‚Ü‚·B
+    /// ã‚·ã‚§ãƒ«ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚µã‚¤ã‚ºã‚’ä¿æŒã—ã¾ã™ã€‚
     /// </summary>
     [Serializable]
     public struct ShellImageSize
@@ -26,12 +26,12 @@ namespace starshipxac.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// ƒCƒ[ƒW‚Ì•‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¤ãƒ¡ãƒ¼ã‚¸ã®å¹…ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public double Width { get; set; }
 
         /// <summary>
-        /// ƒCƒ[ƒW‚Ì‚‚³‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¤ãƒ¡ãƒ¼ã‚¸ã®é«˜ã•ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public double Height { get; set; }
 

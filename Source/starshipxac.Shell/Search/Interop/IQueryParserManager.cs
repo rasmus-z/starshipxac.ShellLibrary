@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.Interop;
 using starshipxac.Shell.PropertySystem.Interop;

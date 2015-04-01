@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {

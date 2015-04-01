@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.Interop.KnownFolder
 {
     /// <summary>
-    /// •W€ƒtƒHƒ‹ƒ_[ƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// æ¨™æº–ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761768(v=vs.85).aspx

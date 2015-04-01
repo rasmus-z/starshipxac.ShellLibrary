@@ -1,21 +1,21 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Dialogs.Interop
 {
     internal enum TASKDIALOG_NOTIFICATIONS : uint
     {
         /// <summary>
-        /// ƒ_ƒCƒAƒƒOì¬ƒCƒxƒ“ƒg
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ä½œæˆã‚¤ãƒ™ãƒ³ãƒˆ
         /// </summary>
         TDN_CREATED = 0,
 
         /// <summary>
-        /// ƒiƒrƒQ[ƒVƒ‡ƒ“ƒCƒxƒ“ƒg
+        /// ãƒŠãƒ“ã‚²ãƒ¼ã‚·ãƒ§ãƒ³ã‚¤ãƒ™ãƒ³ãƒˆ
         /// </summary>
         TDN_NAVIGATED = 1,
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“ƒNƒŠƒbƒNƒCƒxƒ“ƒg
+        /// ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã‚¤ãƒ™ãƒ³ãƒˆ
         /// </summary>
         /// <remarks>
         /// <c>wParam</c> = ButtonId
@@ -23,7 +23,7 @@ namespace starshipxac.Windows.Dialogs.Interop
         TDN_BUTTON_CLICKED = 2,
 
         /// <summary>
-        /// ƒnƒCƒp[ƒŠƒ“ƒNƒNƒŠƒbƒNƒCƒxƒ“ƒg
+        /// ãƒã‚¤ãƒ‘ãƒ¼ãƒªãƒ³ã‚¯ã‚¯ãƒªãƒƒã‚¯ã‚¤ãƒ™ãƒ³ãƒˆ
         /// </summary>
         /// <remarks>
         /// <c>lParam</c> = (LPCWSTR)pszHREF
@@ -31,20 +31,20 @@ namespace starshipxac.Windows.Dialogs.Interop
         TDN_HYPERLINK_CLICKED = 3,
 
         /// <summary>
-        /// ƒ^ƒCƒ}[ƒCƒxƒ“ƒg
+        /// ã‚¿ã‚¤ãƒžãƒ¼ã‚¤ãƒ™ãƒ³ãƒˆ
         /// </summary>
         /// <remarks>
-        /// <c>wParam</c> = ƒ~ƒŠ•b
+        /// <c>wParam</c> = ãƒŸãƒªç§’
         /// </remarks>
         TDN_TIMER = 4,
 
         /// <summary>
-        /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOI—¹ƒCƒxƒ“ƒg
+        /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°çµ‚äº†ã‚¤ãƒ™ãƒ³ãƒˆ
         /// </summary>
         TDN_DESTROYED = 5,
 
         /// <summary>
-        /// ƒ‰ƒWƒIƒ{ƒ^ƒ“ƒNƒŠƒbƒNƒCƒxƒ“ƒg
+        /// ãƒ©ã‚¸ã‚ªãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã‚¤ãƒ™ãƒ³ãƒˆ
         /// </summary>
         /// <remarks>
         /// <c>wParam</c> = RadioButtoId
@@ -52,28 +52,28 @@ namespace starshipxac.Windows.Dialogs.Interop
         TDN_RADIO_BUTTON_CLICKED = 6,
 
         /// <summary>
-        /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOì¬ƒCƒxƒ“ƒg(•\Ž¦‘O)
+        /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ä½œæˆã‚¤ãƒ™ãƒ³ãƒˆ(è¡¨ç¤ºå‰)
         /// </summary>
         TDN_DIALOG_CONSTRUCTED = 7,
 
         /// <summary>
-        /// Šm”Fƒ`ƒFƒbƒNƒ{ƒbƒNƒXƒNƒŠƒbƒNƒCƒxƒ“ƒg
+        /// ç¢ºèªãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã‚¯ãƒªãƒƒã‚¯ã‚¤ãƒ™ãƒ³ãƒˆ
         /// </summary>
         /// <remarks>
-        /// <c>wParam</c>: ƒ`ƒFƒbƒN‚³‚ê‚Ä‚¢‚éê‡: = 1  ‚³‚ê‚Ä‚¢‚È‚¢ê‡: = 0
+        /// <c>wParam</c>: ãƒã‚§ãƒƒã‚¯ã•ã‚Œã¦ã„ã‚‹å ´åˆ: = 1  ã•ã‚Œã¦ã„ãªã„å ´åˆ: = 0
         /// </remarks>
         TDN_VERIFICATION_CLICKED = 8,
 
         /// <summary>
-        /// <c>F1</c>ƒL[‰Ÿ‰ºƒCƒxƒ“ƒg
+        /// <c>F1</c>ã‚­ãƒ¼æŠ¼ä¸‹ã‚¤ãƒ™ãƒ³ãƒˆ
         /// </summary>
         TDN_HELP = 9,
 
         /// <summary>
-        /// Šg’£ƒ{ƒ^ƒ“ƒNƒŠƒbƒNƒCƒxƒ“ƒg
+        /// æ‹¡å¼µãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã‚¤ãƒ™ãƒ³ãƒˆ
         /// </summary>
         /// <remarks>
-        /// <c>wParam</c>: Ü‚è‚½‚½‚Ü‚ê‚Ä‚¢‚éó‘Ô: = 0, Šg’£‚³‚ê‚Ä‚¢‚éê‡: != 0
+        /// <c>wParam</c>: æŠ˜ã‚ŠãŸãŸã¾ã‚Œã¦ã„ã‚‹çŠ¶æ…‹: = 0, æ‹¡å¼µã•ã‚Œã¦ã„ã‚‹å ´åˆ: != 0
         /// </remarks>
         TDN_EXPANDO_BUTTON_CLICKED = 10
     }

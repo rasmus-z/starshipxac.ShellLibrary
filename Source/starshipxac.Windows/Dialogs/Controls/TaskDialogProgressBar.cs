@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using starshipxac.Windows.Properties;
 
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒO‚ÌƒvƒƒOƒŒƒXƒo[‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class TaskDialogProgressBar : TaskDialogControl
     {
@@ -15,10 +15,10 @@ namespace starshipxac.Windows.Dialogs.Controls
         private int value;
 
         /// <summary>
-        /// ƒRƒ“ƒgƒ[ƒ‹–¼‚ğw’è‚µ‚ÄA
-        /// <see cref="TaskDialogProgressBar"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="TaskDialogProgressBar"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="name">ƒRƒ“ƒgƒ[ƒ‹–¼B</param>
+        /// <param name="name">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åã€‚</param>
         public TaskDialogProgressBar(string name)
             : base(name)
         {
@@ -26,7 +26,7 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[‚Ìó‘Ô‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®çŠ¶æ…‹ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public TaskDialogProgressBarState State
         {
@@ -36,17 +36,13 @@ namespace starshipxac.Windows.Dialogs.Controls
             }
             set
             {
-                //using (BeginChangeProperty())
-                //{
-                //    this.state = value;
-                //}
                 this.state = value;
                 this.Dialog.SetProgressBarState(this, this.state);
             }
         }
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[‚ÌÅ¬’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®æœ€å°å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>                
         public int Minimum
         {
@@ -61,17 +57,13 @@ namespace starshipxac.Windows.Dialogs.Controls
                 Contract.Requires<ArgumentOutOfRangeException>(value < this.Maximum,
                     DialogErrorMessages.TaskDialogProgressBarMinValueLessThanMax);
 
-                //using (BeginChangeProperty())
-                //{
-                //    this.minimum = value;
-                //}
                 this.minimum = value;
                 this.Dialog.SetProgressBarRange(this, this.minimum, this.maximum);
             }
         }
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[‚ÌÅ‘å’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®æœ€å¤§å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public int Maximum
         {
@@ -84,17 +76,13 @@ namespace starshipxac.Windows.Dialogs.Controls
                 Contract.Requires<ArgumentOutOfRangeException>(this.Minimum <= value,
                     DialogErrorMessages.TaskDialogProgressBarMaxValueGreaterThanMin);
 
-                //using (BeginChangeProperty())
-                //{
-                //    this.maximum = value;
-                //}
                 this.maximum = value;
                 this.Dialog.SetProgressBarRange(this, this.minimum, this.maximum);
             }
         }
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[‚ÌŒ»İ‚Ì’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®ç¾åœ¨ã®å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public int Value
         {
@@ -107,17 +95,13 @@ namespace starshipxac.Windows.Dialogs.Controls
                 Contract.Requires<ArgumentOutOfRangeException>(this.Minimum <= value && value <= this.Maximum,
                     DialogErrorMessages.TaskDialogProgressBarValueInRange);
 
-                //using (BeginChangeProperty())
-                //{
-                //    this.value = value;
-                //}
                 this.value = value;
                 this.Dialog.SetProgressBarPosition(this, this.value);
             }
         }
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[‚Ì’l‚ªÅ¬’l‚ÆÅ‘å’l‚ÌŠÔ‚É‚ ‚é‚©‚Ç‚¤‚©‚ğŒŸØ‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®å€¤ãŒæœ€å°å€¤ã¨æœ€å¤§å€¤ã®é–“ã«ã‚ã‚‹ã‹ã©ã†ã‹ã‚’æ¤œè¨¼ã—ã¾ã™ã€‚
         /// </summary>
         internal bool HasValidValues
         {
@@ -128,7 +112,7 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ƒvƒƒOƒŒƒXƒo[‚Ì’l‚ğÅ¬’l‚Éİ’è‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã®å€¤ã‚’æœ€å°å€¤ã«è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         protected internal void Reset()
         {

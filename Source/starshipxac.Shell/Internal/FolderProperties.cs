@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -10,17 +10,17 @@ using starshipxac.Shell.Resources;
 namespace starshipxac.Shell.Internal
 {
     /// <summary>
-    /// •W€ƒtƒHƒ‹ƒ_[‚ÌƒvƒƒpƒeƒB‚ğ’è‹`‚µ‚Ü‚·B
+    /// æ¨™æº–ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     internal class FolderProperties
     {
         /// <summary>
         /// <para>
-        /// •W€ƒtƒHƒ‹ƒ_[ƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğw’è‚µ‚ÄA
-        /// <see cref="FolderProperties"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// æ¨™æº–ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="FolderProperties"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </para>
         /// </summary>
-        /// <param name="knownFolderInterface">•W€ƒtƒHƒ‹ƒ_[ƒCƒ“ƒ^[ƒtƒFƒCƒXB</param>
+        /// <param name="knownFolderInterface">æ¨™æº–ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚</param>
         internal FolderProperties(IKnownFolder knownFolderInterface)
         {
             Contract.Requires<ArgumentNullException>(knownFolderInterface != null);
@@ -61,8 +61,8 @@ namespace starshipxac.Shell.Internal
         public string Security { get; private set; }
 
         /// <summary>
-        /// <see cref="KNOWNFOLDER_DEFINITION"/>‚ğæ“¾‚µA
-        /// ŠeƒvƒƒpƒeƒB‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="KNOWNFOLDER_DEFINITION"/>ã‚’å–å¾—ã—ã€
+        /// å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="knownFolderInterface"></param>
         private void Initialize(IKnownFolder knownFolderInterface)
@@ -101,7 +101,7 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// <see cref="KNOWNFOLDER_DEFINITION"/>‚©‚çƒŠƒ\[ƒXî•ñ‚ğæ“¾‚µAƒvƒƒpƒeƒB‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="KNOWNFOLDER_DEFINITION"/>ã‹ã‚‰ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ã‚’å–å¾—ã—ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="knownFolderDefinition"></param>
         private void InitializeResourceProperties(KNOWNFOLDER_DEFINITION knownFolderDefinition)
@@ -141,7 +141,7 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// ƒpƒXî•ñ‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ãƒ‘ã‚¹æƒ…å ±ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="knownFolderInterface"></param>
         private void InitializePath(IKnownFolder knownFolderInterface)

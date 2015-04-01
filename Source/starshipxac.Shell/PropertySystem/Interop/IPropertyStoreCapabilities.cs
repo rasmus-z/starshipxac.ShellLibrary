@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.Interop;
 
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    /// <c>IPropertyStoreCapabilities</c>ƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// <c>IPropertyStoreCapabilities</c>ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761452(v=vs.85).aspx

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using System.Windows;
 using starshipxac.Shell;
@@ -6,7 +6,7 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// •Û‘¶‚·‚éƒtƒ@ƒCƒ‹‚ð‘I‘ð‚·‚éƒ_ƒCƒAƒƒO‚ð•\Ž¦‚µ‚Ü‚·B
+    /// ä¿å­˜ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é¸æŠžã™ã‚‹ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
     /// </summary>
     public class FileSaveDialog : FileSaveDialogBase
     {
@@ -17,25 +17,25 @@ namespace starshipxac.Windows.Shell.Dialogs
         private ShellFile shellFile;
 
         /// <summary>
-        /// <see cref="FileSaveDialog"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ð‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="FileSaveDialog"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         public FileSaveDialog()
         {
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹‚ðŽw’è‚µ‚ÄA
-        /// <see cref="FileSaveDialog"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ð‰Šú‰»‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="FileSaveDialog"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="title">ƒ_ƒCƒAƒƒOƒ^ƒCƒgƒ‹B</param>
+        /// <param name="title">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚¿ã‚¤ãƒˆãƒ«ã€‚</param>
         public FileSaveDialog(string title)
             : base(title)
         {
         }
 
         /// <summary>
-        /// ƒ†[ƒU[‚ªA‚·‚Å‚É‘¶Ý‚·‚éƒtƒ@ƒCƒ‹‚ðŽw’è‚µ‚½ê‡‚ÉA
-        /// ŒxƒƒbƒZ[ƒW‚ð•\Ž¦‚·‚é‚©‚Ç‚¤‚©‚ðŽ¦‚·’l‚ðŽæ“¾‚Ü‚½‚ÍÝ’è‚µ‚Ü‚·B
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã€ã™ã§ã«å­˜åœ¨ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®šã—ãŸå ´åˆã«ã€
+        /// è­¦å‘Šãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool OverwritePrompt
         {
@@ -51,8 +51,8 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒ†[ƒU[‚ªA‘¶Ý‚µ‚È‚¢ƒtƒ@ƒCƒ‹‚ðŽw’è‚µ‚½ê‡‚ÉA
-        /// ƒtƒ@ƒCƒ‹‚ðì¬‚·‚é‚±‚Æ‚ðŠm”F‚·‚éƒƒbƒZ[ƒW‚ð•\Ž¦‚·‚é‚©‚Ç‚¤‚©‚ðŽ¦‚·’l‚ðŽæ“¾‚Ü‚½‚ÍÝ’è‚µ‚Ü‚·B
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒã€å­˜åœ¨ã—ãªã„ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®šã—ãŸå ´åˆã«ã€
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool CreatePrompt
         {
@@ -68,7 +68,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚ðŠg’£ƒ‚[ƒh‚Å•\Ž¦‚·‚é‚©‚Ç‚¤‚©‚ðŽ¦‚·’l‚ðŽæ“¾‚Ü‚½‚ÍÝ’è‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’æ‹¡å¼µãƒ¢ãƒ¼ãƒ‰ã§è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool IsExpandedMode
         {
@@ -84,7 +84,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ‘I‘ð‚µ‚½ƒtƒ@ƒCƒ‹‚ðŽæ“¾‚µ‚Ü‚·B
+        /// é¸æŠžã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public ShellFile ShellFile
         {
@@ -99,19 +99,19 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹•Û‘¶ƒ_ƒCƒAƒƒO‚ð•\Ž¦‚µ‚Ü‚·B
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ä¿å­˜ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒ_ƒCƒAƒƒOŽÀsŒ‹‰ÊB</returns>
+        /// <returns>ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å®Ÿè¡Œçµæžœã€‚</returns>
         public FileDialogResult Show()
         {
             return ShowDialog();
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹•Û‘¶ƒ_ƒCƒAƒƒO‚ð•\Ž¦‚µ‚Ü‚·B
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ä¿å­˜ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="parentWindow">eƒEƒBƒ“ƒhƒE‚Ìƒnƒ“ƒhƒ‹B</param>
-        /// <returns>ƒ_ƒCƒAƒƒOŽÀsŒ‹‰ÊB</returns>
+        /// <param name="parentWindow">è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ãƒãƒ³ãƒ‰ãƒ«ã€‚</param>
+        /// <returns>ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å®Ÿè¡Œçµæžœã€‚</returns>
         public FileDialogResult Show(Window parentWindow)
         {
             Contract.Requires<ArgumentNullException>(parentWindow != null);

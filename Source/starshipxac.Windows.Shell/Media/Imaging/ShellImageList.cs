@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using starshipxac.Shell.Media.Imaging;
@@ -8,7 +8,7 @@ using starshipxac.Windows.Shell.Interop;
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    /// ƒVƒFƒ‹ƒCƒ[ƒWƒŠƒXƒg‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚·ã‚§ãƒ«ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒªã‚¹ãƒˆã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class ShellImageList : IDisposable
     {

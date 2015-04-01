@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
@@ -10,7 +10,7 @@ using starshipxac.Windows.Shell.Dialogs.Interop;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ƒtƒ@ƒCƒ‹‘I‘ğƒ_ƒCƒAƒƒO‚ÌŠî’êƒNƒ‰ƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// ãƒ•ã‚¡ã‚¤ãƒ«é¸æŠãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public abstract class FileOpenDialogBase : FileDialogBase
     {
@@ -19,7 +19,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         private bool setFilter = false;
 
         /// <summary>
-        /// <see cref="FileOpenDialogBase"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="FileOpenDialogBase"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         protected FileOpenDialogBase()
         {
@@ -27,8 +27,8 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒgƒ‹‚ğw’è‚µ‚ÄA
-        /// <see cref="FileOpenDialogBase"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’æŒ‡å®šã—ã¦ã€
+        /// <see cref="FileOpenDialogBase"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="title"></param>
         protected FileOpenDialogBase(string title)
@@ -44,9 +44,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// I—¹Œã‚ÉƒfƒBƒŒƒNƒgƒŠ‚ğŒ³‚ÌˆÊ’u‚É–ß‚·‚©‚Ç‚¤‚©‚ğ¦‚·’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// çµ‚äº†å¾Œã«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å…ƒã®ä½ç½®ã«æˆ»ã™ã‹ã©ã†ã‹ã‚’ç¤ºã™å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <exception cref="InvalidOperationException">ƒ_ƒCƒAƒƒO•\¦’†‚Í•ÏX‚Å‚«‚Ü‚¹‚ñB</exception>
+        /// <exception cref="InvalidOperationException">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¡¨ç¤ºä¸­ã¯å¤‰æ›´ã§ãã¾ã›ã‚“ã€‚</exception>
         public bool RestoreDirectory
         {
             get
@@ -61,9 +61,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒtƒ@ƒCƒ‹‚ğÅ‹ßg—p‚µ‚½ƒtƒ@ƒCƒ‹ˆê——‚É’Ç‰Á‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’æœ€è¿‘ä½¿ç”¨ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ã«è¿½åŠ ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
-        /// <exception cref="InvalidOperationException">ƒ_ƒCƒAƒƒO•\¦’†‚Í•ÏX‚Å‚«‚Ü‚¹‚ñB</exception>
+        /// <exception cref="InvalidOperationException">ãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¡¨ç¤ºä¸­ã¯å¤‰æ›´ã§ãã¾ã›ã‚“ã€‚</exception>
         public bool AddToMostRecentlyUsedList
         {
             get
@@ -78,12 +78,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒOƒ{ƒbƒNƒX‚Ìƒtƒ@ƒCƒ‹‚Ìí—Ş‚É•\¦‚³‚ê‚éƒtƒBƒ‹ƒ^[‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒœãƒƒã‚¯ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ç¨®é¡ã«è¡¨ç¤ºã•ã‚Œã‚‹ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public FileTypeFilterCollection FileTypeFilters { get; private set; }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒOƒ{ƒbƒNƒX‚ÅŒ»İ‘I‘ğ‚³‚ê‚Ä‚¢‚éƒtƒBƒ‹ƒ^[‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒœãƒƒã‚¯ã‚¹ã§ç¾åœ¨é¸æŠã•ã‚Œã¦ã„ã‚‹ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public FileTypeFilter SelectedFileTypeFilter
         {
@@ -102,7 +102,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒOƒ{ƒbƒNƒX‚ÅŒ»İ‘I‘ğ‚³‚ê‚Ä‚¢‚éƒtƒBƒ‹ƒ^[‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãƒœãƒƒã‚¯ã‚¹ã§ç¾åœ¨é¸æŠã•ã‚Œã¦ã„ã‚‹ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public int SelectedFileTypeFilterIndex
         {
@@ -121,9 +121,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒ†[ƒU[‚ª‘I‘ğ‚µ‚½ƒtƒ@ƒCƒ‹î•ñ‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒé¸æŠã—ãŸãƒ•ã‚¡ã‚¤ãƒ«æƒ…å ±ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <returns>ƒtƒ@ƒCƒ‹î•ñ‚ÌƒRƒŒƒNƒVƒ‡ƒ“B</returns>
+        /// <returns>ãƒ•ã‚¡ã‚¤ãƒ«æƒ…å ±ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã€‚</returns>
         public IEnumerable<ShellFile> GetShellFiles()
         {
             var fileDialogNative = (IFileOpenDialog)this.FileDialogInternal.FileDialogNative;
@@ -144,7 +144,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="FileOpenDialogNative"/>‚ğì¬‚µ‚Ü‚·B
+        /// <see cref="FileOpenDialogNative"/>ã‚’ä½œæˆã—ã¾ã™ã€‚
         /// </summary>
         internal override IFileDialog2 CreateNativeFileDialog()
         {
@@ -167,13 +167,13 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ƒlƒCƒeƒBƒuƒ_ƒCƒAƒƒO‚Éİ’è‚ğ“K—p‚µ‚Ü‚·B
+        /// ãƒã‚¤ãƒ†ã‚£ãƒ–ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã«è¨­å®šã‚’é©ç”¨ã—ã¾ã™ã€‚
         /// </summary>
         protected override void SetNativeSettings()
         {
             base.SetNativeSettings();
 
-            // ƒtƒBƒ‹ƒ^[
+            // ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼
             if (this.FileTypeFilters.Any() && !this.setFilter)
             {
                 this.FileDialogInternal.SetFilters(this.FileTypeFilters);

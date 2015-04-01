@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Interop;
@@ -10,7 +10,7 @@ using starshipxac.Windows.Properties;
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒO‚ÌŠî’êƒNƒ‰ƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public abstract class TaskDialogBase : IDisposable
     {
@@ -19,7 +19,7 @@ namespace starshipxac.Windows.Dialogs
         private string title = String.Empty;
 
         /// <summary>
-        /// <see cref="TaskDialogBase"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialogBase"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
         protected TaskDialogBase()
         {
@@ -64,7 +64,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚Ì•\¦ó‘Ô‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®è¡¨ç¤ºçŠ¶æ…‹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         protected DialogShowStates DialogShowStates
         {
@@ -75,7 +75,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚ª•\¦’†‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒè¡¨ç¤ºä¸­ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public bool DialogShowing
         {
@@ -86,22 +86,22 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚ÌŠJn•\¦ˆÊ’u‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®é–‹å§‹è¡¨ç¤ºä½ç½®ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public TaskDialogStartupLocation StartupLocation { get; private set; }
 
         /// <summary>
-        /// ƒ_ƒCƒAƒƒO‚ªƒLƒƒƒ“ƒZƒ‹‰Â”\‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é’l‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«å¯èƒ½ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å€¤ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public bool Cancelable { get; set; }
 
         private TaskDialogInternal TaskDialogInternal { get; set; }
 
         /// <summary>
-        /// eƒEƒBƒ“ƒhƒE‚ğw’è‚µ‚ÄAƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+        /// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’æŒ‡å®šã—ã¦ã€ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="parentWindow">eƒEƒBƒ“ƒhƒEB</param>
-        /// <returns>ƒ_ƒCƒAƒƒO‚ÌÀsŒ‹‰ÊB</returns>
+        /// <param name="parentWindow">è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã€‚</param>
+        /// <returns>ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®å®Ÿè¡Œçµæœã€‚</returns>
         protected TaskDialogResult ShowDialog(Window parentWindow)
         {
             var parentWindowHandle = IntPtr.Zero;
@@ -122,10 +122,10 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// eƒEƒBƒ“ƒhƒE‚Ìƒnƒ“ƒhƒ‹‚ğw’è‚µ‚ÄAƒ_ƒCƒAƒƒO‚ğ•\¦‚µ‚Ü‚·B
+        /// è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ãƒãƒ³ãƒ‰ãƒ«ã‚’æŒ‡å®šã—ã¦ã€ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="parentWindowHandle">eƒEƒBƒ“ƒhƒE‚Ìƒnƒ“ƒhƒ‹B</param>
-        /// <returns>ƒ_ƒCƒAƒƒO‚ÌÀsŒ‹‰ÊB</returns>
+        /// <param name="parentWindowHandle">è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ãƒãƒ³ãƒ‰ãƒ«ã€‚</param>
+        /// <returns>ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®å®Ÿè¡Œçµæœã€‚</returns>
         protected TaskDialogResult ShowDialog(IntPtr parentWindowHandle)
         {
             try
@@ -141,7 +141,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// è“®‚Åƒ_ƒCƒAƒƒO‚ğ•Â‚¶‚Ü‚·B
+        /// æ‰‹å‹•ã§ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’é–‰ã˜ã¾ã™ã€‚
         /// </summary>
         protected void CloseDialog(TaskDialogCommonButtons commonButton)
         {

@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Windows.Shell.Controls.Interop
 {
     /// <summary>
-    /// ƒCƒ[ƒWƒŠƒXƒgó‘Ô‚ğ•Û‚µ‚Ü‚·B
+    /// ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒªã‚¹ãƒˆçŠ¶æ…‹ã‚’ä¿æŒã—ã¾ã™ã€‚
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     internal struct IMAGELISTSTATS

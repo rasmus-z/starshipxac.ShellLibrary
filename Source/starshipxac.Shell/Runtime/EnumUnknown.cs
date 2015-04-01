@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
@@ -19,7 +19,7 @@ namespace starshipxac.Shell.Runtime
             this.conditions.AddRange(conditions);
         }
 
-        #region IEnumUnknown ƒƒ“ƒo[
+        #region IEnumUnknown ãƒ¡ãƒ³ãƒãƒ¼
 
         public HRESULT Next(uint requestedNumber, ref IntPtr buffer, ref uint fetchedNumber)
         {

@@ -1,23 +1,23 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// <see cref="TaskDialog.Timer"/>ƒCƒxƒ“ƒgƒf[ƒ^‚ğ’è‹`‚µ‚Ü‚·B
+    /// <see cref="TaskDialog.Timer"/>ã‚¤ãƒ™ãƒ³ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class TaskDialogTimerEventArgs : EventArgs
     {
         /// <summary>
-        /// <see cref="TaskDialogTimerEventArgs"/>ƒNƒ‰ƒX‚ÌV‚µ‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B
+        /// <see cref="TaskDialogTimerEventArgs"/>ã‚¯ãƒ©ã‚¹ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="ticks">ƒRƒ“ƒgƒ[ƒ‹‚ª—LŒø‚É‚È‚Á‚Ä‚©‚ç‚ÌŠÔ”B</param>
+        /// <param name="ticks">ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãŒæœ‰åŠ¹ã«ãªã£ã¦ã‹ã‚‰ã®æ™‚é–“æ•°ã€‚</param>
         public TaskDialogTimerEventArgs(int ticks)
         {
             this.Ticks = ticks;
         }
 
         /// <summary>
-        /// ŠÔ”‚ğæ“¾‚µ‚Ü‚·B
+        /// æ™‚é–“æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public int Ticks { get; private set; }
     }

@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using starshipxac.Shell.Interop;
 
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    /// ƒVƒFƒ‹ƒCƒ[ƒWƒTƒCƒYƒIƒvƒVƒ‡ƒ“‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚·ã‚§ãƒ«ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚µã‚¤ã‚ºã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public enum ShellItemImageSizeOptions
     {

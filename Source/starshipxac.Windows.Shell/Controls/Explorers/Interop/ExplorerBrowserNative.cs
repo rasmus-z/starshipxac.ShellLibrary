@@ -7,7 +7,7 @@ using starshipxac.Windows.Shell.Interop;
 namespace starshipxac.Windows.Shell.Controls.Explorers.Interop
 {
     /// <summary>
-    /// <see cref="IExplorerBrowser"/>��������܂��B
+    /// <see cref="IExplorerBrowser"/>を定義します。
     /// </summary>
     [ComImport]
     [TypeLibType(TypeLibTypeFlags.FCanCreate)]

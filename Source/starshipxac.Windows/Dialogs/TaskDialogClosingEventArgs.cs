@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using starshipxac.Windows.Dialogs.Controls;
@@ -6,7 +6,7 @@ using starshipxac.Windows.Dialogs.Controls;
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// <see cref="TaskDialog.Closing"/>ƒCƒxƒ“ƒgƒf[ƒ^‚ğ’è‹`‚µ‚Ü‚·B
+    /// <see cref="TaskDialog.Closing"/>ã‚¤ãƒ™ãƒ³ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public class TaskDialogClosingEventArgs : CancelEventArgs
     {
@@ -31,17 +31,17 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOÀsŒ‹‰Ê‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å®Ÿè¡Œçµæœã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public TaskDialogSelectedButton TaskDialogResult { get; internal set; }
 
         /// <summary>
-        /// ƒNƒŠƒbƒN‚µ‚½ƒRƒ“ƒgƒ[ƒ‹‚Ì ID‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¯ãƒªãƒƒã‚¯ã—ãŸã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã® IDã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public int ControlId { get; internal set; }
 
         /// <summary>
-        /// ƒNƒŠƒbƒN‚µ‚½ƒRƒ“ƒgƒ[ƒ‹‚Ì–¼‘O‚ğæ“¾‚µ‚Ü‚·B
+        /// ã‚¯ãƒªãƒƒã‚¯ã—ãŸã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®åå‰ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public string ControlName { get; internal set; }
 

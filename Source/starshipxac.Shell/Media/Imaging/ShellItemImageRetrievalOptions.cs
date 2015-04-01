@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using starshipxac.Shell.Interop;
 
 namespace starshipxac.Shell.Media.Imaging

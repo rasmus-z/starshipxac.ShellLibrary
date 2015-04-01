@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.Interop.Library
 {
     /// <summary>
-    /// ƒVƒFƒ‹ƒ‰ƒCƒuƒ‰ƒŠƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚·ã‚§ãƒ«ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/dd391719(v=vs.85).aspx

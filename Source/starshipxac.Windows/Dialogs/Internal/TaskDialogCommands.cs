@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Diagnostics.Contracts;
 using starshipxac.Windows.Dialogs.Controls;
 using starshipxac.Windows.Dialogs.Interop;
@@ -7,7 +7,7 @@ using starshipxac.Windows.Interop;
 namespace starshipxac.Windows.Dialogs.Internal
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒOƒRƒ}ƒ“ƒhƒƒ\ƒbƒh‚ğ’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚³ãƒãƒ³ãƒ‰ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     internal class TaskDialogCommands : IDisposable
     {

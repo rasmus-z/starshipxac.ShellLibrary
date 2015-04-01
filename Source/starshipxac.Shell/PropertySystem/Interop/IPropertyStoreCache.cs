@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.Interop;
@@ -6,7 +6,7 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    /// <c>IPropertyStoreCache</c>ƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğ’è‹`‚µ‚Ü‚·B
+    /// <c>IPropertyStoreCache</c>ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761466(v=vs.85).aspx

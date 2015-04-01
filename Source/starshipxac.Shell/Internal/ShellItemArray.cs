@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using starshipxac.Shell.Interop;
@@ -25,7 +25,7 @@ namespace starshipxac.Shell.Internal
             }
         }
 
-        #region IShellItemArrayƒƒ“ƒo[
+        #region IShellItemArrayãƒ¡ãƒ³ãƒãƒ¼
 
         public HRESULT BindToHandler(IntPtr pdc, ref Guid rbhid, ref Guid riid, out IntPtr ppvOut)
         {
@@ -71,14 +71,14 @@ namespace starshipxac.Shell.Internal
             throw new NotImplementedException();
         }
 
-        #endregion iShellItemArrayƒƒ“ƒo[
+        #endregion iShellItemArrayãƒ¡ãƒ³ãƒãƒ¼
 
         /// <summary>
-        /// <see cref="IShellItemArray"/>‚©‚çA<see cref="index"/>‚Åw’è‚µ‚½ˆÊ’u‚Ì<see cref="IShellItem"/>‚ğæ“¾‚µ‚Ü‚·B
+        /// <see cref="IShellItemArray"/>ã‹ã‚‰ã€<see cref="index"/>ã§æŒ‡å®šã—ãŸä½ç½®ã®<see cref="IShellItem"/>ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="shellItemArray"><see cref="IShellItemArray"/>B</param>
-        /// <param name="index">æ“¾‚·‚éˆÊ’u‚ÌƒCƒ“ƒfƒbƒNƒXB</param>
-        /// <returns>æ“¾‚µ‚½<see cref="IShellItem"/>B</returns>
+        /// <param name="shellItemArray"><see cref="IShellItemArray"/>ã€‚</param>
+        /// <param name="index">å–å¾—ã™ã‚‹ä½ç½®ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚</param>
+        /// <returns>å–å¾—ã—ãŸ<see cref="IShellItem"/>ã€‚</returns>
         internal static IShellItem GetShellItemAt(IShellItemArray shellItemArray, int index)
         {
             Contract.Requires<ArgumentNullException>(shellItemArray != null);
@@ -89,10 +89,10 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// <see cref="IShellItemArray"/>“à‚ÌƒAƒCƒeƒ€”‚ğæ“¾‚µ‚Ü‚·B
+        /// <see cref="IShellItemArray"/>å†…ã®ã‚¢ã‚¤ãƒ†ãƒ æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="shellItemArray"><see cref="IShellItemArray"/>B</param>
-        /// <returns>æ“¾‚µ‚½ƒAƒCƒeƒ€”B</returns>
+        /// <param name="shellItemArray"><see cref="IShellItemArray"/>ã€‚</param>
+        /// <returns>å–å¾—ã—ãŸã‚¢ã‚¤ãƒ†ãƒ æ•°ã€‚</returns>
         internal static int GetShellItemCount(IShellItemArray shellItemArray)
         {
             Contract.Requires<ArgumentNullException>(shellItemArray != null);

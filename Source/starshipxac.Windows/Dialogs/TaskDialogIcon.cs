@@ -1,34 +1,34 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// ƒ^ƒXƒNƒ_ƒCƒAƒƒO•W€ƒAƒCƒRƒ“‚ð’è‹`‚µ‚Ü‚·B
+    /// ã‚¿ã‚¹ã‚¯ãƒ€ã‚¤ã‚¢ãƒ­ã‚°æ¨™æº–ã‚¢ã‚¤ã‚³ãƒ³ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     public enum TaskDialogIcon
     {
         /// <summary>
-        /// ƒAƒCƒRƒ“‚È‚µB
+        /// ã‚¢ã‚¤ã‚³ãƒ³ãªã—ã€‚
         /// </summary>
         None = 0,
 
         /// <summary>
-        /// ŒxƒAƒCƒRƒ“B
+        /// è­¦å‘Šã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         Warning = 65535,
 
         /// <summary>
-        /// ƒGƒ‰[ƒAƒCƒRƒ“B
+        /// ã‚¨ãƒ©ãƒ¼ã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         Error = 65534,
 
         /// <summary>
-        /// î•ñƒAƒCƒRƒ“B
+        /// æƒ…å ±ã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         Information = 65533,
 
         /// <summary>
-        /// ƒAƒJƒEƒ“ƒgƒRƒ“ƒgƒ[ƒ‹ƒAƒCƒRƒ“B
+        /// ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚¢ã‚¤ã‚³ãƒ³ã€‚
         /// </summary>
         Shield = 65532
     }

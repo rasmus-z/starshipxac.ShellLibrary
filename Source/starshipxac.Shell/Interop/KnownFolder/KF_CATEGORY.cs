@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 
 namespace starshipxac.Shell.Interop.KnownFolder
 {
     /// <summary>
-    /// •W€ƒtƒHƒ‹ƒ_[ƒJƒeƒSƒŠ[‚ğ’è‹`‚µ‚Ü‚·B
+    /// æ¨™æº–ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’å®šç¾©ã—ã¾ã™ã€‚
     /// </summary>
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762512(v=vs.85).aspx
@@ -11,34 +11,34 @@ namespace starshipxac.Shell.Interop.KnownFolder
     public enum KF_CATEGORY
     {
         /// <summary>
-        /// ‰¼‘zƒtƒHƒ‹ƒ_[B
+        /// ä»®æƒ³ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚
         /// </summary>
         /// <remarks>
-        /// —á: <c>Control Panel</c>, <c>Printers</c>
+        /// ä¾‹: <c>Control Panel</c>, <c>Printers</c>
         /// </remarks>
         KF_CATEGORY_VIRTUAL = 1,
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ƒVƒXƒeƒ€ã‚ÌŒÅ’èƒtƒHƒ‹ƒ_[B
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã‚·ã‚¹ãƒ†ãƒ ä¸Šã®å›ºå®šãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚
         /// </summary>
         /// <remarks>
-        /// —á: <c>Windows</c>, <c>Program Files</c>
+        /// ä¾‹: <c>Windows</c>, <c>Program Files</c>
         /// </remarks>
         KF_CATEGORY_FIXED = 2,
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ƒVƒXƒeƒ€ã‚Ì‹¤’ÊƒtƒHƒ‹ƒ_[B
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã‚·ã‚¹ãƒ†ãƒ ä¸Šã®å…±é€šãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚
         /// </summary>
         /// <remarks>
-        /// —á: <c>Documents</c>
+        /// ä¾‹: <c>Documents</c>
         /// </remarks>
         KF_CATEGORY_COMMON = 3,
 
         /// <summary>
-        /// ƒ†[ƒU[‚²‚Æ‚ÌƒtƒHƒ‹ƒ_[B
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼ã”ã¨ã®ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã€‚
         /// </summary>
         /// <remarks>
-        /// —á: <c>%USERPROFILE%\Prictures</c>
+        /// ä¾‹: <c>%USERPROFILE%\Prictures</c>
         /// </remarks>
         KF_CATEGORY_PERUSER = 4,
     }
