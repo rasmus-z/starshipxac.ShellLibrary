@@ -5,7 +5,7 @@ using Xunit;
 
 namespace starshipxac.Shell
 {
-    public class ShellItemInfoTest : IClassFixture<ShellTestConfig>
+    public class ShellItemTest : IClassFixture<ShellTestConfig>
     {
         [Fact]
         public async Task FromParsingNameTest1()
@@ -23,7 +23,7 @@ namespace starshipxac.Shell
                 Console.WriteLine("ParsingName = {0}", actual.ParsingName);
                 Console.WriteLine("ItemType = {0}", actual.ItemType);
 
-                var folder = ShellFactory.Instance.Create(actual);
+                var folder = ShellFactory.FromShellItem(actual);
                 Console.WriteLine("folder.ParsingName = {0}", folder.ParsingName);
                 Console.WriteLine("folder.Type = {0}", folder.GetType());
             });

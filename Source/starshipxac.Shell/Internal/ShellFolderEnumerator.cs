@@ -103,7 +103,7 @@ namespace starshipxac.Shell.Internal
                 return false;
             }
 
-            this.Current = ShellFactory.Instance.Create(ShellItem.FromIdList(item, this.Parent.ShellFolderInterface));
+            this.Current = ShellFactory.FromShellItem(ShellItem.FromIdList(item, this.Parent.ShellFolderInterface));
             return true;
         }
 

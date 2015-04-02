@@ -22,8 +22,6 @@ namespace starshipxac.Shell.PropertySystem
 
         public ShellPropertyKey(Guid formatId, UInt32 propId)
         {
-            Contract.Requires<ArgumentNullException>(formatId != null);
-
             this.propertyKeyNative = new PROPERTYKEY(formatId, propId);
             this.canonicalName = null;
         }

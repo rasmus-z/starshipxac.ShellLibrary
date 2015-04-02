@@ -106,6 +106,14 @@ namespace starshipxac.Shell
             return new ShellFolder(ShellItem.FromParsingName(absPath));
         }
 
+        public static ShellObject FromShellItem(ShellItem shellItem)
+        {
+            Contract.Requires<ArgumentNullException>(shellItem != null);
+            Contract.Ensures(Contract.Result<ShellObject>() != null);
+
+            return Instance.Create(shellItem);
+        }
+
         /// <summary>
         /// 指定した<see cref="ShellItem"/>から、<see cref="ShellObject"/>派生クラスのインスタンスを作成します。
         /// </summary>
@@ -295,10 +303,10 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="IShellItem2"/>が標準フォルダーかどうかを判定します。
+        /// <see cref="IShellItem"/>が標準フォルダーの場合、<see cref="IKnownFolder"/>を取得します。
         /// </summary>
-        /// <param name="shellItem">判定する<see cref="ShellItem"/>。</param>
-        /// <returns>標準フォルダーの場合は<c>true</c>を返します。それ以外の場合は<c>false</c>を返します。</returns>
+        /// <param name="shellItem"><see cref="ShellItem"/>。</param>
+        /// <returns>標準フォルダーの場合は<see cref="IKnownFolder"/>。それ以外の場合は<c>null</c>。</returns>
         private static IKnownFolder GetKnownFolderNative(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
