@@ -21,6 +21,7 @@ namespace starshipxac.Shell
             : base(shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
+            Contract.Requires<ArgumentException>(shellItem.IsFolder);
 
             this.ShellFolderInterface = shellItem.GetShellFolder();
         }

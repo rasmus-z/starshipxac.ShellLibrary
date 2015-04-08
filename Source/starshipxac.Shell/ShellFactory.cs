@@ -99,8 +99,8 @@ namespace starshipxac.Shell
             var absPath = ShellItem.GetAbsolutePath(path);
             if (!Directory.Exists(absPath))
             {
-                throw new DirectoryNotFoundException(
-                    String.Format(CultureInfo.InvariantCulture, ErrorMessages.FilePathNotExist, path));
+                throw new DirectoryNotFoundException(String.Format(CultureInfo.InvariantCulture,
+                    ErrorMessages.FilePathNotExist, path));
             }
 
             return new ShellFolder(ShellItem.FromParsingName(absPath));
@@ -149,27 +149,6 @@ namespace starshipxac.Shell
 
             // ファイルシステム外のアイテム
             return new ShellNonFileSystemItem(shellItem);
-        }
-
-        /// <summary>
-        /// 指定した<c>ParsingName</c>から、<see cref="ShellFolder"/>を作成します。
-        /// </summary>
-        /// <param name="parsingName"><c>ParsingName</c>。</param>
-        /// <returns>
-        /// 作成した<see cref="ShellFolder"/>。
-        /// <param name="parsingName"/>がフォルダではない場合は<c>null</c>。
-        /// </returns>
-        public ShellFolder CreateFolder(string parsingName)
-        {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(parsingName));
-
-            var shellItem = ShellItem.FromParsingName(parsingName);
-            if (!shellItem.IsFolder)
-            {
-                return null;
-            }
-
-            return Instance.CreateFolder(shellItem);
         }
 
         /// <summary>

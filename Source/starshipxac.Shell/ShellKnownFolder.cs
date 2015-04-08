@@ -11,7 +11,7 @@ namespace starshipxac.Shell
     /// <summary>
     /// シェル標準フォルダーを定義します。
     /// </summary>
-    public class ShellKnownFolder : ShellFolder
+    public sealed class ShellKnownFolder : ShellFolder
     {
         /// <summary>
         /// <see cref="ShellItem"/>、<see cref="IKnownFolder"/>および<see cref="FolderProperties"/>を指定して、

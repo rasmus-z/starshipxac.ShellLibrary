@@ -18,8 +18,8 @@ namespace starshipxac.Shell.PropertySystem.Interop
     internal sealed class PropVariant : IDisposable
     {
         #region Fields
-
         // ReSharper disable FieldCanBeMadeReadOnly.Local
+
         [FieldOffset(0)]
         private decimal _decimal;
 
@@ -63,7 +63,6 @@ namespace starshipxac.Shell.PropertySystem.Interop
         private IntPtr _ptr2;
 
         // ReSharper restore FieldCanBeMadeReadOnly.Local
-
         #endregion
 
         /// <summary>
