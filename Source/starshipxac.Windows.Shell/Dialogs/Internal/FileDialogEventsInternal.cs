@@ -30,7 +30,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
 
         public HRESULT OnFolderChanging(IFileDialog pfd, IShellItem psiFolder)
         {
-            var shellFolder = ShellFactory.CreateFolder(psiFolder);
+            var shellFolder = ShellFactory.FromShellItem(new ShellItem(psiFolder)) as ShellFolder;
 
             var change = true;
             if (!this.firstFolderChanged)

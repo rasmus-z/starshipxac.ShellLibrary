@@ -76,7 +76,7 @@ namespace starshipxac.Shell
         /// <returns></returns>
         public static IEnumerable<ShellLibrary> EnumerateLibraries()
         {
-            return ShellKnownFolders.Libraries.EnumerateItems().OfType<ShellLibrary>();
+            return ShellKnownFolders.Libraries.EnumerateObjects().OfType<ShellLibrary>();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace starshipxac.Shell
         /// <returns></returns>
         public static IEnumerable<ShellLibrary> EnumeratePublicLibraries()
         {
-            return ShellKnownFolders.PublicLibraries.EnumerateItems().OfType<ShellLibrary>();
+            return ShellKnownFolders.PublicLibraries.EnumerateObjects().OfType<ShellLibrary>();
         }
     }
 }

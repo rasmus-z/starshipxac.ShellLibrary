@@ -191,7 +191,7 @@ namespace starshipxac.Windows.Shell.Dialogs
             {
                 return null;
             }
-            return ShellFactory.Create(shellItem) as ShellFile;
+            return ShellFactory.FromShellItem(new ShellItem((IShellItem2)shellItem)) as ShellFile;
         }
 
         /// <summary>

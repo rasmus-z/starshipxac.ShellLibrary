@@ -3,6 +3,9 @@ using System.IO;
 
 namespace starshipxac.Shell.TestTools
 {
+    /// <summary>
+    /// テスト情報を保持します。
+    /// </summary>
     public class ShellTestConfig : IDisposable
     {
         public ShellTestConfig()
@@ -20,7 +23,7 @@ namespace starshipxac.Shell.TestTools
         }
 
         /// <summary>
-        /// テストディレクトリ名を取得します。
+        /// テスト用ファイルを格納するディレクトリの名前を取得します。
         /// </summary>
         public string TestDirectoryName
         {
@@ -31,7 +34,7 @@ namespace starshipxac.Shell.TestTools
         }
 
         /// <summary>
-        /// テストディレクトリを取得します。
+        /// テスト用ファイルを格納するディレクトリの情報を取得します。
         /// </summary>
         public DirectoryInfo TestDirectory { get; private set; }
 

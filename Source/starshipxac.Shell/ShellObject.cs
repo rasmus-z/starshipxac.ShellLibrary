@@ -37,7 +37,6 @@ namespace starshipxac.Shell
         internal ShellObject(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
-            Contract.Requires<ArgumentException>(!shellItem.IsFolder);
 
             this.ShellItem = shellItem;
         }

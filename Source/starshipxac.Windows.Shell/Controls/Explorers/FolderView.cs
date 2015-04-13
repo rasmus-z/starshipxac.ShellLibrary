@@ -191,7 +191,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
             for (var index = 0; index < count; ++index)
             {
                 var shellItem = ShellItemArray.GetShellItemAt(shellItemArray, index);
-                var shellObject = ShellFactory.Create(shellItem);
+                var shellObject = ShellFactory.FromShellItem(new ShellItem((IShellItem2)shellItem));
                 if (shellObject != null)
                 {
                     yield return shellObject;
@@ -207,7 +207,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
             for (var index = 0; index < count; ++index)
             {
                 var shellItem = ShellItemArray.GetShellItemAt(shellItemArray, index);
-                var shellObject = ShellFactory.Create(shellItem);
+                var shellObject = ShellFactory.FromShellItem(new ShellItem((IShellItem2)shellItem));
                 if (shellObject != null)
                 {
                     yield return shellObject;

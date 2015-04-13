@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace starshipxac.Shell.TestTools
 {
+    /// <summary>
+    /// 指定した<see cref="Action"/>をシングルスレッドアパートメントで実行します。
+    /// </summary>
     public static class STATask
     {
         public static Task Run(Action action)

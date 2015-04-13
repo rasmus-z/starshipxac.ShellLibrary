@@ -273,7 +273,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
 
         HRESULT IExplorerBrowserEvents.OnNavigationPending(IntPtr pidlFolder)
         {
-            var pendingLocation = ShellFactory.Create((PIDL)pidlFolder);
+            var pendingLocation = ShellFactory.FromShellItem(ShellItem.FromPIDL((PIDL)pidlFolder));
             var args = new NavigationPendingEventArgs(pendingLocation);
             OnNavigationPending(args);
 
@@ -293,7 +293,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
                 this.FolderSettings.ViewMode = folderView.ViewMode;
             }
 
-            var newLocation = ShellFactory.Create((PIDL)pidlFolder);
+            var newLocation = ShellFactory.FromShellItem(ShellItem.FromPIDL((PIDL)pidlFolder));
             var args = new NavigationCompletedEventArgs(newLocation);
             OnNavigationCompleted(args);
 
@@ -302,7 +302,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
 
         HRESULT IExplorerBrowserEvents.OnNavigationFailed(IntPtr pidlFolder)
         {
-            var failedLocation = ShellFactory.Create((PIDL)pidlFolder);
+            var failedLocation = ShellFactory.FromShellItem(ShellItem.FromPIDL((PIDL)pidlFolder));
             var args = new NavigationFailedEventArgs(failedLocation);
             OnNavigationFailed(args);
 

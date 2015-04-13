@@ -17,11 +17,16 @@ namespace starshipxac.Shell
         /// <see cref="ShellItem"/>を指定して、<see cref="ShellFolder"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="shellItem"><see cref="ShellItem"/>。</param>
+        /// <remarks>
+        /// <para>
+        /// <see cref="ShellItem.IsFolder"/>は、<c>true</c>であるとは限りません。
+        /// 一部の<c>KnownFolder</c>は、<see cref="ShellItem.IsFolder"/>が<c>false</c>の場合があります。
+        /// </para>
+        /// </remarks>
         internal ShellFolder(ShellItem shellItem)
             : base(shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
-            Contract.Requires<ArgumentException>(shellItem.IsFolder);
 
             this.ShellFolderInterface = shellItem.GetShellFolder();
         }
@@ -92,19 +97,19 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="ShellFolder"/>内のアイテムコレクションを取得します。
+        /// <see cref="ShellFolder"/>に存在する<see cref="ShellObject"/>のコレクションを取得します。
         /// </summary>
-        /// <returns><see cref="ShellFolder"/>内のアイテムコレクション。</returns>
-        public virtual IEnumerable<ShellObject> EnumerateItems()
+        /// <returns><see cref="ShellObject"/>のコレクション。</returns>
+        public virtual IEnumerable<ShellObject> EnumerateObjects()
         {
             Contract.Ensures(Contract.Result<IEnumerable<ShellObject>>() != null);
             return new ShellItems(new ShellFolderEnumerator(this));
         }
 
         /// <summary>
-        /// <see cref="ShellFolder"/>内のファイルコレクションを取得します。
+        /// <see cref="ShellFolder"/>に存在する<see cref="ShellFile"/>のコレクションを取得します。
         /// </summary>
-        /// <returns><see cref="ShellFolder"/>内のファイルコレクション。</returns>
+        /// <returns><see cref="ShellFile"/>のコレクション。</returns>
         public virtual IEnumerable<ShellObject> EnumerateFiles()
         {
             Contract.Ensures(Contract.Result<IEnumerable<ShellObject>>() != null);
@@ -112,9 +117,9 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="ShellFolder"/>内のフォルダーコレクションを取得します。
+        /// <see cref="ShellFolder"/>に存在する<see cref="ShellFolder"/>のコレクションを取得します。
         /// </summary>
-        /// <returns><see cref="ShellFolder"/>内のフォルダーコレクション。</returns>
+        /// <returns><see cref="ShellFolder"/>のコレクション。</returns>
         public virtual IEnumerable<ShellFolder> EnumerateFolders()
         {
             Contract.Ensures(Contract.Result<IEnumerable<ShellFolder>>() != null);

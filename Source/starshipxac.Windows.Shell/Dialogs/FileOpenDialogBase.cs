@@ -135,7 +135,7 @@ namespace starshipxac.Windows.Shell.Dialogs
             for (var index = 0; index < count; ++index)
             {
                 var shellItem = ShellItemArray.GetShellItemAt(shellItemArray, index);
-                var shellFile = ShellFactory.Create(shellItem) as ShellFile;
+                var shellFile = ShellFactory.FromShellItem(new ShellItem((IShellItem2)shellItem)) as ShellFile;
                 if (shellFile != null)
                 {
                     yield return shellFile;

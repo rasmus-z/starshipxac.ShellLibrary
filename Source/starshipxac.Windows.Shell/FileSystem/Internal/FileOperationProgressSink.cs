@@ -148,7 +148,7 @@ namespace starshipxac.Windows.Shell.FileSystem.Internal
                 return null;
             }
 
-            return ShellFactory.Create(shellItem);
+            return ShellFactory.FromShellItem(new ShellItem((IShellItem2)shellItem));
         }
 
         #endregion

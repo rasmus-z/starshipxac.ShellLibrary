@@ -13,7 +13,7 @@ namespace ShellExplorerSample.ViewModels
     /// Shell Explorer Sample View Model.
     /// </summary>
     /// <remarks>
-    /// Gitライブラリフォルダーの<see cref="ShellLibrary.EnumerateItems"/>メソッドで <c>FileNotFoundException</c>が発生する場合は、
+    /// Gitライブラリフォルダーの<see cref="ShellFolder.EnumerateObjects"/>メソッドで <c>FileNotFoundException</c>が発生する場合は、
     /// プロジェクトのプロパティ -> ビルドの「32ビットの優先」のチェックを外す。
     /// </remarks>
     public class MainWindowViewModel : ViewModel

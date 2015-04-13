@@ -118,7 +118,7 @@ namespace ShellExplorerSample.ViewModels.Shell
         /// <returns></returns>
         public IEnumerable<ShellObjectViewModel> EnumerateItems()
         {
-            return this.ShellFolder.EnumerateItems()
+            return this.ShellFolder.EnumerateObjects()
                 .Select(x => ShellViewModelFactory.Create(x, this));
         }
 

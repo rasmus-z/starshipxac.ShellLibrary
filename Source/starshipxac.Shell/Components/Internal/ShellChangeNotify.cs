@@ -109,7 +109,7 @@ namespace starshipxac.Shell.Components.Internal
                 return null;
             }
 
-            return ShellFactory.Create(shellItem2);
+            return ShellFactory.FromShellItem(new ShellItem(shellItem2));
         }
     }
 }

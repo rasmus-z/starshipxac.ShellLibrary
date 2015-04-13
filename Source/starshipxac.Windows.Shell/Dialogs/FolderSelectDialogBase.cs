@@ -51,7 +51,7 @@ namespace starshipxac.Windows.Shell.Dialogs
             for (var index = 0; index < count; ++index)
             {
                 var shellItem = ShellItemArray.GetShellItemAt(shellItemArray, index);
-                var shellFolder = ShellFactory.Create(shellItem) as ShellFolder;
+                var shellFolder = ShellFactory.FromShellItem(new ShellItem((IShellItem2)shellItem)) as ShellFolder;
                 if (shellFolder != null)
                 {
                     yield return shellFolder;

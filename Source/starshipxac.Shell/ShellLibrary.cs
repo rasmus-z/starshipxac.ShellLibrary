@@ -129,7 +129,7 @@ namespace starshipxac.Shell
                     DEFAULTSAVEFOLDERTYPE.DSFT_DETECT,
                     ref guid,
                     out saveFolderItem);
-                return ShellFactory.Create(saveFolderItem) as ShellFolder;
+                return ShellFactory.FromShellItem(new ShellItem((IShellItem2)saveFolderItem)) as ShellFolder;
             }
             set
             {

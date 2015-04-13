@@ -19,14 +19,26 @@ namespace starshipxac.Shell
         private string itemType;
 
         /// <summary>
+        /// <see cref="IShellItem"/>を指定して、
         /// <see cref="ShellItem"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="shellItem"><see cref="IShellItem2"/>。</param>
-        internal ShellItem(IShellItem2 shellItem)
+        /// <param name="shellItem"><see cref="IShellItem"/>。</param>
+        internal ShellItem(IShellItem shellItem)
+            : this((IShellItem2)shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
+        }
 
-            this.ShellItemInterface = shellItem;
+        /// <summary>
+        /// <see cref="IShellItem2"/>を指定して、
+        /// <see cref="ShellItem"/>クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="shellItem2"><see cref="IShellItem2"/>。</param>
+        internal ShellItem(IShellItem2 shellItem2)
+        {
+            Contract.Requires<ArgumentNullException>(shellItem2 != null);
+
+            this.ShellItemInterface = shellItem2;
             InitializeAttributes();
         }
 

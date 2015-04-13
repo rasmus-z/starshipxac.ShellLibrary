@@ -113,7 +113,7 @@ namespace starshipxac.Shell
                     foreach (var library in ShellLibraries.EnumerateLibraries())
                     {
                         Console.WriteLine("Library: {0}", library.DisplayName);
-                        foreach (var item in library.EnumerateItems())
+                        foreach (var item in library.EnumerateObjects())
                         {
                             Console.WriteLine("  {0}", item.DisplayName);
                         }
