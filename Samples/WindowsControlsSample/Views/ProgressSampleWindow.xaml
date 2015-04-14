@@ -1,0 +1,38 @@
+﻿<Window x:Class="WindowsControlsSample.Views.ProgressSampleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:starshipxac.Windows.Controls;assembly=starshipxac.Windows"
+        Title="Progress Sample" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <SolidColorBrush x:Key="ProgressLinearForegroundThemeBrush" Color="#FF4617B4" />
+            <SolidColorBrush x:Key="ProgressRingForegroundThemeBrush" Color="#FF4617B4" />
+        </Grid.Resources>
+        <Grid Grid.Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <controls:ProgressLinear Grid.Row="0" IsActive="True" />
+                <Border Grid.Row="1" Background="Black">
+                    <controls:ProgressLinear Foreground="White" IsActive="True" />
+                </Border>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <controls:ProgressRing Grid.Column="0" IsActive="True" Width="80" Height="80" />
+            <Border Grid.Column="1" Background="Black">
+                <controls:ProgressRing Foreground="White" IsActive="True" Width="80" Height="80" />
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

@@ -127,7 +127,16 @@ namespace starshipxac.Windows.Dialogs.Internal
             foreach (var button in nativeControls)
             {
                 Marshal.StructureToPtr(button, pos, false);
-                pos = pos + Marshal.SizeOf(button);
+                if (IntPtr.Size == 4)
+                {
+                    // 32bit
+                    pos = (IntPtr)((int)pos + Marshal.SizeOf(button));
+                }
+                else
+                {
+                    // 64bit
+                    pos = (IntPtr)(pos.ToInt64() + Marshal.SizeOf(button));
+                }
             }
 
             return result;
