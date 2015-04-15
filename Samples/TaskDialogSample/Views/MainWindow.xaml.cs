@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using starshipxac.Windows.Dialogs;
 using starshipxac.Windows.Dialogs.Controls;
@@ -40,6 +41,7 @@ namespace TaskDialogSample.Views
                 taskDialog.Title = "Simple Sample";
                 taskDialog.MainInstructionText = "Common Buttons Sample";
                 taskDialog.CommonButtons = TaskDialogCommonButtons.Yes | TaskDialogCommonButtons.No;
+                
                 var result = taskDialog.Show();
 
                 Debug.WriteLine("SelectedButtonId = " + result.SelectedButtonId);
@@ -84,20 +86,17 @@ namespace TaskDialogSample.Views
             {
                 taskDialog.Title = "Custom Button Sample";
                 taskDialog.Cancelable = true;
+
                 const int id = (int)TaskDialogCommonButtonId.MinCustomControlId;
+                taskDialog.CustomButtons.Add(new TaskDialogButton(TaskDialogCommonButtonId.Ok, "button1", "OK"));
+                taskDialog.CustomButtons.Add(new TaskDialogButton(TaskDialogCommonButtonId.Retry, "button2", "Retry"));
+                taskDialog.CustomButtons.Add(new TaskDialogButton(TaskDialogCommonButtonId.Cancel, "button3", "Cancel"));
+                taskDialog.CustomButtons.Add(new TaskDialogButton(id + 0, "button4", "Custom Button", true));
 
-                var button1 = new TaskDialogButton(TaskDialogCommonButtonId.Ok, "button1", "OK");
-                taskDialog.CustomButtons.Add(button1);
-
-                var button2 = new TaskDialogButton(TaskDialogCommonButtonId.Retry, "button2", "Retry");
-                taskDialog.CustomButtons.Add(button2);
-
-                var button3 = new TaskDialogButton(TaskDialogCommonButtonId.Cancel, "button3", "Cancel");
-                taskDialog.CustomButtons.Add(button3);
-
-                var button4 = new TaskDialogButton(id + 0, "button4", "Custom Button", true);
-                taskDialog.CustomButtons.Add(button4);
-
+                taskDialog.CustomButtons
+                    .First(x => x.Id == id + 0)
+                    .Click += (sender, args) => Debug.WriteLine("Click: {0}", sender);
+                
                 var result = taskDialog.Show();
 
                 Debug.WriteLine("SelectedButtonId = " + result.SelectedButtonId);
@@ -120,6 +119,11 @@ namespace TaskDialogSample.Views
                 taskDialog.CommandLinks.Add(new TaskDialogCommandLink(TaskDialogCommonButtonId.Close, "link3", "Cancel"));
                 taskDialog.CommandLinks.Add(new TaskDialogCommandLink(id + 0, "link4", "Custom Link1", "Close Dialog", true));
                 taskDialog.CommandLinks.Add(new TaskDialogCommandLink(id + 1, "link5", "Custom Link2", "Not Close Dialog"));
+                foreach (var commandLink in taskDialog.CommandLinks)
+                {
+                    commandLink.Click += (sender, args) => Debug.WriteLine("Click: {0}", sender);
+                }
+
                 var result = taskDialog.Show();
 
                 Debug.WriteLine("SelectedButtonId = " + result.SelectedButtonId);

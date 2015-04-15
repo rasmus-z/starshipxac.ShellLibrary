@@ -741,7 +741,7 @@ namespace starshipxac.Windows.Dialogs.Internal
                 {
                     // コマンドリンク
                     var control = this.CommandLinks.FirstOrDefault(x => x.Id == buttonId);
-                    if (control != null)
+                    if (control != null && control.DialogClosable)
                     {
                         return this.Dialog.RaiseClosingEvent(buttonId) ? S_OK : S_FALSE;
                     }
