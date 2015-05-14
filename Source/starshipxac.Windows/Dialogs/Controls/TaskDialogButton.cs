@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using System.Text;
 
 namespace starshipxac.Windows.Dialogs.Controls
 {
@@ -9,15 +8,9 @@ namespace starshipxac.Windows.Dialogs.Controls
     /// </summary>
     public class TaskDialogButton : TaskDialogButtonBase
     {
-        public TaskDialogButton(TaskDialogCommonButtonId id, string name, string text)
-            : base((int)id, name, text)
+        public TaskDialogButton(string name, string text, bool dialogClosable = false)
+            : base(name, text, dialogClosable)
         {
-        }
-
-        public TaskDialogButton(int id, string name, string text, bool dialogClosable = false)
-            : base(id, name, text, dialogClosable)
-        {
-            Contract.Requires<ArgumentOutOfRangeException>(id > 0);
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 
@@ -28,13 +21,8 @@ namespace starshipxac.Windows.Dialogs.Controls
 
         public override string ToString()
         {
-            var result = new StringBuilder();
-            result.Append("TaskDialogButton[");
-            result.AppendFormat("Id={0}", this.Id);
-            result.AppendFormat(", Name={0}", this.Name);
-            result.AppendFormat(", Text={0}", this.Text);
-            result.Append("]");
-            return result.ToString();
+            return String.Format("{0}{{Id={1}, Name={2}, Text={3}}}",
+                this.GetType().Name, this.Id, this.Name, this.Text);
         }
     }
 }

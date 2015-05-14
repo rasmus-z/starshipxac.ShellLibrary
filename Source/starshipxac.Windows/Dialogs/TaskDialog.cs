@@ -333,7 +333,7 @@ namespace starshipxac.Windows.Dialogs
         /// <summary>
         /// プログレスバーを取得または設定します。
         /// </summary>
-        public TaskDialogProgressBar ProgressBar { get; set; }
+        public TaskDialogProgressBarBase ProgressBar { get; set; }
 
         #region Events
 
@@ -551,6 +551,10 @@ namespace starshipxac.Windows.Dialogs
             {
                 result |= TaskDialogOptions.ExpandFooterArea;
             }
+            if (this.Timer != null)
+            {
+                result |= TaskDialogOptions.EnableTimer;
+            }
 
             return result;
         }
@@ -576,7 +580,7 @@ namespace starshipxac.Windows.Dialogs
         protected internal override bool RaiseClosingEvent(int buttonId)
         {
             TaskDialogClosingEventArgs args;
-            if ((int)TaskDialogCommonButtonId.MinCustomControlId <= buttonId)
+            if ((int)TaskDialogCommonButtons.MinCustomControlId <= buttonId)
             {
                 var control = FindButton(buttonId);
                 if (control == null)
@@ -588,7 +592,7 @@ namespace starshipxac.Windows.Dialogs
             }
             else
             {
-                args = TaskDialogClosingEventArgs.Create((TaskDialogCommonButtonId)buttonId);
+                args = TaskDialogClosingEventArgs.Create((TaskDialogCommonButtons)buttonId);
             }
 
             OnClosing(args);

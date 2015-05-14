@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace starshipxac.Windows.Dialogs.Interop
 {
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode, Pack = 1)]
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto, Pack = 4)]
     internal class TASKDIALOGCONFIG
     {
         internal uint cbSize;

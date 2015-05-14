@@ -9,8 +9,8 @@ namespace starshipxac.Windows.Dialogs.Controls
     public abstract class DialogControl : IEquatable<DialogControl>
     {
         public static readonly int MinDialogControlId = 16;
-
         private static int nextId = MinDialogControlId;
+        private static object syncObj = new object();
 
         /// <summary>
         /// コントロール名を指定して、
@@ -22,15 +22,6 @@ namespace starshipxac.Windows.Dialogs.Controls
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
 
             this.Id = GetNextId();
-            this.Name = name;
-        }
-
-        protected DialogControl(int id, string name)
-        {
-            Contract.Requires<ArgumentOutOfRangeException>(id > 0);
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
-
-            this.Id = id;
             this.Name = name;
         }
 
@@ -50,16 +41,19 @@ namespace starshipxac.Windows.Dialogs.Controls
         /// <returns>コントロールID。</returns>
         private static int GetNextId()
         {
-            var result = nextId;
-            if (nextId == Int32.MaxValue)
+            lock (syncObj)
             {
-                nextId = Int32.MinValue;
+                var result = nextId;
+                if (nextId == Int32.MaxValue)
+                {
+                    nextId = Int32.MinValue;
+                }
+                else
+                {
+                    nextId += 1;
+                }
+                return result;
             }
-            else
-            {
-                nextId += 1;
-            }
-            return result;
         }
 
         public static bool operator ==(DialogControl left, DialogControl right)

@@ -18,18 +18,6 @@ namespace starshipxac.Windows.Dialogs.Controls
             Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(name));
         }
 
-        /// <summary>
-        /// コントロールIDおよびコントロール名を指定して、<see cref="TaskDialogControl"/>クラスの新しいインスタンスを初期化します。
-        /// </summary>
-        /// <param name="id">コントロールID。</param>
-        /// <param name="name">コントロール名。</param>
-        protected TaskDialogControl(int id, string name)
-            : base(id, name)
-        {
-            Contract.Requires<ArgumentOutOfRangeException>(id > 0);
-            Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(name));
-        }
-
         public TaskDialogBase Dialog { get; private set; }
 
         internal virtual void Attach(TaskDialogBase dialog)

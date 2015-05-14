@@ -292,7 +292,7 @@ namespace starshipxac.Windows.Dialogs
             this.TaskDialogInternal.SetRadioButtons(radioButtons);
         }
 
-        protected void SetProgressBar(TaskDialogProgressBar progressBar)
+        protected void SetProgressBar(TaskDialogProgressBarBase progressBar)
         {
             this.TaskDialogInternal.SetProgressBar(progressBar);
         }
@@ -326,62 +326,6 @@ namespace starshipxac.Windows.Dialogs
         {
             this.TaskDialogInternal.SetRadioButtonEnabled(button, enabled);
         }
-
-        #endregion
-
-        #region IDialogControlHost Members
-
-        //bool IDialogControlHost.IsCollectionChangeAllowed()
-        //{
-        //    return !this.DialogShowing;
-        //}
-
-        //void IDialogControlHost.ApplyCollectionChanged()
-        //{
-        //}
-
-        //bool IDialogControlHost.IsControlPropertyChangeAllowed(string propertyName, DialogControl control)
-        //{
-        //    bool result;
-        //    if (!this.DialogShowing)
-        //    {
-        //        switch (propertyName)
-        //        {
-        //            case "Enabled":
-        //                result = false;
-        //                break;
-
-        //            default:
-        //                result = true;
-        //                break;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        switch (propertyName)
-        //        {
-        //            case "Text":
-        //            case "Default":
-        //                result = false;
-        //                break;
-
-        //            case "ShowElevationIcon":
-        //            case "Enabled":
-        //                result = true;
-        //                break;
-
-        //            default:
-        //                result = false;
-        //                break;
-        //        }
-        //    }
-        //    return result;
-        //}
-
-        //void IDialogControlHost.ApplyControlPropertyChange(string propertyName, DialogControl control)
-        //{
-        //    this.TaskDialogInternal.ApplyControlPropertyChange(propertyName, control);
-        //}
 
         #endregion
     }

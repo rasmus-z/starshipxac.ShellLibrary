@@ -141,6 +141,8 @@
     <Compile Include="Devices\MultiMonitor.cs" />
     <Compile Include="Dialogs\Controls\DialogControl.cs" />
     <Compile Include="Dialogs\Controls\TaskDialogControlCollection.cs" />
+    <Compile Include="Dialogs\Controls\TaskDialogMarquee.cs" />
+    <Compile Include="Dialogs\Controls\TaskDialogProgressBarBase.cs" />
     <Compile Include="Dialogs\DialogShowStates.cs" />
     <Compile Include="Dialogs\IDialogControlHost.cs" />
     <Compile Include="Dialogs\Controls\TaskDialogButton.cs" />
@@ -170,7 +172,6 @@
     <Compile Include="Dialogs\TaskDialogBase.cs" />
     <Compile Include="Dialogs\TaskDialogClosingEventArgs.cs" />
     <Compile Include="Dialogs\TaskDialogCommonButtons.cs" />
-    <Compile Include="Dialogs\TaskDialogCommonButtonId.cs" />
     <Compile Include="Dialogs\TaskDialogExpandChangedEventArgs.cs" />
     <Compile Include="Dialogs\TaskDialogExpandedInfoMode.cs" />
     <Compile Include="Dialogs\TaskDialogHyperlinkClickedEventArgs.cs" />

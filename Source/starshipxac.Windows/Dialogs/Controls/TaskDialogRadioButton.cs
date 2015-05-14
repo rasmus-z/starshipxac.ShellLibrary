@@ -11,13 +11,11 @@ namespace starshipxac.Windows.Dialogs.Controls
         /// <summary>
         /// <see cref="TaskDialogRadioButton"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="id">コントロールID。</param>
         /// <param name="name">コントロール名。</param>
         /// <param name="text">テキスト。</param>
-        public TaskDialogRadioButton(int id, string name, string text)
-            : base(id, name, text)
+        public TaskDialogRadioButton(string name, string text)
+            : base(name, text)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(id > 0);
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 

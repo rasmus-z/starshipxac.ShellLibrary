@@ -43,5 +43,7 @@ namespace starshipxac.Windows.Dialogs
         /// 閉じるボタン。
         /// </summary>
         Close = TASKDIALOG_COMMON_BUTTON_FLAGS.TDCBF_CLOSE_BUTTON,
+
+        MinCustomControlId = Close + 1
     }
 }

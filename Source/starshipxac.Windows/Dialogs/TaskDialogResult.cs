@@ -1,24 +1,25 @@
 ﻿using System;
+using starshipxac.Windows.Dialogs.Controls;
 
 namespace starshipxac.Windows.Dialogs
 {
     public class TaskDialogResult
     {
-        private TaskDialogResult(int selectedButtonId, int selectedRadioButtonId, bool verificationChecked)
+        private TaskDialogResult(TaskDialogButtonBase selectedButton, TaskDialogRadioButton selectedRadioButton, bool verificationChecked)
         {
-            this.SelectedButtonId = selectedButtonId;
-            this.SelectedRadioButtonId = selectedRadioButtonId;
+            this.SelectedButton = selectedButton;
+            this.SelectedRadioButton = selectedRadioButton;
             this.VerificationChecked = verificationChecked;
         }
 
-        internal static TaskDialogResult Create(int selectedButtonId, int selectedRadioButtonId, bool verificationChecked)
+        internal static TaskDialogResult Create(TaskDialogButtonBase selectedButton, TaskDialogRadioButton selectedRadioButton, bool verificationChecked)
         {
-            return new TaskDialogResult(selectedButtonId, selectedRadioButtonId, verificationChecked);
+            return new TaskDialogResult(selectedButton, selectedRadioButton, verificationChecked);
         }
 
-        public int SelectedButtonId { get; private set; }
+        public TaskDialogButtonBase SelectedButton { get; private set; }
 
-        public int SelectedRadioButtonId { get; private set; }
+        public TaskDialogRadioButton SelectedRadioButton { get; private set; }
 
         public bool VerificationChecked { get; private set; }
     }

@@ -6,12 +6,14 @@ namespace TaskDialogSample.Manipulations
     {
         void ShowSimpleTaskDialog();
 
-        void ShowAllPartsTaskDialog();
+        void ShowAllControlsTaskDialog();
 
         void ShowCustomButtonTaskDialog();
 
         void ShowCommandLinkTaskDialog();
 
         void ShowRadioButtonTaskDialog();
+
+        void ShowMarqueeTaskDialog();
     }
 }

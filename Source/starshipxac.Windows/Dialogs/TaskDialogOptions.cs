@@ -13,5 +13,6 @@ namespace starshipxac.Windows.Dialogs
         Cancelable = TASKDIALOG_FLAGS.TDF_ALLOW_DIALOG_CANCELLATION,
         Expanded = TASKDIALOG_FLAGS.TDF_EXPANDED_BY_DEFAULT,
         ExpandFooterArea = TASKDIALOG_FLAGS.TDF_EXPAND_FOOTER_AREA,
+        EnableTimer = TASKDIALOG_FLAGS.TDF_CALLBACK_TIMER,
     }
 }

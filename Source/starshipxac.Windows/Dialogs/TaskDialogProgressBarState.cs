@@ -22,10 +22,5 @@ namespace starshipxac.Windows.Dialogs
         /// 一時停止状態。
         /// </summary>
         Paused = ProgressBarStates.PBST_PAUSED,
-
-        /// <summary>
-        /// マーキースタイル。
-        /// </summary>
-        Marquee
     }
 }

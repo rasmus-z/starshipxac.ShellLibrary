@@ -12,59 +12,28 @@ namespace starshipxac.Windows.Dialogs.Controls
         /// <summary>
         /// <see cref="TaskDialogCommandLink"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="id">標準ボタンID。</param>
-        /// <param name="name">コントロール名。</param>
-        /// <param name="text">コントロールテキスト。</param>
-        public TaskDialogCommandLink(TaskDialogCommonButtonId id, string name, string text)
-            : base(id, name, text)
-        {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
-        }
-
-        /// <summary>
-        /// <see cref="TaskDialogCommandLink"/>クラスの新しいインスタンスを初期化します。
-        /// </summary>
-        /// <param name="id">コントロールID。</param>
         /// <param name="name">コントロール名。</param>
         /// <param name="text">コントロールテキスト。</param>
         /// <param name="dialogClosable">ダイアログを閉じることができるかどうかを示す値。</param>
-        public TaskDialogCommandLink(int id, string name, string text, bool dialogClosable = false)
-            : base(id, name, text, dialogClosable)
+        public TaskDialogCommandLink(string name, string text, bool dialogClosable = false)
+            : this(name, text, null, dialogClosable)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(id > 0);
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 
         /// <summary>
         /// <see cref="TaskDialogCommandLink"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="id">標準ボタンID。</param>
-        /// <param name="name">コントロール名。</param>
-        /// <param name="text">コントロールテキスト。</param>
-        /// <param name="instructionText">説明テキスト。</param>
-        public TaskDialogCommandLink(TaskDialogCommonButtonId id, string name, string text, string instructionText)
-            : base(id, name, text)
-        {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
-
-            this.InstructionText = instructionText;
-        }
-
-        /// <summary>
-        /// <see cref="TaskDialogCommandLink"/>クラスの新しいインスタンスを初期化します。
-        /// </summary>
-        /// <param name="id">コントロールID。</param>
         /// <param name="name">コントロール名。</param>
         /// <param name="text">コントロールテキスト。</param>
         /// <param name="instructionText">説明テキスト。</param>
         /// <param name="dialogClosable">ダイアログを閉じるかどうかを判定する値。</param>
-        public TaskDialogCommandLink(int id, string name, string text, string instructionText, bool dialogClosable = false)
-            : base(id, name, text, dialogClosable)
+        public TaskDialogCommandLink(string name, string text, string instructionText, bool dialogClosable = false)
+            : base(name, text, dialogClosable)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(id > 0);
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
 
-            this.InstructionText = instructionText;
+            this.InstructionText = instructionText ?? String.Empty;
         }
 
         /// <summary>
@@ -78,10 +47,23 @@ namespace starshipxac.Windows.Dialogs.Controls
         /// <returns>ボタンテキスト。</returns>
         public override string GetButtonText()
         {
-            return String.Format("{0}{1}{2}",
-                this.Text ?? String.Empty,
-                (!String.IsNullOrEmpty(this.Text) && !String.IsNullOrEmpty(this.InstructionText)) ? Environment.NewLine : String.Empty,
-                this.InstructionText ?? String.Empty);
+            var result = new StringBuilder();
+
+            if (!String.IsNullOrWhiteSpace(this.Text))
+            {
+                result.Append(this.Text);
+            }
+            if (!String.IsNullOrWhiteSpace(this.Text) &&
+                !String.IsNullOrWhiteSpace(this.InstructionText))
+            {
+                result.Append(Environment.NewLine);
+            }
+            if (!String.IsNullOrWhiteSpace(this.InstructionText))
+            {
+                result.Append(this.InstructionText);
+            }
+
+            return result.ToString();
         }
 
         /// <summary>
@@ -90,14 +72,8 @@ namespace starshipxac.Windows.Dialogs.Controls
         /// <returns><see cref="TaskDialogCommandLink"/>クラスの文字列表現。</returns>
         public override string ToString()
         {
-            var result = new StringBuilder();
-            result.Append("TaskDialogCommandLink[");
-            result.AppendFormat("Id={0}", this.Id);
-            result.AppendFormat(", Name={0}", this.Name);
-            result.AppendFormat(", Text={0}", this.Text);
-            result.AppendFormat(", InstructionText={0}", this.InstructionText);
-            result.Append("]");
-            return result.ToString();
+            return String.Format("{0}{{Id={1}, Name={2}, Text={3}, InstructionText={4}}}",
+                    this.GetType().Name, this.Id, this.Name, this.Text, this.InstructionText);
         }
     }
 }

@@ -172,7 +172,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         /// <summary>
         /// プログレスバーを取得または設定します。
         /// </summary>
-        private TaskDialogProgressBar ProgressBar { get; set; }
+        private TaskDialogProgressBarBase ProgressBar { get; set; }
 
         private TaskDialogCommands Commands { get; set; }
 
@@ -197,7 +197,24 @@ namespace starshipxac.Windows.Dialogs.Internal
 
             this.DialogShowStates = DialogShowStates.Closed;
 
-            return TaskDialogResult.Create(selectedButtonId, selectedRadioButtonId, verificationChecked);
+            // Result
+            TaskDialogButtonBase selectedButton = null;
+            if (this.CustomButtons != null)
+            {
+                selectedButton = this.CustomButtons.FirstOrDefault(x => x.Id == selectedButtonId);
+            }
+            else if (this.CommandLinks != null)
+            {
+                selectedButton = this.CommandLinks.FirstOrDefault(x => x.Id == selectedButtonId);
+            }
+
+            TaskDialogRadioButton selectedRadioButton = null;
+            if (this.RadioButtons != null)
+            {
+                selectedRadioButton = this.RadioButtons.FirstOrDefault(x => x.Id == selectedRadioButtonId);
+            }
+
+            return TaskDialogResult.Create(selectedButton, selectedRadioButton, verificationChecked);
         }
 
         /// <summary>
@@ -280,17 +297,15 @@ namespace starshipxac.Windows.Dialogs.Internal
             }
 
             // Progress Bar
-            if (this.ProgressBar != null)
+            if (this.ProgressBar is TaskDialogProgressBar)
             {
-                if (this.ProgressBar.State == TaskDialogProgressBarState.Marquee)
-                {
-                    result.flags |= TASKDIALOG_FLAGS.TDF_SHOW_MARQUEE_PROGRESS_BAR;
-                }
-                else
-                {
-                    result.flags |= TASKDIALOG_FLAGS.TDF_SHOW_PROGRESS_BAR;
-                }
+                result.flags |= TASKDIALOG_FLAGS.TDF_SHOW_PROGRESS_BAR;
             }
+            else if (this.ProgressBar is TaskDialogMarquee)
+            {
+                result.flags |= TASKDIALOG_FLAGS.TDF_SHOW_MARQUEE_PROGRESS_BAR;
+            }
+
             return result;
         }
 
@@ -514,7 +529,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         /// プログレスバーを設定します。
         /// </summary>
         /// <param name="progressBar">プログレスバー。</param>
-        public void SetProgressBar(TaskDialogProgressBar progressBar)
+        public void SetProgressBar(TaskDialogProgressBarBase progressBar)
         {
             if (this.ProgressBar != null)
             {
@@ -525,7 +540,7 @@ namespace starshipxac.Windows.Dialogs.Internal
             if (progressBar != null)
             {
                 this.ProgressBar = progressBar;
-                progressBar.Attach(this.Dialog);
+                this.ProgressBar.Attach(this.Dialog);
             }
         }
 
@@ -657,20 +672,14 @@ namespace starshipxac.Windows.Dialogs.Internal
         /// <returns></returns>
         private int TaskDialogCreatedEvent()
         {
-            if (this.ProgressBar != null)
+            // プログレスバー設定
+            if (this.ProgressBar is TaskDialogProgressBar)
             {
-                // プログレスバー設定
-                if (GetFlag(TASKDIALOG_FLAGS.TDF_SHOW_PROGRESS_BAR))
-                {
-                    this.Commands.SetProgressBarRangeCommand(this.ProgressBar.Minimum, this.ProgressBar.Maximum);
-                    this.Commands.SetProgressBarStateCommand(this.ProgressBar.State);
-                    this.Commands.SetProgressBarPosCommand(this.ProgressBar.Value);
-                }
-                else if (GetFlag(TASKDIALOG_FLAGS.TDF_SHOW_MARQUEE_PROGRESS_BAR))
-                {
-                    this.Commands.SetMarqueeProgressBarCommand(true);
-                    this.Commands.SetProgressBarStateCommand(this.ProgressBar.State);
-                }
+                var progressBar = (TaskDialogProgressBar)this.ProgressBar;
+
+                this.Commands.SetProgressBarRangeCommand(progressBar.Minimum, progressBar.Maximum);
+                this.Commands.SetProgressBarStateCommand(progressBar.State);
+                this.Commands.SetProgressBarPosCommand(progressBar.Value);
             }
 
             if (this.CustomButtons != null)
@@ -705,6 +714,10 @@ namespace starshipxac.Windows.Dialogs.Internal
             return Ignored;
         }
 
+        /// <summary>
+        /// ナビゲートイベントを処理します。
+        /// </summary>
+        /// <returns></returns>
         private int TaskDialogNavigatedEvent()
         {
             this.Dialog.RaiseNavigatedEvent();
@@ -723,7 +736,7 @@ namespace starshipxac.Windows.Dialogs.Internal
                 // ダイアログ表示中のボタンクリック
                 this.Dialog.RaiseButtonClickedEvent(buttonId);
 
-                if (buttonId < (int)TaskDialogCommonButtonId.MinCustomControlId)
+                if (buttonId < (int)TaskDialogCommonButtons.MinCustomControlId)
                 {
                     // 標準ボタン
                     return this.Dialog.RaiseClosingEvent(buttonId) ? S_OK : S_FALSE;
@@ -755,6 +768,11 @@ namespace starshipxac.Windows.Dialogs.Internal
             return S_FALSE;
         }
 
+        /// <summary>
+        /// ハイパーリンククリックイベントを処理します。
+        /// </summary>
+        /// <param name="pszHREF"></param>
+        /// <returns></returns>
         private int TaskDialogHyperlinkClickedEvent(IntPtr pszHREF)
         {
             var link = Marshal.PtrToStringUni(pszHREF);
@@ -763,18 +781,32 @@ namespace starshipxac.Windows.Dialogs.Internal
             return Ignored;
         }
 
+        /// <summary>
+        /// タイマーイベントを処理します。
+        /// </summary>
+        /// <param name="ticks"></param>
+        /// <returns></returns>
         private int TaskDialogTimerEvent(int ticks)
         {
             this.Dialog.RaiseTimerEvent(ticks);
             return Ignored;
         }
 
+        /// <summary>
+        /// タスクダイアログ破棄イベントを処理します。
+        /// </summary>
+        /// <returns></returns>
         private int TaskDialogDestroyedEvent()
         {
             this.firstRadioButtonClicked = true;
             return Ignored;
         }
 
+        /// <summary>
+        /// ラジオボタンクリックイベントを処理します。
+        /// </summary>
+        /// <param name="radioButtonId"></param>
+        /// <returns></returns>
         private int TaskDialogRadioButtonClickedEvent(int radioButtonId)
         {
             if (this.firstRadioButtonClicked &&
@@ -790,18 +822,32 @@ namespace starshipxac.Windows.Dialogs.Internal
             return Ignored;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="checkBoxCheched"></param>
+        /// <returns></returns>
         private int TaskDialogVerificationClickedEvent(int checkBoxCheched)
         {
             this.Dialog.RaiseVerificationClickedEvent(checkBoxCheched != 0);
             return Ignored;
         }
 
+        /// <summary>
+        /// ヘルプイベントを処理します。
+        /// </summary>
+        /// <returns></returns>
         private int TaskDialogHelpEvent()
         {
             this.Dialog.RaiseHelpEvent();
             return Ignored;
         }
 
+        /// <summary>
+        /// 拡張ボタンクリックイベントを処理します。
+        /// </summary>
+        /// <param name="expanded"></param>
+        /// <returns></returns>
         private int TaskDialogExpandoButtonClickedEvent(int expanded)
         {
             this.Dialog.RaiseExpandoButtonClickedEvent(expanded != 0);

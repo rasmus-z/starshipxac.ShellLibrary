@@ -17,7 +17,7 @@ namespace starshipxac.Windows.Dialogs
             this.ControlName = controlName;
         }
 
-        public static TaskDialogClosingEventArgs Create(TaskDialogCommonButtonId commonButtonId)
+        public static TaskDialogClosingEventArgs Create(TaskDialogCommonButtons commonButtonId)
         {
             var dialogResult = CommonButtonIdToDialogResult(commonButtonId);
             return new TaskDialogClosingEventArgs(dialogResult, (int)commonButtonId, String.Empty);
@@ -45,26 +45,26 @@ namespace starshipxac.Windows.Dialogs
         /// </summary>
         public string ControlName { get; internal set; }
 
-        private static TaskDialogSelectedButton CommonButtonIdToDialogResult(TaskDialogCommonButtonId commonButtonId)
+        private static TaskDialogSelectedButton CommonButtonIdToDialogResult(TaskDialogCommonButtons commonButtonId)
         {
             switch (commonButtonId)
             {
-                case TaskDialogCommonButtonId.Ok:
+                case TaskDialogCommonButtons.Ok:
                     return TaskDialogSelectedButton.Ok;
 
-                case TaskDialogCommonButtonId.Cancel:
+                case TaskDialogCommonButtons.Cancel:
                     return TaskDialogSelectedButton.Cancel;
 
-                case TaskDialogCommonButtonId.Retry:
+                case TaskDialogCommonButtons.Retry:
                     return TaskDialogSelectedButton.Retry;
 
-                case TaskDialogCommonButtonId.Yes:
+                case TaskDialogCommonButtons.Yes:
                     return TaskDialogSelectedButton.Yes;
 
-                case TaskDialogCommonButtonId.No:
+                case TaskDialogCommonButtons.No:
                     return TaskDialogSelectedButton.No;
 
-                case TaskDialogCommonButtonId.Close:
+                case TaskDialogCommonButtons.Close:
                     return TaskDialogSelectedButton.Close;
 
                 default:

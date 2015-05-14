@@ -26,10 +26,11 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <Button Command="{Binding SimpleTaskDialogCommand}">Simple</Button>
-            <Button Command="{Binding AllPartsTaskDialogCommand}">All Parts</Button>
+            <Button Command="{Binding AllControlsTaskDialogCommand}">All Controls</Button>
             <Button Command="{Binding CustomButtonTaskDialogCommand}">Custom Button</Button>
             <Button Command="{Binding CommonLinkTaskDialogCommand}">Command Link</Button>
             <Button Command="{Binding RadioButtonTaskDialogCommand}">Radio Button</Button>
+            <Button Command="{Binding MarqueeTaskDialogCommand}">Marquee</Button>
         </StackPanel>
     </Grid>
 </Window>
