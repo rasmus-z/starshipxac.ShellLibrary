@@ -109,10 +109,10 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 指定した<see cref="ShellItem"/>から、<see cref="ShellObject"/>派生クラスのインスタンスを作成します。
+        /// 指定した<see cref="ShellItem"/>の性質に最も一致する<see cref="ShellObject"/>派生クラスのインスタンスを作成します。
         /// </summary>
         /// <param name="shellItem"><see cref="ShellItem"/>。</param>
-        /// <returns>作成した<see cref="ShellObject"/>。</returns>
+        /// <returns>作成した<see cref="ShellObject"/>派生クラスのインスタンス。</returns>
         public ShellObject Create(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
@@ -173,21 +173,21 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 指定した<see cref="ShellItem"/>から、<see cref="ShellFolder"/>を作成します。
+        /// 指定した<see cref="ShellItem"/>の性質に最も一致する<see cref="ShellFolder"/>派生クラスのインスタンスを作成します。
         /// </summary>
-        /// <param name="shellItem"></param>
-        /// <returns></returns>
+        /// <param name="shellItem"><see cref="ShellItem"/>。</param>
+        /// <returns>作成した<see cref="ShellFolder"/>派生クラスのインスタンス。</returns>
         public abstract ShellFolder CreateFolder(ShellItem shellItem);
 
         /// <summary>
-        /// 指定した<see cref="ShellItem"/>から、<see cref="ShellFile"/>を作成します。
+        /// 指定した<see cref="ShellItem"/>の性質に最も一致する<see cref="ShellFile"/>派生クラスのインスタンスを作成します。
         /// </summary>
         /// <param name="shellItem"><see cref="ShellItem"/>。</param>
-        /// <returns>作成した<see cref="ShellFile"/>。</returns>
+        /// <returns>作成した<see cref="ShellFile"/>派生クラスのインスタンス。</returns>
         public abstract ShellFile CreateFile(ShellItem shellItem);
 
         /// <summary>
-        /// 2つのアイテム種別が同じかどうかを判定します。
+        /// 2つのアイテム種別を示す文字列が、同じかどうかを判定します。
         /// </summary>
         /// <param name="itemType">判定する 1つめのアイテム種別。</param>
         /// <param name="extension">判定する 2つめのアイテム種別。</param>
