@@ -236,7 +236,7 @@ namespace starshipxac.Shell
     }
 
     [ContractClassFor(typeof(ShellFactory))]
-    abstract class ShellFactoryContract: ShellFactory
+    abstract class ShellFactoryContract : ShellFactory
     {
         public override ShellFolder CreateFolder(ShellItem shellItem)
         {
@@ -254,6 +254,5 @@ namespace starshipxac.Shell
 
             throw new NotImplementedException();
         }
-
     }
 }

@@ -248,6 +248,7 @@ namespace starshipxac.Shell
                 Contract.Ensures(Contract.Result<ShellItemImageFactory>() != null);
                 if (this.imageFactory == null)
                 {
+                    // ReSharper disable once SuspiciousTypeConversion.Global
                     this.imageFactory = new ShellItemImageFactory((IShellItemImageFactory)this.ShellItem.ShellItemInterface);
                 }
                 return this.imageFactory;
