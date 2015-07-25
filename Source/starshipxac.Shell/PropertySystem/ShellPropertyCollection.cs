@@ -66,14 +66,13 @@ namespace starshipxac.Shell.PropertySystem
         {
             if (!this.disposed)
             {
+                this.disposed = true;
+
                 if (disposing)
                 {
                     // マネージリソース解放
                     this.PropertyStore.Dispose();
-                    this.PropertyStore = null;
                 }
-
-                this.disposed = true;
             }
         }
 
@@ -82,9 +81,9 @@ namespace starshipxac.Shell.PropertySystem
         {
         }
 
-        private ShellObject ShellObject { get; set; }
+        private ShellObject ShellObject { get; }
 
-        private ShellPropertyStore PropertyStore { get; set; }
+        private ShellPropertyStore PropertyStore { get; }
 
         private void AddProperties(ShellPropertyStore propertyStore)
         {

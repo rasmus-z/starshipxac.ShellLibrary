@@ -42,7 +42,7 @@ namespace starshipxac.Shell.Media.Imaging
         /// <summary>
         /// アイコンハンドルを取得します。
         /// </summary>
-        internal IntPtr Handle { get; private set; }
+        internal IntPtr Handle { get; }
 
         #region Native Methods
 

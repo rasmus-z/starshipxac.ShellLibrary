@@ -19,6 +19,6 @@ namespace starshipxac.Windows.Dialogs
         /// <summary>
         /// 時間数を取得します。
         /// </summary>
-        public int Ticks { get; private set; }
+        public int Ticks { get; }
     }
 }

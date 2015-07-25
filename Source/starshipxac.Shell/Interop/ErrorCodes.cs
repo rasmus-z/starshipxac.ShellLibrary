@@ -25,13 +25,7 @@ namespace starshipxac.Shell.Interop
         /// <summary>
         /// 最後に発生した Win32エラーを取得します。
         /// </summary>
-        public static int LastError
-        {
-            get
-            {
-                return Marshal.GetLastWin32Error();
-            }
-        }
+        public static int LastError => Marshal.GetLastWin32Error();
 
         /// <summary>
         /// 最後に発生した Win32エラーをエラーメッセージに変換します。

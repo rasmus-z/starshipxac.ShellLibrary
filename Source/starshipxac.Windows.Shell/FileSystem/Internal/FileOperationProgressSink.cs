@@ -22,7 +22,7 @@ namespace starshipxac.Windows.Shell.FileSystem.Internal
             Contract.Invariant(this.Progress != null);
         }
 
-        public FileOperationProgress Progress { get; private set; }
+        public FileOperationProgress Progress { get; }
 
         public HRESULT StartOperations()
         {

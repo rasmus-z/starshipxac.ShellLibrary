@@ -122,17 +122,17 @@ namespace starshipxac.Shell.PropertySystem
         /// <summary>
         /// <see cref="ShellObject"/>を取得します。
         /// </summary>
-        private ShellObject ShellObject { get; set; }
+        private ShellObject ShellObject { get; }
 
         /// <summary>
         /// プロパティストアを取得または設定します。
         /// </summary>
-        private ShellPropertyStore PropertyStore { get; set; }
+        private ShellPropertyStore PropertyStore { get; }
 
         /// <summary>
         /// プロパティキーを取得します。
         /// </summary>
-        public ShellPropertyKey PropertyKey { get; private set; }
+        public ShellPropertyKey PropertyKey { get; }
 
         /// <summary>
         /// プロパティ定義を取得します。
@@ -152,13 +152,7 @@ namespace starshipxac.Shell.PropertySystem
         /// <summary>
         /// プロパティの標準的な名前を取得します。
         /// </summary>
-        public string CanonicalName
-        {
-            get
-            {
-                return this.Description.CanonicalName;
-            }
-        }
+        public string CanonicalName => this.Description.CanonicalName;
 
         /// <summary>
         /// プロパティの値を取得または設定します。
@@ -231,13 +225,7 @@ namespace starshipxac.Shell.PropertySystem
         /// <summary>
         /// プロパティ値の型を取得します。
         /// </summary>
-        public Type ValueType
-        {
-            get
-            {
-                return Description.ValueType;
-            }
-        }
+        public Type ValueType => Description.ValueType;
 
         public bool AllowSetTruncatedValue { get; set; }
 
@@ -415,7 +403,7 @@ namespace starshipxac.Shell.PropertySystem
             {
                 return String.Empty;
             }
-            return this.Value.ToString();
+            return $"{this.Value}";
         }
     }
 }

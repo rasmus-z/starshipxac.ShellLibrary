@@ -38,15 +38,9 @@ namespace starshipxac.Shell.Interop
 
         public static readonly PIDL Null = (PIDL)IntPtr.Zero;
 
-        public IntPtr Value { get; private set; }
+        public IntPtr Value { get; }
 
-        public bool IsNull
-        {
-            get
-            {
-                return this.Value == IntPtr.Zero;
-            }
-        }
+        public bool IsNull => this.Value == IntPtr.Zero;
 
         public static explicit operator PIDL(IntPtr pidl)
         {
@@ -96,7 +90,6 @@ namespace starshipxac.Shell.Interop
         public void Free()
         {
             ShellNativeMethods.ILFree(this.Value);
-            this.Value = IntPtr.Zero;
         }
 
         public override bool Equals(object obj)
@@ -122,7 +115,7 @@ namespace starshipxac.Shell.Interop
 
         public override string ToString()
         {
-            return this.Value.ToString();
+            return $"{this.Value}";
         }
     }
 }

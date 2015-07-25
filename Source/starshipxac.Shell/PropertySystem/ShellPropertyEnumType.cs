@@ -22,7 +22,7 @@ namespace starshipxac.Shell.PropertySystem
             this.PropertyEnumTypeNative = propertyEnumTypeNative;
         }
 
-        private IPropertyEnumType PropertyEnumTypeNative { set; get; }
+        private IPropertyEnumType PropertyEnumTypeNative { get; }
 
         /// <summary>
         /// 

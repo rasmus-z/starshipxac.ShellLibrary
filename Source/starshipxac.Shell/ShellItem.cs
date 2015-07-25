@@ -39,7 +39,21 @@ namespace starshipxac.Shell
             Contract.Requires<ArgumentNullException>(shellItem2 != null);
 
             this.ShellItemInterface = shellItem2;
-            InitializeAttributes();
+
+            try
+            {
+                var attributes = GetAttributes(SFGAO.SFGAO_LINK | SFGAO.SFGAO_FILESYSTEM | SFGAO.SFGAO_FOLDER);
+
+                this.IsLink = (attributes & SFGAO.SFGAO_LINK) != 0;
+                this.IsFileSystem = (attributes & SFGAO.SFGAO_FILESYSTEM) != 0;
+                this.IsFolder = (attributes & SFGAO.SFGAO_FOLDER) != 0;
+            }
+            catch
+            {
+                this.IsLink = false;
+                this.IsFileSystem = false;
+                this.IsFolder = false;
+            }
         }
 
         /// <summary>
@@ -127,7 +141,7 @@ namespace starshipxac.Shell
         /// <summary>
         /// <see cref="IShellItem2"/>を取得します。
         /// </summary>
-        internal IShellItem2 ShellItemInterface { get; private set; }
+        internal IShellItem2 ShellItemInterface { get; }
 
         /// <summary>
         /// <c>PIDL</c>を取得します。
@@ -198,34 +212,28 @@ namespace starshipxac.Shell
         /// <summary>
         /// <see cref="ShellItem"/>がストリームかどうかを判定する値を取得します。
         /// </summary>
-        public bool IsStream
-        {
-            get
-            {
-                return (GetAttributes(SFGAO.SFGAO_STREAM) & SFGAO.SFGAO_STREAM) != 0;
-            }
-        }
+        public bool IsStream => (GetAttributes(SFGAO.SFGAO_STREAM) & SFGAO.SFGAO_STREAM) != 0;
 
-        /// <summary>
-        /// <see cref="ShellItem"/>属性を初期化します。
-        /// </summary>
-        private void InitializeAttributes()
-        {
-            try
-            {
-                var attributes = GetAttributes(SFGAO.SFGAO_LINK | SFGAO.SFGAO_FILESYSTEM | SFGAO.SFGAO_FOLDER);
+        ///// <summary>
+        ///// <see cref="ShellItem"/>属性を初期化します。
+        ///// </summary>
+        //private void InitializeAttributes()
+        //{
+        //    try
+        //    {
+        //        var attributes = GetAttributes(SFGAO.SFGAO_LINK | SFGAO.SFGAO_FILESYSTEM | SFGAO.SFGAO_FOLDER);
 
-                this.IsLink = (attributes & SFGAO.SFGAO_LINK) != 0;
-                this.IsFileSystem = (attributes & SFGAO.SFGAO_FILESYSTEM) != 0;
-                this.IsFolder = (attributes & SFGAO.SFGAO_FOLDER) != 0;
-            }
-            catch
-            {
-                this.IsLink = false;
-                this.IsFileSystem = false;
-                this.IsFolder = false;
-            }
-        }
+        //        this.IsLink = (attributes & SFGAO.SFGAO_LINK) != 0;
+        //        this.IsFileSystem = (attributes & SFGAO.SFGAO_FILESYSTEM) != 0;
+        //        this.IsFolder = (attributes & SFGAO.SFGAO_FOLDER) != 0;
+        //    }
+        //    catch
+        //    {
+        //        this.IsLink = false;
+        //        this.IsFileSystem = false;
+        //        this.IsFolder = false;
+        //    }
+        //}
 
         /// <summary>
         /// <see cref="IShellFolder"/>を取得します。
@@ -242,9 +250,7 @@ namespace starshipxac.Shell
             var hr = this.ShellItemInterface.BindToHandler(IntPtr.Zero, ref handler, ref ShellIIDGuid.IShellFolder, out result);
             if (HRESULT.Failed(hr))
             {
-                if (this.ParsingName != null &&
-                    !String.Equals(this.ParsingName, Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                        StringComparison.InvariantCultureIgnoreCase))
+                if (!String.Equals(this.ParsingName, Environment.GetFolderPath(Environment.SpecialFolder.Desktop), StringComparison.InvariantCultureIgnoreCase))
                 {
                     throw ShellException.FromHRESULT(hr);
                 }
@@ -392,10 +398,6 @@ namespace starshipxac.Shell
                 try
                 {
                     result = Path.GetExtension(GetParsingName(shellItem));
-                    if (result == null)
-                    {
-                        result = String.Empty;
-                    }
                 }
                 catch (Exception)
                 {

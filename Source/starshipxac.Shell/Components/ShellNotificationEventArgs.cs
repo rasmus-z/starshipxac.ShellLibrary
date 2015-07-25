@@ -24,11 +24,11 @@ namespace starshipxac.Shell.Components
         /// <summary>
         /// <see cref="ShellObject"/>で発生したイベント種別を取得します。
         /// </summary>
-        public ShellChangeTypes ChangeType { get; private set; }
+        public ShellChangeTypes ChangeType { get; }
 
         /// <summary>
         /// 発生したイベントがシステムイベントかどうかを判定する値を取得します。
         /// </summary>
-        public bool FromSystemInterrupt { get; private set; }
+        public bool FromSystemInterrupt { get; }
     }
 }

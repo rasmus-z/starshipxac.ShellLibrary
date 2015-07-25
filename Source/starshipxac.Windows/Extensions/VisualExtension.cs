@@ -23,7 +23,7 @@ namespace starshipxac.Windows.Extensions
 
             if (element is FrameworkElement)
             {
-                (element as FrameworkElement).ApplyTemplate();
+                ((FrameworkElement)element).ApplyTemplate();
             }
 
             Visual result = null;

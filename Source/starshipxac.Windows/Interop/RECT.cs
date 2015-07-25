@@ -41,20 +41,8 @@ namespace starshipxac.Windows.Interop
         public int Right { get; set; }
         public int Bottom { get; set; }
 
-        public int Width
-        {
-            get
-            {
-                return this.Right - this.Left;
-            }
-        }
+        public int Width => this.Right - this.Left;
 
-        public int Height
-        {
-            get
-            {
-                return this.Bottom - this.Top;
-            }
-        }
+        public int Height => this.Bottom - this.Top;
     }
 }

@@ -13,7 +13,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
     public class ShellThumbnailFactory
     {
         private Size size = new Size(96, 96);
-        private ShellImageSize imageSize = new ShellImageSize(96, 96);
+        private ShellImageSize imageSize;
 
         public ShellThumbnailFactory(Size initialThumbnailSize)
         {

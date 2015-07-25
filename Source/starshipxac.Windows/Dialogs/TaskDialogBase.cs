@@ -66,24 +66,12 @@ namespace starshipxac.Windows.Dialogs
         /// <summary>
         /// ダイアログの表示状態を取得します。
         /// </summary>
-        protected DialogShowStates DialogShowStates
-        {
-            get
-            {
-                return this.TaskDialogInternal.DialogShowStates;
-            }
-        }
+        protected DialogShowStates DialogShowStates => this.TaskDialogInternal.DialogShowStates;
 
         /// <summary>
         /// ダイアログが表示中かどうかを判定する値を取得します。
         /// </summary>
-        public bool DialogShowing
-        {
-            get
-            {
-                return this.TaskDialogInternal.DialogShowing;
-            }
-        }
+        public bool DialogShowing => this.TaskDialogInternal.DialogShowing;
 
         /// <summary>
         /// ダイアログの開始表示位置を取得または設定します。
@@ -95,7 +83,7 @@ namespace starshipxac.Windows.Dialogs
         /// </summary>
         public bool Cancelable { get; set; }
 
-        private TaskDialogInternal TaskDialogInternal { get; set; }
+        private TaskDialogInternal TaskDialogInternal { get; }
 
         /// <summary>
         /// 親ウィンドウを指定して、ダイアログを表示します。

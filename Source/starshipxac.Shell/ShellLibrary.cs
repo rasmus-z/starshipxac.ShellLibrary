@@ -44,32 +44,14 @@ namespace starshipxac.Shell
 
         internal IShellLibraryNative ShellLibraryInterface { get; set; }
 
-        public override string Path
-        {
-            get
-            {
-                return String.Empty;
-            }
-        }
+        public override string Path => String.Empty;
 
-        public override bool PathExists
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool PathExists => false;
 
         /// <summary>
         /// ライブラリ表示名を取得します。
         /// </summary>
-        public override string DisplayName
-        {
-            get
-            {
-                return this.displayName;
-            }
-        }
+        public override string DisplayName => this.displayName;
 
         /// <summary>
         /// アイコンリソース情報を取得または設定します。
@@ -181,13 +163,7 @@ namespace starshipxac.Shell
         /// <summary>
         /// ライブラリが読み込み専用かどうかを示す値を取得します。
         /// </summary>
-        internal bool IsReadOnly
-        {
-            get
-            {
-                return false;
-            }
-        }
+        internal bool IsReadOnly => false;
 
         public void Close()
         {

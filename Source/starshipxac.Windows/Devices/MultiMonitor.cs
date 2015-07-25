@@ -4,6 +4,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Windows;
 using System.Windows.Interop;
+using starshipxac.Windows.Devices.Internal;
 using starshipxac.Windows.Devices.Interop;
 using starshipxac.Windows.Interop;
 
@@ -14,78 +15,29 @@ namespace starshipxac.Windows.Devices
     /// </summary>
     public static class MultiMonitor
     {
-        private static List<Monitor> allMonitors;
-
-        static MultiMonitor()
-        {
-            CreateAllMonitors();
-        }
-
         /// <summary>
         /// メインモニター情報を取得します。
         /// </summary>
-        public static Monitor PrimaryMonitor { get; private set; }
+        public static Monitor GetPrimaryMonitor()
+        {
+            return EnumerateAllMonitors().FirstOrDefault(x => x.IsPrimary);
+        }
 
         /// <summary>
         /// すべてのモニター情報を取得します。
         /// </summary>
-        public static IReadOnlyList<Monitor> AllMonitors
+        public static IEnumerable<Monitor> EnumerateAllMonitors()
         {
-            get
-            {
-                return allMonitors;
-            }
+            return new MonitorCollection();
         }
 
         /// <summary>
         /// すべてのサブモニター情報を取得します。
         /// </summary>
-        public static IReadOnlyList<Monitor> SubMonitors
+        public static IEnumerable<Monitor> EnumerateSubMonitors()
         {
-            get
-            {
-                return AllMonitors.Where(x => x != PrimaryMonitor).ToList();
-            }
+            return EnumerateAllMonitors().Where(x => !x.IsPrimary).ToList();
         }
-
-        #region Create Monitors
-
-        private static void CreateAllMonitors()
-        {
-            allMonitors = new List<Monitor>();
-            MultiMonitorNativeMethods.EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, EnumMonitors, IntPtr.Zero);
-        }
-
-        private static bool EnumMonitors(IntPtr hMonitor, IntPtr hdcMonitor, ref RECT lprcMonitor, IntPtr dwData)
-        {
-            var monitorInfo = MONITORINFOEX.Create();
-            var success = MultiMonitorNativeMethods.GetMonitorInfo(hMonitor, ref monitorInfo);
-            if (success)
-            {
-                var screen = new Monitor(hMonitor)
-                {
-                    DeviceName = monitorInfo.szDevice,
-                    IsPrimary = (monitorInfo.dwFlags == MultiMonitorNativeMethods.MONITORINFOF_PRIMARY),
-                    Bounds = CreateRect(monitorInfo.rcMonitor),
-                    WorkingArea = CreateRect(monitorInfo.rcWork)
-                };
-                allMonitors.Add(screen);
-                if (screen.IsPrimary)
-                {
-                    PrimaryMonitor = screen;
-                }
-            }
-            return true;
-        }
-
-        private static Rect CreateRect(RECT rect)
-        {
-            var width = rect.Right - rect.Left;
-            var height = rect.Bottom - rect.Top;
-            return new Rect(rect.Left, rect.Top, width, height);
-        }
-
-        #endregion
 
         /// <summary>
         /// 指定したウィンドウが表示されているモニターを取得します。
@@ -95,7 +47,7 @@ namespace starshipxac.Windows.Devices
         internal static Monitor FromHandle(IntPtr windowHandle)
         {
             var hMonitor = MultiMonitorNativeMethods.MonitorFromWindow(windowHandle, MonitorFlags.MONITOR_DEFAULTTONEAREST);
-            return AllMonitors.FirstOrDefault(s => s.Handle == hMonitor);
+            return EnumerateAllMonitors().FirstOrDefault(s => s.Handle == hMonitor);
         }
 
         /// <summary>
@@ -128,7 +80,7 @@ namespace starshipxac.Windows.Devices
                 Y = (int)point.Y,
             };
             var hMonitor = MultiMonitorNativeMethods.MonitorFromPoint(pt, MonitorFlags.MONITOR_DEFAULTTONEAREST);
-            return AllMonitors.FirstOrDefault(s => s.Handle == hMonitor);
+            return EnumerateAllMonitors().FirstOrDefault(s => s.Handle == hMonitor);
         }
 
         /// <summary>
@@ -146,7 +98,7 @@ namespace starshipxac.Windows.Devices
                 Bottom = (int)rect.Bottom,
             };
             var hMonitor = MultiMonitorNativeMethods.MonitorFromRect(ref rc, MonitorFlags.MONITOR_DEFAULTTONEAREST);
-            return AllMonitors.FirstOrDefault(s => s.Handle == hMonitor);
+            return EnumerateAllMonitors().FirstOrDefault(s => s.Handle == hMonitor);
         }
 
         public static Rect GetBounds(Point point)

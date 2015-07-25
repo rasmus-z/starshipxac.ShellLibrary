@@ -61,40 +61,22 @@ namespace starshipxac.Shell
         /// <summary>
         /// <see cref="IShellFolder"/>を取得します。
         /// </summary>
-        internal IShellFolder ShellFolderInterface { get; private set; }
+        internal IShellFolder ShellFolderInterface { get; }
 
         /// <summary>
         /// ファイルシステム上のパスを取得します。
         /// </summary>
-        public virtual string Path
-        {
-            get
-            {
-                return this.ParsingName;
-            }
-        }
+        public virtual string Path => this.ParsingName;
 
         /// <summary>
         /// ファイルシステム上のパスが存在するかどうかを判定する値を取得します。
         /// </summary>
-        public virtual bool PathExists
-        {
-            get
-            {
-                return this.IsFileSystem && Directory.Exists(this.Path);
-            }
-        }
+        public virtual bool PathExists => this.IsFileSystem && Directory.Exists(this.Path);
 
         /// <summary>
         /// 親フォルダー情報を取得します。
         /// </summary>
-        public ShellFolder ParentFolder
-        {
-            get
-            {
-                return this.Parent as ShellFolder;
-            }
-        }
+        public ShellFolder ParentFolder => this.Parent as ShellFolder;
 
         /// <summary>
         /// <see cref="ShellFolder"/>に存在する<see cref="ShellObject"/>のコレクションを取得します。

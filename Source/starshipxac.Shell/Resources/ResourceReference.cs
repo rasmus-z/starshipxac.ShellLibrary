@@ -47,7 +47,7 @@ namespace starshipxac.Shell.Resources
         /// <remarks>
         /// リソース参照情報は、ライブラリ名とリソースIDをカンマで結合した文字列です。
         /// </remarks>
-        public string ReferencePath { get; private set; }
+        public string ReferencePath { get; }
 
         private string GetReferencePathInternal()
         {
@@ -145,7 +145,7 @@ namespace starshipxac.Shell.Resources
         /// <returns>このインスタンスの文字列表現。</returns>
         public override string ToString()
         {
-            return this.ReferencePath;
+            return $"{{ReferencePath: {ReferencePath}}}";
         }
     }
 

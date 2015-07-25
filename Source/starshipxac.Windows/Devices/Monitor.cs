@@ -24,7 +24,7 @@ namespace starshipxac.Windows.Devices
         /// <summary>
         /// モニターハンドルを取得します。
         /// </summary>
-        internal IntPtr Handle { get; private set; }
+        internal IntPtr Handle { get; }
 
         /// <summary>
         /// デバイス名を取得します。
@@ -93,7 +93,7 @@ namespace starshipxac.Windows.Devices
 
         public override string ToString()
         {
-            return String.Format("Monitor: {{DeviceName={0}}}", this.DeviceName);
+            return $"{{DeviceName: {this.DeviceName}}}";
         }
     }
 }

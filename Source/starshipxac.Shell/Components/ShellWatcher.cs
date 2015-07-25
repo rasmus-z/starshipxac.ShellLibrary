@@ -91,12 +91,12 @@ namespace starshipxac.Shell.Components
         /// <summary>
         /// 通知ウィンドウを取得または設定します。
         /// </summary>
-        private WindowSource ListenerWindow { get; set; }
+        private WindowSource ListenerWindow { get; }
 
         /// <summary>
         /// 通知ウィンドウメッセージを取得します。
         /// </summary>
-        internal uint Message { get; private set; }
+        internal uint Message { get; }
 
         /// <summary>
         /// 監視が実行中かどうかを判定する値を取得します。

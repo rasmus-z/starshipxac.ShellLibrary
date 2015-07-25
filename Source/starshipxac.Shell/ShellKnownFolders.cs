@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using static starshipxac.Shell.ShellKnownFolderFactory;
 
 namespace starshipxac.Shell
 {
@@ -23,13 +24,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\AppData\Roaming</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder ApplicationData
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("AppData");
-            }
-        }
+        public static ShellKnownFolder ApplicationData => FromCanonicalName("AppData");
 
         /// <summary>
         /// コンピューター
@@ -42,13 +37,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>::{20D04FE0-3AEA-1069-A2D8-08002B30309D}</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Computer
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("MyComputerFolder");
-            }
-        }
+        public static ShellKnownFolder Computer => FromCanonicalName("MyComputerFolder");
 
         /// <summary>
         /// デスクトップ
@@ -61,21 +50,9 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\Desktop</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Desktop
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Desktop");
-            }
-        }
+        public static ShellKnownFolder Desktop => FromCanonicalName("Desktop");
 
-        public static ShellKnownFolder Documents
-        {
-            get
-            {
-                return Personal;
-            }
-        }
+        public static ShellKnownFolder Documents => Personal;
 
         /// <summary>
         /// ダウンロード
@@ -88,13 +65,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\Downloads</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Downloads
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Downloads");
-            }
-        }
+        public static ShellKnownFolder Downloads => FromCanonicalName("Downloads");
 
         /// <summary>
         /// 「お気に入り」
@@ -107,13 +78,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\Favorites</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Favorites
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Favorites");
-            }
-        }
+        public static ShellKnownFolder Favorites => FromCanonicalName("Favorites");
 
         /// <summary>
         /// ゲーム
@@ -126,13 +91,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>::{ED228FDF-9EA8-4870-83B1-96B02CFE0D52}</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Games
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Games");
-            }
-        }
+        public static ShellKnownFolder Games => FromCanonicalName("Games");
 
         /// <summary>
         /// GameExplorer
@@ -145,13 +104,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%LOCALAPPDATA%\Microsoft\Windows\GameExplorer</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder GameTasks
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("GameTasks");
-            }
-        }
+        public static ShellKnownFolder GameTasks => FromCanonicalName("GameTasks");
 
         /// <summary>
         /// ホームグループ
@@ -164,13 +117,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>::{B4FB3F98-C1EA-428D-A78A-D1F5659CBA93}</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder HomeGroup
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("HomeGroupFolder");
-            }
-        }
+        public static ShellKnownFolder HomeGroup => FromCanonicalName("HomeGroupFolder");
 
         /// <summary>
         /// ユーザーのホームグループ
@@ -183,13 +130,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>::{B4FB3F98-C1EA-428D-A78A-D1F5659CBA93}\(Account ID)</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder HomeGroupCurrentUser
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("HomeGroupCurrentUserFolder");
-            }
-        }
+        public static ShellKnownFolder HomeGroupCurrentUser => FromCanonicalName("HomeGroupCurrentUserFolder");
 
         /// <summary>
         /// ライブラリ
@@ -202,13 +143,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>::{031E4825-7B94-4DC3-B131-E946B44C8DD5}</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Libraries
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Libraries");
-            }
-        }
+        public static ShellKnownFolder Libraries => FromCanonicalName("Libraries");
 
         /// <summary>
         /// リンク
@@ -221,13 +156,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\Links</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Links
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Links");
-            }
-        }
+        public static ShellKnownFolder Links => FromCanonicalName("Links");
 
         /// <summary>
         /// ローカルアプリケーションデータ
@@ -240,13 +169,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\AppData\Local</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder LocalApplicationData
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Local AppData");
-            }
-        }
+        public static ShellKnownFolder LocalApplicationData => FromCanonicalName("Local AppData");
 
         /// <summary>
         /// ミュージック
@@ -259,13 +182,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\Music</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Music
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("My Music");
-            }
-        }
+        public static ShellKnownFolder Music => FromCanonicalName("My Music");
 
         /// <summary>
         /// ネットワーク
@@ -278,24 +195,12 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>::{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Network
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("NetworkPlacesFolder");
-            }
-        }
+        public static ShellKnownFolder Network => FromCanonicalName("NetworkPlacesFolder");
 
         /// <summary>
         /// ネットワーク
         /// </summary>
-        public static ShellKnownFolder NetworkSortcuts
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("NetHood");
-            }
-        }
+        public static ShellKnownFolder NetworkSortcuts => FromCanonicalName("NetHood");
 
         /// <summary>
         /// OneDrive
@@ -308,13 +213,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\SkyDrive</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder OneDrive
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("OneDrive");
-            }
-        }
+        public static ShellKnownFolder OneDrive => FromCanonicalName("OneDrive");
 
         /// <summary>
         /// OneDriveカメラロール
@@ -327,13 +226,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\SkyDrive\画像\カメラ ロール</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder OneDriveCameraRoll
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("SkyDriveCameraRoll");
-            }
-        }
+        public static ShellKnownFolder OneDriveCameraRoll => FromCanonicalName("SkyDriveCameraRoll");
 
         /// <summary>
         /// OneDriveドキュメント
@@ -346,13 +239,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\SkyDrive\ドキュメント</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder OneDriveDocuments
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("SkyDriveDocuments");
-            }
-        }
+        public static ShellKnownFolder OneDriveDocuments => FromCanonicalName("SkyDriveDocuments");
 
         /// <summary>
         /// OneDriveピクチャー
@@ -365,13 +252,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\SkyDrive\Pictures</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder OneDrivePictures
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("SkyDrivePictures");
-            }
-        }
+        public static ShellKnownFolder OneDrivePictures => FromCanonicalName("SkyDrivePictures");
 
         /// <summary>
         /// ユーザードキュメント
@@ -384,13 +265,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\Documents</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Personal
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Personal");
-            }
-        }
+        public static ShellKnownFolder Personal => FromCanonicalName("Personal");
 
         /// <summary>
         /// ピクチャー
@@ -403,13 +278,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\Pictures</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Pictures
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("My Pictures");
-            }
-        }
+        public static ShellKnownFolder Pictures => FromCanonicalName("My Pictures");
 
         /// <summary>
         /// プレイリスト
@@ -422,13 +291,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\Music\Playlists</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Playlists
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Playlists");
-            }
-        }
+        public static ShellKnownFolder Playlists => FromCanonicalName("Playlists");
 
         /// <summary>
         /// プリンター
@@ -441,13 +304,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>::{21EC2020-3AEA-1069-A2DD-08002B30309D}\::{2227A280-3AEA-1069-A2DE-08002B30309D}</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Printers
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("PrintersFolder");
-            }
-        }
+        public static ShellKnownFolder Printers => FromCanonicalName("PrintersFolder");
 
         /// <summary>
         /// ユーザーフォルダー
@@ -460,13 +317,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Profile
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Profile");
-            }
-        }
+        public static ShellKnownFolder Profile => FromCanonicalName("Profile");
 
         /// <summary>
         /// 共通アプリケーションデーター
@@ -479,13 +330,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%ALLUSERSPROFILE%</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder ProgramData
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Common AppData");
-            }
-        }
+        public static ShellKnownFolder ProgramData => FromCanonicalName("Common AppData");
 
         /// <summary>
         /// プログラム
@@ -498,13 +343,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Programs
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Programs");
-            }
-        }
+        public static ShellKnownFolder Programs => FromCanonicalName("Programs");
 
         /// <summary>
         /// パブリック
@@ -517,13 +356,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%PUBLIC%</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Public
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Public");
-            }
-        }
+        public static ShellKnownFolder Public => FromCanonicalName("Public");
 
         /// <summary>
         /// パブリックデスクトップ
@@ -536,13 +369,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%PUBLIC%\Desktop</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder PublicDesktop
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Common Desktop");
-            }
-        }
+        public static ShellKnownFolder PublicDesktop => FromCanonicalName("Common Desktop");
 
         /// <summary>
         /// パブリックのドキュメント
@@ -555,13 +382,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%PUBLIC%\Documents</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder PublicDocuments
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Common Documents");
-            }
-        }
+        public static ShellKnownFolder PublicDocuments => FromCanonicalName("Common Documents");
 
         /// <summary>
         /// パブリックのダウンロード
@@ -574,13 +395,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%PUBLIC%\Downloads</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder PublicDownloads
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("CommonDownloads");
-            }
-        }
+        public static ShellKnownFolder PublicDownloads => FromCanonicalName("CommonDownloads");
 
         /// <summary>
         /// GameExplorer
@@ -593,13 +408,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%ALLUSERSPROFILE%\Microsoft\Windows\GameExplorer</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder PublicGameTasks
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("PublicGameTasks");
-            }
-        }
+        public static ShellKnownFolder PublicGameTasks => FromCanonicalName("PublicGameTasks");
 
         /// <summary>
         /// パブリックライブラリ
@@ -612,13 +421,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%PUBLIC%\Libraries</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder PublicLibraries
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("PublicLibraries");
-            }
-        }
+        public static ShellKnownFolder PublicLibraries => FromCanonicalName("PublicLibraries");
 
         /// <summary>
         /// パブリックのミュージック
@@ -631,13 +434,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%PUBLIC%\Music</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder PublicMusic
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("CommonMusic");
-            }
-        }
+        public static ShellKnownFolder PublicMusic => FromCanonicalName("CommonMusic");
 
         /// <summary>
         /// パブリックのピクチャ
@@ -650,13 +447,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%PUBLIC%\Pictures</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder PublicPictures
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("CommonPictures");
-            }
-        }
+        public static ShellKnownFolder PublicPictures => FromCanonicalName("CommonPictures");
 
         /// <summary>
         /// パブリックのビデオ
@@ -669,13 +460,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%PUBLIC%\Videos</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder PublicVideos
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("CommonVideo");
-            }
-        }
+        public static ShellKnownFolder PublicVideos => FromCanonicalName("CommonVideo");
 
         /// <summary>
         /// ごみ箱
@@ -688,13 +473,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>::{645FF040-5081-101B-9F08-00AA002F954E}</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder RecycleBin
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("RecycleBinFolder");
-            }
-        }
+        public static ShellKnownFolder RecycleBin => FromCanonicalName("RecycleBinFolder");
 
         /// <summary>
         /// 保存したゲーム
@@ -707,13 +486,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\Saved Games</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder SavedGames
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("SavedGames");
-            }
-        }
+        public static ShellKnownFolder SavedGames => FromCanonicalName("SavedGames");
 
         /// <summary>
         /// 検索
@@ -726,13 +499,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\Searches</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Searches
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Searches");
-            }
-        }
+        public static ShellKnownFolder Searches => FromCanonicalName("Searches");
 
         /// <summary>
         /// 検索履歴
@@ -745,13 +512,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\AppData\Local\Microsoft\Windows\ConnectedSearch\History</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder SearchHistory
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("SearchHistoryFolder");
-            }
-        }
+        public static ShellKnownFolder SearchHistory => FromCanonicalName("SearchHistoryFolder");
 
         /// <summary>
         /// 検索結果
@@ -764,13 +525,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>::{9343812E-1C37-4A49-A12E-4B2D810D956B}</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder SearchHome
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("SearchHomeFolder");
-            }
-        }
+        public static ShellKnownFolder SearchHome => FromCanonicalName("SearchHomeFolder");
 
         /// <summary>
         /// 「送る」
@@ -783,13 +538,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\AppData\Roaming\Microsoft\Windows\SendTo</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder SendTo
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("SendTo");
-            }
-        }
+        public static ShellKnownFolder SendTo => FromCanonicalName("SendTo");
 
         /// <summary>
         /// スタートアップ
@@ -802,13 +551,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Startup
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("Startup");
-            }
-        }
+        public static ShellKnownFolder Startup => FromCanonicalName("Startup");
 
         /// <summary>
         /// ユーザー
@@ -821,13 +564,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%SystemDrive%\Users</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder UserProfiles
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("UserProfiles");
-            }
-        }
+        public static ShellKnownFolder UserProfiles => FromCanonicalName("UserProfiles");
 
         /// <summary>
         /// ユーザーフォルダー
@@ -840,13 +577,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder UserProfile
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("UsersFilesFolder");
-            }
-        }
+        public static ShellKnownFolder UserProfile => FromCanonicalName("UsersFilesFolder");
 
         /// <summary>
         /// ビデオ
@@ -859,13 +590,7 @@ namespace starshipxac.Shell
         ///         <item><term>Parsing Name</term><description>%USERPROFILE%\Videos</description></item>
         ///     </list>
         /// </remarks>
-        public static ShellKnownFolder Videos
-        {
-            get
-            {
-                return ShellKnownFolderFactory.FromCanonicalName("My Video");
-            }
-        }
+        public static ShellKnownFolder Videos => FromCanonicalName("My Video");
 
         /// <summary>
         /// すべての標準フォルダーを取得します。
@@ -873,7 +598,7 @@ namespace starshipxac.Shell
         public static IEnumerable<ShellKnownFolder> EnumerateKnownFolders()
         {
             Contract.Ensures(Contract.Result<IEnumerable<ShellKnownFolder>>() != null);
-            return ShellKnownFolderFactory.GetAllFolders();
+            return GetAllFolders();
         }
     }
 }

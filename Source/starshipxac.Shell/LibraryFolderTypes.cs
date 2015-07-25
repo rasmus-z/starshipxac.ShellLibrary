@@ -11,56 +11,26 @@ namespace starshipxac.Shell
         /// <summary>
         /// 全般
         /// </summary>
-        public static Guid Generic
-        {
-            get
-            {
-                return KnownFolderTypes.FOLDERTYPEID_Generic;
-            }
-        }
+        public static Guid Generic => KnownFolderTypes.FOLDERTYPEID_Generic;
 
         /// <summary>
         /// ドキュメントフォルダー
         /// </summary>
-        public static Guid Documents
-        {
-            get
-            {
-                return KnownFolderTypes.FOLDERTYPEID_Documents;
-            }
-        }
+        public static Guid Documents => KnownFolderTypes.FOLDERTYPEID_Documents;
 
         /// <summary>
         /// ミュージックフォルダー
         /// </summary>
-        public static Guid Music
-        {
-            get
-            {
-                return KnownFolderTypes.FOLDERTYPEID_Music;
-            }
-        }
+        public static Guid Music => KnownFolderTypes.FOLDERTYPEID_Music;
 
         /// <summary>
         /// ピクチャーフォルダー
         /// </summary>
-        public static Guid Pictures
-        {
-            get
-            {
-                return KnownFolderTypes.FOLDERTYPEID_Pictures;
-            }
-        }
+        public static Guid Pictures => KnownFolderTypes.FOLDERTYPEID_Pictures;
 
         /// <summary>
         /// ビデオフォルダー
         /// </summary>
-        public static Guid Videos
-        {
-            get
-            {
-                return KnownFolderTypes.FOLDERTYPEID_Videos;
-            }
-        }
+        public static Guid Videos => KnownFolderTypes.FOLDERTYPEID_Videos;
     }
 }

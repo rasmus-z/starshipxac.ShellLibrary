@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
+using static starshipxac.Shell.ShellKnownFolderFactory;
+using static starshipxac.Shell.ShellLibraryFactory;
 
 namespace starshipxac.Shell
 {
@@ -13,62 +14,27 @@ namespace starshipxac.Shell
         /// <summary>
         /// ドキュメントライブラリを取得します。
         /// </summary>
-        public static ShellLibrary DocumentsLibrary
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<ShellLibrary>() != null);
-                return ShellLibraryFactory.Load(ShellKnownFolderFactory.FromCanonicalName("DocumentsLibrary"));
-            }
-        }
+        public static ShellLibrary DocumentsLibrary => Load(FromCanonicalName("DocumentsLibrary"));
 
         /// <summary>
         /// ミュージックライブラリを取得します。
         /// </summary>
-        public static ShellLibrary MusicLibrary
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<ShellLibrary>() != null);
-                return ShellLibraryFactory.Load(ShellKnownFolderFactory.FromCanonicalName("MusicLibrary"));
-            }
-        }
+        public static ShellLibrary MusicLibrary => Load(FromCanonicalName("MusicLibrary"));
 
         /// <summary>
         /// ピクチャライブラリを取得します。
         /// </summary>
-        public static ShellLibrary PicturesLibrary
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<ShellLibrary>() != null);
-                return ShellLibraryFactory.Load(ShellKnownFolderFactory.FromCanonicalName("PicturesLibrary"));
-            }
-        }
+        public static ShellLibrary PicturesLibrary => Load(FromCanonicalName("PicturesLibrary"));
 
         /// <summary>
         /// ビデオライブラリを取得します。
         /// </summary>
-        public static ShellLibrary VideosLibrary
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<ShellLibrary>() != null);
-                return ShellLibraryFactory.Load(ShellKnownFolderFactory.FromCanonicalName("VideosLibrary"));
-            }
-        }
+        public static ShellLibrary VideosLibrary => Load(FromCanonicalName("VideosLibrary"));
 
         /// <summary>
         /// 録画されたTVライブラリを取得します。
         /// </summary>
-        public static ShellLibrary RecordedTVLibrary
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<ShellLibrary>() != null);
-                return ShellLibraryFactory.Load(ShellKnownFolderFactory.FromCanonicalName("RecordedTVLibrary"));
-            }
-        }
+        public static ShellLibrary RecordedTVLibrary => Load(FromCanonicalName("RecordedTVLibrary"));
 
         /// <summary>
         /// 全てのライブラリを列挙します。

@@ -31,6 +31,6 @@ namespace starshipxac.Shell.Components
         /// <summary>
         /// イベントが発生した<see cref="ShellObject"/>を取得します。
         /// </summary>
-        public ShellObject ShellObject { get; private set; }
+        public ShellObject ShellObject { get; }
     }
 }

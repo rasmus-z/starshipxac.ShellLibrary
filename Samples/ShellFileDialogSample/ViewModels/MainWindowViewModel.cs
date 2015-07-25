@@ -83,7 +83,7 @@ namespace ShellFileDialogSample.ViewModels
             {
                 var message = new CustomFileOpenDialogMessage("CustomFileOpenDialog");
                 await this.Messenger.GetResponseAsync(message);
-                var selectedFile = message.Response.SelectedFiles.FirstOrDefault();
+                var selectedFile = message.Response?.SelectedFiles.FirstOrDefault();
                 if (selectedFile != null)
                 {
                     this.Properties.Clear();

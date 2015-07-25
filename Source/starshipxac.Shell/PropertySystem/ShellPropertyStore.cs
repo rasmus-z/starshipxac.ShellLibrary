@@ -52,10 +52,10 @@ namespace starshipxac.Shell.PropertySystem
         {
             if (!this.disposed)
             {
+                this.disposed = true;
+
                 // アンマネージリソース解放
                 Marshal.ReleaseComObject(this.propertyStoreNative);
-
-                this.disposed = true;
             }
         }
 
@@ -199,7 +199,7 @@ namespace starshipxac.Shell.PropertySystem
             }
             else if (!allowTruncatedValue && hr == ShellNativeMethods.InPlaceStringTruncated)
             {
-                throw new ArgumentOutOfRangeException("propVar", ErrorMessages.ShellPropertyValueTruncated);
+                throw new ArgumentOutOfRangeException(nameof(propVar), ErrorMessages.ShellPropertyValueTruncated);
             }
         }
 

@@ -9,6 +9,6 @@ namespace starshipxac.Windows.Dialogs
             this.VerificationChecked = verificationChecked;
         }
 
-        public bool VerificationChecked { get; private set; }
+        public bool VerificationChecked { get; }
     }
 }

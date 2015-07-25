@@ -53,13 +53,7 @@ namespace starshipxac.Shell
         /// <summary>
         /// ストリームかどうかを判定する値を取得します。
         /// </summary>
-        public bool IsStream
-        {
-            get
-            {
-                return this.ShellItem.IsStream;
-            }
-        }
+        public bool IsStream => this.ShellItem.IsStream;
 
         /// <summary>
         /// ファイルサイズを取得します。

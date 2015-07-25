@@ -58,9 +58,9 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         /// <summary>
         /// <see cref="ShellObject"/>を取得します。
         /// </summary>
-        public ShellObject ShellObject { get; private set; }
+        public ShellObject ShellObject { get; }
 
-        public ShellThumbnailFactory Factory { get; private set; }
+        public ShellThumbnailFactory Factory { get; }
 
         /// <summary>
         /// アイコンインデックスを取得します。
@@ -156,13 +156,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
 #pragma warning restore 4014
 
-        public Size Size
-        {
-            get
-            {
-                return this.Factory.Size;
-            }
-        }
+        public Size Size => this.Factory.Size;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

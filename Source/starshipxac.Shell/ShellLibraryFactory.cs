@@ -23,7 +23,7 @@ namespace starshipxac.Shell
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(libraryName));
             Contract.Ensures(Contract.Result<ShellLibrary>() != null);
 
-            var shellLibraryInterface = (IShellLibraryNative)new ShellLibraryCoClass();
+            var shellLibraryInterface = CreateShellLibraryNativeInterface();
 
             var guid = FOLDERID_Libraries;
             var flags = GetLibrarySaveOptions(overwrite);
@@ -46,7 +46,7 @@ namespace starshipxac.Shell
             Contract.Requires<ArgumentNullException>(sourceKnownFolder != null);
             Contract.Ensures(Contract.Result<ShellLibrary>() != null);
 
-            var shellLibraryInterface = (IShellLibraryNative)new ShellLibraryCoClass();
+            var shellLibraryInterface = CreateShellLibraryNativeInterface();
 
             var guid = sourceKnownFolder.FolderId;
             var flags = GetLibrarySaveOptions(overwrite);
@@ -79,7 +79,7 @@ namespace starshipxac.Shell
             IShellItem shellItemIn;
             ShellNativeMethods.SHCreateItemFromParsingName(sourcePath, IntPtr.Zero, ref guid, out shellItemIn);
 
-            var shellLibraryInterface = (IShellLibraryNative)new ShellLibraryCoClass();
+            var shellLibraryInterface = CreateShellLibraryNativeInterface();
 
             IShellItem2 shellItem2;
             shellLibraryInterface.Save(shellItemIn, libraryName, flags, out shellItem2);
@@ -110,7 +110,7 @@ namespace starshipxac.Shell
                 throw ShellException.FromHRESULT(hr);
             }
 
-            var shellLibraryInterface = (IShellLibraryNative)new ShellLibraryCoClass();
+            var shellLibraryInterface = CreateShellLibraryNativeInterface();
 
             var flags = isReadOnly ? STGM.STGM_READ : STGM.STGM_READWRITE;
             shellLibraryInterface.LoadLibraryFromItem(shellItem, flags);
@@ -131,7 +131,7 @@ namespace starshipxac.Shell
             Contract.Ensures(Contract.Result<ShellLibrary>() != null);
 
             var shellItem = sourceKnownFolder.ShellItem.ShellItemInterface;
-            var shellLibraryInterface = (IShellLibraryNative)new ShellLibraryCoClass();
+            var shellLibraryInterface = CreateShellLibraryNativeInterface();
             try
             {
                 var guid = sourceKnownFolder.FolderId;
@@ -164,7 +164,7 @@ namespace starshipxac.Shell
 
             var shellItemPath = Path.Combine(sourcePath, libraryName + FileExtension);
 
-            var shellLibraryInterface = (IShellLibraryNative)new ShellLibraryCoClass();
+            var shellLibraryInterface = CreateShellLibraryNativeInterface();
 
             var item = ShellFactory.FromFilePath(shellItemPath);
             var shellItem = item.ShellItem.ShellItemInterface;
@@ -186,12 +186,22 @@ namespace starshipxac.Shell
             Contract.Requires<ArgumentNullException>(shellItem != null);
             Contract.Ensures(Contract.Result<ShellLibrary>() != null);
 
-            var shellLibraryInterface = (IShellLibraryNative)new ShellLibraryCoClass();
+            var shellLibraryInterface = CreateShellLibraryNativeInterface();
             var flags = isReadOnly ? STGM.STGM_READ : STGM.STGM_READWRITE;
             shellLibraryInterface.LoadLibraryFromItem(shellItem.ShellItemInterface, flags);
 
             var libraryName = shellItem.GetDisplayName();
             return new ShellLibrary(shellItem, shellLibraryInterface, libraryName);
+        }
+
+        /// <summary>
+        /// <see cref="IShellLibraryNative"/>のインスタンスを作成します。
+        /// </summary>
+        /// <returns></returns>
+        private static IShellLibraryNative CreateShellLibraryNativeInterface()
+        {
+            // ReSharper disable once SuspiciousTypeConversion.Global
+            return (IShellLibraryNative)new ShellLibraryCoClass();
         }
 
         /// <summary>

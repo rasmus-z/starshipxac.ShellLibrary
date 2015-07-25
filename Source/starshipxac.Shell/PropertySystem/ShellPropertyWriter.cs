@@ -81,7 +81,7 @@ namespace starshipxac.Shell.PropertySystem
         /// <summary>
         /// <see cref="Shell.ShellObject"/>を取得します。
         /// </summary>
-        protected ShellObject ShellObject { get; private set; }
+        protected ShellObject ShellObject { get; }
 
         private ShellPropertyStore WritablePropertyStore { get; set; }
 

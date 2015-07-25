@@ -47,6 +47,8 @@ namespace starshipxac.Windows.Dialogs
             {
                 if (!this.disposed)
                 {
+                    this.disposed = true;
+
                     if (disposing)
                     {
                         if (this.DialogShowing)
@@ -54,8 +56,6 @@ namespace starshipxac.Windows.Dialogs
                             CloseDialog(TaskDialogCommonButtons.Cancel);
                         }
                     }
-
-                    this.disposed = true;
                 }
             }
             finally
@@ -318,17 +318,17 @@ namespace starshipxac.Windows.Dialogs
         /// <summary>
         /// カスタムボタンのコレクションを取得します。
         /// </summary>
-        public TaskDialogControlCollection<TaskDialogButton> CustomButtons { get; private set; }
+        public TaskDialogControlCollection<TaskDialogButton> CustomButtons { get; }
 
         /// <summary>
         /// コマンドリンクのコレクションを取得します。
         /// </summary>
-        public TaskDialogControlCollection<TaskDialogCommandLink> CommandLinks { get; private set; }
+        public TaskDialogControlCollection<TaskDialogCommandLink> CommandLinks { get; }
 
         /// <summary>
         /// ラジオボタンのコレクションを取得します。
         /// </summary>
-        public TaskDialogControlCollection<TaskDialogRadioButton> RadioButtons { get; private set; }
+        public TaskDialogControlCollection<TaskDialogRadioButton> RadioButtons { get; }
 
         /// <summary>
         /// プログレスバーを取得または設定します。
@@ -347,10 +347,7 @@ namespace starshipxac.Windows.Dialogs
         protected virtual void OnOpened(EventArgs args)
         {
             var handler = this.Opened;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            handler?.Invoke(this, args);
         }
 
         #endregion
@@ -365,10 +362,7 @@ namespace starshipxac.Windows.Dialogs
         protected virtual void OnClosing(TaskDialogClosingEventArgs args)
         {
             var handler = this.Closing;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            handler?.Invoke(this, args);
         }
 
         #endregion
@@ -383,10 +377,7 @@ namespace starshipxac.Windows.Dialogs
         protected virtual void OnHyperlinkClicked(TaskDialogHyperlinkClickedEventArgs args)
         {
             var handler = this.HyperlinkClicked;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            handler?.Invoke(this, args);
         }
 
         #endregion
@@ -401,10 +392,7 @@ namespace starshipxac.Windows.Dialogs
         protected virtual void OnVerificationChanged(TaskDialogVerificationChangedEventArgs args)
         {
             var handler = this.VerificationChanged;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            handler?.Invoke(this, args);
         }
 
         #endregion
@@ -419,10 +407,7 @@ namespace starshipxac.Windows.Dialogs
         protected virtual void OnExpandChanged(TaskDialogExpandChangedEventArgs args)
         {
             var handler = this.ExpandChanged;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            handler?.Invoke(this, args);
         }
 
         #endregion
@@ -437,10 +422,7 @@ namespace starshipxac.Windows.Dialogs
         protected virtual void OnHelpInvoked(EventArgs args)
         {
             var handler = this.HelpInvoked;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            handler?.Invoke(this, args);
         }
 
         #endregion
@@ -455,10 +437,7 @@ namespace starshipxac.Windows.Dialogs
         protected virtual void OnTimer(TaskDialogTimerEventArgs args)
         {
             var handler = this.Timer;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            handler?.Invoke(this, args);
         }
 
         #endregion
@@ -602,19 +581,13 @@ namespace starshipxac.Windows.Dialogs
         protected internal override void RaiseButtonClickedEvent(int buttonId)
         {
             var button = FindButton(buttonId);
-            if (button != null)
-            {
-                button.RaiseClickEvent();
-            }
+            button?.RaiseClickEvent();
         }
 
         protected internal override void RaiseRadioButtonClickedEvent(int radioButtonId)
         {
             var control = this.RadioButtons.FirstOrDefault(x => x.Id == radioButtonId);
-            if (control != null)
-            {
-                control.RaiseClickEvent();
-            }
+            control?.RaiseClickEvent();
         }
 
         protected internal override void RaiseHyperlinkClickedEvent(string link)

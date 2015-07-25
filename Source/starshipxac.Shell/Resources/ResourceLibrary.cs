@@ -34,7 +34,7 @@ namespace starshipxac.Shell.Resources
         /// <summary>
         /// リソースDLLのパスを取得します。
         /// </summary>
-        public string LibraryPath { get; private set; }
+        public string LibraryPath { get; }
 
         /// <summary>
         /// リソースから文字列を取得します。
@@ -71,7 +71,7 @@ namespace starshipxac.Shell.Resources
 
             var hInstance = GetInstanceHandle();
 
-            var resourceName = String.Format("#{0}", resourceId);
+            var resourceName = $"#{resourceId}";
             var hicon = LoadIconImage(hInstance, resourceName, size, size, LR_DEFAULTCOLOR);
             if (hicon == IntPtr.Zero)
             {
@@ -142,5 +142,10 @@ namespace starshipxac.Shell.Resources
         }
 
         #endregion
+
+        public override string ToString()
+        {
+            return $"{{LibraryPath: {LibraryPath}}}";
+        }
     }
 }

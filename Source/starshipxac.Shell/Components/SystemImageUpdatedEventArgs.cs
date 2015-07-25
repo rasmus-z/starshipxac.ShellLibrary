@@ -24,6 +24,6 @@ namespace starshipxac.Shell.Components
         /// <summary>
         /// 更新されたシステムイメージのインデックスを取得します。
         /// </summary>
-        public int ImageIndex { get; private set; }
+        public int ImageIndex { get; }
     }
 }

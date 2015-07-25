@@ -75,17 +75,11 @@ namespace starshipxac.Shell.Internal
         /// <summary>
         /// 親フォルダーを取得します。
         /// </summary>
-        public ShellFolder Parent { get; private set; }
+        public ShellFolder Parent { get; }
 
         public ShellObject Current { get; private set; }
 
-        object System.Collections.IEnumerator.Current
-        {
-            get
-            {
-                return this.Current;
-            }
-        }
+        object System.Collections.IEnumerator.Current => this.Current;
 
         public bool MoveNext()
         {
@@ -109,10 +103,7 @@ namespace starshipxac.Shell.Internal
 
         public void Reset()
         {
-            if (this.enumIdList != null)
-            {
-                this.enumIdList.Reset();
-            }
+            this.enumIdList?.Reset();
         }
     }
 }

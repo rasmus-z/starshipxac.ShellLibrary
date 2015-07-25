@@ -36,7 +36,7 @@ namespace starshipxac.Shell
             var result = CreateKnownFolder(knownFolderInterface);
             if (result == null)
             {
-                throw new ArgumentException(ErrorMessages.ShellInvalidCanonicalName, "canonicalName");
+                throw new ArgumentException(ErrorMessages.ShellInvalidCanonicalName, nameof(canonicalName));
             }
             return result;
         }
@@ -70,7 +70,7 @@ namespace starshipxac.Shell
                 pidl = PIDL.FromParsingName(parsingName);
                 if (pidl.IsNull)
                 {
-                    throw new ArgumentException(ErrorMessages.KnownFolderParsingName, "parsingName");
+                    throw new ArgumentException(ErrorMessages.KnownFolderParsingName, nameof(parsingName));
                 }
 
                 var knownFolderInterface = FromPIDL(pidl);
@@ -79,7 +79,7 @@ namespace starshipxac.Shell
                     var kf = CreateKnownFolder(knownFolderInterface);
                     if (kf == null)
                     {
-                        throw new ArgumentException(ErrorMessages.KnownFolderParsingName, "parsingName");
+                        throw new ArgumentException(ErrorMessages.KnownFolderParsingName, nameof(parsingName));
                     }
                     return kf;
                 }
@@ -87,7 +87,7 @@ namespace starshipxac.Shell
                 pidl2 = PIDL.FromParsingName(parsingName.PadRight(1, '\0'));
                 if (pidl2.IsNull)
                 {
-                    throw new ArgumentException(ErrorMessages.KnownFolderParsingName, "parsingName");
+                    throw new ArgumentException(ErrorMessages.KnownFolderParsingName, nameof(parsingName));
                 }
 
                 var knownFolder = FromPIDL(pidl2);
@@ -96,12 +96,12 @@ namespace starshipxac.Shell
                     var result = CreateKnownFolder(knownFolder);
                     if (result == null)
                     {
-                        throw new ArgumentException(ErrorMessages.KnownFolderParsingName, "parsingName");
+                        throw new ArgumentException(ErrorMessages.KnownFolderParsingName, nameof(parsingName));
                     }
                     return result;
                 }
 
-                throw new ArgumentException(ErrorMessages.KnownFolderParsingName, "parsingName");
+                throw new ArgumentException(ErrorMessages.KnownFolderParsingName, nameof(parsingName));
             }
             finally
             {
@@ -129,7 +129,7 @@ namespace starshipxac.Shell
             var result = CreateKnownFolder(knownFolderNative);
             if (result == null)
             {
-                throw new ArgumentException(ErrorMessages.KnownFolderInvalidGuid, "knownFolderId");
+                throw new ArgumentException(ErrorMessages.KnownFolderInvalidGuid, nameof(knownFolderId));
             }
             return result;
         }

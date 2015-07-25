@@ -26,13 +26,7 @@ namespace starshipxac.Shell.Internal
         /// <summary>
         /// 親コンテナーを取得します。
         /// </summary>
-        public ShellFolder Parent
-        {
-            get
-            {
-                return this.folderEnumerator.Parent;
-            }
-        }
+        public ShellFolder Parent => this.folderEnumerator.Parent;
 
         public IEnumerator<ShellObject> GetEnumerator()
         {

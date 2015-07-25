@@ -56,56 +56,32 @@ namespace starshipxac.Shell.IO
         /// <summary>
         /// <see cref="ShellFile"/>を取得または設定します。
         /// </summary>
-        private ShellFile ShellFile { get; set; }
+        private ShellFile ShellFile { get; }
 
         /// <summary>
         /// <see cref="IStream"/>を取得または設定します。
         /// </summary>
-        private IStream StreamInterface { get; set; }
+        private IStream StreamInterface { get; }
 
         /// <summary>
         /// ストリームが読み込み可能かどうかを判定する値を取得します。
         /// </summary>
-        public override bool CanRead
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool CanRead => true;
 
         /// <summary>
         /// ストリームがシーク可能かどうかを判定する値を取得または設定します。
         /// </summary>
-        public override bool CanSeek
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool CanSeek => true;
 
         /// <summary>
         /// ストリームが書き込み可能かどうかを判定する値を取得します。
         /// </summary>
-        public override bool CanWrite
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool CanWrite => true;
 
         /// <summary>
         /// ストリームのバイト長を取得します。
         /// </summary>
-        public override long Length
-        {
-            get
-            {
-                return this.Stat.cbSize;
-            }
-        }
+        public override long Length => this.Stat.cbSize;
 
         /// <summary>
         /// 現在のストリームの位置を取得します。

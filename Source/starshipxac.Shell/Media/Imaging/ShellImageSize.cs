@@ -17,31 +17,19 @@ namespace starshipxac.Shell.Media.Imaging
             this.Height = height;
         }
 
-        public static ShellImageSize Empty
-        {
-            get
-            {
-                return empty;
-            }
-        }
+        public static ShellImageSize Empty => empty;
 
         /// <summary>
         /// イメージの幅を取得します。
         /// </summary>
-        public double Width { get; set; }
+        public double Width { get; }
 
         /// <summary>
         /// イメージの高さを取得します。
         /// </summary>
-        public double Height { get; set; }
+        public double Height { get; }
 
-        public bool IsEmpty
-        {
-            get
-            {
-                return this == Empty;
-            }
-        }
+        public bool IsEmpty => this == Empty;
 
         public static bool operator ==(ShellImageSize x, ShellImageSize y)
         {
@@ -55,12 +43,9 @@ namespace starshipxac.Shell.Media.Imaging
 
         public override bool Equals(object obj)
         {
-            if (obj != null)
+            if (obj is ShellImageSize)
             {
-                if (obj is ShellImageSize)
-                {
-                    return Equals(this, (ShellImageSize)obj);
-                }
+                return Equals(this, (ShellImageSize)obj);
             }
             return false;
         }
@@ -82,7 +67,7 @@ namespace starshipxac.Shell.Media.Imaging
 
         public override string ToString()
         {
-            return String.Format("{0}, {1}", this.Width, this.Height);
+            return $"{{Width: {this.Width}, Height: {this.Height}}}";
         }
     }
 }

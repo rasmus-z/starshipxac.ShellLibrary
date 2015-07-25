@@ -98,19 +98,12 @@ namespace starshipxac.Shell.PropertySystem
         private void ObjectInvariant()
         {
             Contract.Invariant(this.propertyKey != null);
-            Contract.Invariant(this.propertyDescriptionNative != null);
         }
 
         /// <summary>
         /// プロパティ定義を取得します。
         /// </summary>
-        internal IPropertyDescription PropertyDescriptionNative
-        {
-            get
-            {
-                return this.propertyDescriptionNative;
-            }
-        }
+        internal IPropertyDescription PropertyDescriptionNative => this.propertyDescriptionNative;
 
         /// <summary>
         /// プロパティの標準的な名前を取得します。

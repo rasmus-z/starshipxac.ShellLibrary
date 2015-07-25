@@ -1,4 +1,6 @@
-﻿namespace starshipxac.Shell.Internal
+﻿using System;
+
+namespace starshipxac.Shell.Internal
 {
     /// <summary>
     /// デフォルトの<see cref="ShellFactory"/>を定義します。

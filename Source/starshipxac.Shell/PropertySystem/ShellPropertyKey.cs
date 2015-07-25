@@ -52,13 +52,7 @@ namespace starshipxac.Shell.PropertySystem
             return new ShellPropertyKey(propertyKey, canonicalName);
         }
 
-        internal PROPERTYKEY PropertyKeyNative
-        {
-            get
-            {
-                return this.propertyKeyNative;
-            }
-        }
+        internal PROPERTYKEY PropertyKeyNative => this.propertyKeyNative;
 
         /// <summary>
         /// プロパティ名を取得します。
@@ -82,24 +76,12 @@ namespace starshipxac.Shell.PropertySystem
         /// <summary>
         /// プロパティの<c>FormatID</c>を取得します。
         /// </summary>
-        public Guid FormatId
-        {
-            get
-            {
-                return this.propertyKeyNative.fmtid;
-            }
-        }
+        public Guid FormatId => this.propertyKeyNative.fmtid;
 
         /// <summary>
         /// プロパティの<c>PropID</c>を取得します。
         /// </summary>
-        public UInt32 PropertyId
-        {
-            get
-            {
-                return this.propertyKeyNative.pid;
-            }
-        }
+        public UInt32 PropertyId => this.propertyKeyNative.pid;
 
         public static bool operator ==(ShellPropertyKey left, ShellPropertyKey right)
         {
@@ -148,8 +130,7 @@ namespace starshipxac.Shell.PropertySystem
 
         public override string ToString()
         {
-            return String.Format("ShellPropertyKey: {{FormatId={0}, PropertyId={1}",
-                this.FormatId, this.PropertyId);
+            return $"{{Name: {Name}, FormatId: {FormatId}, PropertyId: {PropertyId}}}";
         }
     }
 }

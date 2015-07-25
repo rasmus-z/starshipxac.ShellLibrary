@@ -66,28 +66,22 @@ namespace starshipxac.Shell.Components.Internal
         /// <summary>
         /// シェル変更通知種別を取得します。
         /// </summary>
-        public ShellChangeTypes ChangeType { get; private set; }
+        public ShellChangeTypes ChangeType { get; }
 
         /// <summary>
         /// 発生したイベントがシステムイベントかどうかを判定する値を取得します。
         /// </summary>
-        public bool FromSystemInterrupt
-        {
-            get
-            {
-                return (this.ChangeType & ShellChangeTypes.FromInterrupt) != ShellChangeTypes.None;
-            }
-        }
+        public bool FromSystemInterrupt => (this.ChangeType & ShellChangeTypes.FromInterrupt) != ShellChangeTypes.None;
 
         /// <summary>
         /// <see cref="ShellObject"/>を取得します。
         /// </summary>
-        public ShellObject ShellObject { get; private set; }
+        public ShellObject ShellObject { get; }
 
         /// <summary>
         /// 2つめの<see cref="ShellObject"/>を取得します。
         /// </summary>
-        public ShellObject ShellObject2 { get; private set; }
+        public ShellObject ShellObject2 { get; }
 
         /// <summary>
         /// イメージのインデックスを取得します。

@@ -74,15 +74,9 @@ namespace starshipxac.Shell.Internal
         /// <summary>
         /// ウィンドウハンドルを取得します。
         /// </summary>
-        public IntPtr Handle { get; private set; }
+        public IntPtr Handle { get; }
 
-        public bool IsDisposed
-        {
-            get
-            {
-                return this.disposed;
-            }
-        }
+        public bool IsDisposed => this.disposed;
 
         private static void AddHook(IntPtr hwnd, WindowSourceHook hook)
         {

@@ -35,6 +35,10 @@ namespace starshipxac.Shell.Internal
             Contract.Invariant(this.CanonicalName != null);
             Contract.Invariant(this.Description != null);
             Contract.Invariant(this.RelativePath != null);
+            Contract.Invariant(this.ToolTip != null);
+            Contract.Invariant(this.LocalizedName != null);
+            Contract.Invariant(this.FolderType != null);
+            Contract.Invariant(this.Security != null);
         }
 
         public string ParsingName { get; private set; }
@@ -174,6 +178,8 @@ namespace starshipxac.Shell.Internal
 
         private static string PtrToString(IntPtr ptr)
         {
+            Contract.Ensures(Contract.Result<string>() != null);
+
             return Marshal.PtrToStringUni(ptr) ?? String.Empty;
         }
     }

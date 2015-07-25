@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using starshipxac.Shell.Interop;
 using starshipxac.Shell.Media.Imaging;
 using starshipxac.Shell.PropertySystem;
@@ -31,9 +30,9 @@ namespace starshipxac.Shell
             new ConcurrentDictionary<string, PropertyChangedEventArgs>();
 
         /// <summary>
-        /// <see cref="ShellItem"/>を指定して、<see cref="ShellObject"/>クラスの新しいインスタンスを初期化します。
+        /// <see cref="Shell.ShellItem"/>を指定して、<see cref="ShellObject"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem"/>。</param>
+        /// <param name="shellItem"><see cref="Shell.ShellItem"/>。</param>
         internal ShellObject(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
@@ -90,20 +89,14 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="ShellItem"/>を取得します。
+        /// <see cref="Shell.ShellItem"/>を取得します。
         /// </summary>
-        internal ShellItem ShellItem { get; set; }
+        internal ShellItem ShellItem { get; }
 
         /// <summary>
-        /// <c>PIDL</c>を取得または設定します。
+        /// <c>PIDL</c>を取得します。
         /// </summary>
-        internal virtual PIDL PIDL
-        {
-            get
-            {
-                return this.ShellItem.PIDL;
-            }
-        }
+        internal virtual PIDL PIDL => this.ShellItem.PIDL;
 
         /// <summary>
         /// <see cref="ShellPropertyStore"/>を取得または設定します。
@@ -165,13 +158,7 @@ namespace starshipxac.Shell
         /// <summary>
         /// <see cref="ShellObject"/>がファイルシステム上のアイテムかどうかを判定する値を取得します。
         /// </summary>
-        public bool IsFileSystem
-        {
-            get
-            {
-                return this.ShellItem.IsFileSystem;
-            }
-        }
+        public bool IsFileSystem => this.ShellItem.IsFileSystem;
 
         /// <summary>
         /// ファイル種別を示す文字列を取得します。
@@ -307,11 +294,7 @@ namespace starshipxac.Shell
         {
             Contract.Requires<ArgumentNullException>(propertyName != null);
 
-            var handler = Interlocked.CompareExchange(ref this.PropertyChanged, null, null);
-            if (handler != null)
-            {
-                handler(this, GetPropertyChangedEventArgs(propertyName));
-            }
+            this.PropertyChanged?.Invoke(this, GetPropertyChangedEventArgs(propertyName));
         }
 
         /// <summary>
@@ -416,7 +399,7 @@ namespace starshipxac.Shell
         /// <returns>このインスタンスの文字列表現。</returns>
         public override string ToString()
         {
-            return String.Format("{0}: {{ParsingName={1}}}", this.GetType().Name, this.ParsingName);
+            return $"{{{nameof(ParsingName)}: {ParsingName}}}";
         }
     }
 }

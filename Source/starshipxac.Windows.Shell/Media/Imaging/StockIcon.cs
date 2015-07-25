@@ -41,31 +41,31 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         {
             if (!this.disposed)
             {
-                DestroyIcon(this.hIcon);
-
                 this.disposed = true;
+
+                DestroyIcon(this.hIcon);
             }
         }
 
         /// <summary>
         /// 標準アイコンIDを取得します。
         /// </summary>
-        internal SHSTOCKICONID Id { get; private set; }
+        internal SHSTOCKICONID Id { get; }
 
         /// <summary>
         /// アイコンサイズを取得します。
         /// </summary>
-        public StockIconSize Size { get; private set; }
+        public StockIconSize Size { get; }
 
         /// <summary>
         /// リンクオーバーレイを取得するかどうかを判定する値を取得します。
         /// </summary>
-        public bool LinkOverlay { get; private set; }
+        public bool LinkOverlay { get; }
 
         /// <summary>
         /// 選択状態アイコンを取得するかどうかを判定する値を取得します。
         /// </summary>
-        public bool Selected { get; private set; }
+        public bool Selected { get; }
 
         /// <summary>
         /// アイコンの<see cref="BitmapSource"/>を取得します。

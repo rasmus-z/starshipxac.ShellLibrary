@@ -70,7 +70,7 @@ namespace starshipxac.Shell.Interop
         /// <summary>
         /// <see cref="HRESULT"/>の値を取得します。
         /// </summary>
-        public int Value { get; private set; }
+        public int Value { get; }
 
         public enum Severity
         {
@@ -223,7 +223,7 @@ namespace starshipxac.Shell.Interop
 
         public override string ToString()
         {
-            return String.Format("0x{0:x}", this.Value);
+            return $"0x{this.Value:x}";
         }
     }
 }

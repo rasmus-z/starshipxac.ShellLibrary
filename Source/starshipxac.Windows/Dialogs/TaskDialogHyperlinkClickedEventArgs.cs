@@ -20,6 +20,6 @@ namespace starshipxac.Windows.Dialogs
         /// <summary>
         /// クリックしたハイパーリンクのテキストを取得します。
         /// </summary>
-        public string LinkText { get; private set; }
+        public string LinkText { get; }
     }
 }

@@ -32,13 +32,7 @@ namespace starshipxac.Shell.Internal
         /// <summary>
         /// 親コンテナーを取得します。
         /// </summary>
-        public ShellFolder Parent
-        {
-            get
-            {
-                return this.enumerator.Parent;
-            }
-        }
+        public ShellFolder Parent => this.enumerator.Parent;
 
         public IEnumerator<ShellFolder> GetEnumerator()
         {
