@@ -105,15 +105,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Behavior\Messaging\Dialogs\CustomFileDialogInteractionMessageAction.cs" />
-    <Compile Include="Behavior\Messaging\Dialogs\FolderSelectorInteractionMessageAction.cs" />
-    <Compile Include="Behavior\Messaging\Dialogs\OpenFileSelectorInteractionMessageAction.cs" />
-    <Compile Include="Behavior\Messaging\Dialogs\SaveFileSelectorInteractionMessageAction.cs" />
-    <Compile Include="Messaging\Dialogs\CustomFileOpenDialogMessage.cs" />
-    <Compile Include="Messaging\Dialogs\CustomFileOpenDialogResponse.cs" />
-    <Compile Include="Messaging\Dialogs\SelectFolderMessage.cs" />
-    <Compile Include="Messaging\Dialogs\SelectOpenFileMessage.cs" />
-    <Compile Include="Messaging\Dialogs\SelectSaveFileMessage.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

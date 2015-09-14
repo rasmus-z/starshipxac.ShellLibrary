@@ -3,35 +3,25 @@ using System.Diagnostics;
 using System.Windows;
 using starshipxac.Windows.Dialogs;
 using starshipxac.Windows.Dialogs.Controls;
-using TaskDialogSample.Manipulations;
 
 namespace TaskDialogSample.Views
 {
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window, IMainWindowManipulator
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
 
-            this.DynamicContext.Loading(this);
-        }
-
-        private dynamic DynamicContext
-        {
-            get
+            if (this.DynamicDataContext != null)
             {
-                return this.DataContext;
+                this.DynamicDataContext.Loading(this);
             }
         }
 
-        protected override void OnContentRendered(EventArgs e)
-        {
-            base.OnContentRendered(e);
-            this.DynamicContext.Initialize();
-        }
+        private dynamic DynamicDataContext => this.DataContext;
 
         public void ShowSimpleTaskDialog()
         {

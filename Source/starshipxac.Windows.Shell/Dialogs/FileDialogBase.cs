@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Markup;
@@ -77,10 +76,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         {
             if (disposing)
             {
-                if (this.fileDialogInternal != null)
-                {
-                    this.fileDialogInternal.Dispose();
-                }
+                this.fileDialogInternal?.Dispose();
             }
         }
 
@@ -93,24 +89,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         /// <summary>
         /// ダイアログの表示状態を取得します。
         /// </summary>
-        protected DialogShowStates DialogShowStates
-        {
-            get
-            {
-                return this.FileDialogInternal.DialogShowStates;
-            }
-        }
+        protected DialogShowStates DialogShowStates => this.FileDialogInternal.DialogShowStates;
 
         /// <summary>
         /// ダイアログが表示中かどうかを判定する値を取得します。
         /// </summary>
-        public bool DialogShowing
-        {
-            get
-            {
-                return this.FileDialogInternal.DialogShowing;
-            }
-        }
+        public bool DialogShowing => this.FileDialogInternal.DialogShowing;
 
         /// <summary>
         /// ダイアログの実行結果を取得します。
@@ -133,18 +117,8 @@ namespace starshipxac.Windows.Shell.Dialogs
                     return;
                 }
 
-                if (value == null)
-                {
-                    this.title = String.Empty;
-                }
-                else
-                {
-                    this.title = value;
-                }
-                if (this.fileDialogInternal != null)
-                {
-                    this.fileDialogInternal.SetTitle(this.title);
-                }
+                this.title = value ?? String.Empty;
+                this.fileDialogInternal?.SetTitle(this.title);
             }
         }
 
@@ -164,18 +138,8 @@ namespace starshipxac.Windows.Shell.Dialogs
                     return;
                 }
 
-                if (value == null)
-                {
-                    this.okButtonText = String.Empty;
-                }
-                else
-                {
-                    this.okButtonText = value;
-                }
-                if (this.fileDialogInternal != null)
-                {
-                    this.fileDialogInternal.SetOkButtonText(this.okButtonText);
-                }
+                this.okButtonText = value ?? String.Empty;
+                this.fileDialogInternal?.SetOkButtonText(this.okButtonText);
             }
         }
 
@@ -195,18 +159,8 @@ namespace starshipxac.Windows.Shell.Dialogs
                     return;
                 }
 
-                if (value == null)
-                {
-                    this.cancelButtonText = String.Empty;
-                }
-                else
-                {
-                    this.cancelButtonText = value;
-                }
-                if (this.fileDialogInternal != null)
-                {
-                    this.fileDialogInternal.SetCancelButtonText(this.cancelButtonText);
-                }
+                this.cancelButtonText = value ?? String.Empty;
+                this.fileDialogInternal?.SetCancelButtonText(this.cancelButtonText);
             }
         }
 
@@ -232,7 +186,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         /// <summary>
         /// ダイアログコントロールのコレクションを取得します。
         /// </summary>
-        public FileDialogControlCollection Controls { get; private set; }
+        public FileDialogControlCollection Controls { get; }
 
         internal FileDialogInternal FileDialogInternal
         {
@@ -266,11 +220,7 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         protected virtual void OnDialogOpening(EventArgs e)
         {
-            var handler = Interlocked.CompareExchange(ref this.DialogOpening, null, null);
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            this.DialogOpening?.Invoke(this, e);
         }
 
         internal void RaiseDialogOpeningEvent()
@@ -286,11 +236,7 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         protected virtual void OnFolderChanging(FileDialogFolderChangeEventArgs e)
         {
-            var handler = Interlocked.CompareExchange(ref this.FolderChanging, null, null);
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            this.FolderChanging?.Invoke(this, e);
         }
 
         internal bool RaiseFolderChangingEvent(ShellFolder folder)
@@ -310,11 +256,7 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         protected virtual void OnFolderChanged(EventArgs e)
         {
-            var handler = Interlocked.CompareExchange(ref this.FolderChanged, null, null);
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            this.FolderChanged?.Invoke(this, e);
         }
 
         internal void RaiseFolderChangedEvent()
@@ -330,11 +272,7 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         protected virtual void OnSelectionChanged(EventArgs e)
         {
-            var handler = Interlocked.CompareExchange(ref this.SelectionChanged, null, null);
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            this.SelectionChanged?.Invoke(this, e);
         }
 
         internal void RaiseSelectionChangedEvent()
@@ -350,11 +288,7 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         protected virtual void OnFileTypeChanged(EventArgs e)
         {
-            var handler = Interlocked.CompareExchange(ref this.FileTypeChanged, null, null);
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            this.FileTypeChanged?.Invoke(this, e);
         }
 
         internal void RaiseFileTypeChangedEvent()
@@ -370,11 +304,7 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         protected virtual void OnCommitted(CancelEventArgs e)
         {
-            var handler = Interlocked.CompareExchange(ref this.Committed, null, null);
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            this.Committed?.Invoke(this, e);
         }
 
         internal bool RaiseCommittedEvent()

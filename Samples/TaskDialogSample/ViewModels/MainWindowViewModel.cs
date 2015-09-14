@@ -1,7 +1,6 @@
 ﻿using System;
 using Livet;
 using Reactive.Bindings;
-using TaskDialogSample.Manipulations;
 
 namespace TaskDialogSample.ViewModels
 {
@@ -12,47 +11,79 @@ namespace TaskDialogSample.ViewModels
             #region ReactiveProperty
 
             this.SimpleTaskDialogCommand = new ReactiveCommand();
-            this.SimpleTaskDialogCommand.Subscribe(_ => this.Manipulator.ShowSimpleTaskDialog());
+            this.SimpleTaskDialogCommand.Subscribe(async _ =>
+            {
+                await DispatcherHelper.UIDispatcher.InvokeAsync(() =>
+                {
+                    this.View.ShowSimpleTaskDialog();
+                });
+            });
 
             this.AllControlsTaskDialogCommand = new ReactiveCommand();
-            this.AllControlsTaskDialogCommand.Subscribe(_ => this.Manipulator.ShowAllControlsTaskDialog());
+            this.AllControlsTaskDialogCommand.Subscribe(async _ =>
+            {
+                await DispatcherHelper.UIDispatcher.InvokeAsync(() =>
+                {
+                    this.View.ShowAllControlsTaskDialog();
+                });
+            });
 
             this.CustomButtonTaskDialogCommand = new ReactiveCommand();
-            this.CustomButtonTaskDialogCommand.Subscribe(_ => this.Manipulator.ShowCustomButtonTaskDialog());
+            this.CustomButtonTaskDialogCommand.Subscribe(async _ =>
+            {
+                await DispatcherHelper.UIDispatcher.InvokeAsync(() =>
+                {
+                    this.View.ShowCustomButtonTaskDialog();
+                });
+            });
 
             this.CommonLinkTaskDialogCommand = new ReactiveCommand();
-            this.CommonLinkTaskDialogCommand.Subscribe(_ => this.Manipulator.ShowCommandLinkTaskDialog());
+            this.CommonLinkTaskDialogCommand.Subscribe(async _ =>
+            {
+                await DispatcherHelper.UIDispatcher.InvokeAsync(() =>
+                {
+                    this.View.ShowCommandLinkTaskDialog();
+                });
+            });
 
             this.RadioButtonTaskDialogCommand = new ReactiveCommand();
-            this.RadioButtonTaskDialogCommand.Subscribe(_ => this.Manipulator.ShowRadioButtonTaskDialog());
+            this.RadioButtonTaskDialogCommand.Subscribe(async _ =>
+            {
+                await DispatcherHelper.UIDispatcher.InvokeAsync(() =>
+                {
+                    this.View.ShowRadioButtonTaskDialog();
+                });
+            });
 
             this.MarqueeTaskDialogCommand = new ReactiveCommand();
-            this.MarqueeTaskDialogCommand.Subscribe(_ => this.Manipulator.ShowMarqueeTaskDialog());
+            this.MarqueeTaskDialogCommand.Subscribe(async _ =>
+            {
+                await DispatcherHelper.UIDispatcher.InvokeAsync(() =>
+                {
+                    this.View.ShowMarqueeTaskDialog();
+                });
+            });
 
             #endregion
         }
 
-        public void Loading(IMainWindowManipulator manipulator)
+        public void Loading(dynamic view)
         {
-            this.Manipulator = manipulator;
+            this.View = view;
         }
 
-        public void Initialize()
-        {
-        }
+        public dynamic View { get; private set; }
 
-        public IMainWindowManipulator Manipulator { get; private set; }
+        public ReactiveCommand SimpleTaskDialogCommand { get; }
 
-        public ReactiveCommand SimpleTaskDialogCommand { get; private set; }
+        public ReactiveCommand AllControlsTaskDialogCommand { get; }
 
-        public ReactiveCommand AllControlsTaskDialogCommand { get; private set; }
+        public ReactiveCommand CustomButtonTaskDialogCommand { get; }
 
-        public ReactiveCommand CustomButtonTaskDialogCommand { get; private set; }
+        public ReactiveCommand CommonLinkTaskDialogCommand { get; }
 
-        public ReactiveCommand CommonLinkTaskDialogCommand { get; private set; }
+        public ReactiveCommand RadioButtonTaskDialogCommand { get; }
 
-        public ReactiveCommand RadioButtonTaskDialogCommand { get; private set; }
-
-        public ReactiveCommand MarqueeTaskDialogCommand { get; private set; }
+        public ReactiveCommand MarqueeTaskDialogCommand { get; }
     }
 }

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Linq;
 using Livet;
 using Reactive.Bindings;
-using ShellFileDialogSample.Messaging.Dialogs;
 using starshipxac.Shell.PropertySystem;
 
 namespace ShellFileDialogSample.ViewModels
@@ -21,9 +18,7 @@ namespace ShellFileDialogSample.ViewModels
             this.SelectOpenFileCommand = new ReactiveCommand();
             this.SelectOpenFileCommand.Subscribe(async _ =>
             {
-                var message = new SelectOpenFileMessage("SelectOpenFile");
-                await this.Messenger.GetResponseAsync(message);
-                var selectedFile = message.Response.FirstOrDefault();
+                var selectedFile = await this.View.ShowSelectOpenFileDialogAsync();
                 if (selectedFile != null)
                 {
                     this.Properties.Clear();
@@ -41,9 +36,7 @@ namespace ShellFileDialogSample.ViewModels
             this.SelectSaveFileCommand = new ReactiveCommand();
             this.SelectSaveFileCommand.Subscribe(async _ =>
             {
-                var message = new SelectSaveFileMessage("SelectSaveFile");
-                await this.Messenger.GetResponseAsync(message);
-                var selectedFile = message.Response.FirstOrDefault();
+                var selectedFile = await this.View.ShowSelectSaveFileDialogAsync();
                 if (selectedFile != null)
                 {
                     this.Properties.Clear();
@@ -61,9 +54,7 @@ namespace ShellFileDialogSample.ViewModels
             this.SelectFolderCommand = new ReactiveCommand();
             this.SelectFolderCommand.Subscribe(async _ =>
             {
-                var message = new SelectFolderMessage("SelectFolder");
-                await this.Messenger.GetResponseAsync(message);
-                var selectedFolder = message.Response.FirstOrDefault();
+                var selectedFolder = await this.View.ShowSelectFolderDialogAsync();
                 if (selectedFolder != null)
                 {
                     this.Properties.Clear();
@@ -79,11 +70,9 @@ namespace ShellFileDialogSample.ViewModels
             #region カスタム FileOpenDialog
 
             this.ShowCustomOpenFileDialogCommand = new ReactiveCommand();
-            this.ShowCustomOpenFileDialogCommand.Subscribe(async _ =>
+            this.ShowCustomOpenFileDialogCommand.Subscribe(_ =>
             {
-                var message = new CustomFileOpenDialogMessage("CustomFileOpenDialog");
-                await this.Messenger.GetResponseAsync(message);
-                var selectedFile = message.Response?.SelectedFiles.FirstOrDefault();
+                var selectedFile = this.View.ShowCustomFileOpenDialog();
                 if (selectedFile != null)
                 {
                     this.Properties.Clear();
@@ -91,8 +80,6 @@ namespace ShellFileDialogSample.ViewModels
                     {
                         this.Properties.Add(property);
                     }
-
-                    Debug.WriteLine("SelectedItemIndex = {0}", message.Response.SelectedItemIndex);
                 }
             });
 
@@ -101,18 +88,21 @@ namespace ShellFileDialogSample.ViewModels
             #endregion
         }
 
-        public void Initialize()
+        public void Loading(dynamic view)
         {
+            this.View = view;
         }
 
-        public ReactiveCollection<IShellProperty> Properties { get; private set; }
+        public dynamic View { get; private set; }
 
-        public ReactiveCommand SelectOpenFileCommand { get; private set; }
+        public ReactiveCollection<IShellProperty> Properties { get; }
 
-        public ReactiveCommand SelectSaveFileCommand { get; private set; }
+        public ReactiveCommand SelectOpenFileCommand { get; }
 
-        public ReactiveCommand SelectFolderCommand { get; private set; }
+        public ReactiveCommand SelectSaveFileCommand { get; }
 
-        public ReactiveCommand ShowCustomOpenFileDialogCommand { get; private set; }
+        public ReactiveCommand SelectFolderCommand { get; }
+
+        public ReactiveCommand ShowCustomOpenFileDialogCommand { get; }
     }
 }

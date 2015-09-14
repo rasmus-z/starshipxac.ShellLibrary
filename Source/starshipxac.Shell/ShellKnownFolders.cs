@@ -9,7 +9,7 @@ namespace starshipxac.Shell
     /// よく使用する標準フォルダーを取得します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/dd378457(v=vs.85).aspx
+    /// https://msdn.microsoft.com/ja-jp/library/windows/desktop/dd378457(v=vs.85).aspx
     /// </remarks>
     public static class ShellKnownFolders
     {
