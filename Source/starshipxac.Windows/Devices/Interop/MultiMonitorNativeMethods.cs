@@ -29,5 +29,8 @@ namespace starshipxac.Windows.Devices.Interop
         internal static extern IntPtr MonitorFromWindow(IntPtr hwnd, MonitorFlags dwFlags);
 
         internal delegate bool EnumMonitorsDelegate(IntPtr hMonitor, IntPtr hdcMonitor, ref RECT lprcMonitor, IntPtr dwData);
+
+        [DllImport("SHCore.dll")]
+        internal static extern IntPtr GetDpiForMonitor(IntPtr hMonitor, MONITOR_DPI_TYPE dpiType, ref UInt32 dpiX, ref UInt32 dpiY);
     }
 }

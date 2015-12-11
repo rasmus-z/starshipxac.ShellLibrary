@@ -32,14 +32,6 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// すべてのサブモニター情報を取得します。
-        /// </summary>
-        public static IEnumerable<Monitor> EnumerateSubMonitors()
-        {
-            return EnumerateAllMonitors().Where(x => !x.IsPrimary).ToList();
-        }
-
-        /// <summary>
         /// 指定したウィンドウが表示されているモニターを取得します。
         /// </summary>
         /// <param name="windowHandle">ウィンドウハンドル。</param>
@@ -47,7 +39,7 @@ namespace starshipxac.Windows.Devices
         internal static Monitor FromHandle(IntPtr windowHandle)
         {
             var hMonitor = MultiMonitorNativeMethods.MonitorFromWindow(windowHandle, MonitorFlags.MONITOR_DEFAULTTONEAREST);
-            return EnumerateAllMonitors().FirstOrDefault(s => s.Handle == hMonitor);
+            return Monitor.Create(hMonitor);
         }
 
         /// <summary>
@@ -80,7 +72,7 @@ namespace starshipxac.Windows.Devices
                 Y = (int)point.Y,
             };
             var hMonitor = MultiMonitorNativeMethods.MonitorFromPoint(pt, MonitorFlags.MONITOR_DEFAULTTONEAREST);
-            return EnumerateAllMonitors().FirstOrDefault(s => s.Handle == hMonitor);
+            return Monitor.Create(hMonitor);
         }
 
         /// <summary>
@@ -98,31 +90,7 @@ namespace starshipxac.Windows.Devices
                 Bottom = (int)rect.Bottom,
             };
             var hMonitor = MultiMonitorNativeMethods.MonitorFromRect(ref rc, MonitorFlags.MONITOR_DEFAULTTONEAREST);
-            return EnumerateAllMonitors().FirstOrDefault(s => s.Handle == hMonitor);
-        }
-
-        public static Rect GetBounds(Point point)
-        {
-            var screen = FromPoint(point);
-            return screen.Bounds;
-        }
-
-        public static Rect GetBounds(Rect rect)
-        {
-            var screen = FromRectangle(rect);
-            return screen.Bounds;
-        }
-
-        public static Rect GetWorkingArea(Point point)
-        {
-            var screen = FromPoint(point);
-            return screen.WorkingArea;
-        }
-
-        public static Rect GetWorkingArea(Rect rect)
-        {
-            var screen = FromRectangle(rect);
-            return screen.WorkingArea;
+            return Monitor.Create(hMonitor);
         }
     }
 }

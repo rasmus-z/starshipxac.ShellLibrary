@@ -133,10 +133,12 @@
     <Compile Include="Controls\ProgressLinear.cs">
       <DependentUpon>ProgressLinear.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Devices\Dpi.cs" />
     <Compile Include="Devices\Internal\MonitorCollection.cs" />
     <Compile Include="Devices\Interop\MonitorFlags.cs" />
     <Compile Include="Devices\Interop\MONITORINFO.cs" />
     <Compile Include="Devices\Interop\MONITORINFOEX.cs" />
+    <Compile Include="Devices\Interop\MONITOR_DPI_TYPE.cs" />
     <Compile Include="Devices\Interop\MultiMonitorNativeMethods.cs" />
     <Compile Include="Devices\Monitor.cs" />
     <Compile Include="Devices\MultiMonitor.cs" />
