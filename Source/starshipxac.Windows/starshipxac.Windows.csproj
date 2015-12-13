@@ -140,8 +140,8 @@
     <Compile Include="Devices\Interop\MONITORINFOEX.cs" />
     <Compile Include="Devices\Interop\MONITOR_DPI_TYPE.cs" />
     <Compile Include="Devices\Interop\MultiMonitorNativeMethods.cs" />
-    <Compile Include="Devices\Monitor.cs" />
-    <Compile Include="Devices\MultiMonitor.cs" />
+    <Compile Include="Devices\Screen.cs" />
+    <Compile Include="Devices\MultiScreen.cs" />
     <Compile Include="Dialogs\Controls\DialogControl.cs" />
     <Compile Include="Dialogs\Controls\TaskDialogControlCollection.cs" />
     <Compile Include="Dialogs\Controls\TaskDialogMarquee.cs" />

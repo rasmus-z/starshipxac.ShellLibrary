@@ -6,17 +6,17 @@ using starshipxac.Windows.Interop;
 
 namespace starshipxac.Windows.Devices.Internal
 {
-    internal class MonitorCollection : IEnumerable<Monitor>
+    internal class MonitorCollection : IEnumerable<Screen>
     {
-        private List<Monitor> monitors;
+        private List<Screen> monitors;
 
         public MonitorCollection()
         {
         }
 
-        public IEnumerator<Monitor> GetEnumerator()
+        public IEnumerator<Screen> GetEnumerator()
         {
-            this.monitors = new List<Monitor>();
+            this.monitors = new List<Screen>();
             MultiMonitorNativeMethods.EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, EnumMonitors, IntPtr.Zero);
 
             return this.monitors.GetEnumerator();
@@ -29,7 +29,7 @@ namespace starshipxac.Windows.Devices.Internal
 
         private bool EnumMonitors(IntPtr hMonitor, IntPtr hdcMonitor, ref RECT lprcMonitor, IntPtr dwData)
         {
-            var monitor = Monitor.Create(hMonitor);
+            var monitor = Screen.Create(hMonitor);
             if (monitor != null)
             {
                 this.monitors.Add(monitor);

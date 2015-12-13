@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace MultiMonitorSample.Views
+namespace MultiScreenSample.Views
 {
     public enum CustomWindowStates
     {
-        Normal = 0,
+        Normal,
         Minimized,
         Maximized,
         FullScreen

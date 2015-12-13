@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Windows;
-
 using Livet;
 
-namespace MultiMonitorSample
+namespace MultiScreenSample
 {
     /// <summary>
     /// App.xaml の相互作用ロジック

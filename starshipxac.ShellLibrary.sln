@@ -34,7 +34,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskDialogSample", "Samples
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsControlsSample", "Samples\WindowsControlsSample\WindowsControlsSample.csproj", "{F6D0A25C-7EE4-4597-B727-639C7E19B718}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiMonitorSample", "Samples\MultiMonitorSample\MultiMonitorSample.csproj", "{CD7571F8-CC78-401D-A95D-1C3DB999D567}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiScreenSample", "Samples\MultiScreenSample\MultiScreenSample.csproj", "{CD7571F8-CC78-401D-A95D-1C3DB999D567}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

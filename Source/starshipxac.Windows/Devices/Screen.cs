@@ -7,23 +7,23 @@ using starshipxac.Windows.Interop;
 namespace starshipxac.Windows.Devices
 {
     /// <summary>
-    ///     モニター情報を保持します。
+    ///     スクリーン情報を保持します。
     /// </summary>
-    public class Monitor : IEquatable<Monitor>
+    public class Screen : IEquatable<Screen>
     {
         /// <summary>
         ///     モニターハンドルを指定して、
-        ///     <see cref="Monitor" />クラスの新しいインスタンスを初期化します。
+        ///     <see cref="Screen" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="hMonitor">モニターハンドル。</param>
-        internal Monitor(IntPtr hMonitor)
+        internal Screen(IntPtr hMonitor)
         {
             Contract.Requires<ArgumentNullException>(hMonitor != IntPtr.Zero);
 
             this.Handle = hMonitor;
         }
 
-        internal static Monitor Create(IntPtr hMonitor)
+        internal static Screen Create(IntPtr hMonitor)
         {
             var monitorInfo = MONITORINFOEX.Create();
             var success = MultiMonitorNativeMethods.GetMonitorInfo(hMonitor, ref monitorInfo);
@@ -33,7 +33,7 @@ namespace starshipxac.Windows.Devices
             }
 
             var dpi = Dpi.Create(hMonitor);
-            return new Monitor(hMonitor)
+            return new Screen(hMonitor)
             {
                 DeviceName = monitorInfo.szDevice,
                 IsPrimary = monitorInfo.dwFlags == MultiMonitorNativeMethods.MONITORINFOF_PRIMARY,
@@ -54,26 +54,26 @@ namespace starshipxac.Windows.Devices
         public string DeviceName { get; private set; }
 
         /// <summary>
-        ///     第一モニターかどうかを判定する値を取得します。
+        ///     第一スクリーンかどうかを判定する値を取得します。
         /// </summary>
         public bool IsPrimary { get; private set; }
 
         /// <summary>
-        ///     モニターの DPIを取得します。
+        ///     スクリーンの DPIを取得します。
         /// </summary>
         public Dpi Dpi { get; private set; }
 
         /// <summary>
-        ///     モニターのサイズを取得します。
+        ///     スクリーンのサイズを取得します。
         /// </summary>
         public Rect Bounds { get; private set; }
 
         /// <summary>
-        ///     モニター内のアプリケーション動作領域のサイズを取得します。
+        ///     スクリーン内のアプリケーション動作領域のサイズを取得します。
         /// </summary>
         public Rect WorkingArea { get; private set; }
 
-        public bool Equals(Monitor other)
+        public bool Equals(Screen other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -88,8 +88,8 @@ namespace starshipxac.Windows.Devices
 
         private static Rect CreateRect(RECT rect, Dpi dpi)
         {
-            var factorX = dpi.X/(double) Dpi.Default.X;
-            var factorY = dpi.Y/(double) Dpi.Default.Y;
+            var factorX = dpi.X/(double)Dpi.Default.X;
+            var factorY = dpi.Y/(double)Dpi.Default.Y;
 
             var left = rect.Left/factorX;
             var top = rect.Top/factorY;
@@ -99,12 +99,12 @@ namespace starshipxac.Windows.Devices
             return new Rect(left, top, width, height);
         }
 
-        public static bool operator ==(Monitor x, Monitor y)
+        public static bool operator ==(Screen x, Screen y)
         {
             return Equals(x, y);
         }
 
-        public static bool operator !=(Monitor x, Monitor y)
+        public static bool operator !=(Screen x, Screen y)
         {
             return !Equals(x, y);
         }
@@ -123,7 +123,7 @@ namespace starshipxac.Windows.Devices
             {
                 return true;
             }
-            return Equals((Monitor) obj);
+            return Equals((Screen)obj);
         }
 
         public override int GetHashCode()

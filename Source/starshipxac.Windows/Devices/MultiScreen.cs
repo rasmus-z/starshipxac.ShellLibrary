@@ -11,43 +11,43 @@ using starshipxac.Windows.Interop;
 namespace starshipxac.Windows.Devices
 {
     /// <summary>
-    /// PCに接続しているすべてのモニター情報を保持します。
+    /// PCに接続しているすべてのディスプレイスクリーン情報を取得します。
     /// </summary>
-    public static class MultiMonitor
+    public static class MultiScreen
     {
         /// <summary>
-        /// メインモニター情報を取得します。
+        /// メインスクリーン情報を取得します。
         /// </summary>
-        public static Monitor GetPrimaryMonitor()
+        public static Screen GetPrimaryMonitor()
         {
             return EnumerateAllMonitors().FirstOrDefault(x => x.IsPrimary);
         }
 
         /// <summary>
-        /// すべてのモニター情報を取得します。
+        /// すべてのスクリーン情報を取得します。
         /// </summary>
-        public static IEnumerable<Monitor> EnumerateAllMonitors()
+        public static IEnumerable<Screen> EnumerateAllMonitors()
         {
             return new MonitorCollection();
         }
 
         /// <summary>
-        /// 指定したウィンドウが表示されているモニターを取得します。
+        /// 指定したウィンドウが表示されているスクリーンを取得します。
         /// </summary>
         /// <param name="windowHandle">ウィンドウハンドル。</param>
-        /// <returns>モニター情報。</returns>
-        internal static Monitor FromHandle(IntPtr windowHandle)
+        /// <returns>スクリーン情報。</returns>
+        internal static Screen FromHandle(IntPtr windowHandle)
         {
             var hMonitor = MultiMonitorNativeMethods.MonitorFromWindow(windowHandle, MonitorFlags.MONITOR_DEFAULTTONEAREST);
-            return Monitor.Create(hMonitor);
+            return Screen.Create(hMonitor);
         }
 
         /// <summary>
-        /// 指定したウィンドウが表示されているモニターを取得します。
+        /// 指定したウィンドウが表示されているスクリーンを取得します。
         /// </summary>
         /// <param name="window">ウィンドウ。</param>
-        /// <returns>モニター情報。</returns>
-        public static Monitor FromWindow(Window window)
+        /// <returns>スクリーン情報。</returns>
+        public static Screen FromWindow(Window window)
         {
             Contract.Requires<ArgumentNullException>(window != null);
 
@@ -60,11 +60,11 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// 指定した座標が含まれるモニターを取得します。
+        /// 指定した座標が含まれるスクリーンを取得します。
         /// </summary>
         /// <param name="point">検査する座標。</param>
-        /// <returns>モニター情報。</returns>
-        public static Monitor FromPoint(Point point)
+        /// <returns>スクリーン情報。</returns>
+        public static Screen FromPoint(Point point)
         {
             var pt = new POINT
             {
@@ -72,15 +72,15 @@ namespace starshipxac.Windows.Devices
                 Y = (int)point.Y,
             };
             var hMonitor = MultiMonitorNativeMethods.MonitorFromPoint(pt, MonitorFlags.MONITOR_DEFAULTTONEAREST);
-            return Monitor.Create(hMonitor);
+            return Screen.Create(hMonitor);
         }
 
         /// <summary>
-        /// 指定した四角形が含まれるモニターを取得します。
+        /// 指定した四角形が含まれるスクリーンを取得します。
         /// </summary>
         /// <param name="rect">検査する四角形</param>
-        /// <returns>モニター情報。</returns>
-        public static Monitor FromRectangle(Rect rect)
+        /// <returns>スクリーン情報。</returns>
+        public static Screen FromRectangle(Rect rect)
         {
             var rc = new RECT
             {
@@ -90,7 +90,7 @@ namespace starshipxac.Windows.Devices
                 Bottom = (int)rect.Bottom,
             };
             var hMonitor = MultiMonitorNativeMethods.MonitorFromRect(ref rc, MonitorFlags.MONITOR_DEFAULTTONEAREST);
-            return Monitor.Create(hMonitor);
+            return Screen.Create(hMonitor);
         }
     }
 }

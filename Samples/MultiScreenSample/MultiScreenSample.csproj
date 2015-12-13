@@ -8,8 +8,8 @@
     <ProjectGuid>{CD7571F8-CC78-401D-A95D-1C3DB999D567}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MultiMonitorSample</RootNamespace>
-    <AssemblyName>MultiMonitorSample</AssemblyName>
+    <RootNamespace>MultiScreenSample</RootNamespace>
+    <AssemblyName>MultiScreenSample</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -112,6 +112,8 @@
     </Compile>
     <Compile Include="Models\Model.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\Converters\CustomWindowStateConverter.cs" />
+    <Compile Include="Views\CustomWindowStateEventArgs.cs" />
     <Compile Include="Views\CustomWindowStates.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
