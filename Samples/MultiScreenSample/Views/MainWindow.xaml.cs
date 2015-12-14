@@ -24,7 +24,7 @@ namespace MultiScreenSample.Views
             InitializeComponent();
 
             this.ContentRendered += OnContentRendered;
-            this.SizeChanged += OnSizeChanged;
+            this.StateChanged += OnStateChanged;
 
             this.DynamicDataContext.Loaded(this);
         }
@@ -68,9 +68,9 @@ namespace MultiScreenSample.Views
             this.DynamicDataContext.Initialize();
         }
 
-        private void OnSizeChanged(object sender, SizeChangedEventArgs e)
+        private void OnStateChanged(object sender, EventArgs e)
         {
-            Debug.WriteLine($"OnSizeChanged: WindowState={this.WindowState}");
+            Debug.WriteLine($"OnStateChanged: WindowState={this.WindowState}");
 
             if (!this.customWindowStateChanging.IsSet)
             {
