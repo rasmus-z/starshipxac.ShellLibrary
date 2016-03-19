@@ -6,21 +6,19 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Windows.Shell.FileSystem
 {
     /// <summary>
-    /// <para>
-    /// ファイル操作の進捗を通知します。
-    /// </para>
+    ///     ファイル操作の進捗を通知します。
     /// </summary>
     public abstract class FileOperationProgress
     {
         /// <summary>
-        /// ファイル操作が開始されると呼び出されます。
+        ///     ファイル操作が開始されると呼び出されます。
         /// </summary>
         public virtual void StartOperations()
         {
         }
 
         /// <summary>
-        /// ファイル操作が終了すると呼び出されます。
+        ///     ファイル操作が終了すると呼び出されます。
         /// </summary>
         /// <param name="result"></param>
         public virtual void FinishOperations(HRESULT result)
@@ -28,7 +26,7 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// ファイル操作状況が更新されると呼び出されます。
+        ///     ファイル操作状況が更新されると呼び出されます。
         /// </summary>
         /// <param name="workTotal"></param>
         /// <param name="workSoFar"></param>
@@ -37,7 +35,7 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// ファイルがコピーされる前に呼び出されます。
+        ///     ファイルがコピーされる前に呼び出されます。
         /// </summary>
         /// <param name="flags"></param>
         /// <param name="shellObject"></param>
@@ -50,7 +48,7 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// ファイルがコピーされた後に呼び出されます。
+        ///     ファイルがコピーされた後に呼び出されます。
         /// </summary>
         /// <param name="flags"></param>
         /// <param name="shellObject"></param>
@@ -65,7 +63,7 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// ファイルが移動される前に呼び出されます。
+        ///     ファイルが移動される前に呼び出されます。
         /// </summary>
         /// <param name="flags"></param>
         /// <param name="shellObject"></param>
@@ -78,7 +76,7 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// ファイルが移動した後に呼び出されます。
+        ///     ファイルが移動した後に呼び出されます。
         /// </summary>
         /// <param name="flags"></param>
         /// <param name="shellObject"></param>
@@ -93,7 +91,7 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// ファイルが削除される前に呼び出されます。
+        ///     ファイルが削除される前に呼び出されます。
         /// </summary>
         /// <param name="flags"></param>
         /// <param name="shellObject"></param>
@@ -102,7 +100,7 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// ファイルが削除された後に呼び出されます。
+        ///     ファイルが削除された後に呼び出されます。
         /// </summary>
         /// <param name="flags"></param>
         /// <param name="shellObject"></param>
@@ -114,7 +112,7 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// ファイル名が変更される前に呼び出されます。
+        ///     ファイル名が変更される前に呼び出されます。
         /// </summary>
         /// <param name="flags"></param>
         /// <param name="shellObject"></param>
@@ -125,7 +123,7 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// ファイル名が変更された後に呼び出されます。
+        ///     ファイル名が変更された後に呼び出されます。
         /// </summary>
         /// <param name="flags"></param>
         /// <param name="shellObject"></param>
@@ -138,7 +136,7 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// ファイルが新規作成される前に呼び出されます。
+        ///     ファイルが新規作成される前に呼び出されます。
         /// </summary>
         /// <param name="flags"></param>
         /// <param name="destinationFolder"></param>
@@ -149,7 +147,7 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// ファイルが新規作成された後に呼び出されます。
+        ///     ファイルが新規作成された後に呼び出されます。
         /// </summary>
         /// <param name="flags"></param>
         /// <param name="destinationFolder"></param>

@@ -74,11 +74,11 @@ namespace starshipxac.Shell.Internal
         #endregion iShellItemArrayメンバー
 
         /// <summary>
-        /// <see cref="IShellItemArray"/>から、<see cref="index"/>で指定した位置の<see cref="IShellItem"/>を取得します。
+        ///     <see cref="IShellItemArray" />から、<see cref="index" />で指定した位置の<see cref="IShellItem" />を取得します。
         /// </summary>
-        /// <param name="shellItemArray"><see cref="IShellItemArray"/>。</param>
+        /// <param name="shellItemArray"><see cref="IShellItemArray" />。</param>
         /// <param name="index">取得する位置のインデックス。</param>
-        /// <returns>取得した<see cref="IShellItem"/>。</returns>
+        /// <returns>取得した<see cref="IShellItem" />。</returns>
         internal static IShellItem GetShellItemAt(IShellItemArray shellItemArray, int index)
         {
             Contract.Requires<ArgumentNullException>(shellItemArray != null);
@@ -89,9 +89,9 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// <see cref="IShellItemArray"/>内のアイテム数を取得します。
+        ///     <see cref="IShellItemArray" />内のアイテム数を取得します。
         /// </summary>
-        /// <param name="shellItemArray"><see cref="IShellItemArray"/>。</param>
+        /// <param name="shellItemArray"><see cref="IShellItemArray" />。</param>
         /// <returns>取得したアイテム数。</returns>
         internal static int GetShellItemCount(IShellItemArray shellItemArray)
         {

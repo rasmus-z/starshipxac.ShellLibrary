@@ -9,12 +9,10 @@ namespace starshipxac.Shell.Internal
     internal delegate IntPtr WindowSourceHook(IntPtr hWnd, UInt32 mes, IntPtr wParam, IntPtr lParam, ref bool handled);
 
     /// <summary>
-    /// メッセージ通知用ウィンドウを定義します。
+    ///     メッセージ通知用ウィンドウを定義します。
     /// </summary>
     internal class WindowSource : IDisposable
     {
-        private bool disposed = false;
-
         // Delegateを保持しておくために必要。
         private static readonly WndProc StaticWndProc = WindowProc;
 
@@ -22,14 +20,14 @@ namespace starshipxac.Shell.Internal
             new ConcurrentDictionary<IntPtr, WindowSourceHook>();
 
         /// <summary>
-        /// ウィンドウクラス名。
+        ///     ウィンドウクラス名。
         /// </summary>
         private const string WindowClassName = "starshipxac.Shell.WindowClass";
 
         public static readonly IntPtr HWND_MESSAGE = (IntPtr)(-3);
 
         /// <summary>
-        /// <see cref="WindowSource"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="WindowSource" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="parameters">ウィンドウ作成パラメータ。</param>
         public WindowSource(WindowSourceParameters parameters)
@@ -52,9 +50,9 @@ namespace starshipxac.Shell.Internal
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!this.IsDisposed)
             {
-                this.disposed = true;
+                this.IsDisposed = true;
 
                 if (disposing)
                 {
@@ -72,11 +70,11 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// ウィンドウハンドルを取得します。
+        ///     ウィンドウハンドルを取得します。
         /// </summary>
         public IntPtr Handle { get; }
 
-        public bool IsDisposed => this.disposed;
+        public bool IsDisposed { get; private set; } = false;
 
         private static void AddHook(IntPtr hwnd, WindowSourceHook hook)
         {
@@ -98,7 +96,7 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// ウィンドウを作成します。
+        ///     ウィンドウを作成します。
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns>作成したウィンドウハンドル。</returns>
@@ -184,11 +182,9 @@ namespace starshipxac.Shell.Internal
                 return result;
             }
 
-            [MarshalAs(UnmanagedType.U4)]
-            public UInt32 cbSize;
+            [MarshalAs(UnmanagedType.U4)] public UInt32 cbSize;
 
-            [MarshalAs(UnmanagedType.U4)]
-            public UInt32 style;
+            [MarshalAs(UnmanagedType.U4)] public UInt32 style;
 
             public WndProc lpfnWndProc;
             public int cbClsExtra;

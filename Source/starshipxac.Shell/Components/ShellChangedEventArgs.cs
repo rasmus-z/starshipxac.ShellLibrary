@@ -5,12 +5,12 @@ using starshipxac.Shell.Components.Internal;
 namespace starshipxac.Shell.Components
 {
     /// <summary>
-    /// シェル変更イベントデータを定義します。
+    ///     シェル変更イベントデータを定義します。
     /// </summary>
     public class ShellChangedEventArgs : ShellNotificationEventArgs
     {
         /// <summary>
-        /// <see cref="ShellChangedEventArgs"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellChangedEventArgs" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="changeNotify">シェル変更通知情報。</param>
         internal ShellChangedEventArgs(ShellChangeNotify changeNotify)
@@ -29,7 +29,7 @@ namespace starshipxac.Shell.Components
         }
 
         /// <summary>
-        /// イベントが発生した<see cref="ShellObject"/>を取得します。
+        ///     イベントが発生した<see cref="ShellObject" />を取得します。
         /// </summary>
         public ShellObject ShellObject { get; }
     }

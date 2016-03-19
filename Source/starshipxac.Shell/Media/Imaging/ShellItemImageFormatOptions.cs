@@ -4,20 +4,20 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    /// シェルイメージ取得オプションを定義します。
+    ///     シェルイメージ取得オプションを定義します。
     /// </summary>
     public enum ShellItemImageFormatOptions
     {
         Default,
 
         /// <summary>
-        /// サムネイルのみ。
+        ///     サムネイルのみ。
         /// </summary>
         ThumbnailOnly = SIIGBF.SIIGBF_THUMBNAILONLY,
 
         /// <summary>
-        /// アイコンのみ。
+        ///     アイコンのみ。
         /// </summary>
-        IconOnly = SIIGBF.SIIGBF_ICONONLY,
+        IconOnly = SIIGBF.SIIGBF_ICONONLY
     }
 }

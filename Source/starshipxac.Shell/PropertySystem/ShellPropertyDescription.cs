@@ -94,12 +94,6 @@ namespace starshipxac.Shell.PropertySystem
             }
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.propertyKey != null);
-        }
-
         /// <summary>
         /// プロパティ定義を取得します。
         /// </summary>
@@ -185,7 +179,7 @@ namespace starshipxac.Shell.PropertySystem
                         this.varEnumType = tempType;
                     }
                 }
-                return this.varEnumType.HasValue ? this.varEnumType.Value : default(VarEnum);
+                return this.varEnumType ?? default(VarEnum);
             }
         }
 
@@ -220,7 +214,7 @@ namespace starshipxac.Shell.PropertySystem
                         this.displayType = (PropertyDisplayTypes)tempDisplayType;
                     }
                 }
-                return this.displayType.HasValue ? this.displayType.Value : default(PropertyDisplayTypes);
+                return this.displayType ?? default(PropertyDisplayTypes);
             }
         }
 
@@ -240,7 +234,7 @@ namespace starshipxac.Shell.PropertySystem
                         this.defaultColumWidth = tempDefaultColumWidth;
                     }
                 }
-                return this.defaultColumWidth.HasValue ? this.defaultColumWidth.Value : default(uint);
+                return this.defaultColumWidth ?? default(uint);
             }
         }
 
@@ -260,7 +254,7 @@ namespace starshipxac.Shell.PropertySystem
                         this.aggregationTypes = (PropertyAggregationTypes)tempAggregationTypes;
                     }
                 }
-                return this.aggregationTypes.HasValue ? this.aggregationTypes.Value : default(PropertyAggregationTypes);
+                return this.aggregationTypes ?? default(PropertyAggregationTypes);
             }
         }
 
@@ -315,7 +309,7 @@ namespace starshipxac.Shell.PropertySystem
                         this.columnState = (PropertyColumnStates)state;
                     }
                 }
-                return this.columnState.HasValue ? this.columnState.Value : default(PropertyColumnStates);
+                return this.columnState ?? default(PropertyColumnStates);
             }
         }
 
@@ -334,7 +328,7 @@ namespace starshipxac.Shell.PropertySystem
                         this.conditionType = (PropertyConditionTypes)tempConditionType;
                     }
                 }
-                return this.conditionType.HasValue ? this.conditionType.Value : default(PropertyConditionTypes);
+                return this.conditionType ?? default(PropertyConditionTypes);
             }
         }
 
@@ -354,7 +348,7 @@ namespace starshipxac.Shell.PropertySystem
                     }
                 }
 
-                return this.conditionOperation.HasValue ? this.conditionOperation.Value : default(PropertyConditionOperations);
+                return this.conditionOperation ?? default(PropertyConditionOperations);
             }
         }
 
@@ -371,7 +365,7 @@ namespace starshipxac.Shell.PropertySystem
                         this.groupingRange = (PropertyGroupingRange)tempGroupingRange;
                     }
                 }
-                return this.groupingRange.HasValue ? this.groupingRange.Value : default(PropertyGroupingRange);
+                return this.groupingRange ?? default(PropertyGroupingRange);
             }
         }
 
@@ -389,7 +383,7 @@ namespace starshipxac.Shell.PropertySystem
                     }
                 }
 
-                return this.sortDescription.HasValue ? this.sortDescription.Value : default(PropertySortDescription);
+                return this.sortDescription ?? default(PropertySortDescription);
             }
         }
 
@@ -403,7 +397,7 @@ namespace starshipxac.Shell.PropertySystem
                     var hr = this.PropertyDescriptionNative.GetTypeFlags(PROPDESC_TYPE_FLAGS.PDTF_MASK_ALL, out tempFlags);
                     this.propertyTypeFlags = HRESULT.Succeeded(hr) ? (PropertyTypeFlags)tempFlags : default(PropertyTypeFlags);
                 }
-                return this.propertyTypeFlags.HasValue ? this.propertyTypeFlags.Value : default(PropertyTypeFlags);
+                return this.propertyTypeFlags ?? default(PropertyTypeFlags);
             }
         }
 
@@ -417,17 +411,11 @@ namespace starshipxac.Shell.PropertySystem
                     var hr = this.PropertyDescriptionNative.GetViewFlags(out tempFlags);
                     this.propertyViewFlags = HRESULT.Succeeded(hr) ? (PropertyViewFlags)tempFlags : default(PropertyViewFlags);
                 }
-                return this.propertyViewFlags.HasValue ? this.propertyViewFlags.Value : default(PropertyViewFlags);
+                return this.propertyViewFlags ?? default(PropertyViewFlags);
             }
         }
 
-        public bool HasSystemDescription
-        {
-            get
-            {
-                return this.PropertyDescriptionNative != null;
-            }
-        }
+        public bool HasSystemDescription => this.PropertyDescriptionNative != null;
 
         public string GetSortDescriptionLabel(bool descending)
         {
@@ -456,7 +444,6 @@ namespace starshipxac.Shell.PropertySystem
             {
                 throw ShellException.FromHRESULT(hr);
             }
-            formatFlags = (PropertyDescriptionFormatFlags)flags;
             return result;
         }
 

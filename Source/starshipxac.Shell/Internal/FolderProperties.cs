@@ -10,15 +10,15 @@ using starshipxac.Shell.Resources;
 namespace starshipxac.Shell.Internal
 {
     /// <summary>
-    /// 標準フォルダーのプロパティを定義します。
+    ///     標準フォルダーのプロパティを定義します。
     /// </summary>
     internal class FolderProperties
     {
         /// <summary>
-        /// <para>
-        /// 標準フォルダーインターフェイスを指定して、
-        /// <see cref="FolderProperties"/>クラスの新しいインスタンスを初期化します。
-        /// </para>
+        ///     <para>
+        ///         標準フォルダーインターフェイスを指定して、
+        ///         <see cref="FolderProperties" />クラスの新しいインスタンスを初期化します。
+        ///     </para>
         /// </summary>
         /// <param name="knownFolderInterface">標準フォルダーインターフェイス。</param>
         internal FolderProperties(IKnownFolder knownFolderInterface)
@@ -65,8 +65,8 @@ namespace starshipxac.Shell.Internal
         public string Security { get; private set; }
 
         /// <summary>
-        /// <see cref="KNOWNFOLDER_DEFINITION"/>を取得し、
-        /// 各プロパティを初期化します。
+        ///     <see cref="KNOWNFOLDER_DEFINITION" />を取得し、
+        ///     各プロパティを初期化します。
         /// </summary>
         /// <param name="knownFolderInterface"></param>
         private void Initialize(IKnownFolder knownFolderInterface)
@@ -105,7 +105,7 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// <see cref="KNOWNFOLDER_DEFINITION"/>からリソース情報を取得し、プロパティを初期化します。
+        ///     <see cref="KNOWNFOLDER_DEFINITION" />からリソース情報を取得し、プロパティを初期化します。
         /// </summary>
         /// <param name="knownFolderDefinition"></param>
         private void InitializeResourceProperties(KNOWNFOLDER_DEFINITION knownFolderDefinition)
@@ -145,7 +145,7 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// パス情報を初期化します。
+        ///     パス情報を初期化します。
         /// </summary>
         /// <param name="knownFolderInterface"></param>
         private void InitializePath(IKnownFolder knownFolderInterface)

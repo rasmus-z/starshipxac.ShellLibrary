@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.Contracts;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
@@ -12,11 +13,14 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         public FileDialogGroupBox(string name, params FileDialogControl[] controls)
             : this(name, String.Empty, controls)
         {
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 
         public FileDialogGroupBox(string name, string text, params FileDialogControl[] controls)
             : base(name)
         {
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
+
             this.text = text;
 
             if (controls == null)

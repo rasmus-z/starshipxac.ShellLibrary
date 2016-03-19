@@ -9,6 +9,6 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
         CacheOnly = SIIGBF.SIIGBF_INCACHEONLY,
 
-        MemoryOnly = SIIGBF.SIIGBF_MEMORYONLY,
+        MemoryOnly = SIIGBF.SIIGBF_MEMORYONLY
     }
 }

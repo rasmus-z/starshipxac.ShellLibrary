@@ -7,37 +7,37 @@ using static starshipxac.Shell.ShellLibraryFactory;
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// シェル標準ライブラリを取得します。
+    ///     シェル標準ライブラリを取得します。
     /// </summary>
     public static class ShellLibraries
     {
         /// <summary>
-        /// ドキュメントライブラリを取得します。
+        ///     ドキュメントライブラリを取得します。
         /// </summary>
         public static ShellLibrary DocumentsLibrary => Load(FromCanonicalName("DocumentsLibrary"));
 
         /// <summary>
-        /// ミュージックライブラリを取得します。
+        ///     ミュージックライブラリを取得します。
         /// </summary>
         public static ShellLibrary MusicLibrary => Load(FromCanonicalName("MusicLibrary"));
 
         /// <summary>
-        /// ピクチャライブラリを取得します。
+        ///     ピクチャライブラリを取得します。
         /// </summary>
         public static ShellLibrary PicturesLibrary => Load(FromCanonicalName("PicturesLibrary"));
 
         /// <summary>
-        /// ビデオライブラリを取得します。
+        ///     ビデオライブラリを取得します。
         /// </summary>
         public static ShellLibrary VideosLibrary => Load(FromCanonicalName("VideosLibrary"));
 
         /// <summary>
-        /// 録画されたTVライブラリを取得します。
+        ///     録画されたTVライブラリを取得します。
         /// </summary>
         public static ShellLibrary RecordedTVLibrary => Load(FromCanonicalName("RecordedTVLibrary"));
 
         /// <summary>
-        /// 全てのライブラリを列挙します。
+        ///     全てのライブラリを列挙します。
         /// </summary>
         /// <returns></returns>
         public static IEnumerable<ShellLibrary> EnumerateLibraries()
@@ -46,7 +46,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 全てのパブリックライブラリを列挙します。
+        ///     全てのパブリックライブラリを列挙します。
         /// </summary>
         /// <returns></returns>
         public static IEnumerable<ShellLibrary> EnumeratePublicLibraries()

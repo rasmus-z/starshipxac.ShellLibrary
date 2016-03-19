@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -9,7 +10,7 @@ using starshipxac.Windows.Shell.Properties;
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    /// 標準アイコンを保持します。
+    ///     標準アイコンを保持します。
     /// </summary>
     public class StockIcon : IDisposable
     {
@@ -48,27 +49,27 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// 標準アイコンIDを取得します。
+        ///     標準アイコンIDを取得します。
         /// </summary>
         internal SHSTOCKICONID Id { get; }
 
         /// <summary>
-        /// アイコンサイズを取得します。
+        ///     アイコンサイズを取得します。
         /// </summary>
         public StockIconSize Size { get; }
 
         /// <summary>
-        /// リンクオーバーレイを取得するかどうかを判定する値を取得します。
+        ///     リンクオーバーレイを取得するかどうかを判定する値を取得します。
         /// </summary>
         public bool LinkOverlay { get; }
 
         /// <summary>
-        /// 選択状態アイコンを取得するかどうかを判定する値を取得します。
+        ///     選択状態アイコンを取得するかどうかを判定する値を取得します。
         /// </summary>
         public bool Selected { get; }
 
         /// <summary>
-        /// アイコンの<see cref="BitmapSource"/>を取得します。
+        ///     アイコンの<see cref="BitmapSource" />を取得します。
         /// </summary>
         public BitmapSource BitmapSource
         {
@@ -123,7 +124,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
                 if (hr == COMErrorCodes.E_INVALIDARG)
                 {
                     throw new InvalidOperationException(
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                        string.Format(CultureInfo.InvariantCulture,
                             ErrorMessages.StockIconInvalidGuid,
                             this.Id));
                 }

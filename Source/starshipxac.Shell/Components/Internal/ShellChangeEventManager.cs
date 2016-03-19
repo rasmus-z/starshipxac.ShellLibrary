@@ -7,7 +7,7 @@ using System.Linq;
 namespace starshipxac.Shell.Components.Internal
 {
     /// <summary>
-    /// シェル変更イベントを管理します。
+    ///     シェル変更イベントを管理します。
     /// </summary>
     internal class ShellChangeEventManager
     {
@@ -15,7 +15,7 @@ namespace starshipxac.Shell.Components.Internal
         private readonly ConcurrentDictionary<uint, List<Delegate>> events;
 
         /// <summary>
-        /// <see cref="ShellChangeEventManager"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellChangeEventManager" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         public ShellChangeEventManager()
         {
@@ -32,10 +32,7 @@ namespace starshipxac.Shell.Components.Internal
 
         public uint RegisteredTypes
         {
-            get
-            {
-                return this.events.Keys.Aggregate(0U, (a, c) => (Convert.ToUInt32(c) | a));
-            }
+            get { return this.events.Keys.Aggregate(0U, (a, c) => (Convert.ToUInt32(c) | a)); }
         }
 
         public void AddHandler(ShellChangeTypes eventType, Delegate handler)
@@ -43,7 +40,7 @@ namespace starshipxac.Shell.Components.Internal
             var et = Convert.ToUInt32(eventType);
 
             this.events.AddOrUpdate(et,
-                (value) => new List<Delegate>() { handler },
+                value => new List<Delegate> {handler},
                 (value, list) =>
                 {
                     list.Add(handler);

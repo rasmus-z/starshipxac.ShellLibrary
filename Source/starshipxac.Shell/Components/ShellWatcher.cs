@@ -10,7 +10,7 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell.Components
 {
     /// <summary>
-    /// シェル変更を監視します。
+    ///     シェル変更を監視します。
     /// </summary>
     public class ShellWatcher : IDisposable
     {
@@ -23,9 +23,9 @@ namespace starshipxac.Shell.Components
         private uint registrationId;
 
         /// <summary>
-        /// <see cref="ShellWatcher"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellWatcher" />クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="shellObject">監視する<see cref="ShellObject"/>。</param>
+        /// <param name="shellObject">監視する<see cref="ShellObject" />。</param>
         /// <param name="window">通知ウィンドウ。</param>
         /// <param name="message">通知ウィンドウメッセージ。</param>
         /// <param name="recursive">再帰的に監視するかどうかを示すフラグ。</param>
@@ -69,9 +69,9 @@ namespace starshipxac.Shell.Components
         }
 
         /// <summary>
-        /// <see cref="ShellWatcher"/>を作成します。
+        ///     <see cref="ShellWatcher" />を作成します。
         /// </summary>
-        /// <param name="shellObject"><see cref="ShellObject"/>。</param>
+        /// <param name="shellObject"><see cref="ShellObject" />。</param>
         /// <param name="recursive">再帰的に監視するかどうかを示すフラグ。</param>
         /// <returns></returns>
         public static async Task<ShellWatcher> CreateAsync(ShellObject shellObject, bool recursive)
@@ -89,22 +89,22 @@ namespace starshipxac.Shell.Components
         }
 
         /// <summary>
-        /// 通知ウィンドウを取得または設定します。
+        ///     通知ウィンドウを取得または設定します。
         /// </summary>
         private WindowSource ListenerWindow { get; }
 
         /// <summary>
-        /// 通知ウィンドウメッセージを取得します。
+        ///     通知ウィンドウメッセージを取得します。
         /// </summary>
         internal uint Message { get; }
 
         /// <summary>
-        /// 監視が実行中かどうかを判定する値を取得します。
+        ///     監視が実行中かどうかを判定する値を取得します。
         /// </summary>
         public bool Running { get; private set; }
 
         /// <summary>
-        /// シェル監視を開始します。
+        ///     シェル監視を開始します。
         /// </summary>
         public void Start()
         {
@@ -139,7 +139,7 @@ namespace starshipxac.Shell.Components
         }
 
         /// <summary>
-        /// シェル監視を停止します。
+        ///     シェル監視を停止します。
         /// </summary>
         public void Stop()
         {
@@ -156,7 +156,7 @@ namespace starshipxac.Shell.Components
         }
 
         /// <summary>
-        /// シェル変更通知イベントを処理します。
+        ///     シェル変更通知イベントを処理します。
         /// </summary>
         /// <param name="args"></param>
         internal void ChangeNotificationEvent(ShellNotificationEventArgs args)

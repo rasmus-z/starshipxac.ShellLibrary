@@ -7,7 +7,7 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    /// シェルイメージファクトリを定義します。
+    ///     シェルイメージファクトリを定義します。
     /// </summary>
     public class ShellItemImageFactory
     {

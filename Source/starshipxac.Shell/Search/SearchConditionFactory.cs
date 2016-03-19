@@ -220,13 +220,12 @@ namespace starshipxac.Shell.Search
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
         /// <remarks>
-        /// <para>http://msdn.microsoft.com/en-us/library/bb233500.aspx</para>
-        /// <para>http://www.microsoft.com/windows/products/winfamily/desktopsearch/technicalresources/advquery.mspx</para>
+        ///     <para>http://msdn.microsoft.com/en-us/library/bb233500.aspx</para>
+        ///     <para>http://www.microsoft.com/windows/products/winfamily/desktopsearch/technicalresources/advquery.mspx</para>
         /// </remarks>
         public static SearchCondition ParseStructuredQuery(string query)
         {
@@ -234,14 +233,13 @@ namespace starshipxac.Shell.Search
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="query"></param>
         /// <param name="cultureInfo"></param>
         /// <returns></returns>
         /// <remarks>
-        /// <para>http://msdn.microsoft.com/en-us/library/bb233500.aspx</para>
-        /// <para>http://www.microsoft.com/windows/products/winfamily/desktopsearch/technicalresources/advquery.mspx</para>
+        ///     <para>http://msdn.microsoft.com/en-us/library/bb233500.aspx</para>
+        ///     <para>http://www.microsoft.com/windows/products/winfamily/desktopsearch/technicalresources/advquery.mspx</para>
         /// </remarks>
         public static SearchCondition ParseStructuredQuery(string query, CultureInfo cultureInfo)
         {
@@ -300,10 +298,7 @@ namespace starshipxac.Shell.Search
             }
             catch
             {
-                if (searchCondition != null)
-                {
-                    searchCondition.Dispose();
-                }
+                searchCondition?.Dispose();
                 throw;
             }
             finally

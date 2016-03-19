@@ -9,6 +9,6 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
         ThumbnailOnly = SIIGBF.SIIGBF_THUMBNAILONLY,
 
-        IconOnly = SIIGBF.SIIGBF_ICONONLY,
+        IconOnly = SIIGBF.SIIGBF_ICONONLY
     }
 }

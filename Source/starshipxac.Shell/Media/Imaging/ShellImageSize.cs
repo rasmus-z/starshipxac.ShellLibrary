@@ -3,13 +3,11 @@
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    /// シェルイメージサイズを保持します。
+    ///     シェルイメージサイズを保持します。
     /// </summary>
     [Serializable]
     public struct ShellImageSize
     {
-        private static readonly ShellImageSize empty = new ShellImageSize(0.0, 0.0);
-
         public ShellImageSize(double width, double height)
             : this()
         {
@@ -17,15 +15,15 @@ namespace starshipxac.Shell.Media.Imaging
             this.Height = height;
         }
 
-        public static ShellImageSize Empty => empty;
+        public static ShellImageSize Empty { get; } = new ShellImageSize(0.0, 0.0);
 
         /// <summary>
-        /// イメージの幅を取得します。
+        ///     イメージの幅を取得します。
         /// </summary>
         public double Width { get; }
 
         /// <summary>
-        /// イメージの高さを取得します。
+        ///     イメージの高さを取得します。
         /// </summary>
         public double Height { get; }
 
@@ -67,7 +65,7 @@ namespace starshipxac.Shell.Media.Imaging
 
         public override string ToString()
         {
-            return $"{{Width: {this.Width}, Height: {this.Height}}}";
+            return $"{{ Width: {this.Width}, Height: {this.Height} }}";
         }
     }
 }

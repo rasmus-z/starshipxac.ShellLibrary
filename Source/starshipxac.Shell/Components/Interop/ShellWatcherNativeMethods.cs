@@ -4,10 +4,10 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.Components.Interop
 {
     /// <summary>
-    /// シェル通知APIを定義します。
+    ///     シェル通知APIを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762119(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762119(v=vs.85).aspx
     /// </remarks>
     internal static class ShellWatcherNativeMethods
     {

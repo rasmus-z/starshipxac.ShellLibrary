@@ -7,7 +7,7 @@ using System.Linq;
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// シェルファイルシステムの拡張メソッドを定義します。
+    ///     シェルファイルシステムの拡張メソッドを定義します。
     /// </summary>
     public static class ShellFileSystemExtension
     {
@@ -20,7 +20,7 @@ namespace starshipxac.Shell
         private const string NonFileSystemKnownFolderRootString = "::";
 
         /// <summary>
-        /// <c>ParsingName</c>を分割します。
+        ///     <c>ParsingName</c>を分割します。
         /// </summary>
         /// <param name="parsingName"></param>
         /// <returns></returns>
@@ -47,7 +47,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <c>ParsingName</c>を分割します。
+        ///     <c>ParsingName</c>を分割します。
         /// </summary>
         /// <param name="shellObject"></param>
         /// <returns></returns>
@@ -62,7 +62,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 親の<c>ParsingName</c>を取得します。
+        ///     親の<c>ParsingName</c>を取得します。
         /// </summary>
         /// <param name="parsingName"></param>
         /// <returns></returns>
@@ -79,7 +79,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <c>ParsingName</c>が、ファイルシステム外のルートフォルダーかどうかを判定します。
+        ///     <c>ParsingName</c>が、ファイルシステム外のルートフォルダーかどうかを判定します。
         /// </summary>
         /// <param name="parsingName"></param>
         /// <returns></returns>
@@ -91,7 +91,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <c>ParsingName</c>のルートを取得します。
+        ///     <c>ParsingName</c>のルートを取得します。
         /// </summary>
         /// <param name="parsingName"></param>
         /// <returns></returns>

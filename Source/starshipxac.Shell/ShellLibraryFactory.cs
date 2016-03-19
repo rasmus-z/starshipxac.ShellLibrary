@@ -13,7 +13,7 @@ namespace starshipxac.Shell
         internal static readonly string FileExtension = ".library-ms";
 
         /// <summary>
-        /// 新しいライブラリを作成します。
+        ///     新しいライブラリを作成します。
         /// </summary>
         /// <param name="libraryName">作成するライブラリ名称。</param>
         /// <param name="overwrite">既存のライブラリに上書きするかどうかを示す値。</param>
@@ -34,7 +34,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 新しいライブラリを作成します。
+        ///     新しいライブラリを作成します。
         /// </summary>
         /// <param name="libraryName">作成するライブラリ名称。</param>
         /// <param name="sourceKnownFolder">ライブラリの標準フォルダー。</param>
@@ -57,7 +57,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 新しいライブラリを作成します。
+        ///     新しいライブラリを作成します。
         /// </summary>
         /// <param name="libraryName">作成するライブラリ名称。</param>
         /// <param name="sourcePath">ライブラリのパス。</param>
@@ -88,8 +88,8 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// ライブラリ名称を指定して、
-        /// <see cref="ShellLibrary"/>クラスの新しいインスタンスを作成します。
+        ///     ライブラリ名称を指定して、
+        ///     <see cref="ShellLibrary" />クラスの新しいインスタンスを作成します。
         /// </summary>
         /// <param name="libraryName">ライブラリ名称。</param>
         /// <param name="isReadOnly">ライブラリが読み込み専用かどうかを示す値。</param>
@@ -119,8 +119,8 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 標準フォルダーを指定して、
-        /// <see cref="ShellLibrary"/>クラスの新しいインスタンスを作成します。
+        ///     標準フォルダーを指定して、
+        ///     <see cref="ShellLibrary" />クラスの新しいインスタンスを作成します。
         /// </summary>
         /// <param name="sourceKnownFolder">標準フォルダー情報。</param>
         /// <param name="isReadOnly">ライブラリが読み込み専用かどうかを示す値。</param>
@@ -149,8 +149,8 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// ライブラリ名称とフォルダーのパスを指定して、
-        /// <see cref="ShellLibrary"/>クラスの新しいインスタンスを作成します。
+        ///     ライブラリ名称とフォルダーのパスを指定して、
+        ///     <see cref="ShellLibrary" />クラスの新しいインスタンスを作成します。
         /// </summary>
         /// <param name="libraryName">ライブラリ名称。</param>
         /// <param name="sourcePath">フォルダーのパス。</param>
@@ -175,12 +175,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="ShellItem"/>を指定して、
-        /// <see cref="ShellLibrary"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellItem" />を指定して、
+        ///     <see cref="ShellLibrary" />クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem"/>。</param>
+        /// <param name="shellItem"><see cref="ShellItem" />。</param>
         /// <param name="isReadOnly">ライブラリが読み込み専用かどうかを示す値。</param>
-        /// <returns>作成した<see cref="ShellLibrary"/>。</returns>
+        /// <returns>作成した<see cref="ShellLibrary" />。</returns>
         internal static ShellLibrary FromShellItem(ShellItem shellItem, bool isReadOnly)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
@@ -195,7 +195,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="IShellLibraryNative"/>のインスタンスを作成します。
+        ///     <see cref="IShellLibraryNative" />のインスタンスを作成します。
         /// </summary>
         /// <returns></returns>
         private static IShellLibraryNative CreateShellLibraryNativeInterface()
@@ -205,7 +205,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="LIBRARYSAVEFLAGS"/>を取得します。
+        ///     <see cref="LIBRARYSAVEFLAGS" />を取得します。
         /// </summary>
         /// <param name="overwrite"></param>
         /// <returns></returns>

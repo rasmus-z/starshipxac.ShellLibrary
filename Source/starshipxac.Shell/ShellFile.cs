@@ -5,7 +5,7 @@ using starshipxac.Shell.PropertySystem;
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// シェルファイル情報を定義します。
+    ///     シェルファイル情報を定義します。
     /// </summary>
     public class ShellFile : ShellObject
     {
@@ -13,9 +13,9 @@ namespace starshipxac.Shell
         private ShellProperty<UInt64?> sizeProperty;
 
         /// <summary>
-        /// <see cref="ShellItem"/>を指定して、<see cref="ShellFile"/>クラスの新しいインスタンスを取得します。
+        ///     <see cref="ShellItem" />を指定して、<see cref="ShellFile" />クラスの新しいインスタンスを取得します。
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem"/>。</param>
+        /// <param name="shellItem"><see cref="ShellItem" />。</param>
         protected internal ShellFile(ShellItem shellItem)
             : base(shellItem)
         {
@@ -23,7 +23,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// ファイルのパスを取得します。
+        ///     ファイルのパスを取得します。
         /// </summary>
         public virtual string Path
         {
@@ -35,7 +35,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// ファイルの拡張子を取得します。
+        ///     ファイルの拡張子を取得します。
         /// </summary>
         public string Extension
         {
@@ -51,12 +51,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// ストリームかどうかを判定する値を取得します。
+        ///     ストリームかどうかを判定する値を取得します。
         /// </summary>
         public bool IsStream => this.ShellItem.IsStream;
 
         /// <summary>
-        /// ファイルサイズを取得します。
+        ///     ファイルサイズを取得します。
         /// </summary>
         public UInt64 Size
         {

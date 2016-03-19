@@ -7,7 +7,7 @@ using starshipxac.Shell.Media.Imaging;
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    /// ファイルアイコンのイメージを作成します。
+    ///     ファイルアイコンのイメージを作成します。
     /// </summary>
     public static class ShellIconFactory
     {

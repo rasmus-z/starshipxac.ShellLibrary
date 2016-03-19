@@ -3,10 +3,10 @@
 namespace starshipxac.Shell.Components.Interop
 {
     /// <summary>
-    /// 受信する通知を定義します。
+    ///     受信する通知を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762120(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762120(v=vs.85).aspx
     /// </remarks>
     internal static class SHCNRF
     {

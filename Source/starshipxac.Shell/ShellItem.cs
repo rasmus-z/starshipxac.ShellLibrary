@@ -10,7 +10,7 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// <c>ShellItem</c>を定義します。
+    ///     <c>ShellItem</c>を定義します。
     /// </summary>
     public sealed class ShellItem : IEquatable<ShellItem>
     {
@@ -19,10 +19,10 @@ namespace starshipxac.Shell
         private string itemType;
 
         /// <summary>
-        /// <see cref="IShellItem"/>を指定して、
-        /// <see cref="ShellItem"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="IShellItem" />を指定して、
+        ///     <see cref="ShellItem" />クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="shellItem"><see cref="IShellItem"/>。</param>
+        /// <param name="shellItem"><see cref="IShellItem" />。</param>
         internal ShellItem(IShellItem shellItem)
             : this((IShellItem2)shellItem)
         {
@@ -30,10 +30,10 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="IShellItem2"/>を指定して、
-        /// <see cref="ShellItem"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="IShellItem2" />を指定して、
+        ///     <see cref="ShellItem" />クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="shellItem2"><see cref="IShellItem2"/>。</param>
+        /// <param name="shellItem2"><see cref="IShellItem2" />。</param>
         internal ShellItem(IShellItem2 shellItem2)
         {
             Contract.Requires<ArgumentNullException>(shellItem2 != null);
@@ -57,12 +57,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 解析名(<c>ParsingName</c>)を指定して、<see cref="ShellItem"/>を作成します。
+        ///     解析名(<c>ParsingName</c>)を指定して、<see cref="ShellItem" />を作成します。
         /// </summary>
         /// <param name="parsingName">解析名。</param>
-        /// <returns>作成した<see cref="ShellItem"/>。</returns>
-        /// <exception cref="ArgumentException"><paramref name="parsingName"/>が<c>null</c>または空文字列です。</exception>
-        /// <exception cref="ShellException"><see cref="ShellItem"/>の作成に失敗しました。</exception>
+        /// <returns>作成した<see cref="ShellItem" />。</returns>
+        /// <exception cref="ArgumentException"><paramref name="parsingName" />が<c>null</c>または空文字列です。</exception>
+        /// <exception cref="ShellException"><see cref="ShellItem" />の作成に失敗しました。</exception>
         public static ShellItem FromParsingName(string parsingName)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(parsingName));
@@ -80,12 +80,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <c>PIDL</c>から、<see cref="ShellItem"/>を作成します。
+        ///     <c>PIDL</c>から、<see cref="ShellItem" />を作成します。
         /// </summary>
         /// <param name="pidl"><c>PIDL</c>。</param>
-        /// <returns>作成した<see cref="ShellItem"/>。</returns>
-        /// <exception cref="ArgumentException"><paramref name="pidl"/>が<c>null</c>です。</exception>
-        /// <exception cref="ShellException"><see cref="ShellItem"/>の作成に失敗しました。</exception>
+        /// <returns>作成した<see cref="ShellItem" />。</returns>
+        /// <exception cref="ArgumentException"><paramref name="pidl" />が<c>null</c>です。</exception>
+        /// <exception cref="ShellException"><see cref="ShellItem" />の作成に失敗しました。</exception>
         internal static ShellItem FromPIDL(PIDL pidl)
         {
             Contract.Requires<ArgumentException>(pidl != PIDL.Null);
@@ -101,14 +101,14 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <c>IDListPtr</c>および親の<see cref="IShellFolder"/>から、<see cref="ShellItem"/>を作成します。
+        ///     <c>IDListPtr</c>および親の<see cref="IShellFolder" />から、<see cref="ShellItem" />を作成します。
         /// </summary>
         /// <param name="idListPtr"><c>IDListPtr</c>。</param>
-        /// <param name="parentFolderInterface">親の<see cref="IShellFolder"/>。</param>
-        /// <returns>作成した<see cref="ShellItem"/>。</returns>
-        /// <exception cref="ArgumentNullException"><paramref name="idListPtr"/>が<see cref="IntPtr.Zero"/>です。</exception>
-        /// <exception cref="ArgumentNullException"><paramref name="parentFolderInterface"/>が<c>null</c>です。</exception>
-        /// <exception cref="ShellException"><see cref="ShellItem"/>の作成に失敗しました。</exception>
+        /// <param name="parentFolderInterface">親の<see cref="IShellFolder" />。</param>
+        /// <returns>作成した<see cref="ShellItem" />。</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="idListPtr" />が<see cref="IntPtr.Zero" />です。</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="parentFolderInterface" />が<c>null</c>です。</exception>
+        /// <exception cref="ShellException"><see cref="ShellItem" />の作成に失敗しました。</exception>
         internal static ShellItem FromIdList(IntPtr idListPtr, IShellFolder parentFolderInterface)
         {
             Contract.Requires<ArgumentNullException>(idListPtr != IntPtr.Zero);
@@ -130,7 +130,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// クラスインバリアントメソッドを定義します。
+        ///     クラスインバリアントメソッドを定義します。
         /// </summary>
         [ContractInvariantMethod]
         private void ObjectInvaliant()
@@ -139,12 +139,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="IShellItem2"/>を取得します。
+        ///     <see cref="IShellItem2" />を取得します。
         /// </summary>
         internal IShellItem2 ShellItemInterface { get; }
 
         /// <summary>
-        /// <c>PIDL</c>を取得します。
+        ///     <c>PIDL</c>を取得します。
         /// </summary>
         internal PIDL PIDL
         {
@@ -160,7 +160,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 解析名を取得します。
+        ///     解析名を取得します。
         /// </summary>
         public string ParsingName
         {
@@ -176,10 +176,10 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// アイテム種別を取得します。
+        ///     アイテム種別を取得します。
         /// </summary>
         /// <remarks>
-        /// アイテムの拡張子を取得します。
+        ///     アイテムの拡張子を取得します。
         /// </remarks>
         public string ItemType
         {
@@ -195,22 +195,22 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="ShellItem"/>がリンクかどうかを判定する値を取得します。
+        ///     <see cref="ShellItem" />がリンクかどうかを判定する値を取得します。
         /// </summary>
         public bool IsLink { get; private set; }
 
         /// <summary>
-        /// <see cref="ShellItem"/>がファイルシステム上のアイテムかどうかを判定する値を取得します。
+        ///     <see cref="ShellItem" />がファイルシステム上のアイテムかどうかを判定する値を取得します。
         /// </summary>
         public bool IsFileSystem { get; private set; }
 
         /// <summary>
-        /// <see cref="ShellItem"/>がフォルダーかどうかを判定する値を取得します。
+        ///     <see cref="ShellItem" />がフォルダーかどうかを判定する値を取得します。
         /// </summary>
         public bool IsFolder { get; private set; }
 
         /// <summary>
-        /// <see cref="ShellItem"/>がストリームかどうかを判定する値を取得します。
+        ///     <see cref="ShellItem" />がストリームかどうかを判定する値を取得します。
         /// </summary>
         public bool IsStream => (GetAttributes(SFGAO.SFGAO_STREAM) & SFGAO.SFGAO_STREAM) != 0;
 
@@ -236,10 +236,10 @@ namespace starshipxac.Shell
         //}
 
         /// <summary>
-        /// <see cref="IShellFolder"/>を取得します。
+        ///     <see cref="IShellFolder" />を取得します。
         /// </summary>
-        /// <returns>取得した<see cref="IShellFolder"/>。</returns>
-        /// <exception cref="ShellException"><see cref="IShellFolder"/>の取得に失敗しました。</exception>
+        /// <returns>取得した<see cref="IShellFolder" />。</returns>
+        /// <exception cref="ShellException"><see cref="IShellFolder" />の取得に失敗しました。</exception>
         internal IShellFolder GetShellFolder()
         {
             Contract.Ensures(Contract.Result<IShellFolder>() != null);
@@ -260,9 +260,9 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="IShellFolder"/>の取得を試みます。
+        ///     <see cref="IShellFolder" />の取得を試みます。
         /// </summary>
-        /// <param name="shellFolderInterface">取得した<see cref="IShellFolder"/>。</param>
+        /// <param name="shellFolderInterface">取得した<see cref="IShellFolder" />。</param>
         /// <returns>取得に成功した場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
         internal bool TryGetShellFolder(out IShellFolder shellFolderInterface)
         {
@@ -279,9 +279,9 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="IStream"/>を取得します。
+        ///     <see cref="IStream" />を取得します。
         /// </summary>
-        /// <returns>取得した<see cref="IStream"/>。</returns>
+        /// <returns>取得した<see cref="IStream" />。</returns>
         /// <exception cref="IStream">の取得に失敗しました。</exception>
         internal IStream GetStream()
         {
@@ -300,7 +300,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// アイテム名を取得します。
+        ///     アイテム名を取得します。
         /// </summary>
         /// <returns>取得したアイテム名。</returns>
         public string GetName()
@@ -310,7 +310,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 表示名を取得します。
+        ///     表示名を取得します。
         /// </summary>
         /// <returns></returns>
         public string GetDisplayName()
@@ -320,7 +320,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 指定した表示名種別の表示名を取得します。
+        ///     指定した表示名種別の表示名を取得します。
         /// </summary>
         /// <param name="displayNameType">表示名種別。</param>
         /// <returns>取得した表示名。</returns>
@@ -340,10 +340,10 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 親の<see cref="ShellItem"/>を取得します。
+        ///     親の<see cref="ShellItem" />を取得します。
         /// </summary>
-        /// <returns>取得した親の<see cref="ShellItem"/>。親が存在しない場合は、<c>null</c>を返します。</returns>
-        /// <exception cref="ShellException">親の<see cref="ShellItem"/>の取得に失敗しました。</exception>
+        /// <returns>取得した親の<see cref="ShellItem" />。親が存在しない場合は、<c>null</c>を返します。</returns>
+        /// <exception cref="ShellException">親の<see cref="ShellItem" />の取得に失敗しました。</exception>
         public ShellItem GetParent()
         {
             IShellItem parentShellItem;
@@ -361,9 +361,9 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 指定した<see cref="ShellItem"/>から、解析名を取得します。
+        ///     指定した<see cref="ShellItem" />から、解析名を取得します。
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem"/>。</param>
+        /// <param name="shellItem"><see cref="ShellItem" />。</param>
         /// <returns>Shell解析名。</returns>
         /// <exception cref="ShellException">解析名の取得に失敗しました。</exception>
         private static string GetParsingName(IShellItem2 shellItem)
@@ -381,9 +381,9 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 指定した<see cref="IShellItem2"/>のアイテム種別を取得します。
+        ///     指定した<see cref="IShellItem2" />のアイテム種別を取得します。
         /// </summary>
-        /// <param name="shellItem">アイテム種別を取得する<see cref="IShellItem2"/>。</param>
+        /// <param name="shellItem">アイテム種別を取得する<see cref="IShellItem2" />。</param>
         /// <returns>アイテム種別。</returns>
         internal static string GetItemType(IShellItem2 shellItem)
         {
@@ -409,11 +409,11 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 指定したパスの絶対パスを取得します。
+        ///     指定したパスの絶対パスを取得します。
         /// </summary>
         /// <param name="path">絶対パスを取得するパス。</param>
         /// <returns>絶対パス。</returns>
-        /// <exception cref="ArgumentException"><paramref name="path"/>が<c>null</c>または空文字列です。</exception>
+        /// <exception cref="ArgumentException"><paramref name="path" />が<c>null</c>または空文字列です。</exception>
         internal static string GetAbsolutePath(string path)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(path));
@@ -426,15 +426,17 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 属性を取得します。
+        ///     属性を取得します。
         /// </summary>
         /// <param name="mask">取得する属性。</param>
         /// <returns>取得した属性。</returns>
         /// <remarks>
-        /// <pre>
-        /// 不要なフラグを取得すると、処理速度が遅くなります。
-        /// 取得したいフラグのみを<param name="mask"/>に指定してください。
-        /// </pre>
+        ///     <pre>
+        ///         不要なフラグを取得すると、処理速度が遅くなります。
+        ///         取得したいフラグのみを
+        ///         <param name="mask" />
+        ///         に指定してください。
+        ///     </pre>
         /// </remarks>
         internal UInt32 GetAttributes(UInt32 mask = 0xFFFFFFFF)
         {
@@ -462,12 +464,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 指定したオブジェクトの値が、現在の<see cref="ShellItem"/>と等しいかどうかを判定します。
+        ///     指定したオブジェクトの値が、現在の<see cref="ShellItem" />と等しいかどうかを判定します。
         /// </summary>
-        /// <param name="obj">現在の<see cref="ShellItem"/>と比較するオブジェクト。</param>
+        /// <param name="obj">現在の<see cref="ShellItem" />と比較するオブジェクト。</param>
         /// <returns>
-        /// <paramref name="obj"/>と現在の<see cref="ShellItem"/>が等しい場合は<c>true</c>。
-        /// それ以外の場合は<c>false</c>。
+        ///     <paramref name="obj" />と現在の<see cref="ShellItem" />が等しい場合は<c>true</c>。
+        ///     それ以外の場合は<c>false</c>。
         /// </returns>
         public override bool Equals(object obj)
         {
@@ -487,12 +489,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 指定した<see cref="ShellItem"/>の値が、現在の<see cref="ShellItem"/>と等しいかどうかを判定します。
+        ///     指定した<see cref="ShellItem" />の値が、現在の<see cref="ShellItem" />と等しいかどうかを判定します。
         /// </summary>
-        /// <param name="other">現在の<see cref="ShellItem"/>と比較する<see cref="ShellItem"/>。</param>
+        /// <param name="other">現在の<see cref="ShellItem" />と比較する<see cref="ShellItem" />。</param>
         /// <returns>
-        /// <paramref name="other"/>と現在の<see cref="ShellItem"/>が等しい場合は<c>true</c>。
-        /// それ以外の場合は<c>false</c>。
+        ///     <paramref name="other" />と現在の<see cref="ShellItem" />が等しい場合は<c>true</c>。
+        ///     それ以外の場合は<c>false</c>。
         /// </returns>
         public bool Equals(ShellItem other)
         {
@@ -516,13 +518,13 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 2つの<see cref="ShellItem"/>を比較して、等しいかどうかを判定します。
+        ///     2つの<see cref="ShellItem" />を比較して、等しいかどうかを判定します。
         /// </summary>
-        /// <param name="left">1つめの<see cref="ShellItem"/>。</param>
-        /// <param name="right">2つめの<see cref="ShellItem"/>。</param>
+        /// <param name="left">1つめの<see cref="ShellItem" />。</param>
+        /// <param name="right">2つめの<see cref="ShellItem" />。</param>
         /// <returns>
-        /// 2つの<see cref="ShellItem"/>が等しい場合は<c>true</c>。
-        /// それ以外の場合は<c>false</c>。
+        ///     2つの<see cref="ShellItem" />が等しい場合は<c>true</c>。
+        ///     それ以外の場合は<c>false</c>。
         /// </returns>
         public static bool operator ==(ShellItem left, ShellItem right)
         {
@@ -530,13 +532,13 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 2つの<see cref="ShellItem"/>を比較して、等しくないかどうかを判定します。
+        ///     2つの<see cref="ShellItem" />を比較して、等しくないかどうかを判定します。
         /// </summary>
-        /// <param name="left">1つめの<see cref="ShellItem"/>。</param>
-        /// <param name="right">2つめの<see cref="ShellItem"/>。</param>
+        /// <param name="left">1つめの<see cref="ShellItem" />。</param>
+        /// <param name="right">2つめの<see cref="ShellItem" />。</param>
         /// <returns>
-        /// 2つの<see cref="ShellItem"/>が等しくない場合は<c>true</c>。
-        /// それ以外の場合は<c>false</c>。
+        ///     2つの<see cref="ShellItem" />が等しくない場合は<c>true</c>。
+        ///     それ以外の場合は<c>false</c>。
         /// </returns>
         public static bool operator !=(ShellItem left, ShellItem right)
         {
@@ -544,7 +546,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// このインスタンスをハッシュコードを取得します。
+        ///     このインスタンスをハッシュコードを取得します。
         /// </summary>
         /// <returns>32ビット符号付き整数ハッシュコード。</returns>
         public override int GetHashCode()
@@ -553,7 +555,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// このインスタンスの文字列表現を取得します。
+        ///     このインスタンスの文字列表現を取得します。
         /// </summary>
         /// <returns>このインスタンスの文字列表現。</returns>
         public override string ToString()

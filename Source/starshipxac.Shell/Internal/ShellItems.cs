@@ -1,19 +1,20 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 
 namespace starshipxac.Shell.Internal
 {
     /// <summary>
-    /// <see cref="ShellObject"/>のコレクションに対する列挙子を公開します。
+    ///     <see cref="ShellObject" />のコレクションに対する列挙子を公開します。
     /// </summary>
     internal class ShellItems : IEnumerable<ShellObject>
     {
         private readonly ShellFolderEnumerator folderEnumerator;
 
         /// <summary>
-        /// <see cref="ShellFolderEnumerator"/>を指定して、
-        /// <see cref="ShellItems"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellFolderEnumerator" />を指定して、
+        ///     <see cref="ShellItems" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="folderEnumerator"></param>
         public ShellItems(ShellFolderEnumerator folderEnumerator)
@@ -24,7 +25,7 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// 親コンテナーを取得します。
+        ///     親コンテナーを取得します。
         /// </summary>
         public ShellFolder Parent => this.folderEnumerator.Parent;
 
@@ -33,7 +34,7 @@ namespace starshipxac.Shell.Internal
             return this.folderEnumerator;
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }

@@ -9,7 +9,7 @@ using starshipxac.Shell.Media.Imaging;
 namespace starshipxac.Shell.Resources
 {
     /// <summary>
-    /// アイコンリソース参照を取得します。
+    ///     アイコンリソース参照を取得します。
     /// </summary>
     public class IconReference : ResourceReference
     {
@@ -38,7 +38,7 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        /// リソースからアイコンを取得します。
+        ///     リソースからアイコンを取得します。
         /// </summary>
         /// <param name="size"></param>
         /// <returns></returns>

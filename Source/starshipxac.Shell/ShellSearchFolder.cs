@@ -94,12 +94,12 @@ namespace starshipxac.Shell
 
         internal static ISearchFolderItemFactory SearchFolderItemFactory { get; set; }
 
-        public SearchCondition SearchCondition { get; private set; }
+        public SearchCondition SearchCondition { get; }
 
-        public string[] SearchScopePaths { get; private set; }
+        public string[] SearchScopePaths { get; }
 
         /// <summary>
-        /// プロパティの初期設定を行います。
+        ///     プロパティの初期設定を行います。
         /// </summary>
         private void Initialize()
         {

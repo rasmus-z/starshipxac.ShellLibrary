@@ -8,14 +8,14 @@ using starshipxac.Shell.Media.Imaging;
 namespace starshipxac.Shell.Resources
 {
     /// <summary>
-    /// リソースDLLからリソースを取得するメソッドを定義します。
+    ///     リソースDLLからリソースを取得するメソッドを定義します。
     /// </summary>
     public sealed class ResourceLibrary
     {
         private IntPtr instanceHandle = IntPtr.Zero;
 
         /// <summary>
-        /// リソースDLLのパスを指定して、<see cref="ResourceLibrary"/>クラスの新しいインスタンスを初期化します。
+        ///     リソースDLLのパスを指定して、<see cref="ResourceLibrary" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="libraryPath">リソースDLLのパス。</param>
         public ResourceLibrary(string libraryPath)
@@ -32,12 +32,12 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        /// リソースDLLのパスを取得します。
+        ///     リソースDLLのパスを取得します。
         /// </summary>
         public string LibraryPath { get; }
 
         /// <summary>
-        /// リソースから文字列を取得します。
+        ///     リソースから文字列を取得します。
         /// </summary>
         /// <param name="resourceId">取得する文字列のリソースID。</param>
         /// <returns>取得した文字列。</returns>
@@ -55,15 +55,15 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        /// リソースからアイコンを取得します。
+        ///     リソースからアイコンを取得します。
         /// </summary>
         /// <param name="resourceId">取得するアイコンのリソースID。</param>
         /// <param name="size">アイコンのサイズ。</param>
         /// <returns>取得したアイコン。</returns>
         /// <exception cref="Win32Exception">
-        /// <para>リソースDLLを読み込めませんでした。</para>
-        /// <para>または</para>
-        /// <para>指定したリソースIDのアイコンを取得できませんでした。</para>
+        ///     <para>リソースDLLを読み込めませんでした。</para>
+        ///     <para>または</para>
+        ///     <para>指定したリソースIDのアイコンを取得できませんでした。</para>
         /// </exception>
         public ShellIcon LoadIcon(int resourceId, int size = 0)
         {
@@ -81,7 +81,7 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        /// リソースDLLのハンドルを取得します。
+        ///     リソースDLLのハンドルを取得します。
         /// </summary>
         /// <returns>リソースDLLのインスタンスハンドル。</returns>
         /// <exception cref="Win32Exception">リソースDLLを読み込めませんでした。</exception>
@@ -145,7 +145,7 @@ namespace starshipxac.Shell.Resources
 
         public override string ToString()
         {
-            return $"{{LibraryPath: {LibraryPath}}}";
+            return $"{{ LibraryPath: {LibraryPath} }}";
         }
     }
 }

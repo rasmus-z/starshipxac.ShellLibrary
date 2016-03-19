@@ -9,16 +9,16 @@ using STATSTG = System.Runtime.InteropServices.ComTypes.STATSTG;
 namespace starshipxac.Shell.IO
 {
     /// <summary>
-    /// シェルストリームを定義します。
+    ///     シェルストリームを定義します。
     /// </summary>
     public class ShellStream : Stream
     {
         private bool disposed = false;
 
         /// <summary>
-        /// <see cref="ShellStream"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellStream" />クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="shellFile">ストリームで読み込みまたは書き込みを行うファイルの<see cref="ShellFile"/>。</param>
+        /// <param name="shellFile">ストリームで読み込みまたは書き込みを行うファイルの<see cref="ShellFile" />。</param>
         public ShellStream(ShellFile shellFile)
         {
             Contract.Requires<ArgumentNullException>(shellFile != null);
@@ -54,37 +54,37 @@ namespace starshipxac.Shell.IO
         }
 
         /// <summary>
-        /// <see cref="ShellFile"/>を取得または設定します。
+        ///     <see cref="ShellFile" />を取得または設定します。
         /// </summary>
         private ShellFile ShellFile { get; }
 
         /// <summary>
-        /// <see cref="IStream"/>を取得または設定します。
+        ///     <see cref="IStream" />を取得または設定します。
         /// </summary>
         private IStream StreamInterface { get; }
 
         /// <summary>
-        /// ストリームが読み込み可能かどうかを判定する値を取得します。
+        ///     ストリームが読み込み可能かどうかを判定する値を取得します。
         /// </summary>
         public override bool CanRead => true;
 
         /// <summary>
-        /// ストリームがシーク可能かどうかを判定する値を取得または設定します。
+        ///     ストリームがシーク可能かどうかを判定する値を取得または設定します。
         /// </summary>
         public override bool CanSeek => true;
 
         /// <summary>
-        /// ストリームが書き込み可能かどうかを判定する値を取得します。
+        ///     ストリームが書き込み可能かどうかを判定する値を取得します。
         /// </summary>
         public override bool CanWrite => true;
 
         /// <summary>
-        /// ストリームのバイト長を取得します。
+        ///     ストリームのバイト長を取得します。
         /// </summary>
         public override long Length => this.Stat.cbSize;
 
         /// <summary>
-        /// 現在のストリームの位置を取得します。
+        ///     現在のストリームの位置を取得します。
         /// </summary>
         public override long Position
         {
@@ -102,14 +102,11 @@ namespace starshipxac.Shell.IO
                     Marshal.FreeHGlobal(ptr);
                 }
             }
-            set
-            {
-                Seek(value, SeekOrigin.Begin);
-            }
+            set { Seek(value, SeekOrigin.Begin); }
         }
 
         /// <summary>
-        /// ストリームの統計情報を取得します。
+        ///     ストリームの統計情報を取得します。
         /// </summary>
         private STATSTG Stat
         {
@@ -127,7 +124,7 @@ namespace starshipxac.Shell.IO
         }
 
         /// <summary>
-        /// ストリームをシークします。
+        ///     ストリームをシークします。
         /// </summary>
         /// <param name="offset">シークするオフセット。</param>
         /// <param name="origin">シーク開始位置。</param>
@@ -159,7 +156,7 @@ namespace starshipxac.Shell.IO
         }
 
         /// <summary>
-        /// ストリームオブジェクトのサイズを設定します。
+        ///     ストリームオブジェクトのサイズを設定します。
         /// </summary>
         /// <param name="value">新しいストリームオブジェクトのサイズ。</param>
         public override void SetLength(long value)
@@ -168,7 +165,7 @@ namespace starshipxac.Shell.IO
         }
 
         /// <summary>
-        /// ストリームオブジェクトから指定したバイト数を読み込みます。
+        ///     ストリームオブジェクトから指定したバイト数を読み込みます。
         /// </summary>
         /// <param name="buffer"></param>
         /// <param name="offset"></param>
@@ -192,7 +189,7 @@ namespace starshipxac.Shell.IO
         }
 
         /// <summary>
-        /// ストリームオブジェクトに指定したバイト数を書き込みます。
+        ///     ストリームオブジェクトに指定したバイト数を書き込みます。
         /// </summary>
         /// <param name="buffer"></param>
         /// <param name="offset"></param>

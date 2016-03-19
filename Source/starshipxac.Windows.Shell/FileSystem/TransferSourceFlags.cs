@@ -18,6 +18,6 @@ namespace starshipxac.Windows.Shell.FileSystem
         CopyHardLink = 0x100,
         CopyLocalizedName = 0x200,
         MoveAsCopyDelete = 0x400,
-        SuspendShellEvents = 0x800,
+        SuspendShellEvents = 0x800
     }
 }

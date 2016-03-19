@@ -34,10 +34,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
         public Size Size
         {
-            get
-            {
-                return this.size;
-            }
+            get { return this.size; }
             set
             {
                 Contract.Requires<ArgumentOutOfRangeException>((value.Width > 0.0) && (value.Height > 0.0));
@@ -52,10 +49,10 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         public ShellThumbnailFormatOptions FormatOption { get; set; }
 
         /// <summary>
-        /// <see cref="ShellObject"/>のアイコン・サムネイルイメージを取得し、
-        /// 指定した<see cref="ShellThumbnail"/>の各プロパティに設定します。
+        ///     <see cref="ShellObject" />のアイコン・サムネイルイメージを取得し、
+        ///     指定した<see cref="ShellThumbnail" />の各プロパティに設定します。
         /// </summary>
-        /// <param name="shellThumbnail">取得したアイコン・サムネイルイメージを設定する<see cref="ShellThumbnail"/>。</param>
+        /// <param name="shellThumbnail">取得したアイコン・サムネイルイメージを設定する<see cref="ShellThumbnail" />。</param>
         /// <returns></returns>
         public virtual async Task LoadAsync(ShellThumbnail shellThumbnail)
         {
@@ -71,12 +68,12 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// <see cref="ShellObject"/>のデフォルトアイコンを取得します。
+        ///     <see cref="ShellObject" />のデフォルトアイコンを取得します。
         /// </summary>
         /// <param name="shellThumbnail"></param>
         /// <returns></returns>
         /// <remarks>
-        /// <see cref="ShellThumbnail"/>の<c>ImageSource</c>および<c>DefaultImage</c>プロパティに取得したイメージを設定します。
+        ///     <see cref="ShellThumbnail" />の<c>ImageSource</c>および<c>DefaultImage</c>プロパティに取得したイメージを設定します。
         /// </remarks>
         public virtual async Task GetDefaultIconAsync(ShellThumbnail shellThumbnail)
         {
@@ -89,12 +86,12 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// <see cref="ShellObject"/>のアイコンとオーバーレイアイコンを取得します。
+        ///     <see cref="ShellObject" />のアイコンとオーバーレイアイコンを取得します。
         /// </summary>
         /// <param name="shellThumbnail"></param>
         /// <returns></returns>
         /// <remarks>
-        /// <see cref="ShellThumbnail"/>の<c>ImageSource</c>および<c>DefaultImage</c>プロパティに取得したイメージを設定します。
+        ///     <see cref="ShellThumbnail" />の<c>ImageSource</c>および<c>DefaultImage</c>プロパティに取得したイメージを設定します。
         /// </remarks>
         public virtual async Task GetDefaultIconWithOverlayAsync(ShellThumbnail shellThumbnail)
         {
@@ -107,12 +104,12 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// <see cref="ShellObject"/>のサムネイルイメージを取得します。
+        ///     <see cref="ShellObject" />のサムネイルイメージを取得します。
         /// </summary>
         /// <param name="shellThumbnail"></param>
         /// <returns></returns>
         /// <remarks>
-        /// <see cref="ShellThumbnail"/>の<c>ImageSource</c>および<c>ThumbnailImage</c>プロパティに取得したイメージを設定します。
+        ///     <see cref="ShellThumbnail" />の<c>ImageSource</c>および<c>ThumbnailImage</c>プロパティに取得したイメージを設定します。
         /// </remarks>
         public virtual async Task GetThumbnailAsync(ShellThumbnail shellThumbnail)
         {
@@ -149,7 +146,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
                 }
                 else
                 {
-                    var scale = (this.Size.Width * 0.38) / overlayIconRect.Width;
+                    var scale = (this.Size.Width*0.38)/overlayIconRect.Width;
 
                     overlayIconRect.Scale(scale, scale);
                     overlayIconRect.Offset(-4.0, thumbnailRect.Height - overlayIconRect.Height + 4.0);
@@ -190,7 +187,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         #region Private Methods
 
         /// <summary>
-        /// 取得するアイコンのサイズオプションを計算します。
+        ///     取得するアイコンのサイズオプションを計算します。
         /// </summary>
         /// <returns></returns>
         private int GetSizeOption()
@@ -211,7 +208,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// 取得するオーバーレイアイコンのサイズオプションを取得します。
+        ///     取得するオーバーレイアイコンのサイズオプションを取得します。
         /// </summary>
         /// <returns></returns>
         private int GetOverlayIconSizeOption()

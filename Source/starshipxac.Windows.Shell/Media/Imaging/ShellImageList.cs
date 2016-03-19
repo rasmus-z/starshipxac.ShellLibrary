@@ -8,7 +8,7 @@ using starshipxac.Windows.Shell.Interop;
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    /// シェルイメージリストを定義します。
+    ///     シェルイメージリストを定義します。
     /// </summary>
     public class ShellImageList : IDisposable
     {

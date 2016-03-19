@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Threading;
+using System.Diagnostics.Contracts;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
     /// <summary>
-    /// ファイルダイアログボタンを定義します。
+    ///     ファイルダイアログボタンを定義します。
     /// </summary>
     public class FileDialogButton : FileDialogControl
     {
@@ -13,20 +13,20 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         public FileDialogButton(string name)
             : this(name, String.Empty)
         {
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 
         public FileDialogButton(string name, string text)
             : base(name)
         {
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
+
             this.text = text;
         }
 
         public override string Text
         {
-            get
-            {
-                return this.text;
-            }
+            get { return this.text; }
             set
             {
                 if (this.text == value)
@@ -35,10 +35,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
                 }
 
                 this.text = value ?? String.Empty;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetControlLabel(this, this.text);
-                }
+                this.Dialog?.SetControlLabel(this, this.text);
             }
         }
 
@@ -48,11 +45,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
 
         protected virtual void OnClick(EventArgs args)
         {
-            var handler = Interlocked.CompareExchange(ref this.Click, null, null);
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            this.Click?.Invoke(this, args);
         }
 
         #endregion
@@ -65,7 +58,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
             }
         }
 
-        override internal void Attach(FileDialogBase dialog)
+        internal override void Attach(FileDialogBase dialog)
         {
             base.Attach(dialog);
 

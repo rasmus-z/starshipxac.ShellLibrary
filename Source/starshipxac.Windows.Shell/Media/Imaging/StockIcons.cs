@@ -6,7 +6,7 @@ using starshipxac.Windows.Shell.Media.Imaging.Interop;
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    /// ストックアイコンを取得します。
+    ///     ストックアイコンを取得します。
     /// </summary>
     public static class StockIcons
     {
@@ -18,22 +18,22 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// ストックアイコンの規定サイズを取得または設定します。
+        ///     ストックアイコンの規定サイズを取得または設定します。
         /// </summary>
         public static StockIconSize DefaultSize { get; set; }
 
         /// <summary>
-        /// オーバーレイアイコンを取得するかどうかを判定する値を取得または設定します。
+        ///     オーバーレイアイコンを取得するかどうかを判定する値を取得または設定します。
         /// </summary>
         public static bool DefaultLinkOverlay { get; set; }
 
         /// <summary>
-        /// セレクト状態アイコンを取得するかどうかを判定する値を取得または設定します。
+        ///     セレクト状態アイコンを取得するかどうかを判定する値を取得または設定します。
         /// </summary>
         public static bool DefaultSelectedState { get; set; }
 
         /// <summary>
-        /// すべてのストックアイコンを列挙します。
+        ///     すべてのストックアイコンを列挙します。
         /// </summary>
         /// <returns>ストックアイコンのコレクション。</returns>
         public static IEnumerable<StockIcon> EnumerateAllIcons()

@@ -11,17 +11,17 @@ using starshipxac.Shell.Resources;
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// シェルライブラリフォルダーを定義します。
+    ///     シェルライブラリフォルダーを定義します。
     /// </summary>
     public sealed class ShellLibrary : ShellFolder
     {
         private readonly string displayName;
 
         /// <summary>
-        /// <see cref="ShellItem"/>およびライブラリインターフェイスを指定して、
-        /// <see cref="ShellLibrary"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellItem" />およびライブラリインターフェイスを指定して、
+        ///     <see cref="ShellLibrary" />クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem"/>。</param>
+        /// <param name="shellItem"><see cref="ShellItem" />。</param>
         /// <param name="shellLibraryInterface">ライブラリインターフェイス。</param>
         /// <param name="libraryName">ライブラリ名</param>
         internal ShellLibrary(ShellItem shellItem, IShellLibraryNative shellLibraryInterface, string libraryName)
@@ -49,12 +49,12 @@ namespace starshipxac.Shell
         public override bool PathExists => false;
 
         /// <summary>
-        /// ライブラリ表示名を取得します。
+        ///     ライブラリ表示名を取得します。
         /// </summary>
         public override string DisplayName => this.displayName;
 
         /// <summary>
-        /// アイコンリソース情報を取得または設定します。
+        ///     アイコンリソース情報を取得または設定します。
         /// </summary>
         public IconReference IconReference
         {
@@ -77,7 +77,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// ライブラリフォルダー種別IDを取得または設定します。
+        ///     ライブラリフォルダー種別IDを取得または設定します。
         /// </summary>
         public Guid LibraryType
         {
@@ -97,7 +97,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 規定の保存フォルダーを取得または設定します。
+        ///     規定の保存フォルダーを取得または設定します。
         /// </summary>
         public ShellFolder DefaultSaveFolder
         {
@@ -131,13 +131,13 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 操作パネルにピン留めするかどうかを示す値を取得または設定します。
+        ///     操作パネルにピン留めするかどうかを示す値を取得または設定します。
         /// </summary>
         public bool IsPinnedToNavigationPane
         {
             get
             {
-                var flags = LIBRARYOPTIONFLAGS.LOF_PINNEDTONAVPANE;
+                LIBRARYOPTIONFLAGS flags;
                 this.ShellLibraryInterface.GetOptions(out flags);
 
                 return (flags & LIBRARYOPTIONFLAGS.LOF_PINNEDTONAVPANE) == LIBRARYOPTIONFLAGS.LOF_PINNEDTONAVPANE;
@@ -161,7 +161,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// ライブラリが読み込み専用かどうかを示す値を取得します。
+        ///     ライブラリが読み込み専用かどうかを示す値を取得します。
         /// </summary>
         internal bool IsReadOnly => false;
 

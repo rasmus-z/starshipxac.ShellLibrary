@@ -12,9 +12,9 @@ using starshipxac.Windows.Shell.Interop;
 namespace starshipxac.Windows.Shell.FileSystem
 {
     /// <summary>
-    /// <para>
-    /// ファイルのコピー、移動、削除の操作を行います。
-    /// </para>
+    ///     <para>
+    ///         ファイルのコピー、移動、削除の操作を行います。
+    ///     </para>
     /// </summary>
     public class FileOperation : IDisposable
     {
@@ -32,9 +32,9 @@ namespace starshipxac.Windows.Shell.FileSystem
         private static readonly HRESULT COPYENGINE_E_USER_CANCELLED = (HRESULT)0x80270000;
 
         /// <summary>
-        /// <para>
-        /// <see cref="FileOperation"/>クラスの新しいインスタンスを初期化します。
-        /// </para>
+        ///     <para>
+        ///         <see cref="FileOperation" />クラスの新しいインスタンスを初期化します。
+        ///     </para>
         /// </summary>
         public FileOperation()
             : this(null, null)
@@ -42,10 +42,10 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// <para>
-        /// 進捗通知クラスを指定して、
-        /// <see cref="FileOperation"/>クラスの新しいインスタンスを初期化します。
-        /// </para>
+        ///     <para>
+        ///         進捗通知クラスを指定して、
+        ///         <see cref="FileOperation" />クラスの新しいインスタンスを初期化します。
+        ///     </para>
         /// </summary>
         /// <param name="progress">進捗通知クラスのインスタンス。</param>
         public FileOperation(FileOperationProgress progress)
@@ -54,10 +54,10 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// <para>
-        /// オーナーウィンドウを指定して、
-        /// <see cref="FileOperation"/>クラスの新しいインスタンスを初期化します。
-        /// </para>
+        ///     <para>
+        ///         オーナーウィンドウを指定して、
+        ///         <see cref="FileOperation" />クラスの新しいインスタンスを初期化します。
+        ///     </para>
         /// </summary>
         /// <param name="ownerWindow">オーナーウィンドウ</param>
         public FileOperation(Window ownerWindow)
@@ -66,10 +66,10 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// <para>
-        /// 進捗通知クラスとオーナーウィンドウを指定して、
-        /// <see cref="FileOperation"/>クラスの新しいインスタンスを初期化します。
-        /// </para>
+        ///     <para>
+        ///         進捗通知クラスとオーナーウィンドウを指定して、
+        ///         <see cref="FileOperation" />クラスの新しいインスタンスを初期化します。
+        ///     </para>
         /// </summary>
         /// <param name="progress">進捗通知クラス。</param>
         /// <param name="ownerWindow">オーナーウィンドウ。</param>
@@ -111,16 +111,13 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// <para>
-        /// ファイル操作オプションを取得または設定します。
-        /// </para>
+        ///     <para>
+        ///         ファイル操作オプションを取得または設定します。
+        ///     </para>
         /// </summary>
         public FileOperationOptions OperationOptions
         {
-            get
-            {
-                return this.operationOptions;
-            }
+            get { return this.operationOptions; }
             set
             {
                 ThrowIfDisposed();
@@ -130,9 +127,9 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// <para>
-        /// ファイル操作が中止されたかどうかを判定する値を取得します。
-        /// </para>
+        ///     <para>
+        ///         ファイル操作が中止されたかどうかを判定する値を取得します。
+        ///     </para>
         /// </summary>
         public bool AnyOperationsAborted
         {
@@ -146,10 +143,10 @@ namespace starshipxac.Windows.Shell.FileSystem
         #region Copy
 
         /// <summary>
-        /// <para>
-        /// <paramref name="source"/>で指定したファイルまたはフォルダーを
-        /// <paramref name="destination"/>で指定したフォルダーにコピーします。
-        /// </para>
+        ///     <para>
+        ///         <paramref name="source" />で指定したファイルまたはフォルダーを
+        ///         <paramref name="destination" />で指定したフォルダーにコピーします。
+        ///     </para>
         /// </summary>
         /// <param name="source"></param>
         /// <param name="destination"></param>
@@ -168,13 +165,13 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// <para>
-        /// <paramref name="source"/>で指定したファイルまたはフォルダーを
-        /// <paramref name="destination"/>で指定したフォルダーにコピーします。
-        /// </para>
-        /// <para>
-        /// コピー先のファイルまたはフォルダー名を<paramref name="copyName"/>に変更します。
-        /// </para>
+        ///     <para>
+        ///         <paramref name="source" />で指定したファイルまたはフォルダーを
+        ///         <paramref name="destination" />で指定したフォルダーにコピーします。
+        ///     </para>
+        ///     <para>
+        ///         コピー先のファイルまたはフォルダー名を<paramref name="copyName" />に変更します。
+        ///     </para>
         /// </summary>
         /// <param name="source"></param>
         /// <param name="destination"></param>
@@ -194,10 +191,10 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// <para>
-        /// <paramref name="sourceFile"/>で指定したファイルを
-        /// <paramref name="destinationFile"/>で指定したファイルにコピーします。
-        /// </para>
+        ///     <para>
+        ///         <paramref name="sourceFile" />で指定したファイルを
+        ///         <paramref name="destinationFile" />で指定したファイルにコピーします。
+        ///     </para>
         /// </summary>
         /// <param name="sourceFile"></param>
         /// <param name="destinationFile"></param>
@@ -213,10 +210,10 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// <para>
-        /// <paramref name="sourceFile"/>で指定したファイルを
-        /// <paramref name="destinationFolder"/>で指定したフォルダーにコピーします。
-        /// </para>
+        ///     <para>
+        ///         <paramref name="sourceFile" />で指定したファイルを
+        ///         <paramref name="destinationFolder" />で指定したフォルダーにコピーします。
+        ///     </para>
         /// </summary>
         /// <param name="sourceFile"></param>
         /// <param name="destinationFolder"></param>
@@ -233,13 +230,13 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        /// <para>
-        /// <paramref name="sourceFile"/>で指定したファイルを
-        /// <paramref name="destinationFolder"/>で指定したフォルダーにコピーします。
-        /// </para>
-        /// <para>
-        /// ファイル名を<see cref="copyName"/>に変更します。
-        /// </para>
+        ///     <para>
+        ///         <paramref name="sourceFile" />で指定したファイルを
+        ///         <paramref name="destinationFolder" />で指定したフォルダーにコピーします。
+        ///     </para>
+        ///     <para>
+        ///         ファイル名を<see cref="copyName" />に変更します。
+        ///     </para>
         /// </summary>
         /// <param name="sourceFile"></param>
         /// <param name="destinationFolder"></param>
@@ -409,7 +406,7 @@ namespace starshipxac.Windows.Shell.FileSystem
         #endregion
 
         /// <summary>
-        /// 設定したファイル操作を実行します。
+        ///     設定したファイル操作を実行します。
         /// </summary>
         /// <returns></returns>
         public bool PerformOperations()

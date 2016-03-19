@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
@@ -10,16 +11,20 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         public FileDialogCheckBox(string name)
             : this(name, String.Empty, false)
         {
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 
         public FileDialogCheckBox(string name, string text)
             : this(name, text, false)
         {
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 
         public FileDialogCheckBox(string name, string text, bool isChecked)
             : base(name)
         {
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
+
             this.text = text;
             this.isChecked = isChecked;
         }
@@ -38,10 +43,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
                 }
 
                 this.text = value ?? String.Empty;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetControlLabel(this, this.text);
-                }
+                this.Dialog?.SetControlLabel(this, this.text);
             }
         }
 
@@ -63,10 +65,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
                 }
 
                 this.isChecked = value;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetCheckBoxChecked(this, this.isChecked);
-                }
+                this.Dialog?.SetCheckBoxChecked(this, this.isChecked);
             }
         }
 
@@ -76,11 +75,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
 
         protected virtual void OnChecked(EventArgs args)
         {
-            var handler = this.Checked;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            this.Checked?.Invoke(this, args);
         }
 
         #endregion
@@ -91,20 +86,16 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
 
         protected virtual void OnUnchecked(EventArgs args)
         {
-            var handler = this.Unchecked;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            this.Unchecked?.Invoke(this, args);
         }
 
         #endregion
 
-        internal void RaiseCheckedChangedEvent(bool isChecked)
+        internal void RaiseCheckedChangedEvent(bool bChecked)
         {
             if (this.Enabled)
             {
-                if (isChecked)
+                if (bChecked)
                 {
                     OnChecked(EventArgs.Empty);
                 }

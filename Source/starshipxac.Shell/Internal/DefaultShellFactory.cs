@@ -3,7 +3,7 @@
 namespace starshipxac.Shell.Internal
 {
     /// <summary>
-    /// デフォルトの<see cref="ShellFactory"/>を定義します。
+    ///     デフォルトの<see cref="ShellFactory" />を定義します。
     /// </summary>
     internal class DefaultShellFactory : ShellFactory
     {
@@ -15,7 +15,7 @@ namespace starshipxac.Shell.Internal
         public static ShellFactory Default { get; private set; }
 
         /// <summary>
-        /// <see cref="ShellFolder"/>を作成します。
+        ///     <see cref="ShellFolder" />を作成します。
         /// </summary>
         /// <param name="shellItem"></param>
         /// <returns></returns>
@@ -25,7 +25,7 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// <see cref="ShellFile"/>を作成します。
+        ///     <see cref="ShellFile" />を作成します。
         /// </summary>
         /// <param name="shellItem"></param>
         /// <returns></returns>

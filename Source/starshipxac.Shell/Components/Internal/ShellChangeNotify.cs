@@ -6,12 +6,12 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.Components.Internal
 {
     /// <summary>
-    /// シェル変更通知情報を保持します。
+    ///     シェル変更通知情報を保持します。
     /// </summary>
     internal class ShellChangeNotify
     {
         /// <summary>
-        /// <see cref="ShellChangeNotify"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellChangeNotify" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="wParam"><c>WPARAM</c>。</param>
         /// <param name="lParam"><c>LPARAM</c>。</param>
@@ -64,32 +64,32 @@ namespace starshipxac.Shell.Components.Internal
         }
 
         /// <summary>
-        /// シェル変更通知種別を取得します。
+        ///     シェル変更通知種別を取得します。
         /// </summary>
         public ShellChangeTypes ChangeType { get; }
 
         /// <summary>
-        /// 発生したイベントがシステムイベントかどうかを判定する値を取得します。
+        ///     発生したイベントがシステムイベントかどうかを判定する値を取得します。
         /// </summary>
         public bool FromSystemInterrupt => (this.ChangeType & ShellChangeTypes.FromInterrupt) != ShellChangeTypes.None;
 
         /// <summary>
-        /// <see cref="ShellObject"/>を取得します。
+        ///     <see cref="ShellObject" />を取得します。
         /// </summary>
         public ShellObject ShellObject { get; }
 
         /// <summary>
-        /// 2つめの<see cref="ShellObject"/>を取得します。
+        ///     2つめの<see cref="ShellObject" />を取得します。
         /// </summary>
         public ShellObject ShellObject2 { get; }
 
         /// <summary>
-        /// イメージのインデックスを取得します。
+        ///     イメージのインデックスを取得します。
         /// </summary>
         public int ImageIndex { get; private set; }
 
         /// <summary>
-        /// <see cref="ShellObject"/>を作成します。
+        ///     <see cref="ShellObject" />を作成します。
         /// </summary>
         /// <param name="pidl"><c>PIDL</c>。</param>
         /// <param name="riid"><c>GUID</c>。</param>

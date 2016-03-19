@@ -11,6 +11,6 @@ namespace starshipxac.Shell.Search
 
         Not = CONDITION_TYPE.CT_NOT_CONDITION,
 
-        Leaf = CONDITION_TYPE.CT_LEAF_CONDITION,
+        Leaf = CONDITION_TYPE.CT_LEAF_CONDITION
     }
 }

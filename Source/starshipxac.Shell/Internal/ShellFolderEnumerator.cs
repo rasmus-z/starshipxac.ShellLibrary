@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
@@ -8,22 +9,22 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.Internal
 {
     /// <summary>
-    /// フォルダー内のアイテムを反復処理します。
+    ///     フォルダー内のアイテムを反復処理します。
     /// </summary>
     internal class ShellFolderEnumerator : IEnumerator<ShellObject>
     {
         private IEnumIDList enumIdList;
 
         /// <summary>
-        /// <see cref="ShellFolderEnumerator"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellFolderEnumerator" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="parentFolder">親フォルダー。</param>
         /// <param name="options">フォルダー反復処理オプション。 </param>
         /// <remarks>
-        /// <para>
-        /// <see cref="System.IO.FileNotFoundException"/>が発生する場合は、
-        /// プロジェクトのプロパティ -> ビルドの「32ビットを優先」のチェックを外す。
-        /// </para>
+        ///     <para>
+        ///         <see cref="System.IO.FileNotFoundException" />が発生する場合は、
+        ///         プロジェクトのプロパティ -> ビルドの「32ビットを優先」のチェックを外す。
+        ///     </para>
         /// </remarks>
         internal ShellFolderEnumerator(ShellFolder parentFolder, SHCONTF options)
         {
@@ -48,7 +49,7 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// <see cref="ShellFolderEnumerator"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellFolderEnumerator" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="parentFolder">親フォルダー。</param>
         internal ShellFolderEnumerator(ShellFolder parentFolder)
@@ -73,13 +74,13 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        /// 親フォルダーを取得します。
+        ///     親フォルダーを取得します。
         /// </summary>
         public ShellFolder Parent { get; }
 
         public ShellObject Current { get; private set; }
 
-        object System.Collections.IEnumerator.Current => this.Current;
+        object IEnumerator.Current => this.Current;
 
         public bool MoveNext()
         {

@@ -11,7 +11,7 @@ namespace starshipxac.Windows.Shell
         private const int SW_HIDE = 0;
 
         /// <summary>
-        /// 指定したファイルまたはフォルダーのプロパティダイアログを表示します。
+        ///     指定したファイルまたはフォルダーのプロパティダイアログを表示します。
         /// </summary>
         /// <param name="path">ファイルまたはフォルダーのパス。</param>
         public static void ShowProperty(string path)
@@ -28,9 +28,9 @@ namespace starshipxac.Windows.Shell
         }
 
         /// <summary>
-        /// 指定した<see cref="ShellObject"/>のプロパティダイアログを表示します。
+        ///     指定した<see cref="ShellObject" />のプロパティダイアログを表示します。
         /// </summary>
-        /// <param name="shellObject"><see cref="ShellObject"/>。</param>
+        /// <param name="shellObject"><see cref="ShellObject" />。</param>
         public static void ShowProperty(ShellObject shellObject)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);

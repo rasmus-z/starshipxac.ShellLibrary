@@ -19,7 +19,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
             this.Dialog = dialog;
         }
 
-        public FileDialogBase Dialog { get; private set; }
+        public FileDialogBase Dialog { get; }
 
         public HRESULT OnFileOk(IFileDialog pfd)
         {
@@ -88,10 +88,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
             {
                 var menu = control as FileDialogMenu;
                 var menuItem = menu.Items.FirstOrDefault(x => x.Id == dwIDItem);
-                if (menuItem != null)
-                {
-                    menuItem.RaiseClickEvent();
-                }
+                menuItem?.RaiseClickEvent();
             }
         }
 
@@ -100,10 +97,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
             var control = this.Dialog.Controls.FirstOrDefault(x => x.Id == dwIDCtl);
 
             var button = control as FileDialogButton;
-            if (button != null)
-            {
-                button.RaiseClickEvent();
-            }
+            button?.RaiseClickEvent();
         }
 
         public void OnCheckButtonToggled(IFileDialogCustomize pfdc, UInt32 dwIDCtl, bool bChecked)
@@ -111,10 +105,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
             var control = this.Dialog.Controls.FirstOrDefault(x => x.Id == dwIDCtl);
 
             var checkBox = control as FileDialogCheckBox;
-            if (checkBox != null)
-            {
-                checkBox.RaiseCheckedChangedEvent(bChecked);
-            }
+            checkBox?.RaiseCheckedChangedEvent(bChecked);
         }
 
         public void OnControlActivating(IFileDialogCustomize pfdc, UInt32 dwIDCtl)

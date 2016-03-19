@@ -20,9 +20,9 @@ namespace starshipxac.Shell
             Contract.Invariant(this.PropertyKey != null);
         }
 
-        public ShellPropertyKey PropertyKey { get; private set; }
+        public ShellPropertyKey PropertyKey { get; }
 
-        public SortDirection Direction { get; private set; }
+        public SortDirection Direction { get; }
 
         public static bool operator ==(SortColumn col1, SortColumn col2)
         {

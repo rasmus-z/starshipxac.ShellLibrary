@@ -4,7 +4,7 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    /// シェルイメージサイズオプションを定義します。
+    ///     シェルイメージサイズオプションを定義します。
     /// </summary>
     public enum ShellItemImageSizeOptions
     {

@@ -8,5 +8,5 @@ namespace starshipxac.Shell.Components.Internal
     {
         public IntPtr item1;
         public IntPtr item2;
-    };
+    }
 }

@@ -223,6 +223,8 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
 
         public void AddPlace(string path, FileDialogAddPlaceLocation location)
         {
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(path));
+
             if (this.FileDialogNative != null)
             {
                 var shellItem = ShellItem.FromParsingName(path);

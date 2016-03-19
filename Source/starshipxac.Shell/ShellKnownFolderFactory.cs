@@ -9,20 +9,29 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// シェル標準フォルダーファクトリーメソッドを定義します。
+    ///     シェル標準フォルダーファクトリーメソッドを定義します。
     /// </summary>
     public static class ShellKnownFolderFactory
     {
         /// <summary>
-        ///標準名称を指定して、<see cref="ShellKnownFolder"/>クラスの新しいインスタンスを作成します。
+        ///     標準名称を指定して、<see cref="ShellKnownFolder" />クラスの新しいインスタンスを作成します。
         /// </summary>
         /// <param name="canonicalName">標準フォルダーの標準名称。</param>
         /// <returns>作成した標準フォルダーインターフェイス。</returns>
-        /// <exception cref="ArgumentNullException"><param name="canonicalName"/>が<c>null</c>です。</exception>
+        /// <exception cref="ArgumentNullException">
+        ///     <param name="canonicalName" />
+        ///     が<c>null</c>です。
+        /// </exception>
         /// <exception cref="System.ArgumentException">
-        /// <para><param name="canonicalName"/>が空文字列です。</para>
-        /// <para>または</para>
-        /// <para><param name="canonicalName"/>に一致する標準フォルダーが存在しません。</para>
+        ///     <para>
+        ///         <param name="canonicalName" />
+        ///         が空文字列です。
+        ///     </para>
+        ///     <para>または</para>
+        ///     <para>
+        ///         <param name="canonicalName" />
+        ///         に一致する標準フォルダーが存在しません。
+        ///     </para>
         /// </exception>
         public static ShellKnownFolder FromCanonicalName(string canonicalName)
         {
@@ -42,7 +51,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// パスを指定して、<see cref="ShellKnownFolder"/>クラスの新しいインスタンスを作成します。
+        ///     パスを指定して、<see cref="ShellKnownFolder" />クラスの新しいインスタンスを作成します。
         /// </summary>
         /// <param name="path">パス。</param>
         /// <returns>作成した標準フォルダーインターフェイス。</returns>
@@ -54,7 +63,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 標準フォルダー名称を指定して、<see cref="ShellKnownFolder"/>クラスの新しいインスタンスを作成します。
+        ///     標準フォルダー名称を指定して、<see cref="ShellKnownFolder" />クラスの新しいインスタンスを作成します。
         /// </summary>
         /// <param name="parsingName">標準フォルダー名称またはパス。</param>
         /// <returns>作成した標準フォルダーインターフェイス。</returns>
@@ -111,7 +120,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 標準フォルダーIDを指定して、<see cref="ShellKnownFolder"/>クラスの新しいインスタンスを作成します。
+        ///     標準フォルダーIDを指定して、<see cref="ShellKnownFolder" />クラスの新しいインスタンスを作成します。
         /// </summary>
         /// <param name="knownFolderId">標準フォルダーの GUID。</param>
         /// <returns>作成した標準フォルダーインターフェイス。</returns>
@@ -135,7 +144,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// すべての標準フォルダーを取得します。
+        ///     すべての標準フォルダーを取得します。
         /// </summary>
         /// <returns>取得した標準フォルダーのコレクション。</returns>
         public static IReadOnlyList<ShellKnownFolder> GetAllFolders()
@@ -156,7 +165,7 @@ namespace starshipxac.Shell
                 {
                     for (var index = 0; index < count; ++index)
                     {
-                        var current = new IntPtr(folders.ToInt64() + (Marshal.SizeOf(typeof(Guid)) * index));
+                        var current = new IntPtr(folders.ToInt64() + (Marshal.SizeOf(typeof(Guid))*index));
 
                         var knownFolderId = (Guid)Marshal.PtrToStructure(current, typeof(Guid));
                         var knownFolder = FromKnownFolderIdInternal(knownFolderId);
@@ -181,7 +190,7 @@ namespace starshipxac.Shell
         #region Internal Methods
 
         /// <summary>
-        /// PIDLを指定して、<see cref="IKnownFolder"/>を作成します。
+        ///     PIDLを指定して、<see cref="IKnownFolder" />を作成します。
         /// </summary>
         /// <param name="pidl">PIDL。</param>
         /// <returns>作成した標準フォルダーインターフェイス。</returns>
@@ -198,7 +207,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 標準フォルダーIDを指定して、標準フォルダーを作成します。
+        ///     標準フォルダーIDを指定して、標準フォルダーを作成します。
         /// </summary>
         /// <param name="knownFolderId">標準フォルダーの GUID。</param>
         /// <returns>作成した標準フォルダーインターフェイス。</returns>
@@ -215,9 +224,9 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// <see cref="IKnownFolder"/>を指定して、標準フォルダーを作成します。
+        ///     <see cref="IKnownFolder" />を指定して、標準フォルダーを作成します。
         /// </summary>
-        /// <param name="knownFolderInterface"><see cref="IKnownFolder"/>。</param>
+        /// <param name="knownFolderInterface"><see cref="IKnownFolder" />。</param>
         /// <returns>作成した標準フォルダーインターフェイス。</returns>
         private static ShellKnownFolder CreateKnownFolder(IKnownFolder knownFolderInterface)
         {

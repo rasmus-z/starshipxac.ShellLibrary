@@ -14,8 +14,6 @@ namespace starshipxac.Shell.Search
     /// </summary>
     public class SearchCondition : IDisposable
     {
-        private readonly string canonicalName = null;
-        private readonly SearchConditionOperation conditionOperation;
         private const SearchConditionType conditionType = SearchConditionType.Leaf;
 
         internal SearchCondition(ICondition searchConditionNative)
@@ -24,7 +22,7 @@ namespace starshipxac.Shell.Search
 
             this.SearchConditionNative = searchConditionNative;
 
-            conditionOperation = SearchConditionOperation.Implicit;
+            ConditionOperation = SearchConditionOperation.Implicit;
 
             this.PropertyKey = ShellPropertyKey.FromCanonicalName(this.PropertyCanonicalName);
         }
@@ -51,25 +49,13 @@ namespace starshipxac.Shell.Search
 
         internal ICondition SearchConditionNative { get; set; }
 
-        public string PropertyCanonicalName
-        {
-            get
-            {
-                return this.canonicalName;
-            }
-        }
+        public string PropertyCanonicalName { get; } = null;
 
         public ShellPropertyKey PropertyKey { get; private set; }
 
         public string PropertyValue { get; internal set; }
 
-        public SearchConditionOperation ConditionOperation
-        {
-            get
-            {
-                return this.conditionOperation;
-            }
-        }
+        public SearchConditionOperation ConditionOperation { get; }
 
         public SearchConditionType ConditionType
         {

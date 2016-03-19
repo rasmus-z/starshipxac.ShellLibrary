@@ -16,7 +16,7 @@ using starshipxac.Windows.Shell.Properties;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ファイルダイアログの基底クラスを定義します。
+    ///     ファイルダイアログの基底クラスを定義します。
     /// </summary>
     [ContentProperty("Controls")]
     public abstract class FileDialogBase : IDisposable
@@ -29,7 +29,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         private string cancelButtonText;
 
         /// <summary>
-        /// <see cref="FileDialogBase"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="FileDialogBase" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         protected FileDialogBase()
         {
@@ -38,7 +38,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ダイアログのタイトルを指定して、<see cref="FileDialogBase"/>クラスの新しいインスタンスを初期化します。
+        ///     ダイアログのタイトルを指定して、<see cref="FileDialogBase" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="title">ダイアログのタイトル。</param>
         protected FileDialogBase(string title)
@@ -48,7 +48,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ファイナライザー。
+        ///     ファイナライザー。
         /// </summary>
         ~FileDialogBase()
         {
@@ -56,8 +56,8 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="FileDialogBase"/>によって使用されているすべてのリソースを解放します。
-        /// </summary>        
+        ///     <see cref="FileDialogBase" />によって使用されているすべてのリソースを解放します。
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
@@ -65,12 +65,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="FileDialogBase"/>によって使用されているすべてのリソースを解放し、
-        /// オプションでマネージリソースも解放します。
+        ///     <see cref="FileDialogBase" />によって使用されているすべてのリソースを解放し、
+        ///     オプションでマネージリソースも解放します。
         /// </summary>
         /// <param name="disposing">
-        /// マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        /// アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
+        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
@@ -87,29 +87,26 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ダイアログの表示状態を取得します。
+        ///     ダイアログの表示状態を取得します。
         /// </summary>
         protected DialogShowStates DialogShowStates => this.FileDialogInternal.DialogShowStates;
 
         /// <summary>
-        /// ダイアログが表示中かどうかを判定する値を取得します。
+        ///     ダイアログが表示中かどうかを判定する値を取得します。
         /// </summary>
         public bool DialogShowing => this.FileDialogInternal.DialogShowing;
 
         /// <summary>
-        /// ダイアログの実行結果を取得します。
+        ///     ダイアログの実行結果を取得します。
         /// </summary>
         protected FileDialogResult DialogResult { get; private set; }
 
         /// <summary>
-        /// ダイアログのタイトルを取得または設定します。
+        ///     ダイアログのタイトルを取得または設定します。
         /// </summary>
         public string Title
         {
-            get
-            {
-                return this.title;
-            }
+            get { return this.title; }
             set
             {
                 if (this.title == value)
@@ -123,14 +120,11 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// OKボタンのテキストを取得または設定します。
+        ///     OKボタンのテキストを取得または設定します。
         /// </summary>
         public string OkButtonText
         {
-            get
-            {
-                return this.okButtonText;
-            }
+            get { return this.okButtonText; }
             set
             {
                 if (this.okButtonText == value)
@@ -144,14 +138,11 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// キャンセルボタンのテキストを取得または設定します。
+        ///     キャンセルボタンのテキストを取得または設定します。
         /// </summary>
         public string CancelButtonText
         {
-            get
-            {
-                return this.cancelButtonText;
-            }
+            get { return this.cancelButtonText; }
             set
             {
                 if (this.cancelButtonText == value)
@@ -166,25 +157,25 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         public bool ShowPlacesList { get; set; }
 
-        ///<summary>
-        /// 隠しアイテムを表示するかどうかを判定する値を取得または設定します。
+        /// <summary>
+        ///     隠しアイテムを表示するかどうかを判定する値を取得または設定します。
         /// </summary>
         public bool ShowHiddenItems { get; set; }
 
         public bool NavigateToShortcut { get; set; }
 
         /// <summary>
-        /// 初期表示フォルダーを取得または設定します。
+        ///     初期表示フォルダーを取得または設定します。
         /// </summary>
         public ShellFolder InitialFolder { get; set; }
 
         /// <summary>
-        /// 規定フォルダーを取得または設定します。
+        ///     規定フォルダーを取得または設定します。
         /// </summary>
         public ShellFolder DefaultFolder { get; set; }
 
         /// <summary>
-        /// ダイアログコントロールのコレクションを取得します。
+        ///     ダイアログコントロールのコレクションを取得します。
         /// </summary>
         public FileDialogControlCollection Controls { get; }
 
@@ -342,7 +333,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ダイアログを表示します。
+        ///     ダイアログを表示します。
         /// </summary>
         /// <returns>ダイアログの実行結果。</returns>
         protected FileDialogResult ShowDialog()
@@ -357,7 +348,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 親ウィンドウを指定して、ダイアログを表示します。
+        ///     親ウィンドウを指定して、ダイアログを表示します。
         /// </summary>
         /// <param name="window">親ウィンドウ。</param>
         /// <returns>ダイアログの実行結果。</returns>
@@ -370,7 +361,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 親ウィンドウのハンドルを指定して、ダイアログを表示します。
+        ///     親ウィンドウのハンドルを指定して、ダイアログを表示します。
         /// </summary>
         /// <param name="parentWindowHandle">親ウィンドウのハンドル。</param>
         /// <returns>ダイアログの実行結果。</returns>
@@ -383,26 +374,19 @@ namespace starshipxac.Windows.Shell.Dialogs
 
             // ダイアログ表示
             var hresult = this.FileDialogInternal.ShowDialog(parentWindowHandle);
-            if (hresult == COMErrorCodes.Cancelled)
-            {
-                this.DialogResult = FileDialogResult.Cancel;
-            }
-            else
-            {
-                this.DialogResult = FileDialogResult.Ok;
-            }
+            this.DialogResult = (hresult == COMErrorCodes.Cancelled) ? FileDialogResult.Cancel : FileDialogResult.Ok;
 
             return this.DialogResult;
         }
 
         /// <summary>
-        /// <see cref="IFileDialog2"/>を作成します。
+        ///     <see cref="IFileDialog2" />を作成します。
         /// </summary>
         /// <returns></returns>
         internal abstract IFileDialog2 CreateNativeFileDialog();
 
         /// <summary>
-        /// <see cref="FileDialogOptions"/>を取得します。
+        ///     <see cref="FileDialogOptions" />を取得します。
         /// </summary>
         /// <returns></returns>
         protected virtual FileDialogOptions GetDialogOptions()
@@ -428,7 +412,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ネイティブダイアログに設定を適用します。
+        ///     ネイティブダイアログに設定を適用します。
         /// </summary>
         protected virtual void SetNativeSettings()
         {
@@ -459,7 +443,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ネイティブダイアログにイベントを設定します。
+        ///     ネイティブダイアログにイベントを設定します。
         /// </summary>
         private void SetNativeEvents()
         {
@@ -479,56 +463,70 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         internal void AddButton(FileDialogButton control)
         {
+            Contract.Requires(control != null);
             this.FileDialogInternal.AddButton(control.Id, control.Text);
         }
 
         internal void AddCheckBox(FileDialogCheckBox control)
         {
+            Contract.Requires(control != null);
             this.FileDialogInternal.AddCheckBox(control.Id, control.Text, control.IsChecked);
         }
 
         internal void AddComboBox(FileDialogComboBox control)
         {
+            Contract.Requires(control != null);
             this.FileDialogInternal.AddComboBox(control.Id);
         }
 
         internal void AddControlItem(FileDialogControl control, int itemId, string label)
         {
+            Contract.Requires(control != null);
+            Contract.Requires(0 <= itemId);
             this.FileDialogInternal.AddControlItem(control.Id, itemId, label);
         }
 
         internal void AddEditBox(FileDialogTextBox control, string text)
         {
+            Contract.Requires(control != null);
             this.FileDialogInternal.AddEditBox(control.Id, text);
         }
 
         internal void AddLabel(FileDialogLabel control, string label)
         {
+            Contract.Requires(control != null);
             this.FileDialogInternal.AddText(control.Id, label);
         }
 
         internal void AddMenu(FileDialogMenu control, string label)
         {
+            Contract.Requires(control != null);
             this.FileDialogInternal.AddMenu(control.Id, label);
         }
 
         internal void AddMenuItem(FileDialogMenu control, FileDialogMenuItem menuItem, string label)
         {
+            Contract.Requires(control != null);
+            Contract.Requires(menuItem != null);
+
             this.FileDialogInternal.AddControlItem(control.Id, menuItem.Id, label);
         }
 
         internal void AddRadioButtonList(FileDialogRadioButtonList control)
         {
+            Contract.Requires(control != null);
             this.FileDialogInternal.AddRadioButtonList(control.Id);
         }
 
         internal void AddSeparator(FileDialogSeparator control)
         {
+            Contract.Requires(control != null);
             this.FileDialogInternal.AddSeparator(control.Id);
         }
 
         internal void StartVisualGroup(FileDialogGroupBox control, string label)
         {
+            Contract.Requires(control != null);
             this.FileDialogInternal.StartVisualGroup(control.Id, label);
         }
 
@@ -539,12 +537,13 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         internal void SetDefaultControl(FileDialogControl control)
         {
+            Contract.Requires(control != null);
             this.FileDialogInternal.SetDefaultControl(control.Id);
         }
 
         internal bool GetControlEnabled(FileDialogControl control)
         {
-            Contract.Requires<ArgumentNullException>(control != null);
+            Contract.Requires(control != null);
 
             var state = this.FileDialogInternal.GetControlState(control.Id);
             return (state & CDCONTROLSTATEF.CDCS_ENABLED) != 0;
@@ -552,7 +551,7 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         internal void SetControlEnabled(FileDialogControl control, bool enabled)
         {
-            Contract.Requires<ArgumentNullException>(control != null);
+            Contract.Requires(control != null);
 
             var state = this.FileDialogInternal.GetControlState(control.Id);
 
@@ -570,7 +569,7 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         internal bool GetControlVisible(FileDialogControl control)
         {
-            Contract.Requires<ArgumentNullException>(control != null);
+            Contract.Requires(control != null);
 
             var state = this.FileDialogInternal.GetControlState(control.Id);
             return (state & CDCONTROLSTATEF.CDCS_VISIBLE) != 0;
@@ -578,7 +577,7 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         internal void SetControlVisible(FileDialogControl control, bool visible)
         {
-            Contract.Requires<ArgumentNullException>(control != null);
+            Contract.Requires(control != null);
 
             var state = this.FileDialogInternal.GetControlState(control.Id);
 
@@ -596,49 +595,50 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         internal void SetControlLabel(FileDialogControl control, string label)
         {
-            Contract.Requires<ArgumentNullException>(control != null);
+            Contract.Requires(control != null);
 
             this.FileDialogInternal.SetControlLabel(control.Id, label);
         }
 
         internal bool GetCheckBoxChecked(FileDialogCheckBox control)
         {
-            Contract.Requires<ArgumentNullException>(control != null);
+            Contract.Requires(control != null);
 
             return this.FileDialogInternal.GetCheckBoxChecked(control.Id);
         }
 
         internal void SetCheckBoxChecked(FileDialogCheckBox control, bool value)
         {
-            Contract.Requires<ArgumentNullException>(control != null);
+            Contract.Requires(control != null);
 
             this.FileDialogInternal.SetCheckBoxChecked(control.Id, value);
         }
 
         internal string GetEditBoxText(FileDialogTextBox control)
         {
-            Contract.Requires<ArgumentNullException>(control != null);
+            Contract.Requires(control != null);
 
             return this.FileDialogInternal.GetEditBoxText(control.Id);
         }
 
         internal void SetEditBoxText(FileDialogTextBox control, string text)
         {
-            Contract.Requires<ArgumentNullException>(control != null);
+            Contract.Requires(control != null);
 
             this.FileDialogInternal.SetEditBoxText(control.Id, text);
         }
 
         internal int GetControlSelectedIndex(FileDialogControl control)
         {
-            Contract.Requires<ArgumentNullException>(control != null);
+            Contract.Requires(control != null);
 
             return this.FileDialogInternal.GetSelectedControlItem(control.Id);
         }
 
         internal void SetControlSelectedIndex(FileDialogControl control, int index)
         {
-            Contract.Requires<ArgumentNullException>(control != null);
+            Contract.Requires(control != null);
+            Contract.Requires(0 <= index);
 
             this.FileDialogInternal.SetSelectedControlItem(control.Id, index);
         }

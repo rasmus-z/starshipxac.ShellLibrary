@@ -8,7 +8,7 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell.Resources
 {
     /// <summary>
-    /// 文字列リソースを取得します。
+    ///     文字列リソースを取得します。
     /// </summary>
     public class StringReference : ResourceReference
     {
@@ -47,7 +47,7 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        /// リソースから文字列を取得します。
+        ///     リソースから文字列を取得します。
         /// </summary>
         /// <returns></returns>
         public string LoadString()

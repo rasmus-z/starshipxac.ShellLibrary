@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
@@ -9,11 +10,14 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         public FileDialogLabel(string name)
             : this(name, String.Empty)
         {
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 
         public FileDialogLabel(string name, string text)
             : base(name)
         {
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
+
             this.text = text;
         }
 
@@ -32,10 +36,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
                 }
 
                 this.text = value;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetControlLabel(this, this.text);
-                }
+                this.Dialog?.SetControlLabel(this, this.text);
             }
         }
 

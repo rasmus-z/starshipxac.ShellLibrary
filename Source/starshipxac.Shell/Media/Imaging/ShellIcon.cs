@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    /// シェルアイコンを定義します。
+    ///     シェルアイコンを定義します。
     /// </summary>
     public class ShellIcon : IDisposable
     {
@@ -40,7 +40,7 @@ namespace starshipxac.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// アイコンハンドルを取得します。
+        ///     アイコンハンドルを取得します。
         /// </summary>
         internal IntPtr Handle { get; }
 

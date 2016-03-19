@@ -4,13 +4,13 @@ using starshipxac.Shell.Interop.KnownFolder;
 namespace starshipxac.Shell
 {
     /// <summary>
-    /// フォルダーの動作を定義します。
+    ///     フォルダーの動作を定義します。
     /// </summary>
     [Flags]
     public enum FolderDefinitionFlags : uint
     {
         /// <summary>
-        /// 定義なし。
+        ///     定義なし。
         /// </summary>
         None = 0,
 
@@ -22,6 +22,6 @@ namespace starshipxac.Shell
 
         Stream = KF_DEFINITION_FLAGS.KFDF_STREAM,
 
-        PublishExpandedPath = KF_DEFINITION_FLAGS.KFDF_PUBLISHEXPANDEDPATH,
+        PublishExpandedPath = KF_DEFINITION_FLAGS.KFDF_PUBLISHEXPANDEDPATH
     }
 }
