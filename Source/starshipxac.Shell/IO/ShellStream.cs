@@ -123,7 +123,7 @@ namespace starshipxac.Shell.IO
 
         public override void Flush()
         {
-            this.StreamInterface.Commit((int)STGC.STGC_DEFAULT);
+            //this.StreamInterface.Commit((int)STGC.STGC_DEFAULT);
         }
 
         /// <summary>

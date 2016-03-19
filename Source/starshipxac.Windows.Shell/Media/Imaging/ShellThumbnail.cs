@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Windows;
 using System.Windows.Media;
 using starshipxac.Shell;
@@ -12,7 +11,7 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    /// <see cref="ShellObject"/>サムネイルイメージを保持します。
+    ///     <see cref="ShellObject" />サムネイルイメージを保持します。
     /// </summary>
     public class ShellThumbnail : INotifyPropertyChanged
     {
@@ -25,7 +24,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             new ConcurrentDictionary<string, PropertyChangedEventArgs>();
 
         /// <summary>
-        /// <see cref="ShellThumbnail"/>クラス新しいインスタンスを初期化します。
+        ///     <see cref="ShellThumbnail" />クラス新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="shellObject"></param>
         /// <param name="factory"></param>
@@ -56,26 +55,24 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// <see cref="ShellObject"/>を取得します。
+        ///     <see cref="ShellObject" />を取得します。
         /// </summary>
         public ShellObject ShellObject { get; }
 
         public ShellThumbnailFactory Factory { get; }
 
         /// <summary>
-        /// アイコンインデックスを取得します。
+        ///     アイコンインデックスを取得します。
         /// </summary>
         public int IconIndex { get; private set; }
 
         /// <summary>
-        /// オーバーレイアイコンインデックスを取得します。
+        ///     オーバーレイアイコンインデックスを取得します。
         /// </summary>
         public int OverlayIndex { get; private set; }
 
-#pragma warning disable 4014
-
         /// <summary>
-        /// サムネイルイメージを段階的に取得します。
+        ///     サムネイルイメージを段階的に取得します。
         /// </summary>
         public ImageSource ImageSource
         {
@@ -83,7 +80,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             {
                 if (this.imageSource == null)
                 {
-                    this.Factory.LoadAsync(this);
+                    Application.Current.Dispatcher.InvokeAsync(async () => await this.Factory.LoadAsync(this));
                 }
                 return this.imageSource;
             }
@@ -95,7 +92,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// デフォルトアイコンイメージを取得します。
+        ///     デフォルトアイコンイメージを取得します。
         /// </summary>
         public ImageSource DefaultImage
         {
@@ -103,7 +100,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             {
                 if (this.defaultImage == null)
                 {
-                    this.Factory.GetDefaultIconWithOverlayAsync(this);
+                    Application.Current.Dispatcher.InvokeAsync(async () => await this.Factory.GetDefaultIconWithOverlayAsync(this));
                 }
                 return this.defaultImage;
             }
@@ -115,7 +112,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// サムネイルイメージを取得します。
+        ///     サムネイルイメージを取得します。
         /// </summary>
         public ImageSource ThumbnailImage
         {
@@ -123,7 +120,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             {
                 if (this.thumbnailImage == null)
                 {
-                    this.Factory.GetThumbnailAsync(this);
+                    Application.Current.Dispatcher.InvokeAsync(async () => await this.Factory.GetThumbnailAsync(this));
                 }
                 return this.thumbnailImage;
             }
@@ -135,7 +132,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// オーバーレイイメージを取得します。
+        ///     オーバーレイイメージを取得します。
         /// </summary>
         public ImageSource OverlayImage
         {
@@ -143,7 +140,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             {
                 if (this.overlyaImage == null)
                 {
-                    this.Factory.GetThumbnailAsync(this);
+                    Application.Current.Dispatcher.InvokeAsync(async () => await this.Factory.GetThumbnailAsync(this));
                 }
                 return this.overlyaImage;
             }
@@ -154,26 +151,21 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             }
         }
 
-#pragma warning restore 4014
-
         public Size Size => this.Factory.Size;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// プロパティの値が変更されたことを通知します。
+        ///     プロパティの値が変更されたことを通知します。
         /// </summary>
         /// <param name="propertyName"></param>
         protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = "")
         {
             Contract.Requires<ArgumentNullException>(propertyName != null);
 
-            var handler = Interlocked.CompareExchange(ref this.PropertyChanged, null, null);
-            if (handler != null)
-            {
-                var args = propertyChangedEventArgsDictionary.GetOrAdd(propertyName, name => new PropertyChangedEventArgs(name));
-                handler(this, args);
-            }
+            this.PropertyChanged?.Invoke(
+                this,
+                propertyChangedEventArgsDictionary.GetOrAdd(propertyName, name => new PropertyChangedEventArgs(name)));
         }
     }
 }
