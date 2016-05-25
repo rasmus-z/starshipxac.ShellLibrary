@@ -29,6 +29,7 @@ namespace starshipxac.Windows.Shell.FileSystem
 
         private static readonly Type FileOperationType = Type.GetTypeFromCLSID(new Guid(ShellCLSID.FileOperation));
 
+        // ReSharper disable once InconsistentNaming
         private static readonly HRESULT COPYENGINE_E_USER_CANCELLED = (HRESULT)0x80270000;
 
         /// <summary>
@@ -99,14 +100,14 @@ namespace starshipxac.Windows.Shell.FileSystem
         {
             if (!this.disposed)
             {
-                this.disposed = true;
-
                 if (this.progressSink != null)
                 {
                     this.fileOperation.Unadvise(this.cookie);
                 }
 
                 Marshal.FinalReleaseComObject(this.fileOperation);
+
+                this.disposed = true;
             }
         }
 
@@ -156,12 +157,15 @@ namespace starshipxac.Windows.Shell.FileSystem
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(destination));
             ThrowIfDisposed();
 
-            var sourceItem = ShellItem.FromParsingName(source);
-            var destinationItem = ShellItem.FromParsingName(destination);
-
-            this.fileOperation.CopyItem(sourceItem.ShellItemInterface,
-                destinationItem.ShellItemInterface, sourceItem.GetName(),
-                null);
+            using (var sourceItem = ShellItem.FromParsingName(source))
+            using (var destinationItem = ShellItem.FromParsingName(destination))
+            {
+                this.fileOperation.CopyItem(
+                    sourceItem.ShellItemInterface,
+                    destinationItem.ShellItemInterface,
+                    sourceItem.GetName(),
+                    null);
+            }
         }
 
         /// <summary>
@@ -182,12 +186,15 @@ namespace starshipxac.Windows.Shell.FileSystem
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(destination));
             ThrowIfDisposed();
 
-            var sourceItem = ShellItem.FromParsingName(source);
-            var destinationItem = ShellItem.FromParsingName(destination);
-
-            this.fileOperation.CopyItem(sourceItem.ShellItemInterface,
-                destinationItem.ShellItemInterface, copyName,
-                null);
+            using (var sourceItem = ShellItem.FromParsingName(source))
+            using (var destinationItem = ShellItem.FromParsingName(destination))
+            {
+                this.fileOperation.CopyItem(
+                    sourceItem.ShellItemInterface,
+                    destinationItem.ShellItemInterface,
+                    copyName,
+                    null);
+            }
         }
 
         /// <summary>
@@ -263,12 +270,15 @@ namespace starshipxac.Windows.Shell.FileSystem
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(destination));
             ThrowIfDisposed();
 
-            var sourceItem = ShellItem.FromParsingName(source);
-            var destinationItem = ShellItem.FromParsingName(destination);
-
-            this.fileOperation.MoveItem(sourceItem.ShellItemInterface,
-                destinationItem.ShellItemInterface, sourceItem.GetName(),
-                null);
+            using (var sourceItem = ShellItem.FromParsingName(source))
+            using (var destinationItem = ShellItem.FromParsingName(destination))
+            {
+                this.fileOperation.MoveItem(
+                    sourceItem.ShellItemInterface,
+                    destinationItem.ShellItemInterface,
+                    sourceItem.GetName(),
+                    null);
+            }
         }
 
         public void Move(string source, string destination, string newName)
@@ -278,12 +288,15 @@ namespace starshipxac.Windows.Shell.FileSystem
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(newName));
             ThrowIfDisposed();
 
-            var sourceItem = ShellItem.FromParsingName(source);
-            var destinationItem = ShellItem.FromParsingName(destination);
-
-            this.fileOperation.MoveItem(sourceItem.ShellItemInterface,
-                destinationItem.ShellItemInterface, newName,
-                null);
+            using (var sourceItem = ShellItem.FromParsingName(source))
+            using (var destinationItem = ShellItem.FromParsingName(destination))
+            {
+                this.fileOperation.MoveItem(
+                    sourceItem.ShellItemInterface,
+                    destinationItem.ShellItemInterface,
+                    newName,
+                    null);
+            }
         }
 
         public void Move(ShellFile sourceFile, ShellFolder destinationFolder)
@@ -292,8 +305,10 @@ namespace starshipxac.Windows.Shell.FileSystem
             Contract.Requires<ArgumentNullException>(destinationFolder != null);
             ThrowIfDisposed();
 
-            this.fileOperation.MoveItem(sourceFile.ShellItem.ShellItemInterface,
-                destinationFolder.ShellItem.ShellItemInterface, sourceFile.Name,
+            this.fileOperation.MoveItem(
+                sourceFile.ShellItem.ShellItemInterface,
+                destinationFolder.ShellItem.ShellItemInterface,
+                sourceFile.Name,
                 null);
         }
 
@@ -304,8 +319,10 @@ namespace starshipxac.Windows.Shell.FileSystem
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(newName));
             ThrowIfDisposed();
 
-            this.fileOperation.MoveItem(sourceFile.ShellItem.ShellItemInterface,
-                destinationFolder.ShellItem.ShellItemInterface, newName,
+            this.fileOperation.MoveItem(
+                sourceFile.ShellItem.ShellItemInterface,
+                destinationFolder.ShellItem.ShellItemInterface,
+                newName,
                 null);
         }
 
@@ -318,8 +335,10 @@ namespace starshipxac.Windows.Shell.FileSystem
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(path));
             ThrowIfDisposed();
 
-            var shellItem = ShellItem.FromParsingName(path);
-            this.fileOperation.DeleteItem(shellItem.ShellItemInterface, null);
+            using (var shellItem = ShellItem.FromParsingName(path))
+            {
+                this.fileOperation.DeleteItem(shellItem.ShellItemInterface, null);
+            }
         }
 
         public void Delete(ShellObject shellObject)
@@ -340,8 +359,10 @@ namespace starshipxac.Windows.Shell.FileSystem
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(newName));
             ThrowIfDisposed();
 
-            var shellItem = ShellItem.FromParsingName(path);
-            this.fileOperation.RenameItem(shellItem.ShellItemInterface, newName, null);
+            using (var shellItem = ShellItem.FromParsingName(path))
+            {
+                this.fileOperation.RenameItem(shellItem.ShellItemInterface, newName, null);
+            }
         }
 
         public void Rename(ShellObject shellObject, string newName)
@@ -363,10 +384,15 @@ namespace starshipxac.Windows.Shell.FileSystem
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(newName));
             ThrowIfDisposed();
 
-            var destinationItem = ShellItem.FromParsingName(destination);
-            this.fileOperation.NewItem(destinationItem.ShellItemInterface,
-                fileAttributes, newName, templateName,
-                null);
+            using (var destinationItem = ShellItem.FromParsingName(destination))
+            {
+                this.fileOperation.NewItem(
+                    destinationItem.ShellItemInterface,
+                    fileAttributes,
+                    newName,
+                    templateName,
+                    null);
+            }
         }
 
         public void New(ShellFolder destinationContainer, FileAttributes fileAttributes, string newName, string templateName)
@@ -375,8 +401,11 @@ namespace starshipxac.Windows.Shell.FileSystem
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(newName));
             ThrowIfDisposed();
 
-            this.fileOperation.NewItem(destinationContainer.ShellItem.ShellItemInterface,
-                fileAttributes, newName, templateName,
+            this.fileOperation.NewItem(
+                destinationContainer.ShellItem.ShellItemInterface,
+                fileAttributes,
+                newName,
+                templateName,
                 null);
         }
 
@@ -386,10 +415,15 @@ namespace starshipxac.Windows.Shell.FileSystem
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(newFolderName));
             ThrowIfDisposed();
 
-            var destinationItem = ShellItem.FromParsingName(destination);
-            this.fileOperation.NewItem(destinationItem.ShellItemInterface,
-                FileAttributes.Directory, newFolderName, null,
-                null);
+            using (var destinationItem = ShellItem.FromParsingName(destination))
+            {
+                this.fileOperation.NewItem(
+                    destinationItem.ShellItemInterface,
+                    FileAttributes.Directory,
+                    newFolderName,
+                    null,
+                    null);
+            }
         }
 
         public void CreateFolder(ShellFolder destinationFolder, string newFolderName)
@@ -398,8 +432,11 @@ namespace starshipxac.Windows.Shell.FileSystem
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(newFolderName));
             ThrowIfDisposed();
 
-            this.fileOperation.NewItem(destinationFolder.ShellItem.ShellItemInterface,
-                FileAttributes.Directory, newFolderName, null,
+            this.fileOperation.NewItem(
+                destinationFolder.ShellItem.ShellItemInterface,
+                FileAttributes.Directory,
+                newFolderName,
+                null,
                 null);
         }
 
