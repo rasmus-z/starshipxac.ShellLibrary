@@ -26,7 +26,7 @@ namespace starshipxac.Shell
         private ShellProperty<DateTime?> dateAccessedProperty;
         private ShellItemImageFactory imageFactory;
 
-        private static readonly ConcurrentDictionary<string, PropertyChangedEventArgs> propertyChangedEventArgsDictionary =
+        private static readonly ConcurrentDictionary<string, PropertyChangedEventArgs> PropertyChangedEventArgsDictionary =
             new ConcurrentDictionary<string, PropertyChangedEventArgs>();
 
         /// <summary>
@@ -75,6 +75,8 @@ namespace starshipxac.Shell
                     this.properties.Dispose();
                     this.properties = null;
                     this.parentShellObject = null;
+
+                    this.ShellItem.Dispose();
                 }
 
                 this.disposed = true;
@@ -307,7 +309,7 @@ namespace starshipxac.Shell
             Contract.Requires(propertyName != null);
             Contract.Ensures(Contract.Result<PropertyChangedEventArgs>() != null);
 
-            return propertyChangedEventArgsDictionary.GetOrAdd(propertyName, name => new PropertyChangedEventArgs(name));
+            return PropertyChangedEventArgsDictionary.GetOrAdd(propertyName, name => new PropertyChangedEventArgs(name));
         }
 
         /// <summary>

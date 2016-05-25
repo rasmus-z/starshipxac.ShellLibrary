@@ -12,8 +12,9 @@ namespace starshipxac.Shell
     /// <summary>
     ///     <c>ShellItem</c>を定義します。
     /// </summary>
-    public sealed class ShellItem : IEquatable<ShellItem>
+    public sealed class ShellItem : IEquatable<ShellItem>, IDisposable
     {
+        private bool disposed = false;
         private PIDL pidl;
         private string parsingName;
         private string itemType;
@@ -53,6 +54,31 @@ namespace starshipxac.Shell
                 this.IsLink = false;
                 this.IsFileSystem = false;
                 this.IsFolder = false;
+            }
+        }
+
+        ~ShellItem()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                }
+
+                Marshal.FinalReleaseComObject(this.ShellItemInterface);
+
+                this.disposed = true;
             }
         }
 
