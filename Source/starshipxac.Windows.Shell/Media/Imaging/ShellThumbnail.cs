@@ -20,7 +20,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         private ImageSource thumbnailImage = null;
         private ImageSource overlyaImage = null;
 
-        private static readonly ConcurrentDictionary<string, PropertyChangedEventArgs> propertyChangedEventArgsDictionary =
+        private static readonly ConcurrentDictionary<string, PropertyChangedEventArgs> PropertyChangedEventArgsDictionary =
             new ConcurrentDictionary<string, PropertyChangedEventArgs>();
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
             this.PropertyChanged?.Invoke(
                 this,
-                propertyChangedEventArgsDictionary.GetOrAdd(propertyName, name => new PropertyChangedEventArgs(name)));
+                PropertyChangedEventArgsDictionary.GetOrAdd(propertyName, name => new PropertyChangedEventArgs(name)));
         }
     }
 }

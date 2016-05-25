@@ -138,7 +138,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         /// <summary>
         /// ファイルダイアログボックスのファイルの種類に表示されるフィルターのコレクションを取得します。
         /// </summary>
-        public FileTypeFilterCollection FileTypeFilters { get; private set; }
+        public FileTypeFilterCollection FileTypeFilters { get; }
 
         /// <summary>
         /// ファイルダイアログボックスで現在選択されているフィルターを取得します。

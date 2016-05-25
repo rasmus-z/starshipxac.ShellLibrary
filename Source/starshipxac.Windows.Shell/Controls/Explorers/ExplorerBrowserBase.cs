@@ -18,6 +18,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private string propertyBagName;
         private uint eventCookie;
 
+        // ReSharper disable once InconsistentNaming
         private const UInt32 WS_CHILD = 0x40000000;
 
         protected ExplorerBrowserBase()
@@ -35,18 +36,15 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
             set
             {
                 this.propertyBagName = value;
-                if (this.ExplorerBrowserNative != null)
-                {
-                    this.ExplorerBrowserNative.SetPropertyBag(this.propertyBagName);
-                }
+                this.ExplorerBrowserNative?.SetPropertyBag(this.propertyBagName);
             }
         }
 
         internal ExplorerBrowserNative ExplorerBrowserNative { get; private set; }
 
-        internal ExplorerBrowserPaneVisibility PaneVisibility { get; private set; }
+        internal ExplorerBrowserPaneVisibility PaneVisibility { get; }
 
-        internal FOLDERSETTINGS FolderSettings { get; private set; }
+        internal FOLDERSETTINGS FolderSettings { get; }
 
         private void Create()
         {
@@ -102,10 +100,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
 
         internal void SetFolderSettings(FOLDERSETTINGS folderSettings)
         {
-            if (this.ExplorerBrowserNative != null)
-            {
-                this.ExplorerBrowserNative.SetFolderSettings(folderSettings);
-            }
+            this.ExplorerBrowserNative?.SetFolderSettings(folderSettings);
         }
 
         internal bool GetFolderSettingsFlag(FOLDERFLAGS flag)
@@ -140,10 +135,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
 
         internal void SetOptions(EXPLORER_BROWSER_OPTIONS value)
         {
-            if (this.ExplorerBrowserNative != null)
-            {
-                this.ExplorerBrowserNative.SetOptions(value | EXPLORER_BROWSER_OPTIONS.EBO_SHOWFRAMES);
-            }
+            this.ExplorerBrowserNative?.SetOptions(value | EXPLORER_BROWSER_OPTIONS.EBO_SHOWFRAMES);
         }
 
         internal bool GetOptionFlag(EXPLORER_BROWSER_OPTIONS option)
@@ -170,12 +162,14 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
 
         protected override HandleRef BuildWindowCore(HandleRef hwndParent)
         {
-            var parameters = new HwndSourceParameters();
-            parameters.WindowName = "ExplorerBrowser";
-            parameters.ParentWindow = hwndParent.Handle;
-            parameters.WindowStyle = (int)WS_CHILD;
-            parameters.PositionX = 0;
-            parameters.PositionY = 0;
+            var parameters = new HwndSourceParameters
+            {
+                WindowName = "ExplorerBrowser",
+                ParentWindow = hwndParent.Handle,
+                WindowStyle = (int)WS_CHILD,
+                PositionX = 0,
+                PositionY = 0
+            };
             this.hwndSource = new HwndSource(parameters);
 
             Create();
