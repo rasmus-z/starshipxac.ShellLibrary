@@ -15,7 +15,6 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="name">コントロール名。</param>
         /// <param name="text">コントロールテキスト。</param>
@@ -43,10 +42,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
                 }
 
                 this.text = value;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetControlLabel(this, this.text);
-                }
+                this.Dialog?.SetControlLabel(this, this.text);
             }
         }
 

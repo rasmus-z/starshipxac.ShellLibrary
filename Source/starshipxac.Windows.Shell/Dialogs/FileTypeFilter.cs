@@ -7,7 +7,7 @@ using starshipxac.Windows.Shell.Dialogs.Interop;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ファイルダイアログでファイルをフィルタリングするための拡張子のコレクションを保持します。
+    ///     ファイルダイアログでファイルをフィルタリングするための拡張子のコレクションを保持します。
     /// </summary>
     public class FileTypeFilter
     {
@@ -15,29 +15,42 @@ namespace starshipxac.Windows.Shell.Dialogs
         private readonly List<string> extensions;
 
         /// <summary>
-        /// フィルター名称と拡張子の一覧を指定して、
-        /// <see cref="FileTypeFilter"/>クラスの新しいインスタンスを初期化します。
+        ///     フィルター名称と拡張子の一覧を指定して、
+        ///     <see cref="FileTypeFilter" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="filterName">フィルター名称。</param>
         /// <param name="extensionsString">拡張子の一覧。</param>
         /// <remarks>
-        /// <param name="extensionsString"/>は、拡張子をセミコロン(';')またはカンマ(',')で区切って指定します。
-        /// 拡張子は、ピリオド('.')またはワイルドカード "*."を先頭につけて指定するか、何もつけずに指定できます。
+        ///     <param name="extensionsString" />
+        ///     は、拡張子をセミコロン(';')またはカンマ(',')で区切って指定します。
+        ///     拡張子は、ピリオド('.')またはワイルドカード "*."を先頭につけて指定するか、何もつけずに指定できます。
         /// </remarks>
         /// <example>
-        /// <code>
+        ///     <code>
         /// var filter = new CommonFileDialogFilter("画像ファイル", "*.bmp, *.jpg, *.gif, *.png");
         /// </code>
         /// </example>
         /// <exception cref="ArgumentNullException">
-        /// <para><param name="filterName"/>が<c>null</c>です。</para>
-        /// <para>または</para>
-        /// <para><param name="extensionsString"/>が<c>null</c>です。</para>
+        ///     <para>
+        ///         <param name="filterName" />
+        ///         が<c>null</c>です。
+        ///     </para>
+        ///     <para>または</para>
+        ///     <para>
+        ///         <param name="extensionsString" />
+        ///         が<c>null</c>です。
+        ///     </para>
         /// </exception>
         /// <exception cref="ArgumentException">
-        /// <para><param name="filterName"/>が空の文字列です。</para>
-        /// <para>または</para>
-        /// <para><param name="extensionsString"/>が空の文字列です。</para>
+        ///     <para>
+        ///         <param name="filterName" />
+        ///         が空の文字列です。
+        ///     </para>
+        ///     <para>または</para>
+        ///     <para>
+        ///         <param name="extensionsString" />
+        ///         が空の文字列です。
+        ///     </para>
         /// </exception>
         public FileTypeFilter(string filterName, string extensionsString)
         {
@@ -45,9 +58,9 @@ namespace starshipxac.Windows.Shell.Dialogs
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(extensionsString));
 
             this.FilterName = filterName;
-            this.extensions = new List<string>(extensionsString
-                .Split(',', ';')
-                .Select(NormalizeExtensionString));
+            this.extensions = extensionsString.Split(',', ';')
+                .Select(NormalizeExtensionString)
+                .ToList();
         }
 
         public FileTypeFilter(string filterName, IEnumerable<string> extensions)
@@ -56,8 +69,8 @@ namespace starshipxac.Windows.Shell.Dialogs
             Contract.Requires<ArgumentNullException>(extensions != null);
 
             this.FilterName = filterName;
-            this.extensions = new List<string>(extensions
-                .Select(NormalizeExtensionString));
+            this.extensions = extensions
+                .Select(NormalizeExtensionString).ToList();
         }
 
         public FileTypeFilter(string filterName, params string[] extensions)
@@ -66,8 +79,8 @@ namespace starshipxac.Windows.Shell.Dialogs
             Contract.Requires<ArgumentNullException>(extensions != null);
 
             this.FilterName = filterName;
-            this.extensions = new List<string>(extensions
-                .Select(NormalizeExtensionString));
+            this.extensions = extensions
+                .Select(NormalizeExtensionString).ToList();
         }
 
         [ContractInvariantMethod]
@@ -78,23 +91,17 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// フィルター名称を取得します。
+        ///     フィルター名称を取得します。
         /// </summary>
-        public string FilterName { get; private set; }
+        public string FilterName { get; }
 
         /// <summary>
-        /// 拡張子のコレクションを取得します。
+        ///     拡張子のコレクションを取得します。
         /// </summary>
-        public IReadOnlyList<string> Extensions
-        {
-            get
-            {
-                return this.extensions;
-            }
-        }
+        public IReadOnlyList<string> Extensions => this.extensions;
 
         /// <summary>
-        /// フィルターの表示名を取得または設定します。
+        ///     フィルターの表示名を取得または設定します。
         /// </summary>
         public string DisplayName
         {
@@ -102,7 +109,7 @@ namespace starshipxac.Windows.Shell.Dialogs
             {
                 if (this.displayName == null)
                 {
-                    this.displayName = string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                    this.displayName = String.Format(System.Globalization.CultureInfo.InvariantCulture,
                         "{0} ({1})",
                         this.FilterName, GetDisplayExtensionsString(this.Extensions));
                 }
@@ -110,19 +117,12 @@ namespace starshipxac.Windows.Shell.Dialogs
             }
             set
             {
-                if (String.IsNullOrWhiteSpace(value))
-                {
-                    this.displayName = String.Empty;
-                }
-                else
-                {
-                    this.displayName = value;
-                }
+                this.displayName = String.IsNullOrWhiteSpace(value) ? String.Empty : value;
             }
         }
 
         /// <summary>
-        /// 指定した拡張子文字列を正規化します。
+        ///     指定した拡張子文字列を正規化します。
         /// </summary>
         /// <param name="extensionString">拡張子文字列。</param>
         /// <returns></returns>
@@ -137,7 +137,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 表示用の拡張子コレクションの文字列を作成します。
+        ///     表示用の拡張子コレクションの文字列を作成します。
         /// </summary>
         /// <param name="extensions"></param>
         /// <returns></returns>
@@ -145,25 +145,23 @@ namespace starshipxac.Windows.Shell.Dialogs
         {
             Contract.Requires<ArgumentNullException>(extensions != null);
 
-            return String.Join(", ", extensions.Select(x => String.Format("*.{0}", x)));
+            return String.Join(", ", extensions.Select(x => $"*.{x}"));
         }
 
         /// <summary>
-        /// <see cref="FileTypeFilter"/>から、COM APIで使用する<see cref="COMDLG_FILTERSPEC"/>を作成します。
+        ///     <see cref="FileTypeFilter" />から、COM APIで使用する<see cref="COMDLG_FILTERSPEC" />を作成します。
         /// </summary>
-        /// <returns>作成した<see cref="COMDLG_FILTERSPEC"/>。</returns>
-        /// 
+        /// <returns>作成した<see cref="COMDLG_FILTERSPEC" />。</returns>
         internal COMDLG_FILTERSPEC CreateFilterSpec()
         {
-            var filters = String.Join(";", this.Extensions
-                .Select(x => String.Format("*.{0}", x)));
+            var filters = String.Join(";", this.Extensions.Select(x => $"*.{x}"));
             return new COMDLG_FILTERSPEC(this.DisplayName, filters);
         }
 
         /// <summary>
-        /// <see cref="FileTypeFilter"/>の文字列表現を取得します。
+        ///     <see cref="FileTypeFilter" />の文字列表現を取得します。
         /// </summary>
-        /// <returns><see cref="FileTypeFilter"/>の文字列表現。</returns>
+        /// <returns><see cref="FileTypeFilter" />の文字列表現。</returns>
         public override string ToString()
         {
             return this.DisplayName;

@@ -23,7 +23,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     ファクトリークラスのインスタンスを設定します。
+        ///     ファクトリクラスのインスタンスを設定します。
         /// </summary>
         /// <param name="shellFactory"></param>
         public static void SetFactory(ShellFactory shellFactory)
@@ -34,7 +34,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     ファクトリーを基底のファクトリークラスに再設定します。
+        ///     ファクトリを基底のファクトリークラスに再設定します。
         /// </summary>
         public static void ResetFactory()
         {

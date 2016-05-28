@@ -26,7 +26,10 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
 
         public override string Text
         {
-            get { return this.text; }
+            get
+            {
+                return this.text;
+            }
             set
             {
                 if (this.text == value)

@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
+// ReSharper disable InconsistentNaming
+
 namespace starshipxac.Windows.Shell.Interop
 {
     /// <summary>
-    /// <c>RECT</c>構造体を定義します。
+    ///     <c>RECT</c>構造体を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/dd162897(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/dd162897(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
     internal struct RECT

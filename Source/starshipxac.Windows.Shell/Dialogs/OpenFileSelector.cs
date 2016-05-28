@@ -8,14 +8,14 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ファイル選択ダイアログを表示します。
+    ///     ファイル選択ダイアログを表示します。
     /// </summary>
     public sealed class OpenFileSelector : FileOpenDialogBase
     {
         private bool multiSelect = false;
 
         /// <summary>
-        /// <see cref="OpenFileSelector"/>クラスを初期化します。
+        ///     <see cref="OpenFileSelector" />クラスを初期化します。
         /// </summary>
         static OpenFileSelector()
         {
@@ -23,15 +23,15 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="OpenFileSelector"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="OpenFileSelector" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         public OpenFileSelector()
         {
         }
 
         /// <summary>
-        /// ダイアログのタイトルを指定して、
-        /// <see cref="OpenFileSelector"/>クラスの新しいインスタンスを初期化します。
+        ///     ダイアログのタイトルを指定して、
+        ///     <see cref="OpenFileSelector" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="title">ダイアログのタイトル。</param>
         public OpenFileSelector(string title)
@@ -40,33 +40,22 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 読み込み専用ファイルのみ選択可能にするかどうかを示す値を取得または設定します。
+        ///     読み込み専用ファイルのみ選択可能にするかどうかを示す値を取得または設定します。
         /// </summary>
         public bool EnsureReadOnly { get; set; }
 
         /// <summary>
-        /// ファイルシステム以外のアイテムを選択可能にするかどうかを示す値を取得または設定します。
+        ///     ファイルシステム以外のアイテムを選択可能にするかどうかを示す値を取得または設定します。
         /// </summary>
         public bool AllowNonFileSystemItem { get; set; }
 
         /// <summary>
-        /// 空のファイルコレクションを取得または設定します。
+        ///     空のファイルコレクションを取得または設定します。
         /// </summary>
-        private static IEnumerable<ShellFile> EmptyShellFiles { get; set; }
-
-        private ShellFile SelectSingleFile()
-        {
-            this.multiSelect = false;
-            var dialogResult = ShowDialog();
-            if (dialogResult != FileDialogResult.Ok)
-            {
-                return null;
-            }
-            return GetShellFiles().FirstOrDefault();
-        }
+        private static IEnumerable<ShellFile> EmptyShellFiles { get; }
 
         /// <summary>
-        /// 1つのファイルを選択できるダイアログを表示します。
+        ///     1つのファイルを選択できるダイアログを表示します。
         /// </summary>
         /// <returns>選択したファイル情報。ユーザーがキャンセルした場合は<c>null</c>。</returns>
         public async Task<ShellFile> SelectSingleFileAsync()
@@ -88,7 +77,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 複数のファイルを選択できるダイアログを表示します。
+        ///     複数のファイルを選択できるダイアログを表示します。
         /// </summary>
         /// <returns>選択したファイル情報のコレクション。</returns>
         public async Task<IEnumerable<ShellFile>> SelectMultipleFilesAsync()
@@ -133,7 +122,7 @@ namespace starshipxac.Windows.Shell.Dialogs
             return result;
         }
 
-        private async Task InvokeAsync(Action action)
+        private static async Task InvokeAsync(Action action)
         {
             if (Application.Current.Dispatcher.CheckAccess())
             {

@@ -2,6 +2,8 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
+// ReSharper disable InconsistentNaming
+
 namespace starshipxac.Windows.Shell.Interop
 {
     internal static class MenuNativeMethods

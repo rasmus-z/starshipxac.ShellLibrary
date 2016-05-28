@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
+// ReSharper disable InconsistentNaming
+
 namespace starshipxac.Windows.Shell.Media.Imaging.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// <para>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb759805(v=vs.85).aspx
-    /// </para>
+    ///     <para>
+    ///         http://msdn.microsoft.com/en-us/library/windows/desktop/bb759805(v=vs.85).aspx
+    ///     </para>
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     internal struct SHSTOCKICONINFO

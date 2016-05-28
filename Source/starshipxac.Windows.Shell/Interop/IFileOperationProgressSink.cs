@@ -6,10 +6,9 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Windows.Shell.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb775722(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb775722(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(ShellIID.IFileOperationProgressSink)]

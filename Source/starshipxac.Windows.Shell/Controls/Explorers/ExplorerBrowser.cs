@@ -83,10 +83,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnAlignLeftPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_ALIGNLEFT, (bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_ALIGNLEFT, (bool)e.NewValue);
         }
 
         #endregion
@@ -112,10 +109,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnAutoArrangePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_AUTOARRANGE, (bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_AUTOARRANGE, (bool)e.NewValue);
         }
 
         #endregion
@@ -141,10 +135,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnCheckSelectPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_CHECKSELECT, (bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_CHECKSELECT, (bool)e.NewValue);
         }
 
         #endregion
@@ -170,10 +161,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnExtendedTitlesPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_EXTENDEDTILES, (bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_EXTENDEDTILES, (bool)e.NewValue);
         }
 
         #endregion
@@ -199,10 +187,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnFullRowSelectPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_FULLROWSELECT, (bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_FULLROWSELECT, (bool)e.NewValue);
         }
 
         #endregion
@@ -228,10 +213,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnShowFileNamesPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_HIDEFILENAMES, !(bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_HIDEFILENAMES, !(bool)e.NewValue);
         }
 
         #endregion
@@ -257,10 +239,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnSaveBrowserViewStatePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_NOBROWSERVIEWSTATE, !(bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_NOBROWSERVIEWSTATE, !(bool)e.NewValue);
         }
 
         #endregion
@@ -286,10 +265,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnShowColumnHeaderPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_NOCOLUMNHEADER, !(bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_NOCOLUMNHEADER, !(bool)e.NewValue);
         }
 
         #endregion
@@ -315,10 +291,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnShowHeaderInAllViewsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_NOHEADERINALLVIEWS, !(bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_NOHEADERINALLVIEWS, !(bool)e.NewValue);
         }
 
         #endregion
@@ -344,10 +317,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnShowItemsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_NOICONS, !(bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_NOICONS, !(bool)e.NewValue);
         }
 
         #endregion
@@ -373,10 +343,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnShowSubFoldersPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_NOSUBFOLDERS, !(bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_NOSUBFOLDERS, !(bool)e.NewValue);
         }
 
         #endregion
@@ -402,10 +369,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnSingleClickActivatePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_SINGLECLICKACTIVATE, (bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_SINGLECLICKACTIVATE, (bool)e.NewValue);
         }
 
         #endregion
@@ -431,10 +395,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnSingleSelectionPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetFolderSettingsFlag(FOLDERFLAGS.FWF_SINGLESEL, (bool)e.NewValue);
-            }
+            control?.SetFolderSettingsFlag(FOLDERFLAGS.FWF_SINGLESEL, (bool)e.NewValue);
         }
 
         #endregion
@@ -460,10 +421,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnNavigateOncePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetOptionFlag(EXPLORER_BROWSER_OPTIONS.EBO_NAVIGATEONCE, (bool)e.NewValue);
-            }
+            control?.SetOptionFlag(EXPLORER_BROWSER_OPTIONS.EBO_NAVIGATEONCE, (bool)e.NewValue);
         }
 
         #endregion
@@ -489,10 +447,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private static void OnAlwaysNavigatePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as ExplorerBrowser;
-            if (control != null)
-            {
-                control.SetOptionFlag(EXPLORER_BROWSER_OPTIONS.EBO_ALWAYSNAVIGATE, (bool)e.NewValue);
-            }
+            control?.SetOptionFlag(EXPLORER_BROWSER_OPTIONS.EBO_ALWAYSNAVIGATE, (bool)e.NewValue);
         }
 
         #endregion
@@ -827,33 +782,21 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
 
         protected override void OnNavigationPending(NavigationPendingEventArgs args)
         {
-            var handler = this.NavigationPending;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            this.NavigationPending?.Invoke(this, args);
         }
 
         public event EventHandler<NavigationCompletedEventArgs> NavigationCompleted;
 
         protected override void OnNavigationCompleted(NavigationCompletedEventArgs args)
         {
-            var handler = this.NavigationCompleted;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            this.NavigationCompleted?.Invoke(this, args);
         }
 
         public event EventHandler<NavigationFailedEventArgs> NavigationFailed;
 
         protected override void OnNavigationFailed(NavigationFailedEventArgs args)
         {
-            var handler = this.NavigationFailed;
-            if (handler != null)
-            {
-                handler(this, args);
-            }
+            this.NavigationFailed?.Invoke(this, args);
         }
 
         #endregion

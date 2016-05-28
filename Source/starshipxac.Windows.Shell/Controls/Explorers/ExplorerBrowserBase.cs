@@ -222,13 +222,13 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
                     ppvObject = Marshal.GetComInterfaceForObject(this, typeof(ICommDlgBrowser3));
                     result = COMErrorCodes.S_OK;
                 }
-                    // ICommDlgBrowser2を取得すると AccessViolationExceptionが発生する。
-                    //else if (riid == ExplorerBrowserGuid.ICommDlgBrowser2)
-                    //{
-                    //	// ICommDlgBrowser2
-                    //	ppvObject = Marshal.GetComInterfaceForObject(this, typeof(ICommDlgBrowser3));
-                    //	result = HRESULT.Ok;
-                    //}
+                // ICommDlgBrowser2を取得すると AccessViolationExceptionが発生する。
+                //else if (riid == ExplorerBrowserGuid.ICommDlgBrowser2)
+                //{
+                //	// ICommDlgBrowser2
+                //	ppvObject = Marshal.GetComInterfaceForObject(this, typeof(ICommDlgBrowser3));
+                //	result = HRESULT.Ok;
+                //}
                 else if (riid == ExplorerBrowserGuid.ICommDlgBrowser3)
                 {
                     // ICommDlgBrowser3

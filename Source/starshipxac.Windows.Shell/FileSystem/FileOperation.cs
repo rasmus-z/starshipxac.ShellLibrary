@@ -118,7 +118,10 @@ namespace starshipxac.Windows.Shell.FileSystem
         /// </summary>
         public FileOperationOptions OperationOptions
         {
-            get { return this.operationOptions; }
+            get
+            {
+                return this.operationOptions;
+            }
             set
             {
                 ThrowIfDisposed();

@@ -5,7 +5,7 @@ using starshipxac.Windows.Shell.Interop;
 namespace starshipxac.Windows.Shell.Controls.Interop
 {
     /// <summary>
-    /// イメージリストコントロールを定義します。
+    ///     イメージリストコントロールを定義します。
     /// </summary>
     [ComImport]
     [Guid(ControlIID.IImageList)]

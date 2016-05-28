@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
+// ReSharper disable InconsistentNaming
+
 namespace starshipxac.Windows.Shell.Interop
 {
     /// <summary>
-    /// メニューアイテム情報を保持します。
+    ///     メニューアイテム情報を保持します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/ms647578(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/ms647578(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
     internal struct MENUITEMINFO

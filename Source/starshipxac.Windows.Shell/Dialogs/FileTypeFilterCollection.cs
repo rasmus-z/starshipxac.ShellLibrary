@@ -8,7 +8,7 @@ using starshipxac.Windows.Shell.Dialogs.Interop;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ファイルダイアログのファイル種別フィルターを保持します。
+    ///     ファイルダイアログのファイル種別フィルターを保持します。
     /// </summary>
     public class FileTypeFilterCollection : Collection<FileTypeFilter>
     {
@@ -17,7 +17,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// コレクションにフィルターを追加します。
+        ///     コレクションにフィルターを追加します。
         /// </summary>
         /// <param name="filterName"></param>
         /// <param name="extensionStrings"></param>
@@ -30,7 +30,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// コレクションにフィルターを追加します。
+        ///     コレクションにフィルターを追加します。
         /// </summary>
         /// <param name="filterName"></param>
         /// <param name="extensions"></param>

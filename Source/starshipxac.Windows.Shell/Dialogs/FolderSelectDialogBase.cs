@@ -21,7 +21,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ファイルシステム上のフォルダーのみ選択可能にするかどうかを示す値を取得または設定します。
+        ///     ファイルシステム上のフォルダーのみ選択可能にするかどうかを示す値を取得または設定します。
         /// </summary>
         public bool ForceFileSystem
         {
@@ -37,7 +37,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ユーザーが選択したフォルダー情報のコレクションを取得します。
+        ///     ユーザーが選択したフォルダー情報のコレクションを取得します。
         /// </summary>
         /// <returns>フォルダー情報のコレクション。</returns>
         public IEnumerable<ShellFolder> GetShellFolders()

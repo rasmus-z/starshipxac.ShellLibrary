@@ -4,7 +4,7 @@ using System.Diagnostics.Contracts;
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
     /// <summary>
-    /// ファイルダイアログのコントロール基底クラスを定義します。
+    ///     ファイルダイアログのコントロール基底クラスを定義します。
     /// </summary>
     [ContractClass(typeof(FileDialogControlContract))]
     public abstract class FileDialogControl : IEquatable<FileDialogControl>
@@ -14,8 +14,8 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         private static int nextId = MinDialogControlId;
 
         /// <summary>
-        /// コントロール名を指定して、
-        /// <see cref="FileDialogControl"/>クラスの新しいインスタンスを初期化します。
+        ///     コントロール名を指定して、
+        ///     <see cref="FileDialogControl" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="name">コントロール名。</param>
         protected FileDialogControl(string name)
@@ -35,17 +35,17 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         public FileDialogBase Dialog { get; private set; }
 
         /// <summary>
-        /// コントロール名を取得します。
+        ///     コントロール名を取得します。
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
-        /// コントロールIDを取得します。
+        ///     コントロールIDを取得します。
         /// </summary>
-        public int Id { get; private set; }
+        public int Id { get; }
 
         /// <summary>
-        /// コントロールが有効かどうかを判定する値を取得または設定します。
+        ///     コントロールが有効かどうかを判定する値を取得または設定します。
         /// </summary>
         public bool Enabled
         {
@@ -62,7 +62,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         }
 
         /// <summary>
-        /// コントロールを表示するかどうかを判定する値を取得または設定します。
+        ///     コントロールを表示するかどうかを判定する値を取得または設定します。
         /// </summary>
         public bool Visible
         {
@@ -79,12 +79,12 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         }
 
         /// <summary>
-        /// コントロールテキストを取得または設定します。
+        ///     コントロールテキストを取得または設定します。
         /// </summary>
         public abstract string Text { get; set; }
 
         /// <summary>
-        /// 次のコントロールIDを取得します。
+        ///     次のコントロールIDを取得します。
         /// </summary>
         /// <returns>コントロールID。</returns>
         private static int GetNextId()
@@ -170,7 +170,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
 
         public override string ToString()
         {
-            return string.Format("FileDialogControl[Name={0}, Id={1}]", this.Name, this.Id);
+            return $"FileDialogControl[Name={this.Name}, Id={this.Id}]";
         }
     }
 

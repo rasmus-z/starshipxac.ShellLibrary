@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.Interop;
+// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Dialogs.Interop
 {

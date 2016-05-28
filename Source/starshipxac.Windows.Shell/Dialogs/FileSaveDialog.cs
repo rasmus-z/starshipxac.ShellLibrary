@@ -6,7 +6,7 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// 保存するファイルを選択するダイアログを表示します。
+    ///     保存するファイルを選択するダイアログを表示します。
     /// </summary>
     public class FileSaveDialog : FileSaveDialogBase
     {
@@ -17,15 +17,15 @@ namespace starshipxac.Windows.Shell.Dialogs
         private ShellFile shellFile;
 
         /// <summary>
-        /// <see cref="FileSaveDialog"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="FileSaveDialog" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         public FileSaveDialog()
         {
         }
 
         /// <summary>
-        /// ダイアログのタイトルを指定して、
-        /// <see cref="FileSaveDialog"/>クラスの新しいインスタンスを初期化します。
+        ///     ダイアログのタイトルを指定して、
+        ///     <see cref="FileSaveDialog" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="title">ダイアログタイトル。</param>
         public FileSaveDialog(string title)
@@ -34,8 +34,8 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ユーザーが、すでに存在するファイルを指定した場合に、
-        /// 警告メッセージを表示するかどうかを示す値を取得または設定します。
+        ///     ユーザーが、すでに存在するファイルを指定した場合に、
+        ///     警告メッセージを表示するかどうかを示す値を取得または設定します。
         /// </summary>
         public bool OverwritePrompt
         {
@@ -51,8 +51,8 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ユーザーが、存在しないファイルを指定した場合に、
-        /// ファイルを作成することを確認するメッセージを表示するかどうかを示す値を取得または設定します。
+        ///     ユーザーが、存在しないファイルを指定した場合に、
+        ///     ファイルを作成することを確認するメッセージを表示するかどうかを示す値を取得または設定します。
         /// </summary>
         public bool CreatePrompt
         {
@@ -68,7 +68,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ダイアログを拡張モードで表示するかどうかを示す値を取得または設定します。
+        ///     ダイアログを拡張モードで表示するかどうかを示す値を取得または設定します。
         /// </summary>
         public bool IsExpandedMode
         {
@@ -84,7 +84,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 選択したファイルを取得します。
+        ///     選択したファイルを取得します。
         /// </summary>
         public ShellFile ShellFile
         {
@@ -99,7 +99,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ファイル保存ダイアログを表示します。
+        ///     ファイル保存ダイアログを表示します。
         /// </summary>
         /// <returns>ダイアログ実行結果。</returns>
         public FileDialogResult Show()
@@ -108,7 +108,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ファイル保存ダイアログを表示します。
+        ///     ファイル保存ダイアログを表示します。
         /// </summary>
         /// <param name="parentWindow">親ウィンドウのハンドル。</param>
         /// <returns>ダイアログ実行結果。</returns>

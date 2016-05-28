@@ -2,6 +2,7 @@
 using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.Interop;
+// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Controls.Explorers.Interop
 {
@@ -9,7 +10,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers.Interop
     [ClassInterface(ClassInterfaceType.AutoDual)]
     internal class ExplorerBrowserViewEvents : IDisposable
     {
-        bool disposed = false;
+        private bool disposed = false;
 
         private ExplorerBrowserBase explorerBrowser;
         private uint viewConnectionPointCookie;
@@ -38,12 +39,12 @@ namespace starshipxac.Windows.Shell.Controls.Explorers.Interop
         {
             if (!this.disposed)
             {
-                this.disposed = true;
-
                 if (disposing)
                 {
                     DisconnectFromView();
                 }
+
+                this.disposed = true;
             }
         }
 

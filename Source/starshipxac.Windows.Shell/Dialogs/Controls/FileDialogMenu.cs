@@ -24,14 +24,9 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         {
             this.text = text;
 
-            if (menuItems == null)
-            {
-                this.items = new Collection<FileDialogMenuItem>();
-            }
-            else
-            {
-                this.items = new Collection<FileDialogMenuItem>(menuItems);
-            }
+            this.items = (menuItems == null)
+                ? new Collection<FileDialogMenuItem>()
+                : new Collection<FileDialogMenuItem>(menuItems);
         }
 
         public override string Text
@@ -48,10 +43,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
                 }
 
                 this.text = value;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetControlLabel(this, this.text);
-                }
+                this.Dialog?.SetControlLabel(this, this.text);
             }
         }
 

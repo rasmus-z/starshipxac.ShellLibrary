@@ -41,13 +41,7 @@ namespace starshipxac.Windows.Shell.Controls
 
         public int Id { get; private set; }
 
-        public bool HasSubMenu
-        {
-            get
-            {
-                return this.subMenu != IntPtr.Zero;
-            }
-        }
+        public bool HasSubMenu => this.subMenu != IntPtr.Zero;
 
         public ImageSource Image { get; private set; }
     }

@@ -39,10 +39,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
                 }
 
                 this.text = value;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetEditBoxText(this, this.text);
-                }
+                this.Dialog?.SetEditBoxText(this, this.text);
             }
         }
 

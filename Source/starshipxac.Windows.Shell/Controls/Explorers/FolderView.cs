@@ -40,8 +40,6 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         {
             if (!this.disposed)
             {
-                this.disposed = true;
-
                 if (disposing)
                 {
                 }
@@ -51,6 +49,8 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
                     Marshal.ReleaseComObject(this.folderViewNative);
                     this.folderViewNative = null;
                 }
+
+                this.disposed = true;
             }
         }
 

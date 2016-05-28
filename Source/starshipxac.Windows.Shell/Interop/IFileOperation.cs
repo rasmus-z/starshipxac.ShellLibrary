@@ -6,23 +6,23 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Windows.Shell.Interop
 {
     /// <summary>
-    /// <c>IFileOperation</c>を定義します。
-    /// <list type="table">
-    ///   <item>
-    ///     <term>Header</term>
-    ///     <description>Shobjidl.h</description>
-    ///   </item>
-    ///   <item>
-    ///     <term>DLL</term>
-    ///     <description>Shell32.dll (version 6.0.6000 or later)</description>
-    ///   </item>
-    /// </list>
+    ///     <c>IFileOperation</c>を定義します。
+    ///     <list type="table">
+    ///         <item>
+    ///             <term>Header</term>
+    ///             <description>Shobjidl.h</description>
+    ///         </item>
+    ///         <item>
+    ///             <term>DLL</term>
+    ///             <description>Shell32.dll (version 6.0.6000 or later)</description>
+    ///         </item>
+    ///     </list>
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb775771(v=vs.85).aspx
-    /// <para>
-    /// メソッドは、<c>Shobjidl.h</c>で定義されているとおりの順番で記述する必要があります。
-    /// </para>
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb775771(v=vs.85).aspx
+    ///     <para>
+    ///         メソッドは、<c>Shobjidl.h</c>で定義されているとおりの順番で記述する必要があります。
+    ///     </para>
     /// </remarks>
     [ComImport]
     [Guid(ShellIID.IFileOperation)]

@@ -1,12 +1,14 @@
 ﻿using System;
 
+// ReSharper disable InconsistentNaming
+
 namespace starshipxac.Windows.Shell.Interop
 {
     /// <summary>
-    /// メニューアイテム種別を定義します。
+    ///     メニューアイテム種別を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/ms647578(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/ms647578(v=vs.85).aspx
     /// </remarks>
     internal static class MFT
     {

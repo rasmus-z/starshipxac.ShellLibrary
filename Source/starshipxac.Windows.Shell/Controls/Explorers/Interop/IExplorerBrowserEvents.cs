@@ -6,10 +6,9 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Windows.Shell.Controls.Explorers.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761883(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761883(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(ExplorerBrowserIIDGuid.IExplorerBrowserEvents)]

@@ -9,14 +9,14 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// フォルダーを選択するダイアログを表示します。
+    ///     フォルダーを選択するダイアログを表示します。
     /// </summary>
     public sealed class FolderSelector : FolderSelectDialogBase
     {
         private bool multiSelect = false;
 
         /// <summary>
-        /// <see cref="FolderSelector"/>クラスを初期化します。
+        ///     <see cref="FolderSelector" />クラスを初期化します。
         /// </summary>
         static FolderSelector()
         {
@@ -24,15 +24,15 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="FolderSelector"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="FolderSelector" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         public FolderSelector()
         {
         }
 
         /// <summary>
-        /// ダイアログのタイトルを指定して、
-        /// <see cref="FolderSelector"/>クラスの新しいインスタンスを初期化します。
+        ///     ダイアログのタイトルを指定して、
+        ///     <see cref="FolderSelector" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="title">ダイアログのタイトル。</param>
         public FolderSelector(string title)
@@ -41,12 +41,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 空のフォルダコレクションを取得または設定します。
+        ///     空のフォルダコレクションを取得または設定します。
         /// </summary>
-        private static IEnumerable<ShellFolder> EmptyShellFolders { get; set; }
+        private static IEnumerable<ShellFolder> EmptyShellFolders { get; }
 
         /// <summary>
-        /// 1つのフォルダを選択するダイアログを表示します。
+        ///     1つのフォルダを選択するダイアログを表示します。
         /// </summary>
         /// <returns>選択したフォルダ。ユーザーがキャンセルした場合は<c>null</c>。</returns>
         public async Task<ShellFolder> SelectSingleFolderAsync()
@@ -68,7 +68,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 複数のフォルダを選択するダイアログを表示します。
+        ///     複数のフォルダを選択するダイアログを表示します。
         /// </summary>
         /// <returns>選択したフォルダのコレクション。</returns>
         public async Task<IEnumerable<ShellFolder>> SelectMultipleFoldersAsync()

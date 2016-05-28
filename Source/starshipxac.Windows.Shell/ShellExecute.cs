@@ -3,6 +3,8 @@ using System.Diagnostics.Contracts;
 using starshipxac.Shell;
 using starshipxac.Windows.Shell.Interop;
 
+// ReSharper disable InconsistentNaming
+
 namespace starshipxac.Windows.Shell
 {
     public static class ShellExecute

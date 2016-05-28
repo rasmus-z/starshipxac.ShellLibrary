@@ -106,7 +106,10 @@ namespace starshipxac.Windows.Shell.Dialogs
         /// </summary>
         public string Title
         {
-            get { return this.title; }
+            get
+            {
+                return this.title;
+            }
             set
             {
                 if (this.title == value)
@@ -124,7 +127,10 @@ namespace starshipxac.Windows.Shell.Dialogs
         /// </summary>
         public string OkButtonText
         {
-            get { return this.okButtonText; }
+            get
+            {
+                return this.okButtonText;
+            }
             set
             {
                 if (this.okButtonText == value)
@@ -142,7 +148,10 @@ namespace starshipxac.Windows.Shell.Dialogs
         /// </summary>
         public string CancelButtonText
         {
-            get { return this.cancelButtonText; }
+            get
+            {
+                return this.cancelButtonText;
+            }
             set
             {
                 if (this.cancelButtonText == value)

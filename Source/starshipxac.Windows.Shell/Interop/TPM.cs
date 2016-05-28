@@ -1,12 +1,14 @@
 ﻿using System;
 
+// ReSharper disable InconsistentNaming
+
 namespace starshipxac.Windows.Shell.Interop
 {
     /// <summary>
-    /// ポップアップメニュー表示位置フラグを定義します。
+    ///     ポップアップメニュー表示位置フラグを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/ms648002(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/ms648002(v=vs.85).aspx
     /// </remarks>
     internal static class TPM
     {

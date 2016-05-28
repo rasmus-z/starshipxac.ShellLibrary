@@ -7,22 +7,14 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// フォルダー選択するダイアログを表示します。
+    ///     フォルダー選択するダイアログを表示します。
     /// </summary>
     public sealed class FolderSelectDialog : FolderSelectDialogBase
     {
         private IEnumerable<ShellFolder> shellFolders;
 
         /// <summary>
-        /// <see cref="FolderSelectDialog"/>クラスを初期化します。
-        /// </summary>
-        static FolderSelectDialog()
-        {
-            EmptyShellFolders = new List<ShellFolder>();
-        }
-
-        /// <summary>
-        /// <see cref="FolderSelectDialog"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="FolderSelectDialog" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         public FolderSelectDialog()
         {
@@ -30,8 +22,8 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ダイアログのタイトルを指定して、
-        /// <see cref="FolderSelectDialog"/>クラスの新しいインスタンスを初期化します。
+        ///     ダイアログのタイトルを指定して、
+        ///     <see cref="FolderSelectDialog" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="title">ダイアログタイトル。</param>
         public FolderSelectDialog(string title)
@@ -40,12 +32,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// フォルダーを複数選択可能かどうかを示す値を取得または設定します。
+        ///     フォルダーを複数選択可能かどうかを示す値を取得または設定します。
         /// </summary>
         public bool Multiselect { get; set; }
 
         /// <summary>
-        /// 選択したフォルダーのコレクションを取得します。
+        ///     選択したフォルダーのコレクションを取得します。
         /// </summary>
         public IEnumerable<ShellFolder> ShellFolders
         {
@@ -60,12 +52,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 空のフォルダーコレクションを取得または設定します。
-        /// </summary>
-        private static IEnumerable<ShellFolder> EmptyShellFolders { get; set; }
-
-        /// <summary>
-        /// フォルダー選択ダイアログを表示します。
+        ///     フォルダー選択ダイアログを表示します。
         /// </summary>
         /// <returns>ダイアログ実行結果。</returns>
         public FileDialogResult Show()
@@ -74,7 +61,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 親ウィンドウを指定して、フォルダー選択ダイアログを表示します。
+        ///     親ウィンドウを指定して、フォルダー選択ダイアログを表示します。
         /// </summary>
         /// <param name="parentWindow">親ウィンドウ。</param>
         /// <returns>ダイアログ実行結果。</returns>

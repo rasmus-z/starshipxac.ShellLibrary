@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using starshipxac.Shell;
 using starshipxac.Shell.Interop;
 using starshipxac.Windows.Shell.Dialogs.Interop;
-using starshipxac.Windows.Shell.Properties;
 
 namespace starshipxac.Windows.Shell.Dialogs.Internal
 {
     internal sealed class FileDialogInternal : IDisposable
     {
+        private bool diposed = false;
         private IFileDialog2 fileDialogNative;
 
         public FileDialogInternal(FileDialogBase dialog)
@@ -35,17 +34,21 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
 
         private void Dispose(bool disposing)
         {
-            if (disposing)
+            if (!this.diposed)
             {
-                if (this.fileDialogNative != null)
+                if (disposing)
                 {
-                    Marshal.ReleaseComObject(this.fileDialogNative);
-                    this.fileDialogNative = null;
+                    if (this.fileDialogNative != null)
+                    {
+                        Marshal.ReleaseComObject(this.fileDialogNative);
+                    }
                 }
+
+                this.diposed = true;
             }
         }
 
-        public FileDialogBase Dialog { get; private set; }
+        public FileDialogBase Dialog { get; }
 
         internal IFileDialog2 FileDialogNative
         {
@@ -63,6 +66,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
         {
             get
             {
+                // ReSharper disable once SuspiciousTypeConversion.Global
                 return (IFileDialogCustomize)this.FileDialogNative;
             }
         }
@@ -81,7 +85,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
         public uint Cookie { get; private set; }
 
         /// <summary>
-        /// ダイアログを表示します。
+        ///     ダイアログを表示します。
         /// </summary>
         /// <param name="parentWindowHandle">親ウィンドウのハンドル。</param>
         /// <returns>ダイアログ実行結果。</returns>
@@ -95,7 +99,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
         }
 
         /// <summary>
-        /// ファイルダイアログイベントを設定します。
+        ///     ファイルダイアログイベントを設定します。
         /// </summary>
         /// <param name="fileDialogEvents"></param>
         public void Advise(FileDialogEventsInternal fileDialogEvents)
@@ -108,7 +112,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
         }
 
         /// <summary>
-        /// ファイルダイアログオプションを設定します。
+        ///     ファイルダイアログオプションを設定します。
         /// </summary>
         /// <param name="fileDialogOptions"></param>
         public void SetOptions(FileDialogOptions fileDialogOptions)
@@ -118,7 +122,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
         }
 
         /// <summary>
-        /// ダイアログのタイトルを設定します。
+        ///     ダイアログのタイトルを設定します。
         /// </summary>
         /// <param name="title"></param>
         public void SetTitle(string title)
@@ -129,7 +133,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
         }
 
         /// <summary>
-        /// OKボタンのテキストを設定します。
+        ///     OKボタンのテキストを設定します。
         /// </summary>
         /// <param name="label"></param>
         public void SetOkButtonText(string label)
@@ -140,7 +144,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
         }
 
         /// <summary>
-        /// キャンセルボタンのテキストを設定します。
+        ///     キャンセルボタンのテキストを設定します。
         /// </summary>
         /// <param name="label"></param>
         public void SetCancelButtonText(string label)
@@ -151,7 +155,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
         }
 
         /// <summary>
-        /// デフォルトのファイル名を設定します。
+        ///     デフォルトのファイル名を設定します。
         /// </summary>
         /// <param name="filename"></param>
         public void SetDefaultFileName(string filename)
@@ -162,7 +166,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
         }
 
         /// <summary>
-        /// デフォルトの拡張子を設定します。
+        ///     デフォルトの拡張子を設定します。
         /// </summary>
         /// <param name="extension"></param>
         public void SetDefaultExtension(string extension)
@@ -173,7 +177,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
         }
 
         /// <summary>
-        /// 初期フォルダーを設定します。
+        ///     初期フォルダーを設定します。
         /// </summary>
         /// <param name="folder"></param>
         public void SetInitialFolder(ShellFolder folder)
@@ -184,7 +188,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
         }
 
         /// <summary>
-        /// デフォルトフォルダーを設定します。
+        ///     デフォルトフォルダーを設定します。
         /// </summary>
         /// <param name="folder"></param>
         public void SetDefaultFolder(ShellFolder folder)
@@ -215,10 +219,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
 
         public void AddPlace(ShellFolder place, FileDialogAddPlaceLocation location)
         {
-            if (this.FileDialogNative != null)
-            {
-                this.FileDialogNative.AddPlace(place.ShellItem.ShellItemInterface, (FDAP)location);
-            }
+            this.FileDialogNative?.AddPlace(place.ShellItem.ShellItemInterface, (FDAP)location);
         }
 
         public void AddPlace(string path, FileDialogAddPlaceLocation location)
@@ -394,14 +395,6 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
             Contract.Requires<ArgumentOutOfRangeException>(selectedIndex >= 0);
 
             this.FileDialogCustomizeNative.SetSelectedControlItem((UInt32)id, (UInt32)selectedIndex);
-        }
-
-        private void ThrowIfDialogShowingPropertyCannotBeChanged([CallerMemberName] String propertyName = "")
-        {
-            if (this.DialogShowing)
-            {
-                throw new InvalidOperationException(String.Format(ErrorMessages.PropertyChannotBeChanged, propertyName));
-            }
         }
     }
 }

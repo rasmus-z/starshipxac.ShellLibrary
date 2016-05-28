@@ -4,18 +4,11 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
     public class FileDialogComboBoxItem
     {
-        private string text = string.Empty;
+        private string text;
 
         public FileDialogComboBoxItem(string text)
         {
-            if (String.IsNullOrWhiteSpace(text))
-            {
-                this.text = String.Empty;
-            }
-            else
-            {
-                this.text = text;
-            }
+            this.text = String.IsNullOrWhiteSpace(text) ? String.Empty : text;
         }
 
         public string Text

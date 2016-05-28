@@ -22,12 +22,12 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         public PaneVisibilityStates AdvancedQuery { get; set; }
 
         /// <summary>
-        /// ステータスバー(Windows8)
+        ///     ステータスバー(Windows8)
         /// </summary>
         public PaneVisibilityStates StatusBar { get; set; }
 
         /// <summary>
-        /// リボン(Windows8)
+        ///     リボン(Windows8)
         /// </summary>
         public PaneVisibilityStates Ribbon { get; set; }
 

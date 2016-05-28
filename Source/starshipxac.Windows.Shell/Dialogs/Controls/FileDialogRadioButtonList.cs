@@ -21,14 +21,9 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
 
-            if (items == null)
-            {
-                this.items = new Collection<FileDialogRadioButtonListItem>();
-            }
-            else
-            {
-                this.items = new Collection<FileDialogRadioButtonListItem>(items);
-            }
+            this.items = (items == null)
+                ? new Collection<FileDialogRadioButtonListItem>()
+                : new Collection<FileDialogRadioButtonListItem>(items);
         }
 
         public override string Text
@@ -73,10 +68,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
                 }
 
                 this.selectedIndex = value;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetControlSelectedIndex(this, this.selectedIndex);
-                }
+                this.Dialog?.SetControlSelectedIndex(this, this.selectedIndex);
             }
         }
 

@@ -3,13 +3,14 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 
+// ReSharper disable InconsistentNaming
+
 namespace starshipxac.Windows.Shell.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb759784(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb759784(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     internal struct SHELLEXECUTEINFO

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
+// ReSharper disable InconsistentNaming
+
 namespace starshipxac.Windows.Shell.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// https://msdn.microsoft.com/en-us/library/windows/desktop/bb773217(v=vs.85).aspx
+    ///     https://msdn.microsoft.com/en-us/library/windows/desktop/bb773217(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
     internal struct CMINVOKECOMMANDINFOEX
@@ -22,19 +23,14 @@ namespace starshipxac.Windows.Shell.Interop
         public UInt32 dwHotKey;
         public IntPtr hIcon;
         public string lpTitle;
-
         [MarshalAs(UnmanagedType.LPWStr)]
         public string lpVerbW;
-
         [MarshalAs(UnmanagedType.LPWStr)]
         public string lpParametersW;
-
         [MarshalAs(UnmanagedType.LPWStr)]
         public string lpDirectoryW;
-
         [MarshalAs(UnmanagedType.LPWStr)]
         public string lpTitleW;
-
         public POINT ptInvoke;
 
         public static CMINVOKECOMMANDINFOEX Create()

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.Contracts;
-using System.Threading;
 using starshipxac.Windows.Shell.Properties;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
@@ -22,14 +21,9 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         {
             Contract.Requires<ArgumentNullException>(name != null);
 
-            if (items == null)
-            {
-                this.items = new Collection<FileDialogComboBoxItem>();
-            }
-            else
-            {
-                this.items = new Collection<FileDialogComboBoxItem>(items);
-            }
+            this.items = items == null
+                ? new Collection<FileDialogComboBoxItem>()
+                : new Collection<FileDialogComboBoxItem>(items);
         }
 
         public override string Text
@@ -74,10 +68,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
                 }
 
                 this.selectedIndex = value;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetControlSelectedIndex(this, this.selectedIndex);
-                }
+                this.Dialog?.SetControlSelectedIndex(this, this.selectedIndex);
             }
         }
 
@@ -89,11 +80,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         {
             if (this.Enabled)
             {
-                var handler = Interlocked.CompareExchange(ref this.SelectedIndexChanged, null, null);
-                if (handler != null)
-                {
-                    handler(this, EventArgs.Empty);
-                }
+                this.SelectedIndexChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 

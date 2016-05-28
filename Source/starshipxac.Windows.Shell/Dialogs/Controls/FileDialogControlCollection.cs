@@ -6,7 +6,7 @@ using starshipxac.Windows.Shell.Properties;
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
     /// <summary>
-    /// ファイルダイアログコントロールのコレクションを保持します。
+    ///     ファイルダイアログコントロールのコレクションを保持します。
     /// </summary>
     public sealed class FileDialogControlCollection : Collection<FileDialogControl>
     {

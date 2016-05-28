@@ -7,10 +7,10 @@ using starshipxac.Windows.Shell.Interop;
 namespace starshipxac.Windows.Shell.Controls.Explorers.Interop
 {
     /// <summary>
-    /// エクスプローラーブラウザーインターフェイスを定義します。
+    ///     エクスプローラーブラウザーインターフェイスを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761909(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761909(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]

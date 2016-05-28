@@ -23,14 +23,9 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
 
             this.text = text;
 
-            if (controls == null)
-            {
-                this.items = new Collection<FileDialogControl>();
-            }
-            else
-            {
-                this.items = new Collection<FileDialogControl>(this.items);
-            }
+            this.items = controls == null
+                ? new Collection<FileDialogControl>()
+                : new Collection<FileDialogControl>(this.items);
         }
 
         public override string Text
@@ -47,20 +42,11 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
                 }
 
                 this.text = value;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetControlLabel(this, this.text);
-                }
+                this.Dialog?.SetControlLabel(this, this.text);
             }
         }
 
-        public IReadOnlyList<FileDialogControl> Items
-        {
-            get
-            {
-                return this.items;
-            }
-        }
+        public IReadOnlyList<FileDialogControl> Items => this.items;
 
         internal override void Attach(FileDialogBase dialog)
         {

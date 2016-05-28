@@ -14,7 +14,7 @@ namespace starshipxac.Windows.Shell.Controls
     public class ShellContextMenu : IDisposable
     {
         private bool disposed = false;
-        private IntPtr popupMenu = IntPtr.Zero;
+        private IntPtr popupMenu;
 
         internal ShellContextMenu(IContextMenu3 contextMenu)
         {
@@ -79,7 +79,7 @@ namespace starshipxac.Windows.Shell.Controls
                 ref attributes);
 
             // IContextMenuへのポインターを取得する。
-            var childPidls = new[] { filePIDL };
+            var childPidls = new[] {filePIDL};
             var riid = new Guid(ShellIID.IContextMenu);
             IntPtr contextMenuPtr;
             shellFolder.ShellFolderInterface.GetUIObjectOf(
@@ -99,7 +99,7 @@ namespace starshipxac.Windows.Shell.Controls
             return new ShellContextMenu(contextMenu3);
         }
 
-        internal IContextMenu3 ContextMenuNative { get; private set; }
+        internal IContextMenu3 ContextMenuNative { get; }
 
         private int CommandFirst
         {

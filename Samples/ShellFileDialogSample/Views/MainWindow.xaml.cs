@@ -33,7 +33,7 @@ namespace ShellFileDialogSample.Views
         public async Task<ShellFile> ShowSelectSaveFileDialogAsync()
         {
             var selector = new SaveFileSelector();
-            return await selector.SelectSaveFileAsync();
+            return await selector.SelectSingleFileAsync();
         }
 
         public async Task<ShellFolder> ShowSelectFolderDialogAsync()

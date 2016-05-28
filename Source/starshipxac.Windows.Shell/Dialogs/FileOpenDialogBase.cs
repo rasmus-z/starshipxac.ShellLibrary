@@ -10,7 +10,7 @@ using starshipxac.Windows.Shell.Dialogs.Interop;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ファイル選択ダイアログの基底クラスを定義します。
+    ///     ファイル選択ダイアログの基底クラスを定義します。
     /// </summary>
     public abstract class FileOpenDialogBase : FileDialogBase
     {
@@ -19,7 +19,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         private bool setFilter = false;
 
         /// <summary>
-        /// <see cref="FileOpenDialogBase"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="FileOpenDialogBase" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         protected FileOpenDialogBase()
         {
@@ -27,8 +27,8 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ダイアログのタイトルを指定して、
-        /// <see cref="FileOpenDialogBase"/>クラスの新しいインスタンスを初期化します。
+        ///     ダイアログのタイトルを指定して、
+        ///     <see cref="FileOpenDialogBase" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="title"></param>
         protected FileOpenDialogBase(string title)
@@ -44,7 +44,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 終了後にディレクトリを元の位置に戻すかどうかを示す値を取得または設定します。
+        ///     終了後にディレクトリを元の位置に戻すかどうかを示す値を取得または設定します。
         /// </summary>
         /// <exception cref="InvalidOperationException">ダイアログ表示中は変更できません。</exception>
         public bool RestoreDirectory
@@ -61,7 +61,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 指定したファイルを最近使用したファイル一覧に追加するかどうかを判定する値を取得または設定します。
+        ///     指定したファイルを最近使用したファイル一覧に追加するかどうかを判定する値を取得または設定します。
         /// </summary>
         /// <exception cref="InvalidOperationException">ダイアログ表示中は変更できません。</exception>
         public bool AddToMostRecentlyUsedList
@@ -78,12 +78,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ファイルダイアログボックスのファイルの種類に表示されるフィルターのコレクションを取得します。
+        ///     ファイルダイアログボックスのファイルの種類に表示されるフィルターのコレクションを取得します。
         /// </summary>
         public FileTypeFilterCollection FileTypeFilters { get; }
 
         /// <summary>
-        /// ファイルダイアログボックスで現在選択されているフィルターを取得します。
+        ///     ファイルダイアログボックスで現在選択されているフィルターを取得します。
         /// </summary>
         public FileTypeFilter SelectedFileTypeFilter
         {
@@ -102,7 +102,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ファイルダイアログボックスで現在選択されているフィルターのインデックスを取得します。
+        ///     ファイルダイアログボックスで現在選択されているフィルターのインデックスを取得します。
         /// </summary>
         public int SelectedFileTypeFilterIndex
         {
@@ -121,7 +121,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ユーザーが選択したファイル情報のコレクションを取得します。
+        ///     ユーザーが選択したファイル情報のコレクションを取得します。
         /// </summary>
         /// <returns>ファイル情報のコレクション。</returns>
         public IEnumerable<ShellFile> GetShellFiles()
@@ -144,7 +144,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// <see cref="FileOpenDialogNative"/>を作成します。
+        ///     <see cref="FileOpenDialogNative" />を作成します。
         /// </summary>
         internal override IFileDialog2 CreateNativeFileDialog()
         {
@@ -167,7 +167,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ネイティブダイアログに設定を適用します。
+        ///     ネイティブダイアログに設定を適用します。
         /// </summary>
         protected override void SetNativeSettings()
         {

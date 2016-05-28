@@ -34,7 +34,10 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
         public Size Size
         {
-            get { return this.size; }
+            get
+            {
+                return this.size;
+            }
             set
             {
                 Contract.Requires<ArgumentOutOfRangeException>((value.Width > 0.0) && (value.Height > 0.0));

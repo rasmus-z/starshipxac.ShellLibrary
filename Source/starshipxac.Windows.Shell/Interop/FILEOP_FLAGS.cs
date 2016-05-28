@@ -1,12 +1,14 @@
 ﻿using System;
 
+// ReSharper disable InconsistentNaming
+
 namespace starshipxac.Windows.Shell.Interop
 {
     /// <summary>
-    /// ファイル操作フラグを定義します。
+    ///     ファイル操作フラグを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb759795(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb759795(v=vs.85).aspx
     /// </remarks>
     [Flags]
     internal enum FILEOP_FLAGS : uint

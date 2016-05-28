@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using starshipxac.Windows.Shell.Interop;
+// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Controls.Interop
 {

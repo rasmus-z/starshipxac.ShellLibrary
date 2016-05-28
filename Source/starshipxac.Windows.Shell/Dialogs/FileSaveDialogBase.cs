@@ -34,7 +34,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ファイル名を検証するかどうかを示す値を取得または設定します。
+        ///     ファイル名を検証するかどうかを示す値を取得または設定します。
         /// </summary>
         /// <exception cref="InvalidOperationException">ダイアログ表示中は変更できません。</exception>
         public bool ValidateNames
@@ -51,7 +51,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ユーザーが拡張子を指定しない場合、ファイル名に自動的に拡張子を付加するかどうかを示す値を取得または設定します。
+        ///     ユーザーが拡張子を指定しない場合、ファイル名に自動的に拡張子を付加するかどうかを示す値を取得または設定します。
         /// </summary>
         /// <exception cref="InvalidOperationException">ダイアログ表示中は変更できません。</exception>
         public bool AppendExtension
@@ -68,7 +68,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 終了後にディレクトリを元の位置に戻すかどうかを示す値を取得または設定します。
+        ///     終了後にディレクトリを元の位置に戻すかどうかを示す値を取得または設定します。
         /// </summary>
         /// <exception cref="InvalidOperationException">ダイアログ表示中は変更できません。</exception>
         public bool RestoreDirectory
@@ -85,7 +85,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 指定したファイルを最近使用したファイル一覧に追加するかどうかを判定する値を取得または設定します。
+        ///     指定したファイルを最近使用したファイル一覧に追加するかどうかを判定する値を取得または設定します。
         /// </summary>
         /// <exception cref="InvalidOperationException">ダイアログ表示中は変更できません。</exception>
         public bool AddToMostRecentlyUsedList
@@ -102,18 +102,18 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// プロパティを編集できるかどうかを判定する値を取得または設定します。
+        ///     プロパティを編集できるかどうかを判定する値を取得または設定します。
         /// </summary>
         public bool AllowPropertyEditing { get; set; }
 
         /// <summary>
-        /// 規定のファイル名を取得または設定します。
+        ///     規定のファイル名を取得または設定します。
         /// </summary>
         public string DefaultFileName { get; set; }
 
         /// <summary>
-        /// ファイル名に追加する拡張子を取得または設定します。
-        /// <c>null</c>または空文字列の場合は、ファイル名に拡張子を追加しません。
+        ///     ファイル名に追加する拡張子を取得または設定します。
+        ///     <c>null</c>または空文字列の場合は、ファイル名に拡張子を追加しません。
         /// </summary>
         public string DefaultFileExtension
         {
@@ -124,24 +124,17 @@ namespace starshipxac.Windows.Shell.Dialogs
             set
             {
                 this.defaultFileExtension = value;
-                if (String.IsNullOrWhiteSpace(this.defaultFileExtension))
-                {
-                    this.AppendExtension = false;
-                }
-                else
-                {
-                    this.AppendExtension = true;
-                }
+                this.AppendExtension = !String.IsNullOrWhiteSpace(this.defaultFileExtension);
             }
         }
 
         /// <summary>
-        /// ファイルダイアログボックスのファイルの種類に表示されるフィルターのコレクションを取得します。
+        ///     ファイルダイアログボックスのファイルの種類に表示されるフィルターのコレクションを取得します。
         /// </summary>
         public FileTypeFilterCollection FileTypeFilters { get; }
 
         /// <summary>
-        /// ファイルダイアログボックスで現在選択されているフィルターを取得します。
+        ///     ファイルダイアログボックスで現在選択されているフィルターを取得します。
         /// </summary>
         public FileTypeFilter SelectedFileTypeFilter
         {
@@ -160,7 +153,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ファイルダイアログボックスで現在選択されているフィルターのインデックスを取得します。
+        ///     ファイルダイアログボックスで現在選択されているフィルターのインデックスを取得します。
         /// </summary>
         public int SelectedFileTypeFilterIndex
         {
@@ -179,7 +172,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ユーザーが指定したファイル情報を取得します。
+        ///     ユーザーが指定したファイル情報を取得します。
         /// </summary>
         /// <returns></returns>
         public ShellFile GetShellFile()
@@ -195,7 +188,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 上書き保存ダイアログの初期ファイル情報を設定します。
+        ///     上書き保存ダイアログの初期ファイル情報を設定します。
         /// </summary>
         /// <param name="shellFile">初期ファイル情報。</param>
         public void SetSaveAsFile(ShellFile shellFile)
@@ -230,7 +223,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ネイティブダイアログに設定を適用します。
+        ///     ネイティブダイアログに設定を適用します。
         /// </summary>
         protected override void SetNativeSettings()
         {
@@ -256,7 +249,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ファイルダイアログにフィルターを設定します。
+        ///     ファイルダイアログにフィルターを設定します。
         /// </summary>
         private void SetFilter()
         {

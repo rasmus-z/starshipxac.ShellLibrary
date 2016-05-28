@@ -3,22 +3,22 @@
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// ダイアログの実行結果を定義します。
+    ///     ダイアログの実行結果を定義します。
     /// </summary>
     public enum FileDialogResult
     {
         /// <summary>
-        /// 未実行状態。
+        ///     未実行状態。
         /// </summary>
         None = 0,
 
         /// <summary>
-        /// OKまたは保存。
+        ///     OKまたは保存。
         /// </summary>
         Ok = 1,
 
         /// <summary>
-        /// キャンセル。
+        ///     キャンセル。
         /// </summary>
         Cancel = 2,
     }

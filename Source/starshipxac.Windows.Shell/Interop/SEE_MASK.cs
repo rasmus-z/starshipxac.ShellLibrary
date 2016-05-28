@@ -1,12 +1,14 @@
 ﻿using System;
 
+// ReSharper disable InconsistentNaming
+
 namespace starshipxac.Windows.Shell.Interop
 {
     /// <summary>
-    /// <c>SHELLEXECUTEINFO</c>マスクを定義します。
+    ///     <c>SHELLEXECUTEINFO</c>マスクを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb759784(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb759784(v=vs.85).aspx
     /// </remarks>
     internal static class SEE_MASK
     {

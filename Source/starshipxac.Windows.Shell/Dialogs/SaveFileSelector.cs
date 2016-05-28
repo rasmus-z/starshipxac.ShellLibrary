@@ -6,7 +6,7 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    /// 保存するファイルを選択するダイアログを表示します。
+    ///     保存するファイルを選択するダイアログを表示します。
     /// </summary>
     public sealed class SaveFileSelector : FileSaveDialogBase
     {
@@ -15,15 +15,15 @@ namespace starshipxac.Windows.Shell.Dialogs
         private bool isExpandedMode = false;
 
         /// <summary>
-        /// <see cref="SaveFileSelector"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="SaveFileSelector" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         public SaveFileSelector()
         {
         }
 
         /// <summary>
-        /// ダイアログのタイトルを指定して、
-        /// <see cref="SaveFileSelector"/>クラスの新しいインスタンスを初期化します。
+        ///     ダイアログのタイトルを指定して、
+        ///     <see cref="SaveFileSelector" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="title">ダイアログのタイトル。</param>
         public SaveFileSelector(string title)
@@ -32,8 +32,8 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ユーザーが、すでに存在するファイルを指定した場合に、
-        /// 警告メッセージを表示するかどうかを示す値を取得または設定します。
+        ///     ユーザーが、すでに存在するファイルを指定した場合に、
+        ///     警告メッセージを表示するかどうかを示す値を取得または設定します。
         /// </summary>
         public bool OverwritePrompt
         {
@@ -49,8 +49,8 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ユーザーが、存在しないファイルを指定した場合に、
-        /// ファイルを作成することを確認するメッセージを表示するかどうかを示す値を取得または設定します。
+        ///     ユーザーが、存在しないファイルを指定した場合に、
+        ///     ファイルを作成することを確認するメッセージを表示するかどうかを示す値を取得または設定します。
         /// </summary>
         public bool CreatePrompt
         {
@@ -66,7 +66,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// ダイアログを拡張モードで表示するかどうかを示す値を取得または設定します。
+        ///     ダイアログを拡張モードで表示するかどうかを示す値を取得または設定します。
         /// </summary>
         public bool IsExpandedMode
         {
@@ -82,10 +82,10 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        /// 保存するファイルを選択するダイアログを表示します。
+        ///     保存するファイルを選択するダイアログを表示します。
         /// </summary>
         /// <returns>保存するファイル。</returns>
-        public async Task<ShellFile> SelectSaveFileAsync()
+        public async Task<ShellFile> SelectSingleFileAsync()
         {
             ShellFile result = null;
 
@@ -121,7 +121,7 @@ namespace starshipxac.Windows.Shell.Dialogs
             return result;
         }
 
-        private async Task InvokeAsync(Action action)
+        private static async Task InvokeAsync(Action action)
         {
             if (Application.Current.Dispatcher.CheckAccess())
             {
