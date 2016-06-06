@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Windows.Dialogs.Interop
 {
     [StructLayout(LayoutKind.Explicit, CharSet = CharSet.Unicode)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct TASKDIALOGCONFIG_ICON
     {
         internal TASKDIALOGCONFIG_ICON(int iconHandle)
@@ -19,7 +21,7 @@ namespace starshipxac.Windows.Dialogs.Interop
         public readonly IntPtr spacer;
 
         /// <summary>
-        /// アイコンハンドルを取得します。
+        ///     アイコンハンドルを取得します。
         /// </summary>
         public int IconHandle
         {

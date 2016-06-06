@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Interop.KnownFolder
 {
     /// <summary>
-    /// 標準フォルダー定義フラグを定義します。
+    ///     標準フォルダー定義フラグを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762513(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762513(v=vs.85).aspx
     /// </remarks>
     [Flags]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum KF_DEFINITION_FLAGS : uint
     {
         KFDF_LOCAL_REDIRECT_ONLY = 0x2,

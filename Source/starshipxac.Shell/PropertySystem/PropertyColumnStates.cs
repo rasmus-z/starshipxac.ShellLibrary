@@ -4,33 +4,33 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    /// プロパティの表示方法を定義します。
+    ///     プロパティの表示方法を定義します。
     /// </summary>
     [Flags]
     public enum PropertyColumnStates : uint
     {
         /// <summary>
-        /// 規定値。
+        ///     規定値。
         /// </summary>
         Default = SHCOLSTATE.SHCOLSTATE_DEFAULT,
 
         /// <summary>
-        /// 文字列を表示します。
+        ///     文字列を表示します。
         /// </summary>
         StringType = SHCOLSTATE.SHCOLSTATE_TYPE_STR,
 
         /// <summary>
-        /// 整数値を表示します。
+        ///     整数値を表示します。
         /// </summary>
         IntegerType = SHCOLSTATE.SHCOLSTATE_TYPE_INT,
 
         /// <summary>
-        /// 時刻を表示します。
+        ///     時刻を表示します。
         /// </summary>
         DateType = SHCOLSTATE.SHCOLSTATE_TYPE_DATE,
 
         /// <summary>
-        /// <c>StringType</c>, <c>IntegerType</c>および<c>DateType</c>をマスクします。
+        ///     <c>StringType</c>, <c>IntegerType</c>および<c>DateType</c>をマスクします。
         /// </summary>
         TypeMask = SHCOLSTATE.SHCOLSTATE_TYPEMASK,
 

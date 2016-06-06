@@ -9,7 +9,7 @@ using starshipxac.Windows.Dialogs.Interop;
 namespace starshipxac.Windows.Dialogs.Internal
 {
     /// <summary>
-    /// タスクダイアログネイティブコントロールのメモリを保持します。
+    ///     タスクダイアログネイティブコントロールのメモリを保持します。
     /// </summary>
     internal class TaskDialogControlCollectionInternal<TControl> : IDisposable, IEnumerable<TControl>
         where TControl : TaskDialogButtonBase
@@ -17,8 +17,8 @@ namespace starshipxac.Windows.Dialogs.Internal
         private bool disposed = false;
 
         /// <summary>
-        /// ネイティブコントロールハンドルを指定して、
-        /// <see cref="TaskDialogControlCollectionInternal&lt;TControl&gt;"/>クラスの新しいインスタンスを初期化します。
+        ///     ネイティブコントロールハンドルを指定して、
+        ///     <see cref="TaskDialogControlCollectionInternal&lt;TControl&gt;" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         public TaskDialogControlCollectionInternal(IReadOnlyList<TControl> controls)
         {
@@ -56,22 +56,16 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ネイティブコントロールハンドルを取得します。
+        ///     ネイティブコントロールハンドルを取得します。
         /// </summary>
         internal IntPtr Handle { get; private set; }
 
-        internal IReadOnlyList<TControl> Controls { get; private set; }
+        internal IReadOnlyList<TControl> Controls { get; }
 
-        public int Count
-        {
-            get
-            {
-                return this.Controls.Count;
-            }
-        }
+        public int Count => this.Controls.Count;
 
         /// <summary>
-        /// ネイティブコントロールハンドルを解放します。
+        ///     ネイティブコントロールハンドルを解放します。
         /// </summary>
         public void Release()
         {
@@ -93,7 +87,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ネイティブボタン配列を作成します。
+        ///     ネイティブボタン配列を作成します。
         /// </summary>
         /// <param name="controls">ボタンコントロールのコレクション。</param>
         /// <returns>作成したネイティブボタン配列。</returns>
@@ -113,7 +107,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ネイティブボタン配列メモリを確保します。
+        ///     ネイティブボタン配列メモリを確保します。
         /// </summary>
         /// <param name="nativeControls">ネイティブボタン配列。</param>
         /// <returns>確保したネイティブボタン配列メモリ。</returns>
@@ -121,7 +115,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         {
             Contract.Requires(nativeControls != null);
 
-            var result = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(TASKDIALOG_BUTTON)) * nativeControls.Length);
+            var result = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(TASKDIALOG_BUTTON))*nativeControls.Length);
 
             var pos = result;
             foreach (var button in nativeControls)

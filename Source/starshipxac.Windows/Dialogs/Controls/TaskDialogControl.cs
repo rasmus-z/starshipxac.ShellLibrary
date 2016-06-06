@@ -4,12 +4,12 @@ using System.Diagnostics.Contracts;
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// タスクダイアログコントロール基底クラスを定義します。
+    ///     タスクダイアログコントロール基底クラスを定義します。
     /// </summary>
     public abstract class TaskDialogControl : DialogControl
     {
         /// <summary>
-        /// コントロール名を指定して、<see cref="TaskDialogControl"/>クラスの新しいインスタンスを初期化します。
+        ///     コントロール名を指定して、<see cref="TaskDialogControl" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="name">コントロール名。</param>
         protected TaskDialogControl(string name)

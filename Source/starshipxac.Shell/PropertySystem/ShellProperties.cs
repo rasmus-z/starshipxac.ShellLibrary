@@ -18,7 +18,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// ファイナライザー。
+        ///     ファイナライザー。
         /// </summary>
         ~ShellProperties()
         {
@@ -26,7 +26,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellProperties"/>によって使用されているすべてのリソースを解放します。
+        ///     <see cref="ShellProperties" />によって使用されているすべてのリソースを解放します。
         /// </summary>
         public void Dispose()
         {
@@ -35,19 +35,17 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellProperties"/>によって使用されているすべてのリソースを解放し、
-        /// オプションで、マネージリソースも解放します。
+        ///     <see cref="ShellProperties" />によって使用されているすべてのリソースを解放し、
+        ///     オプションで、マネージリソースも解放します。
         /// </summary>
         /// <param name="disposing">
-        /// マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        /// アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
+        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
-                this.disposed = true;
-
                 if (disposing)
                 {
                     if (this.propertyCollection != null)
@@ -56,6 +54,8 @@ namespace starshipxac.Shell.PropertySystem
                         this.propertyCollection = null;
                     }
                 }
+
+                this.disposed = true;
             }
         }
 
@@ -65,10 +65,10 @@ namespace starshipxac.Shell.PropertySystem
             Contract.Invariant(this.ShellObject != null);
         }
 
-        private ShellObject ShellObject { get; set; }
+        private ShellObject ShellObject { get; }
 
         /// <summary>
-        /// プロパティコレクションを取得します。
+        ///     プロパティコレクションを取得します。
         /// </summary>
         public ShellPropertyCollection DefaultPropertyCollection
         {

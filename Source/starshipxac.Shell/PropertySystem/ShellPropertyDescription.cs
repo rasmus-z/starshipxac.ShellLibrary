@@ -12,7 +12,7 @@ using starshipxac.Shell.Search.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    /// プロパティの定義内容を取得します。
+    ///     プロパティの定義内容を取得します。
     /// </summary>
     public class ShellPropertyDescription : IDisposable
     {
@@ -49,13 +49,13 @@ namespace starshipxac.Shell.PropertySystem
             if (HRESULT.Failed(hr))
             {
                 throw new ShellException(
-                    String.Format(ErrorMessages.ShellPropertyDescriptionError, propertyKey.ToString()),
+                    String.Format(ErrorMessages.ShellPropertyDescriptionError, propertyKey),
                     hr);
             }
         }
 
         /// <summary>
-        /// ファイナライザー。
+        ///     ファイナライザー。
         /// </summary>
         ~ShellPropertyDescription()
         {
@@ -63,7 +63,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyDescription"/>によって使用されているすべてのリソースを解放します。
+        ///     <see cref="ShellPropertyDescription" />によって使用されているすべてのリソースを解放します。
         /// </summary>
         public void Dispose()
         {
@@ -72,12 +72,12 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyDescription"/>によって使用されているすべてのリソースを解放し、
-        /// オプションでマネージリソースも解放します。
+        ///     <see cref="ShellPropertyDescription" />によって使用されているすべてのリソースを解放し、
+        ///     オプションでマネージリソースも解放します。
         /// </summary>
         /// <param name="disposing">
-        /// マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        /// アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
+        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
@@ -95,12 +95,12 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// プロパティ定義を取得します。
+        ///     プロパティ定義を取得します。
         /// </summary>
         internal IPropertyDescription PropertyDescriptionNative => this.propertyDescriptionNative;
 
         /// <summary>
-        /// プロパティの標準的な名前を取得します。
+        ///     プロパティの標準的な名前を取得します。
         /// </summary>
         public string CanonicalName
         {
@@ -120,7 +120,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// プロパティ表示名を取得します。
+        ///     プロパティ表示名を取得します。
         /// </summary>
         public string DisplayName
         {
@@ -142,7 +142,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// エディットコントロールで使用される文字列を取得します。
+        ///     エディットコントロールで使用される文字列を取得します。
         /// </summary>
         public string EditInvitation
         {
@@ -164,7 +164,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="VarEnum"/>を取得します。
+        ///     <see cref="VarEnum" />を取得します。
         /// </summary>
         public VarEnum VarEnumType
         {
@@ -184,7 +184,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// プロパティ値の型を取得します。
+        ///     プロパティ値の型を取得します。
         /// </summary>
         public Type ValueType
         {
@@ -199,7 +199,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// プロパティ表示種別を取得します。
+        ///     プロパティ表示種別を取得します。
         /// </summary>
         public PropertyDisplayTypes DisplayType
         {
@@ -219,7 +219,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// カラムの幅を取得します。
+        ///     カラムの幅を取得します。
         /// </summary>
         public uint DefaultColumWidth
         {
@@ -239,7 +239,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// 複数アイテムの表示種別を取得します。
+        ///     複数アイテムの表示種別を取得します。
         /// </summary>
         public PropertyAggregationTypes AggregationTypes
         {
@@ -259,7 +259,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// プロパティ種別のコレクションを取得します。
+        ///     プロパティ種別のコレクションを取得します。
         /// </summary>
         public ReadOnlyCollection<ShellPropertyEnumType> PropertyEnumTypes
         {
@@ -294,7 +294,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// カラム状態を取得します。
+        ///     カラム状態を取得します。
         /// </summary>
         public PropertyColumnStates ColumnState
         {

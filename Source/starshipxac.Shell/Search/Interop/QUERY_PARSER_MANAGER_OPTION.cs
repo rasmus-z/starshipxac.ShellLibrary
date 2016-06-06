@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Search.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/aa965700(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/aa965700(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum QUERY_PARSER_MANAGER_OPTION
     {
         QPMO_SCHEMA_BINARY_NAME = 0,

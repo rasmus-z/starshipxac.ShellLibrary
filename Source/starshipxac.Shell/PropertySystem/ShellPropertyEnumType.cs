@@ -5,7 +5,6 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    /// 
     /// </summary>
     public class ShellPropertyEnumType
     {
@@ -25,7 +24,6 @@ namespace starshipxac.Shell.PropertySystem
         private IPropertyEnumType PropertyEnumTypeNative { get; }
 
         /// <summary>
-        /// 
         /// </summary>
         public string DisplayText
         {
@@ -40,7 +38,6 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// 
         /// </summary>
         internal PROPENUMTYPE EnumType
         {
@@ -57,7 +54,6 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public object RangeMinValue
         {
@@ -76,7 +72,6 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public object RangeSetValue
         {
@@ -95,7 +90,6 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public object RangeValue
         {

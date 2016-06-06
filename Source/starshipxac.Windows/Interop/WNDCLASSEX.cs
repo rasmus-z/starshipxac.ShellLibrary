@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Windows.Interop
 {
     /// <summary>
-    /// ウィンドウクラス構造体を定義します。
+    ///     ウィンドウクラス構造体を定義します。
     /// </summary>
     /// <remarks>
-    /// <c>http://msdn.microsoft.com/en-us/library/windows/desktop/ms633577(v=vs.85).aspx</c>
+    ///     <c>http://msdn.microsoft.com/en-us/library/windows/desktop/ms633577(v=vs.85).aspx</c>
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct WNDCLASSEX
     {
         public static WNDCLASSEX Create()

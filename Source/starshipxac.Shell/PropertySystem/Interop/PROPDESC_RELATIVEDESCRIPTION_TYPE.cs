@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762526(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762526(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum PROPDESC_RELATIVEDESCRIPTION_TYPE
     {
         PDRDT_GENERAL = 0,

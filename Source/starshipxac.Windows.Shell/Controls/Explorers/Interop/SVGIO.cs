@@ -1,8 +1,9 @@
 ﻿using System;
-// ReSharper disable InconsistentNaming
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Shell.Controls.Explorers.Interop
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum SVGIO
     {
         SVGIO_BACKGROUND = 0x00000000,

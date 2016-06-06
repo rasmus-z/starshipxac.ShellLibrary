@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// ストレージ作成モードを定義します。
+    ///     ストレージ作成モードを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/aa380337(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/aa380337(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class STGM
     {
         // Access

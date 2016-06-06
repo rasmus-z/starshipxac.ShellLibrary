@@ -5,7 +5,7 @@ using starshipxac.Windows.Properties;
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// タスクダイアログのプログレスバーを定義します。
+    ///     タスクダイアログのプログレスバーを定義します。
     /// </summary>
     public class TaskDialogProgressBar : TaskDialogProgressBarBase
     {
@@ -15,8 +15,8 @@ namespace starshipxac.Windows.Dialogs.Controls
         private int value;
 
         /// <summary>
-        /// コントロール名を指定して、
-        /// <see cref="TaskDialogProgressBar"/>クラスの新しいインスタンスを初期化します。
+        ///     コントロール名を指定して、
+        ///     <see cref="TaskDialogProgressBar" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="name">コントロール名。</param>
         public TaskDialogProgressBar(string name)
@@ -28,7 +28,7 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// プログレスバーの状態を取得または設定します。
+        ///     プログレスバーの状態を取得または設定します。
         /// </summary>
         public TaskDialogProgressBarState State
         {
@@ -39,16 +39,13 @@ namespace starshipxac.Windows.Dialogs.Controls
             set
             {
                 this.state = value;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetProgressBarState(this, this.state);
-                }
+                this.Dialog?.SetProgressBarState(this, this.state);
             }
         }
 
         /// <summary>
-        /// プログレスバーの最小値を取得または設定します。
-        /// </summary>                
+        ///     プログレスバーの最小値を取得または設定します。
+        /// </summary>
         public int Minimum
         {
             get
@@ -63,15 +60,12 @@ namespace starshipxac.Windows.Dialogs.Controls
                     DialogErrorMessages.TaskDialogProgressBarMinValueLessThanMax);
 
                 this.minimum = value;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetProgressBarRange(this, this.minimum, this.maximum);
-                }
+                this.Dialog?.SetProgressBarRange(this, this.minimum, this.maximum);
             }
         }
 
         /// <summary>
-        /// プログレスバーの最大値を取得または設定します。
+        ///     プログレスバーの最大値を取得または設定します。
         /// </summary>
         public int Maximum
         {
@@ -85,15 +79,12 @@ namespace starshipxac.Windows.Dialogs.Controls
                     DialogErrorMessages.TaskDialogProgressBarMaxValueGreaterThanMin);
 
                 this.maximum = value;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetProgressBarRange(this, this.minimum, this.maximum);
-                }
+                this.Dialog?.SetProgressBarRange(this, this.minimum, this.maximum);
             }
         }
 
         /// <summary>
-        /// プログレスバーの現在の値を取得または設定します。
+        ///     プログレスバーの現在の値を取得または設定します。
         /// </summary>
         public int Value
         {
@@ -107,26 +98,17 @@ namespace starshipxac.Windows.Dialogs.Controls
                     DialogErrorMessages.TaskDialogProgressBarValueInRange);
 
                 this.value = value;
-                if (this.Dialog != null)
-                {
-                    this.Dialog.SetProgressBarPosition(this, this.value);
-                }
+                this.Dialog?.SetProgressBarPosition(this, this.value);
             }
         }
 
         /// <summary>
-        /// プログレスバーの値が最小値と最大値の間にあるかどうかを検証します。
+        ///     プログレスバーの値が最小値と最大値の間にあるかどうかを検証します。
         /// </summary>
-        internal bool HasValidValues
-        {
-            get
-            {
-                return this.minimum <= this.value && this.value <= this.maximum;
-            }
-        }
+        internal bool HasValidValues => this.minimum <= this.value && this.value <= this.maximum;
 
         /// <summary>
-        /// プログレスバーの値を最小値に設定します。
+        ///     プログレスバーの値を最小値に設定します。
         /// </summary>
         protected internal override void Reset()
         {

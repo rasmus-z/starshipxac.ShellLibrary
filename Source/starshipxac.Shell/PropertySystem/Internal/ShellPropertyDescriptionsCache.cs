@@ -5,19 +5,19 @@ using System.Diagnostics.Contracts;
 namespace starshipxac.Shell.PropertySystem.Internal
 {
     /// <summary>
-    /// <see cref="ShellPropertyDescription"/>のキャッシュを保持します。
+    ///     <see cref="ShellPropertyDescription" />のキャッシュを保持します。
     /// </summary>
     internal class ShellPropertyDescriptionsCache
     {
-        private static readonly ConcurrentDictionary<ShellPropertyKey, ShellPropertyDescription> cache;
+        private static readonly ConcurrentDictionary<ShellPropertyKey, ShellPropertyDescription> Cache;
 
         static ShellPropertyDescriptionsCache()
         {
-            cache = new ConcurrentDictionary<ShellPropertyKey, ShellPropertyDescription>();
+            Cache = new ConcurrentDictionary<ShellPropertyKey, ShellPropertyDescription>();
         }
 
         /// <summary>
-        /// 指定したプロパティキーに一致する<see cref="ShellPropertyDescription"/>を取得します。
+        ///     指定したプロパティキーに一致する<see cref="ShellPropertyDescription" />を取得します。
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <returns></returns>
@@ -25,8 +25,8 @@ namespace starshipxac.Shell.PropertySystem.Internal
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
 
-            return cache.GetOrAdd(propertyKey,
-                (propKey) => new ShellPropertyDescription(propKey.PropertyKeyNative));
+            return Cache.GetOrAdd(propertyKey,
+                propKey => new ShellPropertyDescription(propKey.PropertyKeyNative));
         }
     }
 }

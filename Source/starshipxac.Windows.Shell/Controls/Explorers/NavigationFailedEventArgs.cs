@@ -10,6 +10,6 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
             this.FailedLocation = failedLocation;
         }
 
-        public ShellObject FailedLocation { get; private set; }
+        public ShellObject FailedLocation { get; }
     }
 }

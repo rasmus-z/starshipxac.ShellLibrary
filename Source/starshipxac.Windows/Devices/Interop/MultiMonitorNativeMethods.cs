@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using starshipxac.Windows.Interop;
 
 namespace starshipxac.Windows.Devices.Interop
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class MultiMonitorNativeMethods
     {
         internal const int CCHDEVICENAME = 32;

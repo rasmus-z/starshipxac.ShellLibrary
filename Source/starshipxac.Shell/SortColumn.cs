@@ -26,17 +26,24 @@ namespace starshipxac.Shell
 
         public static bool operator ==(SortColumn col1, SortColumn col2)
         {
-            Contract.Requires<ArgumentNullException>(col1 != null);
-            Contract.Requires<ArgumentNullException>(col2 != null);
+            if (ReferenceEquals(col1, col2))
+            {
+                return true;
+            }
+            if (ReferenceEquals(col1, null))
+            {
+                return false;
+            }
+            if (ReferenceEquals(col2, null))
+            {
+                return false;
+            }
 
             return (col1.Direction == col2.Direction) && (col1.PropertyKey == col2.PropertyKey);
         }
 
         public static bool operator !=(SortColumn col1, SortColumn col2)
         {
-            Contract.Requires<ArgumentNullException>(col1 != null);
-            Contract.Requires<ArgumentNullException>(col2 != null);
-
             return !(col1 == col2);
         }
 

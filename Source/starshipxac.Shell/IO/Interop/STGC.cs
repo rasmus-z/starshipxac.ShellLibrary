@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.IO.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/aa380320(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/aa380320(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum STGC
     {
         STGC_DEFAULT = 0,

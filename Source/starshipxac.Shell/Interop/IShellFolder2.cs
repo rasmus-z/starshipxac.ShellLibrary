@@ -7,10 +7,10 @@ namespace starshipxac.Shell.Interop
 {
 #pragma warning disable 108,114
     /// <summary>
-    /// シェルフォルダーインターフェイス2を定義します。
+    ///     シェルフォルダーインターフェイス2を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb775055(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb775055(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(ShellIID.IShellFolder2)]

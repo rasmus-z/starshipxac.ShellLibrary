@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Windows.Interop
 {
     /// <summary>
-    /// <c>RECT</c>構造体を定義します。
+    ///     <c>RECT</c>構造体を定義します。
     /// </summary>
     /// <remarks>
-    /// <code>http://msdn.microsoft.com/en-us/library/windows/desktop/dd162897(v=vs.85).aspx</code>
+    ///     <code>http://msdn.microsoft.com/en-us/library/windows/desktop/dd162897(v=vs.85).aspx</code>
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct RECT
     {
         public RECT(int left, int top, int right, int bottom)

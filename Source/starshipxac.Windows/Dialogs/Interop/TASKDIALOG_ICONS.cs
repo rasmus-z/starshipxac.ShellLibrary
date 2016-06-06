@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Dialogs.Interop
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum TASKDIALOG_ICONS
     {
         TD_WARNING_ICON = 65535,

@@ -7,10 +7,9 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Windows.Shell.Dialogs.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb775688(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb775688(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(ShellIID.IFileSaveDialog)]

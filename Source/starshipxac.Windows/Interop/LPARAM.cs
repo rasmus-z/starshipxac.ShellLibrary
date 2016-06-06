@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Windows.Interop
 {
     /// <summary>
-    /// <c>LPARAM</c>を定義します。
+    ///     <c>LPARAM</c>を定義します。
     /// </summary>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class LPARAM
     {
         public static IntPtr MakeLPARAM(int low, int high)

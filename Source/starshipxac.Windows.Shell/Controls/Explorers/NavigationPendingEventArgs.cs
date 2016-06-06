@@ -10,7 +10,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
             this.PendingLocation = pendingLocation;
         }
 
-        public ShellObject PendingLocation { get; private set; }
+        public ShellObject PendingLocation { get; }
 
         public bool Cancel { get; set; }
     }

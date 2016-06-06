@@ -8,7 +8,7 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    /// プロパティストアを操作します。
+    ///     プロパティストアを操作します。
     /// </summary>
     public class ShellPropertyStore : IDisposable
     {
@@ -24,7 +24,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// ファイナライザー。
+        ///     ファイナライザー。
         /// </summary>
         ~ShellPropertyStore()
         {
@@ -32,7 +32,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyStore"/>によって使用されているすべてのリソースを解放します。
+        ///     <see cref="ShellPropertyStore" />によって使用されているすべてのリソースを解放します。
         /// </summary>
         public void Dispose()
         {
@@ -41,12 +41,12 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyStore"/>によって使用されているすべてのリソースを解放し、
-        /// オプションでマネージリソースも解放します。
+        ///     <see cref="ShellPropertyStore" />によって使用されているすべてのリソースを解放し、
+        ///     オプションでマネージリソースも解放します。
         /// </summary>
         /// <param name="disposing">
-        /// マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        /// アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
+        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
@@ -60,7 +60,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyStore"/>を作成します。
+        ///     <see cref="ShellPropertyStore" />を作成します。
         /// </summary>
         /// <param name="shellObject"></param>
         /// <returns></returns>
@@ -83,7 +83,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// 書き込み可能な<see cref="ShellPropertyStore"/>を作成します。
+        ///     書き込み可能な<see cref="ShellPropertyStore" />を作成します。
         /// </summary>
         /// <param name="shellObject"></param>
         /// <returns></returns>
@@ -133,7 +133,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// プロパティの値を取得します。
+        ///     プロパティの値を取得します。
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <returns></returns>
@@ -170,7 +170,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// プロパティに値を設定します。
+        ///     プロパティに値を設定します。
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <param name="propVar"></param>

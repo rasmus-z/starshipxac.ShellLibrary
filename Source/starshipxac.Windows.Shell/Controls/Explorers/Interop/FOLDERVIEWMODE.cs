@@ -1,14 +1,14 @@
 ﻿using System;
-// ReSharper disable InconsistentNaming
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Shell.Controls.Explorers.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762510(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762510(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum FOLDERVIEWMODE
     {
         FVM_AUTO = -1,

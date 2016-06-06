@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.Interop.KnownFolder
 {
     /// <summary>
-    /// 標準フォルダーインターフェイスを定義します。
+    ///     標準フォルダーインターフェイスを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761768(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761768(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(ShellIID.IKnownFolder)]

@@ -7,10 +7,10 @@ using starshipxac.Shell.Search.Interop;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    /// <c>IPropertyDescription</c>インターフェイスを定義します。
+    ///     <c>IPropertyDescription</c>インターフェイスを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761561(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761561(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(PropertySystemIID.IPropertyDescription)]

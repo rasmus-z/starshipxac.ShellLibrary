@@ -7,18 +7,21 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
     {
         private string text;
 
-        public FileDialogTextBox(string name)
-            : this(name, String.Empty)
+        /// <summary>
+        ///     <see cref="FileDialogTextBox"/>クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="text"></param>
+        public FileDialogTextBox(string text)
+            : this(String.Empty, text)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 
         public FileDialogTextBox(string name, string text)
             : base(name)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
+            Contract.Requires<ArgumentNullException>(name != null);
 
-            this.text = text;
+            this.text = text ?? String.Empty;
         }
 
         public override string Text

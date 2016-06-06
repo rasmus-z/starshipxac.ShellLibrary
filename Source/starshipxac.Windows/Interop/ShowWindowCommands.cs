@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// https://msdn.microsoft.com/en-us/library/windows/desktop/ms633548(v=vs.85).aspx
+    ///     https://msdn.microsoft.com/en-us/library/windows/desktop/ms633548(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class ShowWindowCommands
     {
         public const int SW_HIDE = 0;

@@ -7,18 +7,17 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
     {
         private string text;
 
-        public FileDialogLabel(string name)
-            : this(name, String.Empty)
+        public FileDialogLabel(string text)
+            : this(String.Empty, text)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 
         public FileDialogLabel(string name, string text)
             : base(name)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
+            Contract.Requires<ArgumentNullException>(name != null);
 
-            this.text = text;
+            this.text = text ?? String.Empty;
         }
 
         public override string Text
@@ -29,7 +28,6 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
             }
             set
             {
-                ThrowIfNotInitialized();
                 if (this.text == value)
                 {
                     return;

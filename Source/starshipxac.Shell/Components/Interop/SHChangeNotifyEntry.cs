@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.Components.Interop
@@ -10,6 +11,7 @@ namespace starshipxac.Shell.Components.Interop
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb773405(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct SHChangeNotifyEntry
     {
         public IntPtr pidl;

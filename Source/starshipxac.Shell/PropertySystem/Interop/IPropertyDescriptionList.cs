@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    /// <c>IPropertyDescriptionList</c>インターフェイスを定義します。
+    ///     <c>IPropertyDescriptionList</c>インターフェイスを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761511(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761511(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(PropertySystemIID.IPropertyDescriptionList)]

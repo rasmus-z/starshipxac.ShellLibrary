@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// <c>StrFormatByteSizeEx</c>関数で使用するフラグを定義します。
+    ///     <c>StrFormatByteSizeEx</c>関数で使用するフラグを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb892889(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb892889(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum SFBS_FLAGS
     {
         SFBS_FLAGS_ROUND_TO_NEAREST_DISPLAYED_DIGIT = 0x00000001,

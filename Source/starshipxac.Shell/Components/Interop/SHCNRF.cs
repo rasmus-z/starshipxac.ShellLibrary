@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Components.Interop
 {
@@ -8,6 +9,7 @@ namespace starshipxac.Shell.Components.Interop
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762120(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class SHCNRF
     {
         public const int SHCNRF_InterruptLevel = 0x0001;

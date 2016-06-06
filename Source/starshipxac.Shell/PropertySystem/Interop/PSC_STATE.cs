@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    ///プロパティストアキャッシュ状態を定義します。
+    ///     プロパティストアキャッシュ状態を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762531(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762531(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum PSC_STATE
     {
         PSC_NORMAL = 0,

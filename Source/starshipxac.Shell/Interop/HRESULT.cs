@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// <c>HRESULT</c>を定義します。
+    ///     <c>HRESULT</c>を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/cc231198.aspx
+    ///     http://msdn.microsoft.com/en-us/library/cc231198.aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public struct HRESULT
     {
         /// <summary>
-        /// <see cref="HRESULT"/>を初期化します。
+        ///     <see cref="HRESULT" />を初期化します。
         /// </summary>
         /// <param name="hr"><c>HRESULT</c>の値。</param>
         public HRESULT(int hr)
@@ -22,7 +24,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <see cref="HRESULT"/>を初期化します。
+        ///     <see cref="HRESULT" />を初期化します。
         /// </summary>
         /// <param name="hr"><c>HRESULT</c>の値。</param>
         public HRESULT(uint hr)
@@ -32,7 +34,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <see cref="HRESULT"/>を初期化します。
+        ///     <see cref="HRESULT" />を初期化します。
         /// </summary>
         /// <param name="severity"></param>
         /// <param name="facility"></param>
@@ -44,7 +46,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <see cref="HRESULT"/>を作成します。
+        ///     <see cref="HRESULT" />を作成します。
         /// </summary>
         /// <param name="severity"></param>
         /// <param name="facility"></param>
@@ -56,7 +58,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <see cref="HRESULT"/>を作成します。
+        ///     <see cref="HRESULT" />を作成します。
         /// </summary>
         /// <param name="severity"></param>
         /// <param name="facility"></param>
@@ -68,7 +70,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <see cref="HRESULT"/>の値を取得します。
+        ///     <see cref="HRESULT" />の値を取得します。
         /// </summary>
         public int Value { get; }
 
@@ -85,7 +87,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <see cref="HRESULT"/>のコード部分を取得します。
+        ///     <see cref="HRESULT" />のコード部分を取得します。
         /// </summary>
         /// <param name="hresult"></param>
         /// <returns></returns>
@@ -95,7 +97,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 指定した<see cref="HRESULT"/>が成功を示す値かどうかを判定します。
+        ///     指定した<see cref="HRESULT" />が成功を示す値かどうかを判定します。
         /// </summary>
         /// <param name="hresult"></param>
         /// <returns></returns>
@@ -105,7 +107,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 指定した<see cref="HRESULT"/>が成功を示す値かどうかを判定します。
+        ///     指定した<see cref="HRESULT" />が成功を示す値かどうかを判定します。
         /// </summary>
         /// <param name="hresult"></param>
         /// <returns></returns>
@@ -115,7 +117,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 指定した<see cref="HRESULT"/>が失敗を示す値かどうかを判定します。
+        ///     指定した<see cref="HRESULT" />が失敗を示す値かどうかを判定します。
         /// </summary>
         /// <param name="hresult"></param>
         /// <returns></returns>
@@ -125,7 +127,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 指定した<see cref="HRESULT"/>が失敗を示す値かどうかを判定します。
+        ///     指定した<see cref="HRESULT" />が失敗を示す値かどうかを判定します。
         /// </summary>
         /// <param name="hresult"></param>
         /// <returns></returns>
@@ -135,7 +137,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 指定した<see cref="HRESULT"/>が失敗を示す値の場合、例外を送出します。
+        ///     指定した<see cref="HRESULT" />が失敗を示す値の場合、例外を送出します。
         /// </summary>
         /// <param name="hresult"></param>
         public static void ThrowIfFailed(HRESULT hresult)
@@ -147,7 +149,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 指定した<see cref="HRESULT"/>に対応する<see cref="Exception"/>オブジェクトを取得します。
+        ///     指定した<see cref="HRESULT" />に対応する<see cref="Exception" />オブジェクトを取得します。
         /// </summary>
         /// <param name="hresult"></param>
         /// <returns></returns>

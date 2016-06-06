@@ -1,8 +1,9 @@
 ﻿using System;
-// ReSharper disable InconsistentNaming
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Shell.Controls.Explorers.Interop
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class ExplorerBrowserIIDGuid
     {
         internal const string IExplorerBrowser = "DFD3B6B5-C10C-4BE9-85F6-A66969F402F6";

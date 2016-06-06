@@ -6,7 +6,7 @@ using System.Linq;
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// タスクダイアログコントロールのコレクションを保持します。
+    ///     タスクダイアログコントロールのコレクションを保持します。
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public sealed class TaskDialogControlCollection<T> : Collection<T> where T : TaskDialogControl

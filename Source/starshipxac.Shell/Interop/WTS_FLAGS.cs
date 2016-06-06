@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// サムネイルイメージフラグを定義します。
+    ///     サムネイルイメージフラグを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/hh707152(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/hh707152(v=vs.85).aspx
     /// </remarks>
     [Flags]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum WTS_FLAGS
     {
         WTS_NONE = 0,

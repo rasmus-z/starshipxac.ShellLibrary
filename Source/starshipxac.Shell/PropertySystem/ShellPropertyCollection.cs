@@ -9,7 +9,7 @@ using starshipxac.Shell.PropertySystem.Internal;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    /// プロパティのコレクションを定義します。
+    ///     プロパティのコレクションを定義します。
     /// </summary>
     public class ShellPropertyCollection : ReadOnlyCollection<IShellProperty>, IDisposable
     {
@@ -38,7 +38,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// ファイナライザー。
+        ///     ファイナライザー。
         /// </summary>
         ~ShellPropertyCollection()
         {
@@ -46,7 +46,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyCollection"/>によって使用されているすべてのリソースを解放します。
+        ///     <see cref="ShellPropertyCollection" />によって使用されているすべてのリソースを解放します。
         /// </summary>
         public void Dispose()
         {
@@ -55,12 +55,12 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyCollection"/>によって使用されているすべてのリソースを解放し、
-        /// オプションでマネージリソースも解放します。
+        ///     <see cref="ShellPropertyCollection" />によって使用されているすべてのリソースを解放し、
+        ///     オプションでマネージリソースも解放します。
         /// </summary>
         /// <param name="disposing">
-        /// マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        /// アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
+        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
@@ -95,14 +95,9 @@ namespace starshipxac.Shell.PropertySystem
                 var propertyKey = propertyStore.GetAt(i);
                 try
                 {
-                    if (this.ShellObject != null)
-                    {
-                        Items.Add(ShellPropertyFactory.CreateShellProperty(propertyKey, this.ShellObject));
-                    }
-                    else
-                    {
-                        Items.Add(ShellPropertyFactory.CreateShellProperty(propertyKey, this.PropertyStore));
-                    }
+                    Items.Add(this.ShellObject != null
+                        ? ShellPropertyFactory.CreateShellProperty(propertyKey, this.ShellObject)
+                        : ShellPropertyFactory.CreateShellProperty(propertyKey, this.PropertyStore));
                 }
                 catch (Exception e)
                 {

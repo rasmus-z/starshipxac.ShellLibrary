@@ -32,7 +32,7 @@ namespace starshipxac.Shell.Internal
             throw new NotImplementedException();
         }
 
-        public HRESULT GetPropertyStore(int Flags, ref Guid riid, out IntPtr ppvOut)
+        public HRESULT GetPropertyStore(int flags, ref Guid riid, out IntPtr ppvOut)
         {
             throw new NotImplementedException();
         }

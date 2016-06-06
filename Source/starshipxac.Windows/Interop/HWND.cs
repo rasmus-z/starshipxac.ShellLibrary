@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Interop
 {
     /// <summary>
-    /// ウィンドウハンドルを定義します。
+    ///     ウィンドウハンドルを定義します。
     /// </summary>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class HWND
     {
         public static readonly IntPtr Null = IntPtr.Zero;
@@ -17,12 +19,12 @@ namespace starshipxac.Windows.Interop
         public static readonly IntPtr HWND_BROADCAST = (IntPtr)0xffff;
 
         /// <summary>
-        /// メッセージ受信用ウィンドウ
+        ///     メッセージ受信用ウィンドウ
         /// </summary>
         public static readonly IntPtr HWND_MESSAGE = (IntPtr)(-3);
 
         /// <summary>
-        /// デスクトップウィンドウ
+        ///     デスクトップウィンドウ
         /// </summary>
         public static readonly IntPtr HWND_DESKTOP = (IntPtr)0;
     }

@@ -12,25 +12,25 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell.PropertySystem.Internal
 {
     /// <summary>
-    /// <see cref="ShellProperty&lt;T&gt;"/>を作成します。
+    ///     <see cref="ShellProperty&lt;T&gt;" />を作成します。
     /// </summary>
     internal static class ShellPropertyFactory
     {
         /// <summary>
-        /// <c>ShellProperty</c>コンストラクタのキャッシュ。
+        ///     <c>ShellProperty</c>コンストラクタのキャッシュ。
         /// </summary>
         private static readonly ConcurrentDictionary<int, Func<ShellPropertyKey, ShellPropertyDescription, object, IShellProperty>>
-            constructorCache;
+            ConstructorCache;
 
         static ShellPropertyFactory()
         {
-            constructorCache =
+            ConstructorCache =
                 new ConcurrentDictionary<int, Func<ShellPropertyKey, ShellPropertyDescription, object, IShellProperty>>();
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyKey"/>と<see cref="ShellObject"/>を指定して、
-        /// <see cref="ShellProperty&lt;T&gt;"/>のインスタンスを作成します。
+        ///     <see cref="ShellPropertyKey" />と<see cref="ShellObject" />を指定して、
+        ///     <see cref="ShellProperty&lt;T&gt;" />のインスタンスを作成します。
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <param name="shellObject"></param>
@@ -44,8 +44,8 @@ namespace starshipxac.Shell.PropertySystem.Internal
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyKey"/>と<see cref="ShellPropertyStore"/>を指定して、
-        /// <see cref="ShellProperty&lt;T&gt;"/>のインスタンスを作成します。
+        ///     <see cref="ShellPropertyKey" />と<see cref="ShellPropertyStore" />を指定して、
+        ///     <see cref="ShellProperty&lt;T&gt;" />のインスタンスを作成します。
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <param name="propertyStore"></param>
@@ -59,8 +59,8 @@ namespace starshipxac.Shell.PropertySystem.Internal
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyKey"/>と元となるオブジェクトを指定して、
-        /// <see cref="ShellProperty&lt;T&gt;"/>のインスタンスを作成します。
+        ///     <see cref="ShellPropertyKey" />と元となるオブジェクトを指定して、
+        ///     <see cref="ShellProperty&lt;T&gt;" />のインスタンスを作成します。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="propertyKey"></param>
@@ -76,10 +76,10 @@ namespace starshipxac.Shell.PropertySystem.Internal
             var type = typeof(ShellProperty<>).MakeGenericType(VarEnumToSystemType(description.VarEnumType));
             var hash = GetTypeHash(type, sourceType);
 
-            var ctor = constructorCache.GetOrAdd(hash,
+            var ctor = ConstructorCache.GetOrAdd(hash,
                 hashValue =>
                 {
-                    Type[] argTypes = { typeof(ShellPropertyKey), typeof(ShellPropertyDescription), sourceType };
+                    Type[] argTypes = {typeof(ShellPropertyKey), typeof(ShellPropertyDescription), sourceType};
                     return CreateConstructorExpress(type, argTypes);
                 });
 
@@ -87,15 +87,15 @@ namespace starshipxac.Shell.PropertySystem.Internal
         }
 
         /// <summary>
-        /// <see cref="VarEnum"/>を対応する .NETの型に変換します。
+        ///     <see cref="VarEnum" />を対応する .NETの型に変換します。
         /// </summary>
-        /// <param name="VarEnumType"><see cref="VarEnum"/>。</param>
-        /// <returns>.NETの型を表す<see cref="Type"/>。</returns>
+        /// <param name="varEnumType"><see cref="VarEnum" />。</param>
+        /// <returns>.NETの型を表す<see cref="Type" />。</returns>
         [Pure]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        internal static Type VarEnumToSystemType(VarEnum VarEnumType)
+        internal static Type VarEnumToSystemType(VarEnum varEnumType)
         {
-            switch (VarEnumType)
+            switch (varEnumType)
             {
                 case (VarEnum.VT_EMPTY):
                 case (VarEnum.VT_NULL):
@@ -175,8 +175,8 @@ namespace starshipxac.Shell.PropertySystem.Internal
             if (ctorInfo == null)
             {
                 throw new ArgumentException(
-                    String.Format(ErrorMessages.ShellPropertyFactoryConstructorNotFound, argTypes.ToString()),
-                    "type");
+                    String.Format(ErrorMessages.ShellPropertyFactoryConstructorNotFound, argTypes),
+                    nameof(type));
             }
 
             var propertyKey = Expression.Parameter(argTypes[0], "propertyKey");
@@ -196,7 +196,7 @@ namespace starshipxac.Shell.PropertySystem.Internal
 
         private static int GetTypeHash(IEnumerable<Type> types)
         {
-            return types.Aggregate(0, (current, type) => current * 31 + type.GetHashCode());
+            return types.Aggregate(0, (current, type) => current*31 + type.GetHashCode());
         }
     }
 }

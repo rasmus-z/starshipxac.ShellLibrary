@@ -5,24 +5,24 @@ using starshipxac.Windows.Dialogs.Controls;
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// ダイアログコントロールホストのインターフェイスを定義します。
+    ///     ダイアログコントロールホストのインターフェイスを定義します。
     /// </summary>
     [ContractClass(typeof(DialogControlHostContract))]
     public interface IDialogControlHost
     {
         /// <summary>
-        /// コレクションの変更が許可されているかどうかを判定します。
+        ///     コレクションの変更が許可されているかどうかを判定します。
         /// </summary>
         /// <returns>コレクションの変更が許可されている場合は<c>true</c>。</returns>
         bool IsCollectionChangeAllowed();
 
         /// <summary>
-        /// コレクションの変更を適用します。
+        ///     コレクションの変更を適用します。
         /// </summary>
         void ApplyCollectionChanged();
 
         /// <summary>
-        /// プロパティ値の変更が許可されているかどうかを判定します。
+        ///     プロパティ値の変更が許可されているかどうかを判定します。
         /// </summary>
         /// <param name="propertyName">判定するプロパティ名。</param>
         /// <param name="control">判定するコントロール。</param>
@@ -30,7 +30,7 @@ namespace starshipxac.Windows.Dialogs
         bool IsControlPropertyChangeAllowed(string propertyName, DialogControl control);
 
         /// <summary>
-        /// プロパティ値の変更を適用します。
+        ///     プロパティ値の変更を適用します。
         /// </summary>
         /// <param name="propertyName">プロパティ名。</param>
         /// <param name="control">コントロール。</param>

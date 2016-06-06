@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -6,6 +7,7 @@ namespace starshipxac.Shell.Interop.KnownFolder
 {
     [ComImport]
     [Guid(ShellCLSID.KnownFolderManager)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal class KnownFolderManager : IKnownFolderManager
     {
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]

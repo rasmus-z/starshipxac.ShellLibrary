@@ -7,10 +7,9 @@ using starshipxac.Shell.Runtime.Interop;
 namespace starshipxac.Shell.Search.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb231383(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb231383(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(SearchIID.IConditionFactory)]
@@ -38,11 +37,11 @@ namespace starshipxac.Shell.Search.Interop
         [PreserveSig]
         HRESULT Resolve(
             /* 
-			[In] ICondition pc,
-			[In] STRUCTURED_QUERY_RESOLVE_OPTION sqro,
-			[In] ref SYSTEMTIME pstReferenceTime,
-			[Out] out ICondition ppcResolved
-			*/
+            [In] ICondition pc,
+            [In] STRUCTURED_QUERY_RESOLVE_OPTION sqro,
+            [In] ref SYSTEMTIME pstReferenceTime,
+            [Out] out ICondition ppcResolved
+            */
             );
     }
 }

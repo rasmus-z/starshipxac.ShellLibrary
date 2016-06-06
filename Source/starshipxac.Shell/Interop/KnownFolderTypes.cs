@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Interop
 {
@@ -8,6 +9,7 @@ namespace starshipxac.Shell.Interop
     /// <remarks>
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762581(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class KnownFolderTypes
     {
         /// <summary>

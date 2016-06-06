@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Interop;
@@ -18,7 +19,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private string propertyBagName;
         private uint eventCookie;
 
-        // ReSharper disable once InconsistentNaming
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
         private const UInt32 WS_CHILD = 0x40000000;
 
         protected ExplorerBrowserBase()

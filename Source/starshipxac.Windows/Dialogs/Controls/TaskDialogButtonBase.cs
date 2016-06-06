@@ -5,7 +5,7 @@ using System.Threading;
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// タスクダイアログボタン基底クラスを定義します。
+    ///     タスクダイアログボタン基底クラスを定義します。
     /// </summary>
     public abstract class TaskDialogButtonBase : TaskDialogControl
     {
@@ -13,7 +13,7 @@ namespace starshipxac.Windows.Dialogs.Controls
         private bool useElevationIcon;
 
         /// <summary>
-        /// <see cref="TaskDialogButtonBase"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="TaskDialogButtonBase" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="name">ボタン名。</param>
         /// <param name="text">ボタンテキスト。</param>
@@ -28,12 +28,12 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ボタンテキストを取得または設定します。
+        ///     ボタンテキストを取得または設定します。
         /// </summary>
         public string Text { get; private set; }
 
         /// <summary>
-        /// ボタンが有効かどうかを判定する値を取得または設定します。
+        ///     ボタンが有効かどうかを判定する値を取得または設定します。
         /// </summary>
         public bool Enabled
         {
@@ -49,17 +49,17 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// デフォルトボタンかどうかを判定する値を取得または設定します。
+        ///     デフォルトボタンかどうかを判定する値を取得または設定します。
         /// </summary>
         public bool Default { get; set; }
 
         /// <summary>
-        /// このボタンをクリックした場合に、ダイアログを閉じるかどうかを判定する値を取得または設定します。
+        ///     このボタンをクリックした場合に、ダイアログを閉じるかどうかを判定する値を取得または設定します。
         /// </summary>
         public bool DialogClosable { get; private set; }
 
         /// <summary>
-        /// 管理者昇格アイコンを使用するかどうかを判定する値を取得または設定します。
+        ///     管理者昇格アイコンを使用するかどうかを判定する値を取得または設定します。
         /// </summary>
         public bool UseElevationIcon
         {
@@ -77,7 +77,7 @@ namespace starshipxac.Windows.Dialogs.Controls
         #region Click Event
 
         /// <summary>
-        /// ボタンをクリックすると発生します。
+        ///     ボタンをクリックすると発生します。
         /// </summary>
         public event EventHandler Click;
 
@@ -103,7 +103,7 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ボタンのテキストを取得します。
+        ///     ボタンのテキストを取得します。
         /// </summary>
         /// <returns>ボタンのテキスト。</returns>
         public abstract string GetButtonText();

@@ -6,10 +6,9 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.Runtime.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/ms690091(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/ms690091(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(ComIID.IPersistStream)]

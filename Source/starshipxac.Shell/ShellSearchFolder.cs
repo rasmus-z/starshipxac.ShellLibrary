@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -13,6 +14,7 @@ namespace starshipxac.Shell
 {
     public class ShellSearchFolder : ShellSearchCollection
     {
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
         static ShellSearchFolder()
         {
             SearchFolderItemFactory = (ISearchFolderItemFactory)new SearchFolderItemFactoryCoClass();

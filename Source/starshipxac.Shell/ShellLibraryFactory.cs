@@ -9,6 +9,7 @@ namespace starshipxac.Shell
 {
     public static class ShellLibraryFactory
     {
+        // ReSharper disable once InconsistentNaming
         internal static readonly Guid FOLDERID_Libraries = new Guid("1B3EA5DC-B587-4786-B4EF-BD1DC332AEAE");
         internal static readonly string FileExtension = ".library-ms";
 

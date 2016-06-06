@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Interop
 {
     /// <summary>
-    /// ウィンドウメッセージを定義します。
+    ///     ウィンドウメッセージを定義します。
     /// </summary>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class WindowMessages
     {
         public const UInt32 WM_NULL = 0x00;

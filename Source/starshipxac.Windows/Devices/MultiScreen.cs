@@ -11,12 +11,12 @@ using starshipxac.Windows.Interop;
 namespace starshipxac.Windows.Devices
 {
     /// <summary>
-    /// PCに接続しているすべてのディスプレイスクリーン情報を取得します。
+    ///     PCに接続しているすべてのディスプレイスクリーン情報を取得します。
     /// </summary>
     public static class MultiScreen
     {
         /// <summary>
-        /// メインスクリーン情報を取得します。
+        ///     メインスクリーン情報を取得します。
         /// </summary>
         public static Screen GetPrimaryMonitor()
         {
@@ -24,7 +24,7 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// すべてのスクリーン情報を取得します。
+        ///     すべてのスクリーン情報を取得します。
         /// </summary>
         public static IEnumerable<Screen> EnumerateAllMonitors()
         {
@@ -32,7 +32,7 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// 指定したウィンドウが表示されているスクリーンを取得します。
+        ///     指定したウィンドウが表示されているスクリーンを取得します。
         /// </summary>
         /// <param name="windowHandle">ウィンドウハンドル。</param>
         /// <returns>スクリーン情報。</returns>
@@ -43,7 +43,7 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// 指定したウィンドウが表示されているスクリーンを取得します。
+        ///     指定したウィンドウが表示されているスクリーンを取得します。
         /// </summary>
         /// <param name="window">ウィンドウ。</param>
         /// <returns>スクリーン情報。</returns>
@@ -60,7 +60,7 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// 指定した座標が含まれるスクリーンを取得します。
+        ///     指定した座標が含まれるスクリーンを取得します。
         /// </summary>
         /// <param name="point">検査する座標。</param>
         /// <returns>スクリーン情報。</returns>
@@ -76,7 +76,7 @@ namespace starshipxac.Windows.Devices
         }
 
         /// <summary>
-        /// 指定した四角形が含まれるスクリーンを取得します。
+        ///     指定した四角形が含まれるスクリーンを取得します。
         /// </summary>
         /// <param name="rect">検査する四角形</param>
         /// <returns>スクリーン情報。</returns>

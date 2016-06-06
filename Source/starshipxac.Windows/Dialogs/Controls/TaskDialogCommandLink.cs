@@ -5,12 +5,12 @@ using System.Text;
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// コマンドリンクボタンを定義します。
+    ///     コマンドリンクボタンを定義します。
     /// </summary>
     public class TaskDialogCommandLink : TaskDialogButtonBase
     {
         /// <summary>
-        /// <see cref="TaskDialogCommandLink"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="TaskDialogCommandLink" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="name">コントロール名。</param>
         /// <param name="text">コントロールテキスト。</param>
@@ -22,7 +22,7 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// <see cref="TaskDialogCommandLink"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="TaskDialogCommandLink" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="name">コントロール名。</param>
         /// <param name="text">コントロールテキスト。</param>
@@ -37,12 +37,12 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// コマンドリンクボタンの説明テキストを取得または設定します。
+        ///     コマンドリンクボタンの説明テキストを取得または設定します。
         /// </summary>
         public string InstructionText { get; set; }
 
         /// <summary>
-        /// ボタンテキストを取得します。
+        ///     ボタンテキストを取得します。
         /// </summary>
         /// <returns>ボタンテキスト。</returns>
         public override string GetButtonText()
@@ -67,13 +67,12 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// <see cref="TaskDialogCommandLink"/>クラスの文字列表現を取得します。
+        ///     <see cref="TaskDialogCommandLink" />クラスの文字列表現を取得します。
         /// </summary>
-        /// <returns><see cref="TaskDialogCommandLink"/>クラスの文字列表現。</returns>
+        /// <returns><see cref="TaskDialogCommandLink" />クラスの文字列表現。</returns>
         public override string ToString()
         {
-            return String.Format("{0}{{Id={1}, Name={2}, Text={3}, InstructionText={4}}}",
-                    this.GetType().Name, this.Id, this.Name, this.Text, this.InstructionText);
+            return $"{this.GetType().Name}{{Id={this.Id}, Name={this.Name}, Text={this.Text}, InstructionText={this.InstructionText}}}";
         }
     }
 }

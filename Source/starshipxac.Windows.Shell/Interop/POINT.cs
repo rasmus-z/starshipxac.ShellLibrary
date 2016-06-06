@@ -1,7 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-
-// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Interop
 {
@@ -12,6 +11,7 @@ namespace starshipxac.Windows.Shell.Interop
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/dd162805(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct POINT
     {
         public POINT(int x, int y)

@@ -9,6 +9,6 @@ namespace starshipxac.Windows.Dialogs
             this.Expanded = expanded;
         }
 
-        public bool Expanded { get; private set; }
+        public bool Expanded { get; }
     }
 }

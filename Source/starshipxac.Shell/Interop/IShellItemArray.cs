@@ -27,7 +27,7 @@ namespace starshipxac.Shell.Interop
         [PreserveSig]
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         HRESULT GetPropertyStore(
-            [In] int Flags,
+            [In] int flags,
             [In] ref Guid riid,
             out IntPtr ppv);
 

@@ -4,12 +4,12 @@ using System.Diagnostics.Contracts;
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// タスクダイアログラジオボタンを定義します。
+    ///     タスクダイアログラジオボタンを定義します。
     /// </summary>
     public class TaskDialogRadioButton : TaskDialogButtonBase
     {
         /// <summary>
-        /// <see cref="TaskDialogRadioButton"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="TaskDialogRadioButton" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="name">コントロール名。</param>
         /// <param name="text">テキスト。</param>
@@ -20,7 +20,7 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// ラジオボタンの表示テキストを取得します。
+        ///     ラジオボタンの表示テキストを取得します。
         /// </summary>
         /// <returns>ラジオボタンの表示テキスト。</returns>
         public override string GetButtonText()

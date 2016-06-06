@@ -1,9 +1,8 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
-
-// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Interop
 {
@@ -13,6 +12,7 @@ namespace starshipxac.Windows.Shell.Interop
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb759795(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct SHFILEOPSTRUCT
     {
         public IntPtr hwnd;

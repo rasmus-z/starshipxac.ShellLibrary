@@ -7,7 +7,7 @@ using starshipxac.Windows.Interop;
 namespace starshipxac.Windows.Dialogs.Internal
 {
     /// <summary>
-    /// タスクダイアログコマンドメソッドを定義します。
+    ///     タスクダイアログコマンドメソッドを定義します。
     /// </summary>
     internal class TaskDialogCommands : IDisposable
     {

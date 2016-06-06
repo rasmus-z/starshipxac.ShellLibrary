@@ -68,7 +68,8 @@ namespace starshipxac.Shell
         {
         }
 
-        public static Exception FromHRESULT(HRESULT hr)
+        // ReSharper disable once InconsistentNaming
+        internal static Exception FromHRESULT(HRESULT hr)
         {
             var exception = Marshal.GetExceptionForHR(hr);
             return new ShellException(exception.Message, exception);

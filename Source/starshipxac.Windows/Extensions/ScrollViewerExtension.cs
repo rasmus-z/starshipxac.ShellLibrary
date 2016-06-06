@@ -6,7 +6,7 @@ using System.Windows.Media;
 namespace starshipxac.Windows.Extensions
 {
     /// <summary>
-    /// <see cref="ScrollViewer"/>の拡張メソッドを定義します。
+    ///     <see cref="ScrollViewer" />の拡張メソッドを定義します。
     /// </summary>
     public static class ScrollViewerExtension
     {

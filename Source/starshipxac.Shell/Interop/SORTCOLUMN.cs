@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.PropertySystem.Interop;
 
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// ソートカラム情報を定義します。
+    ///     ソートカラム情報を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb759817(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb759817(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct SORTCOLUMN
     {
         public SORTCOLUMN(PROPERTYKEY propertyKey, SORTDIRECTION direction)

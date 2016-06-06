@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using starshipxac.Shell.Search.Interop;
 
 namespace starshipxac.Shell.Search
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum QueryParserManagerOptions
     {
         SchemaBinaryName = QUERY_PARSER_MANAGER_OPTION.QPMO_SCHEMA_BINARY_NAME,

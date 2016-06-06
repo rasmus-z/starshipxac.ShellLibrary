@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using System.Threading;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
@@ -8,22 +7,26 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
     {
         private string text;
 
-        public FileDialogMenuItem(string name)
-            : this(name, String.Empty)
+        /// <summary>
+        ///     <see cref="FileDialogMenuItem" />クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="text">メニュー項目のテキスト。</param>
+        public FileDialogMenuItem(string text)
+            : this(String.Empty, text)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 
         /// <summary>
+        ///     <see cref="FileDialogMenuItem" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="name">コントロール名。</param>
-        /// <param name="text">コントロールテキスト。</param>
+        /// <param name="text">メニュー項目のテキスト。</param>
         public FileDialogMenuItem(string name, string text)
             : base(name)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
 
-            this.text = text;
+            this.text = text ?? String.Empty;
         }
 
         public FileDialogMenu Menu { get; internal set; }
@@ -52,11 +55,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
 
         protected virtual void OnClick(EventArgs args)
         {
-            var handle = Interlocked.CompareExchange(ref this.Click, null, null);
-            if (handle != null)
-            {
-                handle(this, args);
-            }
+            this.Click?.Invoke(this, args);
         }
 
         #endregion
@@ -65,7 +64,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         {
             if (this.Enabled)
             {
-                this.Click(this, EventArgs.Empty);
+                this.Click?.Invoke(this, EventArgs.Empty);
             }
         }
     }

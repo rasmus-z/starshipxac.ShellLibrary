@@ -6,21 +6,21 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell.PropertySystem.Internal
 {
     /// <summary>
-    /// <see cref="ShellPropertyKey"/>を作成します。
+    ///     <see cref="ShellPropertyKey" />を作成します。
     /// </summary>
     internal static class ShellPropertyKeyFactory
     {
-        private static readonly ConcurrentDictionary<string, ShellPropertyKey> nameCache;
-        private static readonly ConcurrentDictionary<PROPERTYKEY, ShellPropertyKey> idCache;
+        private static readonly ConcurrentDictionary<string, ShellPropertyKey> NameCache;
+        private static readonly ConcurrentDictionary<PROPERTYKEY, ShellPropertyKey> IdCache;
 
         static ShellPropertyKeyFactory()
         {
-            nameCache = new ConcurrentDictionary<string, ShellPropertyKey>();
-            idCache = new ConcurrentDictionary<PROPERTYKEY, ShellPropertyKey>();
+            NameCache = new ConcurrentDictionary<string, ShellPropertyKey>();
+            IdCache = new ConcurrentDictionary<PROPERTYKEY, ShellPropertyKey>();
         }
 
         /// <summary>
-        /// 標準名から<see cref="ShellPropertyKey"/>を取得します。
+        ///     標準名から<see cref="ShellPropertyKey" />を取得します。
         /// </summary>
         /// <param name="canonicalName"></param>
         /// <returns></returns>
@@ -28,12 +28,12 @@ namespace starshipxac.Shell.PropertySystem.Internal
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(canonicalName));
 
-            return nameCache.GetOrAdd(canonicalName,
+            return NameCache.GetOrAdd(canonicalName,
                 ShellPropertyKey.FromCanonicalName);
         }
 
         /// <summary>
-        /// フォーマットIDおよびプロパティIDから<see cref="ShellPropertyKey"/>を取得します。
+        ///     フォーマットIDおよびプロパティIDから<see cref="ShellPropertyKey" />を取得します。
         /// </summary>
         /// <param name="formatId"></param>
         /// <param name="propId"></param>
@@ -46,7 +46,7 @@ namespace starshipxac.Shell.PropertySystem.Internal
         }
 
         /// <summary>
-        /// フォーマットIDおよびプロパティIDから<see cref="ShellPropertyKey"/>を取得します。
+        ///     フォーマットIDおよびプロパティIDから<see cref="ShellPropertyKey" />を取得します。
         /// </summary>
         /// <param name="formatId"></param>
         /// <param name="propId"></param>
@@ -57,13 +57,13 @@ namespace starshipxac.Shell.PropertySystem.Internal
         }
 
         /// <summary>
-        /// <see cref="PROPERTYKEY"/>から<see cref="ShellPropertyKey"/>を取得します。
+        ///     <see cref="PROPERTYKEY" />から<see cref="ShellPropertyKey" />を取得します。
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <returns></returns>
         internal static ShellPropertyKey Get(PROPERTYKEY propertyKey)
         {
-            return idCache.GetOrAdd(propertyKey,
+            return IdCache.GetOrAdd(propertyKey,
                 new ShellPropertyKey(propertyKey));
         }
     }

@@ -2,15 +2,13 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.Interop;
-// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Dialogs.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb775936(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb775936(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(ShellIID.IFileDialogControlEvents)]

@@ -7,18 +7,17 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Windows.Shell.Controls.Explorers.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// <para>
-    /// ICommDlgBrowser: http://msdn.microsoft.com/en-us/library/windows/desktop/bb776141(v=vs.85).aspx
-    /// </para>
-    /// <para>
-    /// ICommDlgBrowser2: http://msdn.microsoft.com/en-us/library/windows/desktop/bb776136(v=vs.85).aspx
-    /// </para>
-    /// <para>
-    /// ICommDlgBrowser3: http://msdn.microsoft.com/en-us/library/windows/desktop/bb776127(v=vs.85).aspx
-    /// </para>
+    ///     <para>
+    ///         ICommDlgBrowser: http://msdn.microsoft.com/en-us/library/windows/desktop/bb776141(v=vs.85).aspx
+    ///     </para>
+    ///     <para>
+    ///         ICommDlgBrowser2: http://msdn.microsoft.com/en-us/library/windows/desktop/bb776136(v=vs.85).aspx
+    ///     </para>
+    ///     <para>
+    ///         ICommDlgBrowser3: http://msdn.microsoft.com/en-us/library/windows/desktop/bb776127(v=vs.85).aspx
+    ///     </para>
     /// </remarks>
     [ComImport]
     [Guid(ExplorerBrowserIIDGuid.ICommDlgBrowser3)]

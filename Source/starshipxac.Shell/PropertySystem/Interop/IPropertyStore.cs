@@ -6,10 +6,10 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    /// <c>IPropertyStore</c>インターフェイスを定義します。
+    ///     <c>IPropertyStore</c>インターフェイスを定義します。
     /// </summary>
     /// <remarks>
-    /// <c>http://msdn.microsoft.com/en-us/library/windows/desktop/bb761474(v=vs.85).aspx</c>
+    ///     <c>http://msdn.microsoft.com/en-us/library/windows/desktop/bb761474(v=vs.85).aspx</c>
     /// </remarks>
     [ComImport]
     [Guid(PropertySystemIID.IPropertyStore)]

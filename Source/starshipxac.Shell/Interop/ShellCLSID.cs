@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Interop
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class ShellCLSID
     {
         internal const string ShellDesktop = "00021400-0000-0000-C000-000000000046";

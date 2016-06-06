@@ -10,18 +10,17 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
     {
         private string text;
 
-        public FileDialogButton(string name)
-            : this(name, String.Empty)
+        public FileDialogButton(string text)
+            : this(String.Empty, text)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 
         public FileDialogButton(string name, string text)
             : base(name)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
+            Contract.Requires<ArgumentNullException>(name != null);
 
-            this.text = text;
+            this.text = text ?? String.Empty;
         }
 
         public override string Text
@@ -66,6 +65,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
             base.Attach(dialog);
 
             this.Dialog.AddButton(this);
+
             this.Dialog.SetControlLabel(this, this.text);
         }
     }

@@ -102,7 +102,10 @@ namespace starshipxac.Shell.IO
                     Marshal.FreeHGlobal(ptr);
                 }
             }
-            set { Seek(value, SeekOrigin.Begin); }
+            set
+            {
+                Seek(value, SeekOrigin.Begin);
+            }
         }
 
         /// <summary>

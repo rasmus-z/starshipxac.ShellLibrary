@@ -1,16 +1,16 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Dialogs.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb773221(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb773221(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct COMDLG_FILTERSPEC
     {
         internal COMDLG_FILTERSPEC(string name, string spec)

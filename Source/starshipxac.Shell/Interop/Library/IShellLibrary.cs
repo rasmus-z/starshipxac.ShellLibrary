@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.Interop.Library
 {
     /// <summary>
-    /// シェルライブラリインターフェイスを定義します。
+    ///     シェルライブラリインターフェイスを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/dd391719(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/dd391719(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(ShellIID.IShellLibrary)]

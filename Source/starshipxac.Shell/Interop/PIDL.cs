@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// <c>PIDL</c>を定義します。
+    ///     <c>PIDL</c>を定義します。
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     internal struct PIDL

@@ -6,12 +6,12 @@ using System.Windows.Interop;
 namespace starshipxac.Windows.Extensions
 {
     /// <summary>
-    /// <see cref="Window"/>の拡張メソッドを定義します。
+    ///     <see cref="Window" />の拡張メソッドを定義します。
     /// </summary>
     public static class WindowExtension
     {
         /// <summary>
-        /// ウィンドウハンドルを取得します。
+        ///     ウィンドウハンドルを取得します。
         /// </summary>
         /// <param name="window">ウィンドウ。</param>
         /// <returns>ウィンドウハンドル。</returns>
@@ -24,7 +24,7 @@ namespace starshipxac.Windows.Extensions
         }
 
         /// <summary>
-        /// ウィンドウがサイズ変更可能かどうかを判定します。
+        ///     ウィンドウがサイズ変更可能かどうかを判定します。
         /// </summary>
         /// <param name="window">ウィンドウ。</param>
         /// <returns>サイズ変更が可能な場合は、<c>true</c>。それ以外の場合は<c>false</c>。</returns>
@@ -32,15 +32,11 @@ namespace starshipxac.Windows.Extensions
         {
             Contract.Requires<ArgumentNullException>(window != null);
 
-            if (window.ResizeMode == ResizeMode.CanResize || window.ResizeMode == ResizeMode.CanResizeWithGrip)
-            {
-                return true;
-            }
-            return false;
+            return window.ResizeMode == ResizeMode.CanResize || window.ResizeMode == ResizeMode.CanResizeWithGrip;
         }
 
         /// <summary>
-        /// ウィンドウを最小化できるかどうかを判定します。
+        ///     ウィンドウを最小化できるかどうかを判定します。
         /// </summary>
         /// <param name="window"></param>
         /// <returns></returns>
@@ -48,11 +44,7 @@ namespace starshipxac.Windows.Extensions
         {
             Contract.Requires<ArgumentNullException>(window != null);
 
-            if (window.ResizeMode == ResizeMode.CanMinimize)
-            {
-                return true;
-            }
-            return false;
+            return window.ResizeMode == ResizeMode.CanMinimize;
         }
     }
 }

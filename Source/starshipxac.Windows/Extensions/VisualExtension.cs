@@ -5,7 +5,7 @@ using System.Windows.Media;
 namespace starshipxac.Windows.Extensions
 {
     /// <summary>
-    /// <see cref="Visual"/>の拡張メソッドを定義します。
+    ///     <see cref="Visual" />の拡張メソッドを定義します。
     /// </summary>
     public static class VisualExtension
     {
@@ -21,10 +21,7 @@ namespace starshipxac.Windows.Extensions
                 return element;
             }
 
-            if (element is FrameworkElement)
-            {
-                ((FrameworkElement)element).ApplyTemplate();
-            }
+            (element as FrameworkElement)?.ApplyTemplate();
 
             Visual result = null;
             for (var i = 0; i < VisualTreeHelper.GetChildrenCount(element); i++)

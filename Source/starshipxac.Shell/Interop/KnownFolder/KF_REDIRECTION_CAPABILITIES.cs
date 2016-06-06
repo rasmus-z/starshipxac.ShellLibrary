@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Interop.KnownFolder
 {
     /// <summary>
-    /// 標準フォルダーリダイレクトフラグを定義します。
+    ///     標準フォルダーリダイレクトフラグを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762514(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762514(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum KF_REDIRECTION_CAPABILITIES : uint
     {
         KF_REDIRECTION_CAPABILITIES_ALLOW_ALL = 0xff,

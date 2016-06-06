@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Dialogs.Interop
 {
     /// <summary>
-    /// タスクダイアログ標準ボタンフラグを定義します。
+    ///     タスクダイアログ標準ボタンフラグを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb760540(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb760540(v=vs.85).aspx
     /// </remarks>
     [Flags]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum TASKDIALOG_COMMON_BUTTON_FLAGS
     {
         TDCBF_OK_BUTTON = 0x0001,

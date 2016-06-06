@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Windows.Interop
 {
     /// <summary>
-    /// <c>POINT</c>構造体を定義します。
+    ///     <c>POINT</c>構造体を定義します。
     /// </summary>
     /// <remarks>
-    /// <code>http://msdn.microsoft.com/en-us/library/windows/desktop/dd162805(v=vs.85).aspx</code>
+    ///     <code>http://msdn.microsoft.com/en-us/library/windows/desktop/dd162805(v=vs.85).aspx</code>
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct POINT
     {
         public POINT(int x, int y)

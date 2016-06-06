@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Windows;
 using System.Windows.Interop;
@@ -10,21 +11,20 @@ using starshipxac.Windows.Properties;
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// タスクダイアログの基底クラスを定義します。
+    ///     タスクダイアログの基底クラスを定義します。
     /// </summary>
     public abstract class TaskDialogBase : IDisposable
     {
         private bool disposed = false;
 
-        private string title = String.Empty;
-
         /// <summary>
-        /// <see cref="TaskDialogBase"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="TaskDialogBase" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         protected TaskDialogBase()
         {
             this.Cancelable = true;
             this.TaskDialogInternal = new TaskDialogInternal(this);
+            this.StartupLocation = TaskDialogStartupLocation.CenterOwner;
         }
 
         ~TaskDialogBase()
@@ -64,29 +64,29 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ダイアログの表示状態を取得します。
+        ///     ダイアログの表示状態を取得します。
         /// </summary>
         protected DialogShowStates DialogShowStates => this.TaskDialogInternal.DialogShowStates;
 
         /// <summary>
-        /// ダイアログが表示中かどうかを判定する値を取得します。
+        ///     ダイアログが表示中かどうかを判定する値を取得します。
         /// </summary>
         public bool DialogShowing => this.TaskDialogInternal.DialogShowing;
 
         /// <summary>
-        /// ダイアログの開始表示位置を取得または設定します。
+        ///     ダイアログの開始表示位置を取得または設定します。
         /// </summary>
-        public TaskDialogStartupLocation StartupLocation { get; private set; }
+        public TaskDialogStartupLocation StartupLocation { get; set; }
 
         /// <summary>
-        /// ダイアログがキャンセル可能かどうかを判定する値を取得または設定します。
+        ///     ダイアログがキャンセル可能かどうかを判定する値を取得または設定します。
         /// </summary>
         public bool Cancelable { get; set; }
 
         private TaskDialogInternal TaskDialogInternal { get; }
 
         /// <summary>
-        /// 親ウィンドウを指定して、ダイアログを表示します。
+        ///     親ウィンドウを指定して、ダイアログを表示します。
         /// </summary>
         /// <param name="parentWindow">親ウィンドウ。</param>
         /// <returns>ダイアログの実行結果。</returns>
@@ -110,7 +110,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// 親ウィンドウのハンドルを指定して、ダイアログを表示します。
+        ///     親ウィンドウのハンドルを指定して、ダイアログを表示します。
         /// </summary>
         /// <param name="parentWindowHandle">親ウィンドウのハンドル。</param>
         /// <returns>ダイアログの実行結果。</returns>
@@ -129,7 +129,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// 手動でダイアログを閉じます。
+        ///     手動でダイアログを閉じます。
         /// </summary>
         protected void CloseDialog(TaskDialogCommonButtons commonButton)
         {
@@ -162,6 +162,31 @@ namespace starshipxac.Windows.Dialogs
             return null;
         }
 
+        protected bool SetProperty<T>(ref T field, T value, Action<T> setMethod)
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value))
+            {
+                return false;
+            }
+
+            field = value;
+            setMethod(field);
+            return true;
+        }
+
+        protected bool SetProperty(ref string field, string value, Action<string> setMethod)
+        {
+            var str = value ?? String.Empty;
+            if (field == str)
+            {
+                return false;
+            }
+
+            field = str;
+            setMethod(field);
+            return true;
+        }
+
         protected internal virtual void RaiseOpenedEvent()
         {
         }
@@ -187,7 +212,7 @@ namespace starshipxac.Windows.Dialogs
         {
         }
 
-        protected internal virtual void RaiseVerificationClickedEvent(bool verificationChecked)
+        protected internal virtual void RaiseVerificationClickedEvent(bool verification)
         {
         }
 
@@ -205,9 +230,9 @@ namespace starshipxac.Windows.Dialogs
 
         #region Control Methods
 
-        protected void SetTitle(string title)
+        protected void SetWindowTitle(string title)
         {
-            this.TaskDialogInternal.SetTitle(title);
+            this.TaskDialogInternal.SetWindowTitle(title);
         }
 
         protected void SetMainInstructionText(string text)

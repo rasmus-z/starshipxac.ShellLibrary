@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// プロパティストア取得フラグを定義します。
+    ///     プロパティストア取得フラグを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762582(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762582(v=vs.85).aspx
     /// </remarks>
     [Flags]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum GETPROPERTYSTOREFLAGS
     {
         GPS_DEFAULT = 0,

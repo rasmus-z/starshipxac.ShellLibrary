@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
@@ -20,7 +21,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         /// <param name="name">コントロール名。</param>
         protected FileDialogControl(string name)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
+            Contract.Requires<ArgumentNullException>(name != null);
 
             this.Id = GetNextId();
             this.Name = name;
@@ -57,7 +58,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
             set
             {
                 ThrowIfNotInitialized();
-                this.Dialog.SetControlEnabled(this, value);
+                this.Dialog?.SetControlEnabled(this, value);
             }
         }
 
@@ -74,7 +75,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
             set
             {
                 ThrowIfNotInitialized();
-                this.Dialog.SetControlVisible(this, value);
+                this.Dialog?.SetControlVisible(this, value);
             }
         }
 
@@ -175,6 +176,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
     }
 
     [ContractClassFor(typeof(FileDialogControl))]
+    [SuppressMessage("ReSharper", "ArrangeTypeModifiers")]
     abstract class FileDialogControlContract : FileDialogControl
     {
         protected FileDialogControlContract(string name)

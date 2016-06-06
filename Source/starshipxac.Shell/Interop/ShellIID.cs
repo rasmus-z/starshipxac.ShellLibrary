@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Interop
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class ShellIID
     {
         internal const string IContextMenu = "000214e4-0000-0000-c000-000000000046";

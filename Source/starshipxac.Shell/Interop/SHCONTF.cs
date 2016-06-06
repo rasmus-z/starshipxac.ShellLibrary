@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// アイテム列挙フラグを定義します。
+    ///     アイテム列挙フラグを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762539(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762539(v=vs.85).aspx
     /// </remarks>
     [Flags]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum SHCONTF : uint
     {
         SHCONTF_CHECKING_FOR_CHILDREN = 0x0010,

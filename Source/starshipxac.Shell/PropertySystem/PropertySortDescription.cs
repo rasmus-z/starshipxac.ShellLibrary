@@ -1,35 +1,37 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using starshipxac.Shell.PropertySystem.Interop;
 
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    /// ソート順を定義します。
+    ///     ソート順を定義します。
     /// </summary>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum PropertySortDescription
     {
         /// <summary>
-        /// 規定の昇順または降順のソート。
+        ///     規定の昇順または降順のソート。
         /// </summary>
         General = PROPDESC_SORTDESCRIPTION.PDSD_GENERAL,
 
         /// <summary>
-        /// アルファベット順。
+        ///     アルファベット順。
         /// </summary>
         AToZ = PROPDESC_SORTDESCRIPTION.PDSD_A_Z,
 
         /// <summary>
-        /// 低い順または高い順。
+        ///     低い順または高い順。
         /// </summary>
         LowestToHighest = PROPDESC_SORTDESCRIPTION.PDSD_LOWEST_HIGHEST,
 
         /// <summary>
-        /// 小さい順または大きい順。
+        ///     小さい順または大きい順。
         /// </summary>
         SmallestToBiggest = PROPDESC_SORTDESCRIPTION.PDSD_SMALLEST_BIGGEST,
 
         /// <summary>
-        /// 古い順または新しい順。
+        ///     古い順または新しい順。
         /// </summary>
         OldestToNewest = PROPDESC_SORTDESCRIPTION.PDSD_OLDEST_NEWEST,
     }

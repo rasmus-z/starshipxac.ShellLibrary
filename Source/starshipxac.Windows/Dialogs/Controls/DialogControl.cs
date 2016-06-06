@@ -4,17 +4,17 @@ using System.Diagnostics.Contracts;
 namespace starshipxac.Windows.Dialogs.Controls
 {
     /// <summary>
-    /// ダイアログコントロールの基底クラスを定義します。
+    ///     ダイアログコントロールの基底クラスを定義します。
     /// </summary>
     public abstract class DialogControl : IEquatable<DialogControl>
     {
         public static readonly int MinDialogControlId = 16;
         private static int nextId = MinDialogControlId;
-        private static object syncObj = new object();
+        private static readonly object syncObj = new object();
 
         /// <summary>
-        /// コントロール名を指定して、
-        /// <see cref="DialogControl"/>クラスの新しいインスタンスを初期化します。
+        ///     コントロール名を指定して、
+        ///     <see cref="DialogControl" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="name">コントロール名。</param>
         protected DialogControl(string name)
@@ -26,17 +26,17 @@ namespace starshipxac.Windows.Dialogs.Controls
         }
 
         /// <summary>
-        /// コントロール名を取得します。
+        ///     コントロール名を取得します。
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
-        /// コントロールIDを取得します。
+        ///     コントロールIDを取得します。
         /// </summary>
-        public int Id { get; private set; }
+        public int Id { get; }
 
         /// <summary>
-        /// 次のコントロールIDを取得します。
+        ///     次のコントロールIDを取得します。
         /// </summary>
         /// <returns>コントロールID。</returns>
         private static int GetNextId()

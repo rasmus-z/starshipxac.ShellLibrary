@@ -9,11 +9,11 @@ using starshipxac.Shell.Resources;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    /// シェルプロパティを保持します。
+    ///     シェルプロパティを保持します。
     /// </summary>
     /// <typeparam name="T">プロパティの型。</typeparam>
     /// <remarks>
-    /// Properties: http://msdn.microsoft.com/en-us/library/windows/desktop/dd561977(v=vs.85).aspx
+    ///     Properties: http://msdn.microsoft.com/en-us/library/windows/desktop/dd561977(v=vs.85).aspx
     /// </remarks>
     public class ShellProperty<T> : IShellProperty
     {
@@ -21,7 +21,7 @@ namespace starshipxac.Shell.PropertySystem
         private IconReference iconReference;
 
         /// <summary>
-        /// <see cref="ShellProperty&lt;T&gt;"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellProperty&lt;T&gt;" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="shellObject"></param>
         /// <param name="formatId"></param>
@@ -60,13 +60,13 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellProperty&lt;T&gt;"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellProperty&lt;T&gt;" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <param name="description"></param>
         /// <param name="shellObject"></param>
         /// <remarks>
-        /// このコンストラクタは、<see cref="ShellPropertyFactory"/>で使用されます。パラメーターの順番は変更しないでください。
+        ///     このコンストラクタは、<see cref="ShellPropertyFactory" />で使用されます。パラメーターの順番は変更しないでください。
         /// </remarks>
         internal ShellProperty(ShellPropertyKey propertyKey, ShellPropertyDescription description, ShellObject shellObject)
         {
@@ -87,13 +87,13 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellProperty&lt;T&gt;"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellProperty&lt;T&gt;" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <param name="description"></param>
         /// <param name="propertyStore"></param>
         /// <remarks>
-        /// このコンストラクタは、<see cref="ShellPropertyFactory"/>で使用されます。パラメーターの順番は変更しないでください。
+        ///     このコンストラクタは、<see cref="ShellPropertyFactory" />で使用されます。パラメーターの順番は変更しないでください。
         /// </remarks>
         internal ShellProperty(ShellPropertyKey propertyKey, ShellPropertyDescription description, ShellPropertyStore propertyStore)
         {
@@ -120,22 +120,22 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellObject"/>を取得します。
+        ///     <see cref="ShellObject" />を取得します。
         /// </summary>
         private ShellObject ShellObject { get; }
 
         /// <summary>
-        /// プロパティストアを取得または設定します。
+        ///     プロパティストアを取得または設定します。
         /// </summary>
         private ShellPropertyStore PropertyStore { get; }
 
         /// <summary>
-        /// プロパティキーを取得します。
+        ///     プロパティキーを取得します。
         /// </summary>
         public ShellPropertyKey PropertyKey { get; }
 
         /// <summary>
-        /// プロパティ定義を取得します。
+        ///     プロパティ定義を取得します。
         /// </summary>
         public ShellPropertyDescription Description
         {
@@ -150,12 +150,12 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// プロパティの標準的な名前を取得します。
+        ///     プロパティの標準的な名前を取得します。
         /// </summary>
         public string CanonicalName => this.Description.CanonicalName;
 
         /// <summary>
-        /// プロパティの値を取得または設定します。
+        ///     プロパティの値を取得または設定します。
         /// </summary>
         public T Value
         {
@@ -196,7 +196,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="Object"/>型のプロパティ値を取得します。
+        ///     <see cref="Object" />型のプロパティ値を取得します。
         /// </summary>
         public object ValueAsObject
         {
@@ -223,14 +223,14 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// プロパティ値の型を取得します。
+        ///     プロパティ値の型を取得します。
         /// </summary>
         public Type ValueType => Description.ValueType;
 
         public bool AllowSetTruncatedValue { get; set; }
 
         /// <summary>
-        /// アイコンリソースを取得します。
+        ///     アイコンリソースを取得します。
         /// </summary>
         public IconReference IconReference
         {
@@ -257,7 +257,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// プロパティ値を取得します。
+        ///     プロパティ値を取得します。
         /// </summary>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
@@ -290,7 +290,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// プロパティ値の取得を試みます。
+        ///     プロパティ値の取得を試みます。
         /// </summary>
         /// <param name="result"></param>
         /// <returns></returns>
@@ -328,7 +328,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// プロパティ値をクリアします。
+        ///     プロパティ値をクリアします。
         /// </summary>
         public void ClearValue()
         {
@@ -393,9 +393,9 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellProperty&lt;T&gt;"/>の文字列表現を取得します。
+        ///     <see cref="ShellProperty&lt;T&gt;" />の文字列表現を取得します。
         /// </summary>
-        /// <returns><see cref="ShellProperty&lt;T&gt;"/>の文字列表現。</returns>
+        /// <returns><see cref="ShellProperty&lt;T&gt;" />の文字列表現。</returns>
         public override string ToString()
         {
             // ReSharper disable once CompareNonConstrainedGenericWithNull

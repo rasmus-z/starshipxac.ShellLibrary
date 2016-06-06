@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// COMエラーコードを定義します。
+    ///     COMエラーコードを定義します。
     /// </summary>
     /// <remarks>
-    /// <para>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/dd542642(v=vs.85).aspx
-    /// </para>
-    /// <para>
-    /// Header File: WinError.h
-    /// </para>
+    ///     <para>
+    ///         http://msdn.microsoft.com/en-us/library/windows/desktop/dd542642(v=vs.85).aspx
+    ///     </para>
+    ///     <para>
+    ///         Header File: WinError.h
+    ///     </para>
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class COMErrorCodes
     {
         public static readonly HRESULT S_OK = (HRESULT)0;

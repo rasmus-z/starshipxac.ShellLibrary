@@ -1,21 +1,23 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    /// プロパティキーを定義します。
+    ///     プロパティキーを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb773381(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb773381(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public struct PROPERTYKEY : IEquatable<PROPERTYKEY>
     {
         /// <summary>
-        /// <see cref="PROPERTYKEY"/>の新しいインスタンスを初期化します。
+        ///     <see cref="PROPERTYKEY" />の新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="formatId">プロパティの<see cref="Guid"/>。</param>
+        /// <param name="formatId">プロパティの<see cref="Guid" />。</param>
         /// <param name="propId">プロパティID(PID)。</param>
         public PROPERTYKEY(Guid formatId, UInt32 propId)
             : this()
@@ -25,22 +27,22 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// プロパティの<see cref="Guid"/>を取得します。
+        ///     プロパティの<see cref="Guid" />を取得します。
         /// </summary>
-        public Guid fmtid { get; private set; }
+        public Guid fmtid { get; }
 
         /// <summary>
-        ///  プロパティIDを取得します。
+        ///     プロパティIDを取得します。
         /// </summary>
-        public UInt32 pid { get; private set; }
+        public UInt32 pid { get; }
 
         /// <summary>
-        /// 指定した<see cref="PROPERTYKEY"/>の値が、現在の<see cref="PROPERTYKEY"/>と等しいかどうかを判定します。
+        ///     指定した<see cref="PROPERTYKEY" />の値が、現在の<see cref="PROPERTYKEY" />と等しいかどうかを判定します。
         /// </summary>
-        /// <param name="other">現在の<see cref="PROPERTYKEY"/>と比較する<see cref="PROPERTYKEY"/>。</param>
+        /// <param name="other">現在の<see cref="PROPERTYKEY" />と比較する<see cref="PROPERTYKEY" />。</param>
         /// <returns>
-        /// <paramref name="other"/>と現在の<see cref="PROPERTYKEY"/>が等しい場合は<c>true</c>。
-        /// それ以外の場合は<c>false</c>。
+        ///     <paramref name="other" />と現在の<see cref="PROPERTYKEY" />が等しい場合は<c>true</c>。
+        ///     それ以外の場合は<c>false</c>。
         /// </returns>
         public bool Equals(PROPERTYKEY other)
         {
@@ -48,12 +50,12 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// 指定したオブジェクトの値が、現在の<see cref="PROPERTYKEY"/>と等しいかどうかを判定します。
+        ///     指定したオブジェクトの値が、現在の<see cref="PROPERTYKEY" />と等しいかどうかを判定します。
         /// </summary>
-        /// <param name="obj">現在の<see cref="PROPERTYKEY"/>と比較するオブジェクト。</param>
+        /// <param name="obj">現在の<see cref="PROPERTYKEY" />と比較するオブジェクト。</param>
         /// <returns>
-        /// <paramref name="obj"/>と現在の<see cref="PROPERTYKEY"/>が等しい場合は<c>true</c>。
-        /// それ以外の場合は<c>false</c>。
+        ///     <paramref name="obj" />と現在の<see cref="PROPERTYKEY" />が等しい場合は<c>true</c>。
+        ///     それ以外の場合は<c>false</c>。
         /// </returns>
         public override bool Equals(object obj)
         {
@@ -67,13 +69,13 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// 2つの<see cref="PROPERTYKEY"/>を比較して、等しいかどうかを判定します。
+        ///     2つの<see cref="PROPERTYKEY" />を比較して、等しいかどうかを判定します。
         /// </summary>
-        /// <param name="left">1つめの<see cref="PROPERTYKEY"/>。</param>
-        /// <param name="right">2つめの<see cref="PROPERTYKEY"/>。</param>
+        /// <param name="left">1つめの<see cref="PROPERTYKEY" />。</param>
+        /// <param name="right">2つめの<see cref="PROPERTYKEY" />。</param>
         /// <returns>
-        /// 2つの<see cref="PROPERTYKEY"/>が等しい場合は<c>true</c>。
-        /// それ以外の場合は<c>false</c>。
+        ///     2つの<see cref="PROPERTYKEY" />が等しい場合は<c>true</c>。
+        ///     それ以外の場合は<c>false</c>。
         /// </returns>
         public static bool operator ==(PROPERTYKEY left, PROPERTYKEY right)
         {
@@ -81,13 +83,13 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// 2つの<see cref="PROPERTYKEY"/>を比較して、等しくないかどうかを判定します。
+        ///     2つの<see cref="PROPERTYKEY" />を比較して、等しくないかどうかを判定します。
         /// </summary>
-        /// <param name="left">1つめの<see cref="PROPERTYKEY"/>。</param>
-        /// <param name="right">2つめの<see cref="PROPERTYKEY"/>。</param>
+        /// <param name="left">1つめの<see cref="PROPERTYKEY" />。</param>
+        /// <param name="right">2つめの<see cref="PROPERTYKEY" />。</param>
         /// <returns>
-        /// 2つの<see cref="PROPERTYKEY"/>が等しい場合は<c>true</c>。
-        /// それ以外の場合は<c>false</c>。
+        ///     2つの<see cref="PROPERTYKEY" />が等しい場合は<c>true</c>。
+        ///     それ以外の場合は<c>false</c>。
         /// </returns>
         public static bool operator !=(PROPERTYKEY left, PROPERTYKEY right)
         {
@@ -95,7 +97,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// このインスタンスのハッシュコードを取得します。
+        ///     このインスタンスのハッシュコードを取得します。
         /// </summary>
         /// <returns>ハッシュコード。</returns>
         public override int GetHashCode()
@@ -104,7 +106,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// このインスタンスの文字列表現を取得します。
+        ///     このインスタンスの文字列表現を取得します。
         /// </summary>
         /// <returns>このインスタンスの文字列表現。</returns>
         public override string ToString()

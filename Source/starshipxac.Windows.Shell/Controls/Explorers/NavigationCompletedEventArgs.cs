@@ -10,6 +10,6 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
             this.NewLocation = newLocation;
         }
 
-        public ShellObject NewLocation { get; private set; }
+        public ShellObject NewLocation { get; }
     }
 }

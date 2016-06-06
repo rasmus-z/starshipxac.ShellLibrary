@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq.Expressions;
@@ -9,15 +10,17 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    /// <c>PROPVARIANT</c>を定義します。
+    ///     <c>PROPVARIANT</c>を定義します。
     /// </summary>
     /// <remarks>
-    /// http://blogs.msdn.com/adamroot/pages/interop-with-propvariants-in-net.aspx
+    ///     http://blogs.msdn.com/adamroot/pages/interop-with-propvariants-in-net.aspx
     /// </remarks>
     [StructLayout(LayoutKind.Explicit)]
+    [SuppressMessage("ReSharper", "BitwiseOperatorOnEnumWithoutFlags")]
     internal sealed class PropVariant : IDisposable
     {
         #region Fields
+
         // ReSharper disable FieldCanBeMadeReadOnly.Local
 
         [FieldOffset(0)]
@@ -63,17 +66,18 @@ namespace starshipxac.Shell.PropertySystem.Interop
         private IntPtr _ptr2;
 
         // ReSharper restore FieldCanBeMadeReadOnly.Local
+
         #endregion
 
         /// <summary>
-        /// <see cref="PropVariant"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="PropVariant" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         public PropVariant()
         {
         }
 
         /// <summary>
-        /// 文字列を指定して、<see cref="PropVariant"/>クラスの新しいインスタンスを初期化します。
+        ///     文字列を指定して、<see cref="PropVariant" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="value">文字列の値。</param>
         public PropVariant(string value)
@@ -207,7 +211,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
             this._valueType = (ushort)(VarEnum.VT_R4 | VarEnum.VT_VECTOR);
             this._int32 = value.Length;
 
-            this._ptr2 = Marshal.AllocCoTaskMem(value.Length * sizeof(float));
+            this._ptr2 = Marshal.AllocCoTaskMem(value.Length*sizeof(float));
             Marshal.Copy(value, 0, this._ptr2, value.Length);
         }
 
@@ -258,7 +262,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
             this._valueType = (ushort)(VarEnum.VT_DECIMAL | VarEnum.VT_VECTOR);
             this._int32 = value.Length;
 
-            this._ptr2 = Marshal.AllocCoTaskMem(value.Length * sizeof(decimal));
+            this._ptr2 = Marshal.AllocCoTaskMem(value.Length*sizeof(decimal));
             foreach (var t in value)
             {
                 var bits = decimal.GetBits(t);
@@ -267,10 +271,10 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// 指定した<paramref name="value"/>から<see cref="PropVariant"/>を作成します。
+        ///     指定した<paramref name="value" />から<see cref="PropVariant" />を作成します。
         /// </summary>
         /// <param name="value">オブジェクト。</param>
-        /// <returns>作成した<see cref="PropVariant"/>。</returns>
+        /// <returns>作成した<see cref="PropVariant" />。</returns>
         public static PropVariant FromObject(object value)
         {
             if (value == null)
@@ -293,7 +297,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// 現在の値の<see cref="VarEnum"/>を取得または設定します。
+        ///     現在の値の<see cref="VarEnum" />を取得または設定します。
         /// </summary>
         public VarEnum VarType
         {
@@ -308,7 +312,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// 値が<see cref="VarEnum.VT_EMPTY"/>または <see cref="VarEnum.VT_NULL"/>かどうかを判定する値を取得します。
+        ///     値が<see cref="VarEnum.VT_EMPTY" />または <see cref="VarEnum.VT_NULL" />かどうかを判定する値を取得します。
         /// </summary>
         public bool IsNullOrEmpty
         {
@@ -319,7 +323,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
         }
 
         /// <summary>
-        /// 値を取得します。
+        ///     値を取得します。
         /// </summary>
         public object Value
         {
@@ -427,7 +431,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
                 {
                     var obj = array.GetValue(index);
                     var punk = (obj != null) ? Marshal.GetIUnknownForObject(obj) : IntPtr.Zero;
-                    Marshal.WriteIntPtr(pvData, index * IntPtr.Size, punk);
+                    Marshal.WriteIntPtr(pvData, index*IntPtr.Size, punk);
                 }
             }
             finally
@@ -448,11 +452,12 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         private static System.Runtime.InteropServices.ComTypes.FILETIME DateTimeToFileTime(DateTime value)
         {
-            var hFT = value.ToFileTime();
-            var ft = new System.Runtime.InteropServices.ComTypes.FILETIME();
-            ft.dwLowDateTime = (int)(hFT & 0xFFFFFFFF);
-            ft.dwHighDateTime = (int)(hFT >> 32);
-            return ft;
+            var hFt = value.ToFileTime();
+            return new System.Runtime.InteropServices.ComTypes.FILETIME
+            {
+                dwLowDateTime = (int)(hFt & 0xFFFFFFFF),
+                dwHighDateTime = (int)(hFt >> 32)
+            };
         }
 
         private object GetBlobData()
@@ -472,7 +477,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
                 return null;
             }
 
-            lock(_padlock)
+            lock (_padlock)
             {
                 if (_vectorActions == null)
                 {
@@ -502,12 +507,12 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         private static Func<object, PropVariant> GetDynamicConstructor(Type type)
         {
-            lock(_padlock)
+            lock (_padlock)
             {
                 Func<object, PropVariant> action;
                 if (!_cache.TryGetValue(type, out action))
                 {
-                    var constructor = typeof(PropVariant).GetConstructor(new[] { type });
+                    var constructor = typeof(PropVariant).GetConstructor(new[] {type});
                     if (constructor == null)
                     {
                         throw new ArgumentException(ErrorMessages.PropVariantTypeNotSupported);
@@ -629,7 +634,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
                 var val = new int[4];
                 for (var a = 0; a < val.Length; a++)
                 {
-                    val[a] = Marshal.ReadInt32(pv._ptr2, (int)i * sizeof(decimal) + a * sizeof(int));
+                    val[a] = Marshal.ReadInt32(pv._ptr2, (int)i*sizeof(decimal) + a*sizeof(int));
                 }
                 array.SetValue(new decimal(val), i);
             });
@@ -647,9 +652,9 @@ namespace starshipxac.Shell.PropertySystem.Interop
         #endregion
 
         /// <summary>
-        /// <see cref="PropVariant"/>の文字列表現を取得します。
+        ///     <see cref="PropVariant" />の文字列表現を取得します。
         /// </summary>
-        /// <returns><see cref="PropVariant"/>の文字列表現。</returns>
+        /// <returns><see cref="PropVariant" />の文字列表現。</returns>
         public override string ToString()
         {
             return String.Format(CultureInfo.InvariantCulture, "{0}: {1}", this.Value, this.VarType.ToString());

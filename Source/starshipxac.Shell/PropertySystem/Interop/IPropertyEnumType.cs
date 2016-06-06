@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    /// <c>IPropertyEnumType</c>インターフェイスを定義します。
+    ///     <c>IPropertyEnumType</c>インターフェイスを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761495(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761495(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(PropertySystemIID.IPropertyEnumType)]

@@ -4,10 +4,10 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Windows.Dialogs.Interop
 {
     /// <summary>
-    /// タスクダイアログボタン構造体を定義します。
+    ///     タスクダイアログボタン構造体を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb787475(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb787475(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto, Pack = 4)]
     internal struct TASKDIALOG_BUTTON

@@ -5,10 +5,10 @@ using System.Text;
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// シェルリンクインターフェイスを定義します。
+    ///     シェルリンクインターフェイスを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb774950(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb774950(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(ShellIID.IShellLink)]

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -29,7 +30,7 @@ namespace starshipxac.Windows.Shell.FileSystem
 
         private static readonly Type FileOperationType = Type.GetTypeFromCLSID(new Guid(ShellCLSID.FileOperation));
 
-        // ReSharper disable once InconsistentNaming
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
         private static readonly HRESULT COPYENGINE_E_USER_CANCELLED = (HRESULT)0x80270000;
 
         /// <summary>

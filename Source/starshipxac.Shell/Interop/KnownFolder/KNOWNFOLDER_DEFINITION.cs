@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.Interop.KnownFolder
 {
     /// <summary>
-    /// 標準フォルダー定義構造体を定義します。
+    ///     標準フォルダー定義構造体を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb773325(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb773325(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public struct KNOWNFOLDER_DEFINITION
     {
         public KF_CATEGORY category;

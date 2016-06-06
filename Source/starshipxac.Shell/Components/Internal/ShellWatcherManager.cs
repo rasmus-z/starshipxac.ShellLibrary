@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 using starshipxac.Shell.Internal;
@@ -10,9 +11,10 @@ namespace starshipxac.Shell.Components.Internal
     /// <summary>
     ///     <see cref="ShellWatcher" />の通知用ウィンドウを管理します。
     /// </summary>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class ShellWatcherManager
     {
-        private static readonly ConcurrentDictionary<uint, ShellWatcher> listeners = new ConcurrentDictionary<uint, ShellWatcher>();
+        private static readonly ConcurrentDictionary<uint, ShellWatcher> Listeners = new ConcurrentDictionary<uint, ShellWatcher>();
 
         private const UInt32 WM_APP = 0x8000;
         private const UInt32 MaxAppMessage = 0xBFFF;
@@ -46,7 +48,7 @@ namespace starshipxac.Shell.Components.Internal
             var result = new ShellWatcher(shellObject, Window, message, recursive);
 
             // ShellWatcher登録
-            listeners.TryAdd(message, result);
+            Listeners.TryAdd(message, result);
 
             return result;
         }
@@ -61,7 +63,7 @@ namespace starshipxac.Shell.Components.Internal
             Contract.Requires<ArgumentNullException>(shellWatcher != null);
 
             ShellWatcher temp;
-            listeners.TryRemove(shellWatcher.Message, out temp);
+            Listeners.TryRemove(shellWatcher.Message, out temp);
 
             return Task.FromResult(0);
         }
@@ -92,7 +94,7 @@ namespace starshipxac.Shell.Components.Internal
             {
                 for (var msg = WM_APP; msg < MaxAppMessage; ++msg)
                 {
-                    if (!listeners.ContainsKey(msg))
+                    if (!Listeners.ContainsKey(msg))
                     {
                         // 空いているメッセージ
                         return msg;
@@ -115,7 +117,7 @@ namespace starshipxac.Shell.Components.Internal
         private static IntPtr NotifyWindowProc(IntPtr hwnd, UInt32 msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             ShellWatcher shellWatcher;
-            listeners.TryGetValue(msg, out shellWatcher);
+            Listeners.TryGetValue(msg, out shellWatcher);
             if (shellWatcher != null)
             {
                 var args = CreateEventArgs(wParam, lParam);

@@ -10,12 +10,10 @@ using starshipxac.Shell.Search.Interop;
 namespace starshipxac.Shell.Search
 {
     /// <summary>
-    /// 検索条件を定義します。
+    ///     検索条件を定義します。
     /// </summary>
     public class SearchCondition : IDisposable
     {
-        private const SearchConditionType conditionType = SearchConditionType.Leaf;
-
         internal SearchCondition(ICondition searchConditionNative)
         {
             Contract.Requires<ArgumentNullException>(searchConditionNative != null);
@@ -57,13 +55,7 @@ namespace starshipxac.Shell.Search
 
         public SearchConditionOperation ConditionOperation { get; }
 
-        public SearchConditionType ConditionType
-        {
-            get
-            {
-                return conditionType;
-            }
-        }
+        public SearchConditionType ConditionType => SearchConditionType.Leaf;
 
         public IEnumerable<SearchCondition> GetSubConditions()
         {

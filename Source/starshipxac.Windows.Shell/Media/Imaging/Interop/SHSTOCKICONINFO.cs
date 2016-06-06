@@ -1,7 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-
-// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Media.Imaging.Interop
 {
@@ -13,6 +12,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging.Interop
     ///     </para>
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct SHSTOCKICONINFO
     {
         public static SHSTOCKICONINFO Create()

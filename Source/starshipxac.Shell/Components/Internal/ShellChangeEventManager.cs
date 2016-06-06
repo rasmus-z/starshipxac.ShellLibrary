@@ -32,7 +32,10 @@ namespace starshipxac.Shell.Components.Internal
 
         public uint RegisteredTypes
         {
-            get { return this.events.Keys.Aggregate(0U, (a, c) => (Convert.ToUInt32(c) | a)); }
+            get
+            {
+                return this.events.Keys.Aggregate(0U, (a, c) => (Convert.ToUInt32(c) | a));
+            }
         }
 
         public void AddHandler(ShellChangeTypes eventType, Delegate handler)

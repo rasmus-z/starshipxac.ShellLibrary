@@ -1,7 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-
-// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Interop
 {
@@ -11,6 +10,7 @@ namespace starshipxac.Windows.Shell.Interop
     ///     https://msdn.microsoft.com/en-us/library/windows/desktop/bb773217(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct CMINVOKECOMMANDINFOEX
     {
         public UInt32 cbSize;

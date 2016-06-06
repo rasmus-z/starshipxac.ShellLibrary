@@ -1,7 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using starshipxac.Shell.Interop;
-
-// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Media.Imaging.Interop
 {
@@ -13,6 +12,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging.Interop
     ///         http://msdn.microsoft.com/en-us/library/windows/desktop/bb762542(v=vs.85).aspx
     ///     </para>
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class SHGSI
     {
         /// <summary>

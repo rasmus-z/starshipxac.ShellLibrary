@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using starshipxac.Shell.Search.Interop;
 
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    /// 
     /// </summary>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum PropertyConditionOperations
     {
         Implicit = CONDITION_OPERATION.COP_IMPLICIT,

@@ -1,6 +1,5 @@
 ﻿using System;
-
-// ReSharper disable InconsistentNaming
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Shell.Interop
 {
@@ -11,6 +10,7 @@ namespace starshipxac.Windows.Shell.Interop
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb759795(v=vs.85).aspx
     /// </remarks>
     [Flags]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum FILEOP_FLAGS : uint
     {
         FOF_MULTIDESTFILES = 0x1,

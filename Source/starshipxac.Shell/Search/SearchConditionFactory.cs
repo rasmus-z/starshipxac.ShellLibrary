@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
@@ -56,6 +57,7 @@ namespace starshipxac.Shell.Search
             }
         }
 
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
         private static SearchCondition CreateLeafCondition(string propertyName, PropVariant propVar, string valueType,
             SearchConditionOperation operation)
         {
@@ -64,15 +66,14 @@ namespace starshipxac.Shell.Search
 
             try
             {
-                nativeConditionFactory = (IConditionFactory)new ConditionFactoryCoClass();
-
-                ICondition nativeCondition = null;
-
                 if (string.IsNullOrEmpty(propertyName) || propertyName.ToUpperInvariant() == "SYSTEM.NULL")
                 {
                     propertyName = null;
                 }
 
+                nativeConditionFactory = (IConditionFactory)new ConditionFactoryCoClass();
+
+                ICondition nativeCondition = null;
                 var hr = nativeConditionFactory.MakeLeaf(propertyName, (CONDITION_OPERATION)operation, valueType,
                     propVar, null, null, null, false, out nativeCondition);
                 if (HRESULT.Failed(hr))
@@ -103,7 +104,7 @@ namespace starshipxac.Shell.Search
             PropertySystemNativeMethods.PSGetNameFromPropertyKey(ref key, out canonicalName);
             if (string.IsNullOrEmpty(canonicalName))
             {
-                throw new ArgumentException(ErrorMessages.SearchConditionFactoryInvalidProperty, "propertyKey");
+                throw new ArgumentException(ErrorMessages.SearchConditionFactoryInvalidProperty, nameof(propertyKey));
             }
 
             return CreateLeafCondition(canonicalName, value, operation);
@@ -119,7 +120,7 @@ namespace starshipxac.Shell.Search
             PropertySystemNativeMethods.PSGetNameFromPropertyKey(ref key, out canonicalName);
             if (string.IsNullOrEmpty(canonicalName))
             {
-                throw new ArgumentException(ErrorMessages.SearchConditionFactoryInvalidProperty, "propertyKey");
+                throw new ArgumentException(ErrorMessages.SearchConditionFactoryInvalidProperty, nameof(propertyKey));
             }
 
             return CreateLeafCondition(canonicalName, value, operation);
@@ -133,7 +134,7 @@ namespace starshipxac.Shell.Search
             var canonicalName = propertyKey.Name;
             if (string.IsNullOrEmpty(canonicalName))
             {
-                throw new ArgumentException(ErrorMessages.SearchConditionFactoryInvalidProperty, "propertyKey");
+                throw new ArgumentException(ErrorMessages.SearchConditionFactoryInvalidProperty, nameof(propertyKey));
             }
 
             return CreateLeafCondition(canonicalName, value, operation);
@@ -147,7 +148,7 @@ namespace starshipxac.Shell.Search
             var canonicalName = propertyKey.Name;
             if (string.IsNullOrEmpty(canonicalName))
             {
-                throw new ArgumentException(ErrorMessages.SearchConditionFactoryInvalidProperty, "propertyKey");
+                throw new ArgumentException(ErrorMessages.SearchConditionFactoryInvalidProperty, nameof(propertyKey));
             }
 
             return CreateLeafCondition(canonicalName, value, operation);
@@ -161,12 +162,13 @@ namespace starshipxac.Shell.Search
             var canonicalName = propertyKey.Name;
             if (string.IsNullOrEmpty(canonicalName))
             {
-                throw new ArgumentException(ErrorMessages.SearchConditionFactoryInvalidProperty, "propertyKey");
+                throw new ArgumentException(ErrorMessages.SearchConditionFactoryInvalidProperty, nameof(propertyKey));
             }
 
             return CreateLeafCondition(canonicalName, value, operation);
         }
 
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
         public static SearchCondition CreateAndOrCondition(SearchConditionType conditionType, bool simplify,
             params SearchCondition[] conditionNodes)
         {
@@ -196,6 +198,7 @@ namespace starshipxac.Shell.Search
             return new SearchCondition(result);
         }
 
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
         public static SearchCondition CreateNotCondition(SearchCondition conditionToBeNegated, bool simplify)
         {
             Contract.Requires<ArgumentNullException>(conditionToBeNegated != null);
@@ -241,6 +244,7 @@ namespace starshipxac.Shell.Search
         ///     <para>http://msdn.microsoft.com/en-us/library/bb233500.aspx</para>
         ///     <para>http://www.microsoft.com/windows/products/winfamily/desktopsearch/technicalresources/advquery.mspx</para>
         /// </remarks>
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
         public static SearchCondition ParseStructuredQuery(string query, CultureInfo cultureInfo)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrEmpty(query));

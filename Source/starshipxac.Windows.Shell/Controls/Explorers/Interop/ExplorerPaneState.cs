@@ -1,9 +1,10 @@
 ﻿using System;
-// ReSharper disable InconsistentNaming
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Shell.Controls.Explorers.Interop
 {
     [Flags]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum EXPLORERPANESTATE : uint
     {
         EPS_DONTCARE = 0x00000000,

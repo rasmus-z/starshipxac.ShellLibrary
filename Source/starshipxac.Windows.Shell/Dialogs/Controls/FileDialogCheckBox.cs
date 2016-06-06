@@ -8,24 +8,17 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         private string text;
         private bool isChecked;
 
-        public FileDialogCheckBox(string name)
-            : this(name, String.Empty, false)
+        public FileDialogCheckBox(string text, bool isChecked = false)
+            : this(String.Empty, text, isChecked)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
-        }
-
-        public FileDialogCheckBox(string name, string text)
-            : this(name, text, false)
-        {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
         }
 
         public FileDialogCheckBox(string name, string text, bool isChecked)
             : base(name)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
+            Contract.Requires<ArgumentNullException>(name != null);
 
-            this.text = text;
+            this.text = text ?? String.Empty;
             this.isChecked = isChecked;
         }
 

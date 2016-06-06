@@ -10,10 +10,14 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         private string text;
         private readonly Collection<FileDialogControl> items;
 
-        public FileDialogGroupBox(string name, params FileDialogControl[] controls)
-            : this(name, String.Empty, controls)
+        public FileDialogGroupBox(params FileDialogControl[] controls)
+            : this(String.Empty, null, controls)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
+        }
+
+        public FileDialogGroupBox(string text, params FileDialogControl[] controls)
+            : this(String.Empty, text, controls)
+        {
         }
 
         public FileDialogGroupBox(string name, string text, params FileDialogControl[] controls)
@@ -21,7 +25,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
 
-            this.text = text;
+            this.text = text ?? String.Empty;
 
             this.items = controls == null
                 ? new Collection<FileDialogControl>()

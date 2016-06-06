@@ -11,7 +11,7 @@ namespace starshipxac.Shell
     /// </summary>
     public static class ShellFileSystemExtension
     {
-        private static readonly char[] separators =
+        private static readonly char[] Separators =
         {
             Path.DirectorySeparatorChar,
             Path.AltDirectorySeparatorChar
@@ -36,11 +36,11 @@ namespace starshipxac.Shell
             if (!String.IsNullOrEmpty(root))
             {
                 result.Add(root);
-                result.AddRange(parsingName.Substring(root.Length).Split(separators, StringSplitOptions.RemoveEmptyEntries));
+                result.AddRange(parsingName.Substring(root.Length).Split(Separators, StringSplitOptions.RemoveEmptyEntries));
             }
             else
             {
-                result.AddRange(parsingName.Split(separators, StringSplitOptions.RemoveEmptyEntries));
+                result.AddRange(parsingName.Split(Separators, StringSplitOptions.RemoveEmptyEntries));
             }
 
             return result.ToArray();
@@ -101,7 +101,7 @@ namespace starshipxac.Shell
 
             if (IsNonFileSystemKnownFolderRoot(parsingName))
             {
-                var index = parsingName.IndexOfAny(separators);
+                var index = parsingName.IndexOfAny(Separators);
                 if (index < 0)
                 {
                     return parsingName;

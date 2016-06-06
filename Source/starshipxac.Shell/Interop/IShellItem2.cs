@@ -8,13 +8,13 @@ namespace starshipxac.Shell.Interop
 {
 #pragma warning disable 108,114
     /// <summary>
-    /// シェルアイテムインターフェイス2を定義します。
+    ///     シェルアイテムインターフェイス2を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761130(v=vs.85).aspx
-    /// <para>
-    /// <see cref="IShellItem"/>で定義済みのメソッドを削除しないこと。
-    /// </para>
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761130(v=vs.85).aspx
+    ///     <para>
+    ///         <see cref="IShellItem" />で定義済みのメソッドを削除しないこと。
+    ///     </para>
     /// </remarks>
     [ComImport]
     [Guid(ShellIID.IShellItem2)]
@@ -60,13 +60,13 @@ namespace starshipxac.Shell.Interop
         [PreserveSig]
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         HRESULT GetPropertyStore(
-            [In] GETPROPERTYSTOREFLAGS Flags,
+            [In] GETPROPERTYSTOREFLAGS flags,
             [In] ref Guid riid,
             [Out] [MarshalAs(UnmanagedType.Interface)] out IPropertyStore ppv);
 
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void GetPropertyStoreWithCreateObject(
-            [In] GETPROPERTYSTOREFLAGS Flags,
+            [In] GETPROPERTYSTOREFLAGS flags,
             [In] [MarshalAs(UnmanagedType.IUnknown)] object punkCreateObject,
             [In] ref Guid riid,
             out IntPtr ppv);
@@ -75,7 +75,7 @@ namespace starshipxac.Shell.Interop
         void GetPropertyStoreForKeys(
             [In] ref PROPERTYKEY rgKeys,
             [In] uint cKeys,
-            [In] GETPROPERTYSTOREFLAGS Flags,
+            [In] GETPROPERTYSTOREFLAGS flags,
             [In] ref Guid riid,
             [Out] [MarshalAs(UnmanagedType.IUnknown)] out IPropertyStore ppv);
 

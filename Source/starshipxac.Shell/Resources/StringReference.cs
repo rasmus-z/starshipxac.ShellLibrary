@@ -12,7 +12,7 @@ namespace starshipxac.Shell.Resources
     /// </summary>
     public class StringReference : ResourceReference
     {
-        private static readonly char[] separator = { ',' };
+        private static readonly char[] Separator = {','};
 
         public StringReference(string libraryName, int resourceId)
             : base(libraryName, resourceId)
@@ -33,7 +33,7 @@ namespace starshipxac.Shell.Resources
 
         protected override void ParseReferencePath(out string libraryPath, out int resourceId)
         {
-            var refParams = this.ReferencePath.Split(separator);
+            var refParams = this.ReferencePath.Split(Separator);
 
             if (refParams.Length != 2 || String.IsNullOrWhiteSpace(refParams[0]) || String.IsNullOrWhiteSpace(refParams[1]))
             {

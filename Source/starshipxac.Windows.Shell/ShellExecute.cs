@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using starshipxac.Shell;
 using starshipxac.Windows.Shell.Interop;
-
-// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell
 {
     public static class ShellExecute
     {
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
         private static readonly IntPtr HWND_DESKTOP = (IntPtr)0;
+
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
         private const int SW_HIDE = 0;
 
         /// <summary>

@@ -38,13 +38,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
             }
         }
 
-        public IReadOnlyList<FileDialogComboBoxItem> Items
-        {
-            get
-            {
-                return this.items;
-            }
-        }
+        public IReadOnlyList<FileDialogComboBoxItem> Items => this.items;
 
         public int SelectedIndex
         {

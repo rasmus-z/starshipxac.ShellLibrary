@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Text;
 
-// ReSharper disable InconsistentNaming
-
 namespace starshipxac.Windows.Shell.Interop
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class MenuNativeMethods
     {
         // Menu

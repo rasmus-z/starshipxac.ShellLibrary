@@ -6,10 +6,10 @@ using starshipxac.Shell.Search.Interop;
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// フォルダー検索アイテムファクトリインターフェイスを定義します。
+    ///     フォルダー検索アイテムファクトリインターフェイスを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb775176(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb775176(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(ShellIID.ISearchFolderItemFactory)]

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Windows.Dialogs.Interop
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto, Pack = 4)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal class TASKDIALOGCONFIG
     {
         internal uint cbSize;
@@ -54,33 +56,28 @@ namespace starshipxac.Windows.Dialogs.Interop
 
         internal static TASKDIALOGCONFIG Create()
         {
-            var result = new TASKDIALOGCONFIG();
-
-            result.cbSize = (uint)Marshal.SizeOf(typeof(TASKDIALOGCONFIG));
-            result.hwndParent = IntPtr.Zero;
-            result.hInstance = IntPtr.Zero;
-            result.flags = TASKDIALOG_FLAGS.TDF_ALLOW_DIALOG_CANCELLATION;
-            result.commonButtons = TASKDIALOG_COMMON_BUTTON_FLAGS.TDCBF_OK_BUTTON;
-
-            result.mainIcon = new TASKDIALOGCONFIG_ICON(0);
-
-            result.buttonCount = 0;
-            result.buttons = IntPtr.Zero;
-            result.defaultButtonIndex = 0;
-
-            result.radioButtonCount = 0;
-            result.radioButtons = IntPtr.Zero;
-            result.defaultRadioButtonIndex = 0;
-
-            result.verificationText = null;
-            result.expandedInformation = null;
-            result.expandedControlText = null;
-            result.collapsedControlText = null;
-
-            result.footerIcon = new TASKDIALOGCONFIG_ICON(0);
-            result.footerText = null;
-
-            result.cxWidth = 0;
+            var result = new TASKDIALOGCONFIG
+            {
+                cbSize = (uint)Marshal.SizeOf(typeof(TASKDIALOGCONFIG)),
+                hwndParent = IntPtr.Zero,
+                hInstance = IntPtr.Zero,
+                flags = TASKDIALOG_FLAGS.TDF_ALLOW_DIALOG_CANCELLATION,
+                commonButtons = TASKDIALOG_COMMON_BUTTON_FLAGS.TDCBF_OK_BUTTON,
+                mainIcon = new TASKDIALOGCONFIG_ICON(0),
+                buttonCount = 0,
+                buttons = IntPtr.Zero,
+                defaultButtonIndex = 0,
+                radioButtonCount = 0,
+                radioButtons = IntPtr.Zero,
+                defaultRadioButtonIndex = 0,
+                verificationText = null,
+                expandedInformation = null,
+                expandedControlText = null,
+                collapsedControlText = null,
+                footerIcon = new TASKDIALOGCONFIG_ICON(0),
+                footerText = null,
+                cxWidth = 0
+            };
 
             return result;
         }

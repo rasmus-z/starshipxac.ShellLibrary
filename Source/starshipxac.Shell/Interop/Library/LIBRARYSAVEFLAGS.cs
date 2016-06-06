@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Interop.Library
 {
     /// <summary>
-    /// ライブラリ保存フラグを定義します。
+    ///     ライブラリ保存フラグを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/dd378451(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/dd378451(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum LIBRARYSAVEFLAGS
     {
         LSF_FAILIFTHERE = 0,

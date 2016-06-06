@@ -10,7 +10,7 @@ using starshipxac.Windows.Properties;
 namespace starshipxac.Windows.Dialogs.Internal
 {
     /// <summary>
-    /// タスクダイアログの設定を定義します。
+    ///     タスクダイアログの設定を定義します。
     /// </summary>
     internal sealed class TaskDialogInternal : IDisposable
     {
@@ -21,9 +21,9 @@ namespace starshipxac.Windows.Dialogs.Internal
         private const int Ignored = S_OK;
 
         /// <summary>
-        /// <see cref="TaskDialogInternal"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="TaskDialogInternal" />クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="dialog"><see cref="TaskDialogBase"/>。</param>
+        /// <param name="dialog"><see cref="TaskDialogBase" />。</param>
         public TaskDialogInternal(TaskDialogBase dialog)
         {
             Contract.Requires<ArgumentNullException>(dialog != null);
@@ -83,17 +83,17 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// <see cref="TaskDialogBase"/>を取得します。
+        ///     <see cref="TaskDialogBase" />を取得します。
         /// </summary>
-        private TaskDialogBase Dialog { get; set; }
+        private TaskDialogBase Dialog { get; }
 
         /// <summary>
-        /// ダイアログの表示状態を取得します。
+        ///     ダイアログの表示状態を取得します。
         /// </summary>
         public DialogShowStates DialogShowStates { get; internal set; }
 
         /// <summary>
-        /// ダイアログが表示中かどうかを判定する値を取得します。
+        ///     ダイアログが表示中かどうかを判定する値を取得します。
         /// </summary>
         public bool DialogShowing
         {
@@ -105,27 +105,27 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// タスクダイアログフラグを取得または設定します。
+        ///     タスクダイアログフラグを取得または設定します。
         /// </summary>
         private TASKDIALOG_FLAGS Flags { get; set; }
 
         /// <summary>
-        /// ダイアログのタイトルを取得または設定します。
+        ///     ダイアログのタイトルを取得または設定します。
         /// </summary>
         private string WindowTitle { get; set; }
 
         /// <summary>
-        /// 説明文を取得または設定します。
+        ///     説明文を取得または設定します。
         /// </summary>
         private string InstructionText { get; set; }
 
         /// <summary>
-        /// 本文を取得または設定します。
+        ///     本文を取得または設定します。
         /// </summary>
         private string ContentText { get; set; }
 
         /// <summary>
-        /// フッターテキストを取得または設定します。
+        ///     フッターテキストを取得または設定します。
         /// </summary>
         private string FooterText { get; set; }
 
@@ -140,44 +140,44 @@ namespace starshipxac.Windows.Dialogs.Internal
         private string VerificationText { get; set; }
 
         /// <summary>
-        /// メインアイコンを取得または設定します。
+        ///     メインアイコンを取得または設定します。
         /// </summary>
         private TaskDialogIcon MainIcon { get; set; }
 
         /// <summary>
-        /// フッターアイコンを取得または設定します。
+        ///     フッターアイコンを取得または設定します。
         /// </summary>
         private TaskDialogIcon FooterIcon { get; set; }
 
         /// <summary>
-        /// 標準ボタンフラグを取得または設定します。
+        ///     標準ボタンフラグを取得または設定します。
         /// </summary>
         private TASKDIALOG_COMMON_BUTTON_FLAGS CommonButtons { get; set; }
 
         /// <summary>
-        /// カスタムボタンのコレクションを取得または設定します。
+        ///     カスタムボタンのコレクションを取得または設定します。
         /// </summary>
         private TaskDialogControlCollectionInternal<TaskDialogButton> CustomButtons { get; set; }
 
         /// <summary>
-        /// コマンドリンクのコレクションを取得または設定します。
+        ///     コマンドリンクのコレクションを取得または設定します。
         /// </summary>
         private TaskDialogControlCollectionInternal<TaskDialogCommandLink> CommandLinks { get; set; }
 
         /// <summary>
-        /// ラジオボタンのコレクションを取得または設定します。
+        ///     ラジオボタンのコレクションを取得または設定します。
         /// </summary>
         private TaskDialogControlCollectionInternal<TaskDialogRadioButton> RadioButtons { get; set; }
 
         /// <summary>
-        /// プログレスバーを取得または設定します。
+        ///     プログレスバーを取得または設定します。
         /// </summary>
         private TaskDialogProgressBarBase ProgressBar { get; set; }
 
         private TaskDialogCommands Commands { get; set; }
 
         /// <summary>
-        /// タスクダイアログを表示します。
+        ///     タスクダイアログを表示します。
         /// </summary>
         /// <param name="parentWindowHandle">親ウィンドウのハンドル。</param>
         public TaskDialogResult ShowDialog(IntPtr parentWindowHandle)
@@ -218,7 +218,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// 手動でダイアログを閉じます。
+        ///     手動でダイアログを閉じます。
         /// </summary>
         /// <param name="commonButtonId">押されたと仮定するボタンのID。</param>
         public void CloseDialog(TaskDialogCommonButtons commonButtonId)
@@ -230,7 +230,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// 手動でダイアログを閉じます。
+        ///     手動でダイアログを閉じます。
         /// </summary>
         /// <param name="buttonId">押されたと仮定するボタンのID。</param>
         public void CloseDialog(int buttonId)
@@ -244,10 +244,10 @@ namespace starshipxac.Windows.Dialogs.Internal
         #region Create Native Config
 
         /// <summary>
-        /// <see cref="TASKDIALOGCONFIG"/>を作成します。
+        ///     <see cref="TASKDIALOGCONFIG" />を作成します。
         /// </summary>
         /// <param name="parentWindowHandle">親ウィンドウのハンドル。</param>
-        /// <returns>作成した<see cref="TASKDIALOGCONFIG"/>。</returns>
+        /// <returns>作成した<see cref="TASKDIALOGCONFIG" />。</returns>
         private TASKDIALOGCONFIG CreateConfig(IntPtr parentWindowHandle)
         {
             var result = TASKDIALOGCONFIG.Create();
@@ -310,12 +310,12 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// デフォルトコントロールの IDを検索します。
+        ///     デフォルトコントロールの IDを検索します。
         /// </summary>
         /// <param name="controls">コントロールのコレクション。</param>
         /// <returns>
-        /// デフォルトコントロールの ID。
-        /// デフォルトコントロールが存在しない場合は、<see cref="TaskDialogNativeMethods.NoDefaultButtonSpecified"/>。
+        ///     デフォルトコントロールの ID。
+        ///     デフォルトコントロールが存在しない場合は、<see cref="TaskDialogNativeMethods.NoDefaultButtonSpecified" />。
         /// </returns>
         private static int FindDefaultButtonId(IEnumerable<TaskDialogButtonBase> controls)
         {
@@ -337,7 +337,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         #endregion
 
         /// <summary>
-        /// 指定したフラグが設定されているかどうかを判定する値を取得します。
+        ///     指定したフラグが設定されているかどうかを判定する値を取得します。
         /// </summary>
         /// <param name="checkFlag">判定するフラグ。</param>
         /// <returns>フラグが設定されている場合は<c>true</c>。されていない場合は<c>false</c>。</returns>
@@ -347,7 +347,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// フラグを設定します。
+        ///     フラグを設定します。
         /// </summary>
         /// <param name="options"></param>
         internal void SetFlags(TaskDialogOptions options)
@@ -356,16 +356,16 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ダイアログのタイトルを設定します。
+        ///     ダイアログのタイトルを設定します。
         /// </summary>
         /// <param name="title">ダイアログのタイトル。</param>
-        public void SetTitle(string title)
+        public void SetWindowTitle(string title)
         {
             this.WindowTitle = title ?? String.Empty;
         }
 
         /// <summary>
-        /// 説明文を設定します。
+        ///     説明文を設定します。
         /// </summary>
         /// <param name="instructionText">説明文。</param>
         public void SetMainInstructionText(string instructionText)
@@ -378,7 +378,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// 本文を設定します。
+        ///     本文を設定します。
         /// </summary>
         /// <param name="contentText">本文。</param>
         public void SetContentText(string contentText)
@@ -391,7 +391,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// フッターテキストを設定します。
+        ///     フッターテキストを設定します。
         /// </summary>
         /// <param name="footerText">フッターテキスト。</param>
         public void SetFooterText(string footerText)
@@ -437,7 +437,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// メインアイコンを設定します。
+        ///     メインアイコンを設定します。
         /// </summary>
         /// <param name="mainIcon">メインアイコン。</param>
         public void SetMainIcon(TaskDialogIcon mainIcon)
@@ -450,7 +450,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// フッターアイコンを設定します。
+        ///     フッターアイコンを設定します。
         /// </summary>
         /// <param name="footerIcon">フッターアイコン。</param>
         public void SetFooterIcon(TaskDialogIcon footerIcon)
@@ -463,7 +463,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// 標準ボタンを設定します。
+        ///     標準ボタンを設定します。
         /// </summary>
         /// <param name="commonButtons">標準ボタンフラグ。</param>
         public void SetCommonButtons(TaskDialogCommonButtons commonButtons)
@@ -472,7 +472,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// カスタムボタンのコレクションを設定します。
+        ///     カスタムボタンのコレクションを設定します。
         /// </summary>
         /// <param name="customButtons">カスタムボタンのコレクション。</param>
         public void SetCustomButtons(TaskDialogControlCollection<TaskDialogButton> customButtons)
@@ -490,7 +490,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// コマンドリンクのコレクションを設定します。
+        ///     コマンドリンクのコレクションを設定します。
         /// </summary>
         /// <param name="commandLinks">コマンドリンクのコレクション。</param>
         public void SetCommandLinks(TaskDialogControlCollection<TaskDialogCommandLink> commandLinks)
@@ -508,7 +508,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ラジオボタンのコレクションを設定します。
+        ///     ラジオボタンのコレクションを設定します。
         /// </summary>
         /// <param name="radioButtons">ラジオボタンのコレクション。</param>
         public void SetRadioButtons(TaskDialogControlCollection<TaskDialogRadioButton> radioButtons)
@@ -526,7 +526,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// プログレスバーを設定します。
+        ///     プログレスバーを設定します。
         /// </summary>
         /// <param name="progressBar">プログレスバー。</param>
         public void SetProgressBar(TaskDialogProgressBarBase progressBar)
@@ -545,7 +545,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// プログレスバーの状態を設定します。
+        ///     プログレスバーの状態を設定します。
         /// </summary>
         /// <param name="control">プログレスバー。</param>
         /// <param name="state">プログレスバー状態。</param>
@@ -555,7 +555,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// プログレスバーの位置を設定します。
+        ///     プログレスバーの位置を設定します。
         /// </summary>
         /// <param name="control">プログレスバー。</param>
         /// <param name="position">プログレスバーの位置。</param>
@@ -565,7 +565,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// プログレスバーの範囲を設定します。
+        ///     プログレスバーの範囲を設定します。
         /// </summary>
         /// <param name="control">プログレスバー。</param>
         /// <param name="minimum">プログレスバーの最小値。</param>
@@ -658,7 +658,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// タスクダイアログ表示前作成イベントを処理します。
+        ///     タスクダイアログ表示前作成イベントを処理します。
         /// </summary>
         /// <returns></returns>
         private int TaskDialogConstructedEvent()
@@ -667,7 +667,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// タスクダイアログ作成イベントを処理します。
+        ///     タスクダイアログ作成イベントを処理します。
         /// </summary>
         /// <returns></returns>
         private int TaskDialogCreatedEvent()
@@ -715,7 +715,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ナビゲートイベントを処理します。
+        ///     ナビゲートイベントを処理します。
         /// </summary>
         /// <returns></returns>
         private int TaskDialogNavigatedEvent()
@@ -725,7 +725,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// タスクダイアログボタンクリックイベントを処理します。
+        ///     タスクダイアログボタンクリックイベントを処理します。
         /// </summary>
         /// <param name="buttonId">クリックされたボタンのID。</param>
         /// <returns></returns>
@@ -769,7 +769,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ハイパーリンククリックイベントを処理します。
+        ///     ハイパーリンククリックイベントを処理します。
         /// </summary>
         /// <param name="pszHREF"></param>
         /// <returns></returns>
@@ -782,7 +782,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// タイマーイベントを処理します。
+        ///     タイマーイベントを処理します。
         /// </summary>
         /// <param name="ticks"></param>
         /// <returns></returns>
@@ -793,7 +793,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// タスクダイアログ破棄イベントを処理します。
+        ///     タスクダイアログ破棄イベントを処理します。
         /// </summary>
         /// <returns></returns>
         private int TaskDialogDestroyedEvent()
@@ -803,7 +803,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ラジオボタンクリックイベントを処理します。
+        ///     ラジオボタンクリックイベントを処理します。
         /// </summary>
         /// <param name="radioButtonId"></param>
         /// <returns></returns>
@@ -823,7 +823,6 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="checkBoxCheched"></param>
         /// <returns></returns>
@@ -834,7 +833,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// ヘルプイベントを処理します。
+        ///     ヘルプイベントを処理します。
         /// </summary>
         /// <returns></returns>
         private int TaskDialogHelpEvent()
@@ -844,7 +843,7 @@ namespace starshipxac.Windows.Dialogs.Internal
         }
 
         /// <summary>
-        /// 拡張ボタンクリックイベントを処理します。
+        ///     拡張ボタンクリックイベントを処理します。
         /// </summary>
         /// <param name="expanded"></param>
         /// <returns></returns>

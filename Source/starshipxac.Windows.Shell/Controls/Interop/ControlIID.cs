@@ -1,11 +1,12 @@
 ﻿using System;
-// ReSharper disable InconsistentNaming
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Shell.Controls.Interop
 {
     /// <summary>
     /// WindowsコントロールIDを定義します。
     /// </summary>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class ControlIID
     {
         /// <summary>

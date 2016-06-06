@@ -1,6 +1,5 @@
 ﻿using System;
-
-// ReSharper disable InconsistentNaming
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Shell.Interop
 {
@@ -10,6 +9,7 @@ namespace starshipxac.Windows.Shell.Interop
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb759795(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class FO
     {
         /// <summary>

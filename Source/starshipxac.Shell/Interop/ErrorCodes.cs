@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// Win32エラーコードを定義します。
+    ///     Win32エラーコードを定義します。
     /// </summary>
     /// <remarks>
-    /// <para>
-    /// Header File: WinError.h
-    /// </para>
+    ///     <para>
+    ///         Header File: WinError.h
+    ///     </para>
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class ErrorCodes
     {
         public const int ERROR_SUCCESS = 0;
@@ -23,12 +25,12 @@ namespace starshipxac.Shell.Interop
         public const int MaxErrorCode = 0x0000FFFF;
 
         /// <summary>
-        /// 最後に発生した Win32エラーを取得します。
+        ///     最後に発生した Win32エラーを取得します。
         /// </summary>
         public static int LastError => Marshal.GetLastWin32Error();
 
         /// <summary>
-        /// 最後に発生した Win32エラーをエラーメッセージに変換します。
+        ///     最後に発生した Win32エラーをエラーメッセージに変換します。
         /// </summary>
         /// <returns>エラーメッセージ。</returns>
         public static string FormatLastErrorMessage()
@@ -37,7 +39,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 指定した Win32エラーコードをエラーメッセージに変換します。
+        ///     指定した Win32エラーコードをエラーメッセージに変換します。
         /// </summary>
         /// <param name="errorCode">Win32エラーコード。</param>
         /// <returns>エラーメッセージ。</returns>

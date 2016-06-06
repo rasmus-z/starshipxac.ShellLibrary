@@ -3,47 +3,47 @@
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// タスクダイアログの実行結果を定義します。
-    /// </summary>        
+    ///     タスクダイアログの実行結果を定義します。
+    /// </summary>
     public enum TaskDialogSelectedButton
     {
         /// <summary>
-        /// 定義外のボタンクリック。
+        ///     定義外のボタンクリック。
         /// </summary>
         None = 0x0000,
 
         /// <summary>
-        /// OKボタンクリック。
+        ///     OKボタンクリック。
         /// </summary>
         Ok = 0x0001,
 
         /// <summary>
-        /// 「はい」ボタンクリック。
+        ///     「はい」ボタンクリック。
         /// </summary>
         Yes = 0x0002,
 
         /// <summary>
-        /// 「いいえ」ボタンクリック。
+        ///     「いいえ」ボタンクリック。
         /// </summary>
         No = 0x0004,
 
         /// <summary>
-        /// キャンセルボタンクリック。
+        ///     キャンセルボタンクリック。
         /// </summary>
         Cancel = 0x0008,
 
         /// <summary>
-        /// 「再試行」ボタンクリック。
+        ///     「再試行」ボタンクリック。
         /// </summary>
         Retry = 0x0010,
 
         /// <summary>
-        /// 閉じるボタンクリック。
+        ///     閉じるボタンクリック。
         /// </summary>
         Close = 0x0020,
 
         /// <summary>
-        /// カスタムボタンクリック。
+        ///     カスタムボタンクリック。
         /// </summary>
         CustomButtonClicked = 0x0100,
     }

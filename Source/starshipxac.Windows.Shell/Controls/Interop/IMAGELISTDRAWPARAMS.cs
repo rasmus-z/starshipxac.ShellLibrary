@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Controls.Interop
 {
@@ -8,6 +8,7 @@ namespace starshipxac.Windows.Shell.Controls.Interop
     /// イメージリスト描画パラメーターを保持します。
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct IMAGELISTDRAWPARAMS
     {
         public UInt32 cbSize;

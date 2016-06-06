@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Interop
 {
     /// <summary>
-    /// <c>WPARAM</c>を定義します。
+    ///     <c>WPARAM</c>を定義します。
     /// </summary>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class WPARAM
     {
         public static IntPtr MakeWPARAM(int low, int high)

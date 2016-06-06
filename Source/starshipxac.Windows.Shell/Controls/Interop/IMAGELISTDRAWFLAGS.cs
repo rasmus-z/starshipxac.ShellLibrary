@@ -1,11 +1,12 @@
 ﻿using System;
-// ReSharper disable InconsistentNaming
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Windows.Shell.Controls.Interop
 {
     /// <summary>
     /// イメージリスト描画フラグを表します。
     /// </summary>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class IMAGELISTDRAWFLAGS
     {
         public const UInt32 IDL_NORMAL = 0x00000000;

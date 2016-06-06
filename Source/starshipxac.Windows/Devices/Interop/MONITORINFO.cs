@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using starshipxac.Windows.Interop;
 
 namespace starshipxac.Windows.Devices.Interop
 {
     /// <summary>
-    /// モニター情報を定義します。
+    ///     モニター情報を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/dd145065(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/dd145065(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct MONITORINFO
     {
         public static MONITORINFO Create()
@@ -22,22 +24,22 @@ namespace starshipxac.Windows.Devices.Interop
         }
 
         /// <summary>
-        /// <see cref="MONITORINFO"/>構造体のサイズ。
+        ///     <see cref="MONITORINFO" />構造体のサイズ。
         /// </summary>
         public int cbSize;
 
         /// <summary>
-        /// モニターのサイズ。
+        ///     モニターのサイズ。
         /// </summary>
         public RECT rcMonitor;
 
         /// <summary>
-        /// ワークエリアのサイズ。
+        ///     ワークエリアのサイズ。
         /// </summary>
         public RECT rcWork;
 
         /// <summary>
-        /// モニターの属性。
+        ///     モニターの属性。
         /// </summary>
         public uint dwFlags;
     }

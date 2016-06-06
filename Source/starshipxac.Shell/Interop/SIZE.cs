@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// <c>SIZE</c>構造体を定義します。
+    ///     <c>SIZE</c>構造体を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/dd145106(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/dd145106(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct SIZE
     {
         public SIZE(int width, int height)
@@ -27,12 +29,12 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 幅
+        ///     幅
         /// </summary>
         public int Width { get; set; }
 
         /// <summary>
-        /// 高さ
+        ///     高さ
         /// </summary>
         public int Height { get; set; }
     }

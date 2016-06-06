@@ -23,7 +23,7 @@ namespace starshipxac.Windows.Devices
         {
             uint dpiX = 0;
             uint dpiY = 0;
-            return MultiMonitorNativeMethods.GetDpiForMonitor(hMonitor, MONITOR_DPI_TYPE.MDT_DEFAULT, ref dpiX, ref dpiY) == IntPtr.Zero ? new Dpi((int) dpiX, (int) dpiY) : Default;
+            return MultiMonitorNativeMethods.GetDpiForMonitor(hMonitor, MONITOR_DPI_TYPE.MDT_DEFAULT, ref dpiX, ref dpiY) == IntPtr.Zero ? new Dpi((int)dpiX, (int)dpiY) : Default;
         }
 
         public static Dpi Default { get; }
@@ -57,7 +57,7 @@ namespace starshipxac.Windows.Devices
             {
                 return false;
             }
-            return Equals((Dpi) obj);
+            return Equals((Dpi)obj);
         }
 
         public override int GetHashCode()

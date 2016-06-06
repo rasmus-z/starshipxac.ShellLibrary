@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -7,14 +8,15 @@ namespace starshipxac.Shell.Interop.KnownFolder
 #pragma warning disable 0108
 
     /// <summary>
-    /// 規定フォルダー管理インターフェイスを定義します。
+    ///     規定フォルダー管理インターフェイスを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb761744(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761744(v=vs.85).aspx
     /// </remarks>
     [ComImport]
     [Guid(ShellIID.IKnownFolderManager)]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal interface IKnownFolderManager
     {
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]

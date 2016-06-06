@@ -8,7 +8,7 @@ using starshipxac.Windows.Properties;
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// タスクダイアログを定義します。
+    ///     タスクダイアログを定義します。
     /// </summary>
     public class TaskDialog : TaskDialogBase
     {
@@ -28,7 +28,7 @@ namespace starshipxac.Windows.Dialogs
         private TaskDialogCommonButtons commonButtons = TaskDialogCommonButtons.None;
 
         /// <summary>
-        /// <see cref="TaskDialog"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="TaskDialog" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         public TaskDialog()
         {
@@ -74,7 +74,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ダイアログのタイトルを取得または設定します。
+        ///     ダイアログのタイトルを取得または設定します。
         /// </summary>
         public string Title
         {
@@ -84,18 +84,12 @@ namespace starshipxac.Windows.Dialogs
             }
             set
             {
-                if (this.title == value)
-                {
-                    return;
-                }
-
-                this.title = value ?? String.Empty;
-                SetTitle(this.title);
+                SetProperty(ref this.title, value, SetWindowTitle);
             }
         }
 
         /// <summary>
-        /// 説明文を取得または設定します。
+        ///     説明文を取得または設定します。
         /// </summary>
         public string MainInstructionText
         {
@@ -105,18 +99,12 @@ namespace starshipxac.Windows.Dialogs
             }
             set
             {
-                if (this.mainInstructionText == value)
-                {
-                    return;
-                }
-
-                this.mainInstructionText = value ?? String.Empty;
-                SetMainInstructionText(this.mainInstructionText);
+                SetProperty(ref this.mainInstructionText, value, SetMainInstructionText);
             }
         }
 
         /// <summary>
-        /// 本文を取得または設定します。
+        ///     本文を取得または設定します。
         /// </summary>
         public string ContentText
         {
@@ -126,18 +114,12 @@ namespace starshipxac.Windows.Dialogs
             }
             set
             {
-                if (this.contentText == value)
-                {
-                    return;
-                }
-
-                this.contentText = value ?? String.Empty;
-                SetContentText(this.contentText);
+                SetProperty(ref this.contentText, value, SetContentText);
             }
         }
 
         /// <summary>
-        /// フッターテキストを取得または設定します。
+        ///     フッターテキストを取得または設定します。
         /// </summary>
         public string FooterText
         {
@@ -147,13 +129,7 @@ namespace starshipxac.Windows.Dialogs
             }
             set
             {
-                if (this.footerText == value)
-                {
-                    return;
-                }
-
-                this.footerText = value ?? String.Empty;
-                SetFooterText(this.footerText);
+                SetProperty(ref this.footerText, value, SetFooterText);
             }
         }
 
@@ -165,12 +141,7 @@ namespace starshipxac.Windows.Dialogs
             }
             set
             {
-                if (this.expandedText == value)
-                {
-                    return;
-                }
-                this.expandedText = value ?? String.Empty;
-                SetExpandedText(this.expandedText);
+                SetProperty(ref this.expandedText, value, SetExpandedText);
             }
         }
 
@@ -182,12 +153,7 @@ namespace starshipxac.Windows.Dialogs
             }
             set
             {
-                if (this.expandedControlText == value)
-                {
-                    return;
-                }
-                this.expandedControlText = value ?? String.Empty;
-                SetExpandedControlText(this.expandedControlText);
+                SetProperty(ref this.expandedControlText, value, SetExpandedControlText);
             }
         }
 
@@ -199,18 +165,12 @@ namespace starshipxac.Windows.Dialogs
             }
             set
             {
-                if (this.collapsedControlText == value)
-                {
-                    return;
-                }
-
-                this.collapsedControlText = value ?? String.Empty;
-                SetCollapsedControlText(this.collapsedControlText);
+                SetProperty(ref this.collapsedControlText, value, SetCollapsedControlText);
             }
         }
 
         /// <summary>
-        /// 確認チェックボックスがチェックされているかどうかを判定する値を取得または設定します。
+        ///     確認チェックボックスがチェックされているかどうかを判定する値を取得または設定します。
         /// </summary>
         public bool? VerificationChecked
         {
@@ -226,7 +186,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// 確認文を取得または設定します。
+        ///     確認文を取得または設定します。
         /// </summary>
         public string VerificationText
         {
@@ -236,18 +196,12 @@ namespace starshipxac.Windows.Dialogs
             }
             set
             {
-                if (this.verificationText == value)
-                {
-                    return;
-                }
-
-                this.verificationText = value ?? String.Empty;
-                SetVerificationText(this.verificationText);
+                SetProperty(ref this.verificationText, value, SetVerificationText);
             }
         }
 
         /// <summary>
-        /// アイコンを取得または設定します。
+        ///     アイコンを取得または設定します。
         /// </summary>
         public TaskDialogIcon MainIcon
         {
@@ -257,18 +211,12 @@ namespace starshipxac.Windows.Dialogs
             }
             set
             {
-                if (this.mainIcon == value)
-                {
-                    return;
-                }
-
-                this.mainIcon = value;
-                SetMainIcon(this.mainIcon);
+                SetProperty(ref this.mainIcon, value, SetMainIcon);
             }
         }
 
         /// <summary>
-        /// フッターアイコンを取得または設定します。
+        ///     フッターアイコンを取得または設定します。
         /// </summary>
         public TaskDialogIcon FooterIcon
         {
@@ -278,18 +226,12 @@ namespace starshipxac.Windows.Dialogs
             }
             set
             {
-                if (this.footerIcon == value)
-                {
-                    return;
-                }
-
-                this.footerIcon = value;
-                SetFooterIcon(this.footerIcon);
+                SetProperty(ref this.footerIcon, value, SetFooterIcon);
             }
         }
 
         /// <summary>
-        /// 標準ボタンを取得または設定します。
+        ///     標準ボタンを取得または設定します。
         /// </summary>
         public TaskDialogCommonButtons CommonButtons
         {
@@ -299,13 +241,7 @@ namespace starshipxac.Windows.Dialogs
             }
             set
             {
-                if (this.commonButtons == value)
-                {
-                    return;
-                }
-
-                this.commonButtons = value;
-                SetCommonButtons(this.commonButtons);
+                SetProperty(ref this.commonButtons, value, SetCommonButtons);
             }
         }
 
@@ -316,22 +252,22 @@ namespace starshipxac.Windows.Dialogs
         public TaskDialogExpansionMode ExpansionMode { get; set; }
 
         /// <summary>
-        /// カスタムボタンのコレクションを取得します。
+        ///     カスタムボタンのコレクションを取得します。
         /// </summary>
         public TaskDialogControlCollection<TaskDialogButton> CustomButtons { get; }
 
         /// <summary>
-        /// コマンドリンクのコレクションを取得します。
+        ///     コマンドリンクのコレクションを取得します。
         /// </summary>
         public TaskDialogControlCollection<TaskDialogCommandLink> CommandLinks { get; }
 
         /// <summary>
-        /// ラジオボタンのコレクションを取得します。
+        ///     ラジオボタンのコレクションを取得します。
         /// </summary>
         public TaskDialogControlCollection<TaskDialogRadioButton> RadioButtons { get; }
 
         /// <summary>
-        /// プログレスバーを取得または設定します。
+        ///     プログレスバーを取得または設定します。
         /// </summary>
         public TaskDialogProgressBarBase ProgressBar { get; set; }
 
@@ -340,14 +276,13 @@ namespace starshipxac.Windows.Dialogs
         #region Opened Event
 
         /// <summary>
-        /// ダイアログが開くと発生します。
+        ///     ダイアログが開くと発生します。
         /// </summary>
         public event EventHandler Opened;
 
         protected virtual void OnOpened(EventArgs args)
         {
-            var handler = this.Opened;
-            handler?.Invoke(this, args);
+            this.Opened?.Invoke(this, args);
         }
 
         #endregion
@@ -355,14 +290,13 @@ namespace starshipxac.Windows.Dialogs
         #region Closing Event
 
         /// <summary>
-        /// ダイアログが閉じる前に発生します。
+        ///     ダイアログが閉じる前に発生します。
         /// </summary>
         public event EventHandler<TaskDialogClosingEventArgs> Closing;
 
         protected virtual void OnClosing(TaskDialogClosingEventArgs args)
         {
-            var handler = this.Closing;
-            handler?.Invoke(this, args);
+            this.Closing?.Invoke(this, args);
         }
 
         #endregion
@@ -370,14 +304,13 @@ namespace starshipxac.Windows.Dialogs
         #region HperlinkClicked Event
 
         /// <summary>
-        /// ハイパーリンクがクリックされると発生します。
+        ///     ハイパーリンクがクリックされると発生します。
         /// </summary>
         public event EventHandler<TaskDialogHyperlinkClickedEventArgs> HyperlinkClicked;
 
         protected virtual void OnHyperlinkClicked(TaskDialogHyperlinkClickedEventArgs args)
         {
-            var handler = this.HyperlinkClicked;
-            handler?.Invoke(this, args);
+            this.HyperlinkClicked?.Invoke(this, args);
         }
 
         #endregion
@@ -385,14 +318,13 @@ namespace starshipxac.Windows.Dialogs
         #region VerificationChanged Event
 
         /// <summary>
-        /// 確認チェックボックスが変更されると発生します。
+        ///     確認チェックボックスが変更されると発生します。
         /// </summary>
         public event EventHandler<TaskDialogVerificationChangedEventArgs> VerificationChanged;
 
         protected virtual void OnVerificationChanged(TaskDialogVerificationChangedEventArgs args)
         {
-            var handler = this.VerificationChanged;
-            handler?.Invoke(this, args);
+            this.VerificationChanged?.Invoke(this, args);
         }
 
         #endregion
@@ -400,14 +332,13 @@ namespace starshipxac.Windows.Dialogs
         #region ExpandChanged Event
 
         /// <summary>
-        /// 拡張領域の表示状態が変更されると発生します。
+        ///     拡張領域の表示状態が変更されると発生します。
         /// </summary>
         public event EventHandler<TaskDialogExpandChangedEventArgs> ExpandChanged;
 
         protected virtual void OnExpandChanged(TaskDialogExpandChangedEventArgs args)
         {
-            var handler = this.ExpandChanged;
-            handler?.Invoke(this, args);
+            this.ExpandChanged?.Invoke(this, args);
         }
 
         #endregion
@@ -415,14 +346,13 @@ namespace starshipxac.Windows.Dialogs
         #region HelpInvoked Event
 
         /// <summary>
-        /// ヘルプが実行されると発生します。
+        ///     ヘルプが実行されると発生します。
         /// </summary>
         public event EventHandler HelpInvoked;
 
         protected virtual void OnHelpInvoked(EventArgs args)
         {
-            var handler = this.HelpInvoked;
-            handler?.Invoke(this, args);
+            this.HelpInvoked?.Invoke(this, args);
         }
 
         #endregion
@@ -430,14 +360,13 @@ namespace starshipxac.Windows.Dialogs
         #region Timer Evnt
 
         /// <summary>
-        /// タイマーイベントを発生します。
+        ///     タイマーイベントを発生します。
         /// </summary>
         public event EventHandler<TaskDialogTimerEventArgs> Timer;
 
         protected virtual void OnTimer(TaskDialogTimerEventArgs args)
         {
-            var handler = this.Timer;
-            handler?.Invoke(this, args);
+            this.Timer?.Invoke(this, args);
         }
 
         #endregion
@@ -445,7 +374,7 @@ namespace starshipxac.Windows.Dialogs
         #endregion
 
         /// <summary>
-        /// ダイアログを表示します。
+        ///     ダイアログを表示します。
         /// </summary>
         /// <returns>タスクダイアログ実行結果。</returns>
         public TaskDialogResult Show()
@@ -454,7 +383,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// 親ウィンドウを指定して、ダイアログを表示します。
+        ///     親ウィンドウを指定して、ダイアログを表示します。
         /// </summary>
         /// <param name="parentWindow">親ウィンドウ。</param>
         /// <returns>タスクダイアログ実行結果。</returns>
@@ -483,7 +412,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// ダイアログを閉じます。
+        ///     ダイアログを閉じます。
         /// </summary>
         public void Close()
         {
@@ -491,7 +420,7 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// <see cref="TaskDialogSelectedButton"/>を指定して、ダイアログを閉じます。
+        ///     <see cref="TaskDialogSelectedButton" />を指定して、ダイアログを閉じます。
         /// </summary>
         /// <param name="commonButton"></param>
         public void Close(TaskDialogCommonButtons commonButton)
@@ -595,9 +524,9 @@ namespace starshipxac.Windows.Dialogs
             OnHyperlinkClicked(new TaskDialogHyperlinkClickedEventArgs(link));
         }
 
-        protected internal override void RaiseVerificationClickedEvent(bool verificationChecked)
+        protected internal override void RaiseVerificationClickedEvent(bool verification)
         {
-            OnVerificationChanged(new TaskDialogVerificationChangedEventArgs(verificationChecked));
+            OnVerificationChanged(new TaskDialogVerificationChangedEventArgs(verification));
         }
 
         protected internal override void RaiseExpandoButtonClickedEvent(bool expanded)

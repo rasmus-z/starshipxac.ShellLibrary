@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Search.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class SearchCLSID
     {
         internal const string ConditionFactory = "E03E85B0-7BE3-4000-BA98-6C13DE9FA486";

@@ -1,28 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.Contracts;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
     public class FileDialogMenu : FileDialogControl
     {
         private string text;
-        private readonly Collection<FileDialogMenuItem> items = new Collection<FileDialogMenuItem>();
-
-        public FileDialogMenu(params FileDialogMenuItem[] menuItems)
-            : this(String.Empty, menuItems)
-        {
-        }
+        private readonly Collection<FileDialogMenuItem> items;
 
         public FileDialogMenu(string text, params FileDialogMenuItem[] menuItems)
-            : base(String.Empty)
+            : this(String.Empty, text, menuItems)
         {
         }
 
         public FileDialogMenu(string name, string text, params FileDialogMenuItem[] menuItems)
             : base(name)
         {
-            this.text = text;
+            Contract.Requires<ArgumentNullException>(name != null);
+
+            this.text = text ?? String.Empty;
 
             this.items = (menuItems == null)
                 ? new Collection<FileDialogMenuItem>()
@@ -47,13 +45,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
             }
         }
 
-        public IReadOnlyList<FileDialogMenuItem> Items
-        {
-            get
-            {
-                return this.items;
-            }
-        }
+        public IReadOnlyList<FileDialogMenuItem> Items => this.items;
 
         internal override void Attach(FileDialogBase dialog)
         {

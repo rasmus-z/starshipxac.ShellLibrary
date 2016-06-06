@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
 
@@ -16,7 +17,7 @@ namespace starshipxac.Shell.Internal
         // Delegateを保持しておくために必要。
         private static readonly WndProc StaticWndProc = WindowProc;
 
-        private static readonly ConcurrentDictionary<IntPtr, WindowSourceHook> hooks =
+        private static readonly ConcurrentDictionary<IntPtr, WindowSourceHook> Hooks =
             new ConcurrentDictionary<IntPtr, WindowSourceHook>();
 
         /// <summary>
@@ -24,6 +25,7 @@ namespace starshipxac.Shell.Internal
         /// </summary>
         private const string WindowClassName = "starshipxac.Shell.WindowClass";
 
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
         public static readonly IntPtr HWND_MESSAGE = (IntPtr)(-3);
 
         /// <summary>
@@ -79,14 +81,14 @@ namespace starshipxac.Shell.Internal
         private static void AddHook(IntPtr hwnd, WindowSourceHook hook)
         {
             Contract.Requires<ArgumentNullException>(hook != null);
-            hooks.TryAdd(hwnd, hook);
+            Hooks.TryAdd(hwnd, hook);
         }
 
         private static void RemoveHook(IntPtr hwnd)
         {
             Contract.Requires<ArgumentException>(hwnd != IntPtr.Zero);
             WindowSourceHook hook;
-            hooks.TryRemove(hwnd, out hook);
+            Hooks.TryRemove(hwnd, out hook);
         }
 
         public HandleRef CreateHandleRef()
@@ -150,7 +152,7 @@ namespace starshipxac.Shell.Internal
             var handled = false;
 
             WindowSourceHook hook;
-            if (hooks.TryGetValue(hwnd, out hook))
+            if (Hooks.TryGetValue(hwnd, out hook))
             {
                 var ret = hook(hwnd, message, wParam, lParam, ref handled);
                 if (handled)
@@ -171,6 +173,7 @@ namespace starshipxac.Shell.Internal
         internal delegate IntPtr WndProc(IntPtr hwnd, UInt32 msg, IntPtr wParam, IntPtr lParam);
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
         internal struct WNDCLASSEX
         {
             public static WNDCLASSEX Create()
@@ -182,9 +185,11 @@ namespace starshipxac.Shell.Internal
                 return result;
             }
 
-            [MarshalAs(UnmanagedType.U4)] public UInt32 cbSize;
+            [MarshalAs(UnmanagedType.U4)]
+            public UInt32 cbSize;
 
-            [MarshalAs(UnmanagedType.U4)] public UInt32 style;
+            [MarshalAs(UnmanagedType.U4)]
+            public UInt32 style;
 
             public WndProc lpfnWndProc;
             public int cbClsExtra;

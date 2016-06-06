@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace starshipxac.Shell.Search.Interop
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/aa965692(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/aa965692(v=vs.85).aspx
     /// </remarks>
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal enum CONDITION_TYPE
     {
         CT_AND_CONDITION = 0,

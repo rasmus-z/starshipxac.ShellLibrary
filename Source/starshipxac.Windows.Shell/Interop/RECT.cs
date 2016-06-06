@@ -1,7 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-
-// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Interop
 {
@@ -12,6 +11,7 @@ namespace starshipxac.Windows.Shell.Interop
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/dd162897(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct RECT
     {
         public RECT(int left, int top, int right, int bottom)
@@ -43,20 +43,8 @@ namespace starshipxac.Windows.Shell.Interop
         public int Right { get; set; }
         public int Bottom { get; set; }
 
-        public int Width
-        {
-            get
-            {
-                return this.Right - this.Left;
-            }
-        }
+        public int Width => this.Right - this.Left;
 
-        public int Height
-        {
-            get
-            {
-                return this.Bottom - this.Top;
-            }
-        }
+        public int Height => this.Bottom - this.Top;
     }
 }

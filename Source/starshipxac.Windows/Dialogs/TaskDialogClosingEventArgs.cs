@@ -6,7 +6,7 @@ using starshipxac.Windows.Dialogs.Controls;
 namespace starshipxac.Windows.Dialogs
 {
     /// <summary>
-    /// <see cref="TaskDialog.Closing"/>イベントデータを定義します。
+    ///     <see cref="TaskDialog.Closing" />イベントデータを定義します。
     /// </summary>
     public class TaskDialogClosingEventArgs : CancelEventArgs
     {
@@ -31,17 +31,17 @@ namespace starshipxac.Windows.Dialogs
         }
 
         /// <summary>
-        /// タスクダイアログ実行結果を取得します。
+        ///     タスクダイアログ実行結果を取得します。
         /// </summary>
         public TaskDialogSelectedButton TaskDialogResult { get; internal set; }
 
         /// <summary>
-        /// クリックしたコントロールの IDを取得します。
+        ///     クリックしたコントロールの IDを取得します。
         /// </summary>
         public int ControlId { get; internal set; }
 
         /// <summary>
-        /// クリックしたコントロールの名前を取得します。
+        ///     クリックしたコントロールの名前を取得します。
         /// </summary>
         public string ControlName { get; internal set; }
 

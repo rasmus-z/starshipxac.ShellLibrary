@@ -34,7 +34,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// ファイナライザー。
+        ///     ファイナライザー。
         /// </summary>
         ~ShellPropertyWriter()
         {
@@ -42,7 +42,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyWriter"/>によって使用されているすべてのリソースを解放します。
+        ///     <see cref="ShellPropertyWriter" />によって使用されているすべてのリソースを解放します。
         /// </summary>
         public void Dispose()
         {
@@ -51,12 +51,12 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyWriter"/>によって使用されているすべてのリソースを解放し、
-        /// オプションでマネージリソースも解放します。
+        ///     <see cref="ShellPropertyWriter" />によって使用されているすべてのリソースを解放し、
+        ///     オプションでマネージリソースも解放します。
         /// </summary>
         /// <param name="disposing">
-        /// マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        /// アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
+        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
@@ -64,7 +64,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="ShellPropertyWriter"/>をコミットしてから閉じます。
+        ///     <see cref="ShellPropertyWriter" />をコミットしてから閉じます。
         /// </summary>
         public void Close()
         {
@@ -79,7 +79,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        /// <see cref="Shell.ShellObject"/>を取得します。
+        ///     <see cref="Shell.ShellObject" />を取得します。
         /// </summary>
         protected ShellObject ShellObject { get; }
 

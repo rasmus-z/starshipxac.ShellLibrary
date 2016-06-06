@@ -46,8 +46,8 @@ namespace starshipxac.Shell.Resources
         {
             Contract.Ensures(Contract.Result<ShellIcon>() != null);
 
-            var smallIcons = new[] { IntPtr.Zero };
-            var largeIcons = new[] { IntPtr.Zero };
+            var smallIcons = new[] {IntPtr.Zero};
+            var largeIcons = new[] {IntPtr.Zero};
             ShellNativeMethods.ExtractIconEx(this.LibraryPath, this.ResourceId, largeIcons, smallIcons, 1);
             var hicon = largeIcons[0];
             if (hicon == IntPtr.Zero)

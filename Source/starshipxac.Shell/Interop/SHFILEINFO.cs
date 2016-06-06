@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.Interop
@@ -10,6 +11,7 @@ namespace starshipxac.Shell.Interop
     /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb759792(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct SHFILEINFO
     {
         internal IntPtr hIcon;

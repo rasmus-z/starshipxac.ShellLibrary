@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.Contracts;
 using System.Threading;
@@ -11,15 +12,15 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         private readonly Collection<FileDialogRadioButtonListItem> items;
         private int selectedIndex = -1;
 
-        public FileDialogRadioButtonList()
-            : this(String.Empty)
+        public FileDialogRadioButtonList(params FileDialogRadioButtonListItem[] items)
+            : this(String.Empty, items)
         {
         }
 
         public FileDialogRadioButtonList(string name, params FileDialogRadioButtonListItem[] items)
             : base(name)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
+            Contract.Requires<ArgumentNullException>(name != null);
 
             this.items = (items == null)
                 ? new Collection<FileDialogRadioButtonListItem>()
@@ -38,13 +39,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
             }
         }
 
-        public Collection<FileDialogRadioButtonListItem> Items
-        {
-            get
-            {
-                return this.items;
-            }
-        }
+        public IReadOnlyList<FileDialogRadioButtonListItem> Items => this.items;
 
         public int SelectedIndex
         {
@@ -54,7 +49,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
                 {
                     this.selectedIndex = this.Dialog.GetControlSelectedIndex(this);
                 }
-                return this.Dialog.GetControlSelectedIndex(this);
+                return this.selectedIndex;
             }
             set
             {

@@ -101,21 +101,9 @@ namespace starshipxac.Windows.Shell.Controls
 
         internal IContextMenu3 ContextMenuNative { get; }
 
-        private int CommandFirst
-        {
-            get
-            {
-                return 1;
-            }
-        }
+        private int CommandFirst => 1;
 
-        private int CommandLast
-        {
-            get
-            {
-                return 300000;
-            }
-        }
+        private int CommandLast => 300000;
 
         public string GetText(int commandId)
         {

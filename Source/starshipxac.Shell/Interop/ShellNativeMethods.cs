@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Text;
 using starshipxac.Shell.Interop.KnownFolder;
 
 namespace starshipxac.Shell.Interop
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class ShellNativeMethods
     {
         #region Shell Api

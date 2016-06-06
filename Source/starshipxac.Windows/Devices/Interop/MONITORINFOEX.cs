@@ -1,56 +1,58 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using starshipxac.Windows.Interop;
 
 namespace starshipxac.Windows.Devices.Interop
 {
     /// <summary>
-    /// モニター情報を定義します。
+    ///     モニター情報を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/dd145066(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/dd145066(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal struct MONITORINFOEX
     {
         public static MONITORINFOEX Create()
         {
             return new MONITORINFOEX
             {
-                cbSize = 40 + 2 * MultiMonitorNativeMethods.CCHDEVICENAME,
+                cbSize = 40 + 2*MultiMonitorNativeMethods.CCHDEVICENAME,
                 szDevice = string.Empty
             };
         }
 
         /// <summary>
-        /// <see cref="MONITORINFOEX"/>構造体のサイズ。
+        ///     <see cref="MONITORINFOEX" />構造体のサイズ。
         /// </summary>
         public int cbSize;
 
         /// <summary>
-        /// モニターのサイズ。
+        ///     モニターのサイズ。
         /// </summary>
         public RECT rcMonitor;
 
         /// <summary>
-        /// ワークエリアのサイズ。
+        ///     ワークエリアのサイズ。
         /// </summary>
         public RECT rcWork;
 
         /// <summary>
-        /// モニターの属性。
+        ///     モニターの属性。
         /// </summary>
         public uint dwFlags;
 
         /// <summary>
-        /// デバイス名。
+        ///     デバイス名。
         /// </summary>
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MultiMonitorNativeMethods.CCHDEVICENAME)]
         public string szDevice;
 
         public void Initialize()
         {
-            this.cbSize = 40 + 2 * MultiMonitorNativeMethods.CCHDEVICENAME;
+            this.cbSize = 40 + 2*MultiMonitorNativeMethods.CCHDEVICENAME;
             this.szDevice = string.Empty;
         }
     }

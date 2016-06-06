@@ -5,7 +5,6 @@ using starshipxac.Shell;
 using starshipxac.Shell.Interop;
 using starshipxac.Windows.Shell.Dialogs.Controls;
 using starshipxac.Windows.Shell.Dialogs.Interop;
-// ReSharper disable InconsistentNaming
 
 namespace starshipxac.Windows.Shell.Dialogs.Internal
 {
