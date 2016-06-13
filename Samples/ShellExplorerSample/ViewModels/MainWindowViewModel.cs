@@ -1,91 +1,73 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Reactive.Linq;
+using System.Windows;
 using System.Windows.Data;
 using Livet;
 using Reactive.Bindings;
-using ShellExplorerSample.ViewModels.Shell;
+using Reactive.Bindings.Extensions;
 using starshipxac.Shell;
+using starshipxac.Windows.Shell.Media.Imaging;
+using ShellExplorerSample.ViewModels.Shell;
 
 namespace ShellExplorerSample.ViewModels
 {
     /// <summary>
-    /// Shell Explorer Sample View Model.
+    ///     Shell Explorer Sample View Model.
     /// </summary>
     /// <remarks>
-    /// Gitライブラリフォルダーの<see cref="ShellFolder.EnumerateObjects"/>メソッドで <c>FileNotFoundException</c>が発生する場合は、
-    /// プロジェクトのプロパティ -> ビルドの「32ビットの優先」のチェックを外す。
+    ///     Gitライブラリフォルダーの<see cref="ShellFolder.EnumerateObjects" />メソッドで <c>FileNotFoundException</c>が発生する場合は、
+    ///     プロジェクトのプロパティ -> ビルドの「32ビットの優先」のチェックを外す。
     /// </remarks>
     public class MainWindowViewModel : ViewModel
     {
         /// <summary>
-        /// <see cref="MainWindowViewModel"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="MainWindowViewModel" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         public MainWindowViewModel()
         {
-            #region ReactiveProperty
+            ShellViewModelFactory.CreateFactory();
 
-            this.RootFolders = new ReactiveProperty<ObservableSynchronizedCollection<ShellFolderViewModel>>();
+            #region Reactive Property
 
-            this.SelectedFolder = new ReactiveProperty<ShellFolderViewModel>();
+            this.RootFolder = ShellViewModelFactory.CreateRoot();
 
-            this.ShellItems = this.SelectedFolder
-                .Select(CreateShellItems)
-                .ToReactiveProperty();
+            this.ShellItems = new ReactiveCollection<ShellObjectViewModel>();
+            this.ShellItemCollectionView = CollectionViewSource.GetDefaultView(this.ShellItems);
+
+            this.RootFolder.SelectedFolder
+                .Where(folder => folder != null)
+                .Subscribe(CreateShellItems)
+                .AddTo(this.CompositeDisposable);
 
             #endregion
         }
 
         /// <summary>
-        /// <c>ContentRendered</c>イベントが発生すると呼ばれます。
+        ///     <c>ContentRendered</c>イベントが発生すると呼ばれます。
         /// </summary>
         public void Initialize()
         {
-            ShellViewModelFactory.Initialize();
-
-            this.RootFolders.Value = new ObservableSynchronizedCollection<ShellFolderViewModel>()
-            {
-                ShellViewModelFactory.CreateRoot(ShellKnownFolders.OneDrive),
-                ShellViewModelFactory.CreateRoot(ShellKnownFolders.HomeGroup),
-                ShellViewModelFactory.CreateRoot(ShellKnownFolders.Computer),
-                ShellViewModelFactory.CreateRoot(ShellKnownFolders.Libraries),
-            };
-            this.RootFolderCollectionView = CollectionViewSource.GetDefaultView(this.RootFolders.Value);
+            this.RootFolder.Initialize();
         }
 
-        /// <summary>
-        /// ルートフォルダーのコレクションを取得します。
-        /// </summary>
-        public ReactiveProperty<ObservableSynchronizedCollection<ShellFolderViewModel>> RootFolders { get; private set; }
+        public ShellRootViewModel RootFolder { get; }
 
         /// <summary>
-        /// 選択中のフォルダーを取得します。
+        ///     選択中のフォルダーに含まれるファイルまたはフォルダーのコレクションを取得します。
         /// </summary>
-        public ReactiveProperty<ShellFolderViewModel> SelectedFolder { get; private set; }
+        public ReactiveCollection<ShellObjectViewModel> ShellItems { get; }
 
-        /// <summary>
-        /// 選択中のフォルダーに含まれるファイルまたはフォルダーのコレクションを取得します。
-        /// </summary>
-        public ReactiveProperty<ObservableSynchronizedCollection<ShellObjectViewModel>> ShellItems { get; private set; }
+        public ICollectionView ShellItemCollectionView { get; }
 
-        private ICollectionView RootFolderCollectionView { get; set; }
-
-        private ICollectionView ShellItemCollectionView { get; set; }
-
-        private ObservableSynchronizedCollection<ShellObjectViewModel> CreateShellItems(ShellFolderViewModel folder)
+        private void CreateShellItems(ShellFolderViewModel folder)
         {
-            var result = new ObservableSynchronizedCollection<ShellObjectViewModel>();
-            if (folder != null)
+            this.ShellItems.ClearOnScheduler();
+
+            foreach (var item in folder.EnumerateItems())
             {
-                foreach (var item in folder.EnumerateItems())
-                {
-                    result.Add(item);
-                }
+                this.ShellItems.AddOnScheduler(item);
             }
-
-            this.ShellItemCollectionView = CollectionViewSource.GetDefaultView(result);
-
-            return result;
         }
     }
 }

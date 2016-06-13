@@ -27,62 +27,54 @@ namespace ShellExplorerSample.ViewModels.Shell
         /// <summary>
         /// <see cref="ShellViewModelFactory"/>を初期化します。
         /// </summary>
-        public static void Initialize()
+        public static void CreateFactory()
         {
-            ContainerThumbnailFactory = new ShellThumbnailFactory(new Size(32, 32));
+            ContainerThumbnailFactory = new ShellThumbnailFactory(new Size(16, 16));
             ThumbnailFactory = new ShellThumbnailFactory(new Size(64, 64));
         }
 
-        /// <summary>
-        /// <see cref="ShellObject"/>から、ファイルまたはフォルダーの<c>ViewModel</c>を作成します。
-        /// </summary>
-        /// <param name="shellObject"></param>
-        /// <param name="parentFolder"></param>
-        /// <returns></returns>
-        public static ShellObjectViewModel Create(ShellObject shellObject, ShellFolderViewModel parentFolder)
+        public static ShellRootViewModel CreateRoot()
         {
-            Contract.Requires<ArgumentNullException>(shellObject != null);
-            Contract.Requires<ArgumentNullException>(parentFolder != null);
-            Contract.Ensures(Contract.Result<ShellObjectViewModel>() != null);
+            Contract.Ensures(Contract.Result<ShellRootViewModel>() != null);
 
-            if (shellObject is ShellFolder)
-            {
-                return new ShellFolderViewModel((ShellFolder)shellObject, parentFolder);
-            }
-            else if (shellObject is ShellFile)
-            {
-                return new ShellFileViewModel((ShellFile)shellObject, parentFolder);
-            }
-            else
-            {
-                return new ShellObjectViewModel(shellObject, parentFolder);
-            }
+            return new ShellRootViewModel(ContainerThumbnailFactory);
         }
 
         /// <summary>
         /// <see cref="ShellFolder"/>から、フォルダーの<c>ViewModel</c>を作成します。
         /// </summary>
         /// <param name="folder"></param>
-        /// <param name="parentFolder"></param>
         /// <returns></returns>
-        public static ShellFolderViewModel CreateFolder(ShellFolder folder, ShellFolderViewModel parentFolder)
+        public static ShellFolderViewModel CreateFolder(ShellFolder folder)
         {
             Contract.Requires<ArgumentNullException>(folder != null);
-            Contract.Requires<ArgumentNullException>(parentFolder != null);
+            Contract.Ensures(Contract.Result<ShellFolderViewModel>() != null);
 
-            return new ShellFolderViewModel(folder, parentFolder);
+            return new ShellFolderViewModel(folder, ContainerThumbnailFactory);
         }
 
         /// <summary>
-        /// ルートフォルダーの<c>ViewModel</c>を作成します。
+        /// <see cref="ShellObject"/>から、ファイルまたはフォルダーの<c>ViewModel</c>を作成します。
         /// </summary>
-        /// <param name="rootFolder"></param>
+        /// <param name="shellObject"></param>
         /// <returns></returns>
-        public static ShellFolderViewModel CreateRoot(ShellFolder rootFolder)
+        public static ShellObjectViewModel Create(ShellObject shellObject)
         {
-            Contract.Requires<ArgumentNullException>(rootFolder != null);
+            Contract.Requires<ArgumentNullException>(shellObject != null);
+            Contract.Ensures(Contract.Result<ShellObjectViewModel>() != null);
 
-            return new ShellFolderViewModel(rootFolder, ContainerThumbnailFactory);
+            if (shellObject is ShellFolder)
+            {
+                return new ShellFolderViewModel((ShellFolder)shellObject, ThumbnailFactory);
+            }
+            else if (shellObject is ShellFile)
+            {
+                return new ShellFileViewModel((ShellFile)shellObject, ThumbnailFactory);
+            }
+            else
+            {
+                return new ShellNonFileSystemItemViewModel(shellObject, ThumbnailFactory);
+            }
         }
     }
 }

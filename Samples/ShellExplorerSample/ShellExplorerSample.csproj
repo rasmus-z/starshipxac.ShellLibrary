@@ -197,7 +197,9 @@
     <Compile Include="ViewModels\Shell\PlaceholderViewModel.cs" />
     <Compile Include="ViewModels\Shell\ShellFileViewModel.cs" />
     <Compile Include="ViewModels\Shell\ShellFolderViewModel.cs" />
+    <Compile Include="ViewModels\Shell\ShellNonFileSystemItemViewModel.cs" />
     <Compile Include="ViewModels\Shell\ShellObjectViewModel.cs" />
+    <Compile Include="ViewModels\Shell\ShellRootViewModel.cs" />
     <Compile Include="ViewModels\Shell\ShellViewModelFactory.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
