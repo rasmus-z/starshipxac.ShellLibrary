@@ -43,10 +43,10 @@ namespace starshipxac.Shell
             Output.WriteLine($"Name = {item.Name}");
             Output.WriteLine($"DisplayName = {item.DisplayName}");
             Output.WriteLine($"ParsingName = {item.ParsingName}");
-            if (item.Parent != null)
+            if (item.Folder != null)
             {
-                Output.WriteLine($"Parent Type = {item.Parent.GetType()}");
-                Output.WriteLine($"Parent = {item.Parent}");
+                Output.WriteLine($"Folder Type = {item.Folder.GetType()}");
+                Output.WriteLine($"Folder = {item.Folder}");
             }
             Output.WriteLine("----");
         }

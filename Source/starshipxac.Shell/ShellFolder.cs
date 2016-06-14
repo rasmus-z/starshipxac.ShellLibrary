@@ -13,6 +13,8 @@ namespace starshipxac.Shell
     /// </summary>
     public class ShellFolder : ShellObject
     {
+        private ShellFolder parent;
+
         /// <summary>
         ///     <see cref="ShellItem" />を指定して、<see cref="ShellFolder" />クラスの新しいインスタンスを初期化します。
         /// </summary>
@@ -74,9 +76,19 @@ namespace starshipxac.Shell
         public virtual bool PathExists => this.IsFileSystem && Directory.Exists(this.Path);
 
         /// <summary>
-        ///     親フォルダー情報を取得します。
+        ///     親フォルダーのインスタンスを取得します。
         /// </summary>
-        public ShellFolder ParentFolder => this.Parent as ShellFolder;
+        public ShellFolder Parent
+        {
+            get
+            {
+                if (this.parent == null)
+                {
+                    this.parent = GetFolder();
+                }
+                return this.parent;
+            }
+        }
 
         /// <summary>
         ///     <see cref="ShellFolder" />に存在する<see cref="ShellObject" />のコレクションを取得します。

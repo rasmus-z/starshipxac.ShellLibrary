@@ -216,7 +216,7 @@ namespace starshipxac.Windows.Shell.FileSystem
             ThrowIfDisposed();
 
             this.fileOperation.CopyItem(sourceFile.ShellItem.ShellItemInterface,
-                destinationFile.Parent.ShellItem.ShellItemInterface, destinationFile.Name,
+                destinationFile.Folder.ShellItem.ShellItemInterface, destinationFile.Name,
                 null);
         }
 

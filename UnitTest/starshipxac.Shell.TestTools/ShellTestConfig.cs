@@ -4,7 +4,7 @@ using System.IO;
 namespace starshipxac.Shell.TestTools
 {
     /// <summary>
-    /// テスト情報を保持します。
+    ///     テスト情報を保持します。
     /// </summary>
     public class ShellTestConfig : IDisposable
     {
@@ -23,28 +23,22 @@ namespace starshipxac.Shell.TestTools
         }
 
         /// <summary>
-        /// テスト用ファイルを格納するディレクトリの名前を取得します。
+        ///     テスト用ファイルを格納するディレクトリの名前を取得します。
         /// </summary>
-        public string TestDirectoryName
-        {
-            get
-            {
-                return "TestFolder";
-            }
-        }
+        public string TestDirectoryName => "TestFolder";
 
         /// <summary>
-        /// テスト用ファイルを格納するディレクトリの情報を取得します。
+        ///     テスト用ファイルを格納するディレクトリの情報を取得します。
         /// </summary>
         public DirectoryInfo TestDirectory { get; private set; }
 
         /// <summary>
-        /// ファイル名を比較します。
+        ///     ファイル名を比較します。
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static bool CompareFileName(String x, String y)
+        public static bool CompareFileName(string x, string y)
         {
             return String.Compare(x, y, StringComparison.InvariantCultureIgnoreCase) == 0;
         }

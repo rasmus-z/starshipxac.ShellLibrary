@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using starshipxac.Shell.TestTools;
 using Xunit;
@@ -20,7 +19,30 @@ namespace starshipxac.Shell
         private ITestOutputHelper Output { get; }
 
         /// <summary>
-        /// 「コンピューター」テスト
+        ///     「デスクトップ」テスト
+        /// </summary>
+        [Fact]
+        public async Task DesktopTest()
+        {
+            await STATask.Run(() =>
+            {
+                var folder = ShellKnownFolders.Desktop;
+
+                Assert.NotNull(folder);
+                Assert.True(folder.IsFileSystem);
+
+                Assert.True(folder.PathExists);
+
+                Assert.Equal(KnownFolderCategories.PerUser, folder.Category);
+
+                Assert.Null(folder.Parent);
+
+                Dump(folder);
+            });
+        }
+
+        /// <summary>
+        ///     「コンピューター」テスト
         /// </summary>
         [Fact]
         public async Task ComputerTest()
@@ -43,7 +65,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        /// 「すべてのコントロールパネル項目」テスト
+        ///     「すべてのコントロールパネル項目」テスト
         /// </summary>
         [Fact]
         public async Task ControlPanelTest()
@@ -63,14 +85,13 @@ namespace starshipxac.Shell
 
                 // Parentは「コントロールパネル」
                 Assert.NotNull(actual.Parent);
-                Assert.NotNull(actual.ParentFolder);
 
                 Dump(actual);
             });
         }
 
         /// <summary>
-        /// 「インターネット」フォルダー
+        ///     「インターネット」フォルダー
         /// </summary>
         [Fact]
         public async Task InternetTest()
@@ -89,30 +110,6 @@ namespace starshipxac.Shell
                 Assert.Equal(KnownFolderCategories.Virtual, actual.Category);
 
                 Dump(actual);
-            });
-        }
-
-        /// <summary>
-        /// 「デスクトップ」テスト
-        /// </summary>
-        [Fact]
-        public async Task DesktopTest()
-        {
-            await STATask.Run(() =>
-            {
-                var folder = ShellKnownFolders.Desktop;
-
-                Assert.NotNull(folder);
-                Assert.True(folder.IsFileSystem);
-
-                Assert.True(folder.PathExists);
-
-                Assert.Equal(KnownFolderCategories.PerUser, folder.Category);
-
-                Assert.Null(folder.Parent);
-                Assert.Null(folder.ParentFolder);
-
-                Dump(folder);
             });
         }
 

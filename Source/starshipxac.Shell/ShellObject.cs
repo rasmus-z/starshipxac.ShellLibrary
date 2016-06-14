@@ -17,9 +17,6 @@ namespace starshipxac.Shell
         private bool disposed = false;
 
         private ShellProperties properties;
-        private ShellObject parentShellObject;
-        private bool getParentShellObject = false;
-
         private ShellProperty<string> contentTypeProperty;
         private ShellProperty<DateTime?> dateCreatedProperty;
         private ShellProperty<DateTime?> dateModifiedProperty;
@@ -74,7 +71,6 @@ namespace starshipxac.Shell
                     // マネージリソース解放
                     this.properties.Dispose();
                     this.properties = null;
-                    this.parentShellObject = null;
 
                     this.ShellItem.Dispose();
                 }
@@ -138,22 +134,6 @@ namespace starshipxac.Shell
             {
                 Contract.Ensures(Contract.Result<string>() != null);
                 return this.ShellItem.GetDisplayName();
-            }
-        }
-
-        /// <summary>
-        ///     親の<see cref="ShellObject" />を取得します。
-        /// </summary>
-        public ShellObject Parent
-        {
-            get
-            {
-                if (!this.getParentShellObject)
-                {
-                    this.parentShellObject = GetParent();
-                    this.getParentShellObject = true;
-                }
-                return this.parentShellObject;
             }
         }
 
@@ -274,18 +254,18 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     親の<see cref="ShellObject" />を取得します。
+        ///     親フォルダーのインスタンス取得します。
         /// </summary>
-        /// <returns>取得した親の<see cref="ShellObject" />。</returns>
-        /// <exception cref="ShellException">親の<see cref="ShellObject" />の取得に失敗しました。</exception>
-        private ShellObject GetParent()
+        /// <returns>取得した親の<see cref="ShellFolder" />。親フォルダーが存在しない場合は<c>null</c>。</returns>
+        /// <exception cref="ShellException">親の<see cref="ShellFolder" />の取得に失敗しました。</exception>
+        protected ShellFolder GetFolder()
         {
             var parentShellItem = this.ShellItem.GetParent();
             if (parentShellItem == null)
             {
                 return null;
             }
-            return ShellFactory.FromShellItem(parentShellItem);
+            return ShellFactory.FromShellFolderItem(parentShellItem);
         }
 
         /// <summary>

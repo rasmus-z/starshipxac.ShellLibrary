@@ -13,7 +13,7 @@ namespace starshipxac.Shell
             this.TestConfig = testConfig;
         }
 
-        public ShellTestConfig TestConfig { get; private set; }
+        public ShellTestConfig TestConfig { get; }
 
         [Fact]
         public async Task FromFolderPathTest()
@@ -27,6 +27,7 @@ namespace starshipxac.Shell
                 Assert.Equal(path, actual.Path);
                 Assert.Equal(path, actual.ParsingName);
                 Assert.Equal(TestConfig.TestDirectoryName, actual.Name);
+                Assert.Equal(TestConfig.TestDirectory.Parent?.FullName, actual.Parent.ParsingName);
 
                 // Flags
                 Assert.True(actual.IsFileSystem);
@@ -34,7 +35,7 @@ namespace starshipxac.Shell
         }
 
         [Fact]
-        public async Task ParentPropertyTest()
+        public async Task FolderPropertyTest()
         {
             await STATask.Run(() =>
             {
@@ -42,22 +43,7 @@ namespace starshipxac.Shell
                 var actual = ShellFactory.FromFolderPath(path);
 
                 Assert.NotNull(actual.Parent);
-                Assert.Equal(TestConfig.TestDirectory.Parent.FullName, actual.Parent.ParsingName);
-                Assert.IsType<ShellFolder>(actual.Parent);
-            });
-        }
-
-        [Fact]
-        public async Task ParentFolderPropertyTest()
-        {
-            await STATask.Run(() =>
-            {
-                var path = TestConfig.TestDirectory.FullName;
-                var actual = ShellFactory.FromFolderPath(path);
-
-                Assert.NotNull(actual);
-                Assert.Equal(TestConfig.TestDirectory.Parent.FullName, actual.Parent.ParsingName);
-                Assert.IsType<ShellFolder>(actual);
+                Assert.Equal(TestConfig.TestDirectory.Parent?.FullName, actual.Parent.ParsingName);
             });
         }
 

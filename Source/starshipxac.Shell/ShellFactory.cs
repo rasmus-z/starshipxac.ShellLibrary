@@ -108,6 +108,18 @@ namespace starshipxac.Shell
             return factory.Create(shellItem);
         }
 
+        public static ShellFolder FromShellFolderItem(ShellItem shellItem)
+        {
+            Contract.Requires<ArgumentNullException>(shellItem != null);
+
+            if (!shellItem.IsFolder)
+            {
+                return null;
+            }
+
+            return factory.CreateFolder(shellItem);
+        }
+
         /// <summary>
         ///     指定した<see cref="ShellItem" />の性質に最も一致する<see cref="ShellObject" />派生クラスのインスタンスを作成します。
         /// </summary>

@@ -11,6 +11,7 @@ namespace starshipxac.Shell
     {
         private string extension;
         private ShellProperty<UInt64?> sizeProperty;
+        private ShellFolder folder;
 
         /// <summary>
         ///     <see cref="ShellItem" />を指定して、<see cref="ShellFile" />クラスの新しいインスタンスを取得します。
@@ -68,6 +69,21 @@ namespace starshipxac.Shell
                 }
 
                 return this.sizeProperty.Value.GetValueOrDefault(0);
+            }
+        }
+
+        /// <summary>
+        ///     フォルダーのインスタンスを取得します。
+        /// </summary>
+        public ShellFolder Folder
+        {
+            get
+            {
+                if (this.folder == null)
+                {
+                    this.folder = GetFolder();
+                }
+                return this.folder;
             }
         }
     }

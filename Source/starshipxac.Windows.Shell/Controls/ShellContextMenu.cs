@@ -60,7 +60,7 @@ namespace starshipxac.Windows.Shell.Controls
         {
             Contract.Requires<ArgumentNullException>(shellFile != null);
 
-            var shellFolder = shellFile.Parent as ShellFolder;
+            var shellFolder = shellFile.Folder;
             if (shellFolder == null)
             {
                 return null;

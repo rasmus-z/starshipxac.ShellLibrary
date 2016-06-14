@@ -30,6 +30,7 @@ namespace starshipxac.Shell
                 Assert.Equal(path, actual.ParsingName);
                 Assert.Equal(filename, actual.Name);
                 Assert.Equal(".txt", actual.Extension);
+                Assert.Equal(TestConfig.TestDirectory.FullName, actual.Folder.ParsingName);
 
                 // Flags
                 Assert.True(actual.IsFileSystem);
@@ -50,7 +51,7 @@ namespace starshipxac.Shell
         }
 
         [Fact]
-        public async Task ParentPropertyTest()
+        public async Task FolderPropertyTest()
         {
             await STATask.Run(() =>
             {
@@ -58,9 +59,8 @@ namespace starshipxac.Shell
                 var path = Path.Combine(TestConfig.TestDirectory.FullName, fileName);
                 var actual = ShellFactory.FromFilePath(path);
 
-                Assert.NotNull(actual.Parent);
-                Assert.IsType<ShellFolder>(actual.Parent);
-                Assert.Equal(TestConfig.TestDirectory.FullName, actual.Parent.ParsingName);
+                Assert.NotNull(actual.Folder);
+                Assert.Equal(TestConfig.TestDirectory.FullName, actual.Folder.ParsingName);
             });
         }
 

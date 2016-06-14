@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using starshipxac.Shell.TestTools;
 using Xunit;
@@ -62,7 +61,7 @@ namespace starshipxac.Shell
                 Console.WriteLine($"RelativeToParent = {actual.GetDisplayName(DisplayNameTypes.RelativeToParent)}");
                 Console.WriteLine($"RelativeTOParentAddressBar = {actual.GetDisplayName(DisplayNameTypes.RelativeToParentAddressBar)}");
                 Console.WriteLine($"RelativeToDesktop = {actual.GetDisplayName(DisplayNameTypes.RelativeToDesktop)}");
-                Console.WriteLine($"RelativeToParentEditing = { actual.GetDisplayName(DisplayNameTypes.RelativeToParentEditing)}");
+                Console.WriteLine($"RelativeToParentEditing = {actual.GetDisplayName(DisplayNameTypes.RelativeToParentEditing)}");
                 Console.WriteLine($"RelativeToDesktopEditing = {actual.GetDisplayName(DisplayNameTypes.RelativeToDesktopEditing)}");
                 Assert.Throws<ShellException>(() => actual.GetDisplayName(DisplayNameTypes.FileSystemPath));
                 Assert.Throws<ShellException>(() => actual.GetDisplayName(DisplayNameTypes.Url));
