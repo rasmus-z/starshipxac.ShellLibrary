@@ -1,18 +1,23 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using starshipxac.Shell.TestTools;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace starshipxac.Shell
 {
     public class ShellLibraryTest : IClassFixture<ShellTestConfig>
     {
-        public ShellLibraryTest(ShellTestConfig testConfig)
+        public ShellLibraryTest(ShellTestConfig testConfig, ITestOutputHelper output)
         {
             this.TestConfig = testConfig;
+            this.Output = output;
         }
 
         public ShellTestConfig TestConfig { get; private set; }
+
+        private ITestOutputHelper Output { get; }
 
         [Fact]
         public async Task LoadKnownFolderTest()
@@ -38,8 +43,8 @@ namespace starshipxac.Shell
                     Assert.NotNull(library);
                     Assert.IsType<ShellLibrary>(library);
 
-                    Console.WriteLine("Name = {0}", library.Name);
-                    Console.WriteLine("ParsingName = {0}", library.ParsingName);
+                    Console.WriteLine($"Name = {library.Name}");
+                    Console.WriteLine($"ParsingName = {library.ParsingName}");
                 }
             });
         }
@@ -53,13 +58,12 @@ namespace starshipxac.Shell
 
                 Assert.NotNull(actual);
 
-                Console.WriteLine("Default=" + actual.GetDisplayName(DisplayNameTypes.Default));
-                Console.WriteLine("RelativeToParent=" + actual.GetDisplayName(DisplayNameTypes.RelativeToParent));
-                Console.WriteLine("RelativeTOParentAddressBar=" +
-                                  actual.GetDisplayName(DisplayNameTypes.RelativeToParentAddressBar));
-                Console.WriteLine("RelativeToDesktop=" + actual.GetDisplayName(DisplayNameTypes.RelativeToDesktop));
-                Console.WriteLine("RelativeToParentEditing=" + actual.GetDisplayName(DisplayNameTypes.RelativeToParentEditing));
-                Console.WriteLine("RelativeToDesktopEditing=" + actual.GetDisplayName(DisplayNameTypes.RelativeToDesktopEditing));
+                Console.WriteLine($"Default = {actual.GetDisplayName(DisplayNameTypes.Default)}");
+                Console.WriteLine($"RelativeToParent = {actual.GetDisplayName(DisplayNameTypes.RelativeToParent)}");
+                Console.WriteLine($"RelativeTOParentAddressBar = {actual.GetDisplayName(DisplayNameTypes.RelativeToParentAddressBar)}");
+                Console.WriteLine($"RelativeToDesktop = {actual.GetDisplayName(DisplayNameTypes.RelativeToDesktop)}");
+                Console.WriteLine($"RelativeToParentEditing = { actual.GetDisplayName(DisplayNameTypes.RelativeToParentEditing)}");
+                Console.WriteLine($"RelativeToDesktopEditing = {actual.GetDisplayName(DisplayNameTypes.RelativeToDesktopEditing)}");
                 Assert.Throws<ShellException>(() => actual.GetDisplayName(DisplayNameTypes.FileSystemPath));
                 Assert.Throws<ShellException>(() => actual.GetDisplayName(DisplayNameTypes.Url));
             });
@@ -129,14 +133,16 @@ namespace starshipxac.Shell
             });
         }
 
-        private static void Dump(ShellLibrary shellLibrary)
+        private void Dump(ShellLibrary shellLibrary)
         {
-            Console.WriteLine("Name={0}", shellLibrary.Name);
-            Console.WriteLine("DisplayName={0}", shellLibrary.DisplayName);
-            Console.WriteLine("ParsingName={0}", shellLibrary.ParsingName);
-            Console.WriteLine("LibraryFolder={0}", shellLibrary.LibraryType);
-            Console.WriteLine("LibraryType={0}", shellLibrary.LibraryType);
-            Console.WriteLine();
+            Output.WriteLine($"Name = {shellLibrary.Name}");
+            Output.WriteLine($"DisplayName = {shellLibrary.DisplayName}");
+            Output.WriteLine($"ParsingName = {shellLibrary.ParsingName}");
+            Output.WriteLine($"LibraryFolder = {shellLibrary.LibraryType}");
+            Output.WriteLine($"LibraryType = {shellLibrary.LibraryType}");
+            Output.WriteLine($"Parent Type = {shellLibrary.Parent.GetType()}");
+            Output.WriteLine($"Parent = {shellLibrary.Parent}");
+            Output.WriteLine("----");
         }
     }
 }

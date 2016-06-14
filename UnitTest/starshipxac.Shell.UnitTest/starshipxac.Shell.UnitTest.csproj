@@ -64,6 +64,7 @@
     <Compile Include="ShellLibrariesTest.cs" />
     <Compile Include="ShellLibraryTest.cs" />
     <Compile Include="ShellLinkTest.cs" />
+    <Compile Include="ShellNonFileSystemItemTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

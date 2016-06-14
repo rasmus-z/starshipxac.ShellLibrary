@@ -1,18 +1,23 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using starshipxac.Shell.TestTools;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace starshipxac.Shell
 {
     public class ShellKnownFolderTest : IClassFixture<ShellTestConfig>
     {
-        public ShellKnownFolderTest(ShellTestConfig testConfig)
+        public ShellKnownFolderTest(ShellTestConfig testConfig, ITestOutputHelper output)
         {
             this.TestConfig = testConfig;
+            this.Output = output;
         }
 
-        public ShellTestConfig TestConfig { get; private set; }
+        public ShellTestConfig TestConfig { get; }
+
+        private ITestOutputHelper Output { get; }
 
         /// <summary>
         /// 「コンピューター」テスト
@@ -32,6 +37,8 @@ namespace starshipxac.Shell
                 Assert.Empty(actual.RelativePath);
 
                 Assert.Equal(KnownFolderCategories.Virtual, actual.Category);
+
+                Dump(actual);
             });
         }
 
@@ -57,6 +64,8 @@ namespace starshipxac.Shell
                 // Parentは「コントロールパネル」
                 Assert.NotNull(actual.Parent);
                 Assert.NotNull(actual.ParentFolder);
+
+                Dump(actual);
             });
         }
 
@@ -78,6 +87,8 @@ namespace starshipxac.Shell
                 Assert.Empty(actual.RelativePath);
 
                 Assert.Equal(KnownFolderCategories.Virtual, actual.Category);
+
+                Dump(actual);
             });
         }
 
@@ -100,7 +111,22 @@ namespace starshipxac.Shell
 
                 Assert.Null(folder.Parent);
                 Assert.Null(folder.ParentFolder);
+
+                Dump(folder);
             });
+        }
+
+        private void Dump(ShellKnownFolder shellKnownFolder)
+        {
+            Output.WriteLine($"Name = {shellKnownFolder.Name}");
+            Output.WriteLine($"DisplayName = {shellKnownFolder.DisplayName}");
+            Output.WriteLine($"ParsingName = {shellKnownFolder.ParsingName}");
+            if (shellKnownFolder.Parent != null)
+            {
+                Output.WriteLine($"Parent Type = {shellKnownFolder.Parent.GetType()}");
+                Output.WriteLine($"Parent = {shellKnownFolder.Parent}");
+            }
+            Output.WriteLine("----");
         }
     }
 }
