@@ -127,45 +127,18 @@ namespace starshipxac.Shell
             if (shellItem.IsFolder)
             {
                 // フォルダー
-                var shellLibrary = ShellLibraryFactory.FromShellItem(shellItem, true);
-                if (SameItemType(shellItem.ItemType, ShellLibraryFactory.FileExtension) && (shellLibrary != null))
-                {
-                    // ライブラリ
-                    return shellLibrary;
-                }
-
-                if (SameItemType(shellItem, ShellSearchConnector.FileExtension))
-                {
-                    // 検索条件
-                    return new ShellSearchConnector(shellItem);
-                }
-
-                if (SameItemType(shellItem, ShellSavedSearchCollection.FileExtension))
-                {
-                    // 保存された検索条件
-                    return new ShellSavedSearchCollection(shellItem);
-                }
-
-                var knownFolderNative = GetKnownFolderNative(shellItem);
-                if (knownFolderNative != null)
-                {
-                    // 標準フォルダー
-                    return new ShellKnownFolder(shellItem, knownFolderNative);
-                }
-
-                // フォルダー
                 return CreateFolder(shellItem);
             }
 
             if (shellItem.IsFileSystem)
             {
                 // ファイル
-                return CreateFile(shellItem);
+                return CreateShellFile(shellItem);
             }
 
             if (shellItem.IsStream)
             {
-                return CreateFile(shellItem);
+                return CreateShellFile(shellItem);
             }
 
             // ファイルシステム外のアイテム
@@ -175,16 +148,56 @@ namespace starshipxac.Shell
         /// <summary>
         ///     指定した<see cref="ShellItem" />の性質に最も一致する<see cref="ShellFolder" />派生クラスのインスタンスを作成します。
         /// </summary>
+        /// <param name="shellItem"></param>
+        /// <returns></returns>
+        public ShellFolder CreateFolder(ShellItem shellItem)
+        {
+            Contract.Requires<ArgumentNullException>(shellItem != null);
+
+            // フォルダー
+            var shellLibrary = ShellLibraryFactory.FromShellItem(shellItem, true);
+            if (SameItemType(shellItem.ItemType, ShellLibraryFactory.FileExtension) && (shellLibrary != null))
+            {
+                // ライブラリ
+                return shellLibrary;
+            }
+
+            if (SameItemType(shellItem, ShellSearchConnector.FileExtension))
+            {
+                // 検索条件
+                return new ShellSearchConnector(shellItem);
+            }
+
+            if (SameItemType(shellItem, ShellSavedSearchCollection.FileExtension))
+            {
+                // 保存された検索条件
+                return new ShellSavedSearchCollection(shellItem);
+            }
+
+            var knownFolderNative = GetKnownFolderNative(shellItem);
+            if (knownFolderNative != null)
+            {
+                // 標準フォルダー
+                return new ShellKnownFolder(shellItem, knownFolderNative);
+            }
+
+            // フォルダー
+            return CreateShellFolder(shellItem);
+        }
+
+        /// <summary>
+        ///     指定した<see cref="ShellItem" />の性質に最も一致する<see cref="ShellFolder" />派生クラスのインスタンスを作成します。
+        /// </summary>
         /// <param name="shellItem"><see cref="ShellItem" />。</param>
         /// <returns>作成した<see cref="ShellFolder" />派生クラスのインスタンス。</returns>
-        public abstract ShellFolder CreateFolder(ShellItem shellItem);
+        public abstract ShellFolder CreateShellFolder(ShellItem shellItem);
 
         /// <summary>
         ///     指定した<see cref="ShellItem" />の性質に最も一致する<see cref="ShellFile" />派生クラスのインスタンスを作成します。
         /// </summary>
         /// <param name="shellItem"><see cref="ShellItem" />。</param>
         /// <returns>作成した<see cref="ShellFile" />派生クラスのインスタンス。</returns>
-        public abstract ShellFile CreateFile(ShellItem shellItem);
+        public abstract ShellFile CreateShellFile(ShellItem shellItem);
 
         /// <summary>
         ///     2つのアイテム種別を示す文字列が、同じかどうかを判定します。
@@ -238,7 +251,7 @@ namespace starshipxac.Shell
     [ContractClassFor(typeof(ShellFactory))]
     internal abstract class ShellFactoryContract : ShellFactory
     {
-        public override ShellFolder CreateFolder(ShellItem shellItem)
+        public override ShellFolder CreateShellFolder(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
             Contract.Requires<ArgumentException>(shellItem.IsFolder);
@@ -246,7 +259,7 @@ namespace starshipxac.Shell
             throw new NotImplementedException();
         }
 
-        public override ShellFile CreateFile(ShellItem shellItem)
+        public override ShellFile CreateShellFile(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
             Contract.Requires<ArgumentException>(!shellItem.IsFolder);

@@ -19,7 +19,7 @@ namespace starshipxac.Shell.Internal
         /// </summary>
         /// <param name="shellItem"></param>
         /// <returns></returns>
-        public override ShellFolder CreateFolder(ShellItem shellItem)
+        public override ShellFolder CreateShellFolder(ShellItem shellItem)
         {
             return new ShellFolder(shellItem);
         }
@@ -29,7 +29,7 @@ namespace starshipxac.Shell.Internal
         /// </summary>
         /// <param name="shellItem"></param>
         /// <returns></returns>
-        public override ShellFile CreateFile(ShellItem shellItem)
+        public override ShellFile CreateShellFile(ShellItem shellItem)
         {
             return new ShellFile(shellItem);
         }
