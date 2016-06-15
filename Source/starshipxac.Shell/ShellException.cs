@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using starshipxac.Shell.Interop;
@@ -68,7 +69,7 @@ namespace starshipxac.Shell
         {
         }
 
-        // ReSharper disable once InconsistentNaming
+        [SuppressMessage("ReSharper", "InconsistentNaming")]
         internal static Exception FromHRESULT(HRESULT hr)
         {
             var exception = Marshal.GetExceptionForHR(hr);

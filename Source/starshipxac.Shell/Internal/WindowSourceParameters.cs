@@ -12,7 +12,13 @@ namespace starshipxac.Shell.Internal
             this.WindowName = windowName;
         }
 
-        public string WindowName { get; private set; }
+        [ContractInvariantMethod]
+        private void ObjectInvariant()
+        {
+            Contract.Invariant(this.WindowName != null);
+        }
+
+        public string WindowName { get; }
         public UInt32 WindowClassStyle { get; set; }
         internal UInt32 WindowStyle { get; set; }
         internal UInt32 ExtendedWindowStyle { get; set; }

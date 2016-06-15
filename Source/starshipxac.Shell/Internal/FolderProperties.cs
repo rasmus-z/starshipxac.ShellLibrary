@@ -46,7 +46,6 @@ namespace starshipxac.Shell.Internal
         public KnownFolderCategories Category { get; private set; }
         public string Description { get; private set; }
         public Guid ParentId { get; private set; }
-        public string Parent { get; private set; }
         public string RelativePath { get; private set; }
         public StringReference ToolTipResource { get; private set; }
         public string ToolTip { get; private set; }
