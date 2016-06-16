@@ -21,7 +21,7 @@ namespace starshipxac.Shell.PropertySystem
         private IconReference iconReference;
 
         /// <summary>
-        ///     <see cref="ShellProperty&lt;T&gt;" />クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellProperty{T}" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="shellObject"></param>
         /// <param name="formatId"></param>
@@ -42,6 +42,11 @@ namespace starshipxac.Shell.PropertySystem
             }
         }
 
+        /// <summary>
+        ///     <see cref="ShellProperty{T}" />クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="shellObject"></param>
+        /// <param name="canonicalName"></param>
         public ShellProperty(ShellObject shellObject, string canonicalName)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
@@ -60,7 +65,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     <see cref="ShellProperty&lt;T&gt;" />クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellProperty{T}"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <param name="description"></param>
@@ -87,7 +92,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     <see cref="ShellProperty&lt;T&gt;" />クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellProperty{T}"/>クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <param name="description"></param>
@@ -352,7 +357,7 @@ namespace starshipxac.Shell.PropertySystem
 
         public string FormatForDisplay(PropertyDescriptionFormatFlags formatFlags)
         {
-            if (this.Description == null || this.Description.PropertyDescriptionNative == null)
+            if (this.Description?.PropertyDescriptionNative == null)
             {
                 return null;
             }
@@ -370,7 +375,7 @@ namespace starshipxac.Shell.PropertySystem
 
         public bool TryFormatForDisplay(PropertyDescriptionFormatFlags formatFlags, out string formattedString)
         {
-            if (this.Description.PropertyDescriptionNative == null)
+            if (this.Description?.PropertyDescriptionNative == null)
             {
                 formattedString = null;
                 return false;
@@ -393,12 +398,11 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     <see cref="ShellProperty&lt;T&gt;" />の文字列表現を取得します。
+        ///     <see cref="ShellProperty{T}"/>の文字列表現を取得します。
         /// </summary>
-        /// <returns><see cref="ShellProperty&lt;T&gt;" />の文字列表現。</returns>
+        /// <returns><see cref="ShellProperty{T}"/>の文字列表現。</returns>
         public override string ToString()
         {
-            // ReSharper disable once CompareNonConstrainedGenericWithNull
             if (this.Value == null)
             {
                 return String.Empty;
