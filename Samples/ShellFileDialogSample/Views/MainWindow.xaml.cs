@@ -5,13 +5,14 @@ using System.Windows;
 using starshipxac.Shell;
 using starshipxac.Windows.Shell.Dialogs;
 using starshipxac.Windows.Shell.Dialogs.Controls;
+using ShellFileDialogSample.Controllers;
 
 namespace ShellFileDialogSample.Views
 {
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IMainView
     {
         public MainWindow()
         {

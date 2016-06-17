@@ -1,7 +1,11 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows.Data;
 using Livet;
 using Reactive.Bindings;
 using starshipxac.Shell.PropertySystem;
+using ShellFileDialogSample.Controllers;
 
 namespace ShellFileDialogSample.ViewModels
 {
@@ -12,9 +16,9 @@ namespace ShellFileDialogSample.ViewModels
             #region Reactive Property
 
             this.Properties = new ReactiveCollection<IShellProperty>();
+            this.PropertiesView = CollectionViewSource.GetDefaultView(this.Properties);
 
-            #region 開くファイル選択
-
+            // 開くファイル選択
             this.SelectOpenFileCommand = new ReactiveCommand();
             this.SelectOpenFileCommand.Subscribe(async _ =>
             {
@@ -29,10 +33,7 @@ namespace ShellFileDialogSample.ViewModels
                 }
             });
 
-            #endregion
-
-            #region 保存ファイル選択
-
+            // 保存ファイル選択
             this.SelectSaveFileCommand = new ReactiveCommand();
             this.SelectSaveFileCommand.Subscribe(async _ =>
             {
@@ -47,10 +48,7 @@ namespace ShellFileDialogSample.ViewModels
                 }
             });
 
-            #endregion
-
-            #region フォルダー選択
-
+            // フォルダー選択
             this.SelectFolderCommand = new ReactiveCommand();
             this.SelectFolderCommand.Subscribe(async _ =>
             {
@@ -65,10 +63,7 @@ namespace ShellFileDialogSample.ViewModels
                 }
             });
 
-            #endregion
-
-            #region カスタム FileOpenDialog
-
+            // カスタム FileOpenDialog
             this.ShowCustomOpenFileDialogCommand = new ReactiveCommand();
             this.ShowCustomOpenFileDialogCommand.Subscribe(_ =>
             {
@@ -84,18 +79,18 @@ namespace ShellFileDialogSample.ViewModels
             });
 
             #endregion
-
-            #endregion
         }
 
-        public void Loading(dynamic view)
+        public void Loading(IMainView view)
         {
             this.View = view;
         }
 
-        public dynamic View { get; private set; }
+        public IMainView View { get; private set; }
 
         public ReactiveCollection<IShellProperty> Properties { get; }
+
+        public ICollectionView PropertiesView { get; }
 
         public ReactiveCommand SelectOpenFileCommand { get; }
 

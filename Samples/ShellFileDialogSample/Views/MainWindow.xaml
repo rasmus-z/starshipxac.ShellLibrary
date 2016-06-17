@@ -28,6 +28,8 @@
                     <Setter Property="Margin" Value="16,2" />
                     <Setter Property="Padding" Value="8,4" />
                 </Style>
+                <v:ShellPropertyValueConverter x:Key="ShellPropertyValueConverter"/>
+                <v:ShellPropertyIconConverter x:Key="ShellPropertyIconConverter"/>
             </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -41,12 +43,19 @@
             </StackPanel>
             <ListView Name="PropertieListView"
                       Grid.Row="1"
-                      ItemsSource="{Binding Properties, Mode=OneWay}">
+                      ItemsSource="{Binding PropertiesView, Mode=OneWay}">
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>
+                            <GridViewColumn Header="Icon">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding Converter={StaticResource ShellPropertyIconConverter}}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                             <GridViewColumn Header="Name" DisplayMemberBinding="{Binding CanonicalName}" />
-                            <GridViewColumn Header="Value" DisplayMemberBinding="{Binding ValueAsObject}" />
+                            <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Converter={StaticResource ShellPropertyValueConverter}}" />
                         </GridView.Columns>
                     </GridView>
                 </ListView.View>
