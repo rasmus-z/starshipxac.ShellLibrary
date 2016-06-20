@@ -2,6 +2,7 @@
 using System.Diagnostics.Contracts;
 using Reactive.Bindings;
 using starshipxac.Shell;
+using starshipxac.Shell.PropertySystem;
 using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
@@ -27,7 +28,7 @@ namespace ShellExplorerSample.ViewModels.Shell
 
             this.DisplayName = new ReactiveProperty<string>(this.ShellFile.DisplayName);
             this.ItemTypeText = new ReactiveProperty<string>(
-                this.ShellFile.Properties.Create<string>("System.ItemTypeText").Value);
+                ShellProperty<string>.Create(this.ShellFile, "System.ItemTypeText").Value);
             this.DateCreated = new ReactiveProperty<DateTime>(this.ShellFile.DateCreated);
             this.DateModified = new ReactiveProperty<DateTime>(this.ShellFile.DateModified);
             this.Thumbnail = new ReactiveProperty<ShellThumbnail>(

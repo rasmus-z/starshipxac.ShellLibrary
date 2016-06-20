@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Data;
 using Livet;
 using Reactive.Bindings;
@@ -26,7 +25,7 @@ namespace ShellFileDialogSample.ViewModels
                 if (selectedFile != null)
                 {
                     this.Properties.Clear();
-                    foreach (var property in selectedFile.Properties.DefaultPropertyCollection)
+                    foreach (var property in selectedFile.Properties)
                     {
                         this.Properties.Add(property);
                     }
@@ -41,7 +40,7 @@ namespace ShellFileDialogSample.ViewModels
                 if (selectedFile != null)
                 {
                     this.Properties.Clear();
-                    foreach (var property in selectedFile.Properties.DefaultPropertyCollection)
+                    foreach (var property in selectedFile.Properties)
                     {
                         this.Properties.Add(property);
                     }
@@ -56,7 +55,7 @@ namespace ShellFileDialogSample.ViewModels
                 if (selectedFolder != null)
                 {
                     this.Properties.Clear();
-                    foreach (var property in selectedFolder.Properties.DefaultPropertyCollection)
+                    foreach (var property in selectedFolder.Properties)
                     {
                         this.Properties.Add(property);
                     }
@@ -71,7 +70,7 @@ namespace ShellFileDialogSample.ViewModels
                 if (selectedFile != null)
                 {
                     this.Properties.Clear();
-                    foreach (var property in selectedFile.Properties.DefaultPropertyCollection)
+                    foreach (var property in selectedFile.Properties)
                     {
                         this.Properties.Add(property);
                     }

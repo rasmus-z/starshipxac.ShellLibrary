@@ -69,9 +69,6 @@ namespace starshipxac.Shell
                 if (disposing)
                 {
                     // マネージリソース解放
-                    this.properties.Dispose();
-                    this.properties = null;
-
                     this.ShellItem.Dispose();
                 }
 
@@ -153,7 +150,7 @@ namespace starshipxac.Shell
                 if (this.contentTypeProperty == null)
                 {
                     // System.ContentType
-                    this.contentTypeProperty = this.Properties.Create<string>("System.ContentType");
+                    this.contentTypeProperty = ShellProperty<string>.Create(this, "System.ContentType");
                 }
                 return this.contentTypeProperty.Value ?? String.Empty;
             }
@@ -169,7 +166,7 @@ namespace starshipxac.Shell
                 if (this.dateCreatedProperty == null)
                 {
                     // System.DateCreated
-                    this.dateCreatedProperty = this.Properties.Create<DateTime?>("System.DateCreated");
+                    this.dateCreatedProperty = ShellProperty<DateTime?>.Create(this, "System.DateCreated");
                 }
                 return this.dateCreatedProperty.Value.GetValueOrDefault(DateTime.MinValue);
             }
@@ -185,7 +182,7 @@ namespace starshipxac.Shell
                 if (this.dateModifiedProperty == null)
                 {
                     // System.DateModified
-                    this.dateModifiedProperty = this.Properties.Create<DateTime?>("System.DateModified");
+                    this.dateModifiedProperty = ShellProperty<DateTime?>.Create(this, "System.DateModified");
                 }
                 return this.dateModifiedProperty.Value.GetValueOrDefault(DateTime.MinValue);
             }
@@ -201,7 +198,7 @@ namespace starshipxac.Shell
                 if (this.dateAccessedProperty == null)
                 {
                     // System.DateAccessed
-                    this.dateAccessedProperty = this.Properties.Create<DateTime?>("System.DateAccessed");
+                    this.dateAccessedProperty = ShellProperty<DateTime?>.Create(this, "System.DateAccessed");
                 }
                 return this.dateAccessedProperty.Value.GetValueOrDefault(DateTime.MinValue);
             }

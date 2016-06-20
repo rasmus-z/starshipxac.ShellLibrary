@@ -118,6 +118,24 @@ namespace starshipxac.Shell.PropertySystem
             }
         }
 
+        public static ShellProperty<T> Create(ShellObject shellObject, string formatId, UInt32 propertyId)
+        {
+            Contract.Requires<ArgumentNullException>(shellObject != null);
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(formatId));
+            Contract.Ensures(Contract.Result<ShellProperty<T>>() != null);
+
+            return new ShellProperty<T>(shellObject, new Guid(formatId), propertyId);
+        }
+
+        public static ShellProperty<T> Create(ShellObject shellObject, string canonicalName)
+        {
+            Contract.Requires<ArgumentNullException>(shellObject != null);
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(canonicalName));
+            Contract.Ensures(Contract.Result<ShellProperty<T>>() != null);
+
+            return new ShellProperty<T>(shellObject, canonicalName);
+        }
+
         [ContractInvariantMethod]
         private void ObjectInvariant()
         {

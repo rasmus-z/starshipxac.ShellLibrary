@@ -222,7 +222,6 @@
     <Compile Include="PropertySystem\PropertyViewFlags.cs" />
     <Compile Include="PropertySystem\ShellProperties.cs" />
     <Compile Include="PropertySystem\ShellProperty.cs" />
-    <Compile Include="PropertySystem\ShellPropertyCollection.cs" />
     <Compile Include="PropertySystem\ShellPropertyDescription.cs" />
     <Compile Include="PropertySystem\ShellPropertyEnumType.cs" />
     <Compile Include="PropertySystem\ShellPropertyKey.cs" />

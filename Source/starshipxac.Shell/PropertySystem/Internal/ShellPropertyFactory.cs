@@ -30,7 +30,7 @@ namespace starshipxac.Shell.PropertySystem.Internal
 
         /// <summary>
         ///     <see cref="ShellPropertyKey" />と<see cref="ShellObject" />を指定して、
-        ///     <see cref="ShellProperty&lt;T&gt;" />のインスタンスを作成します。
+        ///     <see cref="ShellProperty{T}" />のインスタンスを作成します。
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <param name="shellObject"></param>
@@ -45,7 +45,7 @@ namespace starshipxac.Shell.PropertySystem.Internal
 
         /// <summary>
         ///     <see cref="ShellPropertyKey" />と<see cref="ShellPropertyStore" />を指定して、
-        ///     <see cref="ShellProperty&lt;T&gt;" />のインスタンスを作成します。
+        ///     <see cref="ShellProperty{T}" />のインスタンスを作成します。
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <param name="propertyStore"></param>
@@ -60,7 +60,7 @@ namespace starshipxac.Shell.PropertySystem.Internal
 
         /// <summary>
         ///     <see cref="ShellPropertyKey" />と元となるオブジェクトを指定して、
-        ///     <see cref="ShellProperty&lt;T&gt;" />のインスタンスを作成します。
+        ///     <see cref="ShellProperty{T}" />のインスタンスを作成します。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="propertyKey"></param>
