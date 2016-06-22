@@ -168,14 +168,7 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (this.ShellObject != null)
                 {
-                    if (this.ShellObject.PropertyStore != null)
-                    {
-                        return this.ShellObject.PropertyStore.GetValue<T>(this.PropertyKey);
-                    }
-                    else
-                    {
-                        return this.ShellObject.ShellItem.GetPropertyValue<T>(this.PropertyKey.PropertyKeyNative);
-                    }
+                    return this.ShellObject.ShellItem.GetPropertyValue<T>(this.PropertyKey.PropertyKeyNative);
                 }
                 else if (this.PropertyStore != null)
                 {
@@ -209,14 +202,7 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (this.ShellObject != null)
                 {
-                    if (this.ShellObject.PropertyStore != null)
-                    {
-                        return this.ShellObject.PropertyStore.GetValue(this.PropertyKey);
-                    }
-                    else
-                    {
-                        return this.ShellObject.ShellItem.GetPropertyValue(this.PropertyKey.PropertyKeyNative);
-                    }
+                    return this.ShellObject.ShellItem.GetPropertyValue(this.PropertyKey.PropertyKeyNative);
                 }
                 else if (this.PropertyStore != null)
                 {
@@ -272,14 +258,7 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (this.ShellObject != null)
                 {
-                    if (this.ShellObject.PropertyStore != null)
-                    {
-                        return this.ShellObject.PropertyStore.GetValue<T>(this.PropertyKey);
-                    }
-                    else
-                    {
-                        return this.ShellObject.ShellItem.GetPropertyValue<T>(this.PropertyKey.PropertyKeyNative);
-                    }
+                    return this.ShellObject.ShellItem.GetPropertyValue<T>(this.PropertyKey.PropertyKeyNative);
                 }
                 else if (this.PropertyStore != null)
                 {
@@ -305,16 +284,8 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (this.ShellObject != null)
                 {
-                    if (this.ShellObject.PropertyStore != null)
-                    {
-                        result = this.ShellObject.PropertyStore.GetValue<T>(this.PropertyKey);
-                        return true;
-                    }
-                    else
-                    {
-                        result = this.ShellObject.ShellItem.GetPropertyValue<T>(this.PropertyKey.PropertyKeyNative);
-                        return true;
-                    }
+                    result = this.ShellObject.ShellItem.GetPropertyValue<T>(this.PropertyKey.PropertyKeyNative);
+                    return true;
                 }
                 else if (this.PropertyStore != null)
                 {

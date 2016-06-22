@@ -95,11 +95,6 @@ namespace starshipxac.Shell
         internal virtual PIDL PIDL => this.ShellItem.PIDL;
 
         /// <summary>
-        ///     <see cref="ShellPropertyStore" />を取得または設定します。
-        /// </summary>
-        internal ShellPropertyStore PropertyStore { get; set; }
-
-        /// <summary>
         ///     解析名を取得します。
         /// </summary>
         public virtual string ParsingName

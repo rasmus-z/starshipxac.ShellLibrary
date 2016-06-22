@@ -440,7 +440,7 @@ namespace starshipxac.Shell.PropertySystem
                 var hr = this.PropertyDescriptionNative.FormatForDisplay(propVariant, ref flags, out result);
                 if (HRESULT.Failed(hr))
                 {
-                    throw ShellException.FromHRESULT(hr);
+                    result = String.Empty;
                 }
             }
             return result;

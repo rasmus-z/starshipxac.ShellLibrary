@@ -12,16 +12,9 @@ namespace starshipxac.Shell.PropertySystem
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
 
-            this.ShellObject = shellObject;
-
             try
             {
-                this.WritablePropertyStore = ShellPropertyStore.CreateWritable(this.ShellObject);
-
-                if (this.ShellObject.PropertyStore == null)
-                {
-                    this.ShellObject.PropertyStore = this.WritablePropertyStore;
-                }
+                this.WritablePropertyStore = ShellPropertyStore.CreateWritable(shellObject);
             }
             catch (InvalidComObjectException e)
             {
@@ -74,14 +67,7 @@ namespace starshipxac.Shell.PropertySystem
                 this.WritablePropertyStore.Dispose();
                 this.WritablePropertyStore = null;
             }
-
-            this.ShellObject.PropertyStore = null;
         }
-
-        /// <summary>
-        ///     <see cref="Shell.ShellObject" />を取得します。
-        /// </summary>
-        protected ShellObject ShellObject { get; }
 
         private ShellPropertyStore WritablePropertyStore { get; set; }
 
