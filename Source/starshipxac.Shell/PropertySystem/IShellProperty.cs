@@ -48,6 +48,6 @@ namespace starshipxac.Shell.PropertySystem
         /// </summary>
         /// <param name="formatFlags">書式オプション。</param>
         /// <returns>書式化した文字列。</returns>
-        string FormatForDisplay(PropertyDescriptionFormatFlags formatFlags);
+        string GetDisplayText(PropertyDescriptionFormatFlags formatFlags);
     }
 }

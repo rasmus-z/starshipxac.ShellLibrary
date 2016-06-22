@@ -38,7 +38,7 @@ namespace starshipxac.Shell.PropertySystem
                         var propertyKey = propertyStore.GetAt(index);
                         try
                         {
-                            this.properties.Add(ShellPropertyFactory.CreateShellProperty(propertyKey, this.ShellObject));
+                            this.properties.Add(ShellPropertyFactory.Create(propertyKey, this.ShellObject));
                         }
                         catch (Exception ex)
                         {

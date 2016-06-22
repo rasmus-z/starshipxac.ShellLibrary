@@ -180,7 +180,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="PropertySystem\Internal\ShellPropertyDescriptionsCache.cs" />
+    <Compile Include="PropertySystem\Internal\ShellPropertyDescriptionFactory.cs" />
     <Compile Include="PropertySystem\Internal\ShellPropertyFactory.cs" />
     <Compile Include="PropertySystem\Internal\ShellPropertyKeyFactory.cs" />
     <Compile Include="PropertySystem\Interop\IPropertyDescription.cs" />

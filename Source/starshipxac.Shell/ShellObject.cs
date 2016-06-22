@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 using starshipxac.Shell.Interop;
@@ -150,7 +151,7 @@ namespace starshipxac.Shell
                 if (this.contentTypeProperty == null)
                 {
                     // System.ContentType
-                    this.contentTypeProperty = ShellProperty<string>.Create(this, "System.ContentType");
+                    this.contentTypeProperty = new ShellProperty<string>(this, "System.ContentType");
                 }
                 return this.contentTypeProperty.Value ?? String.Empty;
             }
@@ -166,7 +167,7 @@ namespace starshipxac.Shell
                 if (this.dateCreatedProperty == null)
                 {
                     // System.DateCreated
-                    this.dateCreatedProperty = ShellProperty<DateTime?>.Create(this, "System.DateCreated");
+                    this.dateCreatedProperty = new ShellProperty<DateTime?>(this, "System.DateCreated");
                 }
                 return this.dateCreatedProperty.Value.GetValueOrDefault(DateTime.MinValue);
             }
@@ -182,7 +183,7 @@ namespace starshipxac.Shell
                 if (this.dateModifiedProperty == null)
                 {
                     // System.DateModified
-                    this.dateModifiedProperty = ShellProperty<DateTime?>.Create(this, "System.DateModified");
+                    this.dateModifiedProperty = new ShellProperty<DateTime?>(this, "System.DateModified");
                 }
                 return this.dateModifiedProperty.Value.GetValueOrDefault(DateTime.MinValue);
             }
@@ -198,7 +199,7 @@ namespace starshipxac.Shell
                 if (this.dateAccessedProperty == null)
                 {
                     // System.DateAccessed
-                    this.dateAccessedProperty = ShellProperty<DateTime?>.Create(this, "System.DateAccessed");
+                    this.dateAccessedProperty = new ShellProperty<DateTime?>(this, "System.DateAccessed");
                 }
                 return this.dateAccessedProperty.Value.GetValueOrDefault(DateTime.MinValue);
             }
@@ -207,6 +208,7 @@ namespace starshipxac.Shell
         /// <summary>
         ///     <see cref="ShellItemImageFactory" />を取得します。
         /// </summary>
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
         public ShellItemImageFactory ImageFactory
         {
             get
@@ -214,7 +216,6 @@ namespace starshipxac.Shell
                 Contract.Ensures(Contract.Result<ShellItemImageFactory>() != null);
                 if (this.imageFactory == null)
                 {
-                    // ReSharper disable once SuspiciousTypeConversion.Global
                     this.imageFactory = new ShellItemImageFactory((IShellItemImageFactory)this.ShellItem.ShellItemInterface);
                 }
                 return this.imageFactory;

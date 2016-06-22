@@ -24,7 +24,7 @@ namespace starshipxac.Shell.PropertySystem.Internal
         /// </summary>
         /// <param name="canonicalName"></param>
         /// <returns></returns>
-        internal static ShellPropertyKey Get(string canonicalName)
+        internal static ShellPropertyKey Create(string canonicalName)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(canonicalName));
 
@@ -38,11 +38,11 @@ namespace starshipxac.Shell.PropertySystem.Internal
         /// <param name="formatId"></param>
         /// <param name="propId"></param>
         /// <returns></returns>
-        internal static ShellPropertyKey Get(string formatId, UInt32 propId)
+        internal static ShellPropertyKey Create(string formatId, UInt32 propId)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(formatId));
 
-            return Get(new PROPERTYKEY(new Guid(formatId), propId));
+            return Create(new PROPERTYKEY(new Guid(formatId), propId));
         }
 
         /// <summary>
@@ -51,9 +51,9 @@ namespace starshipxac.Shell.PropertySystem.Internal
         /// <param name="formatId"></param>
         /// <param name="propId"></param>
         /// <returns></returns>
-        internal static ShellPropertyKey Get(Guid formatId, UInt32 propId)
+        internal static ShellPropertyKey Create(Guid formatId, UInt32 propId)
         {
-            return Get(new PROPERTYKEY(formatId, propId));
+            return Create(new PROPERTYKEY(formatId, propId));
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace starshipxac.Shell.PropertySystem.Internal
         /// </summary>
         /// <param name="propertyKey"></param>
         /// <returns></returns>
-        internal static ShellPropertyKey Get(PROPERTYKEY propertyKey)
+        internal static ShellPropertyKey Create(PROPERTYKEY propertyKey)
         {
             return IdCache.GetOrAdd(propertyKey,
                 new ShellPropertyKey(propertyKey));

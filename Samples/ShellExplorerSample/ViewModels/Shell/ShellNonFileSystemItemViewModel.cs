@@ -15,8 +15,7 @@ namespace ShellExplorerSample.ViewModels.Shell
 
             this.DisplayName = new ReactiveProperty<string>(this.ShellObject.DisplayName);
             this.ItemTypeText = new ReactiveProperty<string>(
-                //this.ShellObject.Properties.Create<string>("System.ItemTypeText").Value);
-                ShellProperty<string>.Create(this.ShellObject, "System.ItemTypeText").Value);
+                new ShellProperty<string>(this.ShellObject, "System.ItemTypeText").Value);
             this.DateCreated = new ReactiveProperty<DateTime>(this.ShellObject.DateCreated);
             this.DateModified = new ReactiveProperty<DateTime>(this.ShellObject.DateModified);
             this.Thumbnail = new ReactiveProperty<ShellThumbnail>(

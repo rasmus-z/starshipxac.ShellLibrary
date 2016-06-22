@@ -19,13 +19,11 @@ namespace starshipxac.Shell.PropertySystem.Internal
         /// <summary>
         ///     <c>ShellProperty</c>コンストラクタのキャッシュ。
         /// </summary>
-        private static readonly ConcurrentDictionary<int, Func<ShellPropertyKey, ShellPropertyDescription, object, IShellProperty>>
-            ConstructorCache;
+        private static readonly ConcurrentDictionary<int, Func<ShellPropertyKey, ShellPropertyDescription, object, IShellProperty>> ConstructorCache;
 
         static ShellPropertyFactory()
         {
-            ConstructorCache =
-                new ConcurrentDictionary<int, Func<ShellPropertyKey, ShellPropertyDescription, object, IShellProperty>>();
+            ConstructorCache = new ConcurrentDictionary<int, Func<ShellPropertyKey, ShellPropertyDescription, object, IShellProperty>>();
         }
 
         /// <summary>
@@ -35,12 +33,12 @@ namespace starshipxac.Shell.PropertySystem.Internal
         /// <param name="propertyKey"></param>
         /// <param name="shellObject"></param>
         /// <returns></returns>
-        internal static IShellProperty CreateShellProperty(ShellPropertyKey propertyKey, ShellObject shellObject)
+        public static IShellProperty Create(ShellPropertyKey propertyKey, ShellObject shellObject)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
             Contract.Requires<ArgumentNullException>(shellObject != null);
 
-            return CreateGenericShellProperty(propertyKey, shellObject);
+            return CreateGeneric(propertyKey, shellObject);
         }
 
         /// <summary>
@@ -50,12 +48,12 @@ namespace starshipxac.Shell.PropertySystem.Internal
         /// <param name="propertyKey"></param>
         /// <param name="propertyStore"></param>
         /// <returns></returns>
-        internal static IShellProperty CreateShellProperty(ShellPropertyKey propertyKey, ShellPropertyStore propertyStore)
+        public static IShellProperty Create(ShellPropertyKey propertyKey, ShellPropertyStore propertyStore)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
             Contract.Requires<ArgumentNullException>(propertyStore != null);
 
-            return CreateGenericShellProperty(propertyKey, propertyStore);
+            return CreateGeneric(propertyKey, propertyStore);
         }
 
         /// <summary>
@@ -66,12 +64,12 @@ namespace starshipxac.Shell.PropertySystem.Internal
         /// <param name="propertyKey"></param>
         /// <param name="source"></param>
         /// <returns></returns>
-        private static IShellProperty CreateGenericShellProperty<T>(ShellPropertyKey propertyKey, T source)
+        private static IShellProperty CreateGeneric<T>(ShellPropertyKey propertyKey, T source)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
 
             var sourceType = (source is ShellObject) ? typeof(ShellObject) : typeof(T);
-            var description = ShellPropertyDescriptionsCache.GetDescription(propertyKey);
+            var description = ShellPropertyDescriptionFactory.Create(propertyKey);
 
             var type = typeof(ShellProperty<>).MakeGenericType(VarEnumToSystemType(description.VarEnumType));
             var hash = GetTypeHash(type, sourceType);

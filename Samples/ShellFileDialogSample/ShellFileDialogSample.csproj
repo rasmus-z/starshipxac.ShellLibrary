@@ -97,6 +97,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\ShellPropertyComparer.cs" />
+    <Compile Include="Views\ShellPropertyDescriptionConverter.cs" />
     <Compile Include="Views\ShellPropertyIconConverter.cs" />
     <Compile Include="Views\ShellPropertyValueConverter.cs" />
     <Page Include="Views\MainWindow.xaml">

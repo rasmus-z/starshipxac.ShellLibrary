@@ -7,11 +7,11 @@ namespace starshipxac.Shell.PropertySystem.Internal
     /// <summary>
     ///     <see cref="ShellPropertyDescription" />のキャッシュを保持します。
     /// </summary>
-    internal class ShellPropertyDescriptionsCache
+    internal class ShellPropertyDescriptionFactory
     {
         private static readonly ConcurrentDictionary<ShellPropertyKey, ShellPropertyDescription> Cache;
 
-        static ShellPropertyDescriptionsCache()
+        static ShellPropertyDescriptionFactory()
         {
             Cache = new ConcurrentDictionary<ShellPropertyKey, ShellPropertyDescription>();
         }
@@ -19,9 +19,9 @@ namespace starshipxac.Shell.PropertySystem.Internal
         /// <summary>
         ///     指定したプロパティキーに一致する<see cref="ShellPropertyDescription" />を取得します。
         /// </summary>
-        /// <param name="propertyKey"></param>
+        /// <param name="propertyKey">プロパティキー</param>
         /// <returns></returns>
-        public static ShellPropertyDescription GetDescription(ShellPropertyKey propertyKey)
+        public static ShellPropertyDescription Create(ShellPropertyKey propertyKey)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
 

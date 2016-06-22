@@ -65,7 +65,7 @@ namespace starshipxac.Shell
             {
                 if (this.sizeProperty == null)
                 {
-                    this.sizeProperty = ShellProperty<UInt64?>.Create(this, "System.Size");
+                    this.sizeProperty = new ShellProperty<UInt64?>(this, "System.Size");
                 }
 
                 return this.sizeProperty.Value.GetValueOrDefault(0);

@@ -30,7 +30,7 @@ namespace starshipxac.Shell.PropertySystem
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
 
-            this.PropertyKey = ShellPropertyKeyFactory.Get(formatId, propId);
+            this.PropertyKey = ShellPropertyKeyFactory.Create(formatId, propId);
 
             this.ShellObject = shellObject;
             this.AllowSetTruncatedValue = false;
@@ -52,7 +52,7 @@ namespace starshipxac.Shell.PropertySystem
             Contract.Requires<ArgumentNullException>(shellObject != null);
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(canonicalName));
 
-            this.PropertyKey = ShellPropertyKeyFactory.Get(canonicalName);
+            this.PropertyKey = ShellPropertyKeyFactory.Create(canonicalName);
 
             this.ShellObject = shellObject;
             this.AllowSetTruncatedValue = false;
@@ -118,24 +118,6 @@ namespace starshipxac.Shell.PropertySystem
             }
         }
 
-        public static ShellProperty<T> Create(ShellObject shellObject, string formatId, UInt32 propertyId)
-        {
-            Contract.Requires<ArgumentNullException>(shellObject != null);
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(formatId));
-            Contract.Ensures(Contract.Result<ShellProperty<T>>() != null);
-
-            return new ShellProperty<T>(shellObject, new Guid(formatId), propertyId);
-        }
-
-        public static ShellProperty<T> Create(ShellObject shellObject, string canonicalName)
-        {
-            Contract.Requires<ArgumentNullException>(shellObject != null);
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(canonicalName));
-            Contract.Ensures(Contract.Result<ShellProperty<T>>() != null);
-
-            return new ShellProperty<T>(shellObject, canonicalName);
-        }
-
         [ContractInvariantMethod]
         private void ObjectInvariant()
         {
@@ -166,7 +148,7 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (this.description == null)
                 {
-                    this.description = ShellPropertyDescriptionsCache.GetDescription(this.PropertyKey);
+                    this.description = ShellPropertyDescriptionFactory.Create(this.PropertyKey);
                 }
                 return this.description;
             }
@@ -373,41 +355,35 @@ namespace starshipxac.Shell.PropertySystem
             }
         }
 
-        public string FormatForDisplay(PropertyDescriptionFormatFlags formatFlags)
+        /// <summary>
+        /// プロパティ値の表示用テキストを取得します。
+        /// </summary>
+        /// <param name="formatFlags">取得するテキストの種類。</param>
+        /// <returns></returns>
+        public string GetDisplayText(PropertyDescriptionFormatFlags formatFlags)
         {
-            if (this.Description?.PropertyDescriptionNative == null)
-            {
-                return null;
-            }
-
             using (var store = ShellPropertyStore.Create(this.ShellObject))
             {
                 using (var propVar = new PropVariant())
                 {
                     store.GetPropVariant(this.PropertyKey, propVar);
 
-                    return this.Description.FormatForDisplay(propVar, formatFlags);
+                    return this.Description.GetDisplayText(propVar, formatFlags);
                 }
             }
         }
 
-        public bool TryFormatForDisplay(PropertyDescriptionFormatFlags formatFlags, out string formattedString)
+        public bool TryGetDisplayText(PropertyDescriptionFormatFlags formatFlags, out string text)
         {
-            if (this.Description?.PropertyDescriptionNative == null)
-            {
-                formattedString = null;
-                return false;
-            }
-
             using (var store = ShellPropertyStore.Create(this.ShellObject))
             {
                 using (var propVar = new PropVariant())
                 {
                     store.GetPropVariant(this.PropertyKey, propVar);
 
-                    if (!this.Description.TryFormatForDisplay(propVar, formatFlags, out formattedString))
+                    if (!this.Description.TryGetDisplayText(propVar, formatFlags, out text))
                     {
-                        formattedString = null;
+                        text = String.Empty;
                         return false;
                     }
                     return true;

@@ -95,9 +95,9 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティ定義を取得します。
+        ///     ネイティブプロパティインターフェイスを取得します。
         /// </summary>
-        internal IPropertyDescription PropertyDescriptionNative => this.propertyDescriptionNative;
+        private IPropertyDescription PropertyDescriptionNative => this.propertyDescriptionNative;
 
         /// <summary>
         ///     プロパティの標準的な名前を取得します。
@@ -110,12 +110,8 @@ namespace starshipxac.Shell.PropertySystem
                 if (this.canonicalName == null)
                 {
                     PropertySystemNativeMethods.PSGetNameFromPropertyKey(ref this.propertyKey, out this.canonicalName);
-                    if (this.canonicalName == null)
-                    {
-                        this.canonicalName = String.Empty;
-                    }
                 }
-                return this.canonicalName;
+                return this.canonicalName ?? String.Empty;
             }
         }
 
@@ -435,20 +431,29 @@ namespace starshipxac.Shell.PropertySystem
             return result;
         }
 
-        internal string FormatForDisplay(PropVariant propVariant, PropertyDescriptionFormatFlags formatFlags)
+        internal string GetDisplayText(PropVariant propVariant, PropertyDescriptionFormatFlags formatFlags)
         {
-            var flags = (PROPDESC_FORMAT_FLAGS)formatFlags;
-            string result;
-            var hr = this.PropertyDescriptionNative.FormatForDisplay(propVariant, ref flags, out result);
-            if (HRESULT.Failed(hr))
+            var result = String.Empty;
+            if (this.PropertyDescriptionNative != null)
             {
-                throw ShellException.FromHRESULT(hr);
+                var flags = (PROPDESC_FORMAT_FLAGS)formatFlags;
+                var hr = this.PropertyDescriptionNative.FormatForDisplay(propVariant, ref flags, out result);
+                if (HRESULT.Failed(hr))
+                {
+                    throw ShellException.FromHRESULT(hr);
+                }
             }
             return result;
         }
 
-        internal bool TryFormatForDisplay(PropVariant propVariant, PropertyDescriptionFormatFlags formatFlags, out string result)
+        internal bool TryGetDisplayText(PropVariant propVariant, PropertyDescriptionFormatFlags formatFlags, out string result)
         {
+            if (this.PropertyDescriptionNative == null)
+            {
+                result = null;
+                return false;
+            }
+
             var flags = (PROPDESC_FORMAT_FLAGS)formatFlags;
             var hr = this.PropertyDescriptionNative.FormatForDisplay(propVariant, ref flags, out result);
             if (HRESULT.Failed(hr))
@@ -461,8 +466,11 @@ namespace starshipxac.Shell.PropertySystem
 
         internal string GetImageReferencePath(PropVariant propVariant)
         {
-            string result;
-            ((IPropertyDescription2)this.PropertyDescriptionNative).GetImageReferenceForValue(propVariant, out result);
+            var result = default(string);
+            if (this.PropertyDescriptionNative != null)
+            {
+                ((IPropertyDescription2)this.PropertyDescriptionNative).GetImageReferenceForValue(propVariant, out result);
+            }
             return result;
         }
     }

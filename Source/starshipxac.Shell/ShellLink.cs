@@ -37,7 +37,7 @@ namespace starshipxac.Shell
                 Contract.Ensures(Contract.Result<string>() != null);
                 if (this.targetLocation == null)
                 {
-                    this.targetLocation = ShellProperty<string>.Create(this, "{B9B4B3FC-2B51-4A42-B5D8-324146AFCF25}", 2);
+                    this.targetLocation = new ShellProperty<string>(this, new Guid("{B9B4B3FC-2B51-4A42-B5D8-324146AFCF25}"), 2);
                 }
                 return this.targetLocation.Value;
             }
@@ -46,7 +46,7 @@ namespace starshipxac.Shell
                 Contract.Requires<ArgumentNullException>(value != null);
                 if (this.targetLocation == null)
                 {
-                    this.targetLocation = ShellProperty<string>.Create(this, "{B9B4B3FC-2B51-4A42-B5D8-324146AFCF25}", 2);
+                    this.targetLocation = new ShellProperty<string>(this, new Guid("{B9B4B3FC-2B51-4A42-B5D8-324146AFCF25}"), 2);
                 }
                 this.targetLocation.Value = value;
             }
@@ -75,7 +75,7 @@ namespace starshipxac.Shell
                 Contract.Ensures(Contract.Result<string>() != null);
                 if (this.titleProperty == null)
                 {
-                    this.titleProperty = ShellProperty<string>.Create(this, "{F29F85E0-4FF9-1068-AB91-08002B27B3D9}", 2);
+                    this.titleProperty = new ShellProperty<string>(this, new Guid("{F29F85E0-4FF9-1068-AB91-08002B27B3D9}"), 2);
                 }
                 return this.titleProperty.GetValue(String.Empty);
             }
@@ -91,7 +91,7 @@ namespace starshipxac.Shell
                 Contract.Ensures(Contract.Result<string>() != null);
                 if (this.linkArgumentsProperty == null)
                 {
-                    this.linkArgumentsProperty = ShellProperty<string>.Create(this, "{436F2667-14E2-4FEB-B30A-146C53B5B674}", 100);
+                    this.linkArgumentsProperty = new ShellProperty<string>(this, new Guid("{436F2667-14E2-4FEB-B30A-146C53B5B674}"), 100);
                 }
                 return this.linkArgumentsProperty.GetValue(String.Empty);
             }
@@ -107,7 +107,7 @@ namespace starshipxac.Shell
                 Contract.Ensures(Contract.Result<string>() != null);
                 if (this.linkCommentProperty == null)
                 {
-                    this.linkCommentProperty = ShellProperty<string>.Create(this, "{B9B4B3FC-2B51-4A42-B5D8-324146AFCF25}", 5);
+                    this.linkCommentProperty = new ShellProperty<string>(this, new Guid("{B9B4B3FC-2B51-4A42-B5D8-324146AFCF25}"), 5);
                 }
                 if (this.linkCommentProperty.Value != null)
                 {
@@ -116,7 +116,7 @@ namespace starshipxac.Shell
 
                 if (this.commentProperty == null)
                 {
-                    this.commentProperty = ShellProperty<string>.Create(this, "{F29F85E0-4FF9-1068-AB91-08002B27B3D9}", 6);
+                    this.commentProperty = new ShellProperty<string>(this, new Guid("{F29F85E0-4FF9-1068-AB91-08002B27B3D9}"), 6);
                 }
                 return this.commentProperty.GetValue(String.Empty);
             }

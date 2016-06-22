@@ -30,6 +30,7 @@
                 </Style>
                 <v:ShellPropertyValueConverter x:Key="ShellPropertyValueConverter"/>
                 <v:ShellPropertyIconConverter x:Key="ShellPropertyIconConverter"/>
+                <v:ShellPropertyDescriptionConverter x:Key="ShellPropertyDescriptionConverter"/>
             </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -56,6 +57,7 @@
                             </GridViewColumn>
                             <GridViewColumn Header="Name" DisplayMemberBinding="{Binding CanonicalName}" />
                             <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Converter={StaticResource ShellPropertyValueConverter}}" />
+                            <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Converter={StaticResource ShellPropertyDescriptionConverter}}"/>
                         </GridView.Columns>
                     </GridView>
                 </ListView.View>

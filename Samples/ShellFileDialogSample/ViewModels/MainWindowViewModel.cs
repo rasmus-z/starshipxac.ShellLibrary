@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows.Data;
 using Livet;
 using Reactive.Bindings;
@@ -15,7 +14,11 @@ namespace ShellFileDialogSample.ViewModels
             #region Reactive Property
 
             this.Properties = new ReactiveCollection<IShellProperty>();
-            this.PropertiesView = CollectionViewSource.GetDefaultView(this.Properties);
+            this.PropertiesView = CollectionViewSource.GetDefaultView(this.Properties) as ListCollectionView;
+            if (this.PropertiesView != null)
+            {
+                this.PropertiesView.CustomSort = new ShellPropertyComparer();
+            }
 
             // 開くファイル選択
             this.SelectOpenFileCommand = new ReactiveCommand();
@@ -89,7 +92,7 @@ namespace ShellFileDialogSample.ViewModels
 
         public ReactiveCollection<IShellProperty> Properties { get; }
 
-        public ICollectionView PropertiesView { get; }
+        public ListCollectionView PropertiesView { get; }
 
         public ReactiveCommand SelectOpenFileCommand { get; }
 
