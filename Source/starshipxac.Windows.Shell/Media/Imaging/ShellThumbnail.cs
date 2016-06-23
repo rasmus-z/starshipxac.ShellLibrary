@@ -41,7 +41,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
                                  SHGFI.SHGFI_ICON |
                                  SHGFI.SHGFI_SYSICONINDEX |
                                  SHGFI.SHGFI_OVERLAYINDEX;
-            ShellNativeMethods.SHGetFileInfo(this.ShellObject.PIDL, 0, ref sfi, flags);
+            ShellNativeMethods.SHGetFileInfo(this.ShellObject.ShellItem.PIDL, 0, ref sfi, flags);
 
             this.IconIndex = sfi.iIcon & 0x00FFFFFF;
             this.OverlayIndex = (sfi.iIcon >> 24) & 0xFF;

@@ -55,8 +55,6 @@ namespace starshipxac.Shell.Components
         {
             if (!this.disposed)
             {
-                this.disposed = true;
-
                 if (disposing)
                 {
                 }
@@ -65,6 +63,8 @@ namespace starshipxac.Shell.Components
                 {
                     ShellWatcherManager.UnregisterAsync(this).Wait();
                 }
+
+                this.disposed = true;
             }
         }
 
@@ -116,7 +116,7 @@ namespace starshipxac.Shell.Components
             var entry = new SHChangeNotifyEntry
             {
                 fRecursive = this.recursive,
-                pidl = this.shellObject.PIDL
+                pidl = this.shellObject.ShellItem.PIDL
             };
 
             const Int32 flags = SHCNRF.SHCNRF_ShellLevel |

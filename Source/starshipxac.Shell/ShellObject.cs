@@ -77,7 +77,6 @@ namespace starshipxac.Shell
             }
         }
 
-        // ReSharper disable once UnusedMember.Locala
         [ContractInvariantMethod]
         private void ObjectInvaliant()
         {
@@ -88,11 +87,6 @@ namespace starshipxac.Shell
         ///     <see cref="Shell.ShellItem" />を取得します。
         /// </summary>
         internal ShellItem ShellItem { get; }
-
-        /// <summary>
-        ///     <c>PIDL</c>を取得します。
-        /// </summary>
-        internal virtual PIDL PIDL => this.ShellItem.PIDL;
 
         /// <summary>
         ///     解析名を取得します。
