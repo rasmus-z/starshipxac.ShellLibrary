@@ -8,13 +8,19 @@ namespace starshipxac.Shell.PropertySystem
 {
     public class ShellPropertyWriter : IDisposable
     {
+        private bool disposed = false;
+
+        /// <summary>
+        ///     <see cref="ShellPropertyWriter" />クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="shellObject"></param>
         internal ShellPropertyWriter(ShellObject shellObject)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
 
             try
             {
-                this.WritablePropertyStore = ShellPropertyStore.CreateWritable(shellObject);
+                this.Store = ShellPropertyStore.CreateWritable(shellObject);
             }
             catch (InvalidComObjectException e)
             {
@@ -53,24 +59,42 @@ namespace starshipxac.Shell.PropertySystem
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
-            Close();
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    this.Store.Commit();
+                    this.Store.Dispose();
+                }
+
+                this.disposed = true;
+            }
         }
+
+        [ContractInvariantMethod]
+        private void ObjectInvariant()
+        {
+            Contract.Invariant(this.Store != null);
+        }
+
+        /// <summary>
+        ///     書き込み可能なプロパティストアを取得します。
+        /// </summary>
+        private ShellPropertyStore Store { get; }
 
         /// <summary>
         ///     <see cref="ShellPropertyWriter" />をコミットしてから閉じます。
         /// </summary>
         public void Close()
         {
-            if (this.WritablePropertyStore != null)
-            {
-                this.WritablePropertyStore.Commit();
-                this.WritablePropertyStore.Dispose();
-                this.WritablePropertyStore = null;
-            }
+            Dispose();
         }
 
-        private ShellPropertyStore WritablePropertyStore { get; set; }
-
+        /// <summary>
+        ///     プロパティに値を書き込みます。
+        /// </summary>
+        /// <param name="propertyKey"></param>
+        /// <param name="value"></param>
         public void WriteProperty(ShellPropertyKey propertyKey, object value)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
@@ -78,28 +102,50 @@ namespace starshipxac.Shell.PropertySystem
             WriteProperty(propertyKey, value, true);
         }
 
+        /// <summary>
+        ///     プロパティに値を書き込みます。
+        /// </summary>
+        /// <param name="propertyKey"></param>
+        /// <param name="value"></param>
+        /// <param name="allowTruncatedValue"></param>
         public void WriteProperty(ShellPropertyKey propertyKey, object value, bool allowTruncatedValue)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
-            Contract.Requires<InvalidOperationException>(this.WritablePropertyStore != null);
+            Contract.Requires<InvalidOperationException>(this.Store != null);
 
             using (var propVar = PropVariant.FromObject(value))
             {
-                this.WritablePropertyStore.SetValue(propertyKey, propVar, allowTruncatedValue);
+                this.Store.SetValue(propertyKey, propVar, allowTruncatedValue);
             }
         }
 
+        /// <summary>
+        ///     プロパティに値を書き込みます。
+        /// </summary>
+        /// <param name="canonicalName"></param>
+        /// <param name="value"></param>
         public void WriteProperty(string canonicalName, object value)
         {
             WriteProperty(canonicalName, value, true);
         }
 
+        /// <summary>
+        ///     プロパティに値を書き込みます。
+        /// </summary>
+        /// <param name="canonicalName"></param>
+        /// <param name="value"></param>
+        /// <param name="allowTruncatedValue"></param>
         public void WriteProperty(string canonicalName, object value, bool allowTruncatedValue)
         {
             var propertyKey = ShellPropertyKey.FromCanonicalName(canonicalName);
             WriteProperty(propertyKey, value, allowTruncatedValue);
         }
 
+        /// <summary>
+        ///     プロパティに値を書き込みます。
+        /// </summary>
+        /// <param name="shellProperty"></param>
+        /// <param name="value"></param>
         public void WriteProperty(IShellProperty shellProperty, object value)
         {
             Contract.Requires<ArgumentNullException>(shellProperty != null);
@@ -107,6 +153,12 @@ namespace starshipxac.Shell.PropertySystem
             WriteProperty(shellProperty, value, true);
         }
 
+        /// <summary>
+        ///     プロパティに値を書き込みます。
+        /// </summary>
+        /// <param name="shellProperty"></param>
+        /// <param name="value"></param>
+        /// <param name="allowTruncatedValue"></param>
         public void WriteProperty(IShellProperty shellProperty, object value, bool allowTruncatedValue)
         {
             Contract.Requires<ArgumentNullException>(shellProperty != null);
@@ -114,6 +166,12 @@ namespace starshipxac.Shell.PropertySystem
             WriteProperty(shellProperty.PropertyKey, value, allowTruncatedValue);
         }
 
+        /// <summary>
+        ///     プロパティに値を書き込みます。
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="shellProperty"></param>
+        /// <param name="value"></param>
         public void WriteProperty<T>(ShellProperty<T> shellProperty, T value)
         {
             Contract.Requires<ArgumentNullException>(shellProperty != null);
@@ -121,6 +179,13 @@ namespace starshipxac.Shell.PropertySystem
             WriteProperty(shellProperty, value, true);
         }
 
+        /// <summary>
+        ///     プロパティに値を書き込みます。
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="shellProperty"></param>
+        /// <param name="value"></param>
+        /// <param name="allowTruncatedValue"></param>
         public void WriteProperty<T>(ShellProperty<T> shellProperty, T value, bool allowTruncatedValue)
         {
             Contract.Requires<ArgumentNullException>(shellProperty != null);
