@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Linq.Expressions;
@@ -78,7 +77,7 @@ namespace starshipxac.Shell.PropertySystem.Internal
                 hashValue =>
                 {
                     Type[] argTypes = {typeof(ShellPropertyKey), typeof(ShellPropertyDescription), sourceType};
-                    return CreateConstructorExpress(type, argTypes);
+                    return CreateConstructorExpression(type, argTypes);
                 });
 
             return ctor(propertyKey, description, source);
@@ -161,8 +160,8 @@ namespace starshipxac.Shell.PropertySystem.Internal
             }
         }
 
-        private static Func<ShellPropertyKey, ShellPropertyDescription, object, IShellProperty> CreateConstructorExpress(Type type,
-            Type[] argTypes)
+        private static Func<ShellPropertyKey, ShellPropertyDescription, object, IShellProperty> CreateConstructorExpression(
+            Type type, Type[] argTypes)
         {
             Contract.Requires(type != null);
             Contract.Requires(argTypes != null);
@@ -173,7 +172,7 @@ namespace starshipxac.Shell.PropertySystem.Internal
             if (ctorInfo == null)
             {
                 throw new ArgumentException(
-                    String.Format(ErrorMessages.ShellPropertyFactoryConstructorNotFound, argTypes),
+                    String.Format(ErrorMessages.ShellPropertyFactoryConstructorNotFound, argTypes.Cast<object>()),
                     nameof(type));
             }
 
@@ -183,18 +182,14 @@ namespace starshipxac.Shell.PropertySystem.Internal
 
             var create = Expression.New(ctorInfo, propertyKey, description, Expression.Convert(source, argTypes[2]));
 
-            return Expression.Lambda<Func<ShellPropertyKey, ShellPropertyDescription, object, IShellProperty>>(
-                create, propertyKey, description, source).Compile();
+            return Expression
+                .Lambda<Func<ShellPropertyKey, ShellPropertyDescription, object, IShellProperty>>(create, propertyKey, description, source)
+                .Compile();
         }
 
         private static int GetTypeHash(params Type[] types)
         {
-            return GetTypeHash((IEnumerable<Type>)types);
-        }
-
-        private static int GetTypeHash(IEnumerable<Type> types)
-        {
-            return types.Aggregate(0, (current, type) => current*31 + type.GetHashCode());
+            return types.Aggregate(0, (current, type) => current * 31 + type.GetHashCode());
         }
     }
 }
