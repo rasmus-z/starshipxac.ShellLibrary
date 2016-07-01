@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using System.Runtime.InteropServices;
+using starshipxac.Shell.Interop;
 
 namespace starshipxac.Shell.Media.Imaging
 {
@@ -33,7 +33,7 @@ namespace starshipxac.Shell.Media.Imaging
         {
             if (!this.disposed)
             {
-                DestroyIcon(this.Handle);
+                Win32Api.DestroyIcon(this.Handle);
 
                 this.disposed = true;
             }
@@ -43,13 +43,5 @@ namespace starshipxac.Shell.Media.Imaging
         ///     アイコンハンドルを取得します。
         /// </summary>
         internal IntPtr Handle { get; }
-
-        #region Native Methods
-
-        [DllImport("user32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool DestroyIcon(IntPtr hIcon);
-
-        #endregion
     }
 }

@@ -160,6 +160,7 @@
     <Compile Include="Interop\SORTDIRECTION.cs" />
     <Compile Include="Interop\STGM.cs" />
     <Compile Include="Interop\VARENUM.cs" />
+    <Compile Include="Interop\Win32Api.cs" />
     <Compile Include="Interop\WTS_ALPHATYPE.cs" />
     <Compile Include="Interop\WTS_CACHEFLAGS.cs" />
     <Compile Include="Interop\WTS_FLAGS.cs" />
