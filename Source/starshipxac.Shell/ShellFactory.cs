@@ -108,6 +108,12 @@ namespace starshipxac.Shell
             return factory.Create(shellItem);
         }
 
+        /// <summary>
+        ///     フォルダーの<see cref="ShellItem" />を指定して、
+        ///     <see cref="ShellFolder" />クラスの新しいインスタンスを作成します。
+        /// </summary>
+        /// <param name="shellItem"></param>
+        /// <returns></returns>
         public static ShellFolder FromShellFolderItem(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
@@ -166,7 +172,6 @@ namespace starshipxac.Shell
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
 
-            // フォルダー
             var shellLibrary = ShellLibraryFactory.FromShellItem(shellItem, true);
             if (SameItemType(shellItem.ItemType, ShellLibraryFactory.FileExtension) && (shellLibrary != null))
             {
