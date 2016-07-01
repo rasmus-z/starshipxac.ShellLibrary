@@ -9,7 +9,7 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     シェルフォルダー情報を定義します。
+    ///     フォルダー情報を定義します。
     /// </summary>
     public class ShellFolder : ShellObject
     {
