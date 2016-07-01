@@ -32,7 +32,7 @@ namespace starshipxac.Shell.Media.Imaging
         internal IntPtr GetImageHandle(ShellImageSize thumbnailSize)
         {
             var size = new SIZE(thumbnailSize.Width, thumbnailSize.Height);
-            var flags = CalculateFlags();
+            var flags = GetFlags();
             IntPtr result;
             var hr = this.shllItemImageFactoryInterface.GetImage(size, flags, out result);
             if (HRESULT.Failed(hr))
@@ -52,7 +52,7 @@ namespace starshipxac.Shell.Media.Imaging
             return result;
         }
 
-        private SIIGBF CalculateFlags()
+        private SIIGBF GetFlags()
         {
             SIIGBF result = 0x0000;
 
