@@ -9,7 +9,7 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     シェル標準フォルダーファクトリーメソッドを定義します。
+    ///     シェル標準フォルダーファクトリメソッドを定義します。
     /// </summary>
     public static class ShellKnownFolderFactory
     {

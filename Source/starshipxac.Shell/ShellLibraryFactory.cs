@@ -8,10 +8,14 @@ using starshipxac.Shell.Properties;
 
 namespace starshipxac.Shell
 {
+    /// <summary>
+    ///     シェルライブラリファクトリメソッドを定義します。
+    /// </summary>
     public static class ShellLibraryFactory
     {
         [SuppressMessage("ReSharper", "InconsistentNaming")]
         internal static readonly Guid FOLDERID_Libraries = new Guid("1B3EA5DC-B587-4786-B4EF-BD1DC332AEAE");
+
         internal static readonly string FileExtension = ".library-ms";
 
         /// <summary>
