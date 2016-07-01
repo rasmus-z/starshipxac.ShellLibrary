@@ -5,7 +5,7 @@ using starshipxac.Shell.PropertySystem;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     シェルファイル情報を定義します。
+    ///     ファイル情報を定義します。
     /// </summary>
     public class ShellFile : ShellObject
     {
