@@ -22,7 +22,7 @@ namespace starshipxac.Shell
         ///     <param name="canonicalName" />
         ///     が<c>null</c>です。
         /// </exception>
-        /// <exception cref="System.ArgumentException">
+        /// <exception cref="ArgumentException">
         ///     <para>
         ///         <param name="canonicalName" />
         ///         が空文字列です。
