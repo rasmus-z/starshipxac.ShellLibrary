@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using static starshipxac.Shell.ShellKnownFolderFactory;
 using static starshipxac.Shell.ShellLibraryFactory;
@@ -51,6 +52,7 @@ namespace starshipxac.Shell
         /// <returns></returns>
         public static IEnumerable<ShellLibrary> EnumeratePublicLibraries()
         {
+            Contract.Ensures(Contract.Result<IEnumerable<ShellLibrary>>() != null);
             return ShellKnownFolders.PublicLibraries.EnumerateObjects().OfType<ShellLibrary>();
         }
     }
