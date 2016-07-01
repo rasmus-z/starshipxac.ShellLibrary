@@ -4,16 +4,16 @@ using System.Diagnostics.CodeAnalysis;
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// フォルダー種別のGUIDを定義します。
+    ///     フォルダー種別のGUIDを定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb762581(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762581(v=vs.85).aspx
     /// </remarks>
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class KnownFolderTypes
     {
         /// <summary>
-        /// メール、予定表、連絡先情報などの通信関連のファイルを含むフォルダー。
+        ///     メール、予定表、連絡先情報などの通信関連のファイルを含むフォルダー。
         /// </summary>
         public static Guid FOLDERTYPEID_Communications
         {
@@ -24,7 +24,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 圧縮フォルダー
+        ///     圧縮フォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_CompressedFolder
         {
@@ -35,7 +35,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// メールの連絡先情報を含むフォルダー
+        ///     メールの連絡先情報を含むフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_Contacts
         {
@@ -46,7 +46,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// カテゴリー表示コントロールパネル
+        ///     カテゴリー表示コントロールパネル
         /// </summary>
         internal static Guid FOLDERTYPEID_ControlPanelCategory
         {
@@ -57,7 +57,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// クラシック表示コントロールパネル
+        ///     クラシック表示コントロールパネル
         /// </summary>
         internal static Guid FOLDERTYPEID_ControlPanelClassic
         {
@@ -68,7 +68,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// ドキュメントファイルフォルダー
+        ///     ドキュメントファイルフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_Documents
         {
@@ -79,7 +79,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// スタートメニューのゲームフォルダー
+        ///     スタートメニューのゲームフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_Games
         {
@@ -90,7 +90,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 汎用フォルダー
+        ///     汎用フォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_Generic
         {
@@ -101,7 +101,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 汎用ライブラリフォルダー
+        ///     汎用ライブラリフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_GenericLibrary
         {
@@ -112,7 +112,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 不特定タイプの検索結果
+        ///     不特定タイプの検索結果
         /// </summary>
         internal static Guid FOLDERTYPEID_GenericSearchResults
         {
@@ -123,7 +123,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 無効フォルダー
+        ///     無効フォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_Invalid
         {
@@ -134,7 +134,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// オーディオファイルを含むフォルダー
+        ///     オーディオファイルを含むフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_Music
         {
@@ -145,7 +145,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// ネットワークエクスプローラーフォルダー
+        ///     ネットワークエクスプローラーフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_NetworkExplorer
         {
@@ -156,10 +156,10 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <c>OpenSearch</c>検索結果フォルダー
+        ///     <c>OpenSearch</c>検索結果フォルダー
         /// </summary>
         /// <remarks>
-        /// <c>http://www.opensearch.org/Home</c>
+        ///     <c>http://www.opensearch.org/Home</c>
         /// </remarks>
         internal static Guid FOLDERTYPEID_OpenSearch
         {
@@ -170,7 +170,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// OtherUsers
+        ///     OtherUsers
         /// </summary>
         internal static Guid FOLDERTYPEID_OtherUsers
         {
@@ -181,7 +181,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 画像ファイルを含むフォルダー
+        ///     画像ファイルを含むフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_Pictures
         {
@@ -192,7 +192,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// プリンターフォルダー
+        ///     プリンターフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_Printers
         {
@@ -203,7 +203,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// ホームグループユーザーライブラリ
+        ///     ホームグループユーザーライブラリ
         /// </summary>
         internal static Guid FOLDERTYPEID_PublishedItems
         {
@@ -214,7 +214,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 録画フォルダー
+        ///     録画フォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_RecordedTV
         {
@@ -225,7 +225,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// ごみ箱
+        ///     ごみ箱
         /// </summary>
         internal static Guid FOLDERTYPEID_RecycleBin
         {
@@ -236,7 +236,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 保存したゲームフォルダー
+        ///     保存したゲームフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_SavedGames
         {
@@ -247,7 +247,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// Searchconnector
+        ///     Searchconnector
         /// </summary>
         internal static Guid FOLDERTYPEID_SearchConnector
         {
@@ -258,7 +258,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 検索フォルダー
+        ///     検索フォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_Searches
         {
@@ -269,7 +269,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// 検索結果フォルダー
+        ///     検索結果フォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_SearchHome
         {
@@ -280,7 +280,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// プログラムの追加と削除
+        ///     プログラムの追加と削除
         /// </summary>
         internal static Guid FOLDERTYPEID_SoftwareExplorer
         {
@@ -291,7 +291,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// スタートメニューフォルダー
+        ///     スタートメニューフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_StartMenu
         {
@@ -302,7 +302,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <c>Users</c>フォルダー
+        ///     <c>Users</c>フォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_UserFiles
         {
@@ -313,7 +313,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// ユーザーライブラリ
+        ///     ユーザーライブラリ
         /// </summary>
         internal static Guid FOLDERTYPEID_UsersLibraries
         {
@@ -324,7 +324,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// ユーザーアカウント画像を含むフォルダー
+        ///     ユーザーアカウント画像を含むフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_AccountPictures
         {
@@ -335,7 +335,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// ビデオファイルを含むフォルダー
+        ///     ビデオファイルを含むフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_Videos
         {
@@ -346,7 +346,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <c>MSFT_StorageProvider</c>フォルダー
+        ///     <c>MSFT_StorageProvider</c>フォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_StorageProviderGeneric
         {
@@ -357,7 +357,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <c>MSFT_StorageProvider</c>フォルダーのドキュメントフォルダー
+        ///     <c>MSFT_StorageProvider</c>フォルダーのドキュメントフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_StorageProviderDocuments
         {
@@ -368,7 +368,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <c>MSFT_StorageProvider</c>フォルダーのピクチャフォルダー
+        ///     <c>MSFT_StorageProvider</c>フォルダーのピクチャフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_StorageProviderPictures
         {
@@ -379,7 +379,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <c>MSFT_StorageProvider</c>フォルダーのミュージックフォルダー
+        ///     <c>MSFT_StorageProvider</c>フォルダーのミュージックフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_StorageProviderMusic
         {
@@ -390,7 +390,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        /// <c>MSFT_StorageProvider</c>フォルダーのビデオフォルダー
+        ///     <c>MSFT_StorageProvider</c>フォルダーのビデオフォルダー
         /// </summary>
         internal static Guid FOLDERTYPEID_StorageProviderVideos
         {

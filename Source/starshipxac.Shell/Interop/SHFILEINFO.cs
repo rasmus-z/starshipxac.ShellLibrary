@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    /// シェルファイル情報を定義します。
+    ///     シェルファイル情報を定義します。
     /// </summary>
     /// <remarks>
-    /// http://msdn.microsoft.com/en-us/library/windows/desktop/bb759792(v=vs.85).aspx
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb759792(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     [SuppressMessage("ReSharper", "InconsistentNaming")]
