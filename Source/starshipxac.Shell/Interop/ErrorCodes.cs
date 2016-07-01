@@ -13,6 +13,7 @@ namespace starshipxac.Shell.Interop
     ///     </para>
     /// </remarks>
     [SuppressMessage("ReSharper", "InconsistentNaming")]
+    [SuppressMessage("ReSharper", "UnusedMember.Local")]
     public static class ErrorCodes
     {
         public const int ERROR_SUCCESS = 0;
