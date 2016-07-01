@@ -6,18 +6,14 @@ using System.Runtime.Serialization;
 namespace starshipxac.Windows.Shell.FileSystem
 {
     /// <summary>
-    ///     <para>
-    ///         ファイル操作中に発生するエラーを表します。
-    ///     </para>
+    ///     ファイル操作中に発生するエラーを表します。
     /// </summary>
     [Serializable]
     public class FileOperationException : Exception
     {
         /// <summary>
-        ///     <para>
-        ///         エラーメッセージを指定して、
-        ///         <see cref="FileOperationException" />クラスの新しいインスタンスを初期化します。
-        ///     </para>
+        ///     エラーメッセージを指定して、
+        ///     <see cref="FileOperationException" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="message">エラーメッセージ。</param>
         public FileOperationException(string message)
@@ -26,10 +22,8 @@ namespace starshipxac.Windows.Shell.FileSystem
         }
 
         /// <summary>
-        ///     <para>
-        ///         エラーメッセージと、この例外の原因である内部発生への参照を指定して、
-        ///         <see cref="FileOperationException" />クラスの新しいインスタンスを初期化します。
-        ///     </para>
+        ///     エラーメッセージと、この例外の原因である内部発生への参照を指定して、
+        ///     <see cref="FileOperationException" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="message">エラーメッセージ。</param>
         /// <param name="innerException">この例外の原因である内部発生への参照。</param>

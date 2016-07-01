@@ -4,9 +4,7 @@ using starshipxac.Windows.Shell.Interop;
 namespace starshipxac.Windows.Shell.FileSystem
 {
     /// <summary>
-    ///     <para>
-    ///         ファイル操作のオプションを定義します。
-    ///     </para>
+    ///     ファイル操作のオプションを定義します。
     /// </summary>
     [Flags]
     public enum FileOperationOptions : uint
