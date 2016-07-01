@@ -3,6 +3,9 @@ using starshipxac.Windows.Shell.Dialogs.Interop;
 
 namespace starshipxac.Windows.Shell.Dialogs
 {
+    /// <summary>
+    ///     ファイルダイアログオプションを定義します。
+    /// </summary>
     [Flags]
     public enum FileDialogOptions : uint
     {
