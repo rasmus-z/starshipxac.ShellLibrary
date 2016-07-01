@@ -25,7 +25,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         [PreserveSig]
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        HRESULT GetPropertyType(out VarEnum pvartype);
+        HRESULT GetPropertyType(out VARENUM pvartype);
 
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         [PreserveSig]

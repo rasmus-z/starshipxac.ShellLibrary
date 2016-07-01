@@ -4,14 +4,14 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using starshipxac.Shell.Interop;
 using starshipxac.Shell.Properties;
 
 namespace starshipxac.Shell.PropertySystem.Internal
 {
     /// <summary>
-    ///     <see cref="ShellProperty&lt;T&gt;" />を作成します。
+    ///     <see cref="ShellProperty{T}"/>を作成します。
     /// </summary>
     internal static class ShellPropertyFactory
     {
@@ -36,8 +36,21 @@ namespace starshipxac.Shell.PropertySystem.Internal
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
             Contract.Requires<ArgumentNullException>(shellObject != null);
+            Contract.Ensures(Contract.Result<IShellProperty>() != null);
 
-            return CreateGeneric(propertyKey, shellObject);
+            var description = ShellPropertyDescriptionFactory.Create(propertyKey);
+            var sourceType = typeof(ShellObject);
+            var type = typeof(ShellProperty<>).MakeGenericType(VarEnumToSystemType(description.VarEnumType));
+
+            var ctor = ConstructorCache.GetOrAdd(
+                GetTypeHash(type, sourceType),
+                hashValue =>
+                {
+                    Type[] argTypes = { typeof(ShellPropertyKey), typeof(ShellPropertyDescription), sourceType };
+                    return CreateConstructorExpression(type, argTypes);
+                });
+
+            return ctor(propertyKey, description, shellObject);
         }
 
         /// <summary>
@@ -51,109 +64,94 @@ namespace starshipxac.Shell.PropertySystem.Internal
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
             Contract.Requires<ArgumentNullException>(propertyStore != null);
+            Contract.Ensures(Contract.Result<IShellProperty>() != null);
 
-            return CreateGeneric(propertyKey, propertyStore);
-        }
-
-        /// <summary>
-        ///     <see cref="ShellPropertyKey" />と元となるオブジェクトを指定して、
-        ///     <see cref="ShellProperty{T}" />のインスタンスを作成します。
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="propertyKey"></param>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        private static IShellProperty CreateGeneric<T>(ShellPropertyKey propertyKey, T source)
-        {
-            Contract.Requires<ArgumentNullException>(propertyKey != null);
-
-            var sourceType = (source is ShellObject) ? typeof(ShellObject) : typeof(T);
             var description = ShellPropertyDescriptionFactory.Create(propertyKey);
-
+            var sourceType = typeof(ShellPropertyStore);
             var type = typeof(ShellProperty<>).MakeGenericType(VarEnumToSystemType(description.VarEnumType));
-            var hash = GetTypeHash(type, sourceType);
 
-            var ctor = ConstructorCache.GetOrAdd(hash,
+            var ctor = ConstructorCache.GetOrAdd(
+                GetTypeHash(type, sourceType),
                 hashValue =>
                 {
-                    Type[] argTypes = {typeof(ShellPropertyKey), typeof(ShellPropertyDescription), sourceType};
+                    Type[] argTypes = { typeof(ShellPropertyKey), typeof(ShellPropertyDescription), sourceType };
                     return CreateConstructorExpression(type, argTypes);
                 });
 
-            return ctor(propertyKey, description, source);
+            return ctor(propertyKey, description, propertyStore);
         }
 
         /// <summary>
-        ///     <see cref="VarEnum" />を対応する .NETの型に変換します。
+        ///     <see cref="VARENUM" />を対応する .NETの型に変換します。
         /// </summary>
-        /// <param name="varEnumType"><see cref="VarEnum" />。</param>
+        /// <param name="varEnumType"><see cref="VARENUM" />。</param>
         /// <returns>.NETの型を表す<see cref="Type" />。</returns>
         [Pure]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        internal static Type VarEnumToSystemType(VarEnum varEnumType)
+        internal static Type VarEnumToSystemType(VARENUM varEnumType)
         {
             switch (varEnumType)
             {
-                case (VarEnum.VT_EMPTY):
-                case (VarEnum.VT_NULL):
+                case (VARENUM.VT_EMPTY):
+                case (VARENUM.VT_NULL):
                     return typeof(Object);
-                case (VarEnum.VT_UI1):
+                case (VARENUM.VT_UI1):
                     return typeof(Byte?);
-                case (VarEnum.VT_I2):
+                case (VARENUM.VT_I2):
                     return typeof(Int16?);
-                case (VarEnum.VT_UI2):
+                case (VARENUM.VT_UI2):
                     return typeof(UInt16?);
-                case (VarEnum.VT_I4):
+                case (VARENUM.VT_I4):
                     return typeof(Int32?);
-                case (VarEnum.VT_UI4):
+                case (VARENUM.VT_UI4):
                     return typeof(UInt32?);
-                case (VarEnum.VT_I8):
+                case (VARENUM.VT_I8):
                     return typeof(Int64?);
-                case (VarEnum.VT_UI8):
+                case (VARENUM.VT_UI8):
                     return typeof(UInt64?);
-                case (VarEnum.VT_R8):
+                case (VARENUM.VT_R8):
                     return typeof(Double?);
-                case (VarEnum.VT_BOOL):
+                case (VARENUM.VT_BOOL):
                     return typeof(Boolean?);
-                case (VarEnum.VT_FILETIME):
+                case (VARENUM.VT_FILETIME):
                     return typeof(DateTime?);
-                case (VarEnum.VT_CLSID):
+                case (VARENUM.VT_CLSID):
                     return typeof(IntPtr?);
-                case (VarEnum.VT_CF):
+                case (VARENUM.VT_CF):
                     return typeof(IntPtr?);
-                case (VarEnum.VT_BLOB):
+                case (VARENUM.VT_BLOB):
                     return typeof(Byte[]);
-                case (VarEnum.VT_LPWSTR):
+                case (VARENUM.VT_LPWSTR):
                     return typeof(String);
-                case (VarEnum.VT_UNKNOWN):
+                case (VARENUM.VT_UNKNOWN):
                     return typeof(IntPtr?);
-                case (VarEnum.VT_STREAM):
+                case (VARENUM.VT_STREAM):
                     return typeof(IStream);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_UI1):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_UI1):
                     return typeof(Byte[]);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_I2):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_I2):
                     return typeof(Int16[]);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_UI2):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_UI2):
                     return typeof(UInt16[]);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_I4):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_I4):
                     return typeof(Int32[]);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_UI4):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_UI4):
                     return typeof(UInt32[]);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_I8):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_I8):
                     return typeof(Int64[]);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_UI8):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_UI8):
                     return typeof(UInt64[]);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_R8):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_R8):
                     return typeof(Double[]);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_BOOL):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_BOOL):
                     return typeof(Boolean[]);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_FILETIME):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_FILETIME):
                     return typeof(DateTime[]);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_CLSID):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_CLSID):
                     return typeof(IntPtr[]);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_CF):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_CF):
                     return typeof(IntPtr[]);
-                case (VarEnum.VT_VECTOR | VarEnum.VT_LPWSTR):
+                case (VARENUM.VT_VECTOR | VARENUM.VT_LPWSTR):
                     return typeof(String[]);
                 default:
                     return typeof(Object);
@@ -187,9 +185,9 @@ namespace starshipxac.Shell.PropertySystem.Internal
                 .Compile();
         }
 
-        private static int GetTypeHash(params Type[] types)
+        private static int GetTypeHash(Type propertyType, Type sourceType)
         {
-            return types.Aggregate(0, (current, type) => current * 31 + type.GetHashCode());
+            return propertyType.GetHashCode() ^ sourceType.GetHashCode();
         }
     }
 }

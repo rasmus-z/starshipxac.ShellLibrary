@@ -23,7 +23,7 @@ namespace starshipxac.Shell.PropertySystem
         private PROPERTYKEY propertyKey;
         private string displayName;
         private string editInvitation;
-        private VarEnum? varEnumType = null;
+        private VARENUM? varEnumType = null;
         private PropertyDisplayTypes? displayType;
         private PropertyAggregationTypes? aggregationTypes;
         private uint? defaultColumWidth;
@@ -160,22 +160,22 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     <see cref="VarEnum" />を取得します。
+        ///     <see cref="VARENUM" />を取得します。
         /// </summary>
-        public VarEnum VarEnumType
+        public VARENUM VarEnumType
         {
             get
             {
                 if (this.PropertyDescriptionNative != null && this.varEnumType == null)
                 {
-                    VarEnum tempType;
+                    VARENUM tempType;
                     var hr = this.PropertyDescriptionNative.GetPropertyType(out tempType);
                     if (HRESULT.Succeeded(hr))
                     {
                         this.varEnumType = tempType;
                     }
                 }
-                return this.varEnumType ?? default(VarEnum);
+                return this.varEnumType ?? default(VARENUM);
             }
         }
 
