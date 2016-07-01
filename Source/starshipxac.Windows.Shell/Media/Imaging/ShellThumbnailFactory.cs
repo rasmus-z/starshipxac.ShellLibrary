@@ -10,6 +10,9 @@ using starshipxac.Shell.Media.Imaging;
 
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
+    /// <summary>
+    ///     <see cref="ShellObject" />サムネイルイメージファクトリを定義します。
+    /// </summary>
     public class ShellThumbnailFactory
     {
         private Size size = new Size(96, 96);

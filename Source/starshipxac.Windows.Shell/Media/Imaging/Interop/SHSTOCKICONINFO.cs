@@ -5,11 +5,10 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Windows.Shell.Media.Imaging.Interop
 {
     /// <summary>
+    ///     ストックアイコン情報を定義します。
     /// </summary>
     /// <remarks>
-    ///     <para>
-    ///         http://msdn.microsoft.com/en-us/library/windows/desktop/bb759805(v=vs.85).aspx
-    ///     </para>
+    ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb759805(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     [SuppressMessage("ReSharper", "InconsistentNaming")]
