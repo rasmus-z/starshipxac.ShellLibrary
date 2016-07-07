@@ -23,13 +23,13 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         public FileDialogGroupBox(string name, string text, params FileDialogControl[] controls)
             : base(name)
         {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
+            Contract.Requires<ArgumentNullException>(name != null);
 
             this.text = text ?? String.Empty;
 
-            this.items = controls == null
+            this.items = (controls == null)
                 ? new Collection<FileDialogControl>()
-                : new Collection<FileDialogControl>(this.items);
+                : new Collection<FileDialogControl>(controls);
         }
 
         public override string Text
