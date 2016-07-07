@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
 
 namespace starshipxac.Windows.Dialogs.Interop
@@ -10,6 +11,7 @@ namespace starshipxac.Windows.Dialogs.Interop
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb787475(v=vs.85).aspx
     /// </remarks>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto, Pack = 4)]
+    [ContractVerification(false)]
     internal struct TASKDIALOG_BUTTON
     {
         public TASKDIALOG_BUTTON(int buttonId, string text)

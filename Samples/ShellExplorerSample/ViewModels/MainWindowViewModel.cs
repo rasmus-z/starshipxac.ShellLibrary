@@ -1,13 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Reactive.Linq;
-using System.Windows;
 using System.Windows.Data;
 using Livet;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
-using starshipxac.Shell;
-using starshipxac.Windows.Shell.Media.Imaging;
 using ShellExplorerSample.ViewModels.Shell;
 
 namespace ShellExplorerSample.ViewModels
@@ -16,7 +14,8 @@ namespace ShellExplorerSample.ViewModels
     ///     Shell Explorer Sample View Model.
     /// </summary>
     /// <remarks>
-    ///     Gitライブラリフォルダーの<see cref="ShellFolder.EnumerateObjects" />メソッドで <c>FileNotFoundException</c>が発生する場合は、
+    ///     Gitライブラリフォルダーの<see cref="starshipxac.Shell.ShellFolder.EnumerateObjects" />メソッドで
+    ///     <c>FileNotFoundException</c>が発生する場合は、
     ///     プロジェクトのプロパティ -> ビルドの「32ビットの優先」のチェックを外す。
     /// </remarks>
     public class MainWindowViewModel : ViewModel
@@ -49,6 +48,14 @@ namespace ShellExplorerSample.ViewModels
         public void Initialize()
         {
             this.RootFolder.Initialize();
+        }
+
+        [ContractInvariantMethod]
+        private void ObjectInvariant()
+        {
+            Contract.Invariant(this.RootFolder != null);
+            Contract.Invariant(this.ShellItems != null);
+            Contract.Invariant(this.ShellItemCollectionView != null);
         }
 
         public ShellRootViewModel RootFolder { get; }
