@@ -94,7 +94,6 @@
     <Compile Include="DisplayNameTypes.cs" />
     <Compile Include="FolderDefinitionFlags.cs" />
     <Compile Include="FolderLogicalViewMode.cs" />
-    <Compile Include="Internal\DefaultShellFactory.cs" />
     <Compile Include="Internal\FolderProperties.cs" />
     <Compile Include="Internal\ShellFolderEnumerator.cs" />
     <Compile Include="Internal\ShellFolders.cs" />

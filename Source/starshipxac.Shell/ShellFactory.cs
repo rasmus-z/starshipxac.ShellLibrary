@@ -2,7 +2,6 @@
 using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.IO;
-using starshipxac.Shell.Internal;
 using starshipxac.Shell.Interop;
 using starshipxac.Shell.Interop.KnownFolder;
 using starshipxac.Shell.Properties;
@@ -12,35 +11,8 @@ namespace starshipxac.Shell
     /// <summary>
     ///     <see cref="ShellObject" />を作成するメソッドを定義します。
     /// </summary>
-    [ContractClass(typeof(ShellFactoryContract))]
-    public abstract class ShellFactory
+    public static class ShellFactory
     {
-        private static ShellFactory factory;
-
-        static ShellFactory()
-        {
-            factory = DefaultShellFactory.Default;
-        }
-
-        /// <summary>
-        ///     ファクトリクラスのインスタンスを設定します。
-        /// </summary>
-        /// <param name="shellFactory"></param>
-        public static void SetFactory(ShellFactory shellFactory)
-        {
-            Contract.Requires<ArgumentNullException>(shellFactory != null);
-
-            factory = shellFactory;
-        }
-
-        /// <summary>
-        ///     ファクトリを基底のファクトリークラスに再設定します。
-        /// </summary>
-        public static void ResetFactory()
-        {
-            factory = DefaultShellFactory.Default;
-        }
-
         /// <summary>
         ///     解析名(<c>ParsingName</c>)を指定して、<see cref="ShellObject" />クラスの新しいインスタンスを作成します。
         /// </summary>
@@ -51,7 +23,7 @@ namespace starshipxac.Shell
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(parsingName));
             Contract.Ensures(Contract.Result<ShellObject>() != null);
 
-            return factory.Create(ShellItem.FromParsingName(parsingName));
+            return Create(ShellItem.FromParsingName(parsingName));
         }
 
         /// <summary>
@@ -105,7 +77,7 @@ namespace starshipxac.Shell
             Contract.Requires<ArgumentNullException>(shellItem != null);
             Contract.Ensures(Contract.Result<ShellObject>() != null);
 
-            return factory.Create(shellItem);
+            return Create(shellItem);
         }
 
         /// <summary>
@@ -123,7 +95,7 @@ namespace starshipxac.Shell
                 return null;
             }
 
-            return factory.CreateFolder(shellItem);
+            return CreateFolder(shellItem);
         }
 
         /// <summary>
@@ -131,7 +103,7 @@ namespace starshipxac.Shell
         /// </summary>
         /// <param name="shellItem"><see cref="ShellItem" />。</param>
         /// <returns>作成した<see cref="ShellObject" />派生クラスのインスタンス。</returns>
-        public ShellObject Create(ShellItem shellItem)
+        private static ShellObject Create(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
             Contract.Ensures(Contract.Result<ShellObject>() != null);
@@ -141,22 +113,19 @@ namespace starshipxac.Shell
                 // リンク(ショートカットファイル)
                 return new ShellLink(shellItem);
             }
-
-            if (shellItem.IsFolder)
+            else if (shellItem.IsFolder)
             {
                 // フォルダー
                 return CreateFolder(shellItem);
             }
-
-            if (shellItem.IsFileSystem)
+            else if (shellItem.IsFileSystem)
             {
                 // ファイル
-                return CreateShellFile(shellItem);
+                return new ShellFile(shellItem);
             }
-
-            if (shellItem.IsStream)
+            else if (shellItem.IsStream)
             {
-                return CreateShellFile(shellItem);
+                return new ShellFile(shellItem);
             }
 
             // ファイルシステム外のアイテム
@@ -168,7 +137,7 @@ namespace starshipxac.Shell
         /// </summary>
         /// <param name="shellItem"></param>
         /// <returns></returns>
-        public ShellFolder CreateFolder(ShellItem shellItem)
+        private static ShellFolder CreateFolder(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
 
@@ -178,43 +147,29 @@ namespace starshipxac.Shell
                 // ライブラリ
                 return shellLibrary;
             }
-
-            if (SameItemType(shellItem, ShellSearchConnector.FileExtension))
+            else if (SameItemType(shellItem, ShellSearchConnector.FileExtension))
             {
                 // 検索条件
                 return new ShellSearchConnector(shellItem);
             }
-
-            if (SameItemType(shellItem, ShellSavedSearchCollection.FileExtension))
+            else if (SameItemType(shellItem, ShellSavedSearchCollection.FileExtension))
             {
                 // 保存された検索条件
                 return new ShellSavedSearchCollection(shellItem);
             }
-
-            var knownFolderNative = GetKnownFolderNative(shellItem);
-            if (knownFolderNative != null)
+            else
             {
-                // 標準フォルダー
-                return new ShellKnownFolder(shellItem, knownFolderNative);
+                var knownFolderNative = GetKnownFolderNative(shellItem);
+                if (knownFolderNative != null)
+                {
+                    // 標準フォルダー
+                    return new ShellKnownFolder(shellItem, knownFolderNative);
+                }
             }
 
             // フォルダー
-            return CreateShellFolder(shellItem);
+            return new ShellFolder(shellItem);
         }
-
-        /// <summary>
-        ///     指定した<see cref="ShellItem" />の性質に最も一致する<see cref="ShellFolder" />派生クラスのインスタンスを作成します。
-        /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem" />。</param>
-        /// <returns>作成した<see cref="ShellFolder" />派生クラスのインスタンス。</returns>
-        public abstract ShellFolder CreateShellFolder(ShellItem shellItem);
-
-        /// <summary>
-        ///     指定した<see cref="ShellItem" />の性質に最も一致する<see cref="ShellFile" />派生クラスのインスタンスを作成します。
-        /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem" />。</param>
-        /// <returns>作成した<see cref="ShellFile" />派生クラスのインスタンス。</returns>
-        public abstract ShellFile CreateShellFile(ShellItem shellItem);
 
         /// <summary>
         ///     2つのアイテム種別を示す文字列が、同じかどうかを判定します。
@@ -262,27 +217,6 @@ namespace starshipxac.Shell
             }
 
             return ShellKnownFolderFactory.FromPIDL(pidl);
-        }
-    }
-
-    [ContractClassFor(typeof(ShellFactory))]
-    internal abstract class ShellFactoryContract : ShellFactory
-    {
-        public override ShellFolder CreateShellFolder(ShellItem shellItem)
-        {
-            Contract.Requires<ArgumentNullException>(shellItem != null);
-            Contract.Requires<ArgumentException>(shellItem.IsFolder);
-
-            throw new NotImplementedException();
-        }
-
-        public override ShellFile CreateShellFile(ShellItem shellItem)
-        {
-            Contract.Requires<ArgumentNullException>(shellItem != null);
-            Contract.Requires<ArgumentException>(!shellItem.IsFolder);
-            Contract.Ensures(Contract.Result<ShellFile>() != null);
-
-            throw new NotImplementedException();
         }
     }
 }
