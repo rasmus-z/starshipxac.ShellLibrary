@@ -166,26 +166,16 @@ namespace starshipxac.Shell.Components
             this.eventManager.Invoke(this, (uint)args.ChangeType, args);
         }
 
-        private void ThrowIfRunnning()
-        {
-            if (this.Running)
-            {
-                throw new InvalidOperationException(ErrorMessages.ShellWatcherUnableToChangeEvents);
-            }
-        }
-
         #region Events
 
         public event EventHandler<ShellNotificationEventArgs> AllEvents
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.AllEventsMask, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.AllEventsMask, value);
             }
         }
@@ -194,12 +184,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.GlobalEventsMask, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.GlobalEventsMask, value);
             }
         }
@@ -208,12 +196,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.DiskEventsMask, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.DiskEventsMask, value);
             }
         }
@@ -222,12 +208,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.ItemRename, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.ItemRename, value);
             }
         }
@@ -236,12 +220,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.ItemCreate, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.ItemCreate, value);
             }
         }
@@ -250,12 +232,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.ItemDelete, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.ItemDelete, value);
             }
         }
@@ -264,12 +244,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.Update, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.Update, value);
             }
         }
@@ -278,12 +256,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.DirectoryContentsUpdate, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.DirectoryContentsUpdate, value);
             }
         }
@@ -292,12 +268,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.DirectoryRename, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.DirectoryRename, value);
             }
         }
@@ -306,12 +280,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.DirectoryCreate, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.DirectoryCreate, value);
             }
         }
@@ -320,12 +292,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.DirectoryDelete, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.DirectoryDelete, value);
             }
         }
@@ -334,12 +304,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.MediaInsert, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.MediaInsert, value);
             }
         }
@@ -348,12 +316,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.MediaRemove, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.MediaRemove, value);
             }
         }
@@ -362,12 +328,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.DriveAdd, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.DriveAdd, value);
             }
         }
@@ -376,12 +340,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.DriveRemove, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.DriveRemove, value);
             }
         }
@@ -390,12 +352,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.NetShare, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.NetShare, value);
             }
         }
@@ -404,12 +364,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.NetUnshare, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.NetUnshare, value);
             }
         }
@@ -418,12 +376,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.ServerDisconnect, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.ServerDisconnect, value);
             }
         }
@@ -432,12 +388,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.SystemImageUpdate, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.SystemImageUpdate, value);
             }
         }
@@ -446,12 +400,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.FreeSpace, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.FreeSpace, value);
             }
         }
@@ -460,12 +412,10 @@ namespace starshipxac.Shell.Components
         {
             add
             {
-                ThrowIfRunnning();
                 this.eventManager.AddHandler(ShellChangeTypes.AssociationChange, value);
             }
             remove
             {
-                ThrowIfRunnning();
                 this.eventManager.RemoveHandler(ShellChangeTypes.AssociationChange, value);
             }
         }
