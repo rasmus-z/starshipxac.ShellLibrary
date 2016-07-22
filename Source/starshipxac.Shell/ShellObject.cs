@@ -245,7 +245,7 @@ namespace starshipxac.Shell
         /// </summary>
         /// <returns>取得した親の<see cref="ShellFolder" />。親フォルダーが存在しない場合は<c>null</c>。</returns>
         /// <exception cref="ShellException">親の<see cref="ShellFolder" />の取得に失敗しました。</exception>
-        protected ShellFolder GetFolder()
+        public ShellFolder GetFolder()
         {
             var parentShellItem = this.ShellItem.GetParent();
             if (parentShellItem == null)
