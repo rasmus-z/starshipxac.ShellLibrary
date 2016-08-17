@@ -4,6 +4,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
         xmlns:vm="clr-namespace:ShellExplorerSample.ViewModels"
+        xmlns:shell="clr-namespace:ShellExplorerSample.ViewModels.Shell"
         Title="Shell Explorer Sample"
         Width="800"
         Height="600">
@@ -38,11 +39,13 @@
                   ItemsSource="{Binding ShellFolderCollectionView}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectedItemChanged">
-                    <l:TreeViewSetStateToSourceAction Property="SelectedItem" Source="{Binding SelectedFolder.Value}" />
+                    <l:TreeViewSetStateToSourceAction Property="SelectedItem"
+                                                      Source="{Binding SelectedFolder.Value}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding ShellFolderCollectionView}">
+                <HierarchicalDataTemplate DataType="{x:Type shell:ShellFolderViewModel}"
+                                          ItemsSource="{Binding ShellFolderCollectionView}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -72,7 +75,7 @@
                 <GridView>
                     <GridViewColumn Header="Image">
                         <GridViewColumn.CellTemplate>
-                            <DataTemplate>
+                            <DataTemplate DataType="{x:Type shell:ShellFolderViewModel}">
                                 <Image Source="{Binding Thumbnail.Value.ImageSource}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
