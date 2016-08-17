@@ -4,6 +4,7 @@ using Livet;
 using Reactive.Bindings;
 using starshipxac.Shell;
 using starshipxac.Shell.Media.Imaging;
+using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
@@ -53,7 +54,7 @@ namespace ShellExplorerSample.ViewModels.Shell
         /// <summary>
         ///     サムネイルイメージを取得します。
         /// </summary>
-        public abstract ReactiveProperty<ShellThumbnail> Thumbnail { get; }
+        public abstract ReactiveProperty<ShellImageSource> Thumbnail { get; }
 
         public override string ToString()
         {

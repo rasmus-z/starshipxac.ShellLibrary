@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
-        xmlns:v="clr-namespace:ShellExplorerSample.Views"
         xmlns:vm="clr-namespace:ShellExplorerSample.ViewModels"
+        xmlns:shell="clr-namespace:ShellExplorerSample.ViewModels.Shell"
         Title="Shell Explorer Sample"
         Width="800"
         Height="600">
@@ -35,25 +35,24 @@
         </Grid.ColumnDefinitions>
         <TreeView Grid.Column="0"
                   Name="shellTreeView"
-                  DataContext="{Binding RootFolder}"
+                  DataContext="{Binding RootFolder.Value}"
                   ItemsSource="{Binding ShellFolderCollectionView}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectedItemChanged">
-                    <l:TreeViewSetStateToSourceAction Property="SelectedItem" Source="{Binding SelectedFolder.Value}" />
+                    <l:TreeViewSetStateToSourceAction Property="SelectedItem"
+                                                      Source="{Binding SelectedFolder.Value}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            <TreeView.Resources>
-                <v:ShellThumbnailImageConverter x:Key="ThumbnailImageConverter"/>
-            </TreeView.Resources>
             <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding ShellFolderCollectionView}">
+                <HierarchicalDataTemplate DataType="{x:Type shell:ShellFolderViewModel}"
+                                          ItemsSource="{Binding ShellFolderCollectionView}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0"
-                               Source="{Binding Thumbnail.Value, Converter={StaticResource ThumbnailImageConverter}}" />
+                               Source="{Binding Thumbnail.Value.ImageSource}" />
                         <TextBlock Grid.Column="1"
                                    Text="{Binding DisplayName.Value}" />
                     </Grid>
@@ -72,15 +71,12 @@
                       HorizontalAlignment="Left" />
         <ListView Grid.Column="2"
                   ItemsSource="{Binding ShellItemCollectionView}">
-            <ListView.Resources>
-                <v:ShellThumbnailImageConverter x:Key="ThumbnailImageConverter"/>
-            </ListView.Resources>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Image">
                         <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding Thumbnail.Value, Converter={StaticResource ThumbnailImageConverter}}" />
+                            <DataTemplate DataType="{x:Type shell:ShellObjectViewModel}">
+                                <Image Source="{Binding Thumbnail.Value.ImageSource}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

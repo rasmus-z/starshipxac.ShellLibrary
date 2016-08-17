@@ -5,6 +5,7 @@ using Reactive.Bindings;
 using starshipxac.Shell;
 using starshipxac.Shell.Media.Imaging;
 using starshipxac.Shell.PropertySystem;
+using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
@@ -20,7 +21,7 @@ namespace ShellExplorerSample.ViewModels.Shell
                 new ShellProperty<string>(this.ShellObject, "System.ItemTypeText").Value);
             this.DateCreated = new ReactiveProperty<DateTime>(this.ShellObject.DateCreated);
             this.DateModified = new ReactiveProperty<DateTime>(this.ShellObject.DateModified);
-            this.Thumbnail = new ReactiveProperty<ShellThumbnail>();
+            this.Thumbnail = new ReactiveProperty<ShellImageSource>();
 
             #endregion
         }
@@ -30,7 +31,7 @@ namespace ShellExplorerSample.ViewModels.Shell
             Contract.Requires<ArgumentNullException>(shellObject != null);
 
             var result = new ShellNonFileSystemItemViewModel(shellObject);
-            result.Thumbnail.Value = await shellObject.GetThumbnailAsync(ThumbnailMode.ListView);
+            result.Thumbnail.Value = new ShellImageSource(await shellObject.GetThumbnailAsync(ThumbnailMode.ListView));
 
             return result;
         }
@@ -43,6 +44,6 @@ namespace ShellExplorerSample.ViewModels.Shell
 
         public override ReactiveProperty<DateTime> DateModified { get; }
 
-        public override ReactiveProperty<ShellThumbnail> Thumbnail { get; }
+        public override ReactiveProperty<ShellImageSource> Thumbnail { get; }
     }
 }

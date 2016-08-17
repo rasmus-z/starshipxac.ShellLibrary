@@ -4,8 +4,7 @@ using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using Reactive.Bindings;
-using starshipxac.Shell;
-using starshipxac.Shell.Media.Imaging;
+using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
@@ -20,7 +19,7 @@ namespace ShellExplorerSample.ViewModels.Shell
             this.ItemTypeText = new ReactiveProperty<string>(String.Empty);
             this.DateCreated = new ReactiveProperty<DateTime>(DateTime.MinValue);
             this.DateModified = new ReactiveProperty<DateTime>(DateTime.MinValue);
-            this.Thumbnail = new ReactiveProperty<ShellThumbnail>();
+            this.Thumbnail = new ReactiveProperty<ShellImageSource>();
             this.ShellFolders = new ReactiveCollection<ShellFolderViewModel>();
             this.SelectedFolder = new ReactiveProperty<ShellFolderViewModel>();
             this.ShellFolderCollectionView = CollectionViewSource.GetDefaultView(this.ShellFolders);
@@ -28,16 +27,11 @@ namespace ShellExplorerSample.ViewModels.Shell
             #endregion
         }
 
-        public static async Task<ShellRootViewModel> CreateAsync()
+        public static Task<ShellRootViewModel> CreateAsync()
         {
             var result = new ShellRootViewModel();
 
-            result.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.OneDrive));
-            result.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.HomeGroup));
-            result.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.Computer));
-            result.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.Libraries));
-
-            return result;
+            return Task.FromResult(result);
         }
 
         [ContractInvariantMethod]
@@ -54,7 +48,7 @@ namespace ShellExplorerSample.ViewModels.Shell
 
         public override ReactiveProperty<DateTime> DateModified { get; }
 
-        public override ReactiveProperty<ShellThumbnail> Thumbnail { get; }
+        public override ReactiveProperty<ShellImageSource> Thumbnail { get; }
 
         public ReactiveCollection<ShellFolderViewModel> ShellFolders { get; }
 

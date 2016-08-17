@@ -5,6 +5,7 @@ using Reactive.Bindings;
 using starshipxac.Shell;
 using starshipxac.Shell.Media.Imaging;
 using starshipxac.Shell.PropertySystem;
+using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
@@ -30,7 +31,7 @@ namespace ShellExplorerSample.ViewModels.Shell
                 new ShellProperty<string>(this.ShellFile, "System.ItemTypeText").Value);
             this.DateCreated = new ReactiveProperty<DateTime>(this.ShellFile.DateCreated);
             this.DateModified = new ReactiveProperty<DateTime>(this.ShellFile.DateModified);
-            this.Thumbnail = new ReactiveProperty<ShellThumbnail>();
+            this.Thumbnail = new ReactiveProperty<ShellImageSource>();
 
             this.Path = new ReactiveProperty<string>(this.ShellFile.Path);
 
@@ -42,7 +43,7 @@ namespace ShellExplorerSample.ViewModels.Shell
             Contract.Requires<ArgumentNullException>(shellFile != null);
 
             var result = new ShellFileViewModel(shellFile);
-            result.Thumbnail.Value = await shellFile.GetThumbnailAsync(ThumbnailMode.ListView);
+            result.Thumbnail.Value = new ShellImageSource(await shellFile.GetThumbnailAsync(ThumbnailMode.ListView));
 
             return result;
         }
@@ -57,7 +58,7 @@ namespace ShellExplorerSample.ViewModels.Shell
 
         public override ReactiveProperty<DateTime> DateModified { get; }
 
-        public override ReactiveProperty<ShellThumbnail> Thumbnail { get; }
+        public override ReactiveProperty<ShellImageSource> Thumbnail { get; }
 
         /// <summary>
         ///     ファイルのパスを取得します。

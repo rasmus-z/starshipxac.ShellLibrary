@@ -12,6 +12,7 @@ using Reactive.Bindings.Extensions;
 using starshipxac.Shell;
 using starshipxac.Shell.Media.Imaging;
 using starshipxac.Shell.PropertySystem;
+using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
@@ -37,11 +38,12 @@ namespace ShellExplorerSample.ViewModels.Shell
                 new ShellProperty<string>(this.ShellFolder, "System.ItemTypeText").Value);
             this.DateCreated = new ReactiveProperty<DateTime>(this.ShellFolder.DateCreated);
             this.DateModified = new ReactiveProperty<DateTime>(this.ShellFolder.DateModified);
-            this.Thumbnail = new ReactiveProperty<ShellThumbnail>();
+            this.Thumbnail = new ReactiveProperty<ShellImageSource>();
             this.IsExpanded = new ReactiveProperty<bool>(false);
             this.IsSelected = new ReactiveProperty<bool>(false);
             this.ShellFolders = new ReactiveCollection<ShellFolderViewModel>();
             this.ShellFolderCollectionView = CollectionViewSource.GetDefaultView(this.ShellFolders);
+            this.SelectedFolder = new ReactiveProperty<ShellFolderViewModel>();
 
             this.IsExpanded
                 .Subscribe(async x => await CreateShellFoldersAsync(x))
@@ -59,11 +61,12 @@ namespace ShellExplorerSample.ViewModels.Shell
             this.ItemTypeText = new ReactiveProperty<string>(String.Empty);
             this.DateCreated = new ReactiveProperty<DateTime>(DateTime.MinValue);
             this.DateModified = new ReactiveProperty<DateTime>(DateTime.MinValue);
-            this.Thumbnail = new ReactiveProperty<ShellThumbnail>();
+            this.Thumbnail = new ReactiveProperty<ShellImageSource>();
             this.IsExpanded = new ReactiveProperty<bool>();
             this.IsSelected = new ReactiveProperty<bool>();
             this.ShellFolders = new ReactiveCollection<ShellFolderViewModel>();
             this.ShellFolderCollectionView = CollectionViewSource.GetDefaultView(this.ShellFolders);
+            this.SelectedFolder = new ReactiveProperty<ShellFolderViewModel>();
 
             #endregion
         }
@@ -73,7 +76,7 @@ namespace ShellExplorerSample.ViewModels.Shell
             Contract.Requires<ArgumentNullException>(shellFolder != null);
 
             var result = new ShellFolderViewModel(shellFolder);
-            result.Thumbnail.Value = await shellFolder.GetThumbnailAsync(ThumbnailMode.ListView);
+            result.Thumbnail.Value = new ShellImageSource(await shellFolder.GetThumbnailAsync(ThumbnailMode.ListView));
 
             return result;
         }
@@ -88,7 +91,7 @@ namespace ShellExplorerSample.ViewModels.Shell
 
         public override ReactiveProperty<DateTime> DateModified { get; }
 
-        public override ReactiveProperty<ShellThumbnail> Thumbnail { get; }
+        public override ReactiveProperty<ShellImageSource> Thumbnail { get; }
 
         /// <summary>
         ///     フォルダーツリーで、フォルダーが展開されているかどうかを判定する値を取得します。
@@ -106,6 +109,8 @@ namespace ShellExplorerSample.ViewModels.Shell
         public ReactiveCollection<ShellFolderViewModel> ShellFolders { get; }
 
         public ICollectionView ShellFolderCollectionView { get; }
+
+        public ReactiveProperty<ShellFolderViewModel> SelectedFolder { get; }
 
         /// <summary>
         ///     フォルダー内のファイル/フォルダーを列挙します。
@@ -138,18 +143,18 @@ namespace ShellExplorerSample.ViewModels.Shell
                     foreach (var folder in await EnumerateFoldersAsync())
                     {
                         Debug.WriteLine($"  -> {folder.DisplayName.Value}");
-                        this.ShellFolders.AddOnScheduler(folder);
+                        this.ShellFolders.Add(folder);
                     }
                 }
                 catch (DirectoryNotFoundException ex)
                 {
                     Debug.WriteLine($"{ex.GetType().Name}: {ex.Message}");
-                    this.ShellFolders.ClearOnScheduler();
+                    this.ShellFolders.Clear();
                 }
             }
             else
             {
-                this.ShellFolders.AddOnScheduler(new PlaceholderViewModel());
+                this.ShellFolders.Add(new PlaceholderViewModel());
             }
         }
     }
