@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Livet;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
@@ -21,14 +20,13 @@ namespace ShellKnownFoldersSample.ViewModels
 
         public void Initialize()
         {
-            Task.Run(async () =>
+            DispatcherHelper.UIDispatcher.InvokeAsync(async () =>
             {
                 foreach (var knownFolder in ShellKnownFolders.EnumerateKnownFolders())
                 {
                     this.KnownFolders.AddOnScheduler(await ShellKnownFolderViewModel.CreateAsync(knownFolder));
                 }
-            })
-            .Wait();
+            });
         }
 
         public ReactiveCollection<ShellKnownFolderViewModel> KnownFolders { get; }
