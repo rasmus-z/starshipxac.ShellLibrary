@@ -1,20 +1,19 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
+using System.Threading.Tasks;
 using System.Windows.Data;
 using Reactive.Bindings;
 using starshipxac.Shell;
-using starshipxac.Windows.Shell.Media.Imaging;
+using starshipxac.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
     public sealed class ShellRootViewModel : ShellObjectViewModel
     {
-        public ShellRootViewModel(ShellThumbnailFactory thumbnailFactory)
-            : base(null, thumbnailFactory)
+        private ShellRootViewModel()
+            : base(null)
         {
-            Contract.Requires<ArgumentNullException>(thumbnailFactory != null);
-
             #region Reactive Property
 
             this.DisplayName = new ReactiveProperty<string>(String.Empty);
@@ -29,18 +28,22 @@ namespace ShellExplorerSample.ViewModels.Shell
             #endregion
         }
 
+        public static async Task<ShellRootViewModel> CreateAsync()
+        {
+            var result = new ShellRootViewModel();
+
+            result.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.OneDrive));
+            result.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.HomeGroup));
+            result.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.Computer));
+            result.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.Libraries));
+
+            return result;
+        }
+
         [ContractInvariantMethod]
         private void ObjectInvariant()
         {
             Contract.Invariant(this.SelectedFolder != null);
-        }
-
-        public void Initialize()
-        {
-            this.ShellFolders.AddOnScheduler(ShellViewModelFactory.CreateFolder(ShellKnownFolders.OneDrive));
-            this.ShellFolders.AddOnScheduler(ShellViewModelFactory.CreateFolder(ShellKnownFolders.HomeGroup));
-            this.ShellFolders.AddOnScheduler(ShellViewModelFactory.CreateFolder(ShellKnownFolders.Computer));
-            this.ShellFolders.AddOnScheduler(ShellViewModelFactory.CreateFolder(ShellKnownFolders.Libraries));
         }
 
         public override ReactiveProperty<string> DisplayName { get; }

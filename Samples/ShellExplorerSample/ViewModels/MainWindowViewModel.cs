@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
 using System.Windows.Data;
 using Livet;
 using Reactive.Bindings;
@@ -29,15 +30,10 @@ namespace ShellExplorerSample.ViewModels
 
             #region Reactive Property
 
-            this.RootFolder = ShellViewModelFactory.CreateRoot();
+            this.RootFolder = null;
 
             this.ShellItems = new ReactiveCollection<ShellObjectViewModel>();
             this.ShellItemCollectionView = CollectionViewSource.GetDefaultView(this.ShellItems);
-
-            this.RootFolder.SelectedFolder
-                .Where(folder => folder != null)
-                .Subscribe(CreateShellItems)
-                .AddTo(this.CompositeDisposable);
 
             #endregion
         }
@@ -47,7 +43,16 @@ namespace ShellExplorerSample.ViewModels
         /// </summary>
         public void Initialize()
         {
-            this.RootFolder.Initialize();
+            Task.Run(async () =>
+            {
+                this.RootFolder = await ShellRootViewModel.CreateAsync();
+
+                this.RootFolder.SelectedFolder
+                    .Where(folder => folder != null)
+                    .Subscribe(async x => await CreateShellItems(x))
+                    .AddTo(this.CompositeDisposable);
+            })
+            .Wait();
         }
 
         [ContractInvariantMethod]
@@ -58,7 +63,7 @@ namespace ShellExplorerSample.ViewModels
             Contract.Invariant(this.ShellItemCollectionView != null);
         }
 
-        public ShellRootViewModel RootFolder { get; }
+        public ShellRootViewModel RootFolder { get; private set; }
 
         /// <summary>
         ///     選択中のフォルダーに含まれるファイルまたはフォルダーのコレクションを取得します。
@@ -67,11 +72,11 @@ namespace ShellExplorerSample.ViewModels
 
         public ICollectionView ShellItemCollectionView { get; }
 
-        private void CreateShellItems(ShellFolderViewModel folder)
+        private async Task CreateShellItems(ShellFolderViewModel folder)
         {
             this.ShellItems.ClearOnScheduler();
 
-            foreach (var item in folder.EnumerateItems())
+            foreach (var item in await folder.EnumerateItemsAsync())
             {
                 this.ShellItems.AddOnScheduler(item);
             }

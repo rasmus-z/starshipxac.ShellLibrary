@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
+using System.Threading.Tasks;
 using Reactive.Bindings;
 using starshipxac.Shell;
+using starshipxac.Shell.Media.Imaging;
 using starshipxac.Shell.PropertySystem;
-using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
@@ -17,12 +18,10 @@ namespace ShellExplorerSample.ViewModels.Shell
         ///     <see cref="ShellFileViewModel" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="shellFile"></param>
-        /// <param name="thumbnailFactory"></param>
-        public ShellFileViewModel(ShellFile shellFile, ShellThumbnailFactory thumbnailFactory)
-            : base(shellFile, thumbnailFactory)
+        private ShellFileViewModel(ShellFile shellFile)
+            : base(shellFile)
         {
             Contract.Requires<ArgumentNullException>(shellFile != null);
-            Contract.Requires<ArgumentNullException>(thumbnailFactory != null);
 
             #region Reactive Property
 
@@ -31,12 +30,21 @@ namespace ShellExplorerSample.ViewModels.Shell
                 new ShellProperty<string>(this.ShellFile, "System.ItemTypeText").Value);
             this.DateCreated = new ReactiveProperty<DateTime>(this.ShellFile.DateCreated);
             this.DateModified = new ReactiveProperty<DateTime>(this.ShellFile.DateModified);
-            this.Thumbnail = new ReactiveProperty<ShellThumbnail>(
-                new ShellThumbnail(this.ShellFile, this.ThumbnailFactory));
+            this.Thumbnail = new ReactiveProperty<ShellThumbnail>();
 
             this.Path = new ReactiveProperty<string>(this.ShellFile.Path);
 
             #endregion
+        }
+
+        public static async Task<ShellFileViewModel> CreateAsync(ShellFile shellFile)
+        {
+            Contract.Requires<ArgumentNullException>(shellFile != null);
+
+            var result = new ShellFileViewModel(shellFile);
+            result.Thumbnail.Value = await shellFile.GetThumbnailAsync(ThumbnailMode.ListView);
+
+            return result;
         }
 
         public ShellFile ShellFile => (ShellFile)this.ShellObject;

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+        xmlns:v="clr-namespace:ShellExplorerSample.Views"
         xmlns:vm="clr-namespace:ShellExplorerSample.ViewModels"
         Title="Shell Explorer Sample"
         Width="800"
@@ -41,6 +42,9 @@
                     <l:TreeViewSetStateToSourceAction Property="SelectedItem" Source="{Binding SelectedFolder.Value}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
+            <TreeView.Resources>
+                <v:ShellThumbnailImageConverter x:Key="ThumbnailImageConverter"/>
+            </TreeView.Resources>
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding ShellFolderCollectionView}">
                     <Grid>
@@ -49,7 +53,7 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0"
-                               Source="{Binding Thumbnail.Value.ImageSource}" />
+                               Source="{Binding Thumbnail.Value, Converter={StaticResource ThumbnailImageConverter}}" />
                         <TextBlock Grid.Column="1"
                                    Text="{Binding DisplayName.Value}" />
                     </Grid>
@@ -68,12 +72,15 @@
                       HorizontalAlignment="Left" />
         <ListView Grid.Column="2"
                   ItemsSource="{Binding ShellItemCollectionView}">
+            <ListView.Resources>
+                <v:ShellThumbnailImageConverter x:Key="ThumbnailImageConverter"/>
+            </ListView.Resources>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Image">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding Thumbnail.Value.ImageSource}" />
+                                <Image Source="{Binding Thumbnail.Value, Converter={StaticResource ThumbnailImageConverter}}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

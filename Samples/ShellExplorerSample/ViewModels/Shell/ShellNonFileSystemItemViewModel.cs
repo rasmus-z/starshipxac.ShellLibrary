@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
+using System.Threading.Tasks;
 using Reactive.Bindings;
 using starshipxac.Shell;
+using starshipxac.Shell.Media.Imaging;
 using starshipxac.Shell.PropertySystem;
-using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
     public class ShellNonFileSystemItemViewModel : ShellObjectViewModel
     {
-        public ShellNonFileSystemItemViewModel(ShellObject shellObject, ShellThumbnailFactory thumbnailFactory)
-            : base(shellObject, thumbnailFactory)
+        private ShellNonFileSystemItemViewModel(ShellObject shellObject)
+            : base(shellObject)
         {
             #region Reactive Property
 
@@ -18,10 +20,19 @@ namespace ShellExplorerSample.ViewModels.Shell
                 new ShellProperty<string>(this.ShellObject, "System.ItemTypeText").Value);
             this.DateCreated = new ReactiveProperty<DateTime>(this.ShellObject.DateCreated);
             this.DateModified = new ReactiveProperty<DateTime>(this.ShellObject.DateModified);
-            this.Thumbnail = new ReactiveProperty<ShellThumbnail>(
-                new ShellThumbnail(this.ShellObject, this.ThumbnailFactory));
+            this.Thumbnail = new ReactiveProperty<ShellThumbnail>();
 
             #endregion
+        }
+
+        public static async Task<ShellNonFileSystemItemViewModel> CreateAsync(ShellObject shellObject)
+        {
+            Contract.Requires<ArgumentNullException>(shellObject != null);
+
+            var result = new ShellNonFileSystemItemViewModel(shellObject);
+            result.Thumbnail.Value = await shellObject.GetThumbnailAsync(ThumbnailMode.ListView);
+
+            return result;
         }
 
         public override ReactiveProperty<string> DisplayName { get; }

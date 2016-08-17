@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 using Livet;
 using Reactive.Bindings;
 using starshipxac.Shell;
-using starshipxac.Windows.Shell.Media.Imaging;
+using starshipxac.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
@@ -17,13 +17,9 @@ namespace ShellExplorerSample.ViewModels.Shell
         ///     <see cref="ShellObjectViewModel" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="shellObject"></param>
-        /// <param name="thumbnailFactory"></param>
-        protected ShellObjectViewModel(ShellObject shellObject, ShellThumbnailFactory thumbnailFactory)
+        protected ShellObjectViewModel(ShellObject shellObject)
         {
-            Contract.Requires<ArgumentNullException>(thumbnailFactory != null);
-
             this.ShellObject = shellObject;
-            this.ThumbnailFactory = thumbnailFactory;
         }
 
         [ContractInvariantMethod]
@@ -33,8 +29,6 @@ namespace ShellExplorerSample.ViewModels.Shell
         }
 
         public ShellObject ShellObject { get; }
-
-        public ShellThumbnailFactory ThumbnailFactory { get; }
 
         /// <summary>
         ///     表示名を取得します。
