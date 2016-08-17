@@ -22,6 +22,7 @@ namespace ShellExplorerSample.ViewModels.Shell
             this.DateCreated = new ReactiveProperty<DateTime>(this.ShellObject.DateCreated);
             this.DateModified = new ReactiveProperty<DateTime>(this.ShellObject.DateModified);
             this.Thumbnail = new ReactiveProperty<ShellImageSource>();
+            this.DetailThumbnail = new ReactiveProperty<ShellImageSource>();
 
             #endregion
         }
@@ -32,7 +33,7 @@ namespace ShellExplorerSample.ViewModels.Shell
 
             var result = new ShellNonFileSystemItemViewModel(shellObject);
             result.Thumbnail.Value = new ShellImageSource(await shellObject.GetThumbnailAsync(ThumbnailMode.ListView));
-
+            result.DetailThumbnail.Value = new ShellImageSource(await shellObject.GetThumbnailAsync(ThumbnailMode.ListView));
             return result;
         }
 
@@ -45,5 +46,7 @@ namespace ShellExplorerSample.ViewModels.Shell
         public override ReactiveProperty<DateTime> DateModified { get; }
 
         public override ReactiveProperty<ShellImageSource> Thumbnail { get; }
+
+        public override ReactiveProperty<ShellImageSource> DetailThumbnail { get; }
     }
 }

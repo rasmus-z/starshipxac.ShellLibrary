@@ -76,7 +76,7 @@
                     <GridViewColumn Header="Image">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate DataType="{x:Type shell:ShellObjectViewModel}">
-                                <Image Source="{Binding Thumbnail.Value.ImageSource}" />
+                                <Image Source="{Binding DetailThumbnail.Value.ImageSource}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -32,6 +32,7 @@ namespace ShellExplorerSample.ViewModels.Shell
             this.DateCreated = new ReactiveProperty<DateTime>(this.ShellFile.DateCreated);
             this.DateModified = new ReactiveProperty<DateTime>(this.ShellFile.DateModified);
             this.Thumbnail = new ReactiveProperty<ShellImageSource>();
+            this.DetailThumbnail = new ReactiveProperty<ShellImageSource>();
 
             this.Path = new ReactiveProperty<string>(this.ShellFile.Path);
 
@@ -44,7 +45,7 @@ namespace ShellExplorerSample.ViewModels.Shell
 
             var result = new ShellFileViewModel(shellFile);
             result.Thumbnail.Value = new ShellImageSource(await shellFile.GetThumbnailAsync(ThumbnailMode.ListView));
-
+            result.DetailThumbnail.Value = new ShellImageSource(await shellFile.GetThumbnailAsync(ThumbnailMode.ListView));
             return result;
         }
 
@@ -59,6 +60,8 @@ namespace ShellExplorerSample.ViewModels.Shell
         public override ReactiveProperty<DateTime> DateModified { get; }
 
         public override ReactiveProperty<ShellImageSource> Thumbnail { get; }
+
+        public override ReactiveProperty<ShellImageSource> DetailThumbnail { get; }
 
         /// <summary>
         ///     ファイルのパスを取得します。

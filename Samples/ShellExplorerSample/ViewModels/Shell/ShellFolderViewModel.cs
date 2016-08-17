@@ -39,11 +39,11 @@ namespace ShellExplorerSample.ViewModels.Shell
             this.DateCreated = new ReactiveProperty<DateTime>(this.ShellFolder.DateCreated);
             this.DateModified = new ReactiveProperty<DateTime>(this.ShellFolder.DateModified);
             this.Thumbnail = new ReactiveProperty<ShellImageSource>();
+            this.DetailThumbnail = new ReactiveProperty<ShellImageSource>();
             this.IsExpanded = new ReactiveProperty<bool>(false);
             this.IsSelected = new ReactiveProperty<bool>(false);
             this.ShellFolders = new ReactiveCollection<ShellFolderViewModel>();
             this.ShellFolderCollectionView = CollectionViewSource.GetDefaultView(this.ShellFolders);
-            this.SelectedFolder = new ReactiveProperty<ShellFolderViewModel>();
 
             this.IsExpanded
                 .Subscribe(async x => await CreateShellFoldersAsync(x))
@@ -62,11 +62,11 @@ namespace ShellExplorerSample.ViewModels.Shell
             this.DateCreated = new ReactiveProperty<DateTime>(DateTime.MinValue);
             this.DateModified = new ReactiveProperty<DateTime>(DateTime.MinValue);
             this.Thumbnail = new ReactiveProperty<ShellImageSource>();
+            this.DetailThumbnail = new ReactiveProperty<ShellImageSource>();
             this.IsExpanded = new ReactiveProperty<bool>();
             this.IsSelected = new ReactiveProperty<bool>();
             this.ShellFolders = new ReactiveCollection<ShellFolderViewModel>();
             this.ShellFolderCollectionView = CollectionViewSource.GetDefaultView(this.ShellFolders);
-            this.SelectedFolder = new ReactiveProperty<ShellFolderViewModel>();
 
             #endregion
         }
@@ -77,7 +77,7 @@ namespace ShellExplorerSample.ViewModels.Shell
 
             var result = new ShellFolderViewModel(shellFolder);
             result.Thumbnail.Value = new ShellImageSource(await shellFolder.GetThumbnailAsync(ThumbnailMode.ListView));
-
+            result.DetailThumbnail.Value = new ShellImageSource(await shellFolder.GetThumbnailAsync(ThumbnailMode.ListView));
             return result;
         }
 
@@ -92,6 +92,8 @@ namespace ShellExplorerSample.ViewModels.Shell
         public override ReactiveProperty<DateTime> DateModified { get; }
 
         public override ReactiveProperty<ShellImageSource> Thumbnail { get; }
+
+        public override ReactiveProperty<ShellImageSource> DetailThumbnail { get; }
 
         /// <summary>
         ///     フォルダーツリーで、フォルダーが展開されているかどうかを判定する値を取得します。
@@ -109,8 +111,6 @@ namespace ShellExplorerSample.ViewModels.Shell
         public ReactiveCollection<ShellFolderViewModel> ShellFolders { get; }
 
         public ICollectionView ShellFolderCollectionView { get; }
-
-        public ReactiveProperty<ShellFolderViewModel> SelectedFolder { get; }
 
         /// <summary>
         ///     フォルダー内のファイル/フォルダーを列挙します。

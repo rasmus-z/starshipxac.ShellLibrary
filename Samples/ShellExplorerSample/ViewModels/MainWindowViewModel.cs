@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
-using System.Threading.Tasks;
 using System.Windows.Data;
 using Livet;
 using Reactive.Bindings;
@@ -52,7 +52,7 @@ namespace ShellExplorerSample.ViewModels
                 this.RootFolder.Value.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.Libraries));
 
                 this.RootFolder.Value.SelectedFolder
-                    .Subscribe(async folder => await CreateShellItemsAsync(folder))
+                    .Subscribe(CreateShellItems)
                     .AddTo(this.CompositeDisposable);
             });
         }
@@ -74,17 +74,22 @@ namespace ShellExplorerSample.ViewModels
 
         public ICollectionView ShellItemCollectionView { get; }
 
-        private async Task CreateShellItemsAsync(ShellFolderViewModel folder)
+        private void CreateShellItems(ShellFolderViewModel folder)
         {
-            this.ShellItems.Clear();
+            Debug.WriteLine("MainWindowViewModel.CreateShellItemsAsync()");
 
-            if (folder != null)
+            DispatcherHelper.UIDispatcher.InvokeAsync(async () =>
             {
-                foreach (var item in await folder.EnumerateItemsAsync())
+                this.ShellItems.Clear();
+
+                if (folder != null)
                 {
-                    this.ShellItems.Add(item);
+                    foreach (var item in await folder.EnumerateItemsAsync())
+                    {
+                        this.ShellItems.Add(item);
+                    }
                 }
-            }
+            });
         }
     }
 }

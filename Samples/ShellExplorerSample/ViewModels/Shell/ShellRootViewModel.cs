@@ -20,6 +20,7 @@ namespace ShellExplorerSample.ViewModels.Shell
             this.DateCreated = new ReactiveProperty<DateTime>(DateTime.MinValue);
             this.DateModified = new ReactiveProperty<DateTime>(DateTime.MinValue);
             this.Thumbnail = new ReactiveProperty<ShellImageSource>();
+            this.DetailThumbnail = new ReactiveProperty<ShellImageSource>();
             this.ShellFolders = new ReactiveCollection<ShellFolderViewModel>();
             this.SelectedFolder = new ReactiveProperty<ShellFolderViewModel>();
             this.ShellFolderCollectionView = CollectionViewSource.GetDefaultView(this.ShellFolders);
@@ -49,6 +50,8 @@ namespace ShellExplorerSample.ViewModels.Shell
         public override ReactiveProperty<DateTime> DateModified { get; }
 
         public override ReactiveProperty<ShellImageSource> Thumbnail { get; }
+
+        public override ReactiveProperty<ShellImageSource> DetailThumbnail { get; }
 
         public ReactiveCollection<ShellFolderViewModel> ShellFolders { get; }
 
