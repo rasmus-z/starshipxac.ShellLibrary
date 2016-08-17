@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Reactive.Linq;
-using System.Windows;
+using System.Threading.Tasks;
 using Livet;
 using Reactive.Bindings;
 using starshipxac.Shell;
+using starshipxac.Shell.Media.Imaging;
 using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellKnownFoldersSample.ViewModels
@@ -12,14 +13,11 @@ namespace ShellKnownFoldersSample.ViewModels
     {
         public ShellKnownFolderViewModel(ShellKnownFolder knownFolder)
         {
-            this.ThumbnailFactory = new ShellThumbnailFactory(new Size(64, 64));
-
             #region Reactive Property
 
             this.KnownFolder = new ReactiveProperty<ShellKnownFolder>(knownFolder);
 
-            this.Thumbnail = new ReactiveProperty<ShellThumbnail>(new ShellThumbnail(
-                this.KnownFolder.Value, this.ThumbnailFactory));
+            this.Thumbnail = new ReactiveProperty<ShellImageSource>();
 
             this.DisplayName = this.KnownFolder
                 .Select(x => x.DisplayName)
@@ -44,15 +42,17 @@ namespace ShellKnownFoldersSample.ViewModels
             #endregion
         }
 
-        public void Initialize()
+        public static async Task<ShellKnownFolderViewModel> CreateAsync(ShellKnownFolder shellKnownFolder)
         {
+            var result = new ShellKnownFolderViewModel(shellKnownFolder);
+            result.Thumbnail.Value = new ShellImageSource(await shellKnownFolder.GetThumbnailAsync(ThumbnailMode.ListView));
+
+            return result;
         }
 
-        private ShellThumbnailFactory ThumbnailFactory { get; set; }
+        public ReactiveProperty<ShellKnownFolder> KnownFolder { get; }
 
-        public ReactiveProperty<ShellKnownFolder> KnownFolder { get; private set; }
-
-        public ReactiveProperty<ShellThumbnail> Thumbnail { get; private set; }
+        public ReactiveProperty<ShellImageSource> Thumbnail { get; }
 
         public ReactiveProperty<string> DisplayName { get; private set; }
 
