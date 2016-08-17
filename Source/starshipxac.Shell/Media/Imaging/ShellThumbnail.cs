@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
+using starshipxac.Shell.Interop;
 
 namespace starshipxac.Shell.Media.Imaging
 {
-    public sealed class ShellThumbnail
+    public sealed class ShellThumbnail : IDisposable
     {
+        private bool disposed = false;
+
         internal ShellThumbnail(ShellObject shellObject, ThumbnailMode thumbnailMode)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
@@ -17,6 +21,28 @@ namespace starshipxac.Shell.Media.Imaging
             this.OriginalWidth = width;
             this.OriginalHeight = height;
             this.ImageHandle = this.ShellObject.ImageFactory.GetImageHandle(this.OriginalWidth, this.OriginalHeight);
+        }
+
+        ~ShellThumbnail()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        [SuppressMessage("ReSharper", "UnusedParameter.Local")]
+        private void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                Win32Api.DeleteObject(this.ImageHandle);
+
+                this.disposed = true;
+            }
         }
 
         internal ShellObject ShellObject { get; }

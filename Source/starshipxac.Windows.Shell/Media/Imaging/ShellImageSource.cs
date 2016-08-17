@@ -13,8 +13,10 @@ namespace starshipxac.Windows.Shell.Media.Imaging
     /// <summary>
     ///     <c>Shellobject</c>イメージを保持します。
     /// </summary>
-    public class ShellImageSource : INotifyPropertyChanged
+    public class ShellImageSource : INotifyPropertyChanged, IDisposable
     {
+        private bool disposed = false;
+
         private ImageSource imageSource = null;
         private ImageSource defaultImage = null;
         private ImageSource thumbnailImage = null;
@@ -42,6 +44,30 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
             this.IconIndex = sfi.iIcon & 0x00FFFFFF;
             this.OverlayIndex = (sfi.iIcon >> 24) & 0xFF;
+        }
+
+        ~ShellImageSource()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    this.ShellThumbnail.Dispose();
+                }
+
+                this.disposed = true;
+            }
         }
 
         [ContractInvariantMethod]

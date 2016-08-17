@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using starshipxac.Shell.Interop;
 
@@ -7,7 +8,7 @@ namespace starshipxac.Shell.Media.Imaging
     /// <summary>
     ///     シェルアイコンを定義します。
     /// </summary>
-    public class ShellIcon : IDisposable
+    public sealed class ShellIcon : IDisposable
     {
         private bool disposed = false;
 
@@ -29,7 +30,8 @@ namespace starshipxac.Shell.Media.Imaging
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        [SuppressMessage("ReSharper", "UnusedParameter.Local")]
+        private void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
