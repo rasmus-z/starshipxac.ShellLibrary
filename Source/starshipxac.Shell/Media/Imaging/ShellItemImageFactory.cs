@@ -29,9 +29,9 @@ namespace starshipxac.Shell.Media.Imaging
 
         public ShellItemImageFormatOptions FormatOption { get; set; }
 
-        internal IntPtr GetImageHandle(ShellImageSize thumbnailSize)
+        internal IntPtr GetImageHandle(double width, double height)
         {
-            var size = new SIZE(thumbnailSize.Width, thumbnailSize.Height);
+            var size = new SIZE(width, height);
             var flags = GetFlags();
             IntPtr result;
             var hr = this.shllItemImageFactoryInterface.GetImage(size, flags, out result);

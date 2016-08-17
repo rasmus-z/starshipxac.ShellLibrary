@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using starshipxac.Shell.Interop;
 using starshipxac.Shell.Media.Imaging;
 using starshipxac.Shell.PropertySystem;
@@ -195,23 +196,6 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="ShellItemImageFactory" />を取得します。
-        /// </summary>
-        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
-        public ShellItemImageFactory ImageFactory
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<ShellItemImageFactory>() != null);
-                if (this.imageFactory == null)
-                {
-                    this.imageFactory = new ShellItemImageFactory((IShellItemImageFactory)this.ShellItem.ShellItemInterface);
-                }
-                return this.imageFactory;
-            }
-        }
-
-        /// <summary>
         ///     プロパティのコレクションを取得します。
         /// </summary>
         public ShellProperties Properties
@@ -227,6 +211,23 @@ namespace starshipxac.Shell
             }
         }
 
+        /// <summary>
+        ///     <see cref="ShellItemImageFactory" />を取得します。
+        /// </summary>
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
+        internal ShellItemImageFactory ImageFactory
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<ShellItemImageFactory>() != null);
+                if (this.imageFactory == null)
+                {
+                    this.imageFactory = new ShellItemImageFactory((IShellItemImageFactory)this.ShellItem.ShellItemInterface);
+                }
+                return this.imageFactory;
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
@@ -238,6 +239,16 @@ namespace starshipxac.Shell
         {
             Contract.Ensures(Contract.Result<string>() != null);
             return this.ShellItem.GetDisplayName(displayNameType);
+        }
+
+        /// <summary>
+        ///     サムネイルを取得します。
+        /// </summary>
+        /// <param name="thumbnailMode"></param>
+        /// <returns></returns>
+        public Task<ShellThumbnail> GetThumbnailAsync(ThumbnailMode thumbnailMode)
+        {
+            return Task.Run(() => new ShellThumbnail(this, thumbnailMode));
         }
 
         /// <summary>

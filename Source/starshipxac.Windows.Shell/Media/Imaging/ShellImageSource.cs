@@ -5,15 +5,15 @@ using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media;
-using starshipxac.Shell;
 using starshipxac.Shell.Interop;
+using starshipxac.Shell.Media.Imaging;
 
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    ///     <see cref="ShellObject" />サムネイルイメージを保持します。
+    ///     <c>Shellobject</c>イメージを保持します。
     /// </summary>
-    public class ShellThumbnail : INotifyPropertyChanged
+    public class ShellImageSource : INotifyPropertyChanged
     {
         private ImageSource imageSource = null;
         private ImageSource defaultImage = null;
@@ -24,24 +24,21 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             new ConcurrentDictionary<string, PropertyChangedEventArgs>();
 
         /// <summary>
-        ///     <see cref="ShellThumbnail" />クラス新しいインスタンスを初期化します。
+        ///     <see cref="ShellImageSource" />クラス新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="shellObject"></param>
-        /// <param name="factory"></param>
-        public ShellThumbnail(ShellObject shellObject, ShellThumbnailFactory factory)
+        /// <param name="shellThumbnail"></param>
+        public ShellImageSource(ShellThumbnail shellThumbnail)
         {
-            Contract.Requires<ArgumentNullException>(shellObject != null);
-            Contract.Requires<ArgumentNullException>(factory != null);
+            Contract.Requires<ArgumentNullException>(shellThumbnail != null);
 
-            this.ShellObject = shellObject;
-            this.Factory = factory;
+            this.ShellThumbnail = shellThumbnail;
 
             var sfi = new SHFILEINFO();
             const UInt32 flags = SHGFI.SHGFI_PIDL |
                                  SHGFI.SHGFI_ICON |
                                  SHGFI.SHGFI_SYSICONINDEX |
                                  SHGFI.SHGFI_OVERLAYINDEX;
-            ShellNativeMethods.SHGetFileInfo(this.ShellObject.ShellItem.PIDL, 0, ref sfi, flags);
+            ShellNativeMethods.SHGetFileInfo(this.ShellThumbnail.ShellObject.ShellItem.PIDL, 0, ref sfi, flags);
 
             this.IconIndex = sfi.iIcon & 0x00FFFFFF;
             this.OverlayIndex = (sfi.iIcon >> 24) & 0xFF;
@@ -50,29 +47,29 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         [ContractInvariantMethod]
         private void ObjectInvariant()
         {
-            Contract.Invariant(this.ShellObject != null);
-            Contract.Invariant(this.Factory != null);
+            Contract.Invariant(this.ShellThumbnail != null);
         }
 
-        /// <summary>
-        ///     <see cref="ShellObject" />を取得します。
-        /// </summary>
-        public ShellObject ShellObject { get; }
+        private ShellThumbnail ShellThumbnail { get; }
 
-        public ShellThumbnailFactory Factory { get; }
+        internal IntPtr ImageHandle => this.ShellThumbnail.ImageHandle;
 
         /// <summary>
         ///     アイコンインデックスを取得します。
         /// </summary>
-        public int IconIndex { get; private set; }
+        internal int IconIndex { get; }
 
         /// <summary>
         ///     オーバーレイアイコンインデックスを取得します。
         /// </summary>
-        public int OverlayIndex { get; private set; }
+        internal int OverlayIndex { get; }
+
+        public double Width => this.ShellThumbnail.OriginalWidth;
+
+        public double Height => this.ShellThumbnail.OriginalHeight;
 
         /// <summary>
-        ///     サムネイルイメージを段階的に取得します。
+        ///     イメージを段階的に取得します。
         /// </summary>
         public ImageSource ImageSource
         {
@@ -80,7 +77,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             {
                 if (this.imageSource == null)
                 {
-                    Application.Current.Dispatcher.InvokeAsync(async () => await this.Factory.LoadAsync(this));
+                    Application.Current.Dispatcher.InvokeAsync(async () => await ShellImageSourceFactory.LoadAsync(this));
                 }
                 return this.imageSource;
             }
@@ -100,7 +97,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             {
                 if (this.defaultImage == null)
                 {
-                    Application.Current.Dispatcher.InvokeAsync(async () => await this.Factory.GetDefaultIconWithOverlayAsync(this));
+                    Application.Current.Dispatcher.InvokeAsync(async () => await ShellImageSourceFactory.GetDefaultIconWithOverlayAsync(this));
                 }
                 return this.defaultImage;
             }
@@ -120,7 +117,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             {
                 if (this.thumbnailImage == null)
                 {
-                    Application.Current.Dispatcher.InvokeAsync(async () => await this.Factory.GetThumbnailAsync(this));
+                    Application.Current.Dispatcher.InvokeAsync(async () => await ShellImageSourceFactory.GetThumbnailAsync(this));
                 }
                 return this.thumbnailImage;
             }
@@ -140,7 +137,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             {
                 if (this.overlyaImage == null)
                 {
-                    Application.Current.Dispatcher.InvokeAsync(async () => await this.Factory.GetThumbnailAsync(this));
+                    Application.Current.Dispatcher.InvokeAsync(async () => await ShellImageSourceFactory.GetThumbnailAsync(this));
                 }
                 return this.overlyaImage;
             }
@@ -150,8 +147,6 @@ namespace starshipxac.Windows.Shell.Media.Imaging
                 RaisePropertyChanged();
             }
         }
-
-        public Size Size => this.Factory.Size;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
