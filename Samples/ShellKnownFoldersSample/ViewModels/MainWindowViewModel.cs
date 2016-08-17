@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Livet;
 using Reactive.Bindings;
+using Reactive.Bindings.Extensions;
 using starshipxac.Shell;
 
 namespace ShellKnownFoldersSample.ViewModels
@@ -12,7 +13,8 @@ namespace ShellKnownFoldersSample.ViewModels
         {
             #region Reactive Property
 
-            this.KnownFolders = new ReactiveCollection<ShellKnownFolderViewModel>();
+            this.KnownFolders = new ReactiveCollection<ShellKnownFolderViewModel>()
+                .AddTo(this.CompositeDisposable);
 
             #endregion
         }

@@ -3,6 +3,7 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Livet;
 using Reactive.Bindings;
+using Reactive.Bindings.Extensions;
 using starshipxac.Shell;
 using starshipxac.Shell.Media.Imaging;
 using starshipxac.Windows.Shell.Media.Imaging;
@@ -17,7 +18,8 @@ namespace ShellKnownFoldersSample.ViewModels
 
             this.KnownFolder = new ReactiveProperty<ShellKnownFolder>(knownFolder);
 
-            this.Thumbnail = new ReactiveProperty<ShellImageSource>();
+            this.Thumbnail = new ReactiveProperty<ShellImageSource>()
+                .AddTo(this.CompositeDisposable);
 
             this.DisplayName = this.KnownFolder
                 .Select(x => x.DisplayName)
