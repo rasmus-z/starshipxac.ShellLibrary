@@ -5,22 +5,32 @@ using starshipxac.Shell.Interop;
 
 namespace starshipxac.Shell.Media.Imaging
 {
+    /// <summary>
+    ///     <c>ShellObject</c>のサムネイルイメージを作成するための情報を保持します。
+    /// </summary>
     public sealed class ShellThumbnail : IDisposable
     {
         private bool disposed = false;
 
-        internal ShellThumbnail(ShellObject shellObject, ThumbnailMode thumbnailMode)
+        internal ShellThumbnail(ShellItem shellItem, IntPtr imageHandle, double width, double height)
         {
-            Contract.Requires<ArgumentNullException>(shellObject != null);
+            Contract.Requires<ArgumentNullException>(shellItem != null);
+            Contract.Requires<ArgumentOutOfRangeException>(0.0 <= width);
+            Contract.Requires<ArgumentOutOfRangeException>(0.0 <= height);
 
-            this.ShellObject = shellObject;
-
-            double width;
-            double height;
-            GetSize(thumbnailMode, out width, out height);
             this.OriginalWidth = width;
             this.OriginalHeight = height;
-            this.ImageHandle = this.ShellObject.ImageFactory.GetImageHandle(this.OriginalWidth, this.OriginalHeight);
+            this.ImageHandle = imageHandle;
+
+            var sfi = new SHFILEINFO();
+            const uint flags = SHGFI.SHGFI_PIDL |
+                               SHGFI.SHGFI_ICON |
+                               SHGFI.SHGFI_SYSICONINDEX |
+                               SHGFI.SHGFI_OVERLAYINDEX;
+            ShellNativeMethods.SHGetFileInfo(shellItem.PIDL, 0, ref sfi, flags);
+
+            this.IconIndex = sfi.iIcon & 0x00FFFFFF;
+            this.OverlayIndex = (sfi.iIcon >> 24) & 0xFF;
         }
 
         ~ShellThumbnail()
@@ -45,51 +55,36 @@ namespace starshipxac.Shell.Media.Imaging
             }
         }
 
-        internal ShellObject ShellObject { get; }
+        [ContractInvariantMethod]
+        private void ObjectInvariant()
+        {
+            Contract.Invariant(0.0 <= this.OriginalWidth);
+            Contract.Invariant(0.0 <= this.OriginalHeight);
+        }
 
+        /// <summary>
+        ///     イメージハンドルを取得します。
+        /// </summary>
         internal IntPtr ImageHandle { get; }
 
+        /// <summary>
+        ///     イメージの幅を取得します。
+        /// </summary>
         public double OriginalWidth { get; }
 
+        /// <summary>
+        ///     イメージの高さを取得します。
+        /// </summary>
         public double OriginalHeight { get; }
 
-        private static void GetSize(ThumbnailMode mode, out double width, out double height)
-        {
-            if (mode == ThumbnailMode.PicturesView)
-            {
-                width = 190;
-                height = 190;
-            }
-            else if (mode == ThumbnailMode.VideosView)
-            {
-                width = 190;
-                height = 130;
-            }
-            else if (mode == ThumbnailMode.MusicView)
-            {
-                width = 40;
-                height = 40;
-            }
-            else if (mode == ThumbnailMode.DocumentsView)
-            {
-                width = 40;
-                height = 40;
-            }
-            else if (mode == ThumbnailMode.ListView)
-            {
-                width = 40;
-                height = 40;
-            }
-            else if (mode == ThumbnailMode.SingleItem)
-            {
-                width = 256;
-                height = 256;
-            }
-            else
-            {
-                width = 40;
-                height = 40;
-            }
-        }
+        /// <summary>
+        ///     アイコンインデックスを取得します。
+        /// </summary>
+        internal int IconIndex { get; }
+
+        /// <summary>
+        ///     オーバーレイアイコンインデックスを取得します。
+        /// </summary>
+        internal int OverlayIndex { get; }
     }
 }

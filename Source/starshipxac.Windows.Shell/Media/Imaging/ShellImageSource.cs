@@ -5,7 +5,6 @@ using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media;
-using starshipxac.Shell.Interop;
 using starshipxac.Shell.Media.Imaging;
 
 namespace starshipxac.Windows.Shell.Media.Imaging
@@ -34,16 +33,6 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             Contract.Requires<ArgumentNullException>(shellThumbnail != null);
 
             this.ShellThumbnail = shellThumbnail;
-
-            var sfi = new SHFILEINFO();
-            const UInt32 flags = SHGFI.SHGFI_PIDL |
-                                 SHGFI.SHGFI_ICON |
-                                 SHGFI.SHGFI_SYSICONINDEX |
-                                 SHGFI.SHGFI_OVERLAYINDEX;
-            ShellNativeMethods.SHGetFileInfo(this.ShellThumbnail.ShellObject.ShellItem.PIDL, 0, ref sfi, flags);
-
-            this.IconIndex = sfi.iIcon & 0x00FFFFFF;
-            this.OverlayIndex = (sfi.iIcon >> 24) & 0xFF;
         }
 
         ~ShellImageSource()
@@ -83,12 +72,12 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         /// <summary>
         ///     アイコンインデックスを取得します。
         /// </summary>
-        internal int IconIndex { get; }
+        internal int IconIndex => this.ShellThumbnail.IconIndex;
 
         /// <summary>
         ///     オーバーレイアイコンインデックスを取得します。
         /// </summary>
-        internal int OverlayIndex { get; }
+        internal int OverlayIndex => this.ShellThumbnail.OverlayIndex;
 
         public double Width => this.ShellThumbnail.OriginalWidth;
 

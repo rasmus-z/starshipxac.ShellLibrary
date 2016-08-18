@@ -196,6 +196,23 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
+        ///     <see cref="ShellItemImageFactory" />を取得します。
+        /// </summary>
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
+        private ShellItemImageFactory ImageFactory
+        {
+            get
+            {
+                Contract.Ensures(Contract.Result<ShellItemImageFactory>() != null);
+                if (this.imageFactory == null)
+                {
+                    this.imageFactory = new ShellItemImageFactory((IShellItemImageFactory)this.ShellItem.ShellItemInterface);
+                }
+                return this.imageFactory;
+            }
+        }
+
+        /// <summary>
         ///     プロパティのコレクションを取得します。
         /// </summary>
         public ShellProperties Properties
@@ -208,23 +225,6 @@ namespace starshipxac.Shell
                     this.properties = new ShellProperties(this);
                 }
                 return this.properties;
-            }
-        }
-
-        /// <summary>
-        ///     <see cref="ShellItemImageFactory" />を取得します。
-        /// </summary>
-        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
-        internal ShellItemImageFactory ImageFactory
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<ShellItemImageFactory>() != null);
-                if (this.imageFactory == null)
-                {
-                    this.imageFactory = new ShellItemImageFactory((IShellItemImageFactory)this.ShellItem.ShellItemInterface);
-                }
-                return this.imageFactory;
             }
         }
 
@@ -244,11 +244,35 @@ namespace starshipxac.Shell
         /// <summary>
         ///     サムネイルを取得します。
         /// </summary>
-        /// <param name="thumbnailMode"></param>
+        /// <param name="thumbnailMode">取得するサムネイルの種類。</param>
         /// <returns></returns>
         public Task<ShellThumbnail> GetThumbnailAsync(ThumbnailMode thumbnailMode)
         {
-            return Task.Run(() => new ShellThumbnail(this, thumbnailMode));
+            Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
+
+            double width;
+            double height;
+            ShellThumbnailFactory.GetSize(thumbnailMode, out width, out height);
+            var imageHandle = this.ImageFactory.GetImageHandle(width, height);
+
+            return ShellThumbnailFactory.CreateAsync(this.ShellItem, imageHandle, width, height);
+        }
+
+        /// <summary>
+        ///     サムネイルの幅と高さを指定して、サムネイルを取得します。
+        /// </summary>
+        /// <param name="width">サムネイルの幅。</param>
+        /// <param name="height">サムネイルの高さ。</param>
+        /// <returns></returns>
+        public Task<ShellThumbnail> GetThumbnailAsync(double width, double height)
+        {
+            Contract.Requires<ArgumentOutOfRangeException>(0.0 <= width);
+            Contract.Requires<ArgumentOutOfRangeException>(0.0 <= height);
+            Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
+
+            var imageHandle = this.ImageFactory.GetImageHandle(width, height);
+
+            return ShellThumbnailFactory.CreateAsync(this.ShellItem, imageHandle, width, height);
         }
 
         /// <summary>
