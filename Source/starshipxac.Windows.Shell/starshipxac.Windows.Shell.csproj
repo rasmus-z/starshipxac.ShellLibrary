@@ -246,8 +246,6 @@
     <Compile Include="Media\Imaging\ShellImageList.cs" />
     <Compile Include="Media\Imaging\ShellImageSource.cs" />
     <Compile Include="Media\Imaging\ShellImageSourceFactory.cs" />
-    <Compile Include="Media\Imaging\ShellThumbnailFormatOptions.cs" />
-    <Compile Include="Media\Imaging\ShellThumbnailRetrievalOptions.cs" />
     <Compile Include="Media\Imaging\StockIcon.cs" />
     <Compile Include="Media\Imaging\StockIcons.cs" />
     <Compile Include="Media\Imaging\StockIconSize.cs" />
