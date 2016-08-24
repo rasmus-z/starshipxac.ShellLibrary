@@ -4,16 +4,16 @@ using System.Runtime.InteropServices;
 using starshipxac.Shell.Interop;
 using starshipxac.Shell.Properties;
 
-namespace starshipxac.Shell.Media.Imaging
+namespace starshipxac.Shell.Media.Imaging.Internal
 {
     /// <summary>
     ///     シェルイメージファクトリを定義します。
     /// </summary>
-    public class ShellItemImageFactory
+    internal class ShellItemImageFactory
     {
         private readonly IShellItemImageFactory shllItemImageFactoryInterface;
 
-        internal ShellItemImageFactory(IShellItemImageFactory shllItemImageFactoryInterface)
+        public ShellItemImageFactory(IShellItemImageFactory shllItemImageFactoryInterface)
         {
             Contract.Requires<ArgumentNullException>(shllItemImageFactoryInterface != null);
 
@@ -29,7 +29,7 @@ namespace starshipxac.Shell.Media.Imaging
 
         public ShellItemImageFormatOptions FormatOption { get; set; }
 
-        internal IntPtr GetImageHandle(double width, double height)
+        public IntPtr GetImageHandle(double width, double height)
         {
             var size = new SIZE(width, height);
             var flags = GetFlags();

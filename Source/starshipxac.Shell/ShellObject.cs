@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using starshipxac.Shell.Interop;
 using starshipxac.Shell.Media.Imaging;
 using starshipxac.Shell.PropertySystem;
 
@@ -23,7 +21,7 @@ namespace starshipxac.Shell
         private ShellProperty<DateTime?> dateCreatedProperty;
         private ShellProperty<DateTime?> dateModifiedProperty;
         private ShellProperty<DateTime?> dateAccessedProperty;
-        private ShellItemImageFactory imageFactory;
+        private ShellThumbnailFactory thumbnailFactory;
 
         private static readonly ConcurrentDictionary<string, PropertyChangedEventArgs> PropertyChangedEventArgsDictionary =
             new ConcurrentDictionary<string, PropertyChangedEventArgs>();
@@ -196,19 +194,18 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="ShellItemImageFactory" />を取得します。
+        ///     <see cref="ShellThumbnailFactory" />を取得します。
         /// </summary>
-        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
-        private ShellItemImageFactory ImageFactory
+        private ShellThumbnailFactory ThumbnailFactory
         {
             get
             {
-                Contract.Ensures(Contract.Result<ShellItemImageFactory>() != null);
-                if (this.imageFactory == null)
+                Contract.Ensures(Contract.Result<ShellThumbnailFactory>() != null);
+                if (this.thumbnailFactory == null)
                 {
-                    this.imageFactory = new ShellItemImageFactory((IShellItemImageFactory)this.ShellItem.ShellItemInterface);
+                    this.thumbnailFactory = new ShellThumbnailFactory(this.ShellItem);
                 }
-                return this.imageFactory;
+                return this.thumbnailFactory;
             }
         }
 
@@ -245,17 +242,12 @@ namespace starshipxac.Shell
         ///     サムネイルを取得します。
         /// </summary>
         /// <param name="thumbnailMode">取得するサムネイルの種類。</param>
-        /// <returns></returns>
+        /// <returns><see cref="ShellThumbnail"/>。</returns>
         public Task<ShellThumbnail> GetThumbnailAsync(ThumbnailMode thumbnailMode)
         {
             Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
 
-            double width;
-            double height;
-            ShellThumbnailFactory.GetSize(thumbnailMode, out width, out height);
-            var imageHandle = this.ImageFactory.GetImageHandle(width, height);
-
-            return ShellThumbnailFactory.CreateAsync(this.ShellItem, imageHandle, width, height);
+            return this.ThumbnailFactory.CreateAsync(thumbnailMode);
         }
 
         /// <summary>
@@ -263,16 +255,14 @@ namespace starshipxac.Shell
         /// </summary>
         /// <param name="width">サムネイルの幅。</param>
         /// <param name="height">サムネイルの高さ。</param>
-        /// <returns></returns>
+        /// <returns><see cref="ShellThumbnail"/>。</returns>
         public Task<ShellThumbnail> GetThumbnailAsync(double width, double height)
         {
             Contract.Requires<ArgumentOutOfRangeException>(0.0 <= width);
             Contract.Requires<ArgumentOutOfRangeException>(0.0 <= height);
             Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
 
-            var imageHandle = this.ImageFactory.GetImageHandle(width, height);
-
-            return ShellThumbnailFactory.CreateAsync(this.ShellItem, imageHandle, width, height);
+            return this.ThumbnailFactory.CreateAsync(width, height);
         }
 
         /// <summary>
