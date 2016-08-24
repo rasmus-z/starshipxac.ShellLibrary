@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using System.Windows;
+using System.Threading.Tasks;
 using starshipxac.Shell;
-using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
@@ -21,23 +20,18 @@ namespace ShellExplorerSample.ViewModels.Shell
             //ThumbnailFactory = new ShellThumbnailFactory(new Size(64, 64));
         }
 
-        public static ShellThumbnailFactory ContainerThumbnailFactory { get; private set; }
-        public static ShellThumbnailFactory ThumbnailFactory { get; private set; }
-
         /// <summary>
         /// <see cref="ShellViewModelFactory"/>を初期化します。
         /// </summary>
         public static void CreateFactory()
         {
-            ContainerThumbnailFactory = new ShellThumbnailFactory(new Size(16, 16));
-            ThumbnailFactory = new ShellThumbnailFactory(new Size(64, 64));
         }
 
-        public static ShellRootViewModel CreateRoot()
+        public static async Task<ShellRootViewModel> CreateRootAsync()
         {
             Contract.Ensures(Contract.Result<ShellRootViewModel>() != null);
 
-            return new ShellRootViewModel(ContainerThumbnailFactory);
+            return await ShellRootViewModel.CreateAsync();
         }
 
         /// <summary>
@@ -45,12 +39,12 @@ namespace ShellExplorerSample.ViewModels.Shell
         /// </summary>
         /// <param name="folder"></param>
         /// <returns></returns>
-        public static ShellFolderViewModel CreateFolder(ShellFolder folder)
+        public static async Task<ShellFolderViewModel> CreateFolderAsync(ShellFolder folder)
         {
             Contract.Requires<ArgumentNullException>(folder != null);
             Contract.Ensures(Contract.Result<ShellFolderViewModel>() != null);
 
-            return new ShellFolderViewModel(folder, ContainerThumbnailFactory);
+            return await ShellFolderViewModel.CreateAsync(folder);
         }
 
         /// <summary>
@@ -58,22 +52,22 @@ namespace ShellExplorerSample.ViewModels.Shell
         /// </summary>
         /// <param name="shellObject"></param>
         /// <returns></returns>
-        public static ShellObjectViewModel Create(ShellObject shellObject)
+        public static async Task<ShellObjectViewModel> CreateAsync(ShellObject shellObject)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
             Contract.Ensures(Contract.Result<ShellObjectViewModel>() != null);
 
             if (shellObject is ShellFolder)
             {
-                return new ShellFolderViewModel((ShellFolder)shellObject, ThumbnailFactory);
+                return await ShellFolderViewModel.CreateAsync((ShellFolder)shellObject);
             }
             else if (shellObject is ShellFile)
             {
-                return new ShellFileViewModel((ShellFile)shellObject, ThumbnailFactory);
+                return await ShellFileViewModel.CreateAsync((ShellFile)shellObject);
             }
             else
             {
-                return new ShellNonFileSystemItemViewModel(shellObject, ThumbnailFactory);
+                return await ShellNonFileSystemItemViewModel.CreateAsync(shellObject);
             }
         }
     }

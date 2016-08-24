@@ -1,11 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
-using System.Reactive.Linq;
 using System.Windows.Data;
 using Livet;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
+using starshipxac.Shell;
 using ShellExplorerSample.ViewModels.Shell;
 
 namespace ShellExplorerSample.ViewModels
@@ -29,15 +30,9 @@ namespace ShellExplorerSample.ViewModels
 
             #region Reactive Property
 
-            this.RootFolder = ShellViewModelFactory.CreateRoot();
-
+            this.RootFolder = new ReactiveProperty<ShellRootViewModel>();
             this.ShellItems = new ReactiveCollection<ShellObjectViewModel>();
             this.ShellItemCollectionView = CollectionViewSource.GetDefaultView(this.ShellItems);
-
-            this.RootFolder.SelectedFolder
-                .Where(folder => folder != null)
-                .Subscribe(CreateShellItems)
-                .AddTo(this.CompositeDisposable);
 
             #endregion
         }
@@ -47,7 +42,19 @@ namespace ShellExplorerSample.ViewModels
         /// </summary>
         public void Initialize()
         {
-            this.RootFolder.Initialize();
+            DispatcherHelper.UIDispatcher.InvokeAsync(async () =>
+            {
+                this.RootFolder.Value = await ShellRootViewModel.CreateAsync();
+
+                this.RootFolder.Value.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.OneDrive));
+                this.RootFolder.Value.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.HomeGroup));
+                this.RootFolder.Value.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.Computer));
+                this.RootFolder.Value.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.Libraries));
+
+                this.RootFolder.Value.SelectedFolder
+                    .Subscribe(CreateShellItems)
+                    .AddTo(this.CompositeDisposable);
+            });
         }
 
         [ContractInvariantMethod]
@@ -58,7 +65,7 @@ namespace ShellExplorerSample.ViewModels
             Contract.Invariant(this.ShellItemCollectionView != null);
         }
 
-        public ShellRootViewModel RootFolder { get; }
+        public ReactiveProperty<ShellRootViewModel> RootFolder { get; }
 
         /// <summary>
         ///     選択中のフォルダーに含まれるファイルまたはフォルダーのコレクションを取得します。
@@ -69,12 +76,20 @@ namespace ShellExplorerSample.ViewModels
 
         private void CreateShellItems(ShellFolderViewModel folder)
         {
-            this.ShellItems.ClearOnScheduler();
+            Debug.WriteLine("MainWindowViewModel.CreateShellItemsAsync()");
 
-            foreach (var item in folder.EnumerateItems())
+            DispatcherHelper.UIDispatcher.InvokeAsync(async () =>
             {
-                this.ShellItems.AddOnScheduler(item);
-            }
+                this.ShellItems.Clear();
+
+                if (folder != null)
+                {
+                    foreach (var item in await folder.EnumerateItemsAsync())
+                    {
+                        this.ShellItems.Add(item);
+                    }
+                }
+            });
         }
     }
 }

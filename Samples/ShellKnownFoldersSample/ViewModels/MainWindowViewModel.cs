@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Linq;
-using System.Reactive.Linq;
 using Livet;
 using Reactive.Bindings;
+using Reactive.Bindings.Extensions;
 using starshipxac.Shell;
 
 namespace ShellKnownFoldersSample.ViewModels
@@ -13,16 +12,23 @@ namespace ShellKnownFoldersSample.ViewModels
         {
             #region Reactive Property
 
-            this.KnownFolders = new ReactiveCollection<ShellKnownFolderViewModel>(
-                ShellKnownFolders.EnumerateKnownFolders().Select(x => new ShellKnownFolderViewModel(x)).ToObservable());
+            this.KnownFolders = new ReactiveCollection<ShellKnownFolderViewModel>()
+                .AddTo(this.CompositeDisposable);
 
             #endregion
         }
 
         public void Initialize()
         {
+            DispatcherHelper.UIDispatcher.InvokeAsync(async () =>
+            {
+                foreach (var knownFolder in ShellKnownFolders.EnumerateKnownFolders())
+                {
+                    this.KnownFolders.AddOnScheduler(await ShellKnownFolderViewModel.CreateAsync(knownFolder));
+                }
+            });
         }
 
-        public ReactiveCollection<ShellKnownFolderViewModel> KnownFolders { get; private set; }
+        public ReactiveCollection<ShellKnownFolderViewModel> KnownFolders { get; }
     }
 }

@@ -17,13 +17,9 @@ namespace ShellExplorerSample.ViewModels.Shell
         ///     <see cref="ShellObjectViewModel" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="shellObject"></param>
-        /// <param name="thumbnailFactory"></param>
-        protected ShellObjectViewModel(ShellObject shellObject, ShellThumbnailFactory thumbnailFactory)
+        protected ShellObjectViewModel(ShellObject shellObject)
         {
-            Contract.Requires<ArgumentNullException>(thumbnailFactory != null);
-
             this.ShellObject = shellObject;
-            this.ThumbnailFactory = thumbnailFactory;
         }
 
         [ContractInvariantMethod]
@@ -33,8 +29,6 @@ namespace ShellExplorerSample.ViewModels.Shell
         }
 
         public ShellObject ShellObject { get; }
-
-        public ShellThumbnailFactory ThumbnailFactory { get; }
 
         /// <summary>
         ///     表示名を取得します。
@@ -59,7 +53,9 @@ namespace ShellExplorerSample.ViewModels.Shell
         /// <summary>
         ///     サムネイルイメージを取得します。
         /// </summary>
-        public abstract ReactiveProperty<ShellThumbnail> Thumbnail { get; }
+        public abstract ReactiveProperty<ShellImageSource> Thumbnail { get; }
+
+        public abstract ReactiveProperty<ShellImageSource> DetailThumbnail { get; }
 
         public override string ToString()
         {

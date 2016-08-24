@@ -35,7 +35,7 @@
         </Grid.ColumnDefinitions>
         <TreeView Grid.Column="0"
                   Name="shellTreeView"
-                  DataContext="{Binding RootFolder}"
+                  DataContext="{Binding RootFolder.Value}"
                   ItemsSource="{Binding ShellFolderCollectionView}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectedItemChanged">
@@ -75,8 +75,8 @@
                 <GridView>
                     <GridViewColumn Header="Image">
                         <GridViewColumn.CellTemplate>
-                            <DataTemplate DataType="{x:Type shell:ShellFolderViewModel}">
-                                <Image Source="{Binding Thumbnail.Value.ImageSource}" />
+                            <DataTemplate DataType="{x:Type shell:ShellObjectViewModel}">
+                                <Image Source="{Binding DetailThumbnail.Value.ImageSource}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

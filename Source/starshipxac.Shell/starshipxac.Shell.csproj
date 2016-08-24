@@ -170,11 +170,13 @@
     <Compile Include="KnownFolderCategories.cs" />
     <Compile Include="LibraryFolderTypes.cs" />
     <Compile Include="Media\Imaging\ShellIcon.cs" />
-    <Compile Include="Media\Imaging\ShellImageSize.cs" />
-    <Compile Include="Media\Imaging\ShellItemImageFactory.cs" />
-    <Compile Include="Media\Imaging\ShellItemImageFormatOptions.cs" />
-    <Compile Include="Media\Imaging\ShellItemImageRetrievalOptions.cs" />
-    <Compile Include="Media\Imaging\ShellItemImageSizeOptions.cs" />
+    <Compile Include="Media\Imaging\Internal\ShellItemImageFactory.cs" />
+    <Compile Include="Media\Imaging\Internal\ShellItemImageFormatOptions.cs" />
+    <Compile Include="Media\Imaging\Internal\ShellItemImageRetrievalOptions.cs" />
+    <Compile Include="Media\Imaging\Internal\ShellItemImageSizeOptions.cs" />
+    <Compile Include="Media\Imaging\ShellThumbnail.cs" />
+    <Compile Include="Media\Imaging\ShellThumbnailFactory.cs" />
+    <Compile Include="Media\Imaging\ThumbnailMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\ErrorMessages.Designer.cs">
       <DependentUpon>ErrorMessages.resx</DependentUpon>
