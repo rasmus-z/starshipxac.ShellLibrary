@@ -5,14 +5,11 @@ using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Data;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
 using starshipxac.Shell;
-using starshipxac.Shell.Media.Imaging;
 using starshipxac.Shell.PropertySystem;
-using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
@@ -26,7 +23,7 @@ namespace ShellExplorerSample.ViewModels.Shell
         ///     <see cref="ShellFolderViewModel" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="shellFolder"></param>
-        private ShellFolderViewModel(ShellFolder shellFolder)
+        public ShellFolderViewModel(ShellFolder shellFolder)
             : base(shellFolder)
         {
             Contract.Requires<ArgumentNullException>(shellFolder != null);
@@ -38,15 +35,13 @@ namespace ShellExplorerSample.ViewModels.Shell
                 new ShellProperty<string>(this.ShellFolder, "System.ItemTypeText").Value);
             this.DateCreated = new ReactiveProperty<DateTime>(this.ShellFolder.DateCreated);
             this.DateModified = new ReactiveProperty<DateTime>(this.ShellFolder.DateModified);
-            this.Thumbnail = new ReactiveProperty<ShellImageSource>();
-            this.DetailThumbnail = new ReactiveProperty<ShellImageSource>();
             this.IsExpanded = new ReactiveProperty<bool>(false);
             this.IsSelected = new ReactiveProperty<bool>(false);
             this.ShellFolders = new ReactiveCollection<ShellFolderViewModel>();
             this.ShellFolderCollectionView = CollectionViewSource.GetDefaultView(this.ShellFolders);
 
             this.IsExpanded
-                .Subscribe(async x => await CreateShellFoldersAsync(x))
+                .Subscribe(x => CreateShellFolders(x))
                 .AddTo(this.CompositeDisposable);
 
             #endregion
@@ -61,24 +56,12 @@ namespace ShellExplorerSample.ViewModels.Shell
             this.ItemTypeText = new ReactiveProperty<string>(String.Empty);
             this.DateCreated = new ReactiveProperty<DateTime>(DateTime.MinValue);
             this.DateModified = new ReactiveProperty<DateTime>(DateTime.MinValue);
-            this.Thumbnail = new ReactiveProperty<ShellImageSource>();
-            this.DetailThumbnail = new ReactiveProperty<ShellImageSource>();
             this.IsExpanded = new ReactiveProperty<bool>();
             this.IsSelected = new ReactiveProperty<bool>();
             this.ShellFolders = new ReactiveCollection<ShellFolderViewModel>();
             this.ShellFolderCollectionView = CollectionViewSource.GetDefaultView(this.ShellFolders);
 
             #endregion
-        }
-
-        public static async Task<ShellFolderViewModel> CreateAsync(ShellFolder shellFolder)
-        {
-            Contract.Requires<ArgumentNullException>(shellFolder != null);
-
-            var result = new ShellFolderViewModel(shellFolder);
-            result.Thumbnail.Value = new ShellImageSource(await shellFolder.GetThumbnailAsync(ThumbnailMode.ListView));
-            result.DetailThumbnail.Value = new ShellImageSource(await shellFolder.GetThumbnailAsync(ThumbnailMode.ListView));
-            return result;
         }
 
         public ShellFolder ShellFolder => (ShellFolder)this.ShellObject;
@@ -90,10 +73,6 @@ namespace ShellExplorerSample.ViewModels.Shell
         public override ReactiveProperty<DateTime> DateCreated { get; }
 
         public override ReactiveProperty<DateTime> DateModified { get; }
-
-        public override ReactiveProperty<ShellImageSource> Thumbnail { get; }
-
-        public override ReactiveProperty<ShellImageSource> DetailThumbnail { get; }
 
         /// <summary>
         ///     フォルダーツリーで、フォルダーが展開されているかどうかを判定する値を取得します。
@@ -116,31 +95,29 @@ namespace ShellExplorerSample.ViewModels.Shell
         ///     フォルダー内のファイル/フォルダーを列挙します。
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<ShellObjectViewModel>> EnumerateItemsAsync()
+        public IEnumerable<ShellObjectViewModel> EnumerateItems()
         {
-            return await this.ShellFolder.EnumerateObjects()
-                .Select(async x => await ShellViewModelFactory.CreateAsync(x))
-                .WhenAll();
+            return this.ShellFolder.EnumerateObjects()
+                .Select(ShellViewModelFactory.Create);
         }
 
         /// <summary>
         ///     フォルダー内のフォルダーを列挙します。
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<ShellFolderViewModel>> EnumerateFoldersAsync()
+        public IEnumerable<ShellFolderViewModel> EnumerateFolders()
         {
-            return await this.ShellFolder.EnumerateFolders()
-                .Select(async x => await ShellViewModelFactory.CreateFolderAsync(x))
-                .WhenAll();
+            return this.ShellFolder.EnumerateFolders()
+                .Select(ShellViewModelFactory.CreateFolder);
         }
 
-        private async Task CreateShellFoldersAsync(bool expanded)
+        private void CreateShellFolders(bool expanded)
         {
             if (expanded)
             {
                 try
                 {
-                    foreach (var folder in await EnumerateFoldersAsync())
+                    foreach (var folder in EnumerateFolders())
                     {
                         Debug.WriteLine($"  -> {folder.DisplayName.Value}");
                         this.ShellFolders.Add(folder);

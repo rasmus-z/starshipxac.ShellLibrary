@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 using Livet;
 using Reactive.Bindings;
 using starshipxac.Shell;
-using starshipxac.Windows.Shell.Media.Imaging;
+using starshipxac.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
@@ -20,6 +20,19 @@ namespace ShellExplorerSample.ViewModels.Shell
         protected ShellObjectViewModel(ShellObject shellObject)
         {
             this.ShellObject = shellObject;
+
+            if (this.ShellObject == null)
+            {
+                this.Thumbnail = new ReactiveProperty<ShellThumbnailImageSource>();
+                this.DetailThumbnail = new ReactiveProperty<ShellThumbnailImageSource>();
+            }
+            else
+            {
+                this.Thumbnail = new ReactiveProperty<ShellThumbnailImageSource>(
+                    new ShellThumbnailImageSource(this.ShellObject, ThumbnailMode.ListView));
+                this.DetailThumbnail = new ReactiveProperty<ShellThumbnailImageSource>(
+                    new ShellThumbnailImageSource(this.ShellObject, ThumbnailMode.ListView));
+            }
         }
 
         [ContractInvariantMethod]
@@ -53,9 +66,9 @@ namespace ShellExplorerSample.ViewModels.Shell
         /// <summary>
         ///     サムネイルイメージを取得します。
         /// </summary>
-        public abstract ReactiveProperty<ShellImageSource> Thumbnail { get; }
+        public ReactiveProperty<ShellThumbnailImageSource> Thumbnail { get; }
 
-        public abstract ReactiveProperty<ShellImageSource> DetailThumbnail { get; }
+        public ReactiveProperty<ShellThumbnailImageSource> DetailThumbnail { get; }
 
         public override string ToString()
         {

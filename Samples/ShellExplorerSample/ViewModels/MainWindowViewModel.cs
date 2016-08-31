@@ -42,19 +42,16 @@ namespace ShellExplorerSample.ViewModels
         /// </summary>
         public void Initialize()
         {
-            DispatcherHelper.UIDispatcher.InvokeAsync(async () =>
-            {
-                this.RootFolder.Value = await ShellRootViewModel.CreateAsync();
+            this.RootFolder.Value = ShellViewModelFactory.CreateRoot();
 
-                this.RootFolder.Value.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.OneDrive));
-                this.RootFolder.Value.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.HomeGroup));
-                this.RootFolder.Value.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.Computer));
-                this.RootFolder.Value.ShellFolders.Add(await ShellViewModelFactory.CreateFolderAsync(ShellKnownFolders.Libraries));
+            this.RootFolder.Value.ShellFolders.Add(ShellViewModelFactory.CreateFolder(ShellKnownFolders.OneDrive));
+            this.RootFolder.Value.ShellFolders.Add(ShellViewModelFactory.CreateFolder(ShellKnownFolders.HomeGroup));
+            this.RootFolder.Value.ShellFolders.Add(ShellViewModelFactory.CreateFolder(ShellKnownFolders.Computer));
+            this.RootFolder.Value.ShellFolders.Add(ShellViewModelFactory.CreateFolder(ShellKnownFolders.Libraries));
 
-                this.RootFolder.Value.SelectedFolder
-                    .Subscribe(CreateShellItems)
-                    .AddTo(this.CompositeDisposable);
-            });
+            this.RootFolder.Value.SelectedFolder
+                .Subscribe(CreateShellItems)
+                .AddTo(this.CompositeDisposable);
         }
 
         [ContractInvariantMethod]
@@ -78,18 +75,15 @@ namespace ShellExplorerSample.ViewModels
         {
             Debug.WriteLine("MainWindowViewModel.CreateShellItemsAsync()");
 
-            DispatcherHelper.UIDispatcher.InvokeAsync(async () =>
-            {
-                this.ShellItems.Clear();
+            this.ShellItems.Clear();
 
-                if (folder != null)
+            if (folder != null)
+            {
+                foreach (var item in folder.EnumerateItems())
                 {
-                    foreach (var item in await folder.EnumerateItemsAsync())
-                    {
-                        this.ShellItems.Add(item);
-                    }
+                    this.ShellItems.Add(item);
                 }
-            });
+            }
         }
     }
 }

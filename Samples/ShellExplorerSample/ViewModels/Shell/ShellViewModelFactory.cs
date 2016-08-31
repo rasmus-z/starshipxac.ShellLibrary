@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using System.Threading.Tasks;
 using starshipxac.Shell;
 
 namespace ShellExplorerSample.ViewModels.Shell
@@ -27,11 +26,11 @@ namespace ShellExplorerSample.ViewModels.Shell
         {
         }
 
-        public static async Task<ShellRootViewModel> CreateRootAsync()
+        public static ShellRootViewModel CreateRoot()
         {
             Contract.Ensures(Contract.Result<ShellRootViewModel>() != null);
 
-            return await ShellRootViewModel.CreateAsync();
+            return new ShellRootViewModel();
         }
 
         /// <summary>
@@ -39,12 +38,12 @@ namespace ShellExplorerSample.ViewModels.Shell
         /// </summary>
         /// <param name="folder"></param>
         /// <returns></returns>
-        public static async Task<ShellFolderViewModel> CreateFolderAsync(ShellFolder folder)
+        public static ShellFolderViewModel CreateFolder(ShellFolder folder)
         {
             Contract.Requires<ArgumentNullException>(folder != null);
             Contract.Ensures(Contract.Result<ShellFolderViewModel>() != null);
 
-            return await ShellFolderViewModel.CreateAsync(folder);
+            return new ShellFolderViewModel(folder);
         }
 
         /// <summary>
@@ -52,22 +51,22 @@ namespace ShellExplorerSample.ViewModels.Shell
         /// </summary>
         /// <param name="shellObject"></param>
         /// <returns></returns>
-        public static async Task<ShellObjectViewModel> CreateAsync(ShellObject shellObject)
+        public static ShellObjectViewModel Create(ShellObject shellObject)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
             Contract.Ensures(Contract.Result<ShellObjectViewModel>() != null);
 
             if (shellObject is ShellFolder)
             {
-                return await ShellFolderViewModel.CreateAsync((ShellFolder)shellObject);
+                return new ShellFolderViewModel((ShellFolder)shellObject);
             }
             else if (shellObject is ShellFile)
             {
-                return await ShellFileViewModel.CreateAsync((ShellFile)shellObject);
+                return new ShellFileViewModel((ShellFile)shellObject);
             }
             else
             {
-                return await ShellNonFileSystemItemViewModel.CreateAsync(shellObject);
+                return new ShellNonFileSystemItemViewModel(shellObject);
             }
         }
     }
