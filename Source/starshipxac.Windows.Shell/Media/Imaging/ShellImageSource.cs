@@ -17,12 +17,13 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         private bool disposed = false;
 
         private ImageSource imageSource = null;
-        private ImageSource defaultImage = null;
-        private ImageSource thumbnailImage = null;
-        private ImageSource overlyaImage = null;
 
         private static readonly ConcurrentDictionary<string, PropertyChangedEventArgs> PropertyChangedEventArgsDictionary =
             new ConcurrentDictionary<string, PropertyChangedEventArgs>();
+
+        public ShellImageSource()
+        {
+        }
 
         /// <summary>
         ///     <see cref="ShellImageSource" />クラス新しいインスタンスを初期化します。
@@ -52,7 +53,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             {
                 if (disposing)
                 {
-                    this.ShellThumbnail.Dispose();
+                    this.ShellThumbnail?.Dispose();
                 }
 
                 this.disposed = true;
@@ -62,26 +63,13 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         [ContractInvariantMethod]
         private void ObjectInvariant()
         {
-            Contract.Invariant(this.ShellThumbnail != null);
         }
 
-        private ShellThumbnail ShellThumbnail { get; }
+        private ShellThumbnail ShellThumbnail { get; set; }
 
-        internal IntPtr ImageHandle => this.ShellThumbnail.ImageHandle;
+        public double Width => this.ShellThumbnail?.OriginalWidth ?? 0;
 
-        /// <summary>
-        ///     アイコンインデックスを取得します。
-        /// </summary>
-        internal int IconIndex => this.ShellThumbnail.IconIndex;
-
-        /// <summary>
-        ///     オーバーレイアイコンインデックスを取得します。
-        /// </summary>
-        internal int OverlayIndex => this.ShellThumbnail.OverlayIndex;
-
-        public double Width => this.ShellThumbnail.OriginalWidth;
-
-        public double Height => this.ShellThumbnail.OriginalHeight;
+        public double Height => this.ShellThumbnail?.OriginalHeight ?? 0;
 
         /// <summary>
         ///     イメージを段階的に取得します。
@@ -92,7 +80,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             {
                 if (this.imageSource == null)
                 {
-                    Application.Current.Dispatcher.InvokeAsync(async () => await ShellImageSourceFactory.LoadAsync(this));
+                    Application.Current.Dispatcher.InvokeAsync(async () => { await ShellImageSourceFactory.LoadAsync(this.ShellThumbnail, UpdateImageSource); });
                 }
                 return this.imageSource;
             }
@@ -103,67 +91,12 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             }
         }
 
-        /// <summary>
-        ///     デフォルトアイコンイメージを取得します。
-        /// </summary>
-        public ImageSource DefaultImage
-        {
-            get
-            {
-                if (this.defaultImage == null)
-                {
-                    Application.Current.Dispatcher.InvokeAsync(async () => await ShellImageSourceFactory.GetDefaultIconWithOverlayAsync(this));
-                }
-                return this.defaultImage;
-            }
-            set
-            {
-                this.defaultImage = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        /// <summary>
-        ///     サムネイルイメージを取得します。
-        /// </summary>
-        public ImageSource ThumbnailImage
-        {
-            get
-            {
-                if (this.thumbnailImage == null)
-                {
-                    Application.Current.Dispatcher.InvokeAsync(async () => await ShellImageSourceFactory.GetThumbnailAsync(this));
-                }
-                return this.thumbnailImage;
-            }
-            set
-            {
-                this.thumbnailImage = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        /// <summary>
-        ///     オーバーレイイメージを取得します。
-        /// </summary>
-        public ImageSource OverlayImage
-        {
-            get
-            {
-                if (this.overlyaImage == null)
-                {
-                    Application.Current.Dispatcher.InvokeAsync(async () => await ShellImageSourceFactory.GetThumbnailAsync(this));
-                }
-                return this.overlyaImage;
-            }
-            set
-            {
-                this.overlyaImage = value;
-                RaisePropertyChanged();
-            }
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public void SetSource(ShellThumbnail thumbnail)
+        {
+            this.ShellThumbnail = thumbnail;
+        }
 
         /// <summary>
         ///     プロパティの値が変更されたことを通知します。
@@ -176,6 +109,11 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             this.PropertyChanged?.Invoke(
                 this,
                 PropertyChangedEventArgsDictionary.GetOrAdd(propertyName, name => new PropertyChangedEventArgs(name)));
+        }
+
+        private void UpdateImageSource(ImageSource imageSouce)
+        {
+            this.ImageSource = imageSouce;
         }
     }
 }

@@ -238,16 +238,32 @@ namespace starshipxac.Shell
             return this.ShellItem.GetDisplayName(displayNameType);
         }
 
+        public ShellThumbnail GetThumbnail(ThumbnailMode thumbnailMode)
+        {
+            Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
+
+            return this.ThumbnailFactory.Create(thumbnailMode);
+        }
+
+        public ShellThumbnail GetThumbnail(double width, double height)
+        {
+            Contract.Requires<ArgumentOutOfRangeException>(0.0 <= width);
+            Contract.Requires<ArgumentOutOfRangeException>(0.0 <= height);
+            Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
+
+            return this.ThumbnailFactory.Create(width, height);
+        }
+
         /// <summary>
         ///     サムネイルを取得します。
         /// </summary>
         /// <param name="thumbnailMode">取得するサムネイルの種類。</param>
-        /// <returns><see cref="ShellThumbnail"/>。</returns>
+        /// <returns><see cref="ShellThumbnail" />。</returns>
         public Task<ShellThumbnail> GetThumbnailAsync(ThumbnailMode thumbnailMode)
         {
             Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
 
-            return this.ThumbnailFactory.CreateAsync(thumbnailMode);
+            return Task.Run(() => this.ThumbnailFactory.Create(thumbnailMode));
         }
 
         /// <summary>
@@ -255,14 +271,14 @@ namespace starshipxac.Shell
         /// </summary>
         /// <param name="width">サムネイルの幅。</param>
         /// <param name="height">サムネイルの高さ。</param>
-        /// <returns><see cref="ShellThumbnail"/>。</returns>
+        /// <returns><see cref="ShellThumbnail" />。</returns>
         public Task<ShellThumbnail> GetThumbnailAsync(double width, double height)
         {
             Contract.Requires<ArgumentOutOfRangeException>(0.0 <= width);
             Contract.Requires<ArgumentOutOfRangeException>(0.0 <= height);
             Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
 
-            return this.ThumbnailFactory.CreateAsync(width, height);
+            return Task.Run(() => this.ThumbnailFactory.Create(width, height));
         }
 
         /// <summary>

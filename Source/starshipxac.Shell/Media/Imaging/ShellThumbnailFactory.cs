@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
-using System.Threading.Tasks;
 using starshipxac.Shell.Interop;
 using starshipxac.Shell.Media.Imaging.Internal;
 
@@ -17,8 +16,8 @@ namespace starshipxac.Shell.Media.Imaging
         private readonly ShellItemImageFactory imageFactory;
 
         /// <summary>
-        /// <see cref="ShellItem"/>を指定して、
-        /// <see cref="ShellThumbnailFactory"/>クラスの新しいインスタンスを初期化します。
+        ///     <see cref="ShellItem" />を指定して、
+        ///     <see cref="ShellThumbnailFactory" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="shellItem"></param>
         public ShellThumbnailFactory(ShellItem shellItem)
@@ -30,11 +29,11 @@ namespace starshipxac.Shell.Media.Imaging
         }
 
         /// <summary>
-        /// 作成するサムネイルの種類を指定して、<see cref="ShellThumbnail"/>クラスの新しいインスタンスを作成します。
+        ///     作成するサムネイルの種類を指定して、<see cref="ShellThumbnail" />クラスの新しいインスタンスを作成します。
         /// </summary>
         /// <param name="thumbnailMode">作成するサムネイルの種類。</param>
         /// <returns></returns>
-        public async Task<ShellThumbnail> CreateAsync(ThumbnailMode thumbnailMode)
+        public ShellThumbnail Create(ThumbnailMode thumbnailMode)
         {
             Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
 
@@ -43,16 +42,16 @@ namespace starshipxac.Shell.Media.Imaging
             GetSize(thumbnailMode, out width, out height);
             var imageHandle = this.imageFactory.GetImageHandle(width, height);
 
-            return await CreateAsync(this.shellItem, imageHandle, width, height);
+            return Create(this.shellItem, imageHandle, width, height);
         }
 
         /// <summary>
-        /// 作成するサムネイルの幅と高さを指定して、<see cref="ShellThumbnail"/>クラスの新しいインスタンスを作成します。
+        ///     作成するサムネイルの幅と高さを指定して、<see cref="ShellThumbnail" />クラスの新しいインスタンスを作成します。
         /// </summary>
         /// <param name="width">作成するサムネイルの幅。</param>
         /// <param name="height">作成するサムネイルの高さ。</param>
         /// <returns></returns>
-        public async Task<ShellThumbnail> CreateAsync(double width, double height)
+        public ShellThumbnail Create(double width, double height)
         {
             Contract.Requires<ArgumentOutOfRangeException>(0.0 <= width);
             Contract.Requires<ArgumentOutOfRangeException>(0.0 <= height);
@@ -60,17 +59,17 @@ namespace starshipxac.Shell.Media.Imaging
 
             var imageHandle = this.imageFactory.GetImageHandle(width, height);
 
-            return await CreateAsync(this.shellItem, imageHandle, width, height);
+            return Create(this.shellItem, imageHandle, width, height);
         }
 
-        private static Task<ShellThumbnail> CreateAsync(ShellItem shellItem, IntPtr imageHandle, double width, double height)
+        private static ShellThumbnail Create(ShellItem shellItem, IntPtr imageHandle, double width, double height)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
             Contract.Requires<ArgumentOutOfRangeException>(0.0 <= width);
             Contract.Requires<ArgumentOutOfRangeException>(0.0 <= height);
             Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
 
-            return Task.Run(() => new ShellThumbnail(shellItem, imageHandle, width, height));
+            return new ShellThumbnail(shellItem, imageHandle, width, height);
         }
 
         public static void GetSize(ThumbnailMode mode, out double width, out double height)
