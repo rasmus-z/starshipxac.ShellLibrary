@@ -44,12 +44,15 @@ namespace ShellKnownFoldersSample.ViewModels
             #endregion
         }
 
-        public static async Task<ShellKnownFolderViewModel> CreateAsync(ShellKnownFolder shellKnownFolder)
+        public static Task<ShellKnownFolderViewModel> CreateAsync(ShellKnownFolder shellKnownFolder)
         {
-            var result = new ShellKnownFolderViewModel(shellKnownFolder);
-            result.Thumbnail.Value = new ShellImageSource(await shellKnownFolder.GetThumbnailAsync(ThumbnailMode.ListView));
+            return Task.Run(() =>
+            {
+                var result = new ShellKnownFolderViewModel(shellKnownFolder);
+                result.Thumbnail.Value = new ShellImageSource(shellKnownFolder.GetThumbnail(ThumbnailMode.ListView));
 
-            return result;
+                return result;
+            });
         }
 
         public ReactiveProperty<ShellKnownFolder> KnownFolder { get; }

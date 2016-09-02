@@ -73,7 +73,7 @@ namespace ShellExplorerSample.ViewModels
 
         private void CreateShellItems(ShellFolderViewModel folder)
         {
-            Debug.WriteLine("MainWindowViewModel.CreateShellItemsAsync()");
+            Debug.WriteLine("MainWindowViewModel.CreateShellItems()");
 
             this.ShellItems.Clear();
 

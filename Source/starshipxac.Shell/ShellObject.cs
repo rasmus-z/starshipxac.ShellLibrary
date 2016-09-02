@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using starshipxac.Shell.Media.Imaging;
 using starshipxac.Shell.PropertySystem;
 
@@ -238,6 +237,11 @@ namespace starshipxac.Shell
             return this.ShellItem.GetDisplayName(displayNameType);
         }
 
+        /// <summary>
+        ///     サムネイルを取得します。
+        /// </summary>
+        /// <param name="thumbnailMode">取得するサムネイルの種類。</param>
+        /// <returns></returns>
         public ShellThumbnail GetThumbnail(ThumbnailMode thumbnailMode)
         {
             Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
@@ -245,6 +249,12 @@ namespace starshipxac.Shell
             return this.ThumbnailFactory.Create(thumbnailMode);
         }
 
+        /// <summary>
+        ///     サムネイルの幅と高さを指定して、サムネイルを取得します。
+        /// </summary>
+        /// <param name="width">取得するサムネイルの幅。</param>
+        /// <param name="height">取得するサムネイルの高さ。</param>
+        /// <returns></returns>
         public ShellThumbnail GetThumbnail(double width, double height)
         {
             Contract.Requires<ArgumentOutOfRangeException>(0.0 <= width);
@@ -252,33 +262,6 @@ namespace starshipxac.Shell
             Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
 
             return this.ThumbnailFactory.Create(width, height);
-        }
-
-        /// <summary>
-        ///     サムネイルを取得します。
-        /// </summary>
-        /// <param name="thumbnailMode">取得するサムネイルの種類。</param>
-        /// <returns><see cref="ShellThumbnail" />。</returns>
-        public Task<ShellThumbnail> GetThumbnailAsync(ThumbnailMode thumbnailMode)
-        {
-            Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
-
-            return Task.Run(() => this.ThumbnailFactory.Create(thumbnailMode));
-        }
-
-        /// <summary>
-        ///     サムネイルの幅と高さを指定して、サムネイルを取得します。
-        /// </summary>
-        /// <param name="width">サムネイルの幅。</param>
-        /// <param name="height">サムネイルの高さ。</param>
-        /// <returns><see cref="ShellThumbnail" />。</returns>
-        public Task<ShellThumbnail> GetThumbnailAsync(double width, double height)
-        {
-            Contract.Requires<ArgumentOutOfRangeException>(0.0 <= width);
-            Contract.Requires<ArgumentOutOfRangeException>(0.0 <= height);
-            Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
-
-            return Task.Run(() => this.ThumbnailFactory.Create(width, height));
         }
 
         /// <summary>
