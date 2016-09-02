@@ -11,7 +11,7 @@ using starshipxac.Windows.Shell.Media.Imaging;
 
 namespace ShellExplorerSample.ViewModels.Shell
 {
-    public class ShellThumbnailImageSource : INotifyPropertyChanged, IDisposable
+    public class ShellThumbnailProperty : INotifyPropertyChanged, IDisposable
     {
         private bool disposed = false;
 
@@ -21,7 +21,7 @@ namespace ShellExplorerSample.ViewModels.Shell
         private static readonly ConcurrentDictionary<string, PropertyChangedEventArgs> PropertyChangedEventArgsDictionary =
             new ConcurrentDictionary<string, PropertyChangedEventArgs>();
 
-        public ShellThumbnailImageSource(ShellObject shellObject, ThumbnailMode thumbnailMode)
+        public ShellThumbnailProperty(ShellObject shellObject, ThumbnailMode thumbnailMode)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
 
@@ -29,7 +29,7 @@ namespace ShellExplorerSample.ViewModels.Shell
             this.ShellObject = shellObject;
         }
 
-        ~ShellThumbnailImageSource()
+        ~ShellThumbnailProperty()
         {
             Dispose(false);
         }

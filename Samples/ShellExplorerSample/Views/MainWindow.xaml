@@ -52,7 +52,7 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0"
-                               Source="{Binding Thumbnail.Value.ImageSource}" />
+                               Source="{Binding Thumbnail.ImageSource}" />
                         <TextBlock Grid.Column="1"
                                    Text="{Binding DisplayName.Value}" />
                     </Grid>
@@ -76,7 +76,7 @@
                     <GridViewColumn Header="Image">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate DataType="{x:Type shell:ShellObjectViewModel}">
-                                <Image Source="{Binding DetailThumbnail.Value.ImageSource}" />
+                                <Image Source="{Binding DetailThumbnail.ImageSource}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -21,17 +21,10 @@ namespace ShellExplorerSample.ViewModels.Shell
         {
             this.ShellObject = shellObject;
 
-            if (this.ShellObject == null)
+            if (this.ShellObject != null)
             {
-                this.Thumbnail = new ReactiveProperty<ShellThumbnailImageSource>();
-                this.DetailThumbnail = new ReactiveProperty<ShellThumbnailImageSource>();
-            }
-            else
-            {
-                this.Thumbnail = new ReactiveProperty<ShellThumbnailImageSource>(
-                    new ShellThumbnailImageSource(this.ShellObject, ThumbnailMode.ListView));
-                this.DetailThumbnail = new ReactiveProperty<ShellThumbnailImageSource>(
-                    new ShellThumbnailImageSource(this.ShellObject, ThumbnailMode.ListView));
+                this.Thumbnail = new ShellThumbnailProperty(this.ShellObject, ThumbnailMode.ListView);
+                this.DetailThumbnail = new ShellThumbnailProperty(this.ShellObject, ThumbnailMode.ListView);
             }
         }
 
@@ -66,9 +59,9 @@ namespace ShellExplorerSample.ViewModels.Shell
         /// <summary>
         ///     サムネイルイメージを取得します。
         /// </summary>
-        public ReactiveProperty<ShellThumbnailImageSource> Thumbnail { get; }
+        public ShellThumbnailProperty Thumbnail { get; }
 
-        public ReactiveProperty<ShellThumbnailImageSource> DetailThumbnail { get; }
+        public ShellThumbnailProperty DetailThumbnail { get; }
 
         public override string ToString()
         {
