@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using starshipxac.Shell.TestTools;
@@ -23,14 +24,14 @@ namespace starshipxac.Shell
                 var path = TestConfig.TestDirectory.FullName;
                 var actual = ShellFactory.FromFolderPath(path);
 
-                Assert.NotNull(actual);
-                Assert.Equal(path, actual.Path);
-                Assert.Equal(path, actual.ParsingName);
-                Assert.Equal(TestConfig.TestDirectoryName, actual.Name);
-                Assert.Equal(TestConfig.TestDirectory.Parent?.FullName, actual.Parent.ParsingName);
+                actual.IsNotNull();
+                actual.Path.Is(path);
+                actual.ParsingName.Is(path);
+                actual.Name.Is(TestConfig.TestDirectoryName);
+                actual.Parent.ParsingName.Is(TestConfig.TestDirectory.Parent?.FullName);
 
                 // Flags
-                Assert.True(actual.IsFileSystem);
+                actual.IsFileSystem.IsTrue();
             });
         }
 
@@ -42,8 +43,8 @@ namespace starshipxac.Shell
                 var path = TestConfig.TestDirectory.FullName;
                 var actual = ShellFactory.FromFolderPath(path);
 
-                Assert.NotNull(actual.Parent);
-                Assert.Equal(TestConfig.TestDirectory.Parent?.FullName, actual.Parent.ParsingName);
+                actual.Parent.IsNotNull();
+                actual.Parent.ParsingName.Is(TestConfig.TestDirectory.Parent?.FullName);
             });
         }
 
@@ -57,15 +58,15 @@ namespace starshipxac.Shell
                 var actual = folder.EnumerateObjects().ToList();
 
                 var folder1 = actual.Find(item => ShellTestConfig.CompareFileName(item.Name, "Pictures"));
-                Assert.NotNull(folder1);
+                folder1.IsNotNull();
 
                 var file1 = actual.Find(item => ShellTestConfig.CompareFileName(item.Name, "Test.txt"));
-                Assert.NotNull(file1);
-                Assert.IsType<ShellFile>(file1);
+                file1.IsNotNull();
+                file1.IsInstanceOf<ShellFile>();
 
                 var file2 = actual.Find(Item => ShellTestConfig.CompareFileName(Item.Name, "Test2.txt"));
-                Assert.NotNull(file2);
-                Assert.IsType<ShellFile>(file2);
+                file2.IsNotNull();
+                file2.IsInstanceOf<ShellFile>();
             });
         }
 
@@ -77,13 +78,12 @@ namespace starshipxac.Shell
                 var folder1 = ShellFactory.FromFolderPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
                 var folder2 = ShellFactory.FromFolderPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 
-                Assert.NotSame(folder1, folder2);
+                folder1.IsNotSameReferenceAs(folder2);
 
-                Assert.True(folder1.Equals(folder2));
-                Assert.True(folder1 == folder2);
-
-                Assert.True(folder1.Path == folder2.Path);
-                Assert.Equal(folder1.GetHashCode(), folder2.GetHashCode());
+                folder1.Equals(folder2).IsTrue();
+                (folder1 == folder2).IsTrue();
+                (folder1.Path == folder2.Path).IsTrue();
+                (folder1.GetHashCode() == folder2.GetHashCode()).IsTrue();
             });
         }
 
@@ -95,12 +95,12 @@ namespace starshipxac.Shell
                 var folder1 = ShellFactory.FromFolderPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
                 var folder2 = ShellFactory.FromFolderPath(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
 
-                Assert.NotSame(folder1, folder2);
+                folder1.IsNotSameReferenceAs(folder2);
 
-                Assert.False(folder1.Path == folder2.Path);
-                Assert.False(folder1.Equals(folder2));
-                Assert.False(folder1 == folder2);
-                Assert.NotEqual(folder1.GetHashCode(), folder2.GetHashCode());
+                folder1.Equals(folder2).IsFalse();
+                (folder1 == folder2).IsFalse();
+                (folder1.Path == folder2.Path).IsFalse();
+                (folder1.GetHashCode() == folder2.GetHashCode()).IsFalse();
             });
         }
 
@@ -112,11 +112,13 @@ namespace starshipxac.Shell
                 var folder1 = ShellFactory.FromFolderPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
                 var folder2 = ShellFactory.FromFolderPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 
-                Assert.NotSame(folder1, folder2);
-                Assert.True(folder1.Path == folder2.Path);
-                Assert.True(folder1.Equals(folder2));
-                Assert.False(folder1 != folder2);
-                Assert.Equal(folder1.GetHashCode(), folder2.GetHashCode());
+                folder1.IsNotSameReferenceAs(folder2);
+
+                folder1.Equals(folder2).IsTrue();
+                (folder1 == folder2).IsTrue();
+                (folder1 != folder2).IsFalse();
+                (folder1.Path == folder2.Path).IsTrue();
+                (folder1.GetHashCode() == folder2.GetHashCode()).IsTrue();
             });
         }
 
@@ -128,12 +130,41 @@ namespace starshipxac.Shell
                 var folder1 = ShellFactory.FromFolderPath(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
                 var folder2 = ShellFactory.FromFolderPath(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
 
-                Assert.NotSame(folder1, folder2);
-                Assert.False(folder1.Path == folder2.Path);
-                Assert.False(folder1.Equals(folder2));
-                Assert.True(folder1 != folder2);
-                Assert.NotEqual(folder1.GetHashCode(), folder2.GetHashCode());
+                folder1.IsNotSameReferenceAs(folder2);
+
+                folder1.Equals(folder2).IsFalse();
+                (folder1 == folder2).IsFalse();
+                (folder1 != folder2).IsTrue();
+                (folder1.Path == folder2.Path).IsFalse();
+                (folder1.GetHashCode() == folder2.GetHashCode()).IsFalse();
             });
+        }
+
+        [Fact]
+        public void EnumerateFoldersTest1()
+        {
+            var pictureFolder = ShellLibraries.PicturesLibrary;
+
+            var childFolders1 = pictureFolder.EnumerateObjects()
+                .OfType<ShellFolder>()
+                .ToList();
+            foreach (var child in childFolders1)
+            {
+                Debug.WriteLine(child);
+            }
+            Console.WriteLine();
+
+            var folder = childFolders1.FirstOrDefault(x => x.Name == "2ch");
+            folder.IsNotNull();
+
+            var parentFolder = folder.GetFolder();
+            var childFolders2 = parentFolder.EnumerateObjects()
+                .OfType<ShellFolder>()
+                .ToList();
+            foreach (var child in childFolders2)
+            {
+                Debug.WriteLine(child);
+            }
         }
     }
 }
