@@ -13,9 +13,10 @@ namespace ShellFileDialogSample.Views
         {
             if (value is IShellProperty)
             {
+                var property = (IShellProperty)value;
+
                 if (targetType == typeof(ImageSource))
                 {
-                    var property = (IShellProperty)value;
                     try
                     {
                         return ShellIconFactory.CreateBitmapSource(property.IconReference.LoadIcon());
