@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ChainingAssertion.xUnit, Version=1.7.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ChainingAssertion-xUnit.Bin.1.7.2.0\lib\net45\ChainingAssertion.xUnit.dll</HintPath>
+    <Reference Include="ChainingAssertion.xUnit, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ChainingAssertion-xUnit.Bin.1.7.3.0\lib\net45\ChainingAssertion.xUnit.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
