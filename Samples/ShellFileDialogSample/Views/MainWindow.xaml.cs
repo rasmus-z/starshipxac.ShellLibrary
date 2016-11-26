@@ -25,24 +25,40 @@ namespace ShellFileDialogSample.Views
 
         public dynamic DynamicDataContext => this.DataContext;
 
+        /// <summary>
+        /// ファイルを選択するダイアログを表示します。
+        /// </summary>
+        /// <returns></returns>
         public async Task<ShellFile> ShowSelectOpenFileDialogAsync()
         {
             var selector = new OpenFileSelector();
             return await selector.SelectSingleFileAsync();
         }
 
+        /// <summary>
+        /// 保存するファイルを選択するダイアログを表示します。
+        /// </summary>
+        /// <returns></returns>
         public async Task<ShellFile> ShowSelectSaveFileDialogAsync()
         {
             var selector = new SaveFileSelector();
             return await selector.SelectSingleFileAsync();
         }
 
+        /// <summary>
+        /// フォルダーを選択するダイアログ表示します。
+        /// </summary>
+        /// <returns></returns>
         public async Task<ShellFolder> ShowSelectFolderDialogAsync()
         {
             var selector = new FolderSelector();
             return await selector.SelectSingleFolderAsync();
         }
 
+        /// <summary>
+        /// カスタムファイル選択ダイアログを表示します。
+        /// </summary>
+        /// <returns></returns>
         public ShellFile ShowCustomFileOpenDialog()
         {
             using (var dialog = new FileOpenDialog())
