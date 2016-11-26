@@ -24,7 +24,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
-        <ListView ItemsSource="{Binding KnownFolders}">
+        <ListView ItemsSource="{Binding KnownFoldersSource}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Image">

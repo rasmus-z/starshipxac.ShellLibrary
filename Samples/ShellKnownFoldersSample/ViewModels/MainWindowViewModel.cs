@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Windows.Data;
 using Livet;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
@@ -14,6 +16,7 @@ namespace ShellKnownFoldersSample.ViewModels
 
             this.KnownFolders = new ReactiveCollection<ShellKnownFolderViewModel>()
                 .AddTo(this.CompositeDisposable);
+            this.KnownFoldersSource = CollectionViewSource.GetDefaultView(this.KnownFolders);
 
             #endregion
         }
@@ -29,6 +32,7 @@ namespace ShellKnownFoldersSample.ViewModels
             });
         }
 
+        public ICollectionView KnownFoldersSource { get; }
         public ReactiveCollection<ShellKnownFolderViewModel> KnownFolders { get; }
     }
 }
