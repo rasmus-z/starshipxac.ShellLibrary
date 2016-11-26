@@ -31,8 +31,10 @@ namespace ShellFileDialogSample.Views
         /// <returns></returns>
         public async Task<ShellFile> ShowSelectOpenFileDialogAsync()
         {
-            var selector = new OpenFileSelector();
-            return await selector.SelectSingleFileAsync();
+            using (var selector = new OpenFileSelector())
+            {
+                return await selector.SelectSingleFileAsync();
+            }
         }
 
         /// <summary>
@@ -41,8 +43,10 @@ namespace ShellFileDialogSample.Views
         /// <returns></returns>
         public async Task<ShellFile> ShowSelectSaveFileDialogAsync()
         {
-            var selector = new SaveFileSelector();
-            return await selector.SelectSingleFileAsync();
+            using (var selector = new SaveFileSelector())
+            {
+                return await selector.SelectSingleFileAsync();
+            }
         }
 
         /// <summary>
@@ -51,8 +55,10 @@ namespace ShellFileDialogSample.Views
         /// <returns></returns>
         public async Task<ShellFolder> ShowSelectFolderDialogAsync()
         {
-            var selector = new FolderSelector();
-            return await selector.SelectSingleFolderAsync();
+            using (var selector = new FolderSelector())
+            {
+                return await selector.SelectSingleFolderAsync();
+            }
         }
 
         /// <summary>
