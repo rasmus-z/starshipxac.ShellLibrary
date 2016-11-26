@@ -14,10 +14,10 @@ namespace ShellFileDialogSample.ViewModels
             #region Reactive Property
 
             this.Properties = new ReactiveCollection<IShellProperty>();
-            this.PropertiesView = CollectionViewSource.GetDefaultView(this.Properties) as ListCollectionView;
-            if (this.PropertiesView != null)
+            this.PropertiesSource = CollectionViewSource.GetDefaultView(this.Properties) as ListCollectionView;
+            if (this.PropertiesSource != null)
             {
-                this.PropertiesView.CustomSort = new ShellPropertyComparer();
+                this.PropertiesSource.CustomSort = new ShellPropertyComparer();
             }
 
             // 開くファイル選択
@@ -92,7 +92,7 @@ namespace ShellFileDialogSample.ViewModels
 
         public ReactiveCollection<IShellProperty> Properties { get; }
 
-        public ListCollectionView PropertiesView { get; }
+        public ListCollectionView PropertiesSource { get; }
 
         public ReactiveCommand SelectOpenFileCommand { get; }
 
