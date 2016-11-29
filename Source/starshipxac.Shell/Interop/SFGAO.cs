@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    ///     シェルアイテム属性を定義します。
+    ///     <c>ShellItem</c>属性を定義します。
     /// </summary>
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762589(v=vs.85).aspx

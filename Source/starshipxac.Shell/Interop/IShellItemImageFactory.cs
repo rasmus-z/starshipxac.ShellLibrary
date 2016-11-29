@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    ///     シェルアイテムイメージファクトリインターフェイスを定義します。
+    ///     <c>ShellItem</c>イメージファクトリインターフェイスを定義します。
     /// </summary>
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761084(v=vs.85).aspx

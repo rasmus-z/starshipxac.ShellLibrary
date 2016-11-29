@@ -33,7 +33,7 @@ namespace starshipxac.Shell.Resources
         protected override void ParseReferencePath(out string libraryPath, out int resourceId)
         {
             var path = new StringBuilder(this.ReferencePath, 256);
-            resourceId = ShellNativeMethods.PathParseIconLocation(path);
+            resourceId = ShellLightwaightNativeMethods.PathParseIconLocation(path);
             libraryPath = Environment.ExpandEnvironmentVariables(path.ToString());
         }
 

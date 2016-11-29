@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    ///     シェルフォルダーインターフェイスを定義します。
+    ///     <c>ShellFolder</c>インターフェイスを定義します。
     /// </summary>
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb775075(v=vs.85).aspx

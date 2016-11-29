@@ -55,7 +55,7 @@ namespace starshipxac.Shell.Resources
             Contract.Ensures(Contract.Result<string>() != null);
 
             var buffer = new StringBuilder(1024);
-            ShellNativeMethods.SHLoadIndirectString(this.ReferencePath, buffer, buffer.Capacity, IntPtr.Zero);
+            ShellLightwaightNativeMethods.SHLoadIndirectString(this.ReferencePath, buffer, buffer.Capacity, IntPtr.Zero);
 
             return buffer.ToString();
         }
