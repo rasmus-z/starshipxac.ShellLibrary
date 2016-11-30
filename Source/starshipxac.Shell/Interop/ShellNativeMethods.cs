@@ -15,7 +15,7 @@ namespace starshipxac.Shell.Interop
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class ShellNativeMethods
     {
-        #region Shell Api
+        #region Shell Functions
 
         internal static void FreeKnownFolderDefinitionFields(ref KNOWNFOLDER_DEFINITION pKFD)
         {
@@ -286,34 +286,6 @@ namespace starshipxac.Shell.Interop
             var cbFileInfo = (UInt32)Marshal.SizeOf(psfi);
             return SHGetFileInfo(pidl, dwFileAttributes, ref psfi, cbFileInfo, (UInt32)uFlags);
         }
-
-        #endregion Shell Api
-
-        #region IUnknown Functions
-
-        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode)]
-        internal static extern void IUnknown_AtomicRelease([In] [Out] ref IntPtr ppunk);
-
-        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode)]
-        internal static extern HRESULT IUnknown_GetWindow([In] [MarshalAs(UnmanagedType.IUnknown)] object punk,
-            [Out] out IntPtr phwnd);
-
-        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode)]
-        internal static extern HRESULT IUnknown_QueryService(
-            [In] [MarshalAs(UnmanagedType.IUnknown)] object punk,
-            [In] Guid guidService,
-            [In] Guid riid,
-            [Out] out IntPtr ppvOut);
-
-        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode)]
-        internal static extern void IUnknown_Set(
-            [In] [Out] [MarshalAs(UnmanagedType.IUnknown)] ref object ppunk,
-            [In] [MarshalAs(UnmanagedType.IUnknown)] object punk);
-
-        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        internal static extern HRESULT IUnknown_SetSite(
-            [In] [MarshalAs(UnmanagedType.IUnknown)] object punk,
-            [In] [MarshalAs(UnmanagedType.IUnknown)] object punkSite);
 
         #endregion
 

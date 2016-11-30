@@ -12,6 +12,24 @@ namespace starshipxac.Shell.Interop
     /// </remarks>
     internal static class ShellLightwaightNativeMethods
     {
+        #region String Functions
+
+        /// <summary>
+        ///     Extracts a specified text resource when given that resource in the form of an indirect string (a string that begins with the '@' symbol).
+        /// </summary>
+        /// <param name="pszSource"></param>
+        /// <param name="pszOutBuf"></param>
+        /// <param name="cchOutBuf"></param>
+        /// <param name="ppvReserved"></param>
+        /// <returns></returns>
+        /// <remarks>
+        ///     https://msdn.microsoft.com/en-us/library/windows/desktop/bb759919(v=vs.85).aspx
+        /// </remarks>
+        [DllImport("shlwapi.dll", BestFitMapping = false, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = false,
+            ThrowOnUnmappableChar = true)]
+        internal static extern int SHLoadIndirectString(string pszSource, StringBuilder pszOutBuf, int cchOutBuf,
+            IntPtr ppvReserved);
+
         /// <summary>
         ///     Compares two Unicode strings.
         ///     Digits in the strings are considered as numerical content rather than text.
@@ -50,6 +68,10 @@ namespace starshipxac.Shell.Interop
             [MarshalAs(UnmanagedType.LPWStr)] StringBuilder pszBuf,
             int cchBuf);
 
+        #endregion
+
+        #region Path Functions
+
         /// <summary>
         ///     Truncates a path to fit within a certain number of characters by replacing path components with ellipses.
         /// </summary>
@@ -81,20 +103,41 @@ namespace starshipxac.Shell.Interop
         internal static extern int PathParseIconLocation(
             [MarshalAs(UnmanagedType.LPWStr)] StringBuilder pszIconFile);
 
+        #endregion
+
+        #region Miscellaneous
+
         /// <summary>
-        ///     Extracts a specified text resource when given that resource in the form of an indirect string (a string that begins with the '@' symbol).
+        ///     Releases a Component Object Model (COM) pointer and sets it to <c>NULL</c>.
         /// </summary>
-        /// <param name="pszSource"></param>
-        /// <param name="pszOutBuf"></param>
-        /// <param name="cchOutBuf"></param>
-        /// <param name="ppvReserved"></param>
-        /// <returns></returns>
+        /// <param name="ppunk"></param>
         /// <remarks>
-        ///     https://msdn.microsoft.com/en-us/library/windows/desktop/bb759919(v=vs.85).aspx
+        ///     https://msdn.microsoft.com/en-us/library/windows/desktop/bb773811%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396
         /// </remarks>
-        [DllImport("shlwapi.dll", BestFitMapping = false, CharSet = CharSet.Unicode, ExactSpelling = true, SetLastError = false,
-            ThrowOnUnmappableChar = true)]
-        internal static extern int SHLoadIndirectString(string pszSource, StringBuilder pszOutBuf, int cchOutBuf,
-            IntPtr ppvReserved);
+        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode)]
+        internal static extern void IUnknown_AtomicRelease([In] [Out] ref IntPtr ppunk);
+
+        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode)]
+        internal static extern HRESULT IUnknown_GetWindow([In] [MarshalAs(UnmanagedType.IUnknown)] object punk,
+            [Out] out IntPtr phwnd);
+
+        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode)]
+        internal static extern HRESULT IUnknown_QueryService(
+            [In] [MarshalAs(UnmanagedType.IUnknown)] object punk,
+            [In] Guid guidService,
+            [In] Guid riid,
+            [Out] out IntPtr ppvOut);
+
+        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode)]
+        internal static extern void IUnknown_Set(
+            [In] [Out] [MarshalAs(UnmanagedType.IUnknown)] ref object ppunk,
+            [In] [MarshalAs(UnmanagedType.IUnknown)] object punk);
+
+        [DllImport("shlwapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        internal static extern HRESULT IUnknown_SetSite(
+            [In] [MarshalAs(UnmanagedType.IUnknown)] object punk,
+            [In] [MarshalAs(UnmanagedType.IUnknown)] object punkSite);
+
+        #endregion
     }
 }
