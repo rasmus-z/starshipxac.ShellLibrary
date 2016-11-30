@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    ///     <c>SIZE</c>構造体を定義します。
+    ///     The <c>SIZE</c> structure specifies the width and height of a rectangle.
     /// </summary>
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/dd145106(v=vs.85).aspx
@@ -29,12 +29,12 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     幅
+        ///     Specifies the rectangle's width. The units depend on which function uses this.
         /// </summary>
         public int Width { get; set; }
 
         /// <summary>
-        ///     高さ
+        ///     Specifies the rectangle's height. The units depend on which function uses this.
         /// </summary>
         public int Height { get; set; }
     }
