@@ -228,22 +228,24 @@ namespace starshipxac.Shell.Interop
             [MarshalAs(UnmanagedType.Interface)] out IShellFolder ppshf);
 
         /// <summary>
-        ///     Creates an IShellItem object.
+        ///     Create a Shell item, given a parent folder and a child item ID.
         /// </summary>
-        /// <param name="pidlParent"></param>
+        /// <param name="pidParent"></param>
         /// <param name="psfParent"></param>
         /// <param name="pidl"></param>
-        /// <param name="ppsi"></param>
+        /// <param name="riid"></param>
+        /// <param name="ppvItem"></param>
         /// <returns></returns>
         /// <remarks>
-        ///     https://msdn.microsoft.com/en-us/library/windows/desktop/bb762143(v=vs.85).aspx
+        ///     https://msdn.microsoft.com/en-us/library/windows/desktop/bb762137%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396
         /// </remarks>
         [DllImport("shell32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        internal static extern HRESULT SHCreateShellItem(
-            IntPtr pidlParent,
+        internal static extern HRESULT SHCreateItemWithParent(
+            IntPtr pidParent,
             [In] [MarshalAs(UnmanagedType.Interface)] IShellFolder psfParent,
-            IntPtr pidl,
-            [MarshalAs(UnmanagedType.Interface)] out IShellItem ppsi);
+            [In] IntPtr pidl,
+            [In] [MarshalAs(UnmanagedType.LPStruct)] Guid riid,
+            [Out] [MarshalAs(UnmanagedType.Interface, IidParameterIndex = 3)] out IShellItem ppvItem);
 
         /// <summary>
         ///     Converts an item identifier list to a file system path.

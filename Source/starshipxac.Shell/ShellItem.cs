@@ -142,10 +142,11 @@ namespace starshipxac.Shell
             Contract.Ensures(Contract.Result<ShellItem>() != null);
 
             IShellItem shellItem;
-            var code = ShellNativeMethods.SHCreateShellItem(
+            var code = ShellNativeMethods.SHCreateItemWithParent(
                 IntPtr.Zero,
                 parentFolderInterface,
                 idListPtr,
+                ShellIIDGuid.IShellItem2,
                 out shellItem);
             if (HRESULT.Failed(code))
             {
