@@ -163,6 +163,7 @@
     <Compile Include="Interop\ITEMIDLIST.cs" />
     <Compile Include="Interop\IThumbnailCache.cs" />
     <Compile Include="Interop\IThumbnailProvider.cs" />
+    <Compile Include="Interop\IThumbnailSettings.cs" />
     <Compile Include="Interop\KnownFolderTypes.cs" />
     <Compile Include="Interop\KnownFolder\IKnownFolder.cs" />
     <Compile Include="Interop\KnownFolder\IKnownFolderManager.cs" />
@@ -205,6 +206,7 @@
     <Compile Include="Interop\Win32Api.cs" />
     <Compile Include="Interop\WTS_ALPHATYPE.cs" />
     <Compile Include="Interop\WTS_CACHEFLAGS.cs" />
+    <Compile Include="Interop\WTS_CONTEXTFLAGS.cs" />
     <Compile Include="Interop\WTS_FLAGS.cs" />
     <Compile Include="Interop\WTS_THUMBNAILID.cs" />
     <Compile Include="IO\Interop\STGC.cs" />

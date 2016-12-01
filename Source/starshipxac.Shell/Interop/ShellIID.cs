@@ -420,5 +420,7 @@ namespace starshipxac.Shell.Interop
         internal const string IThumbnailCache = "F676C15D-596A-4ce2-8234-33996F445DB1";
 
         internal const string IThumbnailProvider = "e357fccd-a995-4576-b01f-234630154e96";
+
+        internal const string IThumbnailSettings = "F4376F00-BEF5-4d45-80F3-1E023BBF1209";
     }
 }
