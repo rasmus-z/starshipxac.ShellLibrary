@@ -50,7 +50,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
         private void Create()
         {
             this.ExplorerBrowserNative = new ExplorerBrowserNative();
-            ShellNativeMethods.IUnknown_SetSite(this.ExplorerBrowserNative, this);
+            ShellLightwaightNativeMethods.IUnknown_SetSite(this.ExplorerBrowserNative, this);
 
             this.ExplorerBrowserNative.Advise(
                 Marshal.GetComInterfaceForObject(this, typeof(IExplorerBrowserEvents)),
@@ -70,7 +70,7 @@ namespace starshipxac.Windows.Shell.Controls.Explorers
             {
                 this.viewEvents.DisconnectFromView();
                 this.ExplorerBrowserNative.Unadvise(this.eventCookie);
-                ShellNativeMethods.IUnknown_SetSite(this.ExplorerBrowserNative, null);
+                ShellLightwaightNativeMethods.IUnknown_SetSite(this.ExplorerBrowserNative, null);
 
                 this.ExplorerBrowserNative.Destroy();
 
