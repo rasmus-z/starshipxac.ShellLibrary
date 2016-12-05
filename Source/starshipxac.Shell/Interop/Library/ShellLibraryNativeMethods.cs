@@ -3,6 +3,12 @@ using System.Runtime.InteropServices;
 
 namespace starshipxac.Shell.Interop.Library
 {
+    /// <summary>
+    ///     ShellLibrary functions.
+    /// </summary>
+    /// <remarks>
+    ///     https://msdn.microsoft.com/en-us/library/windows/desktop/ff521699(v=vs.85).aspx
+    /// </remarks>
     internal static class ShellLibraryNativeMethods
     {
         /// <summary>

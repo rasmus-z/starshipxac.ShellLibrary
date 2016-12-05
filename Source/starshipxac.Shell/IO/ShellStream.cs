@@ -33,11 +33,11 @@ namespace starshipxac.Shell.IO
             {
                 if (!this.disposed)
                 {
-                    this.disposed = true;
-
                     // IStream解放
                     Flush();
                     Marshal.ReleaseComObject(this.StreamInterface);
+
+                    this.disposed = true;
                 }
             }
             finally

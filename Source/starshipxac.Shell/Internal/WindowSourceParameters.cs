@@ -3,6 +3,9 @@ using System.Diagnostics.Contracts;
 
 namespace starshipxac.Shell.Internal
 {
+    /// <summary>
+    ///     <see cref="WindowSource"/>を作成するためのパラメーターを保持します。
+    /// </summary>
     internal class WindowSourceParameters
     {
         public WindowSourceParameters(string windowName)

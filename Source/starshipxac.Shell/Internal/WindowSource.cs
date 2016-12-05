@@ -14,6 +14,8 @@ namespace starshipxac.Shell.Internal
     /// </summary>
     internal class WindowSource : IDisposable
     {
+        private bool disposed = false;
+
         // Delegateを保持しておくために必要。
         private static readonly WndProc StaticWndProc = WindowProc;
 
@@ -52,16 +54,16 @@ namespace starshipxac.Shell.Internal
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.IsDisposed)
+            if (!this.disposed)
             {
-                this.IsDisposed = true;
-
                 if (disposing)
                 {
                 }
 
                 RemoveHook(this.Handle);
                 DestroyWindow(this.Handle);
+
+                this.disposed = true;
             }
         }
 
@@ -75,8 +77,6 @@ namespace starshipxac.Shell.Internal
         ///     ウィンドウハンドルを取得します。
         /// </summary>
         public IntPtr Handle { get; }
-
-        public bool IsDisposed { get; private set; } = false;
 
         private static void AddHook(IntPtr hwnd, WindowSourceHook hook)
         {
