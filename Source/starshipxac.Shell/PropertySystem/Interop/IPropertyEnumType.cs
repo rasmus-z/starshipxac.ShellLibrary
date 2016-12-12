@@ -5,7 +5,8 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    ///     <c>IPropertyEnumType</c>インターフェイスを定義します。
+    ///     Exposes methods that extract data from enumeration information.
+    ///     <see cref="IPropertyEnumType"/> gives access to the <c>enum</c> and <c>enumRange</c> elements in the property schema in a programmatic way at run time.
     /// </summary>
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761495(v=vs.85).aspx

@@ -7,7 +7,7 @@ using starshipxac.Shell.Search.Interop;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    ///     <c>IPropertyDescription</c>インターフェイスを定義します。
+    ///     Exposes methods that enumerate and retrieve individual property description details.
     /// </summary>
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761561(v=vs.85).aspx

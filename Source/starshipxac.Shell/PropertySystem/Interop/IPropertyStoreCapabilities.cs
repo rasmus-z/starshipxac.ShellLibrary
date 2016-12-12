@@ -5,7 +5,7 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    ///     <c>IPropertyStoreCapabilities</c>インターフェイスを定義します。
+    ///     Exposes a method that determines whether a property can be edited in the UI by the user.
     /// </summary>
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761452(v=vs.85).aspx

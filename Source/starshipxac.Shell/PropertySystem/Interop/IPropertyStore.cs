@@ -6,7 +6,7 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    ///     <c>IPropertyStore</c>インターフェイスを定義します。
+    ///     Exposes methods for enumerating, getting, and setting property values.
     /// </summary>
     /// <remarks>
     ///     <c>http://msdn.microsoft.com/en-us/library/windows/desktop/bb761474(v=vs.85).aspx</c>

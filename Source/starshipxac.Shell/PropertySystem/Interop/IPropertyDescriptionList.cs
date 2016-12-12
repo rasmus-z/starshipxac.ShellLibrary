@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    ///     <c>IPropertyDescriptionList</c>インターフェイスを定義します。
+    ///     Exposes methods that extract information from a collection of property descriptions presented as a list.
     /// </summary>
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761511(v=vs.85).aspx

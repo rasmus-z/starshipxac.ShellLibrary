@@ -6,7 +6,7 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    ///     <c>IPropertyStoreCache</c>インターフェイスを定義します。
+    ///     Exposes methods that allow a handler to manage various states for each property.
     /// </summary>
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761466(v=vs.85).aspx

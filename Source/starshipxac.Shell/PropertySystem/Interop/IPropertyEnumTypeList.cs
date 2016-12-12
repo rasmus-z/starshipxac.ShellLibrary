@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    ///     <c>IPropertyEnumTypeList</c>インターフェイスを定義します。
+    ///     Exposes methods that enumerate the possible values for a property.
     /// </summary>
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb761483(v=vs.85).aspx
