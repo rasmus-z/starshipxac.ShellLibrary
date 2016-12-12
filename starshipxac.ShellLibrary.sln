@@ -38,6 +38,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiScreenSample", "Sample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellWatcherSample", "Samples\ShellWatcherSample\ShellWatcherSample.csproj", "{E6BF24D2-1BED-4800-914F-C18C54399049}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{1F79060F-17C1-46D6-A2E9-5C89253E8C87}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
