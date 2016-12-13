@@ -272,16 +272,44 @@ namespace starshipxac.Shell
         /// <returns>取得に成功した場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
         internal bool TryGetShellFolder(out IShellFolder shellFolderInterface)
         {
-            try
+            object shellFolder;
+
+            var handler = ShellBHID.BHID_SFObject;
+            var hr = this.ShellItemInterface.BindToHandler(IntPtr.Zero, ref handler, ref ShellIIDGuid.IShellFolder, out shellFolder);
+            if (HRESULT.Failed(hr))
             {
-                shellFolderInterface = GetShellFolder();
+                if (!String.Equals(this.ParsingName, Environment.GetFolderPath(Environment.SpecialFolder.Desktop), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    shellFolderInterface = null;
+                    return false;
+                }
             }
-            catch (Exception)
-            {
-                shellFolderInterface = null;
-                return false;
-            }
+
+            shellFolderInterface = shellFolder as IShellFolder;
             return true;
+        }
+
+        internal HRESULT GetShellFolderInterface(out IShellFolder shellFolderInterface)
+        {
+            object shellFolder;
+
+            var handler = ShellBHID.BHID_SFObject;
+            var result = this.ShellItemInterface.BindToHandler(
+                IntPtr.Zero,
+                ref handler,
+                ref ShellIIDGuid.IShellFolder,
+                out shellFolder);
+            if (HRESULT.Failed(result))
+            {
+                if (!String.Equals(this.ParsingName, Environment.GetFolderPath(Environment.SpecialFolder.Desktop), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    shellFolderInterface = null;
+                    return result;
+                }
+            }
+
+            shellFolderInterface = shellFolder as IShellFolder;
+            return new HRESULT(0);
         }
 
         /// <summary>
