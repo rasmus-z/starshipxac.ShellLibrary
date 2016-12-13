@@ -224,17 +224,17 @@ namespace starshipxac.Shell
         /// <summary>
         ///     <see cref="ShellItem" />がリンクかどうかを判定する値を取得します。
         /// </summary>
-        public bool IsLink { get; private set; }
+        public bool IsLink { get; }
 
         /// <summary>
         ///     <see cref="ShellItem" />がファイルシステム上のアイテムかどうかを判定する値を取得します。
         /// </summary>
-        public bool IsFileSystem { get; private set; }
+        public bool IsFileSystem { get; }
 
         /// <summary>
         ///     <see cref="ShellItem" />がフォルダーかどうかを判定する値を取得します。
         /// </summary>
-        public bool IsFolder { get; private set; }
+        public bool IsFolder { get; }
 
         /// <summary>
         ///     <see cref="ShellItem" />がストリームかどうかを判定する値を取得します。
