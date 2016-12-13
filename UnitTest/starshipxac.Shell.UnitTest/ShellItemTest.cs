@@ -28,5 +28,14 @@ namespace starshipxac.Shell
                 Console.WriteLine("folder.Type = {0}", folder.GetType());
             });
         }
+
+        [Fact]
+        public void HashCodeTest()
+        {
+            var item1 = ShellItem.FromParsingName(@"C:\Windows");
+            var item2 = ShellItem.FromParsingName(@"C:\Windows");
+
+            (item1.GetHashCode() == item2.GetHashCode()).IsTrue();
+        }
     }
 }

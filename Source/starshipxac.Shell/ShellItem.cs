@@ -241,27 +241,6 @@ namespace starshipxac.Shell
         /// </summary>
         public bool IsStream => (GetAttributes(SFGAO.SFGAO_STREAM) & SFGAO.SFGAO_STREAM) != 0;
 
-        ///// <summary>
-        ///// <see cref="ShellItem"/>属性を初期化します。
-        ///// </summary>
-        //private void InitializeAttributes()
-        //{
-        //    try
-        //    {
-        //        var attributes = GetAttributes(SFGAO.SFGAO_LINK | SFGAO.SFGAO_FILESYSTEM | SFGAO.SFGAO_FOLDER);
-
-        //        this.IsLink = (attributes & SFGAO.SFGAO_LINK) != 0;
-        //        this.IsFileSystem = (attributes & SFGAO.SFGAO_FILESYSTEM) != 0;
-        //        this.IsFolder = (attributes & SFGAO.SFGAO_FOLDER) != 0;
-        //    }
-        //    catch
-        //    {
-        //        this.IsLink = false;
-        //        this.IsFileSystem = false;
-        //        this.IsFolder = false;
-        //    }
-        //}
-
         /// <summary>
         ///     <see cref="IShellFolder" />を取得します。
         /// </summary>
@@ -578,7 +557,7 @@ namespace starshipxac.Shell
         /// <returns>32ビット符号付き整数ハッシュコード。</returns>
         public override int GetHashCode()
         {
-            return this.ParsingName.GetHashCode();
+            return this.ShellItemInterface.GetHashCode();
         }
 
         /// <summary>
@@ -587,7 +566,7 @@ namespace starshipxac.Shell
         /// <returns>このインスタンスの文字列表現。</returns>
         public override string ToString()
         {
-            return this.ParsingName;
+            return "ShellItem";
         }
     }
 }
