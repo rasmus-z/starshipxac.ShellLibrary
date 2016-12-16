@@ -307,22 +307,22 @@ namespace starshipxac.Shell
             });
         }
 
-        [Fact]
-        public async Task PlaylistsTest()
-        {
-            await STATask.Run(() =>
-            {
-                var actual = ShellKnownFolders.Playlists;
+        //[Fact]
+        //public async Task PlaylistsTest()
+        //{
+        //    await STATask.Run(() =>
+        //    {
+        //        var actual = ShellKnownFolders.Playlists;
 
-                Assert.NotNull(actual);
-                Assert.Equal("Playlists", actual.CanonicalName);
-                Assert.Equal(
-                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), @"Playlists"),
-                    actual.ParsingName);
+        //        Assert.NotNull(actual);
+        //        Assert.Equal("Playlists", actual.CanonicalName);
+        //        Assert.Equal(
+        //            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), @"Playlists"),
+        //            actual.ParsingName);
 
-                Dump(actual);
-            });
-        }
+        //        Dump(actual);
+        //    });
+        //}
 
         [Fact]
         public async Task PrintersTest()
@@ -589,23 +589,23 @@ namespace starshipxac.Shell
             });
         }
 
-        [Fact]
-        public async Task SearchHistoryTest()
-        {
-            await STATask.Run(() =>
-            {
-                var actual = ShellKnownFolders.SearchHistory;
+        //[Fact]
+        //public async Task SearchHistoryTest()
+        //{
+        //    await STATask.Run(() =>
+        //    {
+        //        var actual = ShellKnownFolders.SearchHistory;
 
-                Assert.NotNull(actual);
-                Assert.Equal("SearchHistoryFolder", actual.CanonicalName);
-                Assert.Equal(
-                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                        @"Microsoft\Windows\ConnectedSearch\History"),
-                    actual.ParsingName);
+        //        Assert.NotNull(actual);
+        //        Assert.Equal("SearchHistoryFolder", actual.CanonicalName);
+        //        Assert.Equal(
+        //            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+        //                @"Microsoft\Windows\ConnectedSearch\History"),
+        //            actual.ParsingName);
 
-                Dump(actual);
-            });
-        }
+        //        Dump(actual);
+        //    });
+        //}
 
         [Fact]
         public async Task SearchHomeTest()
@@ -741,20 +741,20 @@ namespace starshipxac.Shell
             });
         }
 
-        [Fact]
-        public async Task ThisPCDesktopFolderTest()
-        {
-            await STATask.Run(() =>
-            {
-                var actual = ShellKnownFolderFactory.FromCanonicalName("ThisPCDesktopFolder");
+        //[Fact]
+        //public async Task ThisPCDesktopFolderTest()
+        //{
+        //    await STATask.Run(() =>
+        //    {
+        //        var actual = ShellKnownFolderFactory.FromCanonicalName("ThisPCDesktopFolder");
 
-                Assert.NotNull(actual);
-                Assert.Equal("ThisPCDesktopFolder", actual.CanonicalName);
-                Assert.Equal(KnownFolderCategories.Virtual, actual.Category);
+        //        Assert.NotNull(actual);
+        //        Assert.Equal("ThisPCDesktopFolder", actual.CanonicalName);
+        //        Assert.Equal(KnownFolderCategories.Virtual, actual.Category);
 
-                Dump(actual);
-            });
-        }
+        //        Dump(actual);
+        //    });
+        //}
 
         private static void Dump(ShellKnownFolder folder)
         {

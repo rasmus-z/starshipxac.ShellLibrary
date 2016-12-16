@@ -165,37 +165,42 @@ namespace starshipxac.Shell
         /// </summary>
         internal bool IsReadOnly => false;
 
-        public void Close()
-        {
-            this.Dispose();
-        }
-
         public override IEnumerable<ShellFolder> EnumerateFolders()
         {
             Contract.Ensures(Contract.Result<IEnumerable<ShellFolder>>() != null);
 
             var result = new List<ShellFolder>();
-            IShellItemArray itemArray;
 
-            var shellItemArrayGuid = new Guid(ShellIID.IShellItemArray);
-            var hr = this.ShellLibraryInterface.GetFolders(LIBRARYFOLDERFILTER.LFF_ALLITEMS,
-                ref shellItemArrayGuid, out itemArray);
-            if (HRESULT.Failed(hr))
+            var itemArray = default(IShellItemArray);
+            try
             {
-                return result;
+                var shellItemArrayGuid = new Guid(ShellIID.IShellItemArray);
+                var hr = this.ShellLibraryInterface.GetFolders(
+                    LIBRARYFOLDERFILTER.LFF_ALLITEMS,
+                    ref shellItemArrayGuid,
+                    out itemArray);
+                if (HRESULT.Failed(hr))
+                {
+                    return result;
+                }
+
+                uint count;
+                itemArray.GetCount(out count);
+
+                for (uint index = 0; index < count; ++index)
+                {
+                    IShellItem shellItem;
+                    itemArray.GetItemAt(index, out shellItem);
+                    result.Add(new ShellFolder(new ShellItem((IShellItem2)shellItem)));
+                }
             }
-
-            uint count;
-            itemArray.GetCount(out count);
-
-            for (uint index = 0; index < count; ++index)
+            finally
             {
-                IShellItem shellItem;
-                itemArray.GetItemAt(index, out shellItem);
-                result.Add(new ShellFolder(new ShellItem((IShellItem2)shellItem)));
+                if (itemArray != null)
+                {
+                    Marshal.ReleaseComObject(itemArray);
+                }
             }
-
-            Marshal.ReleaseComObject(itemArray);
 
             return result;
         }

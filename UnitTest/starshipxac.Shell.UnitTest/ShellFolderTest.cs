@@ -71,6 +71,17 @@ namespace starshipxac.Shell
         }
 
         [Fact]
+        public async Task GetFolderTest()
+        {
+            await STATask.Run(() =>
+            {
+                var desktop = ShellKnownFolders.Desktop;
+                var actual = desktop.GetFolder();
+                actual.IsNull();
+            });
+        }
+
+        [Fact]
         public async Task EqualsTest1()
         {
             await STATask.Run(() =>

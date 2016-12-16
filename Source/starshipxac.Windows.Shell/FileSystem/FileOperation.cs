@@ -153,7 +153,7 @@ namespace starshipxac.Windows.Shell.FileSystem
                 this.fileOperation.CopyItem(
                     sourceItem.ShellItemInterface,
                     destinationItem.ShellItemInterface,
-                    sourceItem.GetName(),
+                    Path.GetFileName(sourceItem.GetParsingName()),
                     null);
             }
         }
@@ -258,7 +258,7 @@ namespace starshipxac.Windows.Shell.FileSystem
                 this.fileOperation.MoveItem(
                     sourceItem.ShellItemInterface,
                     destinationItem.ShellItemInterface,
-                    sourceItem.GetName(),
+                    Path.GetFileName(sourceItem.GetParsingName()),
                     null);
             }
         }

@@ -116,6 +116,24 @@ namespace starshipxac.Shell.Interop
             IntPtr ppidlLast = default(IntPtr));
 
         /// <summary>
+        ///     Creates an IShellItem object.
+        /// </summary>
+        /// <param name="pidlParent"></param>
+        /// <param name="psfParent"></param>
+        /// <param name="pidl"></param>
+        /// <param name="ppsi"></param>
+        /// <returns></returns>
+        /// <remarks>
+        ///     https://msdn.microsoft.com/en-us/library/windows/desktop/bb762143(v=vs.85).aspx
+        /// </remarks>
+        [DllImport("shell32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        internal static extern HRESULT SHCreateShellItem(
+            IntPtr pidlParent,
+            [In] [MarshalAs(UnmanagedType.Interface)] IShellFolder psfParent,
+            IntPtr pidl,
+            [MarshalAs(UnmanagedType.Interface)] out IShellItem ppsi);
+
+        /// <summary>
         ///     Creates a Shell item array object from a data object. 
         /// </summary>
         /// <param name="pdo"></param>

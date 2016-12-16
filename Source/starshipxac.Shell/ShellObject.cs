@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
+using System.IO;
 using System.Runtime.CompilerServices;
 using starshipxac.Shell.Media.Imaging;
 using starshipxac.Shell.PropertySystem;
@@ -14,6 +15,8 @@ namespace starshipxac.Shell
     public abstract class ShellObject : INotifyPropertyChanged, IDisposable, IEquatable<ShellObject>
     {
         private bool disposed = false;
+
+        private string parsingName;
 
         private ShellProperties properties;
         private ShellProperty<string> contentTypeProperty;
@@ -94,7 +97,11 @@ namespace starshipxac.Shell
             get
             {
                 Contract.Ensures(Contract.Result<string>() != null);
-                return this.ShellItem.ParsingName;
+                if (this.parsingName == null)
+                {
+                    this.parsingName = this.ShellItem.GetParsingName();
+                }
+                return this.parsingName;
             }
         }
 
@@ -106,7 +113,7 @@ namespace starshipxac.Shell
             get
             {
                 Contract.Ensures(Contract.Result<string>() != null);
-                return this.ShellItem.GetName();
+                return Path.GetFileName(this.ParsingName);
             }
         }
 
@@ -349,7 +356,8 @@ namespace starshipxac.Shell
             {
                 return true;
             }
-            return this.ShellItem.Equals(other.ShellItem);
+            //return this.ShellItem.Equals(other.ShellItem);
+            return String.Compare(this.ParsingName, other.ParsingName, StringComparison.OrdinalIgnoreCase) == 0;
         }
 
         /// <summary>
@@ -374,7 +382,8 @@ namespace starshipxac.Shell
             {
                 return false;
             }
-            return Equals((ShellObject)obj);
+            //return Equals((ShellObject)obj);
+            return String.Compare(this.ParsingName, ((ShellObject)obj).ParsingName, StringComparison.OrdinalIgnoreCase) == 0;
         }
 
         /// <summary>
@@ -383,7 +392,8 @@ namespace starshipxac.Shell
         /// <returns>32ビット符号付き整数ハッシュコード。</returns>
         public override int GetHashCode()
         {
-            return this.ShellItem.GetHashCode();
+            //return this.ShellItem.GetHashCode();
+            return this.ParsingName.GetHashCode();
         }
 
         /// <summary>

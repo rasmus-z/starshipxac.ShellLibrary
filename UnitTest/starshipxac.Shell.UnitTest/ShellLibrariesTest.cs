@@ -2,17 +2,21 @@
 using System.Threading.Tasks;
 using starshipxac.Shell.TestTools;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace starshipxac.Shell
 {
     public class ShellLibrariesTest : IClassFixture<ShellTestConfig>
     {
-        public ShellLibrariesTest(ShellTestConfig testConfig)
+        public ShellLibrariesTest(ShellTestConfig testConfig, ITestOutputHelper outputHelper)
         {
             this.TestConfig = testConfig;
+            this.Output = outputHelper;
         }
 
-        public ShellTestConfig TestConfig { get; private set; }
+        public ShellTestConfig TestConfig { get; }
+
+        public ITestOutputHelper Output { get; }
 
         [Fact]
         public async Task GetAllLibrariesTest()
@@ -127,14 +131,21 @@ namespace starshipxac.Shell
             });
         }
 
-        private static void Dump(ShellLibrary shellLibrary)
+        private void Dump(ShellLibrary shellLibrary)
         {
-            Console.WriteLine("Name={0}", shellLibrary.Name);
-            Console.WriteLine("DisplayName={0}", shellLibrary.DisplayName);
-            Console.WriteLine("ParsingName={0}", shellLibrary.ParsingName);
-            Console.WriteLine("LibraryFolder={0}", shellLibrary.LibraryType);
-            Console.WriteLine("LibraryType={0}", shellLibrary.LibraryType);
-            Console.WriteLine();
+            try
+            {
+                this.Output.WriteLine("Name={0}", shellLibrary.Name);
+                this.Output.WriteLine("DisplayName={0}", shellLibrary.DisplayName);
+                this.Output.WriteLine("ParsingName={0}", shellLibrary.ParsingName);
+                this.Output.WriteLine("LibraryFolders={0}", String.Join(", ", shellLibrary.EnumerateFolders()));
+                //this.Output.WriteLine("LibraryType={0}", shellLibrary.LibraryType);
+            }
+            catch (Exception ex)
+            {
+                this.Output.WriteLine(ex.Message);
+            }
+            this.Output.WriteLine("");
         }
     }
 }

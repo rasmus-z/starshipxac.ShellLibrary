@@ -36,7 +36,7 @@ namespace starshipxac.Shell
             Contract.Requires<ArgumentException>(!String.IsNullOrEmpty(path));
             Contract.Ensures(Contract.Result<ShellFile>() != null);
 
-            var absPath = ShellItem.GetAbsolutePath(path);
+            var absPath = GetAbsolutePath(path);
             if (!File.Exists(absPath))
             {
                 throw new FileNotFoundException(String.Format(CultureInfo.CurrentUICulture,
@@ -56,7 +56,7 @@ namespace starshipxac.Shell
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(path));
             Contract.Ensures(Contract.Result<ShellFolder>() != null);
 
-            var absPath = ShellItem.GetAbsolutePath(path);
+            var absPath = GetAbsolutePath(path);
             if (!Directory.Exists(absPath))
             {
                 throw new DirectoryNotFoundException(String.Format(CultureInfo.InvariantCulture,
@@ -142,7 +142,7 @@ namespace starshipxac.Shell
             Contract.Requires<ArgumentNullException>(shellItem != null);
 
             var shellLibrary = ShellLibraryFactory.FromShellItem(shellItem, true);
-            if (SameItemType(shellItem.ItemType, ShellLibraryFactory.FileExtension) && (shellLibrary != null))
+            if (SameItemType(shellItem.GetItemType(), ShellLibraryFactory.FileExtension) && (shellLibrary != null))
             {
                 // ライブラリ
                 return shellLibrary;
@@ -198,7 +198,7 @@ namespace starshipxac.Shell
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
 
-            return SameItemType(shellItem.ItemType, extension);
+            return SameItemType(shellItem.GetItemType(), extension);
         }
 
         /// <summary>
@@ -217,6 +217,23 @@ namespace starshipxac.Shell
             }
 
             return ShellKnownFolderFactory.FromPIDL(pidl);
+        }
+
+        /// <summary>
+        ///     指定したパスの絶対パスを取得します。
+        /// </summary>
+        /// <param name="path">絶対パスを取得するパス。</param>
+        /// <returns>絶対パス。</returns>
+        /// <exception cref="ArgumentException"><paramref name="path" />が<c>null</c>または空文字列です。</exception>
+        private static string GetAbsolutePath(string path)
+        {
+            Contract.Requires(!String.IsNullOrWhiteSpace(path));
+
+            if (Uri.IsWellFormedUriString(path, UriKind.Absolute))
+            {
+                return path;
+            }
+            return Path.GetFullPath(path);
         }
     }
 }

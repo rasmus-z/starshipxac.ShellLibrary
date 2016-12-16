@@ -12,12 +12,9 @@ namespace starshipxac.Shell
     /// <summary>
     ///     <c>ShellItem</c>を定義します。
     /// </summary>
-    public sealed class ShellItem : IEquatable<ShellItem>, IDisposable
+    public sealed class ShellItem : IDisposable
     {
         private bool disposed = false;
-        private PIDL pidl;
-        private string parsingName;
-        private string itemType;
 
         /// <summary>
         ///     <see cref="IShellItem" />を指定して、
@@ -40,6 +37,7 @@ namespace starshipxac.Shell
             Contract.Requires<ArgumentNullException>(shellItem2 != null);
 
             this.ShellItemInterface = shellItem2;
+            this.PIDL = PIDL.FromShellItem(this.ShellItemInterface);
 
             try
             {
@@ -95,9 +93,11 @@ namespace starshipxac.Shell
             Contract.Ensures(Contract.Result<ShellItem>() != null);
 
             IShellItem2 shellItem2;
-
-            var code = ShellNativeMethods.SHCreateItemFromParsingName(parsingName, IntPtr.Zero,
-                ref ShellIIDGuid.IShellItem2, out shellItem2);
+            var code = ShellNativeMethods.SHCreateItemFromParsingName(
+                parsingName,
+                IntPtr.Zero,
+                ref ShellIIDGuid.IShellItem2,
+                out shellItem2);
             if (shellItem2 == null || HRESULT.Failed(code))
             {
                 throw new ShellException(ErrorMessages.ShellFactoryUnableToCreateItem, Marshal.GetExceptionForHR(code));
@@ -118,7 +118,10 @@ namespace starshipxac.Shell
             Contract.Ensures(Contract.Result<ShellItem>() != null);
 
             IShellItem2 shellItem;
-            var code = ShellNativeMethods.SHCreateItemFromIDList(pidl, ref ShellIIDGuid.IShellItem2, out shellItem);
+            var code = ShellNativeMethods.SHCreateItemFromIDList(
+                pidl,
+                ref ShellIIDGuid.IShellItem2,
+                out shellItem);
             if (HRESULT.Failed(code))
             {
                 throw new ShellException(ErrorMessages.ShellFactoryUnableToCreateItem, Marshal.GetExceptionForHR(code));
@@ -173,53 +176,7 @@ namespace starshipxac.Shell
         /// <summary>
         ///     <c>PIDL</c>を取得します。
         /// </summary>
-        internal PIDL PIDL
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<PIDL>() != PIDL.Null);
-                if (this.pidl == PIDL.Null)
-                {
-                    this.pidl = PIDL.FromShellItem(this.ShellItemInterface);
-                }
-                return this.pidl;
-            }
-        }
-
-        /// <summary>
-        ///     解析名を取得します。
-        /// </summary>
-        public string ParsingName
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<string>() != null);
-                if (this.parsingName == null)
-                {
-                    this.parsingName = GetParsingName(this.ShellItemInterface);
-                }
-                return this.parsingName;
-            }
-        }
-
-        /// <summary>
-        ///     アイテム種別を取得します。
-        /// </summary>
-        /// <remarks>
-        ///     アイテムの拡張子を取得します。
-        /// </remarks>
-        public string ItemType
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<string>() != null);
-                if (this.itemType == null)
-                {
-                    this.itemType = GetItemType(this.ShellItemInterface);
-                }
-                return this.itemType;
-            }
-        }
+        internal PIDL PIDL { get; }
 
         /// <summary>
         ///     <see cref="ShellItem" />がリンクかどうかを判定する値を取得します。
@@ -242,6 +199,24 @@ namespace starshipxac.Shell
         public bool IsStream => (GetAttributes(SFGAO.SFGAO_STREAM) & SFGAO.SFGAO_STREAM) != 0;
 
         /// <summary>
+        ///     解析名を取得します。
+        /// </summary>
+        /// <returns></returns>
+        public string GetParsingName()
+        {
+            return GetParsingName(this.ShellItemInterface);
+        }
+
+        /// <summary>
+        /// アイテム種別を取得します。
+        /// </summary>
+        /// <returns></returns>
+        public string GetItemType()
+        {
+            return GetItemType(this.ShellItemInterface);
+        }
+
+        /// <summary>
         ///     <see cref="IShellFolder" />を取得します。
         /// </summary>
         /// <returns>取得した<see cref="IShellFolder" />。</returns>
@@ -253,13 +228,18 @@ namespace starshipxac.Shell
             object result;
 
             var handler = ShellBHID.BHID_SFObject;
-            var hr = this.ShellItemInterface.BindToHandler(IntPtr.Zero, ref handler, ref ShellIIDGuid.IShellFolder, out result);
+            var hr = this.ShellItemInterface.BindToHandler(
+                IntPtr.Zero,
+                ref handler,
+                ref ShellIIDGuid.IShellFolder,
+                out result);
             if (HRESULT.Failed(hr))
             {
-                if (!String.Equals(this.ParsingName, Environment.GetFolderPath(Environment.SpecialFolder.Desktop), StringComparison.InvariantCultureIgnoreCase))
-                {
-                    throw ShellException.FromHRESULT(hr);
-                }
+                //if (!String.Equals(this.ParsingName, Environment.GetFolderPath(Environment.SpecialFolder.Desktop), StringComparison.InvariantCultureIgnoreCase))
+                //{
+                //    throw ShellException.FromHRESULT(hr);
+                //}
+                throw ShellException.FromHRESULT(hr);
             }
 
             return result as IShellFolder;
@@ -277,23 +257,17 @@ namespace starshipxac.Shell
             object result;
 
             var handler = ShellBHID.BHID_Stream;
-            var hr = this.ShellItemInterface.BindToHandler(IntPtr.Zero, ref handler, ref ShellIIDGuid.IStream, out result);
+            var hr = this.ShellItemInterface.BindToHandler(
+                IntPtr.Zero,
+                ref handler,
+                ref ShellIIDGuid.IStream,
+                out result);
             if (HRESULT.Failed(hr))
             {
                 throw ShellException.FromHRESULT(hr);
             }
 
             return (IStream)result;
-        }
-
-        /// <summary>
-        ///     アイテム名を取得します。
-        /// </summary>
-        /// <returns>取得したアイテム名。</returns>
-        public string GetName()
-        {
-            Contract.Ensures(Contract.Result<string>() != null);
-            return Path.GetFileName(this.ParsingName);
         }
 
         /// <summary>
@@ -355,7 +329,7 @@ namespace starshipxac.Shell
         /// <exception cref="ShellException">解析名の取得に失敗しました。</exception>
         private static string GetParsingName(IShellItem2 shellItem)
         {
-            Contract.Requires<ArgumentNullException>(shellItem != null);
+            Contract.Requires(shellItem != null);
             Contract.Ensures(Contract.Result<string>() != null);
 
             string result;
@@ -372,9 +346,9 @@ namespace starshipxac.Shell
         /// </summary>
         /// <param name="shellItem">アイテム種別を取得する<see cref="IShellItem2" />。</param>
         /// <returns>アイテム種別。</returns>
-        internal static string GetItemType(IShellItem2 shellItem)
+        private static string GetItemType(IShellItem2 shellItem)
         {
-            Contract.Requires<ArgumentNullException>(shellItem != null);
+            Contract.Requires(shellItem != null);
             Contract.Ensures(Contract.Result<string>() != null);
 
             var itemTypeKey = new PROPERTYKEY(new Guid("28636AA6-953D-11D2-B5D6-00C04FD918D0"), 11);
@@ -396,23 +370,6 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     指定したパスの絶対パスを取得します。
-        /// </summary>
-        /// <param name="path">絶対パスを取得するパス。</param>
-        /// <returns>絶対パス。</returns>
-        /// <exception cref="ArgumentException"><paramref name="path" />が<c>null</c>または空文字列です。</exception>
-        internal static string GetAbsolutePath(string path)
-        {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(path));
-
-            if (Uri.IsWellFormedUriString(path, UriKind.Absolute))
-            {
-                return path;
-            }
-            return Path.GetFullPath(path);
-        }
-
-        /// <summary>
         ///     属性を取得します。
         /// </summary>
         /// <param name="mask">取得する属性。</param>
@@ -425,7 +382,7 @@ namespace starshipxac.Shell
         ///         に指定してください。
         ///     </pre>
         /// </remarks>
-        internal UInt32 GetAttributes(UInt32 mask = 0xFFFFFFFF)
+        private UInt32 GetAttributes(UInt32 mask = 0xFFFFFFFF)
         {
             UInt32 result;
             this.ShellItemInterface.GetAttributes(mask, out result);
@@ -448,106 +405,6 @@ namespace starshipxac.Shell
                 this.ShellItemInterface.GetProperty(ref propertyKey, propVar);
                 return (T)propVar.Value;
             }
-        }
-
-        /// <summary>
-        ///     指定したオブジェクトの値が、現在の<see cref="ShellItem" />と等しいかどうかを判定します。
-        /// </summary>
-        /// <param name="obj">現在の<see cref="ShellItem" />と比較するオブジェクト。</param>
-        /// <returns>
-        ///     <paramref name="obj" />と現在の<see cref="ShellItem" />が等しい場合は<c>true</c>。
-        ///     それ以外の場合は<c>false</c>。
-        /// </returns>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-            if (obj.GetType() != this.GetType())
-            {
-                return false;
-            }
-            return Equals((ShellItem)obj);
-        }
-
-        /// <summary>
-        ///     指定した<see cref="ShellItem" />の値が、現在の<see cref="ShellItem" />と等しいかどうかを判定します。
-        /// </summary>
-        /// <param name="other">現在の<see cref="ShellItem" />と比較する<see cref="ShellItem" />。</param>
-        /// <returns>
-        ///     <paramref name="other" />と現在の<see cref="ShellItem" />が等しい場合は<c>true</c>。
-        ///     それ以外の場合は<c>false</c>。
-        /// </returns>
-        public bool Equals(ShellItem other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            int order;
-            var hr = this.ShellItemInterface.Compare(other.ShellItemInterface, SICHINTF.SICHINT_TEST_FILESYSPATH_IF_NOT_EQUAL,
-                out order);
-            if (hr == COMErrorCodes.S_FALSE)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        /// <summary>
-        ///     2つの<see cref="ShellItem" />を比較して、等しいかどうかを判定します。
-        /// </summary>
-        /// <param name="left">1つめの<see cref="ShellItem" />。</param>
-        /// <param name="right">2つめの<see cref="ShellItem" />。</param>
-        /// <returns>
-        ///     2つの<see cref="ShellItem" />が等しい場合は<c>true</c>。
-        ///     それ以外の場合は<c>false</c>。
-        /// </returns>
-        public static bool operator ==(ShellItem left, ShellItem right)
-        {
-            return Equals(left, right);
-        }
-
-        /// <summary>
-        ///     2つの<see cref="ShellItem" />を比較して、等しくないかどうかを判定します。
-        /// </summary>
-        /// <param name="left">1つめの<see cref="ShellItem" />。</param>
-        /// <param name="right">2つめの<see cref="ShellItem" />。</param>
-        /// <returns>
-        ///     2つの<see cref="ShellItem" />が等しくない場合は<c>true</c>。
-        ///     それ以外の場合は<c>false</c>。
-        /// </returns>
-        public static bool operator !=(ShellItem left, ShellItem right)
-        {
-            return !Equals(left, right);
-        }
-
-        /// <summary>
-        ///     このインスタンスをハッシュコードを取得します。
-        /// </summary>
-        /// <returns>32ビット符号付き整数ハッシュコード。</returns>
-        public override int GetHashCode()
-        {
-            return this.ShellItemInterface.GetHashCode();
-        }
-
-        /// <summary>
-        ///     このインスタンスの文字列表現を取得します。
-        /// </summary>
-        /// <returns>このインスタンスの文字列表現。</returns>
-        public override string ToString()
-        {
-            return "ShellItem";
         }
     }
 }
