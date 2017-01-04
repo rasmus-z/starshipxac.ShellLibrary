@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reactive.Linq;
-using Livet;
 using MultiScreenSample.Views;
 using Reactive.Bindings;
+using starshipxac.MinimalMVVM;
 using starshipxac.Windows.Devices;
 
 namespace MultiScreenSample.ViewModels
