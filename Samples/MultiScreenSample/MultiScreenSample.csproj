@@ -49,12 +49,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>InfrastructureAssemblies\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveProperty, Version=3.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ReactiveProperty.3.3.2\lib\net45\ReactiveProperty.dll</HintPath>
+    <Reference Include="ReactiveProperty, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ReactiveProperty.3.4.0\lib\net45\ReactiveProperty.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ReactiveProperty.NET45, Version=3.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ReactiveProperty.3.3.2\lib\net45\ReactiveProperty.NET45.dll</HintPath>
+    <Reference Include="ReactiveProperty.NET45, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ReactiveProperty.3.4.0\lib\net45\ReactiveProperty.NET45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
