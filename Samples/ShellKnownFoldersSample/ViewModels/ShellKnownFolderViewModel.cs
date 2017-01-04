@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using Livet;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
+using starshipxac.MinimalMVVM;
 using starshipxac.Shell;
 using starshipxac.Shell.Media.Imaging;
 using starshipxac.Windows.Shell.Media.Imaging;

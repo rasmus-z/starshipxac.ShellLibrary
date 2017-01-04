@@ -1,16 +1,16 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Data;
-using Livet;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
+using starshipxac.MinimalMVVM;
 using starshipxac.Shell;
 
 namespace ShellKnownFoldersSample.ViewModels
 {
-    public class MainWindowViewModel : ViewModel
+    public class MainViewModel : ViewModel
     {
-        public MainWindowViewModel()
+        public MainViewModel()
         {
             #region Reactive Property
 
@@ -21,15 +21,12 @@ namespace ShellKnownFoldersSample.ViewModels
             #endregion
         }
 
-        public void Initialize()
+        public async void Loaded()
         {
-            DispatcherHelper.UIDispatcher.InvokeAsync(async () =>
+            foreach (var knownFolder in ShellKnownFolders.EnumerateKnownFolders())
             {
-                foreach (var knownFolder in ShellKnownFolders.EnumerateKnownFolders())
-                {
-                    this.KnownFolders.AddOnScheduler(await ShellKnownFolderViewModel.CreateAsync(knownFolder));
-                }
-            });
+                this.KnownFolders.Add(await ShellKnownFolderViewModel.CreateAsync(knownFolder));
+            }
         }
 
         public ICollectionView KnownFoldersSource { get; }
