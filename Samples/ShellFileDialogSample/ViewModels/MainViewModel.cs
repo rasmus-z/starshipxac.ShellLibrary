@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Windows.Data;
-using Livet;
 using Reactive.Bindings;
+using starshipxac.MinimalMVVM;
 using starshipxac.Shell.PropertySystem;
 using ShellFileDialogSample.Controllers;
 
 namespace ShellFileDialogSample.ViewModels
 {
-    public class MainWindowViewModel : ViewModel
+    public class MainViewModel : ViewModel
     {
-        public MainWindowViewModel()
+        public MainViewModel()
         {
             #region Reactive Property
 
@@ -83,9 +83,9 @@ namespace ShellFileDialogSample.ViewModels
             #endregion
         }
 
-        public void Loading(IMainView view)
+        public void Loaded(dynamic view)
         {
-            this.View = view;
+            this.View = view as IMainView;
         }
 
         public IMainView View { get; private set; }

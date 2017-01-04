@@ -17,13 +17,7 @@ namespace ShellFileDialogSample.Views
         public MainWindow()
         {
             InitializeComponent();
-            if (this.DynamicDataContext != null)
-            {
-                this.DynamicDataContext.Loading(this);
-            }
         }
-
-        public dynamic DynamicDataContext => this.DataContext;
 
         /// <summary>
         /// ファイルを選択するダイアログを表示します。
