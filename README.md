@@ -1,37 +1,48 @@
+[Japanese](README-ja.md)
+
 starshipxac.ShellLibrary
 ==========================
 
-Windowsの [Shell API](https://msdn.microsoft.com/en-us/library/windows/desktop/ee663298) , IFileDialogなどを .NETFrameworkで使用できるライブラリです。
+This library that can be used with .NET Framework such as Windows [Shell API](https://msdn.microsoft.com/en-us/library/windows/desktop/ee663298), IFileDialog and so on.
 
-動作環境:
+## Operating environment
 
-- Windows7/8.1
-- .NETFramework4.5
+- Windows7/8.1/10
+- .NETFramework4.5 or later
 
-## ライブラリ
+
+## Libraries
 
 ### starshipxac.Shell
-- <code>ShellFile</code>: ファイルの情報を保持します。
-- <code>ShellFolder</code>: フォルダーの情報を保持します。
-- <code>ShellLibrary</code>: Windows7より使用できる「ライブラリフォルダー」の情報を保持します。
-- <code>ShellKnownFolder</code>: デスクトップ、ドキュメント、ダウンロードなどの標準フォルダーの情報を保持します。
 
+- `ShellFile`: Define file information.
+- `ShellFolder`: Define folder information.
+- `ShellLibrary`: It holds the information of "library folder" that can be used from Windows 7.
+- `ShellKnownFolder`: It holds information on standard folders such as desktop, document, download, etc.
 
-### starshipxac.Shell.Windows
-- starshipxac.Shell.Windows.Dialogs
-  - <code>OpenFileSelector</code>: 開くファイルを選択するダイアログ。
-  - <code>SaveFileSelector</code>: 保存するファイルを選択するダイアログ。
-  - <code>FolderSelector</code>: フォルダーを選択するダイアログ。
+### starshipxac.Windows.Shell
+
+- starshipxac.Windows.Shell.Dialogs
+  - `OpenFileSelector`: Dialog to select the file to open.
+  - `SaveFileSelector`: Dialog for selecting files to save.
+  - `FolderSelector`: Dialog for selecting a folder.
+
 - starshipxac.Shell.Media.Imaging
-  - <code>ShellThumbnail</code>: ファイルやフォルダーのアイコン/サムネイル画像を取得します。
+  - `ShellThumbnail`: Get icon / thumbnail images of files and folders.
 
-## サンプル
+
+## Samples
 
 ### ShellExplorerSample
-フォルダーのツリー表示と、フォルダー内のアイテム一覧表示。
+
+Tree view of folder and item list in folder.
 
 ### ShellFileDialogSample
-ファイルを開く、名前をつけて保存、フォルダー選択およびカスタムファイルダイアログの表示。
+
+Open file, Save As, Folder Selection and Display Custom File Dialog.
 
 ### ShellKnownFoldersSample
-標準フォルダーの一覧。
+
+List of standard folders.
+
+
