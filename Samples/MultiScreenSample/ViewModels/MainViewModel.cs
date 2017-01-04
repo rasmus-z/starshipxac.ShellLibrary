@@ -8,9 +8,9 @@ using starshipxac.Windows.Devices;
 
 namespace MultiScreenSample.ViewModels
 {
-    public class MainWindowViewModel : ViewModel
+    public class MainViewModel : ViewModel
     {
-        public MainWindowViewModel()
+        public MainViewModel()
         {
             #region ReactiveProperty
 
@@ -64,10 +64,6 @@ namespace MultiScreenSample.ViewModels
             {
                 Debug.WriteLine($"{monitor.DeviceName}: Bounds=({monitor.Bounds}), WorkingArea=({monitor.WorkingArea}), DPI={monitor.Dpi}");
             }
-        }
-
-        public void Initialize()
-        {
         }
     }
 }

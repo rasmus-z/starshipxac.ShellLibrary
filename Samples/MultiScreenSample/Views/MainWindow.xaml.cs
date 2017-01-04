@@ -23,13 +23,8 @@ namespace MultiScreenSample.Views
         {
             InitializeComponent();
 
-            this.ContentRendered += OnContentRendered;
             this.StateChanged += OnStateChanged;
-
-            this.DynamicDataContext.Loaded(this);
         }
-
-        public dynamic DynamicDataContext => this.DataContext;
 
         #region CustomWindowState Property
 
@@ -62,11 +57,6 @@ namespace MultiScreenSample.Views
         }
 
         #endregion
-
-        private void OnContentRendered(object sender, EventArgs e)
-        {
-            this.DynamicDataContext.Initialize();
-        }
 
         private void OnStateChanged(object sender, EventArgs e)
         {
