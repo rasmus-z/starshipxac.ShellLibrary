@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using Livet;
 using Reactive.Bindings;
+using starshipxac.MinimalMVVM;
 using starshipxac.Shell;
 using starshipxac.Shell.Media.Imaging;
 

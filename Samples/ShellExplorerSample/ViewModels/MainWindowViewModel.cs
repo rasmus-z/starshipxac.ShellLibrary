@@ -3,9 +3,9 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Windows.Data;
-using Livet;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
+using starshipxac.MinimalMVVM;
 using starshipxac.Shell;
 using ShellExplorerSample.ViewModels.Shell;
 
