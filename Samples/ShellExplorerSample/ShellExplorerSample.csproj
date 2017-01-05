@@ -191,6 +191,7 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\TaskEnumerableExtension.cs" />
     <Compile Include="ViewModels\Shell\ShellThumbnailProperty.cs" />
+    <Compile Include="Views\TreeViewSelectedItemChangedAction.cs" />
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -199,8 +200,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Model.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Shell\PlaceholderViewModel.cs" />
     <Compile Include="ViewModels\Shell\ShellFileViewModel.cs" />
     <Compile Include="ViewModels\Shell\ShellFolderViewModel.cs" />
@@ -238,13 +238,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="InfrastructureAssemblies\Design\Livet.Design.dll" />
-    <Content Include="InfrastructureAssemblies\Livet.dll" />
-    <Content Include="InfrastructureAssemblies\Livet.XML" />
-    <Content Include="InfrastructureAssemblies\Microsoft.Expression.Interactions.dll" />
-    <Content Include="InfrastructureAssemblies\System.Windows.Interactivity.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Source\starshipxac.Shell\starshipxac.Shell.csproj">

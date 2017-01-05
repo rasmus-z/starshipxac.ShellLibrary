@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:b="http://schemas.starshipxac.net/minimalMVVM/2017"
+        xmlns:v="clr-namespace:ShellExplorerSample.Views"
         xmlns:vm="clr-namespace:ShellExplorerSample.ViewModels"
         xmlns:shell="clr-namespace:ShellExplorerSample.ViewModels.Shell"
         Title="Shell Explorer Sample"
@@ -10,11 +11,11 @@
         Height="600">
 
     <Window.DataContext>
-        <vm:MainWindowViewModel />
+        <vm:MainViewModel />
     </Window.DataContext>
 
     <i:Interaction.Triggers>
-        <i:EventTrigger EventName="ContentRendered">
+        <i:EventTrigger EventName="Loaded">
             <b:DataContextLoadedAction />
         </i:EventTrigger>
 
@@ -35,8 +36,7 @@
                   ItemsSource="{Binding ShellFolderCollectionView}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectedItemChanged">
-                    <l:TreeViewSetStateToSourceAction Property="SelectedItem"
-                                                      Source="{Binding SelectedFolder.Value}" />
+                    <v:TreeViewSelectedItemChangedAction ReactiveProperty="{Binding SelectedFolder}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <TreeView.ItemTemplate>

@@ -2,9 +2,10 @@
 using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
+using System.Reactive.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
-using Livet;
+using Reactive.Bindings.Extensions;
 using starshipxac.Shell;
 using starshipxac.Shell.Media.Imaging;
 using starshipxac.Windows.Shell.Media.Imaging;
@@ -27,11 +28,6 @@ namespace ShellExplorerSample.ViewModels.Shell
 
             this.thumbnailMode = thumbnailMode;
             this.ShellObject = shellObject;
-        }
-
-        ~ShellThumbnailProperty()
-        {
-            Dispose(false);
         }
 
         public void Dispose()
@@ -67,11 +63,16 @@ namespace ShellExplorerSample.ViewModels.Shell
             {
                 if (this.imageSource == null)
                 {
-                    DispatcherHelper.UIDispatcher.InvokeAsync(async () =>
-                    {
-                        this.ShellThumbnail = this.ShellObject.GetThumbnail(this.thumbnailMode);
-                        await ShellImageSourceFactory.LoadAsync(this.ShellThumbnail, UpdateImageSource);
-                    });
+                    //DispatcherHelper.UIDispatcher.InvokeAsync(async () =>
+                    //{
+                    //this.ShellThumbnail = this.ShellObject.GetThumbnail(this.thumbnailMode);
+                    //await ShellImageSourceFactory.LoadAsync(this.ShellThumbnail, UpdateImageSource);
+                    //});
+
+                    this.ShellThumbnail = this.ShellObject.GetThumbnail(this.thumbnailMode);
+                    ShellImageSourceFactory.LoadAsync(this.ShellThumbnail, UpdateImageSource)
+                        .ToObservable()
+                        .ObserveOnUIDispatcher();
                 }
                 return this.imageSource;
             }

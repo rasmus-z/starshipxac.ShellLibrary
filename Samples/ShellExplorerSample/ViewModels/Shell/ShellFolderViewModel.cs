@@ -41,7 +41,7 @@ namespace ShellExplorerSample.ViewModels.Shell
             this.ShellFolderCollectionView = CollectionViewSource.GetDefaultView(this.ShellFolders);
 
             this.IsExpanded
-                .Subscribe(x => CreateShellFolders(x))
+                .Subscribe(CreateShellFolders)
                 .AddTo(this.CompositeDisposable);
 
             #endregion

@@ -19,12 +19,12 @@ namespace ShellExplorerSample.ViewModels
     ///     <c>FileNotFoundException</c>が発生する場合は、
     ///     プロジェクトのプロパティ -> ビルドの「32ビットの優先」のチェックを外す。
     /// </remarks>
-    public class MainWindowViewModel : ViewModel
+    public class MainViewModel : ViewModel
     {
         /// <summary>
-        ///     <see cref="MainWindowViewModel" />クラスの新しいインスタンスを初期化します。
+        ///     <see cref="MainViewModel" />クラスの新しいインスタンスを初期化します。
         /// </summary>
-        public MainWindowViewModel()
+        public MainViewModel()
         {
             ShellViewModelFactory.CreateFactory();
 
@@ -37,10 +37,7 @@ namespace ShellExplorerSample.ViewModels
             #endregion
         }
 
-        /// <summary>
-        ///     <c>ContentRendered</c>イベントが発生すると呼ばれます。
-        /// </summary>
-        public void Initialize()
+        public void Loaded()
         {
             this.RootFolder.Value = ShellViewModelFactory.CreateRoot();
 
@@ -73,7 +70,7 @@ namespace ShellExplorerSample.ViewModels
 
         private void CreateShellItems(ShellFolderViewModel folder)
         {
-            Debug.WriteLine("MainWindowViewModel.CreateShellItems()");
+            Debug.WriteLine($"MainViewModel.CreateShellItems({folder})");
 
             this.ShellItems.Clear();
 
