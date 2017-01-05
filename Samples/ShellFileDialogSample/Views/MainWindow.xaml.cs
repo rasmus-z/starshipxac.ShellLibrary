@@ -5,7 +5,6 @@ using System.Windows;
 using starshipxac.Shell;
 using starshipxac.Windows.Shell.Dialogs;
 using starshipxac.Windows.Shell.Dialogs.Controls;
-using ShellFileDialogSample.Controllers;
 
 namespace ShellFileDialogSample.Views
 {

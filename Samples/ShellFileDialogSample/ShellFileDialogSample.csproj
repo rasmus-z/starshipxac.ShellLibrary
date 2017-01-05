@@ -82,7 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\ShellPropertyComparer.cs" />
+    <Compile Include="Views\ShellPropertyComparer.cs" />
     <Compile Include="Views\ShellPropertyDescriptionConverter.cs" />
     <Compile Include="Views\ShellPropertyIconConverter.cs" />
     <Compile Include="Views\ShellPropertyValueConverter.cs" />
@@ -94,7 +94,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controllers\IMainView.cs" />
+    <Compile Include="Views\IMainView.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using starshipxac.Shell;
 
-namespace ShellFileDialogSample.Controllers
+namespace ShellFileDialogSample.Views
 {
     public interface IMainView
     {

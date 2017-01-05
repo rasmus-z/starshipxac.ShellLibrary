@@ -3,7 +3,7 @@ using System.Windows.Data;
 using Reactive.Bindings;
 using starshipxac.MinimalMVVM;
 using starshipxac.Shell.PropertySystem;
-using ShellFileDialogSample.Controllers;
+using ShellFileDialogSample.Views;
 
 namespace ShellFileDialogSample.ViewModels
 {
