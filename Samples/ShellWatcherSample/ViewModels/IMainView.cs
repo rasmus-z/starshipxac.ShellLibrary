@@ -2,7 +2,7 @@
 
 namespace ShellWatcherSample.ViewModels
 {
-    public interface IView
+    public interface IMainView
     {
         void WriteLine(string message);
     }

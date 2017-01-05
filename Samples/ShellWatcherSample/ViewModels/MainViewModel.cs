@@ -1,25 +1,25 @@
 ﻿using System;
-using Livet;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
+using starshipxac.MinimalMVVM;
 using starshipxac.Shell;
 using starshipxac.Shell.Components;
 
 namespace ShellWatcherSample.ViewModels
 {
-    public class MainWindowViewModel : ViewModel
+    public class MainViewModel : ViewModel
     {
         private ShellWatcher shellWatcher;
 
-        public MainWindowViewModel()
+        public MainViewModel()
         {
             var rootFolder = ShellKnownFolders.Pictures;
             this.RootFolder = new ReactiveProperty<ShellFolder>(rootFolder);
         }
 
-        public async void Loaded(IView view)
+        public async void Loaded(dynamic view)
         {
-            this.View = view;
+            this.View = view as IMainView;
 
             this.View.WriteLine(String.Empty);
             this.View.WriteLine($"RootFolder: {this.RootFolder.Value.Path}");
@@ -54,7 +54,7 @@ namespace ShellWatcherSample.ViewModels
         {
         }
 
-        public IView View { get; private set; }
+        public IMainView View { get; private set; }
 
         public ReactiveProperty<ShellFolder> RootFolder { get; }
     }
