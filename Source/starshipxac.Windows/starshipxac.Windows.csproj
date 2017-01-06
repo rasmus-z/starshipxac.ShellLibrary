@@ -146,11 +146,6 @@
     <Compile Include="Extensions\ScrollViewerExtension.cs" />
     <Compile Include="Extensions\VisualExtension.cs" />
     <Compile Include="Extensions\WindowExtension.cs" />
-    <Compile Include="Properties\DialogErrorMessages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DialogErrorMessages.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\ErrorMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -170,11 +165,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\DialogErrorMessages.ja-JP.resx" />
-    <EmbeddedResource Include="Properties\DialogErrorMessages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DialogErrorMessages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\ErrorMessages.ja-JP.resx" />
     <EmbeddedResource Include="Properties\ErrorMessages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
