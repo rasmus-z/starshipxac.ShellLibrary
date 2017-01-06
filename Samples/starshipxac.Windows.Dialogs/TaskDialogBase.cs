@@ -6,7 +6,6 @@ using System.Windows.Interop;
 using starshipxac.Windows.Dialogs.Controls;
 using starshipxac.Windows.Dialogs.Internal;
 using starshipxac.Windows.Dialogs.Interop;
-using starshipxac.Windows.Properties;
 
 namespace starshipxac.Windows.Dialogs
 {
@@ -124,7 +123,7 @@ namespace starshipxac.Windows.Dialogs
             }
             catch (EntryPointNotFoundException e)
             {
-                throw new NotSupportedException(DialogErrorMessages.TaskDialogNotSupportedMethod, e);
+                throw new NotSupportedException(Properties.DialogErrorMessages.TaskDialogNotSupportedMethod, e);
             }
         }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using starshipxac.Windows.Properties;
 
 namespace starshipxac.Windows.Dialogs.Controls
 {
@@ -55,9 +54,9 @@ namespace starshipxac.Windows.Dialogs.Controls
             set
             {
                 Contract.Requires<ArgumentOutOfRangeException>(0 <= value,
-                    DialogErrorMessages.TaskDialogProgressBarMinValueGreaterThanZero);
+                    Properties.DialogErrorMessages.TaskDialogProgressBarMinValueGreaterThanZero);
                 Contract.Requires<ArgumentOutOfRangeException>(value < this.Maximum,
-                    DialogErrorMessages.TaskDialogProgressBarMinValueLessThanMax);
+                    Properties.DialogErrorMessages.TaskDialogProgressBarMinValueLessThanMax);
 
                 this.minimum = value;
                 this.Dialog?.SetProgressBarRange(this, this.minimum, this.maximum);
@@ -76,7 +75,7 @@ namespace starshipxac.Windows.Dialogs.Controls
             set
             {
                 Contract.Requires<ArgumentOutOfRangeException>(this.Minimum <= value,
-                    DialogErrorMessages.TaskDialogProgressBarMaxValueGreaterThanMin);
+                    Properties.DialogErrorMessages.TaskDialogProgressBarMaxValueGreaterThanMin);
 
                 this.maximum = value;
                 this.Dialog?.SetProgressBarRange(this, this.minimum, this.maximum);
@@ -95,7 +94,7 @@ namespace starshipxac.Windows.Dialogs.Controls
             set
             {
                 Contract.Requires<ArgumentOutOfRangeException>(this.Minimum <= value && value <= this.Maximum,
-                    DialogErrorMessages.TaskDialogProgressBarValueInRange);
+                    Properties.DialogErrorMessages.TaskDialogProgressBarValueInRange);
 
                 this.value = value;
                 this.Dialog?.SetProgressBarPosition(this, this.value);

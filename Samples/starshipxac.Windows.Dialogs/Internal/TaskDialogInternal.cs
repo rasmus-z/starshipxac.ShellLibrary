@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using starshipxac.Windows.Dialogs.Controls;
 using starshipxac.Windows.Dialogs.Interop;
-using starshipxac.Windows.Properties;
 
 namespace starshipxac.Windows.Dialogs.Internal
 {
@@ -324,7 +323,7 @@ namespace starshipxac.Windows.Dialogs.Internal
             var defaults = controls.Where(x => x.Default).ToArray();
             if (defaults.Length > 1)
             {
-                throw new InvalidOperationException(DialogErrorMessages.TaskDialogOnlyOneDefaultControl);
+                throw new InvalidOperationException(Properties.DialogErrorMessages.TaskDialogOnlyOneDefaultControl);
             }
 
             if (defaults.Length == 1)

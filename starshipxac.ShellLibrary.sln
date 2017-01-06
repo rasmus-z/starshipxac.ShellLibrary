@@ -47,6 +47,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{62574899-3170-4E1E-A049-925D69B92676}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.Windows.Dialogs", "Samples\starshipxac.Windows.Dialogs\starshipxac.Windows.Dialogs.csproj", "{98B1E92E-8493-4C4C-B7D8-3227F634AE17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,10 @@ Global
 		{E6BF24D2-1BED-4800-914F-C18C54399049}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6BF24D2-1BED-4800-914F-C18C54399049}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6BF24D2-1BED-4800-914F-C18C54399049}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98B1E92E-8493-4C4C-B7D8-3227F634AE17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98B1E92E-8493-4C4C-B7D8-3227F634AE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98B1E92E-8493-4C4C-B7D8-3227F634AE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98B1E92E-8493-4C4C-B7D8-3227F634AE17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,5 +124,6 @@ Global
 		{F6D0A25C-7EE4-4597-B727-639C7E19B718} = {75CF897B-9BED-4778-928A-B187315CD037}
 		{CD7571F8-CC78-401D-A95D-1C3DB999D567} = {75CF897B-9BED-4778-928A-B187315CD037}
 		{E6BF24D2-1BED-4800-914F-C18C54399049} = {75CF897B-9BED-4778-928A-B187315CD037}
+		{98B1E92E-8493-4C4C-B7D8-3227F634AE17} = {75CF897B-9BED-4778-928A-B187315CD037}
 	EndGlobalSection
 EndGlobal

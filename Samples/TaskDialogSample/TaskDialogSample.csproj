@@ -130,9 +130,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Source\starshipxac.Windows\starshipxac.Windows.csproj">
-      <Project>{b6dd3f21-3a2d-4e6e-836c-4991ade7ae9c}</Project>
-      <Name>starshipxac.Windows</Name>
+    <ProjectReference Include="..\starshipxac.Windows.Dialogs\starshipxac.Windows.Dialogs.csproj">
+      <Project>{98b1e92e-8493-4c4c-b7d8-3227f634ae17}</Project>
+      <Name>starshipxac.Windows.Dialogs</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

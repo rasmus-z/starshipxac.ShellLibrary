@@ -3,7 +3,6 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Windows;
 using starshipxac.Windows.Dialogs.Controls;
-using starshipxac.Windows.Properties;
 
 namespace starshipxac.Windows.Dialogs
 {
@@ -425,14 +424,14 @@ namespace starshipxac.Windows.Dialogs
         /// <param name="commonButton"></param>
         public void Close(TaskDialogCommonButtons commonButton)
         {
-            Contract.Requires<InvalidOperationException>(this.DialogShowing, DialogErrorMessages.TaskDialogCloseNonShowing);
+            Contract.Requires<InvalidOperationException>(this.DialogShowing, Properties.DialogErrorMessages.TaskDialogCloseNonShowing);
 
             CloseDialog(commonButton);
         }
 
         public void Close(int buttonId)
         {
-            Contract.Requires<InvalidOperationException>(this.DialogShowing, DialogErrorMessages.TaskDialogCloseNonShowing);
+            Contract.Requires<InvalidOperationException>(this.DialogShowing, Properties.DialogErrorMessages.TaskDialogCloseNonShowing);
 
             CloseDialog(buttonId);
         }
@@ -493,7 +492,7 @@ namespace starshipxac.Windows.Dialogs
                 var control = FindButton(buttonId);
                 if (control == null)
                 {
-                    throw new InvalidOperationException(DialogErrorMessages.TaskDialogInvalidateButtonId);
+                    throw new InvalidOperationException(Properties.DialogErrorMessages.TaskDialogInvalidateButtonId);
                 }
 
                 args = TaskDialogClosingEventArgs.Create(control);

@@ -1,18 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B6DD3F21-3A2D-4E6E-836C-4991ADE7AE9C}</ProjectGuid>
+    <ProjectGuid>{98B1E92E-8493-4C4C-B7D8-3227F634AE17}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>starshipxac.Windows</RootNamespace>
-    <AssemblyName>starshipxac.Windows</AssemblyName>
+    <RootNamespace>starshipxac.Windows.Dialogs</RootNamespace>
+    <AssemblyName>starshipxac.Windows.Dialogs</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -124,50 +123,68 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\ProgressRing.cs">
-      <DependentUpon>ProgressRing.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ProgressLinear.cs">
-      <DependentUpon>ProgressLinear.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Devices\Dpi.cs" />
-    <Compile Include="Devices\Internal\MonitorCollection.cs" />
-    <Compile Include="Devices\Interop\MonitorFlags.cs" />
-    <Compile Include="Devices\Interop\MONITORINFO.cs" />
-    <Compile Include="Devices\Interop\MONITORINFOEX.cs" />
-    <Compile Include="Devices\Interop\MONITOR_DPI_TYPE.cs" />
-    <Compile Include="Devices\Interop\MultiMonitorNativeMethods.cs" />
-    <Compile Include="Devices\Screen.cs" />
-    <Compile Include="Devices\MultiScreen.cs" />
-    <Compile Include="Extensions\DependencyObjectExtension.cs" />
-    <Compile Include="Extensions\ScrollViewerExtension.cs" />
-    <Compile Include="Extensions\VisualExtension.cs" />
-    <Compile Include="Extensions\WindowExtension.cs" />
+    <Compile Include="Controls\DialogControl.cs" />
+    <Compile Include="Controls\TaskDialogButton.cs" />
+    <Compile Include="Controls\TaskDialogButtonBase.cs" />
+    <Compile Include="Controls\TaskDialogCommandLink.cs" />
+    <Compile Include="Controls\TaskDialogControl.cs" />
+    <Compile Include="Controls\TaskDialogControlCollection.cs" />
+    <Compile Include="Controls\TaskDialogMarquee.cs" />
+    <Compile Include="Controls\TaskDialogProgressBar.cs" />
+    <Compile Include="Controls\TaskDialogProgressBarBase.cs" />
+    <Compile Include="Controls\TaskDialogRadioButton.cs" />
+    <Compile Include="Interop\LPARAM.cs" />
+    <Compile Include="Interop\WindowMessages.cs" />
+    <Compile Include="Interop\WindowsNativeMethods.cs" />
     <Compile Include="Properties\DialogErrorMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DialogErrorMessages.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\ErrorMessages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ErrorMessages.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Interop\HWND.cs" />
-    <Compile Include="Interop\ImageTypes.cs" />
-    <Compile Include="Interop\LPARAM.cs" />
-    <Compile Include="Interop\MINMAXINFO.cs" />
-    <Compile Include="Interop\POINT.cs" />
-    <Compile Include="Interop\RECT.cs" />
-    <Compile Include="Interop\ShowWindowCommands.cs" />
-    <Compile Include="Interop\WindowMessages.cs" />
-    <Compile Include="Interop\WindowsNativeMethods.cs" />
-    <Compile Include="Interop\WNDCLASSEX.cs" />
-    <Compile Include="Interop\WPARAM.cs" />
+    <Compile Include="DialogShowStates.cs" />
+    <Compile Include="IDialogControlHost.cs" />
+    <Compile Include="Internal\TaskDialogCommands.cs" />
+    <Compile Include="Internal\TaskDialogControlCollectionInternal.cs" />
+    <Compile Include="Internal\TaskDialogInternal.cs" />
+    <Compile Include="Internal\TaskDialogTextElements.cs" />
+    <Compile Include="Interop\ProgressBarStates.cs" />
+    <Compile Include="Interop\TASKDIALOGCALLBACK.cs" />
+    <Compile Include="Interop\TASKDIALOGCONFIG.cs" />
+    <Compile Include="Interop\TASKDIALOGCONFIG_ICON.cs" />
+    <Compile Include="Interop\TaskDialogNativeMethods.cs" />
+    <Compile Include="Interop\TASKDIALOG_BUTTON.cs" />
+    <Compile Include="Interop\TASKDIALOG_COMMON_BUTTON_FLAGS.cs" />
+    <Compile Include="Interop\TASKDIALOG_ELEMENTS.cs" />
+    <Compile Include="Interop\TASKDIALOG_FLAGS.cs" />
+    <Compile Include="Interop\TASKDIALOG_ICONS.cs" />
+    <Compile Include="Interop\TASKDIALOG_ICON_ELEMENTS.cs" />
+    <Compile Include="Interop\TASKDIALOG_MESSAGES.cs" />
+    <Compile Include="Interop\TASKDIALOG_NOTIFICATIONS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskDialog.cs" />
+    <Compile Include="TaskDialogBase.cs" />
+    <Compile Include="TaskDialogClosingEventArgs.cs" />
+    <Compile Include="TaskDialogCommonButtons.cs" />
+    <Compile Include="TaskDialogExpandChangedEventArgs.cs" />
+    <Compile Include="TaskDialogExpandedInfoMode.cs" />
+    <Compile Include="TaskDialogHyperlinkClickedEventArgs.cs" />
+    <Compile Include="TaskDialogIcon.cs" />
+    <Compile Include="TaskDialogOptions.cs" />
+    <Compile Include="TaskDialogProgressBarState.cs" />
+    <Compile Include="TaskDialogResult.cs" />
+    <Compile Include="TaskDialogSelectedButton.cs" />
+    <Compile Include="TaskDialogStartupLocation.cs" />
+    <Compile Include="TaskDialogTimerEventArgs.cs" />
+    <Compile Include="TaskDialogVerificationChangedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\DialogErrorMessages.ja-JP.resx" />
@@ -175,25 +192,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DialogErrorMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\ErrorMessages.ja-JP.resx" />
-    <EmbeddedResource Include="Properties\ErrorMessages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Controls\ProgressLinear.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\ProgressRing.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using starshipxac.Windows.Interop;
 
 namespace starshipxac.Windows.Dialogs.Interop
 {

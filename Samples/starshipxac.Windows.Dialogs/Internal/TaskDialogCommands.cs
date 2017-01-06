@@ -2,7 +2,6 @@
 using System.Diagnostics.Contracts;
 using starshipxac.Windows.Dialogs.Controls;
 using starshipxac.Windows.Dialogs.Interop;
-using starshipxac.Windows.Interop;
 
 namespace starshipxac.Windows.Dialogs.Internal
 {
