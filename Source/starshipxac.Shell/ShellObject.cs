@@ -10,7 +10,7 @@ using starshipxac.Shell.PropertySystem;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     シェルアイテム基底クラスを定義します。
+    ///     Define shell object abstract class.
     /// </summary>
     public abstract class ShellObject : INotifyPropertyChanged, IDisposable, IEquatable<ShellObject>
     {
@@ -29,9 +29,10 @@ namespace starshipxac.Shell
             new ConcurrentDictionary<string, PropertyChangedEventArgs>();
 
         /// <summary>
-        ///     <see cref="Shell.ShellItem" />を指定して、<see cref="ShellObject" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="ShellObject" /> class
+        ///     to the specified <see cref="ShellItem" />.
         /// </summary>
-        /// <param name="shellItem"><see cref="Shell.ShellItem" />。</param>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
         internal ShellObject(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
@@ -40,7 +41,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     ファイナライザー。
+        ///     Finalizer.
         /// </summary>
         ~ShellObject()
         {
@@ -48,7 +49,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="ShellObject" />によって使用されているすべてのリソースを解放します。
+        ///     Release all resources used by <see cref="ShellObject" />.
         /// </summary>
         public void Dispose()
         {
@@ -57,12 +58,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="ShellObject" />によって使用されているすべてのリソースを解放し、
-        ///     オプションでマネージリソースも解放します。
+        ///     Release all resources used by <see cref="ShellObject" />,
+        ///     and optionally releases managed resources.
         /// </summary>
         /// <param name="disposing">
-        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
@@ -70,7 +71,7 @@ namespace starshipxac.Shell
             {
                 if (disposing)
                 {
-                    // マネージリソース解放
+                    // Release managed resources.
                     this.ShellItem.Dispose();
                 }
 
@@ -85,12 +86,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="Shell.ShellItem" />を取得します。
+        ///     Get <see cref="Shell.ShellItem" />.
         /// </summary>
         internal ShellItem ShellItem { get; }
 
         /// <summary>
-        ///     解析名を取得します。
+        ///     Get the parsing name.
         /// </summary>
         public virtual string ParsingName
         {
@@ -106,7 +107,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     アイテム名を取得します。
+        ///     Get the name.
         /// </summary>
         public virtual string Name
         {
@@ -118,7 +119,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     表示名を取得します。
+        ///     Get default display name.
         /// </summary>
         public virtual string DisplayName
         {
@@ -130,12 +131,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="ShellObject" />がファイルシステム上のアイテムかどうかを判定する値を取得します。
+        ///     Get a value that determines whether <see cref="ShellObject" /> is an item on the file system.
         /// </summary>
         public bool IsFileSystem => this.ShellItem.IsFileSystem;
 
         /// <summary>
-        ///     ファイル種別を示す文字列を取得します。
+        ///     Get a content type string.
         /// </summary>
         public string ContentType
         {
@@ -152,7 +153,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     アイテム作成日時(UTC)を取得します。
+        ///     Get the item creation date and time(UTC).
         /// </summary>
         public virtual DateTime DateCreated
         {
@@ -168,7 +169,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     アイテム更新日時(UTC)を取得します。
+        ///     Get the item modification date and time(UTC).
         /// </summary>
         public virtual DateTime DateModified
         {
@@ -184,7 +185,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     アイテムアクセス日時(UTC)を取得します。
+        ///     Get the item access date and time(UTC).
         /// </summary>
         public virtual DateTime DateAccessed
         {
@@ -200,7 +201,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="ShellThumbnailFactory" />を取得します。
+        ///     Get the <see cref="ShellThumbnailFactory" />.
         /// </summary>
         private ShellThumbnailFactory ThumbnailFactory
         {
@@ -216,7 +217,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     プロパティのコレクションを取得します。
+        ///     Get the property collection.
         /// </summary>
         public ShellProperties Properties
         {
@@ -234,10 +235,10 @@ namespace starshipxac.Shell
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        ///     <paramref name="displayNameType" />で指定した表示名を取得します。
+        ///     Get the display name of the specified <paramref name="displayNameType" />.
         /// </summary>
-        /// <param name="displayNameType">表示名の種別。</param>
-        /// <returns>取得した表示名。</returns>
+        /// <param name="displayNameType">Display name type.</param>
+        /// <returns>Display name.</returns>
         public virtual string GetDisplayName(DisplayNameTypes displayNameType)
         {
             Contract.Ensures(Contract.Result<string>() != null);
@@ -245,10 +246,10 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     サムネイルを取得します。
+        ///     Get the thumbnail.
         /// </summary>
-        /// <param name="thumbnailMode">取得するサムネイルの種類。</param>
-        /// <returns></returns>
+        /// <param name="thumbnailMode">Thumbnail mode.</param>
+        /// <returns><see cref="ShellThumbnail" />.</returns>
         public ShellThumbnail GetThumbnail(ThumbnailMode thumbnailMode)
         {
             Contract.Ensures(Contract.Result<ShellThumbnail>() != null);
@@ -257,7 +258,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     サムネイルの幅と高さを指定して、サムネイルを取得します。
+        ///     Get the thumbnail of the specified width and height.
         /// </summary>
         /// <param name="width">取得するサムネイルの幅。</param>
         /// <param name="height">取得するサムネイルの高さ。</param>
@@ -272,10 +273,10 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     親フォルダーのインスタンス取得します。
+        ///     Get parent folder instance.
         /// </summary>
-        /// <returns>取得した親の<see cref="ShellFolder" />。親フォルダーが存在しない場合は<c>null</c>。</returns>
-        /// <exception cref="ShellException">親の<see cref="ShellFolder" />の取得に失敗しました。</exception>
+        /// <returns>Parent <see cref="ShellFolder" />. If the parent folder does not exist, it returns <c>null</c>.</returns>
+        /// <exception cref="ShellException">Failed to acquire parent <see cref="ShellFolder" />.</exception>
         public ShellFolder GetFolder()
         {
             var parentShellItem = this.ShellItem.GetParent();
@@ -287,9 +288,9 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     プロパティの値が変更されたことを通知します。
+        ///     Notify that the property value has changed.
         /// </summary>
-        /// <param name="propertyName"></param>
+        /// <param name="propertyName">Property name.</param>
         protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = "")
         {
             Contract.Requires<ArgumentNullException>(propertyName != null);
@@ -298,10 +299,10 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     指定したプロパティ名の変更を通知するイベント情報を作成します。
+        ///     Creates event information to notify change of the specified property name.
         /// </summary>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
+        /// <param name="propertyName">Property name.</param>
+        /// <returns><see cref="PropertyChangedEventArgs" />.</returns>
         private static PropertyChangedEventArgs GetPropertyChangedEventArgs(string propertyName)
         {
             Contract.Requires(propertyName != null);
@@ -311,13 +312,13 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     2つの<see cref="ShellObject" />を比較して、等しいかどうかを判定します。
+        ///     Compare the two <see cref="ShellObject" /> to determine if they are equal.
         /// </summary>
-        /// <param name="left">1つめの<see cref="ShellObject" />。</param>
-        /// <param name="right">2つめの<see cref="ShellObject" />。</param>
+        /// <param name="left">The first <see cref="ShellObject" />.</param>
+        /// <param name="right">The second <see cref="ShellObject" />.</param>
         /// <returns>
-        ///     2つの<see cref="ShellObject" />が等しい場合は<c>true</c>。
-        ///     それ以外の場合は<c>false</c>。
+        ///     If the two <see cref="ShellObject" /> are equal, it returns <c>true</c>.
+        ///     Otherwise returns <c>false</c>.
         /// </returns>
         public static bool operator ==(ShellObject left, ShellObject right)
         {
@@ -325,13 +326,13 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     2つの<see cref="ShellObject" />を比較して、等しくないかどうかを判定します。
+        ///     Compare the two <see cref="ShellObject" /> to determine if they are not equal.
         /// </summary>
-        /// <param name="left">1つめの<see cref="ShellObject" />。</param>
-        /// <param name="right">2つめの<see cref="ShellObject" />。</param>
+        /// <param name="left">The first <see cref="ShellObject" />.</param>
+        /// <param name="right">The second <see cref="ShellObject" />.</param>
         /// <returns>
-        ///     2つの<see cref="ShellObject" />が等しくない場合は<c>true</c>。
-        ///     それ以外の場合は<c>false</c>。
+        ///     If the two <see cref="ShellObject" /> are not equal, it returns <c>true</c>.
+        ///     Otherwise returns <c>false</c>.
         /// </returns>
         public static bool operator !=(ShellObject left, ShellObject right)
         {
@@ -339,12 +340,13 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     指定した<see cref="ShellObject" />の値が、現在の<see cref="ShellObject" />と等しいかどうかを判定します。
+        ///     Determines whether the value of the specified <see cref="ShellObject" /> is equal to the current
+        ///     <see cref="ShellObject" />.
         /// </summary>
-        /// <param name="other">現在の<see cref="ShellObject" />と比較する<see cref="ShellObject" />。</param>
+        /// <param name="other">Compare with the current <see cref="ShellObject" /> <see cref="ShellObject" />.</param>
         /// <returns>
-        ///     <paramref name="other" />と現在の<see cref="ShellObject" />が等しい場合は<c>true</c>。
-        ///     それ以外の場合は<c>false</c>。
+        ///     If the current <see cref="ShellObject" /> is equal to <paramref name="other" />, it returns <c>true</c>.
+        ///     Otherwise returns <c>false</c>.
         /// </returns>
         public bool Equals(ShellObject other)
         {
@@ -361,12 +363,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     指定したオブジェクトの値が、現在の<see cref="ShellObject" />と等しいかどうかを判定します。
+        ///     Determines whether the value of the specified object is equal to the current <see cref="ShellObject" />.
         /// </summary>
-        /// <param name="obj">現在の<see cref="ShellObject" />と比較するオブジェクト。</param>
+        /// <param name="obj">The object to be compared with the current <see cref="ShellObject" />.</param>
         /// <returns>
-        ///     <paramref name="obj" />と現在の<see cref="ShellObject" />が等しい場合は<c>true</c>。
-        ///     それ以外の場合は<c>false</c>。
+        ///     If the current <see cref="ShellObject" /> is equal to <paramref name="obj" />, it returns <c>true</c>.
+        ///     Otherwise returns <c>false</c>.
         /// </returns>
         public override bool Equals(object obj)
         {
@@ -387,9 +389,9 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     このインスタンスのハッシュコードを取得します。
+        ///     Get a hash code for this instance.
         /// </summary>
-        /// <returns>32ビット符号付き整数ハッシュコード。</returns>
+        /// <returns>A 32-bit signed integer hash code.</returns>
         public override int GetHashCode()
         {
             //return this.ShellItem.GetHashCode();
@@ -397,9 +399,9 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     このインスタンスの文字列表現を取得します。
+        ///     Get a string representation of this instance.
         /// </summary>
-        /// <returns>このインスタンスの文字列表現。</returns>
+        /// <returns>A string representation of this instance.</returns>
         public override string ToString()
         {
             return $"{{{nameof(ParsingName)}: {ParsingName}}}";

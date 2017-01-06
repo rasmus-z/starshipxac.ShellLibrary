@@ -185,27 +185,27 @@ namespace starshipxac.Shell
         internal PIDL PIDL { get; }
 
         /// <summary>
-        ///     Gets a value that determines whether <see cref="ShellItem" /> is link.
+        ///     Get a value that determines whether <see cref="ShellItem" /> is link.
         /// </summary>
         public bool IsLink { get; }
 
         /// <summary>
-        ///     Gets a value that determines whether <see cref="ShellItem" /> is an item on the file system.
+        ///     Get a value that determines whether <see cref="ShellItem" /> is an item on the file system.
         /// </summary>
         public bool IsFileSystem { get; }
 
         /// <summary>
-        ///     Gets a value that determines whether <see cref="ShellItem" /> is folder.
+        ///     Get a value that determines whether <see cref="ShellItem" /> is folder.
         /// </summary>
         public bool IsFolder { get; }
 
         /// <summary>
-        ///     Gets a value that determines whether <see cref="ShellItem" /> is stream.
+        ///     Get a value that determines whether <see cref="ShellItem" /> is stream.
         /// </summary>
         public bool IsStream => (GetAttributes(SFGAO.SFGAO_STREAM) & SFGAO.SFGAO_STREAM) != 0;
 
         /// <summary>
-        ///     Gets the parsing name.
+        ///     Get the parsing name.
         /// </summary>
         /// <returns></returns>
         public string GetParsingName()
@@ -214,7 +214,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     Gets the item type string.
+        ///     Get the item type string.
         /// </summary>
         /// <returns></returns>
         public string GetItemType()
