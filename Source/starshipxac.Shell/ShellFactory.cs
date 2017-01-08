@@ -9,15 +9,16 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     <see cref="ShellObject" />を作成するメソッドを定義します。
+    ///     Define a method to create a <see cref="ShellObject" />.
     /// </summary>
     public static class ShellFactory
     {
         /// <summary>
-        ///     解析名(<c>ParsingName</c>)を指定して、<see cref="ShellObject" />クラスの新しいインスタンスを作成します。
+        ///     Initialize a new instance of the <see cref="ShellObject" /> class
+        ///     to the specified parsing name.
         /// </summary>
-        /// <param name="parsingName"><c>ParsingName</c>。</param>
-        /// <returns>作成した<see cref="ShellObject" />。</returns>
+        /// <param name="parsingName"><c>ParsingName</c>.</param>
+        /// <returns>Created <see cref="ShellObject" />.</returns>
         public static ShellObject FromParsingName(string parsingName)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(parsingName));
@@ -27,10 +28,11 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     ファイルのパスを指定して、<see cref="ShellFile" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellFile" /> class
+        ///     to the specified file path.
         /// </summary>
-        /// <param name="path">ファイルのパス。</param>
-        /// <returns></returns>
+        /// <param name="path">File path.</param>
+        /// <returns>Created <see cref="ShellFile" />.</returns>
         public static ShellFile FromFilePath(string path)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrEmpty(path));
@@ -47,10 +49,11 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     フォルダーのパスを指定して、<see cref="ShellFolder" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellFolder" /> class
+        ///     to the specified folder path.
         /// </summary>
-        /// <param name="path">フォルダーのパス。</param>
-        /// <returns></returns>
+        /// <param name="path">Folder path.</param>
+        /// <returns>Created <see cref="ShellFolder" />.</returns>
         public static ShellFolder FromFolderPath(string path)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(path));
@@ -67,11 +70,11 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="ShellItem" />を指定して、
-        ///     <see cref="ShellObject" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellObject" /> class
+        ///     to the specified <see cref="ShellItem" />.
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem" />。</param>
-        /// <returns></returns>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
+        /// <returns>Created <see cref="ShellObject" />.</returns>
         public static ShellObject FromShellItem(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
@@ -81,11 +84,14 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     フォルダーの<see cref="ShellItem" />を指定して、
-        ///     <see cref="ShellFolder" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellFolder" /> class
+        ///     to the specified <see cref="ShellItem" />.
         /// </summary>
-        /// <param name="shellItem"></param>
-        /// <returns></returns>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
+        /// <returns>
+        ///     Created <see cref="ShellFolder" />.
+        ///     If <paramref name="shellItem" /> is not a folder, it returns <c>null</c>.
+        /// </returns>
         public static ShellFolder FromShellFolderItem(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
@@ -99,10 +105,16 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     指定した<see cref="ShellItem" />の性質に最も一致する<see cref="ShellObject" />派生クラスのインスタンスを作成します。
+        ///     <para>
+        ///         Create a new instance of a <see cref="ShellObject" /> derived class
+        ///         that best matches the nature of the specified <see cref="ShellItem" />.
+        ///     </para>
+        ///     <para>
+        ///         指定した<see cref="ShellItem" />の性質に最も一致する<see cref="ShellObject" />派生クラスのインスタンスを作成します。
+        ///     </para>
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem" />。</param>
-        /// <returns>作成した<see cref="ShellObject" />派生クラスのインスタンス。</returns>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
+        /// <returns>Created a new instance of <see cref="ShellObject" /> derived class.</returns>
         private static ShellObject Create(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
@@ -110,17 +122,17 @@ namespace starshipxac.Shell
 
             if (shellItem.IsLink)
             {
-                // リンク(ショートカットファイル)
+                // Link(Shor cut file)
                 return new ShellLink(shellItem);
             }
             else if (shellItem.IsFolder)
             {
-                // フォルダー
+                // Folder
                 return CreateFolder(shellItem);
             }
             else if (shellItem.IsFileSystem)
             {
-                // ファイル
+                // File
                 return new ShellFile(shellItem);
             }
             else if (shellItem.IsStream)
@@ -128,15 +140,16 @@ namespace starshipxac.Shell
                 return new ShellFile(shellItem);
             }
 
-            // ファイルシステム外のアイテム
+            // Non file system item
             return new ShellNonFileSystemItem(shellItem);
         }
 
         /// <summary>
-        ///     指定した<see cref="ShellItem" />の性質に最も一致する<see cref="ShellFolder" />派生クラスのインスタンスを作成します。
+        ///     Create a new instance of a <see cref="ShellFolder" /> derived class
+        ///     that best matches the nature of the specified <see cref="ShellItem" />.
         /// </summary>
-        /// <param name="shellItem"></param>
-        /// <returns></returns>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
+        /// <returns>Created a new instance of <see cref="ShellFolder" /> derived class.</returns>
         private static ShellFolder CreateFolder(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
@@ -144,17 +157,17 @@ namespace starshipxac.Shell
             var shellLibrary = ShellLibraryFactory.FromShellItem(shellItem, true);
             if (SameItemType(shellItem.GetItemType(), ShellLibraryFactory.FileExtension) && (shellLibrary != null))
             {
-                // ライブラリ
+                // Library
                 return shellLibrary;
             }
             else if (SameItemType(shellItem, ShellSearchConnector.FileExtension))
             {
-                // 検索条件
+                // Search connector
                 return new ShellSearchConnector(shellItem);
             }
             else if (SameItemType(shellItem, ShellSavedSearchCollection.FileExtension))
             {
-                // 保存された検索条件
+                // Saved search collection
                 return new ShellSavedSearchCollection(shellItem);
             }
             else
@@ -162,23 +175,24 @@ namespace starshipxac.Shell
                 var knownFolderNative = GetKnownFolderNative(shellItem);
                 if (knownFolderNative != null)
                 {
-                    // 標準フォルダー
+                    // Known folder
                     return new ShellKnownFolder(shellItem, knownFolderNative);
                 }
             }
 
-            // フォルダー
+            // Folder
             return new ShellFolder(shellItem);
         }
 
         /// <summary>
-        ///     2つのアイテム種別を示す文字列が、同じかどうかを判定します。
+        ///     Determines whether specified item type string and extension string have same value.
         /// </summary>
-        /// <param name="itemType">判定する 1つめのアイテム種別。</param>
-        /// <param name="extension">判定する 2つめのアイテム種別。</param>
+        /// <param name="itemType">The item type string to compare, or <c>null</c>.</param>
+        /// <param name="extension">The extension string to compare, or <c>null</c>.</param>
         /// <returns>
-        ///     1つめのアイテム種別と 2つめのアイテム種別が同じ場合は<c>true</c>。
-        ///     それ以外の場合は<c>false</c>。
+        ///     <c>true</c> if the value of <paramref name="itemType" /> is the same as the value of <paramref name="extension" />;
+        ///     otherwise <c>false</c>.
+        ///     If <paramref name="itemType" /> and <paramref name="extension" /> are <c>null</c>, the method returns <c>true</c>.
         /// </returns>
         public static bool SameItemType(string itemType, string extension)
         {
@@ -186,13 +200,13 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     2つのアイテム種別が同じかどうかを判定します。
+        ///     Determines wheter specified <see cref="ShellItem" /> item type and extension string have same item type.
         /// </summary>
-        /// <param name="shellItem">判定する 1つめのアイテム種別を保持する<see cref="ShellItem" />。</param>
-        /// <param name="extension">判定する 2つめのアイテム種別。</param>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
+        /// <param name="extension">The extensionstring to compare, or <c>null</c>.</param>
         /// <returns>
-        ///     <paramref name="shellItem" />のアイテム種別と<paramref name="extension" />が同じ場合は<c>true</c>。
-        ///     それ以外の場合は<c>false</c>。
+        ///     <c>true</c> if the item type of <see cref="ShellItem" /> is the same as the value of <paramref name="extension" />;
+        ///     otherwise <c>false</c>.
         /// </returns>
         private static bool SameItemType(ShellItem shellItem, string extension)
         {
@@ -202,10 +216,11 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="IShellItem" />が標準フォルダーの場合、<see cref="IKnownFolder" />を取得します。
+        ///     If <paramref name="shellItem" /> is known folder, create a new instance of the <see cref="IKnownFolder" /> derived
+        ///     class.
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem" />。</param>
-        /// <returns>標準フォルダーの場合は<see cref="IKnownFolder" />。それ以外の場合は<c>null</c>。</returns>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
+        /// <returns>Created a new instance of <see cref="IKnownFolder" /> derived class.</returns>
         private static IKnownFolder GetKnownFolderNative(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
@@ -220,11 +235,11 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     指定したパスの絶対パスを取得します。
+        ///     Returns the absolute path for the specified path string.
         /// </summary>
-        /// <param name="path">絶対パスを取得するパス。</param>
-        /// <returns>絶対パス。</returns>
-        /// <exception cref="ArgumentException"><paramref name="path" />が<c>null</c>または空文字列です。</exception>
+        /// <param name="path">Path string.</param>
+        /// <returns>Absolute path string.</returns>
+        /// <exception cref="ArgumentException"><paramref name="path" /> is <c>null</c> or empty string.</exception>
         private static string GetAbsolutePath(string path)
         {
             Contract.Requires(!String.IsNullOrWhiteSpace(path));
