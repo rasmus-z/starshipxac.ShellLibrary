@@ -4,37 +4,37 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     <see cref="ShellObject" />の表示名種別を定義します。
+    ///     Define display name type of <see cref="ShellObject"/>.
     /// </summary>
     public enum DisplayNameTypes
     {
         /// <summary>
-        ///     デスクトップからの相対的な表示名。
+        ///     Relative display name from the desktop.
         /// </summary>
         Default = SIGDN.SIGDN_NORMALDISPLAY,
 
         /// <summary>
-        ///     親フォルダからの相対的な表示名。
+        ///     Relative display name from the parent folder.
         /// </summary>
         RelativeToParent = SIGDN.SIGDN_PARENTRELATIVEPARSING,
 
         /// <summary>
-        ///     アドレスバーに表示する親フォルダーからの相対的な表示名。
+        ///     The relative display name from the parent folder displayed in the address bar.
         /// </summary>
         RelativeToParentAddressBar = SIGDN.SIGDN_PARENTRELATIVEFORADDRESSBAR,
 
         /// <summary>
-        ///     デスクトップからの相対的なパス名。
+        ///     Relative path name from the desktop.
         /// </summary>
         RelativeToDesktop = SIGDN.SIGDN_DESKTOPABSOLUTEPARSING,
 
         /// <summary>
-        ///     親フォルダからの相対的な編集可能な名前。
+        ///     A relative editable name from the parent folder.
         /// </summary>
         RelativeToParentEditing = SIGDN.SIGDN_PARENTRELATIVEEDITING,
 
         /// <summary>
-        ///     デスクトップからの相対的な編集可能な名前。
+        ///     A relative editable name from the desktop.
         /// </summary>
         RelativeToDesktopEditing = SIGDN.SIGDN_DESKTOPABSOLUTEEDITING,
 
@@ -43,12 +43,12 @@ namespace starshipxac.Shell
         RelativeForUI = SIGDN.SIGDN_PARENTRELATIVEFORUI,
 
         /// <summary>
-        ///     ファイルシステム上のパス名。
+        ///     Path name on file system.
         /// </summary>
         FileSystemPath = SIGDN.SIGDN_FILESYSPATH,
 
         /// <summary>
-        ///     相対的なURL。
+        ///     Relative URL.
         /// </summary>
         Url = SIGDN.SIGDN_URL
     }
