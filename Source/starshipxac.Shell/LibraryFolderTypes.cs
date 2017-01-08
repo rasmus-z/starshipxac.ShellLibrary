@@ -4,32 +4,32 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     ライブラリフォルダー種別を定義します。
+    ///     Define Library Folder types.
     /// </summary>
     public static class LibraryFolderTypes
     {
         /// <summary>
-        ///     全般
+        ///     The folder does not fall under one of the other FOLDERTYPEID categories.
         /// </summary>
         public static Guid Generic => KnownFolderTypes.FOLDERTYPEID_Generic;
 
         /// <summary>
-        ///     ドキュメントフォルダー
+        ///     Documents folder.
         /// </summary>
         public static Guid Documents => KnownFolderTypes.FOLDERTYPEID_Documents;
 
         /// <summary>
-        ///     ミュージックフォルダー
+        ///     Music folder.
         /// </summary>
         public static Guid Music => KnownFolderTypes.FOLDERTYPEID_Music;
 
         /// <summary>
-        ///     ピクチャーフォルダー
+        ///     Pictures folder.
         /// </summary>
         public static Guid Pictures => KnownFolderTypes.FOLDERTYPEID_Pictures;
 
         /// <summary>
-        ///     ビデオフォルダー
+        ///     Videos folder.
         /// </summary>
         public static Guid Videos => KnownFolderTypes.FOLDERTYPEID_Videos;
     }

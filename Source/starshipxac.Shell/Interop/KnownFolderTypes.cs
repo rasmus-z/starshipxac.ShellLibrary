@@ -4,7 +4,8 @@ using System.Diagnostics.CodeAnalysis;
 namespace starshipxac.Shell.Interop
 {
     /// <summary>
-    ///     フォルダー種別のGUIDを定義します。
+    ///     The FOLDERTYPEID values represent a view template applied to a folder,
+    ///     usually based on its intended use and contents.
     /// </summary>
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb762581(v=vs.85).aspx
@@ -13,7 +14,7 @@ namespace starshipxac.Shell.Interop
     internal static class KnownFolderTypes
     {
         /// <summary>
-        ///     メール、予定表、連絡先情報などの通信関連のファイルを含むフォルダー。
+        ///     A folder that contains communication-related files such as emails, calendar information, and contact information.
         /// </summary>
         public static Guid FOLDERTYPEID_Communications
         {
@@ -24,7 +25,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     圧縮フォルダー
+        ///     The folder is a compressed archive, such as a compressed file with a .zip file name extension.
         /// </summary>
         internal static Guid FOLDERTYPEID_CompressedFolder
         {
@@ -35,7 +36,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     メールの連絡先情報を含むフォルダー
+        ///     A folder that contains email contact information.
         /// </summary>
         internal static Guid FOLDERTYPEID_Contacts
         {
@@ -46,7 +47,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     カテゴリー表示コントロールパネル
+        ///     The Control Panel in category view. This is a virtual folder.
         /// </summary>
         internal static Guid FOLDERTYPEID_ControlPanelCategory
         {
@@ -57,7 +58,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     クラシック表示コントロールパネル
+        ///     The Control Panel in classic view. This is a virtual folder.
         /// </summary>
         internal static Guid FOLDERTYPEID_ControlPanelClassic
         {
@@ -68,7 +69,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     ドキュメントファイルフォルダー
+        ///     The folder contains document files.
         /// </summary>
         internal static Guid FOLDERTYPEID_Documents
         {
@@ -79,7 +80,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     スタートメニューのゲームフォルダー
+        ///     The folder is the Games folder found in the Start menu.
         /// </summary>
         internal static Guid FOLDERTYPEID_Games
         {
@@ -90,7 +91,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     汎用フォルダー
+        ///     The folder does not fall under one of the other <C>FOLDERTYPEID</C> categories.
         /// </summary>
         internal static Guid FOLDERTYPEID_Generic
         {
@@ -101,7 +102,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     汎用ライブラリフォルダー
+        ///     The folder is a library, but of no specified type.
         /// </summary>
         internal static Guid FOLDERTYPEID_GenericLibrary
         {
@@ -112,7 +113,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     不特定タイプの検索結果
+        ///     The folder contains search results, but they are of mixed or no specific type.
         /// </summary>
         internal static Guid FOLDERTYPEID_GenericSearchResults
         {
@@ -123,7 +124,9 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     無効フォルダー
+        ///     The folder is invalid.
+        ///     There are several things that can cause this judgement:
+        ///     hard disk errors, file system errors, and compression errors among them.
         /// </summary>
         internal static Guid FOLDERTYPEID_Invalid
         {
@@ -134,7 +137,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     オーディオファイルを含むフォルダー
+        ///     The folder contains audio files, such as .mp3 and .wma files.
         /// </summary>
         internal static Guid FOLDERTYPEID_Music
         {
@@ -145,7 +148,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     ネットワークエクスプローラーフォルダー
+        ///     The Network Explorer folder.
         /// </summary>
         internal static Guid FOLDERTYPEID_NetworkExplorer
         {
@@ -156,7 +159,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     <c>OpenSearch</c>検索結果フォルダー
+        ///     The folder contains federated search <c>OpenSearch</c> results.
         /// </summary>
         /// <remarks>
         ///     <c>http://www.opensearch.org/Home</c>
@@ -181,7 +184,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     画像ファイルを含むフォルダー
+        ///     Image files, such as .jpg, .tif, or .png files.
         /// </summary>
         internal static Guid FOLDERTYPEID_Pictures
         {
@@ -192,7 +195,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     プリンターフォルダー
+        ///     Printers that have been added to the system. This is a virtual folder.
         /// </summary>
         internal static Guid FOLDERTYPEID_Printers
         {
@@ -203,7 +206,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     ホームグループユーザーライブラリ
+        ///     A homegroup user's libraries.
         /// </summary>
         internal static Guid FOLDERTYPEID_PublishedItems
         {
@@ -214,7 +217,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     録画フォルダー
+        ///     The folder contains recorded television broadcasts.
         /// </summary>
         internal static Guid FOLDERTYPEID_RecordedTV
         {
@@ -225,7 +228,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     ごみ箱
+        ///     The Recycle Bin. This is a virtual folder.
         /// </summary>
         internal static Guid FOLDERTYPEID_RecycleBin
         {
@@ -236,7 +239,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     保存したゲームフォルダー
+        ///     The folder contains saved game states.
         /// </summary>
         internal static Guid FOLDERTYPEID_SavedGames
         {
@@ -247,7 +250,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     Searchconnector
+        ///     SearchConnector
         /// </summary>
         internal static Guid FOLDERTYPEID_SearchConnector
         {
@@ -258,7 +261,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     検索フォルダー
+        ///     user's Searches folder, normally found at <c>C:\Users\username\Searches</c>.
         /// </summary>
         internal static Guid FOLDERTYPEID_Searches
         {
@@ -269,7 +272,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     検索結果フォルダー
+        ///     SearchHome
         /// </summary>
         internal static Guid FOLDERTYPEID_SearchHome
         {
@@ -280,7 +283,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     プログラムの追加と削除
+        ///     The software explorer window used by the Add or Remove Programs control panel icon.
         /// </summary>
         internal static Guid FOLDERTYPEID_SoftwareExplorer
         {
@@ -291,7 +294,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     スタートメニューフォルダー
+        ///     A user's Start Menu folder, normally found at <c>C:\Users\username\Start Menu</c>.
         /// </summary>
         internal static Guid FOLDERTYPEID_StartMenu
         {
@@ -302,7 +305,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     <c>Users</c>フォルダー
+        ///     <c>Users</c> folder.
         /// </summary>
         internal static Guid FOLDERTYPEID_UserFiles
         {
@@ -313,7 +316,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     ユーザーライブラリ
+        ///     The view shown when the user clicks the Windows Explorer button on the taskbar.
         /// </summary>
         internal static Guid FOLDERTYPEID_UsersLibraries
         {
@@ -324,7 +327,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     ユーザーアカウント画像を含むフォルダー
+        ///     The folder contains the image files used with the current user's account.
         /// </summary>
         internal static Guid FOLDERTYPEID_AccountPictures
         {
@@ -335,7 +338,7 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     ビデオファイルを含むフォルダー
+        ///     The folder contains video files. These can be of mixed format—.wmv, .mov, and others.
         /// </summary>
         internal static Guid FOLDERTYPEID_Videos
         {
@@ -346,7 +349,8 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     <c>MSFT_StorageProvider</c>フォルダー
+        ///     The folder is a <c>MSFT_StorageProvider</c> folder
+        ///     and does not fall under one of the other <c>FOLDERTYPEID</c> categories.
         /// </summary>
         internal static Guid FOLDERTYPEID_StorageProviderGeneric
         {
@@ -357,7 +361,8 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     <c>MSFT_StorageProvider</c>フォルダーのドキュメントフォルダー
+        ///     The folder is a MSFT_StorageProvider folder and contains document files.
+        ///     These can be of mixed format—.doc, .txt, and others.
         /// </summary>
         internal static Guid FOLDERTYPEID_StorageProviderDocuments
         {
@@ -368,7 +373,8 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     <c>MSFT_StorageProvider</c>フォルダーのピクチャフォルダー
+        ///     The folder is a <c>MSFT_StorageProvider</c> folder
+        ///     and contains image files, such as .jpg, .tif, or .png files.
         /// </summary>
         internal static Guid FOLDERTYPEID_StorageProviderPictures
         {
@@ -379,7 +385,8 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     <c>MSFT_StorageProvider</c>フォルダーのミュージックフォルダー
+        ///     The folder is a <c>MSFT_StorageProvider</c> folder
+        ///     and contains audio files, such as .mp3 and .wma files.
         /// </summary>
         internal static Guid FOLDERTYPEID_StorageProviderMusic
         {
@@ -390,7 +397,8 @@ namespace starshipxac.Shell.Interop
         }
 
         /// <summary>
-        ///     <c>MSFT_StorageProvider</c>フォルダーのビデオフォルダー
+        ///     The folder is a <c>MSFT_StorageProvider</c> folder and contains video files.
+        ///     These can be of mixed format—.wmv, .mov, and others.
         /// </summary>
         internal static Guid FOLDERTYPEID_StorageProviderVideos
         {

@@ -4,12 +4,12 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     ビューモードを定義します。
+    ///     Define the view mode.
     /// </summary>
     public enum FolderLogicalViewMode
     {
         /// <summary>
-        ///     ビューは指定されていません。
+        ///     The view is not specified.
         /// </summary>
         Unspecified = FOLDERLOGICALVIEWMODE.FLVM_UNSPECIFIED,
 
@@ -19,37 +19,37 @@ namespace starshipxac.Shell
         None = 0,
 
         /// <summary>
-        ///     最小値。検証の目的でのみ使用されます。
+        ///     The minimum valid enumeration value. Used for validation purposes only.
         /// </summary>
         First = FOLDERLOGICALVIEWMODE.FLVM_FIRST,
 
         /// <summary>
-        ///     規定のビュー。
+        ///     Details view.
         /// </summary>
         Details = FOLDERLOGICALVIEWMODE.FLVM_DETAILS,
 
         /// <summary>
-        ///     タイル表示。
+        ///     Tiles view.
         /// </summary>
         Tiles = FOLDERLOGICALVIEWMODE.FLVM_TILES,
 
         /// <summary>
-        ///     アイコン表示。
+        ///     Icons view.
         /// </summary>
         Icons = FOLDERLOGICALVIEWMODE.FLVM_ICONS,
 
         /// <summary>
-        ///     リスト表示。
+        ///     List view.
         /// </summary>
         List = FOLDERLOGICALVIEWMODE.FLVM_LIST,
 
         /// <summary>
-        ///     コンテンツ表示。
+        ///     Content view.
         /// </summary>
         Content = FOLDERLOGICALVIEWMODE.FLVM_CONTENT,
 
         /// <summary>
-        ///     最大値。検証の目的でのみ使用されます。
+        ///     The maximum valid enumeration value. Used for validation purposes only.
         /// </summary>
         Last = FOLDERLOGICALVIEWMODE.FLVM_LAST
     }
