@@ -4,7 +4,7 @@ using starshipxac.Shell.Interop.KnownFolder;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     標準フォルダーカテゴリーを定義します。
+    ///     Define known folder categories
     /// </summary>
     public enum KnownFolderCategories
     {
