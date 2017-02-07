@@ -79,12 +79,6 @@ namespace starshipxac.Shell
             }
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvaliant()
-        {
-            Contract.Invariant(this.ShellItem != null);
-        }
-
         /// <summary>
         ///     Get <see cref="Shell.ShellItem" />.
         /// </summary>
