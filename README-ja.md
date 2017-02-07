@@ -24,10 +24,12 @@ Windowsの [Shell API](https://msdn.microsoft.com/en-us/library/windows/desktop/e
 
 - starshipxac.Shell.Windows.Dialogs
   - `OpenFileSelector`: 開くファイルを選択するダイアログ。
+    ![OpenFolderSelector dialog](Documents/Images/OpenFileSelector.png)
   - `SaveFileSelector`: 保存するファイルを選択するダイアログ。
   - `FolderSelector`: フォルダーを選択するダイアログ。
 - starshipxac.Shell.Media.Imaging
   - `ShellThumbnail`: ファイルやフォルダーのアイコン/サムネイル画像を取得します。
+    ![Known Folders](Documents/Images/ShellKnownFoldersSample.png)
 
 
 ## サンプル

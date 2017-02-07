@@ -49,6 +49,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{625748
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "starshipxac.Windows.Dialogs", "Samples\starshipxac.Windows.Dialogs\starshipxac.Windows.Dialogs.csproj", "{98B1E92E-8493-4C4C-B7D8-3227F634AE17}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{A277119B-8001-426E-A86F-F3A0B2AB4261}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{126807AF-E2E3-4FC7-A2AB-99178581EC08}"
+	ProjectSection(SolutionItems) = preProject
+		Documents\Images\OpenFileSelector.png = Documents\Images\OpenFileSelector.png
+		Documents\Images\ShellKnownFoldersSample.png = Documents\Images\ShellKnownFoldersSample.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,5 +133,6 @@ Global
 		{CD7571F8-CC78-401D-A95D-1C3DB999D567} = {75CF897B-9BED-4778-928A-B187315CD037}
 		{E6BF24D2-1BED-4800-914F-C18C54399049} = {75CF897B-9BED-4778-928A-B187315CD037}
 		{98B1E92E-8493-4C4C-B7D8-3227F634AE17} = {75CF897B-9BED-4778-928A-B187315CD037}
+		{126807AF-E2E3-4FC7-A2AB-99178581EC08} = {A277119B-8001-426E-A86F-F3A0B2AB4261}
 	EndGlobalSection
 EndGlobal

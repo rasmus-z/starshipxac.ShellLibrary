@@ -24,11 +24,13 @@ This library that can be used with .NET Framework such as Windows [Shell API](ht
 
 - starshipxac.Windows.Shell.Dialogs
   - `OpenFileSelector`: Dialog to select the file to open.
+    ![OpenFolderSelector dialog](Documents/Images/OpenFileSelector.png)
   - `SaveFileSelector`: Dialog for selecting files to save.
   - `FolderSelector`: Dialog for selecting a folder.
 
 - starshipxac.Shell.Media.Imaging
   - `ShellThumbnail`: Get icon / thumbnail images of files and folders.
+    ![Known Folders](Documents/Images/ShellKnownFoldersSample.png)
 
 
 ## Samples
