@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Diagnostics.Contracts;
 using System.Windows.Data;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
@@ -49,14 +48,6 @@ namespace ShellExplorerSample.ViewModels
             this.RootFolder.Value.SelectedFolder
                 .Subscribe(CreateShellItems)
                 .AddTo(this.CompositeDisposable);
-        }
-
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.RootFolder != null);
-            Contract.Invariant(this.ShellItems != null);
-            Contract.Invariant(this.ShellItemCollectionView != null);
         }
 
         public ReactiveProperty<ShellRootViewModel> RootFolder { get; }
