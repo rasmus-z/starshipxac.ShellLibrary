@@ -22,7 +22,6 @@ namespace starshipxac.Shell
         public static ShellObject FromParsingName(string parsingName)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(parsingName));
-            Contract.Ensures(Contract.Result<ShellObject>() != null);
 
             return Create(ShellItem.FromParsingName(parsingName));
         }
@@ -36,7 +35,6 @@ namespace starshipxac.Shell
         public static ShellFile FromFilePath(string path)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrEmpty(path));
-            Contract.Ensures(Contract.Result<ShellFile>() != null);
 
             var absPath = GetAbsolutePath(path);
             if (!File.Exists(absPath))
@@ -57,7 +55,6 @@ namespace starshipxac.Shell
         public static ShellFolder FromFolderPath(string path)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(path));
-            Contract.Ensures(Contract.Result<ShellFolder>() != null);
 
             var absPath = GetAbsolutePath(path);
             if (!Directory.Exists(absPath))
@@ -78,7 +75,6 @@ namespace starshipxac.Shell
         public static ShellObject FromShellItem(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
-            Contract.Ensures(Contract.Result<ShellObject>() != null);
 
             return Create(shellItem);
         }
@@ -117,8 +113,7 @@ namespace starshipxac.Shell
         /// <returns>Created a new instance of <see cref="ShellObject" /> derived class.</returns>
         private static ShellObject Create(ShellItem shellItem)
         {
-            Contract.Requires<ArgumentNullException>(shellItem != null);
-            Contract.Ensures(Contract.Result<ShellObject>() != null);
+            Contract.Requires(shellItem != null);
 
             if (shellItem.IsLink)
             {
@@ -152,7 +147,7 @@ namespace starshipxac.Shell
         /// <returns>Created a new instance of <see cref="ShellFolder" /> derived class.</returns>
         private static ShellFolder CreateFolder(ShellItem shellItem)
         {
-            Contract.Requires<ArgumentNullException>(shellItem != null);
+            Contract.Requires(shellItem != null);
 
             var shellLibrary = ShellLibraryFactory.FromShellItem(shellItem, true);
             if (SameItemType(shellItem.GetItemType(), ShellLibraryFactory.FileExtension) && (shellLibrary != null))
@@ -210,7 +205,7 @@ namespace starshipxac.Shell
         /// </returns>
         private static bool SameItemType(ShellItem shellItem, string extension)
         {
-            Contract.Requires<ArgumentNullException>(shellItem != null);
+            Contract.Requires(shellItem != null);
 
             return SameItemType(shellItem.GetItemType(), extension);
         }
@@ -223,7 +218,7 @@ namespace starshipxac.Shell
         /// <returns>Created a new instance of <see cref="IKnownFolder" /> derived class.</returns>
         private static IKnownFolder GetKnownFolderNative(ShellItem shellItem)
         {
-            Contract.Requires<ArgumentNullException>(shellItem != null);
+            Contract.Requires(shellItem != null);
 
             var pidl = PIDL.FromShellItem(shellItem.ShellItemInterface);
             if (pidl.IsNull)

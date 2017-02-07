@@ -9,23 +9,23 @@ using starshipxac.Shell.Resources;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     シェル標準フォルダーを定義します。
+    ///     Define shell known folder.
     /// </summary>
     public sealed class ShellKnownFolder : ShellFolder
     {
         /// <summary>
-        ///     <see cref="ShellItem" />、<see cref="IKnownFolder" />および<see cref="FolderProperties" />を指定して、
-        ///     <see cref="ShellKnownFolder" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="ShellKnownFolder" /> class
+        ///     to the specified <see cref="ShellItem" />, <see cref="IKnownFolder" /> and <see cref="FolderProperties" />.
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem" />。</param>
-        /// <param name="knownFolderInterface"><see cref="IKnownFolder" />。</param>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
+        /// <param name="knownFolderInterface"><see cref="IKnownFolder" />.</param>
         /// <exception cref="ArgumentNullException">
         ///     <para>
-        ///         <paramref name="=shellItem" />が<c>null</c>参照です。
+        ///         <paramref name="=shellItem" /> is a <c>null</c> reference.
         ///     </para>
-        ///     または
+        ///     or
         ///     <para>
-        ///         <paramref name="knownFolderInterface" />が<c>null</c>参照です。
+        ///         <paramref name="knownFolderInterface" /> is a <c>null</c> reference.
         ///     </para>
         /// </exception>
         internal ShellKnownFolder(ShellItem shellItem, IKnownFolder knownFolderInterface)
@@ -39,12 +39,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="ShellKnownFolder" />によって使用されているすべてのリソースを解放し、
-        ///     オプションでマネージリソースも解放します。
+        ///     Release all resources used by <see cref="ShellKnownFolder" />,
+        ///     and optionally releases managed resources.
         /// </summary>
         /// <param name="disposing">
-        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
         /// </param>
         protected override void Dispose(bool disposing)
         {
@@ -52,10 +52,10 @@ namespace starshipxac.Shell
             {
                 if (disposing)
                 {
-                    // マネージリソース解放
+                    // Release managed resources.
                 }
 
-                // アンマネージリソース解放
+                // Release unmanaged resources.
                 Marshal.ReleaseComObject(this.KnownFolderInterface);
             }
             finally
@@ -64,96 +64,89 @@ namespace starshipxac.Shell
             }
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.KnownFolderInterface != null);
-            Contract.Invariant(this.KnownFolderProperties != null);
-        }
-
         internal IKnownFolder KnownFolderInterface { get; }
 
         internal FolderProperties KnownFolderProperties { get; }
 
         /// <summary>
-        ///     標準フォルダーのファイルシステム上のパスを取得します。
+        ///     Get the path on the file system of the known folder.
         /// </summary>
         public override string Path => this.KnownFolderProperties.Path;
 
         /// <summary>
-        ///     ファイルシステム上のパスが存在するかどうかを判定する値を取得します。
+        ///     Get a value that determines whether or not a path on the file system exists.
         /// </summary>
         public override bool PathExists => this.KnownFolderProperties.PathExists;
 
         /// <summary>
-        ///     フォルダーカテゴリーを取得します。
+        ///     Get the folder category.
         /// </summary>
         public KnownFolderCategories Category => this.KnownFolderProperties.Category;
 
         /// <summary>
-        ///     標準名を取得します。
+        ///     Get a canonical name.
         /// </summary>
         public string CanonicalName => this.KnownFolderProperties.CanonicalName;
 
         /// <summary>
-        ///     フォルダーの説明を取得します。
+        ///     Get a folder description.
         /// </summary>
         public string Description => this.KnownFolderProperties.Description;
 
         /// <summary>
-        ///     親フォルダーの<see cref="Guid" />を取得します。
+        ///     Get a parent folder <see cref="Guid"/>.
         /// </summary>
         public Guid ParentId => this.KnownFolderProperties.ParentId;
 
         /// <summary>
-        ///     相対パスを取得します。
+        ///     Get the relative path.
         /// </summary>
         public string RelativePath => this.KnownFolderProperties.RelativePath;
 
         /// <summary>
-        ///     ツールチップテキストを取得します。
+        ///     Get the tool tip text.
         /// </summary>
         public string ToolTip => this.KnownFolderProperties.ToolTip;
 
         public StringReference ToolTipReference => this.KnownFolderProperties.ToolTipResource;
 
         /// <summary>
-        ///     ローカライズされた名前を取得します。
+        ///     Get the localized name.
         /// </summary>
         public string LocalizedName => this.KnownFolderProperties.LocalizedName;
 
         /// <summary>
-        ///     セキュリティ情報を取得します。
+        ///     Get security information.
         /// </summary>
         public string Security => this.KnownFolderProperties.Security;
 
         /// <summary>
-        ///     属性を取得します。
+        ///     Get the attribute.
         /// </summary>
         public FileAttributes Attributes => this.KnownFolderProperties.FileAttributes;
 
         /// <summary>
-        ///     標準フォルダーの動作を取得します。
+        ///     Get the behavior of the known folder.
         /// </summary>
         public FolderDefinitionFlags FolderDefinitionFlag => this.KnownFolderProperties.FolderDefinitionFlags;
 
         /// <summary>
-        ///     フォルダー種別IDを取得します。
+        ///     Get the folder type ID.
         /// </summary>
         internal Guid FolderTypeId => this.KnownFolderProperties.FolderTypeId;
 
         /// <summary>
-        ///     フォルダー種別を取得します。
+        ///     Get the folder type.
         /// </summary>
         public string FolderType => this.KnownFolderProperties.FolderType;
 
         /// <summary>
-        ///     フォルダーIDを取得します。
+        ///     Get the folder ID.
         /// </summary>
         internal Guid FolderId => this.KnownFolderProperties.FolderId;
 
         /// <summary>
-        ///     <see cref="RedirectionCapability" />を取得します。
+        ///     Get <see cref="RedirectionCapability" />.
         /// </summary>
         public RedirectionCapability Redirection => this.KnownFolderProperties.Redirection;
     }

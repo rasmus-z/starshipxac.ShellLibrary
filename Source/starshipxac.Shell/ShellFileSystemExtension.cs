@@ -7,7 +7,7 @@ using System.Linq;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     シェルファイルシステムの拡張メソッドを定義します。
+    ///     Define the extension method of the shell file system.
     /// </summary>
     public static class ShellFileSystemExtension
     {
@@ -20,15 +20,13 @@ namespace starshipxac.Shell
         private const string NonFileSystemKnownFolderRootString = "::";
 
         /// <summary>
-        ///     <c>ParsingName</c>を分割します。
+        ///     Split <c>ParsingName</c>.
         /// </summary>
-        /// <param name="parsingName"></param>
+        /// <param name="parsingName">Parsing name.</param>
         /// <returns></returns>
         public static string[] SplitParsingName(this string parsingName)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(parsingName));
-            Contract.Ensures(Contract.Result<string[]>() != null);
-            Contract.Ensures(Contract.Result<string[]>().Length > 0);
 
             var result = new List<string>();
 
@@ -47,24 +45,22 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <c>ParsingName</c>を分割します。
+        ///     Split <c>ParsingName</c>.
         /// </summary>
-        /// <param name="shellObject"></param>
+        /// <param name="shellObject"><see cref="ShellObject"/>.</param>
         /// <returns></returns>
         public static string[] SplitParsingName(this ShellObject shellObject)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(shellObject.ParsingName));
-            Contract.Ensures(Contract.Result<string[]>() != null);
-            Contract.Ensures(Contract.Result<string[]>().Length > 0);
 
             return SplitParsingName(shellObject.ParsingName);
         }
 
         /// <summary>
-        ///     親の<c>ParsingName</c>を取得します。
+        ///     Get a parent <c>ParsingName</c>.
         /// </summary>
-        /// <param name="parsingName"></param>
+        /// <param name="parsingName">Parsing name.</param>
         /// <returns></returns>
         public static string GetParentParsingName(string parsingName)
         {
@@ -79,9 +75,9 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <c>ParsingName</c>が、ファイルシステム外のルートフォルダーかどうかを判定します。
+        ///     Determine if <c>ParsingName</c> is a root folder outside the file system.
         /// </summary>
-        /// <param name="parsingName"></param>
+        /// <param name="parsingName">Parsing name.</param>
         /// <returns></returns>
         public static bool IsNonFileSystemKnownFolderRoot(string parsingName)
         {
@@ -91,9 +87,9 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <c>ParsingName</c>のルートを取得します。
+        ///     Get the root of <c>ParsingName</c>.
         /// </summary>
-        /// <param name="parsingName"></param>
+        /// <param name="parsingName">Parsing name.</param>
         /// <returns></returns>
         public static string GetParsingNameRoot(string parsingName)
         {

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using static starshipxac.Shell.ShellKnownFolderFactory;
 
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     よく使用する標準フォルダーを取得します。
+    ///     Get the known folder you use frequently.
     /// </summary>
     /// <remarks>
     ///     https://msdn.microsoft.com/ja-jp/library/windows/desktop/dd378457(v=vs.85).aspx
@@ -14,7 +13,7 @@ namespace starshipxac.Shell
     public static class ShellKnownFolders
     {
         /// <summary>
-        ///     ローミングユーザーのアプリケーション固有データ
+        ///     Roaming user's application specific data.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -35,7 +34,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder ApplicationData => FromCanonicalName("AppData");
 
         /// <summary>
-        ///     コンピューター
+        ///     Computer.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -56,7 +55,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Computer => FromCanonicalName("MyComputerFolder");
 
         /// <summary>
-        ///     デスクトップ
+        ///     Desktop.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -79,7 +78,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Documents => Personal;
 
         /// <summary>
-        ///     ダウンロード
+        ///     Download.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -100,7 +99,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Downloads => FromCanonicalName("Downloads");
 
         /// <summary>
-        ///     「お気に入り」
+        ///     Favorites.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -121,7 +120,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Favorites => FromCanonicalName("Favorites");
 
         /// <summary>
-        ///     ゲーム
+        ///     Games.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -163,7 +162,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder GameTasks => FromCanonicalName("GameTasks");
 
         /// <summary>
-        ///     ホームグループ
+        ///     HomeGroup
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -184,7 +183,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder HomeGroup => FromCanonicalName("HomeGroupFolder");
 
         /// <summary>
-        ///     ユーザーのホームグループ
+        ///     Current user's home group
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -205,7 +204,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder HomeGroupCurrentUser => FromCanonicalName("HomeGroupCurrentUserFolder");
 
         /// <summary>
-        ///     ライブラリ
+        ///     Library
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -226,7 +225,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Libraries => FromCanonicalName("Libraries");
 
         /// <summary>
-        ///     リンク
+        ///     Links
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -247,7 +246,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Links => FromCanonicalName("Links");
 
         /// <summary>
-        ///     ローカルアプリケーションデータ
+        ///     Local application data.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -268,7 +267,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder LocalApplicationData => FromCanonicalName("Local AppData");
 
         /// <summary>
-        ///     ミュージック
+        ///     Music
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -289,7 +288,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Music => FromCanonicalName("My Music");
 
         /// <summary>
-        ///     ネットワーク
+        ///     Network
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -310,7 +309,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Network => FromCanonicalName("NetworkPlacesFolder");
 
         /// <summary>
-        ///     ネットワーク
+        ///     NetHood
         /// </summary>
         public static ShellKnownFolder NetworkSortcuts => FromCanonicalName("NetHood");
 
@@ -336,7 +335,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder OneDrive => FromCanonicalName("OneDrive");
 
         /// <summary>
-        ///     OneDriveカメラロール
+        ///     OneDrive camera roll.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -357,7 +356,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder OneDriveCameraRoll => FromCanonicalName("SkyDriveCameraRoll");
 
         /// <summary>
-        ///     OneDriveドキュメント
+        ///     OneDrive Documents.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -378,7 +377,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder OneDriveDocuments => FromCanonicalName("SkyDriveDocuments");
 
         /// <summary>
-        ///     OneDriveピクチャー
+        ///     OneDrive Pictures.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -399,7 +398,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder OneDrivePictures => FromCanonicalName("SkyDrivePictures");
 
         /// <summary>
-        ///     ユーザードキュメント
+        ///     Documents
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -420,7 +419,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Personal => FromCanonicalName("Personal");
 
         /// <summary>
-        ///     ピクチャー
+        ///     Pictures
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -441,7 +440,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Pictures => FromCanonicalName("My Pictures");
 
         /// <summary>
-        ///     プレイリスト
+        ///     Playlists
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -462,7 +461,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Playlists => FromCanonicalName("Playlists");
 
         /// <summary>
-        ///     プリンター
+        ///     Printer folder.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -484,7 +483,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Printers => FromCanonicalName("PrintersFolder");
 
         /// <summary>
-        ///     ユーザーフォルダー
+        ///     User's folder.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -505,7 +504,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Profile => FromCanonicalName("Profile");
 
         /// <summary>
-        ///     共通アプリケーションデーター
+        ///     Common application data.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -526,7 +525,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder ProgramData => FromCanonicalName("Common AppData");
 
         /// <summary>
-        ///     プログラム
+        ///     Programs
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -548,7 +547,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Programs => FromCanonicalName("Programs");
 
         /// <summary>
-        ///     パブリック
+        ///     Public
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -569,7 +568,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Public => FromCanonicalName("Public");
 
         /// <summary>
-        ///     パブリックデスクトップ
+        ///     Public desktop.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -590,7 +589,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder PublicDesktop => FromCanonicalName("Common Desktop");
 
         /// <summary>
-        ///     パブリックのドキュメント
+        ///     Public documents.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -611,7 +610,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder PublicDocuments => FromCanonicalName("Common Documents");
 
         /// <summary>
-        ///     パブリックのダウンロード
+        ///     Public downloads.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -653,7 +652,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder PublicGameTasks => FromCanonicalName("PublicGameTasks");
 
         /// <summary>
-        ///     パブリックライブラリ
+        ///     Public libraries.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -674,7 +673,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder PublicLibraries => FromCanonicalName("PublicLibraries");
 
         /// <summary>
-        ///     パブリックのミュージック
+        ///     Public music.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -695,7 +694,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder PublicMusic => FromCanonicalName("CommonMusic");
 
         /// <summary>
-        ///     パブリックのピクチャ
+        ///     Public pictures.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -716,7 +715,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder PublicPictures => FromCanonicalName("CommonPictures");
 
         /// <summary>
-        ///     パブリックのビデオ
+        ///     Public video.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -737,7 +736,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder PublicVideos => FromCanonicalName("CommonVideo");
 
         /// <summary>
-        ///     ごみ箱
+        ///     Recycle bin folder.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -758,7 +757,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder RecycleBin => FromCanonicalName("RecycleBinFolder");
 
         /// <summary>
-        ///     保存したゲーム
+        ///     Saved games.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -779,7 +778,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder SavedGames => FromCanonicalName("SavedGames");
 
         /// <summary>
-        ///     検索
+        ///     Searches
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -800,7 +799,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Searches => FromCanonicalName("Searches");
 
         /// <summary>
-        ///     検索履歴
+        ///     Search history folder.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -822,7 +821,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder SearchHistory => FromCanonicalName("SearchHistoryFolder");
 
         /// <summary>
-        ///     検索結果
+        ///     Search home folder.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -843,7 +842,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder SearchHome => FromCanonicalName("SearchHomeFolder");
 
         /// <summary>
-        ///     「送る」
+        ///     Send to.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -864,7 +863,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder SendTo => FromCanonicalName("SendTo");
 
         /// <summary>
-        ///     スタートアップ
+        ///     Startup
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -886,7 +885,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Startup => FromCanonicalName("Startup");
 
         /// <summary>
-        ///     ユーザー
+        ///     Users
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -907,7 +906,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder UserProfiles => FromCanonicalName("UserProfiles");
 
         /// <summary>
-        ///     ユーザーフォルダー
+        ///     User's folder.
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -928,7 +927,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder UserProfile => FromCanonicalName("UsersFilesFolder");
 
         /// <summary>
-        ///     ビデオ
+        ///     Video
         /// </summary>
         /// <remarks>
         ///     <list type="table">
@@ -949,11 +948,10 @@ namespace starshipxac.Shell
         public static ShellKnownFolder Videos => FromCanonicalName("My Video");
 
         /// <summary>
-        ///     すべての標準フォルダーを取得します。
+        ///     Enumerate all known folders.
         /// </summary>
         public static IEnumerable<ShellKnownFolder> EnumerateKnownFolders()
         {
-            Contract.Ensures(Contract.Result<IEnumerable<ShellKnownFolder>>() != null);
             return GetAllFolders();
         }
     }

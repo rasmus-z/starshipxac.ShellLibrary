@@ -5,7 +5,7 @@ using starshipxac.Shell.PropertySystem;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     ファイル情報を定義します。
+    ///     Define shell file class.
     /// </summary>
     public class ShellFile : ShellObject
     {
@@ -14,9 +14,10 @@ namespace starshipxac.Shell
         private ShellFolder folder;
 
         /// <summary>
-        ///     <see cref="ShellItem" />を指定して、<see cref="ShellFile" />クラスの新しいインスタンスを取得します。
+        ///     Initialize a new instance of the <see cref="ShellFile" /> class
+        ///     to the specified <see cref="ShellItem" />.
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem" />。</param>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
         protected internal ShellFile(ShellItem shellItem)
             : base(shellItem)
         {
@@ -24,25 +25,23 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     ファイルのパスを取得します。
+        ///     Get the file path.
         /// </summary>
         public virtual string Path
         {
             get
             {
-                Contract.Ensures(Contract.Result<string>() != null);
                 return this.ParsingName;
             }
         }
 
         /// <summary>
-        ///     ファイルの拡張子を取得します。
+        ///     Get the file extension.
         /// </summary>
         public string Extension
         {
             get
             {
-                Contract.Ensures(Contract.Result<string>() != null);
                 if (this.extension == null)
                 {
                     this.extension = System.IO.Path.GetExtension(this.Path);
@@ -52,12 +51,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     ストリームかどうかを判定する値を取得します。
+        ///     Get a value that determines if it is a stream.
         /// </summary>
         public bool IsStream => this.ShellItem.IsStream;
 
         /// <summary>
-        ///     ファイルサイズを取得します。
+        ///     Get the file size.
         /// </summary>
         public UInt64 Size
         {
@@ -73,7 +72,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     フォルダーのインスタンスを取得します。
+        ///     Get an instance of the folder.
         /// </summary>
         public ShellFolder Folder
         {

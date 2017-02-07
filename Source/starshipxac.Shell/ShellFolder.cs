@@ -9,20 +9,21 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     フォルダー情報を定義します。
+    ///     Define shell folder class.
     /// </summary>
     public class ShellFolder : ShellObject
     {
         private ShellFolder parent;
 
         /// <summary>
-        ///     <see cref="ShellItem" />を指定して、<see cref="ShellFolder" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="ShellFolder" /> class
+        ///     to the specified <see cref="ShellItem" />.
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem" />。</param>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
         /// <remarks>
         ///     <para>
-        ///         <see cref="ShellItem.IsFolder" />は、<c>true</c>であるとは限りません。
-        ///         一部の<c>KnownFolder</c>は、<see cref="ShellItem.IsFolder" />が<c>false</c>の場合があります。
+        ///         <See cref="ShellItem.IsFolder" /> is not necessarily <c>true</c>.
+        ///         For some <c>KnownFolder</c>, <see cref="ShellItem.IsFolder" /> may be <c>false</c>.
         ///     </para>
         /// </remarks>
         internal ShellFolder(ShellItem shellItem)
@@ -34,18 +35,18 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="ShellFolder" />によって使用されているすべてのリソースを解放し、
-        ///     オプションでマネージリソースも解放します。
+        ///     Release all resources used by <see cref="ShellObject" />,
+        ///     and optionally releases managed resources.
         /// </summary>
         /// <param name="disposing">
-        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
         /// </param>
         protected override void Dispose(bool disposing)
         {
             try
             {
-                // アンマネージリソース解放
+                // Release unmanaged resources.
                 Marshal.ReleaseComObject(this.ShellFolderInterface);
             }
             finally
@@ -54,29 +55,23 @@ namespace starshipxac.Shell
             }
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.ShellFolderInterface != null);
-        }
-
         /// <summary>
-        ///     <see cref="IShellFolder" />を取得します。
+        ///     Get a <see cref="IShellFolder" />.
         /// </summary>
         internal IShellFolder ShellFolderInterface { get; }
 
         /// <summary>
-        ///     ファイルシステム上のパスを取得します。
+        ///     Get the parsing name.
         /// </summary>
         public virtual string Path => this.ParsingName;
 
         /// <summary>
-        ///     ファイルシステム上のパスが存在するかどうかを判定する値を取得します。
+        ///     Get a value that determines whether or not a path on the file system exists.
         /// </summary>
         public virtual bool PathExists => this.IsFileSystem && Directory.Exists(this.Path);
 
         /// <summary>
-        ///     親フォルダーのインスタンスを取得します。
+        ///     Get a parent folder.
         /// </summary>
         public ShellFolder Parent
         {
@@ -91,32 +86,29 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="ShellFolder" />に存在する<see cref="ShellObject" />のコレクションを取得します。
+        ///     Get a collection of <see cref="ShellObject" /> that exists in <see cref="ShellFolder" />.
         /// </summary>
-        /// <returns><see cref="ShellObject" />のコレクション。</returns>
+        /// <returns>Collection of <see cref="ShellObject" />.</returns>
         public virtual IEnumerable<ShellObject> EnumerateObjects()
         {
-            Contract.Ensures(Contract.Result<IEnumerable<ShellObject>>() != null);
             return new ShellItems(new ShellFolderEnumerator(this));
         }
 
         /// <summary>
-        ///     <see cref="ShellFolder" />に存在する<see cref="ShellFile" />のコレクションを取得します。
+        ///     Get a collection of <see cref="ShellFile" /> that exists in <see cref="ShellFolder" />.
         /// </summary>
-        /// <returns><see cref="ShellFile" />のコレクション。</returns>
+        /// <returns>Collection of <see cref="ShellFile" />.</returns>
         public virtual IEnumerable<ShellObject> EnumerateFiles()
         {
-            Contract.Ensures(Contract.Result<IEnumerable<ShellObject>>() != null);
             return new ShellItems(new ShellFolderEnumerator(this, SHCONTF.SHCONTF_NONFOLDERS));
         }
 
         /// <summary>
-        ///     <see cref="ShellFolder" />に存在する<see cref="ShellFolder" />のコレクションを取得します。
+        ///     Get a collection of <see cref="ShellFolder" /> that exists in <see cref="ShellFolder" />.
         /// </summary>
-        /// <returns><see cref="ShellFolder" />のコレクション。</returns>
+        /// <returns>Collection of <see cref="ShellFolder" />.</returns>
         public virtual IEnumerable<ShellFolder> EnumerateFolders()
         {
-            Contract.Ensures(Contract.Result<IEnumerable<ShellFolder>>() != null);
             return new ShellFolders(new ShellFolderEnumerator(this, SHCONTF.SHCONTF_FOLDERS));
         }
     }

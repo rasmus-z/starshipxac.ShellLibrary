@@ -94,7 +94,6 @@ namespace starshipxac.Shell
         public static ShellItem FromParsingName(string parsingName)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(parsingName));
-            Contract.Ensures(Contract.Result<ShellItem>() != null);
 
             IShellItem2 shellItem2;
             var code = ShellNativeMethods.SHCreateItemFromParsingName(
@@ -120,7 +119,6 @@ namespace starshipxac.Shell
         internal static ShellItem FromPIDL(PIDL pidl)
         {
             Contract.Requires<ArgumentException>(pidl != PIDL.Null);
-            Contract.Ensures(Contract.Result<ShellItem>() != null);
 
             IShellItem2 shellItem;
             var code = ShellNativeMethods.SHCreateItemFromIDList(
@@ -148,7 +146,6 @@ namespace starshipxac.Shell
         {
             Contract.Requires<ArgumentNullException>(idListPtr != IntPtr.Zero);
             Contract.Requires<ArgumentNullException>(parentFolderInterface != null);
-            Contract.Ensures(Contract.Result<ShellItem>() != null);
 
             IShellItem shellItem;
             var code = ShellNativeMethods.SHCreateItemWithParent(
@@ -163,15 +160,6 @@ namespace starshipxac.Shell
             }
 
             return new ShellItem((IShellItem2)shellItem);
-        }
-
-        /// <summary>
-        ///     Define class invariant method.
-        /// </summary>
-        [ContractInvariantMethod]
-        private void ObjectInvaliant()
-        {
-            Contract.Invariant(this.ShellItemInterface != null);
         }
 
         /// <summary>
@@ -229,8 +217,6 @@ namespace starshipxac.Shell
         /// <exception cref="ShellException">Failed to acquire <see cref="IShellFolder" />.</exception>
         internal IShellFolder GetShellFolder()
         {
-            Contract.Ensures(Contract.Result<IShellFolder>() != null);
-
             object result;
 
             var handler = ShellBHID.BHID_SFObject;
@@ -258,8 +244,6 @@ namespace starshipxac.Shell
         /// <exception cref="IStream">Failed to acquire <see cref="IStream" />.</exception>
         internal IStream GetStream()
         {
-            Contract.Ensures(Contract.Result<IStream>() != null);
-
             object result;
 
             var handler = ShellBHID.BHID_Stream;
@@ -282,7 +266,6 @@ namespace starshipxac.Shell
         /// <returns></returns>
         public string GetDisplayName()
         {
-            Contract.Ensures(Contract.Result<string>() != null);
             return GetDisplayName(DisplayNameTypes.Default);
         }
 
@@ -294,8 +277,6 @@ namespace starshipxac.Shell
         /// <exception cref="ShellException">Failed to acquire display name.</exception>
         public string GetDisplayName(DisplayNameTypes displayNameType)
         {
-            Contract.Ensures(Contract.Result<string>() != null);
-
             string result;
             var hr = this.ShellItemInterface.GetDisplayName((SIGDN)displayNameType, out result);
             if (HRESULT.Failed(hr))
@@ -336,7 +317,6 @@ namespace starshipxac.Shell
         private static string GetParsingName(IShellItem2 shellItem)
         {
             Contract.Requires(shellItem != null);
-            Contract.Ensures(Contract.Result<string>() != null);
 
             string result;
             var hr = shellItem.GetDisplayName(SIGDN.SIGDN_DESKTOPABSOLUTEPARSING, out result);
@@ -355,7 +335,6 @@ namespace starshipxac.Shell
         private static string GetItemType(IShellItem2 shellItem)
         {
             Contract.Requires(shellItem != null);
-            Contract.Ensures(Contract.Result<string>() != null);
 
             var itemTypeKey = new PROPERTYKEY(new Guid("28636AA6-953D-11D2-B5D6-00C04FD918D0"), 11);
             string result;

@@ -14,29 +14,26 @@ namespace starshipxac.Shell
     public static class ShellKnownFolderFactory
     {
         /// <summary>
-        ///     標準名称を指定して、<see cref="ShellKnownFolder" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellKnownFolder" /> class
+        ///     to the specified canonical name.
         /// </summary>
-        /// <param name="canonicalName">標準フォルダーの標準名称。</param>
-        /// <returns>作成した標準フォルダーインターフェイス。</returns>
+        /// <param name="canonicalName">Canonical name of known folder.</param>
+        /// <returns><see cref="ShellKnownFolder" />.</returns>
         /// <exception cref="ArgumentNullException">
-        ///     <param name="canonicalName" />
-        ///     が<c>null</c>です。
+        ///     <paramref name="canonicalName" /> is <c>null</c>.
         /// </exception>
         /// <exception cref="ArgumentException">
         ///     <para>
-        ///         <param name="canonicalName" />
-        ///         が空文字列です。
+        ///         <paramref name="canonicalName" /> is empty string.
         ///     </para>
-        ///     <para>または</para>
+        ///     or
         ///     <para>
-        ///         <param name="canonicalName" />
-        ///         に一致する標準フォルダーが存在しません。
+        ///         There is no standard folder matching <paramref name="canonicalName" />.
         ///     </para>
         /// </exception>
         public static ShellKnownFolder FromCanonicalName(string canonicalName)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(canonicalName));
-            Contract.Ensures(Contract.Result<ShellKnownFolder>() != null);
 
             IKnownFolder knownFolderInterface;
             var knownFolderManager = new KnownFolderManager();
@@ -51,10 +48,11 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     パスを指定して、<see cref="ShellKnownFolder" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellKnownFolder" /> class
+        ///     to the specified path.
         /// </summary>
-        /// <param name="path">パス。</param>
-        /// <returns>作成した標準フォルダーインターフェイス。</returns>
+        /// <param name="path">Path.</param>
+        /// <returns><see cref="ShellKnownFolder" />.</returns>
         public static ShellKnownFolder FromFolderPath(string path)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(path));
@@ -63,11 +61,15 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     標準フォルダー名称を指定して、<see cref="ShellKnownFolder" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellKnownFolder" /> class
+        ///     to the specified parsing name.
         /// </summary>
-        /// <param name="parsingName">標準フォルダー名称またはパス。</param>
-        /// <returns>作成した標準フォルダーインターフェイス。</returns>
-        /// <exception cref="ArgumentException">指定した標準フォルダー名称またはパスに一致する標準フォルダーは作成できませんでした。</exception>
+        /// <param name="parsingName">Parsing name or path.</param>
+        /// <returns><see cref="ShellKnownFolder" />.</returns>
+        /// <exception cref="ArgumentException">
+        ///     A known folder matching the specified standard folder name or path could not be
+        ///     created.
+        /// </exception>
         public static ShellKnownFolder FromParsingName(string parsingName)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(parsingName));
@@ -120,11 +122,14 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     標準フォルダーIDを指定して、<see cref="ShellKnownFolder" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellKnownFolder" /> class
+        ///     to the specified known folder ID.
         /// </summary>
-        /// <param name="knownFolderId">標準フォルダーの GUID。</param>
-        /// <returns>作成した標準フォルダーインターフェイス。</returns>
-        /// <exception cref="ArgumentException">指定した GUIDに一致する標準フォルダーは作成できませんでした。</exception>
+        /// <param name="knownFolderId">Known folder GUID.</param>
+        /// <returns>
+        ///     <see cref="ShellKnownFolder" />
+        /// </returns>
+        /// <exception cref="ArgumentException">A known folder matching the specified GUID could not be created.</exception>
         public static ShellKnownFolder FromKnownFolderId(Guid knownFolderId)
         {
             IKnownFolder knownFolderNative;
@@ -144,19 +149,16 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     すべての標準フォルダーを取得します。
+        ///     Get all the standard folders.
         /// </summary>
-        /// <returns>取得した標準フォルダーのコレクション。</returns>
+        /// <returns>Known folder collection.</returns>
         public static IReadOnlyList<ShellKnownFolder> GetAllFolders()
         {
-            Contract.Ensures(Contract.Result<IReadOnlyList<ShellKnownFolder>>() != null);
-
             var result = new List<ShellKnownFolder>();
 
             var folders = IntPtr.Zero;
             try
             {
-                // 標準フォルダーIDのコレクションを取得
                 uint count;
                 var knownFolderManager = new KnownFolderManager();
                 knownFolderManager.GetFolderIds(out folders, out count);
@@ -165,7 +167,7 @@ namespace starshipxac.Shell
                 {
                     for (var index = 0; index < count; ++index)
                     {
-                        var current = new IntPtr(folders.ToInt64() + (Marshal.SizeOf(typeof(Guid))*index));
+                        var current = new IntPtr(folders.ToInt64() + (Marshal.SizeOf(typeof(Guid)) * index));
 
                         var knownFolderId = (Guid)Marshal.PtrToStructure(current, typeof(Guid));
                         var knownFolder = FromKnownFolderIdInternal(knownFolderId);
@@ -190,10 +192,11 @@ namespace starshipxac.Shell
         #region Internal Methods
 
         /// <summary>
-        ///     PIDLを指定して、<see cref="IKnownFolder" />を作成します。
+        ///     Create a new instance of the <see cref="IKnownFolder" /> instance
+        ///     to the specified PIDL.
         /// </summary>
-        /// <param name="pidl">PIDL。</param>
-        /// <returns>作成した標準フォルダーインターフェイス。</returns>
+        /// <param name="pidl">PIDL.</param>
+        /// <returns><see cref="IKnownFolder" />.</returns>
         internal static IKnownFolder FromPIDL(PIDL pidl)
         {
             IKnownFolder knownFolder;
@@ -207,10 +210,11 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     標準フォルダーIDを指定して、標準フォルダーを作成します。
+        ///     Create a new instance of the <see cref="ShellKnownFolder" /> class
+        ///     to the specified known folder GUID.
         /// </summary>
-        /// <param name="knownFolderId">標準フォルダーの GUID。</param>
-        /// <returns>作成した標準フォルダーインターフェイス。</returns>
+        /// <param name="knownFolderId">Known folder GUID.</param>
+        /// <returns><see cref="ShellKnownFolder" />.</returns>
         internal static ShellKnownFolder FromKnownFolderIdInternal(Guid knownFolderId)
         {
             IKnownFolder knownFolderNative;
@@ -224,10 +228,11 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="IKnownFolder" />を指定して、標準フォルダーを作成します。
+        ///     Create a new instance of the <see cref="ShellKnownFolder" /> class
+        ///     to the specified <see cref="IKnownFolder" />.
         /// </summary>
-        /// <param name="knownFolderInterface"><see cref="IKnownFolder" />。</param>
-        /// <returns>作成した標準フォルダーインターフェイス。</returns>
+        /// <param name="knownFolderInterface"><see cref="IKnownFolder" />.</param>
+        /// <returns><see cref="ShellKnownFolder" />.</returns>
         private static ShellKnownFolder CreateKnownFolder(IKnownFolder knownFolderInterface)
         {
             Contract.Requires<ArgumentNullException>(knownFolderInterface != null);
