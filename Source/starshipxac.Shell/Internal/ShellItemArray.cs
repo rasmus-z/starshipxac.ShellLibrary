@@ -25,26 +25,26 @@ namespace starshipxac.Shell.Internal
             }
         }
 
-        #region IShellItemArrayメンバー
+        #region IShellItemArray Member
 
         public HRESULT BindToHandler(IntPtr pdc, ref Guid rbhid, ref Guid riid, out IntPtr ppvOut)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public HRESULT GetPropertyStore(int flags, ref Guid riid, out IntPtr ppvOut)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public HRESULT GetPropertyDescriptionList(ref PROPERTYKEY keyType, ref Guid riid, out IntPtr ppv)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public HRESULT GetAttributes(SIATTRIBFLAGS dwAttributeFlags, UInt32 sfgaoMask, out UInt32 psfgaoAttributes)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public HRESULT GetCount(out uint pdwNumItems)
@@ -68,17 +68,18 @@ namespace starshipxac.Shell.Internal
 
         public HRESULT EnumItems(out IntPtr ppenumShellItems)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        #endregion iShellItemArrayメンバー
+        #endregion iShellItemArray Member
 
         /// <summary>
-        ///     <see cref="IShellItemArray" />から、<see cref="index" />で指定した位置の<see cref="IShellItem" />を取得します。
+        ///     Get <see cref="IShellItem" /> at the position specified by <see cref="index" />
+        ///     from <see cref="IShellItemArray" />.
         /// </summary>
-        /// <param name="shellItemArray"><see cref="IShellItemArray" />。</param>
-        /// <param name="index">取得する位置のインデックス。</param>
-        /// <returns>取得した<see cref="IShellItem" />。</returns>
+        /// <param name="shellItemArray"><see cref="IShellItemArray" />.</param>
+        /// <param name="index">Index of the <see cref="IShellItemArray" />.</param>
+        /// <returns><see cref="IShellItem" />.</returns>
         internal static IShellItem GetShellItemAt(IShellItemArray shellItemArray, int index)
         {
             Contract.Requires<ArgumentNullException>(shellItemArray != null);
@@ -89,10 +90,10 @@ namespace starshipxac.Shell.Internal
         }
 
         /// <summary>
-        ///     <see cref="IShellItemArray" />内のアイテム数を取得します。
+        ///     Get the number of items in <see cref="IShellItemArray" />.
         /// </summary>
-        /// <param name="shellItemArray"><see cref="IShellItemArray" />。</param>
-        /// <returns>取得したアイテム数。</returns>
+        /// <param name="shellItemArray"><see cref="IShellItemArray" />.</param>
+        /// <returns>Number of item.</returns>
         internal static int GetShellItemCount(IShellItemArray shellItemArray)
         {
             Contract.Requires<ArgumentNullException>(shellItemArray != null);
