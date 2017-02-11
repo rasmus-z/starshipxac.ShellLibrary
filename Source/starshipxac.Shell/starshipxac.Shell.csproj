@@ -280,6 +280,7 @@
     <Compile Include="PropertySystem\ShellPropertyWriter.cs" />
     <Compile Include="RedirectionCapabilities.cs" />
     <Compile Include="Resources\IconReference.cs" />
+    <Compile Include="Resources\Interop\ResourceMethods.cs" />
     <Compile Include="Resources\ResourceLibrary.cs" />
     <Compile Include="Resources\ResourceReference.cs" />
     <Compile Include="Resources\StringReference.cs" />
