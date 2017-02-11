@@ -14,7 +14,7 @@ namespace starshipxac.Shell.Components.Internal
         private readonly ConcurrentDictionary<uint, List<Delegate>> events;
 
         /// <summary>
-        ///     Initialize a instance of the <see cref="ShellChangeEventManager"/> class.
+        ///     Initialize a instance of the <see cref="ShellChangeEventManager" /> class.
         /// </summary>
         public ShellChangeEventManager()
         {
@@ -30,14 +30,12 @@ namespace starshipxac.Shell.Components.Internal
             }
         }
 
-        //TODO: Delegateを変更する。
-
         public void AddHandler(ShellChangeTypes eventType, Delegate handler)
         {
             var et = Convert.ToUInt32(eventType);
 
             this.events.AddOrUpdate(et,
-                value => new List<Delegate> {handler},
+                value => new List<Delegate> { handler },
                 (value, list) =>
                 {
                     list.Add(handler);
