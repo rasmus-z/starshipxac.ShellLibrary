@@ -6,7 +6,7 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    ///     シェルアイコンを定義します。
+    ///     Define shell icon.
     /// </summary>
     public sealed class ShellIcon : IDisposable
     {
@@ -42,7 +42,7 @@ namespace starshipxac.Shell.Media.Imaging
         }
 
         /// <summary>
-        ///     アイコンハンドルを取得します。
+        ///     Get the icon handle.
         /// </summary>
         internal IntPtr Handle { get; }
     }

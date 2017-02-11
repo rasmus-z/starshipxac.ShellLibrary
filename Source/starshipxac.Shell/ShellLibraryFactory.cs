@@ -9,7 +9,7 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     シェルライブラリファクトリメソッドを定義します。
+    ///     Define shell library folder factory methods.
     /// </summary>
     public static class ShellLibraryFactory
     {
@@ -19,11 +19,11 @@ namespace starshipxac.Shell
         internal static readonly string FileExtension = ".library-ms";
 
         /// <summary>
-        ///     新しいライブラリを作成します。
+        ///     Create new shell library.
         /// </summary>
-        /// <param name="libraryName">作成するライブラリ名称。</param>
-        /// <param name="overwrite">既存のライブラリに上書きするかどうかを示す値。</param>
-        /// <returns>作成したライブラリ。</returns>
+        /// <param name="libraryName">Name of the library to be created.</param>
+        /// <param name="overwrite">A value indicating whether to overwrite an existing library.</param>
+        /// <returns>Created <see cref="ShellLibrary" />.</returns>
         public static ShellLibrary CreateLibrary(string libraryName, bool overwrite)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(libraryName));
@@ -40,12 +40,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     新しいライブラリを作成します。
+        ///     Create new shell library.
         /// </summary>
-        /// <param name="libraryName">作成するライブラリ名称。</param>
-        /// <param name="sourceKnownFolder">ライブラリの標準フォルダー。</param>
-        /// <param name="overwrite">既存のライブラリに上書きするかどうかを示す値。</param>
-        /// <returns>作成したライブラリ。</returns>
+        /// <param name="libraryName">Name of the library to be created.</param>
+        /// <param name="sourceKnownFolder">Known folder of library.</param>
+        /// <param name="overwrite">A value indicating whether to overwrite an existing library.</param>
+        /// <returns>Created <see cref="ShellLibrary" />.</returns>
         public static ShellLibrary Create(string libraryName, ShellKnownFolder sourceKnownFolder, bool overwrite)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(libraryName));
@@ -63,12 +63,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     新しいライブラリを作成します。
+        ///     Create new shell library.
         /// </summary>
-        /// <param name="libraryName">作成するライブラリ名称。</param>
-        /// <param name="sourcePath">ライブラリのパス。</param>
-        /// <param name="overwrite">既存のライブラリに上書きするかどうかを示す値。</param>
-        /// <returns>作成したライブラリ。</returns>
+        /// <param name="libraryName">Name of the library to be created.</param>
+        /// <param name="sourcePath">Library path.</param>
+        /// <param name="overwrite">A value indicating whether to overwrite an existing library.</param>
+        /// <returns>Created <see cref="ShellLibrary" />.</returns>
         public static ShellLibrary Create(string libraryName, string sourcePath, bool overwrite)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(libraryName));
@@ -94,12 +94,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     ライブラリ名称を指定して、
-        ///     <see cref="ShellLibrary" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellLibrary" /> class
+        ///     to the specified library name.
         /// </summary>
-        /// <param name="libraryName">ライブラリ名称。</param>
-        /// <param name="isReadOnly">ライブラリが読み込み専用かどうかを示す値。</param>
-        /// <returns>作成したライブラリ。</returns>
+        /// <param name="libraryName">Name of the library to be created.</param>
+        /// <param name="isReadOnly">A value that indicates whether the library is readonly.</param>
+        /// <returns>Created <see cref="ShellLibrary" />.</returns>
         public static ShellLibrary Load(string libraryName, bool isReadOnly = true)
         {
             Contract.Requires<ArgumentNullException>(libraryName != null);
@@ -125,12 +125,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     標準フォルダーを指定して、
-        ///     <see cref="ShellLibrary" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellLibrary" /> class
+        ///     to the specified known folder.
         /// </summary>
-        /// <param name="sourceKnownFolder">標準フォルダー情報。</param>
-        /// <param name="isReadOnly">ライブラリが読み込み専用かどうかを示す値。</param>
-        /// <returns>作成したライブラリ。</returns>
+        /// <param name="sourceKnownFolder">Shell known folder.</param>
+        /// <param name="isReadOnly">A value that indicates whether the library is readonly.</param>
+        /// <returns>Created <see cref="ShellLibrary" />.</returns>
         public static ShellLibrary Load(ShellKnownFolder sourceKnownFolder, bool isReadOnly = true)
         {
             Contract.Requires<ArgumentNullException>(sourceKnownFolder != null);
@@ -155,13 +155,13 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     ライブラリ名称とフォルダーのパスを指定して、
-        ///     <see cref="ShellLibrary" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellLibrary" /> class
+        ///     to the specified library name and folder path.
         /// </summary>
-        /// <param name="libraryName">ライブラリ名称。</param>
-        /// <param name="sourcePath">フォルダーのパス。</param>
-        /// <param name="isReadOnly">ライブラリが読み込み専用かどうかを示す値。</param>
-        /// <returns>作成したライブラリ。</returns>
+        /// <param name="libraryName">Name of the library to be created.</param>
+        /// <param name="sourcePath">Folder path.</param>
+        /// <param name="isReadOnly">A value that indicates whether the library is readonly.</param>
+        /// <returns>Created <see cref="ShellLibrary" />.</returns>
         public static ShellLibrary Load(string libraryName, string sourcePath, bool isReadOnly = true)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(libraryName));
@@ -181,12 +181,12 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="ShellItem" />を指定して、
-        ///     <see cref="ShellLibrary" />クラスの新しいインスタンスを初期化します。
+        ///     Create a new instance of the <see cref="ShellLibrary" /> class
+        ///     to the specified <see cref="ShellItem" />.
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem" />。</param>
-        /// <param name="isReadOnly">ライブラリが読み込み専用かどうかを示す値。</param>
-        /// <returns>作成した<see cref="ShellLibrary" />。</returns>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
+        /// <param name="isReadOnly">A value that indicates whether the library is readonly.</param>
+        /// <returns>Created <see cref="ShellLibrary" />.</returns>
         internal static ShellLibrary FromShellItem(ShellItem shellItem, bool isReadOnly)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
@@ -201,7 +201,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="IShellLibraryNative" />のインスタンスを作成します。
+        ///     Create a new instance of the <see cref="IShellLibraryNative" /> interface.
         /// </summary>
         /// <returns></returns>
         private static IShellLibraryNative CreateShellLibraryNativeInterface()
@@ -211,7 +211,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     <see cref="LIBRARYSAVEFLAGS" />を取得します。
+        ///     Get a <see cref="LIBRARYSAVEFLAGS" />.
         /// </summary>
         /// <param name="overwrite"></param>
         /// <returns></returns>

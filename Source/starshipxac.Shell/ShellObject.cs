@@ -334,8 +334,8 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     Determines whether the value of the specified <see cref="ShellObject" /> is equal to the current
-        ///     <see cref="ShellObject" />.
+        ///     Determines whether the value of the specified <see cref="ShellObject" /> is equal
+        ///     to the current <see cref="ShellObject" />.
         /// </summary>
         /// <param name="other">Compare with the current <see cref="ShellObject" /> <see cref="ShellObject" />.</param>
         /// <returns>

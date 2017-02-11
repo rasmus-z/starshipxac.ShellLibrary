@@ -87,13 +87,6 @@ namespace starshipxac.Shell
             return new ShellItem((IShellItem2)shellItem);
         }
 
-        [ContractInvariantMethod]
-        private void ShellSearchFolderInvariant()
-        {
-            Contract.Invariant(this.SearchCondition != null);
-            Contract.Invariant(this.SearchScopePaths != null);
-        }
-
         internal static ISearchFolderItemFactory SearchFolderItemFactory { get; set; }
 
         public SearchCondition SearchCondition { get; }

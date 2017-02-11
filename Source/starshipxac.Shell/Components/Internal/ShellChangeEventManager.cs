@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
 
 namespace starshipxac.Shell.Components.Internal
 {
     /// <summary>
-    ///     シェル変更イベントを管理します。
+    ///     Manage shell change event.
     /// </summary>
     internal class ShellChangeEventManager
     {
@@ -15,19 +14,12 @@ namespace starshipxac.Shell.Components.Internal
         private readonly ConcurrentDictionary<uint, List<Delegate>> events;
 
         /// <summary>
-        ///     <see cref="ShellChangeEventManager" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a instance of the <see cref="ShellChangeEventManager"/> class.
         /// </summary>
         public ShellChangeEventManager()
         {
             this.eventTypes = Enum.GetValues(typeof(ShellChangeTypes)).Cast<object>().Select(Convert.ToUInt32);
             this.events = new ConcurrentDictionary<uint, List<Delegate>>();
-        }
-
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.eventTypes != null);
-            Contract.Invariant(this.events != null);
         }
 
         public uint RegisteredTypes
@@ -37,6 +29,8 @@ namespace starshipxac.Shell.Components.Internal
                 return this.events.Keys.Aggregate(0U, (a, c) => (Convert.ToUInt32(c) | a));
             }
         }
+
+        //TODO: Delegateを変更する。
 
         public void AddHandler(ShellChangeTypes eventType, Delegate handler)
         {

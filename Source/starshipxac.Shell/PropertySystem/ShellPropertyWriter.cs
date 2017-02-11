@@ -11,7 +11,8 @@ namespace starshipxac.Shell.PropertySystem
         private bool disposed = false;
 
         /// <summary>
-        ///     <see cref="ShellPropertyWriter" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="ShellPropertyWriter" /> class
+        ///     to the specified <see cref="ShellObject" />.
         /// </summary>
         /// <param name="shellObject"></param>
         internal ShellPropertyWriter(ShellObject shellObject)
@@ -33,7 +34,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     ファイナライザー。
+        ///     Finalizer.
         /// </summary>
         ~ShellPropertyWriter()
         {
@@ -41,7 +42,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     <see cref="ShellPropertyWriter" />によって使用されているすべてのリソースを解放します。
+        ///     Release all resources used by <see cref="ShellPropertyWriter" />.
         /// </summary>
         public void Dispose()
         {
@@ -50,12 +51,12 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     <see cref="ShellPropertyWriter" />によって使用されているすべてのリソースを解放し、
-        ///     オプションでマネージリソースも解放します。
+        ///     Release all resources used by <see cref="ShellPropertyWriter" />,
+        ///     and optionally releases managed resources.
         /// </summary>
         /// <param name="disposing">
-        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
@@ -63,6 +64,7 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (disposing)
                 {
+                    // Release managed resources.
                     this.Store.Commit();
                     this.Store.Dispose();
                 }
@@ -71,19 +73,13 @@ namespace starshipxac.Shell.PropertySystem
             }
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.Store != null);
-        }
-
         /// <summary>
-        ///     書き込み可能なプロパティストアを取得します。
+        ///     Get a writable property store.
         /// </summary>
         private ShellPropertyStore Store { get; }
 
         /// <summary>
-        ///     <see cref="ShellPropertyWriter" />をコミットしてから閉じます。
+        ///     Commit and then cloase <see cref="ShellPropertyWriter" />.
         /// </summary>
         public void Close()
         {
@@ -91,10 +87,10 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティに値を書き込みます。
+        ///     Write property value.
         /// </summary>
-        /// <param name="propertyKey"></param>
-        /// <param name="value"></param>
+        /// <param name="propertyKey">Property key.</param>
+        /// <param name="value">Property value.</param>
         public void WriteProperty(ShellPropertyKey propertyKey, object value)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
@@ -103,10 +99,10 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティに値を書き込みます。
+        ///     Write property value.
         /// </summary>
-        /// <param name="propertyKey"></param>
-        /// <param name="value"></param>
+        /// <param name="propertyKey">Property key.</param>
+        /// <param name="value">Property value.</param>
         /// <param name="allowTruncatedValue"></param>
         public void WriteProperty(ShellPropertyKey propertyKey, object value, bool allowTruncatedValue)
         {
@@ -120,20 +116,20 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティに値を書き込みます。
+        ///     Write property value.
         /// </summary>
-        /// <param name="canonicalName"></param>
-        /// <param name="value"></param>
+        /// <param name="canonicalName">Property canonical name.</param>
+        /// <param name="value">Property value.</param>
         public void WriteProperty(string canonicalName, object value)
         {
             WriteProperty(canonicalName, value, true);
         }
 
         /// <summary>
-        ///     プロパティに値を書き込みます。
+        ///     Write property value.
         /// </summary>
-        /// <param name="canonicalName"></param>
-        /// <param name="value"></param>
+        /// <param name="canonicalName">Property canonical name.</param>
+        /// <param name="value">Property value.</param>
         /// <param name="allowTruncatedValue"></param>
         public void WriteProperty(string canonicalName, object value, bool allowTruncatedValue)
         {
@@ -142,10 +138,10 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティに値を書き込みます。
+        ///     Write property value.
         /// </summary>
-        /// <param name="shellProperty"></param>
-        /// <param name="value"></param>
+        /// <param name="shellProperty"><see cref="IShellProperty" />.</param>
+        /// <param name="value">Property value.</param>
         public void WriteProperty(IShellProperty shellProperty, object value)
         {
             Contract.Requires<ArgumentNullException>(shellProperty != null);
@@ -154,10 +150,10 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティに値を書き込みます。
+        ///     Write property value.
         /// </summary>
-        /// <param name="shellProperty"></param>
-        /// <param name="value"></param>
+        /// <param name="shellProperty"><see cref="IShellProperty" />.</param>
+        /// <param name="value">Property value.</param>
         /// <param name="allowTruncatedValue"></param>
         public void WriteProperty(IShellProperty shellProperty, object value, bool allowTruncatedValue)
         {
@@ -167,11 +163,11 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティに値を書き込みます。
+        ///     Write property value.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="shellProperty"></param>
-        /// <param name="value"></param>
+        /// <param name="shellProperty"><see cref="ShellProperty{T}" />.</param>
+        /// <param name="value">Property value.</param>
         public void WriteProperty<T>(ShellProperty<T> shellProperty, T value)
         {
             Contract.Requires<ArgumentNullException>(shellProperty != null);
@@ -180,11 +176,11 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティに値を書き込みます。
+        ///     Write property value.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="shellProperty"></param>
-        /// <param name="value"></param>
+        /// <param name="shellProperty"><see cref="ShellProperty{T}" />.</param>
+        /// <param name="value">Property value.</param>
         /// <param name="allowTruncatedValue"></param>
         public void WriteProperty<T>(ShellProperty<T> shellProperty, T value, bool allowTruncatedValue)
         {

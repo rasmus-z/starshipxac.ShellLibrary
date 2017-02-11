@@ -14,12 +14,6 @@ namespace starshipxac.Shell
             this.Direction = direction;
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.PropertyKey != null);
-        }
-
         public ShellPropertyKey PropertyKey { get; }
 
         public SortDirection Direction { get; }

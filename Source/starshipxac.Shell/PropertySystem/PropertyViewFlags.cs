@@ -4,7 +4,7 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    ///     プロパティ表示方法を定義します。
+    ///     Define the property display method.
     /// </summary>
     [Flags]
     public enum PropertyViewFlags

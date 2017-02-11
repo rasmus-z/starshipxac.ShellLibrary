@@ -12,7 +12,7 @@ using starshipxac.Shell.Search.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    ///     プロパティの定義内容を取得します。
+    ///     Define property description class.
     /// </summary>
     public class ShellPropertyDescription : IDisposable
     {
@@ -55,7 +55,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     ファイナライザー。
+        ///     Finalizer.
         /// </summary>
         ~ShellPropertyDescription()
         {
@@ -63,7 +63,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     <see cref="ShellPropertyDescription" />によって使用されているすべてのリソースを解放します。
+        ///     Release all resources used by <see cref="ShellPropertyDescription" />.
         /// </summary>
         public void Dispose()
         {
@@ -72,18 +72,18 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     <see cref="ShellPropertyDescription" />によって使用されているすべてのリソースを解放し、
-        ///     オプションでマネージリソースも解放します。
+        ///     Release all resources used by <see cref="ShellPropertyDescription" />,
+        ///     and optionally releases managed resources.
         /// </summary>
         /// <param name="disposing">
-        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
-                // アンマネージリソース解放
+                // Release unmanaged resource.
                 if (this.propertyDescriptionNative != null)
                 {
                     Marshal.ReleaseComObject(this.propertyDescriptionNative);
@@ -95,12 +95,12 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     ネイティブプロパティインターフェイスを取得します。
+        ///     Get the <see cref="PropertyDescriptionNative" />.
         /// </summary>
         private IPropertyDescription PropertyDescriptionNative => this.propertyDescriptionNative;
 
         /// <summary>
-        ///     プロパティの標準的な名前を取得します。
+        ///     Get the canonical name.
         /// </summary>
         public string CanonicalName
         {
@@ -116,7 +116,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティ表示名を取得します。
+        ///     Get the property display name.
         /// </summary>
         public string DisplayName
         {
@@ -138,7 +138,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     エディットコントロールで使用される文字列を取得します。
+        ///     Get the string used in the edit control.
         /// </summary>
         public string EditInvitation
         {
@@ -160,7 +160,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     <see cref="VARENUM" />を取得します。
+        ///     Get the <see cref="VARENUM" />.
         /// </summary>
         public VARENUM VarEnumType
         {
@@ -180,7 +180,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティ値の型を取得します。
+        ///     Get the property value type.
         /// </summary>
         public Type ValueType
         {
@@ -195,7 +195,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティ表示種別を取得します。
+        ///     Get the property displya type.
         /// </summary>
         public PropertyDisplayTypes DisplayType
         {
@@ -215,7 +215,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     カラムの幅を取得します。
+        ///     Get the default column width.
         /// </summary>
         public uint DefaultColumWidth
         {
@@ -235,7 +235,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     複数アイテムの表示種別を取得します。
+        ///     Get the property aggregation types.
         /// </summary>
         public PropertyAggregationTypes AggregationTypes
         {
@@ -255,7 +255,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティ種別のコレクションを取得します。
+        ///     Get the property types collection.
         /// </summary>
         public ReadOnlyCollection<ShellPropertyEnumType> PropertyEnumTypes
         {
@@ -290,7 +290,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     カラム状態を取得します。
+        ///     Get the column state.
         /// </summary>
         public PropertyColumnStates ColumnState
         {

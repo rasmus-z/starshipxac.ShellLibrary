@@ -5,33 +5,33 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    ///     ソート順を定義します。
+    ///     Define sort description.
     /// </summary>
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum PropertySortDescription
     {
         /// <summary>
-        ///     規定の昇順または降順のソート。
+        ///     Sort by prescribed ascending or descending order.
         /// </summary>
         General = PROPDESC_SORTDESCRIPTION.PDSD_GENERAL,
 
         /// <summary>
-        ///     アルファベット順。
+        ///     Alphabetical order.
         /// </summary>
         AToZ = PROPDESC_SORTDESCRIPTION.PDSD_A_Z,
 
         /// <summary>
-        ///     低い順または高い順。
+        ///     Order in ascending or descending order.
         /// </summary>
         LowestToHighest = PROPDESC_SORTDESCRIPTION.PDSD_LOWEST_HIGHEST,
 
         /// <summary>
-        ///     小さい順または大きい順。
+        ///     In ascending order or descending order.
         /// </summary>
         SmallestToBiggest = PROPDESC_SORTDESCRIPTION.PDSD_SMALLEST_BIGGEST,
 
         /// <summary>
-        ///     古い順または新しい順。
+        ///     Order by oldest or newest.
         /// </summary>
         OldestToNewest = PROPDESC_SORTDESCRIPTION.PDSD_OLDEST_NEWEST,
     }

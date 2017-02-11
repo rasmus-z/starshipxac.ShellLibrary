@@ -6,7 +6,7 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    ///     <c>ShellObject</c>のサムネイルイメージを作成するための情報を保持します。
+    ///     Define thumbnail image of the <c>ShellObject</c> class.
     /// </summary>
     public sealed class ShellThumbnail : IDisposable
     {
@@ -55,35 +55,28 @@ namespace starshipxac.Shell.Media.Imaging
             }
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(0.0 <= this.OriginalWidth);
-            Contract.Invariant(0.0 <= this.OriginalHeight);
-        }
-
         /// <summary>
-        ///     イメージハンドルを取得します。
+        ///     Get the image handle.
         /// </summary>
         internal IntPtr ImageHandle { get; }
 
         /// <summary>
-        ///     イメージの幅を取得します。
+        ///     Get the image width.
         /// </summary>
         public double OriginalWidth { get; }
 
         /// <summary>
-        ///     イメージの高さを取得します。
+        ///     Get the iamge height.
         /// </summary>
         public double OriginalHeight { get; }
 
         /// <summary>
-        ///     アイコンインデックスを取得します。
+        ///     Get the icon index.
         /// </summary>
         internal int IconIndex { get; }
 
         /// <summary>
-        ///     オーバーレイアイコンインデックスを取得します。
+        ///     Get the overlay icon index.
         /// </summary>
         internal int OverlayIndex { get; }
     }

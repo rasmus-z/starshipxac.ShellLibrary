@@ -19,7 +19,7 @@ namespace starshipxac.Shell.Runtime
             this.conditions.AddRange(conditions);
         }
 
-        #region IEnumUnknown メンバー
+        #region IEnumUnknown Member
 
         public HRESULT Next(uint requestedNumber, ref IntPtr buffer, ref uint fetchedNumber)
         {

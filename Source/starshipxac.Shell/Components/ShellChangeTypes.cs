@@ -3,133 +3,133 @@
 namespace starshipxac.Shell.Components
 {
     /// <summary>
-    ///     シェル変更通知イベントを定義します。
+    ///     Define shell change notification event types.
     /// </summary>
     [Flags]
     public enum ShellChangeTypes : uint
     {
         /// <summary>
-        ///     通知なし。
+        ///     None.
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     名前変更通知。
+        ///     Rename.
         /// </summary>
         ItemRename = 0x00000001,
 
         /// <summary>
-        ///     新規作成通知。
+        ///     Create.
         /// </summary>
         ItemCreate = 0x00000002,
 
         /// <summary>
-        ///     削除通知。
+        ///     Delete.
         /// </summary>
         ItemDelete = 0x00000004,
 
         /// <summary>
-        ///     ディレクトリ作成通知。
+        ///     Create directory.
         /// </summary>
         DirectoryCreate = 0x00000008,
 
         /// <summary>
-        ///     ディレクトリ削除通知。
+        ///     Delete directory.
         /// </summary>
         DirectoryDelete = 0x00000010,
 
         /// <summary>
-        ///     メディア挿入通知。
+        ///     Insert media.
         /// </summary>
         MediaInsert = 0x00000020,
 
         /// <summary>
-        ///     メディア除去通知。
+        ///     Remove media.
         /// </summary>
         MediaRemove = 0x00000040,
 
         /// <summary>
-        ///     ドライブ除去通知。
+        ///     Remove drive.
         /// </summary>
         DriveRemove = 0x00000080,
 
         /// <summary>
-        ///     ドライブ追加通知。
+        ///     Add drive.
         /// </summary>
         DriveAdd = 0x00000100,
 
         /// <summary>
-        ///     ネットワーク共有通知。
+        ///     Net share.
         /// </summary>
         NetShare = 0x00000200,
 
         /// <summary>
-        ///     ネットワーク共有解除通知。
+        ///     Net unshare.
         /// </summary>
         NetUnshare = 0x00000400,
 
         /// <summary>
-        ///     属性変更通知。
+        ///     Change attributes.
         /// </summary>
         AttributesChange = 0x00000800,
 
         /// <summary>
-        ///     ディレクトリ更新通知。
+        ///     Update directory contents.
         /// </summary>
         DirectoryContentsUpdate = 0x00001000,
 
         /// <summary>
-        ///     更新通知。
+        ///     Update.
         /// </summary>
         Update = 0x00002000,
 
         /// <summary>
-        ///     サーバー切断通知。
+        ///     Disconnect server.
         /// </summary>
         ServerDisconnect = 0x00004000,
 
         /// <summary>
-        ///     システムイメージ更新通知。
+        ///     Update system image.
         /// </summary>
         SystemImageUpdate = 0x00008000,
 
         /// <summary>
-        ///     ディレクトリ名変更通知。
+        ///     Rename directory.
         /// </summary>
         DirectoryRename = 0x00020000,
 
         /// <summary>
-        ///     空き領域通知。
+        ///     Free space.
         /// </summary>
         FreeSpace = 0x00040000,
 
         /// <summary>
-        ///     拡張イベント。
+        ///     Exntended event.
         /// </summary>
         ExtendedEvent = 0x04000000,
 
         /// <summary>
-        ///     関連づけ変更通知。
+        ///     Change association.
         /// </summary>
         AssociationChange = 0x08000000,
 
         /// <summary>
-        ///     ディスクイベント通知マスク。
+        ///     Disk events mask.
         /// </summary>
         DiskEventsMask = 0x0002381F,
 
         /// <summary>
-        ///     グローバルイベント通知マスク。
+        ///     Global events mask.
         /// </summary>
         GlobalEventsMask = 0x0C0581E0,
 
         /// <summary>
-        ///     全イベント通知マスク。
+        ///     All events mask.
         /// </summary>
         AllEventsMask = 0x7FFFFFFF,
 
         /// <summary>
-        ///     システムイベント通知マスク。
+        ///     System event mask.
         /// </summary>
         FromInterrupt = 0x80000000
     }

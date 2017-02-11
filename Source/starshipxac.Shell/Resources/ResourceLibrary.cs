@@ -8,16 +8,17 @@ using starshipxac.Shell.Media.Imaging;
 namespace starshipxac.Shell.Resources
 {
     /// <summary>
-    ///     リソースDLLからリソースを取得するメソッドを定義します。
+    ///     Define resource library class.
     /// </summary>
     public sealed class ResourceLibrary
     {
         private IntPtr instanceHandle = IntPtr.Zero;
 
         /// <summary>
-        ///     リソースDLLのパスを指定して、<see cref="ResourceLibrary" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="ResourceLibrary"/> class
+        ///     to the specified resource DLL path.
         /// </summary>
-        /// <param name="libraryPath">リソースDLLのパス。</param>
+        /// <param name="libraryPath">Resource DLL path.</param>
         public ResourceLibrary(string libraryPath)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(libraryPath));
@@ -25,23 +26,17 @@ namespace starshipxac.Shell.Resources
             this.LibraryPath = libraryPath;
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(!String.IsNullOrWhiteSpace(this.LibraryPath));
-        }
-
         /// <summary>
-        ///     リソースDLLのパスを取得します。
+        ///     Get the resource DLL path.
         /// </summary>
         public string LibraryPath { get; }
 
         /// <summary>
-        ///     リソースから文字列を取得します。
+        ///     Get the string from resource.
         /// </summary>
-        /// <param name="resourceId">取得する文字列のリソースID。</param>
-        /// <returns>取得した文字列。</returns>
-        /// <exception cref="Win32Exception">リソースDLLを読み込めませんでした。</exception>
+        /// <param name="resourceId">String resource ID.</param>
+        /// <returns>String.</returns>
+        /// <exception cref="Win32Exception">Could not load resource DLL.</exception>
         public string LoadString(int resourceId)
         {
             Contract.Ensures(Contract.Result<string>() != null);
@@ -55,15 +50,15 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        ///     リソースからアイコンを取得します。
+        ///     Get the icon from resource.
         /// </summary>
-        /// <param name="resourceId">取得するアイコンのリソースID。</param>
-        /// <param name="size">アイコンのサイズ。</param>
-        /// <returns>取得したアイコン。</returns>
+        /// <param name="resourceId">Icon resource ID.</param>
+        /// <param name="size">Icon size.</param>
+        /// <returns>Icon.</returns>
         /// <exception cref="Win32Exception">
-        ///     <para>リソースDLLを読み込めませんでした。</para>
-        ///     <para>または</para>
-        ///     <para>指定したリソースIDのアイコンを取得できませんでした。</para>
+        ///     <para>Could not load resource DLL.</para>
+        ///     or
+        ///     <para>Could not acquire the icon of the specified resource ID.</para>
         /// </exception>
         public ShellIcon LoadIcon(int resourceId, int size = 0)
         {
@@ -81,10 +76,10 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        ///     リソースDLLのハンドルを取得します。
+        ///     Get the handle of resource DLL.
         /// </summary>
-        /// <returns>リソースDLLのインスタンスハンドル。</returns>
-        /// <exception cref="Win32Exception">リソースDLLを読み込めませんでした。</exception>
+        /// <returns>Instance handle for the resource DLL.</returns>
+        /// <exception cref="Win32Exception">Could not load resource DLL.</exception>
         private IntPtr GetInstanceHandle()
         {
             if (this.instanceHandle == IntPtr.Zero)
@@ -99,7 +94,7 @@ namespace starshipxac.Shell.Resources
         }
 
         #region Native Methods
-
+        //TODO: Unmanagedの分離
         private const UInt32 DONT_RESOLVE_DLL_REFERENCES = 0x00000001;
         private const UInt32 LOAD_IGNORE_CODE_AUTHZ_LEVEL = 0x00000010;
         private const UInt32 LOAD_LIBRARY_AS_DATAFILE = 0x00000002;

@@ -4,22 +4,22 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     アイテムのソート方向を定義します。
+    ///     Define item sort direction.
     /// </summary>
     public enum SortDirection
     {
         /// <summary>
-        ///     デフォルトのソート方向。
+        ///     Default sort direction.
         /// </summary>
         Default = 0,
 
         /// <summary>
-        ///     逆順のソート方向。
+        ///     Descending sort direction.
         /// </summary>
         Descending = SORTDIRECTION.SORT_DESCENDING,
 
         /// <summary>
-        ///     正順のソート方向。
+        ///     Ascending sort direction.
         /// </summary>
         Ascending = SORTDIRECTION.SORT_ASCENDING
     }

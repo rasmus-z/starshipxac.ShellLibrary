@@ -7,7 +7,7 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    ///     プロパティキー情報を定義します。
+    ///     Define property key.
     /// </summary>
     public class ShellPropertyKey : IEquatable<ShellPropertyKey>
     {
@@ -55,7 +55,7 @@ namespace starshipxac.Shell.PropertySystem
         internal PROPERTYKEY PropertyKeyNative => this.propertyKeyNative;
 
         /// <summary>
-        ///     プロパティ名を取得します。
+        ///     Get the property name.
         /// </summary>
         public string Name
         {
@@ -74,12 +74,12 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティの<c>FormatID</c>を取得します。
+        ///     Get the property's <c>FormatID</c>.
         /// </summary>
         public Guid FormatId => this.propertyKeyNative.fmtid;
 
         /// <summary>
-        ///     プロパティの<c>PropID</c>を取得します。
+        ///     Get the property's <c>PropID</c>.
         /// </summary>
         public UInt32 PropertyId => this.propertyKeyNative.pid;
 

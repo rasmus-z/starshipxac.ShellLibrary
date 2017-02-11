@@ -8,7 +8,7 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    ///     プロパティストアを操作します。
+    ///     Define property store class.
     /// </summary>
     public class ShellPropertyStore : IDisposable
     {
@@ -24,7 +24,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     ファイナライザー。
+        ///     Finalizer.
         /// </summary>
         ~ShellPropertyStore()
         {
@@ -32,7 +32,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     <see cref="ShellPropertyStore" />によって使用されているすべてのリソースを解放します。
+        ///     Release all resources used by <see cref="ShellPropertyStore" />.
         /// </summary>
         public void Dispose()
         {
@@ -41,12 +41,12 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     <see cref="ShellPropertyStore" />によって使用されているすべてのリソースを解放し、
-        ///     オプションでマネージリソースも解放します。
+        ///     Release all resources used by <see cref="ShellPropertyStore" />,
+        ///     and optionally releases managed resources.
         /// </summary>
         /// <param name="disposing">
-        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
@@ -54,13 +54,14 @@ namespace starshipxac.Shell.PropertySystem
             {
                 this.disposed = true;
 
-                // アンマネージリソース解放
+                // Release unmanaged resource.
                 Marshal.ReleaseComObject(this.propertyStoreNative);
             }
         }
 
         /// <summary>
-        ///     <see cref="ShellPropertyStore" />を作成します。
+        ///     Create a new instance of the <see cref="ShellPropertyStore" /> class
+        ///     to the specified <see cref="ShellObject" />.
         /// </summary>
         /// <param name="shellObject"></param>
         /// <returns></returns>
@@ -83,7 +84,8 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     書き込み可能な<see cref="ShellPropertyStore" />を作成します。
+        ///     Create a new instance of the writable <see cref="ShellPropertyStore" /> class
+        ///     to the specified <see cref="ShellObject" />.
         /// </summary>
         /// <param name="shellObject"></param>
         /// <returns></returns>
@@ -107,12 +109,9 @@ namespace starshipxac.Shell.PropertySystem
             return new ShellPropertyStore(propertyStore);
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.propertyStoreNative != null);
-        }
-
+        /// <summary>
+        ///     Get the count.
+        /// </summary>
         public int Count
         {
             get
@@ -133,9 +132,9 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティの値を取得します。
+        ///     Get the property value.
         /// </summary>
-        /// <param name="propertyKey"></param>
+        /// <param name="propertyKey">Property key.</param>
         /// <returns></returns>
         public object GetValue(ShellPropertyKey propertyKey)
         {
@@ -149,6 +148,12 @@ namespace starshipxac.Shell.PropertySystem
             }
         }
 
+        /// <summary>
+        ///     Get the property value.
+        /// </summary>
+        /// <typeparam name="T">Property type.</typeparam>
+        /// <param name="propertyKey">Property key.</param>
+        /// <returns></returns>
         public T GetValue<T>(ShellPropertyKey propertyKey)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
@@ -161,6 +166,11 @@ namespace starshipxac.Shell.PropertySystem
             }
         }
 
+        /// <summary>
+        ///     Get the <see cref="PropVariant" />.
+        /// </summary>
+        /// <param name="propertyKey">Property key.</param>
+        /// <param name="propVariant"></param>
         internal void GetPropVariant(ShellPropertyKey propertyKey, PropVariant propVariant)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
@@ -170,10 +180,10 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     プロパティに値を設定します。
+        ///     Set the property value.
         /// </summary>
-        /// <param name="propertyKey"></param>
-        /// <param name="propVar"></param>
+        /// <param name="propertyKey">Property key.</param>
+        /// <param name="propVar">Property value.</param>
         internal void SetValue(ShellPropertyKey propertyKey, PropVariant propVar)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);

@@ -5,14 +5,14 @@ using starshipxac.Shell.Components.Internal;
 namespace starshipxac.Shell.Components
 {
     /// <summary>
-    ///     システムイメージ変更イベントデータを定義します。
+    ///     Define system image update event arguments.
     /// </summary>
     public class SystemImageUpdatedEventArgs : ShellNotificationEventArgs
     {
         /// <summary>
-        ///     <see cref="SystemImageUpdatedEventArgs" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="SystemImageUpdatedEventArgs" /> class.
         /// </summary>
-        /// <param name="changeNotify">シェル変更通知情報。</param>
+        /// <param name="changeNotify">Change notificaiton information.</param>
         internal SystemImageUpdatedEventArgs(ShellChangeNotify changeNotify)
             : base(changeNotify)
         {
@@ -22,7 +22,7 @@ namespace starshipxac.Shell.Components
         }
 
         /// <summary>
-        ///     更新されたシステムイメージのインデックスを取得します。
+        ///     Get the image index.
         /// </summary>
         public int ImageIndex { get; }
     }

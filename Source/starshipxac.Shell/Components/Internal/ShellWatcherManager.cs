@@ -9,7 +9,7 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell.Components.Internal
 {
     /// <summary>
-    ///     <see cref="ShellWatcher" />の通知用ウィンドウを管理します。
+    ///     Define notification window of the <see cref="ShellWatcher" />.
     /// </summary>
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     internal static class ShellWatcherManager
@@ -29,11 +29,11 @@ namespace starshipxac.Shell.Components.Internal
         public static WindowSource Window { get; set; }
 
         /// <summary>
-        ///     <see cref="ShellWatcher" />をメッセージリスナーに登録します。
+        ///     Register <see cref="ShellWatcher" /> in the message listener.
         /// </summary>
-        /// <param name="shellObject">監視する<see cref="ShellObject" />。</param>
-        /// <param name="recursive">再帰的に監視するかどうかを設定します。</param>
-        /// <returns>作成した<see cref="ShellWatcher" /></returns>
+        /// <param name="shellObject">Register <see cref="ShellObject" />.</param>
+        /// <param name="recursive">Specify whether to monitor recursively.</param>
+        /// <returns>Created <see cref="ShellWatcher" />.</returns>
         public static async Task<ShellWatcher> RegisterAsync(ShellObject shellObject, bool recursive)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
@@ -44,19 +44,19 @@ namespace starshipxac.Shell.Components.Internal
                 throw new ShellException(ErrorMessages.ShellWatcherManagerFilterUnableToRegister);
             }
 
-            // ShellWatcher作成
+            // Create ShellWatcher.
             var result = new ShellWatcher(shellObject, Window, message, recursive);
 
-            // ShellWatcher登録
+            // Register ShellWatcher.
             Listeners.TryAdd(message, result);
 
             return result;
         }
 
         /// <summary>
-        ///     <see cref="ShellWatcher" />をメッセージリスナーから除外します。
+        ///     Unregister <see cref="ShellWatcher" /> from the message listener.
         /// </summary>
-        /// <param name="shellWatcher">除外する<see cref="ShellWatcher" />。</param>
+        /// <param name="shellWatcher">Unregister <see cref="ShellWatcher" />.</param>
         /// <returns></returns>
         public static Task UnregisterAsync(ShellWatcher shellWatcher)
         {
@@ -69,9 +69,9 @@ namespace starshipxac.Shell.Components.Internal
         }
 
         /// <summary>
-        ///     メッセージ通知用ウィンドウを作成します。
+        ///     Create a message notification window.
         /// </summary>
-        /// <returns>作成した<see cref="WindowSource" />。</returns>
+        /// <returns>Created <see cref="WindowSource" />.</returns>
         private static WindowSource CreateWindow()
         {
             Contract.Ensures(Contract.Result<WindowSource>() != null);
@@ -85,7 +85,7 @@ namespace starshipxac.Shell.Components.Internal
         }
 
         /// <summary>
-        ///     使用できるウィンドウメッセージを非同期で検索します。
+        ///     Asynchronously search for available window messages.
         /// </summary>
         /// <returns></returns>
         private static Task<uint> FindWindowMessageAsync()
@@ -96,22 +96,22 @@ namespace starshipxac.Shell.Components.Internal
                 {
                     if (!Listeners.ContainsKey(msg))
                     {
-                        // 空いているメッセージ
+                        // Unused messages.
                         return msg;
                     }
                 }
-                // 空いているメッセージがない
+                // No unused message.
                 return 0U;
             });
         }
 
         /// <summary>
-        ///     メッセージ通知用ウィンドウのウィンドウプロシージャー。
+        ///     Window procedure for message notification window.
         /// </summary>
-        /// <param name="hwnd">ウィンドウハンドル。</param>
-        /// <param name="msg">ウィンドウメッセージ。</param>
-        /// <param name="wParam"><c>WPARAM</c>。</param>
-        /// <param name="lParam"><c>LPARAM</c>。</param>
+        /// <param name="hwnd">Window handle.</param>
+        /// <param name="msg">Window message.</param>
+        /// <param name="wParam"><c>WPARAM</c>.</param>
+        /// <param name="lParam"><c>LPARAM</c>.</param>
         /// <param name="handled"></param>
         /// <returns></returns>
         private static IntPtr NotifyWindowProc(IntPtr hwnd, UInt32 msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -129,10 +129,10 @@ namespace starshipxac.Shell.Components.Internal
         }
 
         /// <summary>
-        ///     <see cref="ShellNotificationEventArgs" />を作成します。
+        ///     Create a instance of the <see cref="ShellNotificationEventArgs" /> class.
         /// </summary>
-        /// <param name="wParam"><c>WPARAM</c>。</param>
-        /// <param name="lParam"><c>LPARAM</c>。</param>
+        /// <param name="wParam"><c>WPARAM</c>.</param>
+        /// <param name="lParam"><c>LPARAM</c>.</param>
         /// <returns>作成した<see cref="ShellNotificationEventArgs" />。</returns>
         private static ShellNotificationEventArgs CreateEventArgs(IntPtr wParam, IntPtr lParam)
         {

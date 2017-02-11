@@ -4,7 +4,7 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    ///     プロパティの<c>.propdesc</c>ファイルでの<c>TypeInfo</c>要素の属性を定義します。
+    ///     Define the attributes of the <c>TypeInfo</c> element in the property's <c>.propdesc</c> file.
     /// </summary>
     [Flags]
     public enum PropertyTypeFlags

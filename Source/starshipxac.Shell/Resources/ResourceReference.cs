@@ -4,16 +4,16 @@ using System.Diagnostics.Contracts;
 namespace starshipxac.Shell.Resources
 {
     /// <summary>
-    ///     リソース参照情報を保持します。
+    ///     Define resource reference class.
     /// </summary>
-    [ContractClass(typeof(ResourceReferenceContract))]
     public abstract class ResourceReference : IEquatable<ResourceReference>
     {
         /// <summary>
-        ///     ライブラリ名とリソースIDを指定して、<see cref="ResourceReference" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="ResourceReference" /> class
+        ///     to the specified library name and resource ID.
         /// </summary>
-        /// <param name="libraryName">実行ファイルまたは DLLファイル、アイコンファイルのライブラリ名。</param>
-        /// <param name="resourceId">アイコンのインデックス。</param>
+        /// <param name="libraryName">Library name of executable file or DLL file, icon file.</param>
+        /// <param name="resourceId">The index of the icon.</param>
         protected ResourceReference(string libraryName, int resourceId)
         {
             this.LibraryPath = libraryName;
@@ -22,9 +22,10 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        ///     カンマで区切られたライブラリ名とリソースIDを指定して、<see cref="ResourceReference" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="ResourceReference" /> class
+        ///     with a comma-separated library name and resource ID.
         /// </summary>
-        /// <param name="referencePath">カンマで区切られたライブラリ名とリソースID。</param>
+        /// <param name="referencePath">A comma-separated library name and resource ID.</param>
         protected ResourceReference(string referencePath)
         {
             this.ReferencePath = referencePath;
@@ -32,20 +33,20 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        ///     実行ファイルまたは DLLファイルのパス名を取得します。
+        ///     Get the path name of the executable file or DLL file.
         /// </summary>
         public string LibraryPath { get; private set; }
 
         /// <summary>
-        ///     リソースIDを取得します。
+        ///     Get the resource ID.
         /// </summary>
         public int ResourceId { get; private set; }
 
         /// <summary>
-        ///     リソース参照情報を取得します。
+        ///     Get reference path.
         /// </summary>
         /// <remarks>
-        ///     リソース参照情報は、ライブラリ名とリソースIDをカンマで結合した文字列です。
+        ///     Resource path is a string consisting of a library name and resource ID combined by a comma.
         /// </remarks>
         public string ReferencePath { get; }
 
@@ -64,17 +65,27 @@ namespace starshipxac.Shell.Resources
             this.ResourceId = resourceId;
         }
 
+        /// <summary>
+        ///     Get reference path.
+        /// </summary>
+        /// <returns></returns>
         protected abstract string GetReferencePath();
 
+        /// <summary>
+        ///     Parse reference path.
+        /// </summary>
+        /// <param name="libraryPath"></param>
+        /// <param name="resourceId"></param>
         protected abstract void ParseReferencePath(out string libraryPath, out int resourceId);
 
         /// <summary>
-        ///     2つの<see cref="ResourceReference" />を比較して、等しいかどうかを判定します。
+        ///     Compare the two <see cref="ResourceReference" /> to determine if they are equal.
         /// </summary>
-        /// <param name="left">1つめの<see cref="ResourceReference" />。</param>
-        /// <param name="right">2つめの<see cref="ResourceReference" />。</param>
+        /// <param name="left">The first <see cref="ResourceReference" />.</param>
+        /// <param name="right">The second <see cref="ResourceReference" />.</param>
         /// <returns>
-        ///     2つの<see cref="ResourceReference" />が等しい場合は<c>true</c>。それ以外の場合は<c>false</c>。
+        ///     If the two <see cref="ResourceReference" /> are equal, it returns <c>true</c>.
+        ///     Otherwise returns <c>false</c>.
         /// </returns>
         public static bool operator ==(ResourceReference left, ResourceReference right)
         {
@@ -82,12 +93,13 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        ///     2つの<see cref="ResourceReference" />を比較して、等しくないかどうかを判定します。
+        ///     Compare the two <see cref="ResourceReference" /> to determine if they are not equal.
         /// </summary>
-        /// <param name="left">1つめの<see cref="ResourceReference" />。</param>
-        /// <param name="right">2つめの<see cref="ResourceReference" />。</param>
+        /// <param name="left">The first <see cref="ResourceReference" />.</param>
+        /// <param name="right">The second <see cref="ResourceReference" />.</param>
         /// <returns>
-        ///     2つの<see cref="ResourceReference" />が等しくない場合は<c>true</c>。それ以外の場合は<c>false</c>。
+        ///     If the two <see cref="ResourceReference" /> are not equal, it returns <c>true</c>.
+        ///     Otherwise returns <c>false</c>.
         /// </returns>
         public static bool operator !=(ResourceReference left, ResourceReference right)
         {
@@ -95,12 +107,13 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        ///     指定した<see cref="ResourceReference" />の値が、現在の<see cref="ResourceReference" />と等しいかどうかを判定します。
+        ///     Determines whether the value of the specified <see cref="ResourceReference" /> is equal
+        ///     to the current <see cref="ResourceReference" />.
         /// </summary>
-        /// <param name="other">現在の<see cref="ResourceReference" />と比較する<see cref="ResourceReference" />。</param>
+        /// <param name="other">Compare with the current <see cref="ResourceReference" /> <see cref="ResourceReference" />.</param>
         /// <returns>
-        ///     <paramref name="other" />と現在の<see cref="ResourceReference" />が等しい場合は<c>true</c>。
-        ///     それ以外の場合は<c>false</c>。
+        ///     If <paramref name="other" /> is equal to the current <see cref="ResourceReference" />, it returns <c>true</c>.
+        ///     Otherwise <c>false</c>.
         /// </returns>
         public bool Equals(ResourceReference other)
         {
@@ -118,12 +131,12 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        ///     指定したオブジェクトの値が、現在の<see cref="ResourceReference" />と等しいかどうかを判定します。
+        ///     Determines whether the value of the specified object is equal to the current <see cref="ResourceReference" />.
         /// </summary>
-        /// <param name="obj">現在の<see cref="ResourceReference" />と比較するオブジェクト。</param>
+        /// <param name="obj">The object to be compared with the current <see cref="ResourceReference" />.</param>
         /// <returns>
-        ///     <paramref name="obj" />と現在の<see cref="ResourceReference" />が等しい場合は<c>true</c>。
-        ///     それ以外の場合は<c>false</c>。
+        ///     If the current <see cref="ResourceReference" /> is equal to <paramref name="obj" />, it returns <c>true</c>.
+        ///     Otherwise <c>false</c>.
         /// </returns>
         public override bool Equals(object obj)
         {
@@ -131,57 +144,21 @@ namespace starshipxac.Shell.Resources
         }
 
         /// <summary>
-        ///     このインスタンスのハッシュコードを取得します。
+        ///     Get a hash code for this instance.
         /// </summary>
-        /// <returns>ハッシュコード。</returns>
+        /// <returns>A 32-bit signed integer hash code.</returns>
         public override int GetHashCode()
         {
             return this.ReferencePath.GetHashCode();
         }
 
         /// <summary>
-        ///     このインスタンスの文字列表現を取得します。
+        ///     Get a string representation of this instance.
         /// </summary>
-        /// <returns>このインスタンスの文字列表現。</returns>
+        /// <returns>A string representation of this instance.</returns>
         public override string ToString()
         {
             return $"{{ReferencePath: {ReferencePath}}}";
-        }
-    }
-
-    [ContractClassFor(typeof(ResourceReference))]
-    internal abstract class ResourceReferenceContract : ResourceReference
-    {
-        protected ResourceReferenceContract(string libraryName, int resourceId)
-            : base(libraryName, resourceId)
-        {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(libraryName));
-        }
-
-        protected ResourceReferenceContract(string referencePath)
-            : base(referencePath)
-        {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(referencePath));
-        }
-
-        [ContractInvariantMethod]
-        private void ObjectInvarinat()
-        {
-            Contract.Invariant(this.LibraryPath != null);
-            Contract.Invariant(this.ReferencePath != null);
-        }
-
-        protected override string GetReferencePath()
-        {
-            Contract.Ensures(Contract.Result<string>() != null);
-            return default(string);
-        }
-
-        protected override void ParseReferencePath(out string libraryPath, out int resourceId)
-        {
-            Contract.Ensures(Contract.ValueAtReturn(out libraryPath) != null);
-            libraryPath = String.Empty;
-            resourceId = 0;
         }
     }
 }

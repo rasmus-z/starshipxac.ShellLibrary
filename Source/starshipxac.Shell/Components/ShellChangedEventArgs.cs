@@ -5,14 +5,14 @@ using starshipxac.Shell.Components.Internal;
 namespace starshipxac.Shell.Components
 {
     /// <summary>
-    ///     シェル変更イベントデータを定義します。
+    ///     Define shell change event argments.
     /// </summary>
     public class ShellChangedEventArgs : ShellNotificationEventArgs
     {
         /// <summary>
-        ///     <see cref="ShellChangedEventArgs" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a instance of the <see cref="ShellChangedEventArgs"/> class.
         /// </summary>
-        /// <param name="changeNotify">シェル変更通知情報。</param>
+        /// <param name="changeNotify">Shell change notification information.</param>
         internal ShellChangedEventArgs(ShellChangeNotify changeNotify)
             : base(changeNotify)
         {
@@ -22,14 +22,8 @@ namespace starshipxac.Shell.Components
             this.ShellObject = changeNotify.ShellObject;
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.ShellObject != null);
-        }
-
         /// <summary>
-        ///     イベントが発生した<see cref="ShellObject" />を取得します。
+        ///     Get the <see cref="ShellObject"/>.
         /// </summary>
         public ShellObject ShellObject { get; }
     }

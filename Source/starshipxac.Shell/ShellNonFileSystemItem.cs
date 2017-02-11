@@ -4,7 +4,7 @@ using System.Diagnostics.Contracts;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     ファイルシステム外シェルアイテムを定義します。
+    ///     Define non file system item class.
     /// </summary>
     public class ShellNonFileSystemItem : ShellObject
     {

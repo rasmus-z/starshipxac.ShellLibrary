@@ -5,7 +5,7 @@ using starshipxac.Shell.PropertySystem;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     ショートカットファイル情報を定義します。
+    ///     Define shell link file class.
     /// </summary>
     public class ShellLink : ShellFile
     {
@@ -18,9 +18,9 @@ namespace starshipxac.Shell
         internal static readonly string FileExtension = ".lnk";
 
         /// <summary>
-        ///     <see cref="ShellLink" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="ShellLink" /> class.
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem" />。</param>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
         internal ShellLink(ShellItem shellItem)
             : base(shellItem)
         {
@@ -28,7 +28,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     対象のパスを取得または設定します。
+        ///     Get or set target path.
         /// </summary>
         public string TargetLocation
         {
@@ -53,7 +53,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     対象の<see cref="ShellObject" />を取得します。
+        ///     Get the target <see cref="ShellObject" />.
         /// </summary>
         public ShellObject Target
         {
@@ -66,7 +66,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     ショートカットファイルのタイトルを取得します。
+        ///     Get the link file title.
         /// </summary>
         public string Title
         {
@@ -82,7 +82,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     ショートカットファイルに設定されている引数を取得します。
+        ///     Get the arguments set in the shell link file.
         /// </summary>
         public string Arguments
         {
@@ -98,7 +98,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     ショートカットファイルに設定されているコメントを取得します。
+        ///     Get the comment set in the shell link file.
         /// </summary>
         public string Comment
         {

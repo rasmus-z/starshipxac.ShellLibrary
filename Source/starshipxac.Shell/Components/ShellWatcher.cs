@@ -10,7 +10,7 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell.Components
 {
     /// <summary>
-    ///     シェル変更を監視します。
+    ///     Monitor shell changes.
     /// </summary>
     public class ShellWatcher : IDisposable
     {
@@ -23,12 +23,12 @@ namespace starshipxac.Shell.Components
         private uint registrationId;
 
         /// <summary>
-        ///     <see cref="ShellWatcher" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="ShellWatcher" /> class.
         /// </summary>
-        /// <param name="shellObject">監視する<see cref="ShellObject" />。</param>
-        /// <param name="window">通知ウィンドウ。</param>
-        /// <param name="message">通知ウィンドウメッセージ。</param>
-        /// <param name="recursive">再帰的に監視するかどうかを示すフラグ。</param>
+        /// <param name="shellObject">Monitoring to <see cref="ShellObject" />.</param>
+        /// <param name="window">Notification window.</param>
+        /// <param name="message">Notification window message.</param>
+        /// <param name="recursive">Flag indicating whether to monitor recursively.</param>
         internal ShellWatcher(ShellObject shellObject, WindowSource window, uint message, bool recursive)
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
@@ -69,10 +69,10 @@ namespace starshipxac.Shell.Components
         }
 
         /// <summary>
-        ///     <see cref="ShellWatcher" />を作成します。
+        ///     Create the <see cref="ShellWatcher" />.
         /// </summary>
-        /// <param name="shellObject"><see cref="ShellObject" />。</param>
-        /// <param name="recursive">再帰的に監視するかどうかを示すフラグ。</param>
+        /// <param name="shellObject">Monitoring to <see cref="ShellObject" />.</param>
+        /// <param name="recursive">Flag indicating whether to monitor recursively.</param>
         /// <returns></returns>
         public static async Task<ShellWatcher> CreateAsync(ShellObject shellObject, bool recursive)
         {
@@ -80,31 +80,23 @@ namespace starshipxac.Shell.Components
             return await ShellWatcherManager.RegisterAsync(shellObject, recursive);
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.shellObject != null);
-            Contract.Invariant(this.ListenerWindow != null);
-            Contract.Invariant(this.eventManager != null);
-        }
-
         /// <summary>
-        ///     通知ウィンドウを取得または設定します。
+        ///     Get or set listener window.
         /// </summary>
         private WindowSource ListenerWindow { get; }
 
         /// <summary>
-        ///     通知ウィンドウメッセージを取得します。
+        ///     Get the notification window message.
         /// </summary>
         internal uint Message { get; }
 
         /// <summary>
-        ///     監視が実行中かどうかを判定する値を取得します。
+        ///     Get a value that determines whether monitoring is in progress.
         /// </summary>
         public bool Running { get; private set; }
 
         /// <summary>
-        ///     シェル監視を開始します。
+        ///     Start shell watcher.
         /// </summary>
         public void Start()
         {
@@ -139,7 +131,7 @@ namespace starshipxac.Shell.Components
         }
 
         /// <summary>
-        ///     シェル監視を停止します。
+        ///     Stop shell watcher.
         /// </summary>
         public void Stop()
         {
@@ -156,7 +148,7 @@ namespace starshipxac.Shell.Components
         }
 
         /// <summary>
-        ///     シェル変更通知イベントを処理します。
+        ///     Process shell change notification events.
         /// </summary>
         /// <param name="args"></param>
         internal void ChangeNotificationEvent(ShellNotificationEventArgs args)

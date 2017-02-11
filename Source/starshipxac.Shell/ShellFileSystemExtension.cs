@@ -27,6 +27,8 @@ namespace starshipxac.Shell
         public static string[] SplitParsingName(this string parsingName)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(parsingName));
+            Contract.Ensures(Contract.Result<string[]>() != null);
+            Contract.Ensures(Contract.Result<string[]>().Length > 0);
 
             var result = new List<string>();
 
@@ -53,6 +55,8 @@ namespace starshipxac.Shell
         {
             Contract.Requires<ArgumentNullException>(shellObject != null);
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(shellObject.ParsingName));
+            Contract.Ensures(Contract.Result<string[]>() != null);
+            Contract.Ensures(Contract.Result<string[]>().Length > 0);
 
             return SplitParsingName(shellObject.ParsingName);
         }

@@ -7,7 +7,7 @@ using starshipxac.Shell.Media.Imaging.Internal;
 namespace starshipxac.Shell.Media.Imaging
 {
     /// <summary>
-    ///     <see cref="ShellThumbnail" />を作成します。
+    ///     Define <see cref="ShellThumbnail" /> factory.
     /// </summary>
     [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
     public class ShellThumbnailFactory
@@ -16,8 +16,8 @@ namespace starshipxac.Shell.Media.Imaging
         private readonly ShellItemImageFactory imageFactory;
 
         /// <summary>
-        ///     <see cref="ShellItem" />を指定して、
-        ///     <see cref="ShellThumbnailFactory" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a instance of the <see cref="ShellThumbnailFactory"/> class
+        ///     to the specified <see cref="ShellItem"/>.
         /// </summary>
         /// <param name="shellItem"></param>
         public ShellThumbnailFactory(ShellItem shellItem)
@@ -29,9 +29,10 @@ namespace starshipxac.Shell.Media.Imaging
         }
 
         /// <summary>
-        ///     作成するサムネイルの種類を指定して、<see cref="ShellThumbnail" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellThumbnail"/> class
+        ///     to the specified the type of thumbnail to be created.
         /// </summary>
-        /// <param name="thumbnailMode">作成するサムネイルの種類。</param>
+        /// <param name="thumbnailMode">Thumbnail mode.</param>
         /// <returns></returns>
         public ShellThumbnail Create(ThumbnailMode thumbnailMode)
         {
@@ -47,9 +48,11 @@ namespace starshipxac.Shell.Media.Imaging
 
         /// <summary>
         ///     作成するサムネイルの幅と高さを指定して、<see cref="ShellThumbnail" />クラスの新しいインスタンスを作成します。
+        ///     Create a new instance of the <see cref="ShellThumbnail"/> class
+        ///     to the specified the width and height of the thumbnail to be created.
         /// </summary>
-        /// <param name="width">作成するサムネイルの幅。</param>
-        /// <param name="height">作成するサムネイルの高さ。</param>
+        /// <param name="width">Thumbnail image width.</param>
+        /// <param name="height">Thumbnail image height.</param>
         /// <returns></returns>
         public ShellThumbnail Create(double width, double height)
         {

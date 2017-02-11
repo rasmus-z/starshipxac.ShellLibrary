@@ -5,6 +5,7 @@ using starshipxac.Shell.Search.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
+    ///     Define property condition operations.
     /// </summary>
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum PropertyConditionOperations

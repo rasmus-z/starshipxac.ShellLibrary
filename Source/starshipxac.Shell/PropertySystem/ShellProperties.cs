@@ -17,12 +17,6 @@ namespace starshipxac.Shell.PropertySystem
             this.ShellObject = shellObject;
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.ShellObject != null);
-        }
-
         private ShellObject ShellObject { get; }
 
         public IEnumerator<IShellProperty> GetEnumerator()

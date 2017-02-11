@@ -11,19 +11,17 @@ using starshipxac.Shell.Resources;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     シェルライブラリフォルダーを定義します。
+    ///     Define shell library class.
     /// </summary>
     public sealed class ShellLibrary : ShellFolder
     {
-        private readonly string displayName;
-
         /// <summary>
-        ///     <see cref="ShellItem" />およびライブラリインターフェイスを指定して、
-        ///     <see cref="ShellLibrary" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="ShellLibrary" /> class
+        ///     to the specified <see cref="ShellItem" />.
         /// </summary>
-        /// <param name="shellItem"><see cref="ShellItem" />。</param>
-        /// <param name="shellLibraryInterface">ライブラリインターフェイス。</param>
-        /// <param name="libraryName">ライブラリ名</param>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
+        /// <param name="shellLibraryInterface">Shell library interface.</param>
+        /// <param name="libraryName">Library name.</param>
         internal ShellLibrary(ShellItem shellItem, IShellLibraryNative shellLibraryInterface, string libraryName)
             : base(shellItem)
         {
@@ -32,14 +30,7 @@ namespace starshipxac.Shell
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(libraryName));
 
             this.ShellLibraryInterface = shellLibraryInterface;
-            this.displayName = libraryName;
-        }
-
-        [ContractInvariantMethod]
-        private void ObjectInvaliant()
-        {
-            Contract.Invariant(this.ShellLibraryInterface != null);
-            Contract.Invariant(this.displayName != null);
+            this.DisplayName = libraryName;
         }
 
         internal IShellLibraryNative ShellLibraryInterface { get; set; }
@@ -49,12 +40,12 @@ namespace starshipxac.Shell
         public override bool PathExists => false;
 
         /// <summary>
-        ///     ライブラリ表示名を取得します。
+        ///     Get the library display name.
         /// </summary>
-        public override string DisplayName => this.displayName;
+        public override string DisplayName { get; }
 
         /// <summary>
-        ///     アイコンリソース情報を取得または設定します。
+        ///     Get or set the icon resource.
         /// </summary>
         public IconReference IconReference
         {
@@ -77,7 +68,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     ライブラリフォルダー種別IDを取得または設定します。
+        ///     Get or set library type ID.
         /// </summary>
         public Guid LibraryType
         {
@@ -97,7 +88,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     規定の保存フォルダーを取得または設定します。
+        ///     Get or set default save folder.
         /// </summary>
         public ShellFolder DefaultSaveFolder
         {
@@ -131,7 +122,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     操作パネルにピン留めするかどうかを示す値を取得または設定します。
+        ///     Get or set a value indicating whether to pin the operation panel.
         /// </summary>
         public bool IsPinnedToNavigationPane
         {
@@ -160,11 +151,12 @@ namespace starshipxac.Shell
             }
         }
 
-        /// <summary>
-        ///     ライブラリが読み込み専用かどうかを示す値を取得します。
-        /// </summary>
         internal bool IsReadOnly => false;
 
+        /// <summary>
+        ///     Enumerate child folders.
+        /// </summary>
+        /// <returns></returns>
         public override IEnumerable<ShellFolder> EnumerateFolders()
         {
             Contract.Ensures(Contract.Result<IEnumerable<ShellFolder>>() != null);

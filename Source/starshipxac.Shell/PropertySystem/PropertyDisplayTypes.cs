@@ -4,32 +4,32 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    ///     プロパティの表示種別を定義します。
+    ///     Define property display types.
     /// </summary>
     public enum PropertyDisplayTypes
     {
         /// <summary>
-        ///     文字列。
+        ///     String
         /// </summary>
         String = PROPDESC_DISPLAYTYPE.PDDT_STRING,
 
         /// <summary>
-        ///     数値。
+        ///     Number
         /// </summary>
         Number = PROPDESC_DISPLAYTYPE.PDDT_NUMBER,
 
         /// <summary>
-        ///     真理値。
+        ///     Boolean
         /// </summary>
         Boolean = PROPDESC_DISPLAYTYPE.PDDT_BOOLEAN,
 
         /// <summary>
-        ///     時刻。
+        ///     Date and time
         /// </summary>
         DateTime = PROPDESC_DISPLAYTYPE.PDDT_DATETIME,
 
         /// <summary>
-        ///     列挙値。
+        ///     Enumerated
         /// </summary>
         Enumerated = PROPDESC_DISPLAYTYPE.PDDT_ENUMERATED
     }

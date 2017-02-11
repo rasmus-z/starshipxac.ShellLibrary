@@ -10,7 +10,7 @@ using starshipxac.Shell.Search.Interop;
 namespace starshipxac.Shell.Search
 {
     /// <summary>
-    ///     検索条件を定義します。
+    ///     Define search condition class.
     /// </summary>
     public class SearchCondition : IDisposable
     {

@@ -6,15 +6,15 @@ using starshipxac.Shell.Interop;
 namespace starshipxac.Shell.Components.Internal
 {
     /// <summary>
-    ///     シェル変更通知情報を保持します。
+    ///     Define shell change notification.
     /// </summary>
     internal class ShellChangeNotify
     {
         /// <summary>
-        ///     <see cref="ShellChangeNotify" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a instance of the <see cref="ShellChangeNotify"/> class.
         /// </summary>
-        /// <param name="wParam"><c>WPARAM</c>。</param>
-        /// <param name="lParam"><c>LPARAM</c>。</param>
+        /// <param name="wParam"><c>WPARAM</c>.</param>
+        /// <param name="lParam"><c>LPARAM</c>.</param>
         internal ShellChangeNotify(IntPtr wParam, IntPtr lParam)
         {
             var hwnd = wParam;
@@ -64,32 +64,32 @@ namespace starshipxac.Shell.Components.Internal
         }
 
         /// <summary>
-        ///     シェル変更通知種別を取得します。
+        ///     Get the shell change type.
         /// </summary>
         public ShellChangeTypes ChangeType { get; }
 
         /// <summary>
-        ///     発生したイベントがシステムイベントかどうかを判定する値を取得します。
+        ///     Get a value that determines whether the event that occurred is a system event.
         /// </summary>
         public bool FromSystemInterrupt => (this.ChangeType & ShellChangeTypes.FromInterrupt) != ShellChangeTypes.None;
 
         /// <summary>
-        ///     <see cref="ShellObject" />を取得します。
+        ///     Get the <see cref="ShellObject" />.
         /// </summary>
         public ShellObject ShellObject { get; }
 
         /// <summary>
-        ///     2つめの<see cref="ShellObject" />を取得します。
+        ///     Get the second <see cref="ShellObject" />.
         /// </summary>
         public ShellObject ShellObject2 { get; }
 
         /// <summary>
-        ///     イメージのインデックスを取得します。
+        ///     Get the image index.
         /// </summary>
         public int ImageIndex { get; private set; }
 
         /// <summary>
-        ///     <see cref="ShellObject" />を作成します。
+        ///     Create a new instance of the <see cref="ShellObject" /> class.
         /// </summary>
         /// <param name="pidl"><c>PIDL</c>。</param>
         /// <param name="riid"><c>GUID</c>。</param>

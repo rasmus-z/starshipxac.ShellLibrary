@@ -9,7 +9,7 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell
 {
     /// <summary>
-    ///     シェル標準フォルダーファクトリメソッドを定義します。
+    ///     Define <see cref="ShellKnownFolder"/> factory.
     /// </summary>
     public static class ShellKnownFolderFactory
     {
@@ -34,6 +34,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder FromCanonicalName(string canonicalName)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(canonicalName));
+            Contract.Ensures(Contract.Result<ShellKnownFolder>() != null);
 
             IKnownFolder knownFolderInterface;
             var knownFolderManager = new KnownFolderManager();
@@ -56,6 +57,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder FromFolderPath(string path)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(path));
+            Contract.Ensures(Contract.Result<ShellKnownFolder>() != null);
 
             return FromParsingName(path);
         }
@@ -73,6 +75,7 @@ namespace starshipxac.Shell
         public static ShellKnownFolder FromParsingName(string parsingName)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(parsingName));
+            Contract.Ensures(Contract.Result<ShellKnownFolder>() != null);
 
             var pidl = PIDL.Null;
             var pidl2 = PIDL.Null;
@@ -132,6 +135,8 @@ namespace starshipxac.Shell
         /// <exception cref="ArgumentException">A known folder matching the specified GUID could not be created.</exception>
         public static ShellKnownFolder FromKnownFolderId(Guid knownFolderId)
         {
+            Contract.Ensures(Contract.Result<ShellKnownFolder>() != null);
+
             IKnownFolder knownFolderNative;
             var knownFolderManager = new KnownFolderManager();
             var hr = knownFolderManager.GetFolder(knownFolderId, out knownFolderNative);
@@ -154,6 +159,8 @@ namespace starshipxac.Shell
         /// <returns>Known folder collection.</returns>
         public static IReadOnlyList<ShellKnownFolder> GetAllFolders()
         {
+            Contract.Ensures(Contract.Result<IReadOnlyList<ShellKnownFolder>>() != null);
+
             var result = new List<ShellKnownFolder>();
 
             var folders = IntPtr.Zero;

@@ -9,16 +9,16 @@ using STATSTG = System.Runtime.InteropServices.ComTypes.STATSTG;
 namespace starshipxac.Shell.IO
 {
     /// <summary>
-    ///     シェルストリームを定義します。
+    ///     Define shell stream class.
     /// </summary>
     public class ShellStream : Stream
     {
         private bool disposed = false;
 
         /// <summary>
-        ///     <see cref="ShellStream" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a instance of the <see cref="ShellStream" /> class.
         /// </summary>
-        /// <param name="shellFile">ストリームで読み込みまたは書き込みを行うファイルの<see cref="ShellFile" />。</param>
+        /// <param name="shellFile"><See cref="ShellFile" /> in the file to read or write in the stream.</param>
         public ShellStream(ShellFile shellFile)
         {
             Contract.Requires<ArgumentNullException>(shellFile != null);
@@ -33,7 +33,7 @@ namespace starshipxac.Shell.IO
             {
                 if (!this.disposed)
                 {
-                    // IStream解放
+                    // Release IStream
                     Flush();
                     Marshal.ReleaseComObject(this.StreamInterface);
 
@@ -46,45 +46,38 @@ namespace starshipxac.Shell.IO
             }
         }
 
-        [ContractInvariantMethod]
-        private new void ObjectInvariant()
-        {
-            Contract.Invariant(this.ShellFile != null);
-            Contract.Invariant(this.StreamInterface != null);
-        }
-
         /// <summary>
-        ///     <see cref="ShellFile" />を取得または設定します。
+        ///     Get the <see cref="ShellFile" />.
         /// </summary>
         private ShellFile ShellFile { get; }
 
         /// <summary>
-        ///     <see cref="IStream" />を取得または設定します。
+        ///     Get the <see cref="IStream" />.
         /// </summary>
         private IStream StreamInterface { get; }
 
         /// <summary>
-        ///     ストリームが読み込み可能かどうかを判定する値を取得します。
+        ///     Get a value that determines if the stream is readable.
         /// </summary>
         public override bool CanRead => true;
 
         /// <summary>
-        ///     ストリームがシーク可能かどうかを判定する値を取得または設定します。
+        ///     Get or sets a value that determines if the stream is seekable.
         /// </summary>
         public override bool CanSeek => true;
 
         /// <summary>
-        ///     ストリームが書き込み可能かどうかを判定する値を取得します。
+        ///     Get a value that determines if the stream is writable.
         /// </summary>
         public override bool CanWrite => true;
 
         /// <summary>
-        ///     ストリームのバイト長を取得します。
+        ///     Get the byte length of the stream.
         /// </summary>
         public override long Length => this.Stat.cbSize;
 
         /// <summary>
-        ///     現在のストリームの位置を取得します。
+        ///     Get the position of the current stream.
         /// </summary>
         public override long Position
         {
@@ -109,7 +102,7 @@ namespace starshipxac.Shell.IO
         }
 
         /// <summary>
-        ///     ストリームの統計情報を取得します。
+        ///     Get the stream statistics.
         /// </summary>
         private STATSTG Stat
         {
@@ -127,11 +120,11 @@ namespace starshipxac.Shell.IO
         }
 
         /// <summary>
-        ///     ストリームをシークします。
+        ///     Seek the stream.
         /// </summary>
-        /// <param name="offset">シークするオフセット。</param>
-        /// <param name="origin">シーク開始位置。</param>
-        /// <returns>変更後のシークポインターの位置。</returns>
+        /// <param name="offset">Offset to seek.</param>
+        /// <param name="origin">The seek start position.</param>
+        /// <returns>The position of the seek pointer after the change.</returns>
         public override long Seek(long offset, SeekOrigin origin)
         {
             var ptr = Marshal.AllocHGlobal(sizeof(Int32));
@@ -159,16 +152,16 @@ namespace starshipxac.Shell.IO
         }
 
         /// <summary>
-        ///     ストリームオブジェクトのサイズを設定します。
+        ///     Set the size of the stream object.
         /// </summary>
-        /// <param name="value">新しいストリームオブジェクトのサイズ。</param>
+        /// <param name="value">The size of the new stream object.</param>
         public override void SetLength(long value)
         {
             this.StreamInterface.SetSize(value);
         }
 
         /// <summary>
-        ///     ストリームオブジェクトから指定したバイト数を読み込みます。
+        ///     Reads the specified number of bytes from the stream object.
         /// </summary>
         /// <param name="buffer"></param>
         /// <param name="offset"></param>
@@ -192,7 +185,7 @@ namespace starshipxac.Shell.IO
         }
 
         /// <summary>
-        ///     ストリームオブジェクトに指定したバイト数を書き込みます。
+        ///     Writes the specified number of bytes to the stream object.
         /// </summary>
         /// <param name="buffer"></param>
         /// <param name="offset"></param>

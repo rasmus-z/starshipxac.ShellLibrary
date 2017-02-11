@@ -4,50 +4,50 @@ using starshipxac.Shell.Resources;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    ///     シェルプロパティインターフェイスを定義します。
+    ///     Define shell property interface.
     /// </summary>
     public interface IShellProperty
     {
         /// <summary>
-        ///     プロパティキーを取得します。
+        ///     Get the property key.
         /// </summary>
         ShellPropertyKey PropertyKey { get; }
 
         /// <summary>
-        ///     プロパティの説明を取得します。
+        ///     Get the property description.
         /// </summary>
         ShellPropertyDescription Description { get; }
 
         /// <summary>
-        ///     プロパティの標準的な名前を取得します。
+        ///     Get the canonical name.
         /// </summary>
         string CanonicalName { get; }
 
         /// <summary>
-        ///     プロパティの<see cref="Object" />型の値を取得します。
+        ///     Get the value of the property's <see cref="ShellObject" /> type.
         /// </summary>
         object ValueAsObject { get; }
 
         /// <summary>
-        ///     プロパティの値の型を取得します。
+        ///     Get the property value type.
         /// </summary>
         Type ValueType { get; }
 
         /// <summary>
-        ///     プロパティのアイコンリソース参照を取得します。
+        ///     Get the property icon resource reference.
         /// </summary>
         IconReference IconReference { get; }
 
         /// <summary>
-        ///     プロパティ値をクリアします。
+        ///     Clear property value.
         /// </summary>
         void ClearValue();
 
         /// <summary>
-        ///     書式化した文字列を取得します。
+        ///     Get the display text.
         /// </summary>
-        /// <param name="formatFlags">書式オプション。</param>
-        /// <returns>書式化した文字列。</returns>
+        /// <param name="formatFlags">Format flag.</param>
+        /// <returns>Display text.</returns>
         string GetDisplayText(PropertyDescriptionFormatFlags formatFlags);
     }
 }

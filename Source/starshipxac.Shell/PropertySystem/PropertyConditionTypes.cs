@@ -4,37 +4,37 @@ using starshipxac.Shell.PropertySystem.Interop;
 namespace starshipxac.Shell.PropertySystem
 {
     /// <summary>
-    ///     クエリビルダーのユーザーインターフェイスでプロパティを表示するときに使用する条件タイプを定義します。
+    ///     Define the condition type to use when displaying properties in the Query Builder user interface.
     /// </summary>
     public enum PropertyConditionTypes
     {
         /// <summary>
-        ///     デフォルトの条件タイプ
+        ///     Default condition type.
         /// </summary>
         None = PROPDESC_CONDITION_TYPE.PDCOT_NONE,
 
         /// <summary>
-        ///     文字列
+        ///     String.
         /// </summary>
         String = PROPDESC_CONDITION_TYPE.PDCOT_STRING,
 
         /// <summary>
-        ///     サイズ
+        ///     Size.
         /// </summary>
         Size = PROPDESC_CONDITION_TYPE.PDCOT_SIZE,
 
         /// <summary>
-        ///     時刻
+        ///     Date and time.
         /// </summary>
         DateTime = PROPDESC_CONDITION_TYPE.PDCOT_DATETIME,
 
         /// <summary>
-        ///     真理値
+        ///     Boolean value.
         /// </summary>
         Boolean = PROPDESC_CONDITION_TYPE.PDCOT_BOOLEAN,
 
         /// <summary>
-        ///     数字
+        ///     Number value.
         /// </summary>
         Number = PROPDESC_CONDITION_TYPE.PDCOT_NUMBER,
     }

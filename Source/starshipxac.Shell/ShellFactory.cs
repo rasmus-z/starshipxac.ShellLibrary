@@ -22,6 +22,7 @@ namespace starshipxac.Shell
         public static ShellObject FromParsingName(string parsingName)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(parsingName));
+            Contract.Ensures(Contract.Result<ShellObject>() != null);
 
             return Create(ShellItem.FromParsingName(parsingName));
         }
@@ -35,6 +36,7 @@ namespace starshipxac.Shell
         public static ShellFile FromFilePath(string path)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrEmpty(path));
+            Contract.Ensures(Contract.Result<ShellFile>() != null);
 
             var absPath = GetAbsolutePath(path);
             if (!File.Exists(absPath))
@@ -55,6 +57,7 @@ namespace starshipxac.Shell
         public static ShellFolder FromFolderPath(string path)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(path));
+            Contract.Ensures(Contract.Result<ShellFolder>() != null);
 
             var absPath = GetAbsolutePath(path);
             if (!Directory.Exists(absPath))
@@ -75,6 +78,7 @@ namespace starshipxac.Shell
         public static ShellObject FromShellItem(ShellItem shellItem)
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
+            Contract.Ensures(Contract.Result<ShellObject>() != null);
 
             return Create(shellItem);
         }

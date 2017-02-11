@@ -5,14 +5,14 @@ using starshipxac.Shell.Components.Internal;
 namespace starshipxac.Shell.Components
 {
     /// <summary>
-    ///     シェル通知イベントデータを定義します。
+    ///     Define shell notificaiton event arguments.
     /// </summary>
     public class ShellNotificationEventArgs : EventArgs
     {
         /// <summary>
-        ///     <see cref="ShellNotificationEventArgs" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="ShellNotificationEventArgs" /> class.
         /// </summary>
-        /// <param name="changeNotify">シェル変更通知情報。</param>
+        /// <param name="changeNotify">Shell change notification information.</param>
         internal ShellNotificationEventArgs(ShellChangeNotify changeNotify)
         {
             Contract.Requires<ArgumentNullException>(changeNotify != null);
@@ -22,12 +22,12 @@ namespace starshipxac.Shell.Components
         }
 
         /// <summary>
-        ///     <see cref="ShellObject" />で発生したイベント種別を取得します。
+        ///     Get the <see cref="ShellObject" />.
         /// </summary>
         public ShellChangeTypes ChangeType { get; }
 
         /// <summary>
-        ///     発生したイベントがシステムイベントかどうかを判定する値を取得します。
+        ///     Get a value that determines whether the event that occurred is a system event.
         /// </summary>
         public bool FromSystemInterrupt { get; }
     }
