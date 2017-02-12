@@ -5,22 +5,23 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    ///     フォルダ変更イベントデータを定義します。
+    ///     Define folder change event arguments class.
     /// </summary>
     public class FileDialogFolderChangeEventArgs : CancelEventArgs
     {
         /// <summary>
-        ///     <see cref="FileDialogFolderChangeEventArgs" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FileDialogFolderChangeEventArgs" /> class
+        ///     to the specified folder.
         /// </summary>
-        /// <param name="folder">フォルダー情報。</param>
+        /// <param name="folder"><see cref="ShellFolder" />.</param>
         public FileDialogFolderChangeEventArgs(ShellFolder folder)
         {
             this.ShellFolder = folder;
         }
 
         /// <summary>
-        ///     フォルダー情報を取得します。
+        ///     Get the folder.
         /// </summary>
-        public ShellFolder ShellFolder { get; private set; }
+        public ShellFolder ShellFolder { get; }
     }
 }

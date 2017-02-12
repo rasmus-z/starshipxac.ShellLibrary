@@ -6,7 +6,7 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    ///     保存するファイルを選択するダイアログを表示します。
+    ///     Define file save dialog.
     /// </summary>
     public class FileSaveDialog : FileSaveDialogBase
     {
@@ -17,25 +17,31 @@ namespace starshipxac.Windows.Shell.Dialogs
         private ShellFile shellFile;
 
         /// <summary>
-        ///     <see cref="FileSaveDialog" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FileSaveDialog" /> class.
         /// </summary>
         public FileSaveDialog()
         {
         }
 
         /// <summary>
-        ///     ダイアログのタイトルを指定して、
-        ///     <see cref="FileSaveDialog" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FileSaveDialog" /> class
+        ///     to the specified dialog title.
         /// </summary>
-        /// <param name="title">ダイアログタイトル。</param>
+        /// <param name="title">Dialog title.</param>
         public FileSaveDialog(string title)
             : base(title)
         {
         }
 
         /// <summary>
-        ///     ユーザーが、すでに存在するファイルを指定した場合に、
-        ///     警告メッセージを表示するかどうかを示す値を取得または設定します。
+        ///     <para>
+        ///         Get or set a value indicating whether to display a warning message
+        ///         if the user specifies a file that already exists.
+        ///     </para>
+        ///     <para>
+        ///         ユーザーが、すでに存在するファイルを指定した場合に、
+        ///         警告メッセージを表示するかどうかを示す値を取得または設定します。
+        ///     </para>
         /// </summary>
         public bool OverwritePrompt
         {
@@ -51,8 +57,14 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ユーザーが、存在しないファイルを指定した場合に、
-        ///     ファイルを作成することを確認するメッセージを表示するかどうかを示す値を取得または設定します。
+        ///     <para>
+        ///         Get or set a value indicating whether or not to display a message confirming the creation of a file
+        ///         if the user specifies a file that does not exist.
+        ///     </para>
+        ///     <para>
+        ///         ユーザーが、存在しないファイルを指定した場合に、
+        ///         ファイルを作成することを確認するメッセージを表示するかどうかを示す値を取得または設定します。
+        ///     </para>
         /// </summary>
         public bool CreatePrompt
         {
@@ -68,7 +80,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ダイアログを拡張モードで表示するかどうかを示す値を取得または設定します。
+        ///     <para>
+        ///         Get or set a value indicating whether the dialog is displayed in extended mode.
+        ///     </para>
+        ///     <para>
+        ///         ダイアログを拡張モードで表示するかどうかを示す値を取得または設定します。
+        ///     </para>
         /// </summary>
         public bool IsExpandedMode
         {
@@ -84,7 +101,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     選択したファイルを取得します。
+        ///     Get the selected file.
         /// </summary>
         public ShellFile ShellFile
         {
@@ -99,19 +116,19 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ファイル保存ダイアログを表示します。
+        ///     Show file save dialog.
         /// </summary>
-        /// <returns>ダイアログ実行結果。</returns>
+        /// <returns>Dialog result.</returns>
         public FileDialogResult Show()
         {
             return ShowDialog();
         }
 
         /// <summary>
-        ///     ファイル保存ダイアログを表示します。
+        ///     Show file save dialog.
         /// </summary>
-        /// <param name="parentWindow">親ウィンドウのハンドル。</param>
-        /// <returns>ダイアログ実行結果。</returns>
+        /// <param name="parentWindow">Parent window.</param>
+        /// <returns>Dialog result.</returns>
         public FileDialogResult Show(Window parentWindow)
         {
             Contract.Requires<ArgumentNullException>(parentWindow != null);
@@ -119,6 +136,10 @@ namespace starshipxac.Windows.Shell.Dialogs
             return ShowDialog(parentWindow);
         }
 
+        /// <summary>
+        ///     Get the <see cref="FileDialogOptions" />.
+        /// </summary>
+        /// <returns></returns>
         protected override FileDialogOptions GetDialogOptions()
         {
             var result = base.GetDialogOptions();

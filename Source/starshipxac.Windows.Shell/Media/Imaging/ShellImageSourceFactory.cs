@@ -10,16 +10,16 @@ using starshipxac.Shell.Media.Imaging;
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    ///     <see cref="ShellImageSource" />イメージファクトリを定義します。
+    ///     Define shell image source factory class.
     /// </summary>
     public static class ShellImageSourceFactory
     {
         /// <summary>
-        ///     指定した<see cref="ShellImageSource" />からアイコン・サムネイルイメージを取得し、
-        ///     <see cref="ShellImageSource" />の各プロパティに設定します。
+        ///     Load the thumbnail image source from <see cref="ShellThumbnail" />
+        ///     and invoke <paramref name="updateImageSource" /> action.
         /// </summary>
-        /// <param name="thumbnail">取得したアイコン・サムネイルイメージを設定する<see cref="ShellImageSource" />。</param>
-        /// <param name="updateImageSource"></param>
+        /// <param name="thumbnail"><see cref="ShellThumbnail" />.</param>
+        /// <param name="updateImageSource">Update action.</param>
         /// <returns></returns>
         public static async Task LoadAsync(ShellThumbnail thumbnail, Action<ImageSource> updateImageSource)
         {
@@ -35,14 +35,11 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        ///     デフォルトアイコンを取得します。
+        ///     Get the default icon image.
         /// </summary>
-        /// <param name="thumbnail"></param>
-        /// <param name="updateImageSource"></param>
+        /// <param name="thumbnail"><see cref="ShellThumbnail" />.</param>
+        /// <param name="updateImageSource">Update action.</param>
         /// <returns></returns>
-        /// <remarks>
-        ///     <see cref="ShellImageSource" />の<c>ImageSource</c>および<c>DefaultImage</c>プロパティに取得したイメージを設定します。
-        /// </remarks>
         public static async Task GetDefaultIconAsync(ShellThumbnail thumbnail, Action<ImageSource> updateImageSource)
         {
             Contract.Requires<ArgumentNullException>(thumbnail != null);
@@ -52,14 +49,11 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        ///     アイコンとオーバーレイアイコンを取得します。
+        ///     Get the icon image with overlay icon image.
         /// </summary>
-        /// <param name="thumbnail"></param>
-        /// <param name="updateImageSource"></param>
+        /// <param name="thumbnail"><see cref="ShellThumbnail" />.</param>
+        /// <param name="updateImageSource">Update action.</param>
         /// <returns></returns>
-        /// <remarks>
-        ///     <see cref="ShellImageSource" />の<c>ImageSource</c>および<c>DefaultImage</c>プロパティに取得したイメージを設定します。
-        /// </remarks>
         public static async Task GetDefaultIconWithOverlayAsync(ShellThumbnail thumbnail, Action<ImageSource> updateImageSource)
         {
             Contract.Requires<ArgumentNullException>(thumbnail != null);
@@ -69,37 +63,32 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        ///     サムネイルイメージを取得します。
+        ///     Get the thumbnail image.
         /// </summary>
-        /// <param name="thumbnail"></param>
-        /// <param name="updateImageSource"></param>
+        /// <param name="thumbnail"><see cref="ShellThumbnail" />.</param>
+        /// <param name="updateImageSource">Update action.</param>
         /// <returns></returns>
-        /// <remarks>
-        ///     <see cref="ShellImageSource" />の<c>ImageSource</c>および<c>ThumbnailImage</c>プロパティに取得したイメージを設定します。
-        /// </remarks>
         public static async Task GetThumbnailAsync(ShellThumbnail thumbnail, Action<ImageSource> updateImageSource)
         {
             Contract.Requires<ArgumentNullException>(thumbnail != null);
 
             var dg = new DrawingGroup();
 
-            // サムネイルイメージ取得
+            // Get thumbnail image.
             var thumbnailBitmapSource = await GetThumbnailBitmapSourceAsync(thumbnail);
 
-            // フレーム
+            // Add thumbnail frame.
             var thumbnailFrame =
                 new RectangleGeometry(new Rect(0, 0, thumbnailBitmapSource.Width + 2, thumbnailBitmapSource.Height + 2));
             dg.Children.Add(new GeometryDrawing(Brushes.Transparent, null, thumbnailFrame));
 
-            // サムネイル
+            // Add thumbnail rectangle.
             var thumbnailRect = new Rect(1, 1, thumbnailBitmapSource.PixelWidth, thumbnailBitmapSource.PixelHeight);
             dg.Children.Add(new ImageDrawing(thumbnailBitmapSource, thumbnailRect));
 
-            // オーバーレイアイコン
-            //DrawingImage overlayDrawingImage = null;
             if (thumbnail.OverlayIndex > 0)
             {
-                // オーバーレイアイコン取得
+                // Get overlay icon image.
                 var overlayBitmapSource = await GetOverlayIconBitmapSourceAsync(thumbnail);
                 var overlayIconRect = new Rect(0, 0, overlayBitmapSource.PixelWidth, overlayBitmapSource.PixelHeight);
 
@@ -112,7 +101,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
                 }
                 else
                 {
-                    var scale = (thumbnail.OriginalWidth * 0.38)/overlayIconRect.Width;
+                    var scale = (thumbnail.OriginalWidth * 0.38) / overlayIconRect.Width;
 
                     overlayIconRect.Scale(scale, scale);
                     overlayIconRect.Offset(-4.0, thumbnailRect.Height - overlayIconRect.Height + 4.0);
@@ -123,7 +112,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
                 dg.Children.Add(new ImageDrawing(overlayBitmapSource, overlayIconRect));
 
-                // OverlayImage作成
+                // Create overlay image.
                 var dgOverlay = new DrawingGroup();
 
                 dgOverlay.Children.Add(new GeometryDrawing(Brushes.Transparent, null, new RectangleGeometry(thumbnailRect)));
@@ -146,7 +135,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         #region Private Methods
 
         /// <summary>
-        ///     取得するアイコンのサイズオプションを計算します。
+        ///     Get the thumbnail image size option.
         /// </summary>
         /// <returns></returns>
         private static int GetSizeOption(ShellThumbnail thumbnail)
@@ -168,7 +157,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        ///     取得するオーバーレイアイコンのサイズオプションを取得します。
+        ///     Get the overlay icon image size option.
         /// </summary>
         /// <returns></returns>
         private static int GetOverlayIconSizeOption(ShellThumbnail thumbnail)
@@ -203,7 +192,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
                     IntPtr.Zero,
                     Int32Rect.Empty,
                     BitmapSizeOptions.FromEmptyOptions())
-                ).Task;
+            ).Task;
         }
 
         private static Task<BitmapSource> GetIconBitmapSourceAsync(ShellThumbnail thumbnail)

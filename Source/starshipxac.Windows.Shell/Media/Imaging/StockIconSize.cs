@@ -3,22 +3,22 @@
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    ///     ストックアイコンのサイズを定義します。
+    ///     Define stock icon size.
     /// </summary>
     public enum StockIconSize
     {
         /// <summary>
-        ///     小さいサイズ。
+        ///     Small size.
         /// </summary>
         Small,
 
         /// <summary>
-        ///     大きいサイズ。
+        ///     Large size.
         /// </summary>
         Large,
 
         /// <summary>
-        ///     シェルサイズ。
+        ///     Shell size.
         /// </summary>
         ShellSize
     }

@@ -7,14 +7,14 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    ///     ファイルを選択するダイアログを表示します。
+    ///     Define file open dialog.
     /// </summary>
     public sealed class FileOpenDialog : FileOpenDialogBase
     {
         private IEnumerable<ShellFile> shellFiles;
 
         /// <summary>
-        ///     <see cref="FileOpenDialog" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FileOpenDialog" /> class.
         /// </summary>
         public FileOpenDialog()
         {
@@ -22,32 +22,32 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ダイアログのタイトルを指定して、
-        ///     <see cref="FileOpenDialog" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FileOpenDialog" /> class
+        ///     to the specified dialog title.
         /// </summary>
-        /// <param name="title">ダイアログタイトル。</param>
+        /// <param name="title">Dialog title.</param>
         public FileOpenDialog(string title)
             : base(title)
         {
         }
 
         /// <summary>
-        ///     ファイルを複数選択可能かどうか示す値を取得または設定します。
+        ///     Get or set a value indicating whether multiple files can be selected.
         /// </summary>
         public bool MultiSelect { get; set; }
 
         /// <summary>
-        ///     読み込み専用ファイルのみ選択可能にするかどうかを示す値を取得または設定します。
+        ///     Get or set a value indicating whether only read-only files can be selected.
         /// </summary>
         public bool EnsureReadOnly { get; set; }
 
         /// <summary>
-        ///     ファイルシステム以外のアイテムを選択可能にするかどうかを示す値を取得または設定します。
+        ///     Get or set a value indicating whether items other than the file system can be selected.
         /// </summary>
         public bool AllowNonFileSystemItem { get; set; }
 
         /// <summary>
-        ///     選択したファイルのコレクションを取得します。
+        ///     Enumerate selected files.
         /// </summary>
         public IEnumerable<ShellFile> ShellFiles
         {
@@ -62,19 +62,19 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ファイル選択ダイアログを表示します。
+        ///     Show file open dialog.
         /// </summary>
-        /// <returns>ダイアログ実行結果。</returns>
+        /// <returns>Dialog result.</returns>
         public FileDialogResult Show()
         {
             return ShowDialog();
         }
 
         /// <summary>
-        ///     ファイル選択ダイアログを表示します。
+        ///     Show file open dialog.
         /// </summary>
-        /// <param name="parentWindow">親ウィンドウ。</param>
-        /// <returns>ダイアログ実行結果。</returns>
+        /// <param name="parentWindow">Parent window</param>
+        /// <returns>Dialog result.</returns>
         public FileDialogResult Show(Window parentWindow)
         {
             Contract.Requires<ArgumentNullException>(parentWindow != null);
@@ -82,6 +82,10 @@ namespace starshipxac.Windows.Shell.Dialogs
             return ShowDialog(parentWindow);
         }
 
+        /// <summary>
+        ///     Get the <see cref="FileDialogOptions" />.
+        /// </summary>
+        /// <returns></returns>
         protected override FileDialogOptions GetDialogOptions()
         {
             var result = base.GetDialogOptions();

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using starshipxac.Shell.Interop;
@@ -10,7 +9,7 @@ using starshipxac.Windows.Shell.Properties;
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    ///     標準アイコンを保持します。
+    ///     Define stock icon class.
     /// </summary>
     public class StockIcon : IDisposable
     {
@@ -18,6 +17,14 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
         private IntPtr hIcon = IntPtr.Zero;
 
+        /// <summary>
+        ///     Initialize a new instance of the <see cref="StockIcon" /> class
+        ///     to the specified stock icon ID, stock icon size, overlay flag and selected flag.
+        /// </summary>
+        /// <param name="stockIconId"></param>
+        /// <param name="size"></param>
+        /// <param name="isLinkOverlay"></param>
+        /// <param name="isSelected"></param>
         internal StockIcon(SHSTOCKICONID stockIconId, StockIconSize size, bool isLinkOverlay, bool isSelected)
         {
             this.Id = stockIconId;
@@ -27,49 +34,63 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             this.Size = size;
         }
 
+        /// <summary>
+        ///     Finalizer.
+        /// </summary>
         ~StockIcon()
         {
             Dispose(false);
         }
 
+        /// <summary>
+        ///     Release all resources used by <see cref="StockIcon" />.
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        ///     Release all resources used by <see cref="StockIcon" />,
+        ///     and optionally releases managed resources.
+        /// </summary>
+        /// <param name="disposing">
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
+        /// </param>
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
                 this.disposed = true;
 
-                DestroyIcon(this.hIcon);
+                StockIconsNativeMethods.DestroyIcon(this.hIcon);
             }
         }
 
         /// <summary>
-        ///     標準アイコンIDを取得します。
+        ///     Get the stock icon ID.
         /// </summary>
         internal SHSTOCKICONID Id { get; }
 
         /// <summary>
-        ///     アイコンサイズを取得します。
+        ///     Get the stock icon size.
         /// </summary>
         public StockIconSize Size { get; }
 
         /// <summary>
-        ///     リンクオーバーレイを取得するかどうかを判定する値を取得します。
+        ///     Get a value that determines whether to acquire link overlay.
         /// </summary>
         public bool LinkOverlay { get; }
 
         /// <summary>
-        ///     選択状態アイコンを取得するかどうかを判定する値を取得します。
+        ///     Gets a value that determines whether to acquire the selection status icon.
         /// </summary>
         public bool Selected { get; }
 
         /// <summary>
-        ///     アイコンの<see cref="BitmapSource" />を取得します。
+        ///     Get the icon's <see cref="BitmapSource" />.
         /// </summary>
         public BitmapSource BitmapSource
         {
@@ -134,14 +155,6 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
             return info.hIcon;
         }
-
-        #endregion
-
-        #region Native Methods
-
-        [DllImport("user32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool DestroyIcon(IntPtr hIcon);
 
         #endregion
     }

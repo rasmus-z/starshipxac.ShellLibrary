@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace starshipxac.Windows.Shell.Media.Imaging.Interop
 {
     /// <summary>
-    ///     ストックアイコン情報を定義します。
+    ///     Define stock icon information struct.
     /// </summary>
     /// <remarks>
     ///     http://msdn.microsoft.com/en-us/library/windows/desktop/bb759805(v=vs.85).aspx

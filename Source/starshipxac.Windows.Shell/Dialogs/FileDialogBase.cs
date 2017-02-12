@@ -16,7 +16,7 @@ using starshipxac.Windows.Shell.Properties;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    ///     ファイルダイアログの基底クラスを定義します。
+    ///     Define file dialog base class.
     /// </summary>
     [ContentProperty("Controls")]
     public abstract class FileDialogBase : IDisposable
@@ -29,7 +29,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         private string cancelButtonText;
 
         /// <summary>
-        ///     <see cref="FileDialogBase" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FileDialogBase" /> class.
         /// </summary>
         protected FileDialogBase()
         {
@@ -38,9 +38,10 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ダイアログのタイトルを指定して、<see cref="FileDialogBase" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FileDialogBase" /> class
+        ///     to the specified dialog title.
         /// </summary>
-        /// <param name="title">ダイアログのタイトル。</param>
+        /// <param name="title">Dialog title.</param>
         protected FileDialogBase(string title)
             : this()
         {
@@ -48,7 +49,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ファイナライザー。
+        ///     Finalizer.
         /// </summary>
         ~FileDialogBase()
         {
@@ -56,7 +57,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     <see cref="FileDialogBase" />によって使用されているすべてのリソースを解放します。
+        ///     Release all resources used by <see cref="FileDialogBase" />.
         /// </summary>
         public void Dispose()
         {
@@ -65,12 +66,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     <see cref="FileDialogBase" />によって使用されているすべてのリソースを解放し、
-        ///     オプションでマネージリソースも解放します。
+        ///     Release all resources used by <see cref="FileDialogBase" />,
+        ///     and optionally releases managed resources.
         /// </summary>
         /// <param name="disposing">
-        ///     マネージリソースとアンマネージリソースの両方を解放する場合は<c>true</c>。
-        ///     アンマネージリソースだけを解放する場合は<c>false</c>。
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
@@ -80,29 +81,23 @@ namespace starshipxac.Windows.Shell.Dialogs
             }
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvaliant()
-        {
-            Contract.Invariant(this.Controls != null);
-        }
-
         /// <summary>
-        ///     ダイアログの表示状態を取得します。
+        ///     Get the dialog show states.
         /// </summary>
         protected DialogShowStates DialogShowStates => this.FileDialogInternal.DialogShowStates;
 
         /// <summary>
-        ///     ダイアログが表示中かどうかを判定する値を取得します。
+        ///     Get a value that determines whether a dialog is being displayed.
         /// </summary>
         public bool DialogShowing => this.FileDialogInternal.DialogShowing;
 
         /// <summary>
-        ///     ダイアログの実行結果を取得します。
+        ///     Get the execution result of the dialog.
         /// </summary>
         protected FileDialogResult DialogResult { get; private set; }
 
         /// <summary>
-        ///     ダイアログのタイトルを取得または設定します。
+        ///     Get and set the dialog title.
         /// </summary>
         public string Title
         {
@@ -123,7 +118,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     OKボタンのテキストを取得または設定します。
+        ///     Get or set the OK button text.
         /// </summary>
         public string OkButtonText
         {
@@ -144,7 +139,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     キャンセルボタンのテキストを取得または設定します。
+        ///     Get or set the cancel button text.
         /// </summary>
         public string CancelButtonText
         {
@@ -164,30 +159,39 @@ namespace starshipxac.Windows.Shell.Dialogs
             }
         }
 
+        /// <summary>
+        ///     Get a value that determines whether to display the places list.
+        /// </summary>
         public bool ShowPlacesList { get; set; }
 
         /// <summary>
-        ///     隠しアイテムを表示するかどうかを判定する値を取得または設定します。
+        ///     Get or set a value that determines whether to display hidden items.
         /// </summary>
         public bool ShowHiddenItems { get; set; }
 
+        /// <summary>
+        ///     Get or set a value that determines whether to navigate to shortcut.
+        /// </summary>
         public bool NavigateToShortcut { get; set; }
 
         /// <summary>
-        ///     初期表示フォルダーを取得または設定します。
+        ///     Get or set initial folder.
         /// </summary>
         public ShellFolder InitialFolder { get; set; }
 
         /// <summary>
-        ///     規定フォルダーを取得または設定します。
+        ///     Get or set default folder.
         /// </summary>
         public ShellFolder DefaultFolder { get; set; }
 
         /// <summary>
-        ///     ダイアログコントロールのコレクションを取得します。
+        ///     Get or set dialog control collection.
         /// </summary>
         public FileDialogControlCollection Controls { get; }
 
+        /// <summary>
+        ///     Get the <see cref="FileDialogInternal" />.
+        /// </summary>
         internal FileDialogInternal FileDialogInternal
         {
             get
@@ -200,6 +204,9 @@ namespace starshipxac.Windows.Shell.Dialogs
             }
         }
 
+        /// <summary>
+        ///     Get the <see cref="FileDialogEventsInternal" />.
+        /// </summary>
         internal FileDialogEventsInternal FileDialogEventsInternal
         {
             get
@@ -216,6 +223,9 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         #region DialogOpening Event
 
+        /// <summary>
+        ///     Dialog opening event.
+        /// </summary>
         public event EventHandler DialogOpening;
 
         protected virtual void OnDialogOpening(EventArgs e)
@@ -232,6 +242,9 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         #region FolderChanging Event
 
+        /// <summary>
+        ///     Folder changing event.
+        /// </summary>
         public event EventHandler<FileDialogFolderChangeEventArgs> FolderChanging;
 
         protected virtual void OnFolderChanging(FileDialogFolderChangeEventArgs e)
@@ -252,6 +265,9 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         #region FolderChanged Event
 
+        /// <summary>
+        ///     Folder changed event.
+        /// </summary>
         public event EventHandler FolderChanged;
 
         protected virtual void OnFolderChanged(EventArgs e)
@@ -268,6 +284,9 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         #region SelectionChanged Event
 
+        /// <summary>
+        ///     Selection changed event.
+        /// </summary>
         public event EventHandler SelectionChanged;
 
         protected virtual void OnSelectionChanged(EventArgs e)
@@ -284,6 +303,9 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         #region FileTypeChanged Event
 
+        /// <summary>
+        ///     File type changed event.
+        /// </summary>
         public event EventHandler FileTypeChanged;
 
         protected virtual void OnFileTypeChanged(EventArgs e)
@@ -300,6 +322,9 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         #region Committed Event
 
+        /// <summary>
+        ///     Committed event.
+        /// </summary>
         public event CancelEventHandler Committed;
 
         protected virtual void OnCommitted(CancelEventArgs e)
@@ -327,6 +352,11 @@ namespace starshipxac.Windows.Shell.Dialogs
 
         #endregion
 
+        /// <summary>
+        ///     Add a folder to the specified location.
+        /// </summary>
+        /// <param name="place"></param>
+        /// <param name="location"></param>
         public void AddPlace(ShellFolder place, FileDialogAddPlaceLocation location)
         {
             Contract.Requires<ArgumentNullException>(place != null);
@@ -334,6 +364,11 @@ namespace starshipxac.Windows.Shell.Dialogs
             this.FileDialogInternal.AddPlace(place, location);
         }
 
+        /// <summary>
+        ///     Add a path to the specified location.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="location"></param>
         public void AddPlace(string path, FileDialogAddPlaceLocation location)
         {
             Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(path));
@@ -342,9 +377,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ダイアログを表示します。
+        ///     Show dialog.
         /// </summary>
-        /// <returns>ダイアログの実行結果。</returns>
+        /// <returns>Result of dialog execution.</returns>
         protected FileDialogResult ShowDialog()
         {
             var parentWindowHandle = IntPtr.Zero;
@@ -357,10 +392,10 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     親ウィンドウを指定して、ダイアログを表示します。
+        ///     Show dialog.
         /// </summary>
-        /// <param name="window">親ウィンドウ。</param>
-        /// <returns>ダイアログの実行結果。</returns>
+        /// <param name="window">Parent window.</param>
+        /// <returns>Result of dialog execution.</returns>
         protected FileDialogResult ShowDialog(Window window)
         {
             Contract.Requires<ArgumentNullException>(window != null);
@@ -370,18 +405,18 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     親ウィンドウのハンドルを指定して、ダイアログを表示します。
+        ///     Show dialog.
         /// </summary>
-        /// <param name="parentWindowHandle">親ウィンドウのハンドル。</param>
-        /// <returns>ダイアログの実行結果。</returns>
+        /// <param name="parentWindowHandle">Parent window handle.</param>
+        /// <returns>Result of dialog execution.</returns>
         private FileDialogResult ShowDialog(IntPtr parentWindowHandle)
         {
-            // ダイアログ作成
+            // Create dialog.
             this.FileDialogInternal.SetOptions(GetDialogOptions());
             SetNativeSettings();
             SetNativeEvents();
 
-            // ダイアログ表示
+            // Show dialog.
             var hresult = this.FileDialogInternal.ShowDialog(parentWindowHandle);
             this.DialogResult = (hresult == COMErrorCodes.Cancelled) ? FileDialogResult.Cancel : FileDialogResult.Ok;
 
@@ -389,13 +424,13 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     <see cref="IFileDialog2" />を作成します。
+        ///     Create <see cref="IFileDialog2" />.
         /// </summary>
         /// <returns></returns>
         internal abstract IFileDialog2 CreateNativeFileDialog();
 
         /// <summary>
-        ///     <see cref="FileDialogOptions" />を取得します。
+        ///     Get the <see cref="FileDialogOptions" />.
         /// </summary>
         /// <returns></returns>
         protected virtual FileDialogOptions GetDialogOptions()
@@ -421,7 +456,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ネイティブダイアログに設定を適用します。
+        ///     Set the setting to the native dialog.
         /// </summary>
         protected virtual void SetNativeSettings()
         {
@@ -452,7 +487,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ネイティブダイアログにイベントを設定します。
+        ///     Set the event in the native dialog.
         /// </summary>
         private void SetNativeEvents()
         {

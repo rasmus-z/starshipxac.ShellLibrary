@@ -6,7 +6,7 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    ///     保存するファイルを選択するダイアログを表示します。
+    ///     Define dialog for selecting a save file.
     /// </summary>
     public sealed class SaveFileSelector : FileSaveDialogBase
     {
@@ -15,25 +15,31 @@ namespace starshipxac.Windows.Shell.Dialogs
         private bool isExpandedMode = false;
 
         /// <summary>
-        ///     <see cref="SaveFileSelector" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="SaveFileSelector" /> class.
         /// </summary>
         public SaveFileSelector()
         {
         }
 
         /// <summary>
-        ///     ダイアログのタイトルを指定して、
-        ///     <see cref="SaveFileSelector" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="SaveFileSelector" /> class
+        ///     to the specified dialog tilte.
         /// </summary>
-        /// <param name="title">ダイアログのタイトル。</param>
+        /// <param name="title">Dialog title.</param>
         public SaveFileSelector(string title)
             : base(title)
         {
         }
 
         /// <summary>
-        ///     ユーザーが、すでに存在するファイルを指定した場合に、
-        ///     警告メッセージを表示するかどうかを示す値を取得または設定します。
+        ///     <para>
+        ///         Get or set a value indicating whether to display a warning message
+        ///         if the user specifies a file that already exists.
+        ///     </para>
+        ///     <para>
+        ///         ユーザーが、すでに存在するファイルを指定した場合に、
+        ///         警告メッセージを表示するかどうかを示す値を取得または設定します。
+        ///     </para>
         /// </summary>
         public bool OverwritePrompt
         {
@@ -49,8 +55,14 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ユーザーが、存在しないファイルを指定した場合に、
-        ///     ファイルを作成することを確認するメッセージを表示するかどうかを示す値を取得または設定します。
+        ///     <para>
+        ///         Get or set a value indicating whether or not to display a message confirming the creation of a file
+        ///         if the user specifies a file that does not exist.
+        ///     </para>
+        ///     <para>
+        ///         ユーザーが、存在しないファイルを指定した場合に、
+        ///         ファイルを作成することを確認するメッセージを表示するかどうかを示す値を取得または設定します。
+        ///     </para>
         /// </summary>
         public bool CreatePrompt
         {
@@ -66,7 +78,12 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ダイアログを拡張モードで表示するかどうかを示す値を取得または設定します。
+        ///     <para>
+        ///         Get or set a value indicating whether the dialog is displayed in extended mode.
+        ///     </para>
+        ///     <para>
+        ///         ダイアログを拡張モードで表示するかどうかを示す値を取得または設定します。
+        ///     </para>
         /// </summary>
         public bool IsExpandedMode
         {
@@ -82,9 +99,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     保存するファイルを選択するダイアログを表示します。
+        ///     Displays a dialog for selecting single save file.
         /// </summary>
-        /// <returns>保存するファイル。</returns>
+        /// <returns>The selected save file. If the user canceled it will return <c>null</c>.</returns>
         public async Task<ShellFile> SelectSingleFileAsync()
         {
             ShellFile result = null;
@@ -101,6 +118,10 @@ namespace starshipxac.Windows.Shell.Dialogs
             return result;
         }
 
+        /// <summary>
+        ///     Get the <see cref="FileDialogOptions" />.
+        /// </summary>
+        /// <returns><see cref="FileDialogOptions"/>.</returns>
         protected override FileDialogOptions GetDialogOptions()
         {
             var result = base.GetDialogOptions();

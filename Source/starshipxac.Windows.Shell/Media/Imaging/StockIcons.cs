@@ -6,7 +6,7 @@ using starshipxac.Windows.Shell.Media.Imaging.Interop;
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    ///     ストックアイコンを取得します。
+    ///     Define stock icon factory class.
     /// </summary>
     public static class StockIcons
     {
@@ -18,24 +18,24 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        ///     ストックアイコンの規定サイズを取得または設定します。
+        ///     Get or set default stock icon size.
         /// </summary>
         public static StockIconSize DefaultSize { get; set; }
 
         /// <summary>
-        ///     オーバーレイアイコンを取得するかどうかを判定する値を取得または設定します。
+        ///     Get or set default value that determines whether to acquire link overlay.
         /// </summary>
         public static bool DefaultLinkOverlay { get; set; }
 
         /// <summary>
-        ///     セレクト状態アイコンを取得するかどうかを判定する値を取得または設定します。
+        ///     Get or set default value that determines whether to acquire the selection status icon.
         /// </summary>
         public static bool DefaultSelectedState { get; set; }
 
         /// <summary>
-        ///     すべてのストックアイコンを列挙します。
+        ///     Enumerate all stock icons.
         /// </summary>
-        /// <returns>ストックアイコンのコレクション。</returns>
+        /// <returns>A collection of stock icons.</returns>
         public static IEnumerable<StockIcon> EnumerateAllIcons()
         {
             return Enum.GetValues(typeof(SHSTOCKICONID)).OfType<SHSTOCKICONID>().Select(GetStockIcon);
@@ -59,6 +59,11 @@ namespace starshipxac.Windows.Shell.Media.Imaging
 
         #endregion
 
+        /// <summary>
+        ///     Get the <see cref="StockIcon" />.
+        /// </summary>
+        /// <param name="stockIconId">Stock icon ID.</param>
+        /// <returns></returns>
         private static StockIcon GetStockIcon(SHSTOCKICONID stockIconId)
         {
             return new StockIcon(stockIconId, DefaultSize, DefaultLinkOverlay, DefaultSelectedState);

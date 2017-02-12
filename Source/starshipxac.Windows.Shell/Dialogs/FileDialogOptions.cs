@@ -4,7 +4,7 @@ using starshipxac.Windows.Shell.Dialogs.Interop;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    ///     ファイルダイアログオプションを定義します。
+    ///     Define file dialog options.
     /// </summary>
     [Flags]
     public enum FileDialogOptions : uint

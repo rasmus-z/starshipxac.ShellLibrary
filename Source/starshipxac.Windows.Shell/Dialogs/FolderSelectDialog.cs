@@ -7,14 +7,14 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    ///     フォルダー選択するダイアログを表示します。
+    ///     Define folder select dialog.
     /// </summary>
     public sealed class FolderSelectDialog : FolderSelectDialogBase
     {
         private IEnumerable<ShellFolder> shellFolders;
 
         /// <summary>
-        ///     <see cref="FolderSelectDialog" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FolderSelectDialog" /> class.
         /// </summary>
         public FolderSelectDialog()
         {
@@ -22,22 +22,27 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ダイアログのタイトルを指定して、
-        ///     <see cref="FolderSelectDialog" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FolderSelectDialog" /> class
+        ///     to the specified dialog title.
         /// </summary>
-        /// <param name="title">ダイアログタイトル。</param>
+        /// <param name="title">Dialog title.</param>
         public FolderSelectDialog(string title)
             : base(title)
         {
         }
 
         /// <summary>
-        ///     フォルダーを複数選択可能かどうかを示す値を取得または設定します。
+        ///     <para>
+        ///         Get or set a value indicating whether multiple folders can be selected.
+        ///     </para>
+        ///     <para>
+        ///         フォルダーを複数選択可能かどうかを示す値を取得または設定します。
+        ///     </para>
         /// </summary>
         public bool Multiselect { get; set; }
 
         /// <summary>
-        ///     選択したフォルダーのコレクションを取得します。
+        ///     Get a collection of selected folders.
         /// </summary>
         public IEnumerable<ShellFolder> ShellFolders
         {
@@ -52,19 +57,19 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     フォルダー選択ダイアログを表示します。
+        ///     Show folder select dialog.
         /// </summary>
-        /// <returns>ダイアログ実行結果。</returns>
+        /// <returns>Dialog result.</returns>
         public FileDialogResult Show()
         {
             return ShowDialog();
         }
 
         /// <summary>
-        ///     親ウィンドウを指定して、フォルダー選択ダイアログを表示します。
+        ///     Show folder select dialog.
         /// </summary>
-        /// <param name="parentWindow">親ウィンドウ。</param>
-        /// <returns>ダイアログ実行結果。</returns>
+        /// <param name="parentWindow">Parent window.</param>
+        /// <returns>Dialog result.</returns>
         public FileDialogResult Show(Window parentWindow)
         {
             Contract.Requires<ArgumentNullException>(parentWindow != null);
@@ -72,6 +77,10 @@ namespace starshipxac.Windows.Shell.Dialogs
             return ShowDialog(parentWindow);
         }
 
+        /// <summary>
+        ///     Get the <see cref="FileDialogOptions" />.
+        /// </summary>
+        /// <returns></returns>
         protected override FileDialogOptions GetDialogOptions()
         {
             var result = base.GetDialogOptions();

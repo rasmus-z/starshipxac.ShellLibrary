@@ -9,14 +9,14 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    ///     フォルダーを選択するダイアログを表示します。
+    ///     Define dialog for selecting a folder.
     /// </summary>
     public sealed class FolderSelector : FolderSelectDialogBase
     {
         private bool multiSelect = false;
 
         /// <summary>
-        ///     <see cref="FolderSelector" />クラスを初期化します。
+        ///     Initialize the  <see cref="FolderSelector" /> class.
         /// </summary>
         static FolderSelector()
         {
@@ -24,31 +24,31 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     <see cref="FolderSelector" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FolderSelector" /> class.
         /// </summary>
         public FolderSelector()
         {
         }
 
         /// <summary>
-        ///     ダイアログのタイトルを指定して、
-        ///     <see cref="FolderSelector" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FolderSelector" /> class
+        ///     to the specified dialog title.
         /// </summary>
-        /// <param name="title">ダイアログのタイトル。</param>
+        /// <param name="title">Dialog title.</param>
         public FolderSelector(string title)
             : base(title)
         {
         }
 
         /// <summary>
-        ///     空のフォルダコレクションを取得または設定します。
+        ///     Get the collection of the empty folder.
         /// </summary>
         private static IEnumerable<ShellFolder> EmptyShellFolders { get; }
 
         /// <summary>
-        ///     1つのフォルダを選択するダイアログを表示します。
+        ///     Displays a dialog for selecting single folder.
         /// </summary>
-        /// <returns>選択したフォルダ。ユーザーがキャンセルした場合は<c>null</c>。</returns>
+        /// <returns>The selected folder. If the user canceled it will return <c>null</c>.</returns>
         public async Task<ShellFolder> SelectSingleFolderAsync()
         {
             ShellFolder result = null;
@@ -68,9 +68,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     複数のフォルダを選択するダイアログを表示します。
+        ///     Displays a dialog for selecting multiple folders.
         /// </summary>
-        /// <returns>選択したフォルダのコレクション。</returns>
+        /// <returns>A collection of selected folders.</returns>
         public async Task<IEnumerable<ShellFolder>> SelectMultipleFoldersAsync()
         {
             Contract.Ensures(Contract.Result<IEnumerable<ShellFolder>>() != null);
@@ -91,6 +91,10 @@ namespace starshipxac.Windows.Shell.Dialogs
             return result;
         }
 
+        /// <summary>
+        ///     Get the <see cref="FileDialogOptions" />.
+        /// </summary>
+        /// <returns><see cref="FileDialogOptions" />.</returns>
         protected override FileDialogOptions GetDialogOptions()
         {
             var result = base.GetDialogOptions();

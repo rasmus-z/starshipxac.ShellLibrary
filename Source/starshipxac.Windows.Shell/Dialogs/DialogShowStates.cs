@@ -3,27 +3,27 @@
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    ///     ダイアログ表示状態を定義します。
+    ///     Define dialog show states.
     /// </summary>
     public enum DialogShowStates
     {
         /// <summary>
-        ///     表示前。
+        ///     Previous show dialog.
         /// </summary>
         PreShow,
 
         /// <summary>
-        ///     表示中。
+        ///     Dialog showing.
         /// </summary>
         Showing,
 
         /// <summary>
-        ///     終了中。
+        ///     Dialog closing.
         /// </summary>
         Closing,
 
         /// <summary>
-        ///     終了。
+        ///     Dialog closed.
         /// </summary>
         Closed
     }

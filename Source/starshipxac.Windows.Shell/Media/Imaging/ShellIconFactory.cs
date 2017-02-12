@@ -7,10 +7,15 @@ using starshipxac.Shell.Media.Imaging;
 namespace starshipxac.Windows.Shell.Media.Imaging
 {
     /// <summary>
-    ///     ファイルアイコンのイメージを作成します。
+    ///     Define shell icon factory class.
     /// </summary>
     public static class ShellIconFactory
     {
+        /// <summary>
+        ///     Create bitmap source from icon.
+        /// </summary>
+        /// <param name="icon"><see cref="ShellIcon" />.</param>
+        /// <returns></returns>
         public static BitmapSource CreateBitmapSource(ShellIcon icon)
         {
             Contract.Requires<ArgumentNullException>(icon != null);

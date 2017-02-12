@@ -11,17 +11,30 @@ namespace starshipxac.Windows.Shell.Dialogs
     {
         private bool forceFileSystem = false;
 
+        /// <summary>
+        ///     Initialize a new instance of the <see cref="FolderSelectDialogBase" /> class.
+        /// </summary>
         protected FolderSelectDialogBase()
         {
         }
 
+        /// <summary>
+        ///     Initialize a new instance of the <see cref="FolderSelectDialogBase" /> class
+        ///     to the specified dialog title.
+        /// </summary>
+        /// <param name="title">Dialog title.</param>
         protected FolderSelectDialogBase(string title)
             : base(title)
         {
         }
 
         /// <summary>
-        ///     ファイルシステム上のフォルダーのみ選択可能にするかどうかを示す値を取得または設定します。
+        ///     <para>
+        ///         Get or set a value indicating whether only the folder on the file system can be selected.
+        ///     </para>
+        ///     <para>
+        ///         ファイルシステム上のフォルダーのみ選択可能にするかどうかを示す値を取得または設定します。
+        ///     </para>
         /// </summary>
         public bool ForceFileSystem
         {
@@ -37,9 +50,14 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     ユーザーが選択したフォルダー情報のコレクションを取得します。
+        ///     <para>
+        ///         Get a collection of folders selected by the user.
+        ///     </para>
+        ///     <para>
+        ///         ユーザーが選択したフォルダー情報のコレクションを取得します。
+        ///     </para>
         /// </summary>
-        /// <returns>フォルダー情報のコレクション。</returns>
+        /// <returns>Collection of folder.</returns>
         public IEnumerable<ShellFolder> GetShellFolders()
         {
             var fileDialogNative = (IFileOpenDialog)this.FileDialogInternal.FileDialogNative;
@@ -59,11 +77,19 @@ namespace starshipxac.Windows.Shell.Dialogs
             }
         }
 
+        /// <summary>
+        ///     Create the <see cref="IFileDialog2" />.
+        /// </summary>
+        /// <returns></returns>
         internal override IFileDialog2 CreateNativeFileDialog()
         {
             return new FileOpenDialogNative();
         }
 
+        /// <summary>
+        ///     Get the <see cref="FileDialogOptions" />.
+        /// </summary>
+        /// <returns></returns>
         protected override FileDialogOptions GetDialogOptions()
         {
             var result = base.GetDialogOptions();

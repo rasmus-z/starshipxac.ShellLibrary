@@ -7,7 +7,7 @@ using starshipxac.Windows.Shell.Dialogs.Interop;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    ///     ファイルダイアログでファイルをフィルタリングするための拡張子のコレクションを保持します。
+    ///     Define file type filter.
     /// </summary>
     public class FileTypeFilter
     {
@@ -15,42 +15,36 @@ namespace starshipxac.Windows.Shell.Dialogs
         private readonly List<string> extensions;
 
         /// <summary>
-        ///     フィルター名称と拡張子の一覧を指定して、
-        ///     <see cref="FileTypeFilter" />クラスの新しいインスタンスを初期化します。
+        ///     <para>
+        ///         Initialize a new instance of the <see cref="FileTypeFilter" /> class
+        ///         to the specified filter name and extensions string.
+        ///     </para>
+        ///     <para>
+        ///         フィルター名称と拡張子の一覧を指定して、
+        ///         <see cref="FileTypeFilter" />クラスの新しいインスタンスを初期化します。
+        ///     </para>
         /// </summary>
-        /// <param name="filterName">フィルター名称。</param>
-        /// <param name="extensionsString">拡張子の一覧。</param>
+        /// <param name="filterName">Filter name.</param>
+        /// <param name="extensionsString">extensions.</param>
         /// <remarks>
-        ///     <param name="extensionsString" />
-        ///     は、拡張子をセミコロン(';')またはカンマ(',')で区切って指定します。
-        ///     拡張子は、ピリオド('.')またはワイルドカード "*."を先頭につけて指定するか、何もつけずに指定できます。
+        ///     <para>
+        ///         <Paramref name="extensionsString" /> specifies extensions separated by semicolons (';') or commas (',').
+        ///         The extension can be specified by prefixing a period ('.') or wildcard '*.' or without specifying anything.
+        ///     </para>
+        ///     <para>
+        ///         <paramref name="extensionsString" />は、拡張子をセミコロン(';')またはカンマ(',')で区切って指定します。
+        ///         拡張子は、ピリオド('.')またはワイルドカード "*."を先頭につけて指定するか、何もつけずに指定できます。
+        ///     </para>
         /// </remarks>
         /// <example>
         ///     <code>
-        /// var filter = new CommonFileDialogFilter("画像ファイル", "*.bmp, *.jpg, *.gif, *.png");
-        /// </code>
+        ///         var filter = new CommonFileDialogFilter("Picture file", "*.bmp, *.jpg, *.gif, *.png");
+        ///     </code>
         /// </example>
-        /// <exception cref="ArgumentNullException">
-        ///     <para>
-        ///         <param name="filterName" />
-        ///         が<c>null</c>です。
-        ///     </para>
-        ///     <para>または</para>
-        ///     <para>
-        ///         <param name="extensionsString" />
-        ///         が<c>null</c>です。
-        ///     </para>
-        /// </exception>
         /// <exception cref="ArgumentException">
-        ///     <para>
-        ///         <param name="filterName" />
-        ///         が空の文字列です。
-        ///     </para>
-        ///     <para>または</para>
-        ///     <para>
-        ///         <param name="extensionsString" />
-        ///         が空の文字列です。
-        ///     </para>
+        ///     <para><paramref name="filterName" /> is <c>null</c> or empty string.</para>
+        ///     or
+        ///     <para><paramref name="extensionsString" /> is <c>null</c> or empty string.</para>
         /// </exception>
         public FileTypeFilter(string filterName, string extensionsString)
         {
@@ -63,6 +57,14 @@ namespace starshipxac.Windows.Shell.Dialogs
                 .ToList();
         }
 
+        /// <summary>
+        ///     Initialize a new instance of the <see cref="FileTypeFilter" /> class
+        ///     to the specified filter name and collection of extension.
+        /// </summary>
+        /// <param name="filterName">Filter name.</param>
+        /// <param name="extensions">Collection of extension.</param>
+        /// <exception cref="ArgumentException"><paramref name="filterName" /> is <c>null</c> or empty string.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="extensions" /> is <c>null</c>.</exception>
         public FileTypeFilter(string filterName, IEnumerable<string> extensions)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(filterName));
@@ -70,9 +72,18 @@ namespace starshipxac.Windows.Shell.Dialogs
 
             this.FilterName = filterName;
             this.extensions = extensions
-                .Select(NormalizeExtensionString).ToList();
+                .Select(NormalizeExtensionString)
+                .ToList();
         }
 
+        /// <summary>
+        ///     Initialize a new instance of the <see cref="FileTypeFilter" /> class
+        ///     to the specified filter name and array of extension.
+        /// </summary>
+        /// <param name="filterName">Filter name.</param>
+        /// <param name="extensions">Array of extension.</param>
+        /// <exception cref="ArgumentException"><paramref name="filterName" /> is <c>null</c> or empty string.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="extensions" /> is <c>null</c>.</exception>
         public FileTypeFilter(string filterName, params string[] extensions)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(filterName));
@@ -80,28 +91,22 @@ namespace starshipxac.Windows.Shell.Dialogs
 
             this.FilterName = filterName;
             this.extensions = extensions
-                .Select(NormalizeExtensionString).ToList();
-        }
-
-        [ContractInvariantMethod]
-        private void CommonFileDialogFilterInvaliant()
-        {
-            Contract.Invariant(this.FilterName != null);
-            Contract.Invariant(this.extensions != null);
+                .Select(NormalizeExtensionString)
+                .ToList();
         }
 
         /// <summary>
-        ///     フィルター名称を取得します。
+        ///     Get the filter name.
         /// </summary>
         public string FilterName { get; }
 
         /// <summary>
-        ///     拡張子のコレクションを取得します。
+        ///     Get the collection of extension.
         /// </summary>
         public IReadOnlyList<string> Extensions => this.extensions;
 
         /// <summary>
-        ///     フィルターの表示名を取得または設定します。
+        ///     Get the display name of filter.
         /// </summary>
         public string DisplayName
         {
@@ -122,9 +127,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     指定した拡張子文字列を正規化します。
+        ///     Normalize the specified extension string.
         /// </summary>
-        /// <param name="extensionString">拡張子文字列。</param>
+        /// <param name="extensionString">Extension string.</param>
         /// <returns></returns>
         private static string NormalizeExtensionString(string extensionString)
         {
@@ -137,7 +142,7 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     表示用の拡張子コレクションの文字列を作成します。
+        ///     Create an extension collection string for display.
         /// </summary>
         /// <param name="extensions"></param>
         /// <returns></returns>
@@ -149,9 +154,14 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     <see cref="FileTypeFilter" />から、COM APIで使用する<see cref="COMDLG_FILTERSPEC" />を作成します。
+        ///     <para>
+        ///         Create <see cref="COMDLG_FILTERSPEC" /> for use with the COM API from <see cref="FileTypeFilter" />.
+        ///     </para>
+        ///     <para>
+        ///         <see cref="FileTypeFilter" />から、COM APIで使用する<see cref="COMDLG_FILTERSPEC" />を作成します。
+        ///     </para>
         /// </summary>
-        /// <returns>作成した<see cref="COMDLG_FILTERSPEC" />。</returns>
+        /// <returns><see cref="COMDLG_FILTERSPEC" />.</returns>
         internal COMDLG_FILTERSPEC CreateFilterSpec()
         {
             var filters = String.Join(";", this.Extensions.Select(x => $"*.{x}"));
@@ -159,9 +169,9 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     <see cref="FileTypeFilter" />の文字列表現を取得します。
+        ///     Get the string representation of <see cref="FileTypeFilter" />.
         /// </summary>
-        /// <returns><see cref="FileTypeFilter" />の文字列表現。</returns>
+        /// <returns></returns>
         public override string ToString()
         {
             return this.DisplayName;

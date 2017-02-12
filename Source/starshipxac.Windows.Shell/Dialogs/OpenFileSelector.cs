@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -8,14 +9,14 @@ using starshipxac.Shell;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    ///     ファイル選択ダイアログを表示します。
+    ///     Define dialog for selecting a file.
     /// </summary>
     public sealed class OpenFileSelector : FileOpenDialogBase
     {
         private bool multiSelect = false;
 
         /// <summary>
-        ///     <see cref="OpenFileSelector" />クラスを初期化します。
+        ///     Initialize the <see cref="OpenFileSelector" /> class.
         /// </summary>
         static OpenFileSelector()
         {
@@ -23,41 +24,51 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     <see cref="OpenFileSelector" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="OpenFileSelector" /> class.
         /// </summary>
         public OpenFileSelector()
         {
         }
 
         /// <summary>
-        ///     ダイアログのタイトルを指定して、
-        ///     <see cref="OpenFileSelector" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="OpenFileSelector" /> class
+        ///     to the specified dialog title.
         /// </summary>
-        /// <param name="title">ダイアログのタイトル。</param>
+        /// <param name="title">Dialog title.</param>
         public OpenFileSelector(string title)
             : base(title)
         {
         }
 
         /// <summary>
-        ///     読み込み専用ファイルのみ選択可能にするかどうかを示す値を取得または設定します。
+        ///     <para>
+        ///         Get or set a value indicating whether only read-only files can be selected.
+        ///     </para>
+        ///     <para>
+        ///         読み込み専用ファイルのみ選択可能にするかどうかを示す値を取得または設定します。
+        ///     </para>
         /// </summary>
         public bool EnsureReadOnly { get; set; }
 
         /// <summary>
-        ///     ファイルシステム以外のアイテムを選択可能にするかどうかを示す値を取得または設定します。
+        ///     <para>
+        ///         Get or set a value indicating whether items other than the file system can be selected.
+        ///     </para>
+        ///     <para>
+        ///         ファイルシステム以外のアイテムを選択可能にするかどうかを示す値を取得または設定します。
+        ///     </para>
         /// </summary>
         public bool AllowNonFileSystemItem { get; set; }
 
         /// <summary>
-        ///     空のファイルコレクションを取得または設定します。
+        ///     Get the collection of the empty file.
         /// </summary>
         private static IEnumerable<ShellFile> EmptyShellFiles { get; }
 
         /// <summary>
-        ///     1つのファイルを選択できるダイアログを表示します。
+        ///     Displays a dialog for selecting single file.
         /// </summary>
-        /// <returns>選択したファイル情報。ユーザーがキャンセルした場合は<c>null</c>。</returns>
+        /// <returns>The selected file. If the user canceled it will return <c>null</c>.</returns>
         public async Task<ShellFile> SelectSingleFileAsync()
         {
             ShellFile result = null;
@@ -77,11 +88,13 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     複数のファイルを選択できるダイアログを表示します。
+        ///     Displays a dialog for selecting multiple file.
         /// </summary>
-        /// <returns>選択したファイル情報のコレクション。</returns>
+        /// <returns>A collection of selected files.</returns>
         public async Task<IEnumerable<ShellFile>> SelectMultipleFilesAsync()
         {
+            Contract.Ensures(Contract.Result<IEnumerable<ShellFile>>() != null);
+
             var result = EmptyShellFiles;
 
             this.multiSelect = true;
@@ -98,6 +111,10 @@ namespace starshipxac.Windows.Shell.Dialogs
             return result;
         }
 
+        /// <summary>
+        ///     Get the <see cref="FileDialogOptions" />.
+        /// </summary>
+        /// <returns><see cref="FileDialogOptions" />.</returns>
         protected override FileDialogOptions GetDialogOptions()
         {
             var result = base.GetDialogOptions();

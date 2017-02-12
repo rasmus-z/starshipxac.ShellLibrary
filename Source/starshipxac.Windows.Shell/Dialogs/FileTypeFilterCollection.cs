@@ -8,32 +8,35 @@ using starshipxac.Windows.Shell.Dialogs.Interop;
 namespace starshipxac.Windows.Shell.Dialogs
 {
     /// <summary>
-    ///     ファイルダイアログのファイル種別フィルターを保持します。
+    ///     Define file type filter collection.
     /// </summary>
     public class FileTypeFilterCollection : Collection<FileTypeFilter>
     {
+        /// <summary>
+        ///     Initialize a new instance of the <see cref="FileTypeFilterCollection" /> class.
+        /// </summary>
         public FileTypeFilterCollection()
         {
         }
 
         /// <summary>
-        ///     コレクションにフィルターを追加します。
+        ///     Add a filter to the collection.
         /// </summary>
-        /// <param name="filterName"></param>
-        /// <param name="extensionStrings"></param>
-        public void AddFilter(string filterName, string extensionStrings)
+        /// <param name="filterName">Filter name.</param>
+        /// <param name="extensionsString">Extensions string.</param>
+        public void AddFilter(string filterName, string extensionsString)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(filterName));
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(extensionStrings));
+            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(extensionsString));
 
-            Add(new FileTypeFilter(filterName, extensionStrings));
+            Add(new FileTypeFilter(filterName, extensionsString));
         }
 
         /// <summary>
-        ///     コレクションにフィルターを追加します。
+        ///     Add a filter to the collection.
         /// </summary>
-        /// <param name="filterName"></param>
-        /// <param name="extensions"></param>
+        /// <param name="filterName">Filter name.</param>
+        /// <param name="extensions">Collection of extension.</param>
         public void AddFilter(string filterName, IEnumerable<string> extensions)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(filterName));
@@ -42,6 +45,11 @@ namespace starshipxac.Windows.Shell.Dialogs
             Add(new FileTypeFilter(filterName, extensions));
         }
 
+        /// <summary>
+        ///     Add a filter to the collection.
+        /// </summary>
+        /// <param name="filterName">Filter name.</param>
+        /// <param name="extensions">Array of extension.</param>
         public void AddFilter(string filterName, params string[] extensions)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(filterName));
@@ -50,6 +58,10 @@ namespace starshipxac.Windows.Shell.Dialogs
             Add(new FileTypeFilter(filterName, extensions));
         }
 
+        /// <summary>
+        ///     Add filters to the collection.
+        /// </summary>
+        /// <param name="filters">Collection of <see cref="FileTypeFilter" />.</param>
         public void AddRange(IEnumerable<FileTypeFilter> filters)
         {
             Contract.Requires<ArgumentNullException>(filters != null);
@@ -60,6 +72,10 @@ namespace starshipxac.Windows.Shell.Dialogs
             }
         }
 
+        /// <summary>
+        ///     Add filters to the collection.
+        /// </summary>
+        /// <param name="filters">Array of <see cref="FileTypeFilter" />.</param>
         public void AddRange(params FileTypeFilter[] filters)
         {
             Contract.Requires<ArgumentNullException>(filters != null);
