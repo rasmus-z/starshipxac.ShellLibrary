@@ -4,7 +4,7 @@ using System.Diagnostics.Contracts;
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
     /// <summary>
-    ///     ファイルダイアログボタンを定義します。
+    ///     Define a file dialog button.
     /// </summary>
     public class FileDialogButton : FileDialogControl
     {

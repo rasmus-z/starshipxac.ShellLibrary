@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
     /// <summary>
-    ///     ファイルダイアログのコントロール基底クラスを定義します。
+    ///     Define the control base class of the file dialog.
     /// </summary>
-    [ContractClass(typeof(FileDialogControlContract))]
     public abstract class FileDialogControl : IEquatable<FileDialogControl>
     {
         public static readonly int MinDialogControlId = 16;
@@ -15,8 +13,8 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         private static int nextId = MinDialogControlId;
 
         /// <summary>
-        ///     コントロール名を指定して、
-        ///     <see cref="FileDialogControl" />クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FileDialogControl" /> class
+        ///     to the specified control name.
         /// </summary>
         /// <param name="name">コントロール名。</param>
         protected FileDialogControl(string name)
@@ -27,26 +25,20 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
             this.Name = name;
         }
 
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.Name != null);
-        }
-
         public FileDialogBase Dialog { get; private set; }
 
         /// <summary>
-        ///     コントロール名を取得します。
+        ///     Get the control name.
         /// </summary>
         public string Name { get; }
 
         /// <summary>
-        ///     コントロールIDを取得します。
+        ///     Get the control ID.
         /// </summary>
         public int Id { get; }
 
         /// <summary>
-        ///     コントロールが有効かどうかを判定する値を取得または設定します。
+        ///     Get or set a value that determines whether the control is valid.
         /// </summary>
         public bool Enabled
         {
@@ -63,7 +55,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         }
 
         /// <summary>
-        ///     コントロールを表示するかどうかを判定する値を取得または設定します。
+        ///     Get or set a value that determines whether to display the control.
         /// </summary>
         public bool Visible
         {
@@ -80,14 +72,14 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         }
 
         /// <summary>
-        ///     コントロールテキストを取得または設定します。
+        ///     Get or set the control text.
         /// </summary>
         public abstract string Text { get; set; }
 
         /// <summary>
-        ///     次のコントロールIDを取得します。
+        ///     Get the next control ID.
         /// </summary>
-        /// <returns>コントロールID。</returns>
+        /// <returns>Control ID.</returns>
         private static int GetNextId()
         {
             var result = nextId;
@@ -172,30 +164,6 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         public override string ToString()
         {
             return $"FileDialogControl[Name={this.Name}, Id={this.Id}]";
-        }
-    }
-
-    [ContractClassFor(typeof(FileDialogControl))]
-    [SuppressMessage("ReSharper", "ArrangeTypeModifiers")]
-    abstract class FileDialogControlContract : FileDialogControl
-    {
-        protected FileDialogControlContract(string name)
-            : base(name)
-        {
-            Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(name));
-        }
-
-        public override string Text
-        {
-            get
-            {
-                Contract.Ensures(Contract.Result<string>() != null);
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
         }
     }
 }

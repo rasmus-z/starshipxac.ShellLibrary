@@ -8,9 +8,10 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         private string text;
 
         /// <summary>
-        ///     <see cref="FileDialogTextBox"/>クラスの新しいインスタンスを初期化します。
+        ///     Initialize a new instance of the <see cref="FileDialogTextBox"/> class
+        ///     to the specified text.
         /// </summary>
-        /// <param name="text"></param>
+        /// <param name="text">Text.</param>
         public FileDialogTextBox(string text)
             : this(String.Empty, text)
         {

@@ -8,7 +8,7 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         private string text;
 
         /// <summary>
-        ///     <see cref="FileDialogMenuItem" />クラスの新しいインスタンスを初期化します。
+        ///     Initilize a new instance of the <see cref="FileDialogMenuItem"/> class.
         /// </summary>
         /// <param name="text">メニュー項目のテキスト。</param>
         public FileDialogMenuItem(string text)
@@ -17,10 +17,11 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
         }
 
         /// <summary>
-        ///     <see cref="FileDialogMenuItem" />クラスの新しいインスタンスを初期化します。
+        ///     Initilize a new instance of the <see cref="FileDialogMenuItem"/> class
+        ///     to the specified control name and menu item text.
         /// </summary>
-        /// <param name="name">コントロール名。</param>
-        /// <param name="text">メニュー項目のテキスト。</param>
+        /// <param name="name">Control name.</param>
+        /// <param name="text">Menu item text.</param>
         public FileDialogMenuItem(string name, string text)
             : base(name)
         {

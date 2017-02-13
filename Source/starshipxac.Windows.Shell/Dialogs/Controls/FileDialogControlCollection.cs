@@ -6,7 +6,7 @@ using starshipxac.Windows.Shell.Properties;
 namespace starshipxac.Windows.Shell.Dialogs.Controls
 {
     /// <summary>
-    ///     ファイルダイアログコントロールのコレクションを保持します。
+    ///     Defines a collection of file dialog controls.
     /// </summary>
     public sealed class FileDialogControlCollection : Collection<FileDialogControl>
     {
@@ -15,12 +15,6 @@ namespace starshipxac.Windows.Shell.Dialogs.Controls
             Contract.Requires<ArgumentNullException>(dialog != null);
 
             this.Dialog = dialog;
-        }
-
-        [ContractInvariantMethod]
-        private void ObjectInvariant()
-        {
-            Contract.Invariant(this.Dialog != null);
         }
 
         internal FileDialogBase Dialog { get; set; }
