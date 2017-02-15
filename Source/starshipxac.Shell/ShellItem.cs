@@ -139,21 +139,21 @@ namespace starshipxac.Shell
         ///     to the specified <c>IDListPtr</c> and parent <see cref="IShellFolder" />.
         /// </summary>
         /// <param name="idListPtr"><c>IDListPtr</c>.</param>
-        /// <param name="parentFolderInterface">Parent <see cref="IShellFolder" />.</param>
+        /// <param name="parentFolder">Parent <see cref="ShellFolderItem" />.</param>
         /// <returns><see cref="ShellItem" />.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="idListPtr" /> is <see cref="IntPtr.Zero" />.</exception>
-        /// <exception cref="ArgumentNullException"><paramref name="parentFolderInterface" /> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="parentFolder" /> is <c>null</c>.</exception>
         /// <exception cref="ShellException">Failed to create <see cref="ShellItem" />.</exception>
-        internal static ShellItem FromIdList(IntPtr idListPtr, IShellFolder parentFolderInterface)
+        internal static ShellItem FromIdList(IntPtr idListPtr, ShellFolderItem parentFolder)
         {
             Contract.Requires<ArgumentNullException>(idListPtr != IntPtr.Zero);
-            Contract.Requires<ArgumentNullException>(parentFolderInterface != null);
+            Contract.Requires<ArgumentNullException>(parentFolder != null);
             Contract.Ensures(Contract.Result<ShellItem>() != null);
 
             IShellItem shellItem;
             var code = ShellNativeMethods.SHCreateItemWithParent(
                 IntPtr.Zero,
-                parentFolderInterface,
+                parentFolder.ShellFolderInterface,
                 idListPtr,
                 ShellIIDGuid.IShellItem2,
                 out shellItem);

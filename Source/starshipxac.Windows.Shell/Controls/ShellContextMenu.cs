@@ -67,28 +67,10 @@ namespace starshipxac.Windows.Shell.Controls
             }
 
             // 対象ファイルの親フォルダーからの相対PIDLを取得する。
-            UInt32 pchEaten = 0;
-            IntPtr filePIDL;
-            UInt32 attributes = 0;
-            shellFolder.ShellFolderInterface.ParseDisplayName(
-                IntPtr.Zero,
-                IntPtr.Zero,
-                shellFile.Name,
-                ref pchEaten,
-                out filePIDL,
-                ref attributes);
+            var filePIDL = shellFolder.ShellFolderItem.ParseDisplayName(shellFile.Name);
 
             // IContextMenuへのポインターを取得する。
-            var childPidls = new[] {filePIDL};
-            var riid = new Guid(ShellIID.IContextMenu);
-            IntPtr contextMenuPtr;
-            shellFolder.ShellFolderInterface.GetUIObjectOf(
-                IntPtr.Zero,
-                (uint)childPidls.Length,
-                childPidls,
-                ref riid,
-                IntPtr.Zero,
-                out contextMenuPtr);
+            var contextMenuPtr = shellFolder.ShellFolderItem.GetUIObjectOf(filePIDL, ShellIID.IContextMenu);
 
             // IContextMenu3へのポインターを取得する。
             IntPtr contextMenuPtr3;

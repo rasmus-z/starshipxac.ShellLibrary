@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
-using System.Runtime.InteropServices;
 using starshipxac.Shell.Internal;
 using starshipxac.Shell.Interop;
 
@@ -31,11 +30,11 @@ namespace starshipxac.Shell
         {
             Contract.Requires<ArgumentNullException>(shellItem != null);
 
-            this.ShellFolderInterface = shellItem.GetShellFolder();
+            this.ShellFolderItem = ShellFolderItem.FromShellItem(shellItem);
         }
 
         /// <summary>
-        ///     Release all resources used by <see cref="ShellObject" />,
+        ///     Release all resources used by <see cref="ShellFolder" />,
         ///     and optionally releases managed resources.
         /// </summary>
         /// <param name="disposing">
@@ -46,8 +45,11 @@ namespace starshipxac.Shell
         {
             try
             {
-                // Release unmanaged resources.
-                Marshal.ReleaseComObject(this.ShellFolderInterface);
+                if (disposing)
+                {
+                    // Release managed resources.
+                    this.ShellFolderItem.Dispose();
+                }
             }
             finally
             {
@@ -56,9 +58,9 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     Get a <see cref="IShellFolder" />.
+        ///     Get the <see cref="ShellFolderItem" />.
         /// </summary>
-        internal IShellFolder ShellFolderInterface { get; }
+        internal ShellFolderItem ShellFolderItem { get; }
 
         /// <summary>
         ///     Get the parsing name.

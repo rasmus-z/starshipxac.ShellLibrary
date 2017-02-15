@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using System.IO;
 using System.Runtime.InteropServices;
 using starshipxac.Shell.Interop;
 
@@ -32,20 +31,7 @@ namespace starshipxac.Shell.Internal
 
             this.Parent = parentFolder;
 
-            var hr = this.Parent.ShellFolderInterface.EnumObjects(
-                IntPtr.Zero,
-                options,
-                out this.enumIdList);
-            if (hr == COMErrorCodes.Cancelled)
-            {
-                var inner = Marshal.GetExceptionForHR(hr);
-                throw new DirectoryNotFoundException(inner.Message, inner);
-            }
-            else if (HRESULT.Failed(hr))
-            {
-                throw ShellException.FromHRESULT(hr);
-            }
-            // hr == S_FALSEの場合は、子が存在しない。(enumIdList = null)
+            this.enumIdList = this.Parent.ShellFolderItem.EnumObjects(options);
         }
 
         /// <summary>
@@ -65,12 +51,6 @@ namespace starshipxac.Shell.Internal
                 Marshal.ReleaseComObject(this.enumIdList);
                 this.enumIdList = null;
             }
-        }
-
-        [ContractInvariantMethod]
-        private void ObjectInvaliant()
-        {
-            Contract.Invariant(this.Parent != null);
         }
 
         /// <summary>
@@ -98,7 +78,7 @@ namespace starshipxac.Shell.Internal
                 return false;
             }
 
-            this.Current = ShellFactory.FromShellItem(ShellItem.FromIdList(item, this.Parent.ShellFolderInterface));
+            this.Current = ShellFactory.FromShellItem(ShellItem.FromIdList(item, this.Parent.ShellFolderItem));
             return true;
         }
 
