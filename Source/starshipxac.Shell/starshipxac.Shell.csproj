@@ -315,6 +315,7 @@
     <Compile Include="ShellFile.cs" />
     <Compile Include="ShellFileSystemExtension.cs" />
     <Compile Include="ShellFolder.cs" />
+    <Compile Include="ShellFolderItem.cs" />
     <Compile Include="ShellItem.cs" />
     <Compile Include="ShellKnownFolder.cs" />
     <Compile Include="ShellKnownFolderFactory.cs" />
