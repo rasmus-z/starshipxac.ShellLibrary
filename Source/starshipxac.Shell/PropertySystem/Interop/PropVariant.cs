@@ -247,7 +247,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         public PropVariant(decimal value)
         {
-            // _valueTypeと _decimalは領域が重なっているので、先に _decimalに値を設定する。
+            // valueTypeと decimalValueは領域が重なっているので、先に decimalValueに値を設定する。
             this.decimalValue = value;
             this.valueType = (ushort)VarEnum.VT_DECIMAL;
         }
