@@ -43,7 +43,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        ///     Release all resources used by <see cref="StockIcon" />.
+        ///     Release all resources used by <see cref="StockIcon" /> class.
         /// </summary>
         public void Dispose()
         {
@@ -52,7 +52,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        ///     Release all resources used by <see cref="StockIcon" />,
+        ///     Release all resources used by <see cref="StockIcon" /> class,
         ///     and optionally releases managed resources.
         /// </summary>
         /// <param name="disposing">
@@ -63,9 +63,15 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         {
             if (!this.disposed)
             {
-                this.disposed = true;
+                if (disposing)
+                {
+                }
 
+                // Release unmanaged resources.
                 StockIconsNativeMethods.DestroyIcon(this.hIcon);
+                this.hIcon = IntPtr.Zero;
+
+                this.disposed = true;
             }
         }
 
