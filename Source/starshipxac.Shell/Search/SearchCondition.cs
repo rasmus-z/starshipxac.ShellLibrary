@@ -14,6 +14,8 @@ namespace starshipxac.Shell.Search
     /// </summary>
     public class SearchCondition : IDisposable
     {
+        private bool disposed = false;
+
         internal SearchCondition(ICondition searchConditionNative)
         {
             Contract.Requires<ArgumentNullException>(searchConditionNative != null);
@@ -25,23 +27,43 @@ namespace starshipxac.Shell.Search
             this.PropertyKey = ShellPropertyKey.FromCanonicalName(this.PropertyCanonicalName);
         }
 
+        /// <summary>
+        ///     Finalizer.
+        /// </summary>
         ~SearchCondition()
         {
             Dispose(false);
         }
 
+        /// <summary>
+        ///     Release all resources used by <see cref="SearchCondition" /> class.
+        /// </summary>
         public void Dispose()
         {
             Dispose(false);
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        ///     Release all resources used by <see cref="SearchCondition" /> class,
+        ///     and optionally releases managed resources.
+        /// </summary>
+        /// <param name="disposing">
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
+        /// </param>
         protected virtual void Dispose(bool disposing)
         {
-            if (this.SearchConditionNative != null)
+            if (!this.disposed)
             {
-                Marshal.ReleaseComObject(this.SearchConditionNative);
-                this.SearchConditionNative = null;
+                // Release unmanaged resources.
+                if (this.SearchConditionNative != null)
+                {
+                    Marshal.ReleaseComObject(this.SearchConditionNative);
+                    this.SearchConditionNative = null;
+                }
+
+                this.disposed = true;
             }
         }
 
