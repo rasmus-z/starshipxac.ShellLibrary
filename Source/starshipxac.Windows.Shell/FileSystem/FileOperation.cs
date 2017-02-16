@@ -21,8 +21,8 @@ namespace starshipxac.Windows.Shell.FileSystem
     {
         private bool disposed = false;
 
-        private readonly IFileOperation fileOperation;
-        private readonly FileOperationProgressSink progressSink;
+        private IFileOperation fileOperation;
+        private FileOperationProgressSink progressSink;
         private readonly UInt32 cookie;
 
         private FileOperationOptions operationOptions = FileOperationOptions.NoConfirmMakeDirectory |
@@ -84,21 +84,48 @@ namespace starshipxac.Windows.Shell.FileSystem
             }
         }
 
+        /// <summary>
+        ///     Finalizer.
+        /// </summary>
         ~FileOperation()
         {
-            Dispose();
+            Dispose(false);
         }
 
+        /// <summary>
+        ///     Release all resources used by <see cref="FileOperation" /> class.
+        /// </summary>
         public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        ///     Release all resources used by <see cref="FileOperation" /> class
+        ///     and optionally releases managed resources.
+        /// </summary>
+        /// <param name="disposing">
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
+        /// </param>
+        public void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
+                if (disposing)
+                {
+                }
+
+                // Release unmanaged resources.
                 if (this.progressSink != null)
                 {
                     this.fileOperation.Unadvise(this.cookie);
+                    this.progressSink = null;
                 }
 
                 Marshal.FinalReleaseComObject(this.fileOperation);
+                this.fileOperation = null;
 
                 this.disposed = true;
             }
