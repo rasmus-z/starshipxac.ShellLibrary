@@ -41,7 +41,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     Release all resources used by <see cref="ShellObject" />.
+        ///     Release all resources used by <see cref="ShellObject" /> class.
         /// </summary>
         public void Dispose()
         {
@@ -50,7 +50,7 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     Release all resources used by <see cref="ShellObject" />,
+        ///     Release all resources used by <see cref="ShellObject" /> class,
         ///     and optionally releases managed resources.
         /// </summary>
         /// <param name="disposing">
