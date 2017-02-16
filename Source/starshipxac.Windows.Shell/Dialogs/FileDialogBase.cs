@@ -21,6 +21,8 @@ namespace starshipxac.Windows.Shell.Dialogs
     [ContentProperty("Controls")]
     public abstract class FileDialogBase : IDisposable
     {
+        private bool disposed = false;
+
         private FileDialogInternal fileDialogInternal;
         private FileDialogEventsInternal fileDialogEventsInternal;
 
@@ -49,14 +51,6 @@ namespace starshipxac.Windows.Shell.Dialogs
         }
 
         /// <summary>
-        ///     Finalizer.
-        /// </summary>
-        ~FileDialogBase()
-        {
-            Dispose(false);
-        }
-
-        /// <summary>
         ///     Release all resources used by <see cref="FileDialogBase" />.
         /// </summary>
         public void Dispose()
@@ -75,9 +69,15 @@ namespace starshipxac.Windows.Shell.Dialogs
         /// </param>
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
+            if (!this.disposed)
             {
-                this.fileDialogInternal?.Dispose();
+                if (disposing)
+                {
+                    // Release managed resources.
+                    this.fileDialogInternal?.Dispose();
+                }
+
+                this.disposed = true;
             }
         }
 
