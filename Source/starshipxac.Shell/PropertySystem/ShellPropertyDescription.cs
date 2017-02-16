@@ -83,7 +83,7 @@ namespace starshipxac.Shell.PropertySystem
         {
             if (!this.disposed)
             {
-                // Release unmanaged resource.
+                // Release unmanaged resources.
                 if (this.propertyDescriptionNative != null)
                 {
                     Marshal.ReleaseComObject(this.propertyDescriptionNative);
