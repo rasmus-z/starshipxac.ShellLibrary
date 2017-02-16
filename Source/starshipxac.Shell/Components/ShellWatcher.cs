@@ -10,7 +10,7 @@ using starshipxac.Shell.Properties;
 namespace starshipxac.Shell.Components
 {
     /// <summary>
-    ///     Monitor shell changes.
+    ///     Define Shell Watcher.
     /// </summary>
     public class ShellWatcher : IDisposable
     {
@@ -40,27 +40,30 @@ namespace starshipxac.Shell.Components
             this.recursive = recursive;
         }
 
-        ~ShellWatcher()
-        {
-            Dispose(false);
-        }
-
+        /// <summary>
+        ///     Release all resources used by <see cref="ShellWatcher" /> class.
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        ///     Release all resources used by <see cref="ShellWatcher" /> class.
+        ///     and optionally releases managed resources.
+        /// </summary>
+        /// <param name="disposing">
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
+        /// </param>
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
                 if (disposing)
                 {
-                }
-
-                if (this.ListenerWindow != null)
-                {
+                    // Release managed resources.
                     ShellWatcherManager.UnregisterAsync(this).Wait();
                 }
 
