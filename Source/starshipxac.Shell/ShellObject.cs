@@ -41,14 +41,6 @@ namespace starshipxac.Shell
         }
 
         /// <summary>
-        ///     Finalizer.
-        /// </summary>
-        ~ShellObject()
-        {
-            Dispose(false);
-        }
-
-        /// <summary>
         ///     Release all resources used by <see cref="ShellObject" />.
         /// </summary>
         public void Dispose()
