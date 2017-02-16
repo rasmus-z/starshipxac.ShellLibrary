@@ -63,12 +63,23 @@ namespace starshipxac.Shell
             Dispose(false);
         }
 
+        /// <summary>
+        ///     Release all resources used by <see cref="ShellItem" /> class.
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        ///     Release all resources used by <see cref="ShellItem" /> class,
+        ///     and optionally releases managed resources.
+        /// </summary>
+        /// <param name="disposing">
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
+        /// </param>
         private void Dispose(bool disposing)
         {
             if (!this.disposed)
@@ -77,7 +88,9 @@ namespace starshipxac.Shell
                 {
                 }
 
+                // Release unmanaged resources.
                 Marshal.FinalReleaseComObject(this.ShellItemInterface);
+                this.ShellItemInterface = null;
 
                 this.disposed = true;
             }
@@ -168,7 +181,7 @@ namespace starshipxac.Shell
         /// <summary>
         ///     Get <see cref="IShellItem2" />.
         /// </summary>
-        internal IShellItem2 ShellItemInterface { get; }
+        internal IShellItem2 ShellItemInterface { get; private set; }
 
         /// <summary>
         ///     Get <c>PIDL</c>.
