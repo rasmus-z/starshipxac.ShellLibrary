@@ -6,32 +6,55 @@ using starshipxac.Shell.Interop;
 
 namespace starshipxac.Shell
 {
+    /// <summary>
+    ///     Define ShellFolderItem class.
+    /// </summary>
     public sealed class ShellFolderItem : IDisposable
     {
         private bool disposed = false;
 
+        /// <summary>
+        ///     Initialize a new instance of the <see cref="ShellFolderItem" /> class
+        ///     to the specified <see cref="IShellFolder" />.
+        /// </summary>
+        /// <param name="shellFolderInterface"><see cref="IShellFolder" />.</param>
         private ShellFolderItem(IShellFolder shellFolderInterface)
         {
             this.ShellFolderInterface = shellFolderInterface;
         }
 
+        /// <summary>
+        ///     Finalizer.
+        /// </summary>
         ~ShellFolderItem()
         {
             Dispose(false);
         }
 
+        /// <summary>
+        ///     Release all resources used by <see cref="ShellFolderItem" /> class.
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        ///     Release all resources used by <see cref="ShellFolderItem" /> class,
+        ///     and optionally releases managed resources.
+        /// </summary>
+        /// <param name="disposing">
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
+        /// </param>
         private void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
                 if (disposing)
                 {
+                    // Release managed resources.
                 }
 
                 // Release unmanaged resources.
@@ -42,6 +65,12 @@ namespace starshipxac.Shell
             }
         }
 
+        /// <summary>
+        ///     Create a new instance of the <see cref="ShellFolderItem" /> class
+        ///     to the specified <see cref="ShellItem" />.
+        /// </summary>
+        /// <param name="shellItem"><see cref="ShellItem" />.</param>
+        /// <returns></returns>
         public static ShellFolderItem FromShellItem(ShellItem shellItem)
         {
             object result;
@@ -60,8 +89,16 @@ namespace starshipxac.Shell
             return new ShellFolderItem(result as IShellFolder);
         }
 
+        /// <summary>
+        ///     Get the <see cref="IShellFolder" />.
+        /// </summary>
         internal IShellFolder ShellFolderInterface { get; private set; }
 
+        /// <summary>
+        ///     Get the <see cref="IEnumIDList" />.
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
         internal IEnumIDList EnumObjects(SHCONTF options)
         {
             IEnumIDList result;
