@@ -32,7 +32,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     Release all resources used by <see cref="ShellPropertyStore" />.
+        ///     Release all resources used by <see cref="ShellPropertyStore" /> class.
         /// </summary>
         public void Dispose()
         {
@@ -41,7 +41,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     Release all resources used by <see cref="ShellPropertyStore" />,
+        ///     Release all resources used by <see cref="ShellPropertyStore" /> class,
         ///     and optionally releases managed resources.
         /// </summary>
         /// <param name="disposing">
@@ -52,10 +52,10 @@ namespace starshipxac.Shell.PropertySystem
         {
             if (!this.disposed)
             {
-                this.disposed = true;
-
                 // Release unmanaged resource.
                 Marshal.ReleaseComObject(this.propertyStoreNative);
+
+                this.disposed = true;
             }
         }
 
