@@ -16,6 +16,11 @@ namespace starshipxac.Shell.PropertySystem
 
         private readonly IPropertyStore propertyStoreNative;
 
+        /// <summary>
+        ///     Initialize a new instance of the <see cref="ShellPropertyStore"/> class,
+        ///     to the specified <see cref="IPropertyStore"/>.
+        /// </summary>
+        /// <param name="propertyStoreNative"><see cref="IPropertyStore"/>.</param>
         private ShellPropertyStore(IPropertyStore propertyStoreNative)
         {
             Contract.Requires<ArgumentNullException>(propertyStoreNative != null);
