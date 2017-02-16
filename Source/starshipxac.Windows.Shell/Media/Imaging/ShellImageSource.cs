@@ -41,14 +41,6 @@ namespace starshipxac.Windows.Shell.Media.Imaging
         }
 
         /// <summary>
-        ///     Finalizer.
-        /// </summary>
-        ~ShellImageSource()
-        {
-            Dispose(false);
-        }
-
-        /// <summary>
         ///     Release all resources used by <see cref="ShellImageSource" />.
         /// </summary>
         public void Dispose()
@@ -71,6 +63,7 @@ namespace starshipxac.Windows.Shell.Media.Imaging
             {
                 if (disposing)
                 {
+                    // Release managed resources.
                     this.ShellThumbnail?.Dispose();
                 }
 
