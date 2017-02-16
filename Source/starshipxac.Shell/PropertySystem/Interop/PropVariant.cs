@@ -17,55 +17,52 @@ namespace starshipxac.Shell.PropertySystem.Interop
     /// </remarks>
     [StructLayout(LayoutKind.Explicit)]
     [SuppressMessage("ReSharper", "BitwiseOperatorOnEnumWithoutFlags")]
+    [SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Local")]
     internal sealed class PropVariant : IDisposable
     {
         #region Fields
 
-        // ReSharper disable FieldCanBeMadeReadOnly.Local
+        [FieldOffset(0)]
+        private decimal decimalValue;
 
         [FieldOffset(0)]
-        private decimal _decimal;
-
-        [FieldOffset(0)]
-        private ushort _valueType;
+        private ushort valueType;
 
         [FieldOffset(8)]
-        private IntPtr _ptr;
+        private IntPtr ptr;
 
         [FieldOffset(8)]
-        private Int32 _int32;
+        private Int32 int32Value;
 
         [FieldOffset(8)]
-        private UInt32 _uint32;
+        private UInt32 uint32Value;
 
         [FieldOffset(8)]
-        private byte _byte;
+        private byte byteValue;
 
         [FieldOffset(8)]
-        private sbyte _sbyte;
+        private sbyte sbyteValue;
 
         [FieldOffset(8)]
-        private short _short;
+        private short shortValue;
 
         [FieldOffset(8)]
-        private ushort _ushort;
+        private ushort ushortValue;
 
         [FieldOffset(8)]
-        private long _long;
+        private long longValue;
 
         [FieldOffset(8)]
-        private ulong _ulong;
+        private ulong ulongValue;
 
         [FieldOffset(8)]
-        private double _double;
+        private double doubleValue;
 
         [FieldOffset(8)]
-        private float _float;
+        private float floatValue;
 
         [FieldOffset(12)]
-        private IntPtr _ptr2;
-
-        // ReSharper restore FieldCanBeMadeReadOnly.Local
+        private IntPtr ptr2;
 
         #endregion
 
@@ -84,8 +81,8 @@ namespace starshipxac.Shell.PropertySystem.Interop
         {
             Contract.Requires<ArgumentNullException>(value != null);
 
-            this._valueType = (ushort)VarEnum.VT_LPWSTR;
-            this._ptr = Marshal.StringToCoTaskMemUni(value);
+            this.valueType = (ushort)VarEnum.VT_LPWSTR;
+            this.ptr = Marshal.StringToCoTaskMemUni(value);
         }
 
         public PropVariant(string[] values)
@@ -97,8 +94,8 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         public PropVariant(bool value)
         {
-            this._valueType = (ushort)VarEnum.VT_BOOL;
-            this._int32 = (value) ? -1 : 0;
+            this.valueType = (ushort)VarEnum.VT_BOOL;
+            this.int32Value = (value) ? -1 : 0;
         }
 
         public PropVariant(bool[] values)
@@ -110,20 +107,20 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         public PropVariant(byte value)
         {
-            this._valueType = (ushort)VarEnum.VT_UI1;
-            this._byte = value;
+            this.valueType = (ushort)VarEnum.VT_UI1;
+            this.byteValue = value;
         }
 
         public PropVariant(sbyte value)
         {
-            this._valueType = (ushort)VarEnum.VT_I1;
-            this._sbyte = value;
+            this.valueType = (ushort)VarEnum.VT_I1;
+            this.sbyteValue = value;
         }
 
         public PropVariant(short value)
         {
-            this._valueType = (ushort)VarEnum.VT_I2;
-            this._short = value;
+            this.valueType = (ushort)VarEnum.VT_I2;
+            this.shortValue = value;
         }
 
         public PropVariant(short[] values)
@@ -135,8 +132,8 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         public PropVariant(ushort value)
         {
-            this._valueType = (ushort)VarEnum.VT_UI2;
-            this._ushort = value;
+            this.valueType = (ushort)VarEnum.VT_UI2;
+            this.ushortValue = value;
         }
 
         public PropVariant(ushort[] values)
@@ -148,8 +145,8 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         public PropVariant(int value)
         {
-            this._valueType = (ushort)VarEnum.VT_I4;
-            this._int32 = value;
+            this.valueType = (ushort)VarEnum.VT_I4;
+            this.int32Value = value;
         }
 
         public PropVariant(int[] values)
@@ -161,8 +158,8 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         public PropVariant(uint value)
         {
-            this._valueType = (ushort)VarEnum.VT_UI4;
-            this._uint32 = value;
+            this.valueType = (ushort)VarEnum.VT_UI4;
+            this.uint32Value = value;
         }
 
         public PropVariant(uint[] values)
@@ -174,8 +171,8 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         public PropVariant(long value)
         {
-            this._valueType = (ushort)VarEnum.VT_I8;
-            this._long = value;
+            this.valueType = (ushort)VarEnum.VT_I8;
+            this.longValue = value;
         }
 
         public PropVariant(long[] values)
@@ -187,8 +184,8 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         public PropVariant(ulong value)
         {
-            this._valueType = (ushort)VarEnum.VT_UI8;
-            this._ulong = value;
+            this.valueType = (ushort)VarEnum.VT_UI8;
+            this.ulongValue = value;
         }
 
         public PropVariant(ulong[] value)
@@ -200,25 +197,25 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         public PropVariant(float value)
         {
-            this._valueType = (ushort)VarEnum.VT_R4;
-            this._float = value;
+            this.valueType = (ushort)VarEnum.VT_R4;
+            this.floatValue = value;
         }
 
         public PropVariant(float[] value)
         {
             Contract.Requires<ArgumentNullException>(value != null);
 
-            this._valueType = (ushort)(VarEnum.VT_R4 | VarEnum.VT_VECTOR);
-            this._int32 = value.Length;
+            this.valueType = (ushort)(VarEnum.VT_R4 | VarEnum.VT_VECTOR);
+            this.int32Value = value.Length;
 
-            this._ptr2 = Marshal.AllocCoTaskMem(value.Length*sizeof(float));
-            Marshal.Copy(value, 0, this._ptr2, value.Length);
+            this.ptr2 = Marshal.AllocCoTaskMem(value.Length*sizeof(float));
+            Marshal.Copy(value, 0, this.ptr2, value.Length);
         }
 
         public PropVariant(double value)
         {
-            this._valueType = (ushort)VarEnum.VT_R8;
-            this._double = value;
+            this.valueType = (ushort)VarEnum.VT_R8;
+            this.doubleValue = value;
         }
 
         public PropVariant(double[] values)
@@ -230,7 +227,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         public PropVariant(DateTime value)
         {
-            this._valueType = (ushort)VarEnum.VT_FILETIME;
+            this.valueType = (ushort)VarEnum.VT_FILETIME;
 
             var ft = DateTimeToFileTime(value);
             PropVariantNativeMethods.InitPropVariantFromFileTime(ref ft, this);
@@ -251,22 +248,22 @@ namespace starshipxac.Shell.PropertySystem.Interop
         public PropVariant(decimal value)
         {
             // _valueTypeと _decimalは領域が重なっているので、先に _decimalに値を設定する。
-            this._decimal = value;
-            this._valueType = (ushort)VarEnum.VT_DECIMAL;
+            this.decimalValue = value;
+            this.valueType = (ushort)VarEnum.VT_DECIMAL;
         }
 
         public PropVariant(decimal[] value)
         {
             Contract.Requires<ArgumentNullException>(value != null);
 
-            this._valueType = (ushort)(VarEnum.VT_DECIMAL | VarEnum.VT_VECTOR);
-            this._int32 = value.Length;
+            this.valueType = (ushort)(VarEnum.VT_DECIMAL | VarEnum.VT_VECTOR);
+            this.int32Value = value.Length;
 
-            this._ptr2 = Marshal.AllocCoTaskMem(value.Length*sizeof(decimal));
+            this.ptr2 = Marshal.AllocCoTaskMem(value.Length*sizeof(decimal));
             foreach (var t in value)
             {
                 var bits = decimal.GetBits(t);
-                Marshal.Copy(bits, 0, this._ptr2, bits.Length);
+                Marshal.Copy(bits, 0, this.ptr2, bits.Length);
             }
         }
 
@@ -303,11 +300,11 @@ namespace starshipxac.Shell.PropertySystem.Interop
         {
             get
             {
-                return (VarEnum)this._valueType;
+                return (VarEnum)this.valueType;
             }
             set
             {
-                this._valueType = (ushort)value;
+                this.valueType = (ushort)value;
             }
         }
 
@@ -318,7 +315,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
         {
             get
             {
-                return (this._valueType == (ushort)VarEnum.VT_EMPTY) || (this._valueType == (ushort)VarEnum.VT_NULL);
+                return (this.valueType == (ushort)VarEnum.VT_EMPTY) || (this.valueType == (ushort)VarEnum.VT_NULL);
             }
         }
 
@@ -329,56 +326,56 @@ namespace starshipxac.Shell.PropertySystem.Interop
         {
             get
             {
-                switch ((VarEnum)this._valueType)
+                switch ((VarEnum)this.valueType)
                 {
                     case VarEnum.VT_I1:
-                        return this._sbyte;
+                        return this.sbyteValue;
                     case VarEnum.VT_UI1:
-                        return this._byte;
+                        return this.byteValue;
                     case VarEnum.VT_I2:
-                        return this._short;
+                        return this.shortValue;
                     case VarEnum.VT_UI2:
-                        return this._ushort;
+                        return this.ushortValue;
                     case VarEnum.VT_I4:
                     case VarEnum.VT_INT:
-                        return this._int32;
+                        return this.int32Value;
                     case VarEnum.VT_UI4:
                     case VarEnum.VT_UINT:
-                        return this._uint32;
+                        return this.uint32Value;
                     case VarEnum.VT_I8:
-                        return this._long;
+                        return this.longValue;
                     case VarEnum.VT_UI8:
-                        return this._ulong;
+                        return this.ulongValue;
                     case VarEnum.VT_R4:
-                        return this._float;
+                        return this.floatValue;
                     case VarEnum.VT_R8:
-                        return this._double;
+                        return this.doubleValue;
                     case VarEnum.VT_BOOL:
-                        return this._int32 == -1;
+                        return this.int32Value == -1;
                     case VarEnum.VT_ERROR:
-                        return this._long;
+                        return this.longValue;
                     case VarEnum.VT_CY:
-                        return this._decimal;
+                        return this.decimalValue;
                     case VarEnum.VT_DATE:
-                        return DateTime.FromOADate(this._double);
+                        return DateTime.FromOADate(this.doubleValue);
                     case VarEnum.VT_FILETIME:
-                        return DateTime.FromFileTime(this._long);
+                        return DateTime.FromFileTime(this.longValue);
                     case VarEnum.VT_BSTR:
-                        return Marshal.PtrToStringBSTR(this._ptr);
+                        return Marshal.PtrToStringBSTR(this.ptr);
                     case VarEnum.VT_BLOB:
                         return GetBlobData();
                     case VarEnum.VT_LPSTR:
-                        return Marshal.PtrToStringAnsi(this._ptr);
+                        return Marshal.PtrToStringAnsi(this.ptr);
                     case VarEnum.VT_LPWSTR:
-                        return Marshal.PtrToStringUni(this._ptr);
+                        return Marshal.PtrToStringUni(this.ptr);
                     case VarEnum.VT_UNKNOWN:
-                        return Marshal.GetObjectForIUnknown(this._ptr);
+                        return Marshal.GetObjectForIUnknown(this.ptr);
                     case VarEnum.VT_DISPATCH:
-                        return Marshal.GetObjectForIUnknown(this._ptr);
+                        return Marshal.GetObjectForIUnknown(this.ptr);
                     case VarEnum.VT_DECIMAL:
-                        return this._decimal;
+                        return this.decimalValue;
                     case VarEnum.VT_ARRAY | VarEnum.VT_UNKNOWN:
-                        return CrackSingleDimSafeArray(this._ptr);
+                        return CrackSingleDimSafeArray(this.ptr);
                     case (VarEnum.VT_VECTOR | VarEnum.VT_LPWSTR):
                         return GetVector<string>();
                     case (VarEnum.VT_VECTOR | VarEnum.VT_I2):
@@ -413,8 +410,8 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         internal void SetIUnknown(object value)
         {
-            this._valueType = (ushort)VarEnum.VT_UNKNOWN;
-            this._ptr = Marshal.GetIUnknownForObject(value);
+            this.valueType = (ushort)VarEnum.VT_UNKNOWN;
+            this.ptr = Marshal.GetIUnknownForObject(value);
         }
 
         internal void SetSafeArray(Array array)
@@ -439,8 +436,8 @@ namespace starshipxac.Shell.PropertySystem.Interop
                 PropVariantNativeMethods.SafeArrayUnaccessData(psa);
             }
 
-            this._valueType = (ushort)VarEnum.VT_ARRAY | (ushort)VarEnum.VT_UNKNOWN;
-            this._ptr = psa;
+            this.valueType = (ushort)VarEnum.VT_ARRAY | (ushort)VarEnum.VT_UNKNOWN;
+            this.ptr = psa;
         }
 
         #endregion
@@ -462,9 +459,9 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         private object GetBlobData()
         {
-            var blobData = new byte[this._int32];
-            var pBlobData = this._ptr2;
-            Marshal.Copy(pBlobData, blobData, 0, this._int32);
+            var blobData = new byte[this.int32Value];
+            var pBlobData = this.ptr2;
+            Marshal.Copy(pBlobData, blobData, 0, this.int32Value);
 
             return blobData;
         }
@@ -625,7 +622,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
             cache.Add(typeof(Single), (pv, array, i) => // float
             {
                 var val = new float[1];
-                Marshal.Copy(pv._ptr2, val, (int)i, 1);
+                Marshal.Copy(pv.ptr2, val, (int)i, 1);
                 array.SetValue(val[0], (int)i);
             });
 
@@ -634,7 +631,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
                 var val = new int[4];
                 for (var a = 0; a < val.Length; a++)
                 {
-                    val[a] = Marshal.ReadInt32(pv._ptr2, (int)i*sizeof(decimal) + a*sizeof(int));
+                    val[a] = Marshal.ReadInt32(pv.ptr2, (int)i*sizeof(decimal) + a*sizeof(int));
                 }
                 array.SetValue(new decimal(val), i);
             });
