@@ -13,6 +13,11 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
         private bool diposed = false;
         private IFileDialog2 fileDialogNative;
 
+        /// <summary>
+        ///     Initialize a new instance of the <see cref="FileDialogInternal" /> class
+        ///     to the specified <see cref="FileDialogBase" />.
+        /// </summary>
+        /// <param name="dialog"><see cref="FileDialogBase" />.</param>
         public FileDialogInternal(FileDialogBase dialog)
         {
             Contract.Requires<ArgumentNullException>(dialog != null);
@@ -21,35 +26,58 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
             this.DialogShowStates = DialogShowStates.PreShow;
         }
 
+        /// <summary>
+        ///     Finalizer.
+        /// </summary>
         ~FileDialogInternal()
         {
             Dispose(false);
         }
 
+        /// <summary>
+        ///     Release all resources used by <see cref="FileDialogInternal" /> class.
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        ///     Release all resources used by <see cref="FileDialogInternal" /> class
+        ///     and optionally releases managed resources.
+        /// </summary>
+        /// <param name="disposing">
+        ///     <c>true</c> to release both managed and unmanaged resources.
+        ///     <c>false</c> to release only unmanaged resources.
+        /// </param>
         private void Dispose(bool disposing)
         {
             if (!this.diposed)
             {
                 if (disposing)
                 {
-                    if (this.fileDialogNative != null)
-                    {
-                        Marshal.ReleaseComObject(this.fileDialogNative);
-                    }
+                }
+
+                // Release unmanaged resources.
+                if (this.fileDialogNative != null)
+                {
+                    Marshal.ReleaseComObject(this.fileDialogNative);
+                    this.fileDialogNative = null;
                 }
 
                 this.diposed = true;
             }
         }
 
+        /// <summary>
+        ///     Get the <see cref="FileDialogBase" />.
+        /// </summary>
         public FileDialogBase Dialog { get; }
 
+        /// <summary>
+        ///     Get the <see cref="IFileDialog2" />.
+        /// </summary>
         internal IFileDialog2 FileDialogNative
         {
             get
@@ -62,6 +90,9 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
             }
         }
 
+        /// <summary>
+        ///     Get the <see cref="IFileDialogCustomize" />.
+        /// </summary>
         private IFileDialogCustomize FileDialogCustomizeNative
         {
             get
@@ -71,6 +102,9 @@ namespace starshipxac.Windows.Shell.Dialogs.Internal
             }
         }
 
+        /// <summary>
+        ///     Get the dialog show states.
+        /// </summary>
         public DialogShowStates DialogShowStates { get; internal set; }
 
         public bool DialogShowing
