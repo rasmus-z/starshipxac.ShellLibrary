@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using starshipxac.Shell.Interop;
 
@@ -30,12 +29,17 @@ namespace starshipxac.Shell.Media.Imaging
             GC.SuppressFinalize(this);
         }
 
-        [SuppressMessage("ReSharper", "UnusedParameter.Local")]
         private void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
+                if (disposing)
+                {
+                }
+
+                // Release unmanaged resources.
                 Win32Api.DestroyIcon(this.Handle);
+                this.Handle = IntPtr.Zero;
 
                 this.disposed = true;
             }
@@ -44,6 +48,6 @@ namespace starshipxac.Shell.Media.Imaging
         /// <summary>
         ///     Get the icon handle.
         /// </summary>
-        internal IntPtr Handle { get; }
+        internal IntPtr Handle { get; private set; }
     }
 }
