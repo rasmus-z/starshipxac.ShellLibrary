@@ -44,12 +44,17 @@ namespace starshipxac.Shell.Media.Imaging
             GC.SuppressFinalize(this);
         }
 
-        [SuppressMessage("ReSharper", "UnusedParameter.Local")]
         private void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
+                if (disposing)
+                {
+                }
+
+                // Release unmanaged resources.
                 Win32Api.DeleteObject(this.ImageHandle);
+                this.ImageHandle = IntPtr.Zero;
 
                 this.disposed = true;
             }
@@ -58,7 +63,7 @@ namespace starshipxac.Shell.Media.Imaging
         /// <summary>
         ///     Get the image handle.
         /// </summary>
-        internal IntPtr ImageHandle { get; }
+        internal IntPtr ImageHandle { get; private set; }
 
         /// <summary>
         ///     Get the image width.
