@@ -34,15 +34,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     Finalizer.
-        /// </summary>
-        ~ShellPropertyWriter()
-        {
-            Dispose(false);
-        }
-
-        /// <summary>
-        ///     Release all resources used by <see cref="ShellPropertyWriter" />.
+        ///     Release all resources used by <see cref="ShellPropertyWriter" /> class.
         /// </summary>
         public void Dispose()
         {
@@ -51,7 +43,7 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     Release all resources used by <see cref="ShellPropertyWriter" />,
+        ///     Release all resources used by <see cref="ShellPropertyWriter" /> class,
         ///     and optionally releases managed resources.
         /// </summary>
         /// <param name="disposing">
