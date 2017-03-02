@@ -40,3 +40,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("0.8.0.0")]
 [assembly: AssemblyFileVersion("0.8.0.0")]
 [assembly: InternalsVisibleTo("starshipxac.Windows.Shell")]
+#if DEBUG
+[assembly: InternalsVisibleTo("starshipxac.Shell.UnitTest")]
+#endif

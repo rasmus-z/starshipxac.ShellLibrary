@@ -145,11 +145,16 @@ namespace starshipxac.Shell.PropertySystem
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
 
-            using (var propVar = new PropVariant())
+            var propVar = new PropVariant();
+            try
             {
                 var key = propertyKey.PropertyKeyNative;
                 this.propertyStoreNative.GetValue(ref key, propVar);
-                return propVar.Value;
+                return propVar.GetValue();
+            }
+            finally
+            {
+                propVar.Clear();
             }
         }
 
@@ -163,11 +168,16 @@ namespace starshipxac.Shell.PropertySystem
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
 
-            using (var propVar = new PropVariant())
+            var propVar = new PropVariant();
+            try
             {
                 var key = propertyKey.PropertyKeyNative;
                 this.propertyStoreNative.GetValue(ref key, propVar);
-                return (T)propVar.Value;
+                return propVar.GetValue<T>();
+            }
+            finally
+            {
+                propVar.Clear();
             }
         }
 
@@ -192,7 +202,6 @@ namespace starshipxac.Shell.PropertySystem
         internal void SetValue(ShellPropertyKey propertyKey, PropVariant propVar)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
-            Contract.Requires<ArgumentNullException>(propVar != null);
 
             var key = propertyKey.PropertyKeyNative;
             var hr = this.propertyStoreNative.SetValue(ref key, propVar);
@@ -236,9 +245,14 @@ namespace starshipxac.Shell.PropertySystem
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
 
-            using (var propVar = new PropVariant())
+            var propVar = new PropVariant();
+            try
             {
                 SetValue(propertyKey, propVar);
+            }
+            finally
+            {
+                propVar.Clear();
             }
         }
 

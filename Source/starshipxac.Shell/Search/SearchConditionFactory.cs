@@ -19,41 +19,66 @@ namespace starshipxac.Shell.Search
     {
         public static SearchCondition CreateLeafCondition(string propertyName, string value, SearchConditionOperation operation)
         {
-            using (var propVar = PropVariant.FromObject(value))
+            var propVar = PropVariant.FromObject(value);
+            try
             {
                 return CreateLeafCondition(propertyName, propVar, null, operation);
+            }
+            finally
+            {
+                propVar.Clear();
             }
         }
 
         public static SearchCondition CreateLeafCondition(string propertyName, DateTime value, SearchConditionOperation operation)
         {
-            using (var propVar = PropVariant.FromObject(value))
+            var propVar = PropVariant.FromObject(value);
+            try
             {
                 return CreateLeafCondition(propertyName, propVar, "System.StructuredQuery.CustomProperty.DateTime", operation);
+            }
+            finally
+            {
+                propVar.Clear();
             }
         }
 
         public static SearchCondition CreateLeafCondition(string propertyName, int value, SearchConditionOperation operation)
         {
-            using (var propVar = PropVariant.FromObject(value))
+            var propVar = PropVariant.FromObject(value);
+            try
             {
                 return CreateLeafCondition(propertyName, propVar, "System.StructuredQuery.CustomProperty.Integer", operation);
+            }
+            finally
+            {
+                propVar.Clear();
             }
         }
 
         public static SearchCondition CreateLeafCondition(string propertyName, bool value, SearchConditionOperation operation)
         {
-            using (var propVar = PropVariant.FromObject(value))
+            var propVar = PropVariant.FromObject(value);
+            try
             {
                 return CreateLeafCondition(propertyName, propVar, "System.StructuredQuery.CustomProperty.Boolean", operation);
+            }
+            finally
+            {
+                propVar.Clear();
             }
         }
 
         public static SearchCondition CreateLeafCondition(string propertyName, double value, SearchConditionOperation operation)
         {
-            using (var propVar = PropVariant.FromObject(value))
+            var propVar = PropVariant.FromObject(value);
+            try
             {
                 return CreateLeafCondition(propertyName, propVar, "System.StructuredQuery.CustomProperty.FloatingPoint", operation);
+            }
+            finally
+            {
+                propVar.Clear();
             }
         }
 
@@ -273,13 +298,18 @@ namespace starshipxac.Shell.Search
 
                 if (queryParser != null)
                 {
-                    using (var optionValue = PropVariant.FromObject(true))
+                    var optionValue = PropVariant.FromObject(true);
+                    try
                     {
                         hr = queryParser.SetOption(STRUCTURED_QUERY_SINGLE_OPTION.SQSO_NATURAL_SYNTAX, optionValue);
                         if (HRESULT.Failed(hr))
                         {
                             throw ShellException.FromHRESULT(hr);
                         }
+                    }
+                    finally
+                    {
+                        optionValue.Clear();
                     }
 
                     hr = queryParser.Parse(query, null, out querySolution);

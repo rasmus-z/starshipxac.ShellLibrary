@@ -1,274 +1,389 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
-using System.Linq.Expressions;
 using System.Runtime.InteropServices;
-using starshipxac.Shell.Properties;
+using starshipxac.Shell.Interop;
+using static starshipxac.Shell.PropertySystem.Interop.PropVariantNativeMethods;
+using FILETIME = System.Runtime.InteropServices.ComTypes.FILETIME;
 
 namespace starshipxac.Shell.PropertySystem.Interop
 {
     /// <summary>
-    ///     <c>PROPVARIANT</c>を定義します。
+    ///     Implement the native <c>PROPVARIANT</c> structure.
     /// </summary>
     /// <remarks>
     ///     http://blogs.msdn.com/adamroot/pages/interop-with-propvariants-in-net.aspx
     /// </remarks>
-    [StructLayout(LayoutKind.Explicit)]
-    [SuppressMessage("ReSharper", "BitwiseOperatorOnEnumWithoutFlags")]
-    [SuppressMessage("ReSharper", "FieldCanBeMadeReadOnly.Local")]
-    internal sealed class PropVariant : IDisposable
+    [StructLayout(LayoutKind.Explicit, Pack = 1)]
+    [SuppressMessage("ReSharper", "UseObjectOrCollectionInitializer")]
+    internal struct PropVariant
     {
         #region Fields
 
-        [FieldOffset(0)]
-        private decimal decimalValue;
-
-        [FieldOffset(0)]
-        private ushort valueType;
-
-        [FieldOffset(8)]
-        private IntPtr ptr;
-
-        [FieldOffset(8)]
-        private Int32 int32Value;
-
-        [FieldOffset(8)]
-        private UInt32 uint32Value;
-
-        [FieldOffset(8)]
-        private byte byteValue;
-
-        [FieldOffset(8)]
-        private sbyte sbyteValue;
-
-        [FieldOffset(8)]
-        private short shortValue;
-
-        [FieldOffset(8)]
-        private ushort ushortValue;
-
-        [FieldOffset(8)]
-        private long longValue;
-
-        [FieldOffset(8)]
-        private ulong ulongValue;
-
-        [FieldOffset(8)]
-        private double doubleValue;
-
-        [FieldOffset(8)]
-        private float floatValue;
-
-        [FieldOffset(12)]
-        private IntPtr ptr2;
-
-        #endregion
+        [FieldOffset(0)] internal ushort varType;
+        [FieldOffset(2)] internal ushort wReserved1;
+        [FieldOffset(4)] internal ushort wReserved2;
+        [FieldOffset(6)] internal ushort wReserved3;
 
         /// <summary>
-        ///     <see cref="PropVariant" />クラスの新しいインスタンスを初期化します。
+        ///     <c>CHAR cVal</c>
         /// </summary>
-        public PropVariant()
-        {
-        }
+        [FieldOffset(8)] internal sbyte cVal;
+
+        /// <summary>
+        ///     <c>UCHAR bVal</c>
+        /// </summary>
+        [FieldOffset(8)] internal byte bVal;
+
+        /// <summary>
+        ///     <c>SHORT iVal</c>
+        /// </summary>
+        [FieldOffset(8)] internal Int16 iVal;
+
+        /// <summary>
+        ///     USHORT uiVal
+        /// </summary>
+        [FieldOffset(8)] internal UInt16 uiVal;
+
+        [FieldOffset(8)] internal Int32 intVal;
+
+        [FieldOffset(8)] internal UInt32 uintVal;
+
+        /// <summary>
+        ///     <c>LONG lVal</c>
+        /// </summary>
+        [FieldOffset(8)] internal Int64 lVal;
+
+        /// <summary>
+        ///     <c>ULONG ulVal</c>
+        /// </summary>
+        [FieldOffset(8)] internal UInt64 ulVal;
+
+        /// <summary>
+        ///     <c>FLOAT fltVal</c>
+        /// </summary>
+        [FieldOffset(8)] internal float fltVal;
+
+        /// <summary>
+        ///     <c>DOUBLE dblVal</c>
+        /// </summary>
+        [FieldOffset(8)] internal double dblVal;
+
+        [FieldOffset(8)] internal short boolVal;
+
+        [FieldOffset(8)] internal IntPtr pclsidVal;
+
+        [FieldOffset(8)] internal IntPtr pszVal;
+
+        [FieldOffset(8)] internal IntPtr pwszVal;
+
+        [FieldOffset(8)] internal IntPtr punkVal;
+
+        [FieldOffset(8)] internal PROPARRAY ca;
+
+        [FieldOffset(8)] internal FILETIME filetime;
+
+        #endregion
 
         /// <summary>
         ///     文字列を指定して、<see cref="PropVariant" />クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="value">文字列の値。</param>
-        public PropVariant(string value)
+        public static PropVariant FromString(string value)
         {
             Contract.Requires<ArgumentNullException>(value != null);
 
-            this.valueType = (ushort)VarEnum.VT_LPWSTR;
-            this.ptr = Marshal.StringToCoTaskMemUni(value);
+            PropVariant result;
+            InitPropVariantFromString(value, out result);
+
+            return result;
         }
 
-        public PropVariant(string[] values)
+        public static PropVariant FromStringArray(string[] values)
         {
             Contract.Requires<ArgumentNullException>(values != null);
 
-            PropVariantNativeMethods.InitPropVariantFromStringVector(values, (uint)values.Length, this);
+            PropVariant result;
+            var hr = InitPropVariantFromStringVector(values, (uint)values.Length, out result);
+            if (HRESULT.Failed(hr))
+            {
+                throw ShellException.FromHRESULT(hr);
+            }
+
+            return result;
         }
 
-        public PropVariant(bool value)
-        {
-            this.valueType = (ushort)VarEnum.VT_BOOL;
-            this.int32Value = (value) ? -1 : 0;
-        }
-
-        public PropVariant(bool[] values)
-        {
-            Contract.Requires<ArgumentNullException>(values != null);
-
-            PropVariantNativeMethods.InitPropVariantFromBooleanVector(values, (uint)values.Length, this);
-        }
-
-        public PropVariant(byte value)
-        {
-            this.valueType = (ushort)VarEnum.VT_UI1;
-            this.byteValue = value;
-        }
-
-        public PropVariant(sbyte value)
-        {
-            this.valueType = (ushort)VarEnum.VT_I1;
-            this.sbyteValue = value;
-        }
-
-        public PropVariant(short value)
-        {
-            this.valueType = (ushort)VarEnum.VT_I2;
-            this.shortValue = value;
-        }
-
-        public PropVariant(short[] values)
-        {
-            Contract.Requires<ArgumentNullException>(values != null);
-
-            PropVariantNativeMethods.InitPropVariantFromInt16Vector(values, (uint)values.Length, this);
-        }
-
-        public PropVariant(ushort value)
-        {
-            this.valueType = (ushort)VarEnum.VT_UI2;
-            this.ushortValue = value;
-        }
-
-        public PropVariant(ushort[] values)
-        {
-            Contract.Requires<ArgumentNullException>(values != null);
-
-            PropVariantNativeMethods.InitPropVariantFromUInt16Vector(values, (uint)values.Length, this);
-        }
-
-        public PropVariant(int value)
-        {
-            this.valueType = (ushort)VarEnum.VT_I4;
-            this.int32Value = value;
-        }
-
-        public PropVariant(int[] values)
-        {
-            Contract.Requires<ArgumentNullException>(values != null);
-
-            PropVariantNativeMethods.InitPropVariantFromInt32Vector(values, (uint)values.Length, this);
-        }
-
-        public PropVariant(uint value)
-        {
-            this.valueType = (ushort)VarEnum.VT_UI4;
-            this.uint32Value = value;
-        }
-
-        public PropVariant(uint[] values)
-        {
-            Contract.Requires<ArgumentNullException>(values != null);
-
-            PropVariantNativeMethods.InitPropVariantFromUInt32Vector(values, (uint)values.Length, this);
-        }
-
-        public PropVariant(long value)
-        {
-            this.valueType = (ushort)VarEnum.VT_I8;
-            this.longValue = value;
-        }
-
-        public PropVariant(long[] values)
-        {
-            Contract.Requires<ArgumentNullException>(values != null);
-
-            PropVariantNativeMethods.InitPropVariantFromInt64Vector(values, (uint)values.Length, this);
-        }
-
-        public PropVariant(ulong value)
-        {
-            this.valueType = (ushort)VarEnum.VT_UI8;
-            this.ulongValue = value;
-        }
-
-        public PropVariant(ulong[] value)
+        /// <summary>
+        ///     Create a new instance of the <see cref="PropVariant" /> structure.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns><see cref="PropVariant" />(<c>VT_VECTOR</c> | <c>VT_LPWSTR</c>)</returns>
+        public static PropVariant FromStringAs(string value)
         {
             Contract.Requires<ArgumentNullException>(value != null);
 
-            PropVariantNativeMethods.InitPropVariantFromUInt64Vector(value, (uint)value.Length, this);
+            PropVariant result;
+            var hr = InitPropVariantFromStringAsVector(value, out result);
+            if (HRESULT.Failed(hr))
+            {
+                throw ShellException.FromHRESULT(hr);
+            }
+
+            return result;
         }
 
-        public PropVariant(float value)
+        public static PropVariant FromInt8(sbyte value)
         {
-            this.valueType = (ushort)VarEnum.VT_R4;
-            this.floatValue = value;
+            var result = default(PropVariant);
+            result.cVal = value;
+            result.varType = (ushort)VarEnum.VT_I1;
+
+            return result;
         }
 
-        public PropVariant(float[] value)
+        public static PropVariant FromUInt8(byte value)
         {
-            Contract.Requires<ArgumentNullException>(value != null);
+            var result = default(PropVariant);
+            result.bVal = value;
+            result.varType = (ushort)VarEnum.VT_UI1;
 
-            this.valueType = (ushort)(VarEnum.VT_R4 | VarEnum.VT_VECTOR);
-            this.int32Value = value.Length;
-
-            this.ptr2 = Marshal.AllocCoTaskMem(value.Length*sizeof(float));
-            Marshal.Copy(value, 0, this.ptr2, value.Length);
+            return result;
         }
 
-        public PropVariant(double value)
+        public static PropVariant FromInt16(Int16 value)
         {
-            this.valueType = (ushort)VarEnum.VT_R8;
-            this.doubleValue = value;
+            PropVariant result;
+            InitPropVariantFromInt16(value, out result);
+
+            return result;
         }
 
-        public PropVariant(double[] values)
+        public static PropVariant FromInt16Array(Int16[] values)
         {
             Contract.Requires<ArgumentNullException>(values != null);
 
-            PropVariantNativeMethods.InitPropVariantFromDoubleVector(values, (uint)values.Length, this);
+            PropVariant result;
+            var hr = InitPropVariantFromInt16Vector(values, (uint)values.Length, out result);
+            if (HRESULT.Failed(hr))
+            {
+                throw ShellException.FromHRESULT(hr);
+            }
+
+            return result;
         }
 
-        public PropVariant(DateTime value)
+        public static PropVariant FromUInt16(UInt16 value)
         {
-            this.valueType = (ushort)VarEnum.VT_FILETIME;
+            PropVariant result;
+            InitPropVariantFromUInt16(value, out result);
 
-            var ft = DateTimeToFileTime(value);
-            PropVariantNativeMethods.InitPropVariantFromFileTime(ref ft, this);
+            return result;
         }
 
-        public PropVariant(DateTime[] value)
+        public static PropVariant FromUInt16Array(ushort[] values)
+        {
+            Contract.Requires<ArgumentNullException>(values != null);
+
+            PropVariant result;
+            var hr = InitPropVariantFromUInt16Vector(values, (uint)values.Length, out result);
+            if (HRESULT.Failed(hr))
+            {
+                throw ShellException.FromHRESULT(hr);
+            }
+
+            return result;
+        }
+
+        public static PropVariant FromInt32(Int32 value)
+        {
+            PropVariant result;
+            InitPropVariantFromInt32(value, out result);
+
+            return result;
+        }
+
+        public static PropVariant FromInt32Array(Int32[] values)
+        {
+            Contract.Requires<ArgumentNullException>(values != null);
+
+            PropVariant result;
+            var hr = InitPropVariantFromInt32Vector(values, (uint)values.Length, out result);
+            if (HRESULT.Failed(hr))
+            {
+                throw ShellException.FromHRESULT(hr);
+            }
+
+            return result;
+        }
+
+        public static PropVariant FromUInt32(UInt32 value)
+        {
+            PropVariant result;
+            InitPropVariantFromUInt32(value, out result);
+
+            return result;
+        }
+
+        public static PropVariant FromUInt32Array(uint[] values)
+        {
+            Contract.Requires<ArgumentNullException>(values != null);
+
+            PropVariant result;
+            var hr = InitPropVariantFromUInt32Vector(values, (uint)values.Length, out result);
+            if (HRESULT.Failed(hr))
+            {
+                throw ShellException.FromHRESULT(hr);
+            }
+
+            return result;
+        }
+
+        public static PropVariant FromInt64(Int64 value)
+        {
+            PropVariant result;
+            InitPropVariantFromInt64(value, out result);
+
+            return result;
+        }
+
+        public static PropVariant FromInt64Array(Int64[] values)
+        {
+            Contract.Requires<ArgumentNullException>(values != null);
+
+            PropVariant result;
+            var hr = InitPropVariantFromInt64Vector(values, (uint)values.Length, out result);
+            if (HRESULT.Failed(hr))
+            {
+                throw ShellException.FromHRESULT(hr);
+            }
+
+            return result;
+        }
+
+        public static PropVariant FromUInt64(UInt64 value)
+        {
+            PropVariant result;
+            InitPropVariantFromUInt64(value, out result);
+
+            return result;
+        }
+
+        public static PropVariant FromUInt64Array(UInt64[] value)
         {
             Contract.Requires<ArgumentNullException>(value != null);
 
-            var fileTimeArray = new System.Runtime.InteropServices.ComTypes.FILETIME[value.Length];
+            PropVariant result;
+            var hr = InitPropVariantFromUInt64Vector(value, (uint)value.Length, out result);
+            if (HRESULT.Failed(hr))
+            {
+                throw ShellException.FromHRESULT(hr);
+            }
+
+            return result;
+        }
+
+        public static PropVariant FromSingle(Single value)
+        {
+            var result = default(PropVariant);
+            result.fltVal = value;
+            result.varType = (ushort)VarEnum.VT_R4;
+
+            return result;
+        }
+
+        public static PropVariant FromDouble(Double value)
+        {
+            PropVariant result;
+            InitPropVariantFromDouble(value, out result);
+
+            return result;
+        }
+
+        public static PropVariant FromDoubleArray(double[] values)
+        {
+            Contract.Requires<ArgumentNullException>(values != null);
+
+            PropVariant result;
+            var hr = InitPropVariantFromDoubleVector(values, (uint)values.Length, out result);
+            if (HRESULT.Failed(hr))
+            {
+                throw ShellException.FromHRESULT(hr);
+            }
+
+            return result;
+        }
+
+        public static PropVariant FromBoolean(bool value)
+        {
+            PropVariant result;
+            InitPropVariantFromBoolean(value, out result);
+
+            return result;
+        }
+
+        public static PropVariant FromBooleanArray(bool[] values)
+        {
+            Contract.Requires<ArgumentNullException>(values != null);
+
+            PropVariant result;
+            var hr = InitPropVariantFromBooleanVector(values, (uint)values.Length, out result);
+            if (HRESULT.Failed(hr))
+            {
+                throw ShellException.FromHRESULT(hr);
+            }
+
+            return result;
+        }
+
+        public static PropVariant FromDateTime(DateTime value)
+        {
+            PropVariant result;
+            FILETIME filetime;
+            DateTimeToFileTime(value, out filetime);
+            var hr = InitPropVariantFromFileTime(ref filetime, out result);
+            if (HRESULT.Failed(hr))
+            {
+                throw ShellException.FromHRESULT(hr);
+            }
+
+            return result;
+        }
+
+        public static PropVariant FromDateTimeArray(DateTime[] value)
+        {
+            Contract.Requires<ArgumentNullException>(value != null);
+
+            PropVariant result;
+            var fileTimeArray = new FILETIME[value.Length];
             for (var index = 0; index < value.Length; ++index)
             {
-                fileTimeArray[index] = DateTimeToFileTime(value[index]);
+                DateTimeToFileTime(value[index], out fileTimeArray[index]);
             }
-            PropVariantNativeMethods.InitPropVariantFromFileTimeVector(fileTimeArray, (uint)fileTimeArray.Length, this);
-        }
-
-        public PropVariant(decimal value)
-        {
-            // valueTypeと decimalValueは領域が重なっているので、先に decimalValueに値を設定する。
-            this.decimalValue = value;
-            this.valueType = (ushort)VarEnum.VT_DECIMAL;
-        }
-
-        public PropVariant(decimal[] value)
-        {
-            Contract.Requires<ArgumentNullException>(value != null);
-
-            this.valueType = (ushort)(VarEnum.VT_DECIMAL | VarEnum.VT_VECTOR);
-            this.int32Value = value.Length;
-
-            this.ptr2 = Marshal.AllocCoTaskMem(value.Length*sizeof(decimal));
-            foreach (var t in value)
+            var hr = InitPropVariantFromFileTimeVector(fileTimeArray, (uint)fileTimeArray.Length, out result);
+            if (HRESULT.Failed(hr))
             {
-                var bits = decimal.GetBits(t);
-                Marshal.Copy(bits, 0, this.ptr2, bits.Length);
+                throw ShellException.FromHRESULT(hr);
             }
+
+            return result;
+        }
+
+        public static PropVariant FromGuid(Guid value)
+        {
+            var result = default(PropVariant);
+            var guid = value.ToByteArray();
+            result.pclsidVal = Marshal.AllocCoTaskMem(guid.Length);
+            Marshal.Copy(guid, 0, result.pclsidVal, guid.Length);
+            result.varType = (ushort)VarEnum.VT_CLSID;
+
+            return result;
         }
 
         /// <summary>
         ///     指定した<paramref name="value" />から<see cref="PropVariant" />を作成します。
+        ///     Create a new instance of the <see cref="PropVariant" /> struct
+        ///     to the specified <see cref="object" />.
         /// </summary>
         /// <param name="value">オブジェクト。</param>
         /// <returns>作成した<see cref="PropVariant" />。</returns>
@@ -276,377 +391,459 @@ namespace starshipxac.Shell.PropertySystem.Interop
         {
             if (value == null)
             {
-                return new PropVariant();
+                var result = new PropVariant();
+                result.varType = (ushort)VarEnum.VT_EMPTY;
+                return result;
+            }
+            else
+            {
+                #region Create Value
+
+                if (value is string)
+                {
+                    return FromString((string)value);
+                }
+                else if (value is string[])
+                {
+                    return FromStringArray((string[])value);
+                }
+                else if (value is sbyte)
+                {
+                    return FromInt8((sbyte)value);
+                }
+                else if (value is byte)
+                {
+                    return FromUInt8((byte)value);
+                }
+                else if (value is Int16)
+                {
+                    return FromInt16((Int16)value);
+                }
+                else if (value is UInt16)
+                {
+                    return FromUInt16((UInt16)value);
+                }
+                else if (value is Int32)
+                {
+                    return FromInt32((Int32)value);
+                }
+                else if (value is UInt32)
+                {
+                    return FromUInt32((UInt32)value);
+                }
+                else if (value is Int64)
+                {
+                    return FromInt64((Int64)value);
+                }
+                else if (value is UInt64)
+                {
+                    return FromUInt64((UInt64)value);
+                }
+                else if (value is float)
+                {
+                    return FromSingle((float)value);
+                }
+                else if (value is double)
+                {
+                    return FromDouble((double)value);
+                }
+                else if (value is bool)
+                {
+                    return FromBoolean((bool)value);
+                }
+                else if (value is Guid)
+                {
+                    return FromGuid((Guid)value);
+                }
+
+                #endregion
             }
 
-            var func = GetDynamicConstructor(value.GetType());
-            return func(value);
-        }
-
-        ~PropVariant()
-        {
-            Dispose();
-        }
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
+            throw new InvalidOperationException();
         }
 
         /// <summary>
-        ///     現在の値の<see cref="VarEnum" />を取得または設定します。
+        ///     値が<see cref="System.Runtime.InteropServices.VarEnum.VT_EMPTY" />または
+        ///     <see cref="System.Runtime.InteropServices.VarEnum.VT_NULL" />かどうかを判定する値を取得します。
         /// </summary>
-        public VarEnum VarType
+        public bool IsNullOrEmpty => (this.varType == (ushort)VarEnum.VT_EMPTY) ||
+                                     (this.varType == (ushort)VarEnum.VT_NULL);
+
+        public string GetStringValue()
         {
-            get
+            var result = default(string);
+            if (this.varType == (ushort)VarEnum.VT_LPSTR)
             {
-                return (VarEnum)this.valueType;
+                result = Marshal.PtrToStringAnsi(this.pszVal);
             }
-            set
+            else if (this.varType == (ushort)VarEnum.VT_LPWSTR)
             {
-                this.valueType = (ushort)value;
+                result = Marshal.PtrToStringUni(this.pwszVal);
             }
+            return result;
         }
 
-        /// <summary>
-        ///     値が<see cref="VarEnum.VT_EMPTY" />または <see cref="VarEnum.VT_NULL" />かどうかを判定する値を取得します。
-        /// </summary>
-        public bool IsNullOrEmpty
+        public string[] GetStringArrayValue()
         {
-            get
+            var result = new string[this.ca.cElems];
+            if (this.varType == ((ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_LPSTR))
             {
-                return (this.valueType == (ushort)VarEnum.VT_EMPTY) || (this.valueType == (ushort)VarEnum.VT_NULL);
+                for (var index = 0; index < result.Length; ++index)
+                {
+                    var ptr = Marshal.ReadIntPtr(this.ca.pElems, index * IntPtr.Size);
+                    result[index] = Marshal.PtrToStringAnsi(ptr);
+                }
             }
+            else if (this.varType == ((ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_LPWSTR))
+            {
+                for (var index = 0; index < result.Length; ++index)
+                {
+                    var ptr = Marshal.ReadIntPtr(this.ca.pElems, index * IntPtr.Size);
+                    result[index] = Marshal.PtrToStringUni(ptr);
+                }
+            }
+            return result;
+        }
+
+        public sbyte GetInt8Value()
+        {
+            return this.cVal;
+        }
+
+        public sbyte[] GetInt8ArrayValue()
+        {
+            var result = new sbyte[this.ca.cElems];
+            for (var index = 0; index < result.Length; ++index)
+            {
+                result[index] = (sbyte)Marshal.ReadByte(this.ca.pElems, index);
+            }
+            return result;
+        }
+
+        public byte GetUInt8Value()
+        {
+            return this.bVal;
+        }
+
+        public byte[] GetUInt8ArrayValue()
+        {
+            var result = new byte[this.ca.cElems];
+            Marshal.Copy(this.ca.pElems, result, 0, result.Length);
+            return result;
+        }
+
+        public Int16 GetInt16Value()
+        {
+            return this.iVal;
+        }
+
+        public Int16[] GetInt16ArrayValue()
+        {
+            var result = new Int16[this.ca.cElems];
+            //Marshal.Copy(this.ca.pElems, result, 0, result.Length);
+            for (var index = 0u; index < result.Length; ++index)
+            {
+                PropVariantGetInt16Elem(this, index, out result[index]);
+            }
+            return result;
+        }
+
+        public UInt16 GetUInt16Value()
+        {
+            return this.uiVal;
+        }
+
+        public UInt16[] GetUInt16ArrayValue()
+        {
+            var result = new UInt16[this.ca.cElems];
+            for (var index = 0u; index < result.Length; ++index)
+            {
+                PropVariantGetUInt16Elem(this, index, out result[index]);
+            }
+            return result;
+        }
+
+        public Int32 GetInt32Value()
+        {
+            return this.intVal;
+        }
+
+        public Int32[] GetInt32ArrayValue()
+        {
+            var result = new Int32[this.ca.cElems];
+            for (var index = 0u; index < this.ca.cElems; ++index)
+            {
+                PropVariantGetInt32Elem(this, index, out result[index]);
+            }
+            return result;
+        }
+
+        public UInt32 GetUInt32Value()
+        {
+            return this.uintVal;
+        }
+
+        public UInt32[] GetUInt32ArrayValue()
+        {
+            var result = new UInt32[this.ca.cElems];
+            for (var index = 0u; index < result.Length; ++index)
+            {
+                PropVariantGetUInt32Elem(this, index, out result[index]);
+            }
+            return result;
+        }
+
+        public Int64 GetInt64Value()
+        {
+            return this.lVal;
+        }
+
+        public Int64[] GetInt64ArrayValue()
+        {
+            var result = new Int64[this.ca.cElems];
+            for (var index = 0u; index < result.Length; ++index)
+            {
+                PropVariantGetInt64Elem(this, index, out result[index]);
+            }
+            return result;
+        }
+
+        public UInt64 GetUInt64Value()
+        {
+            return this.ulVal;
+        }
+
+        public UInt64[] GetUInt64ArrayValue()
+        {
+            var result = new UInt64[this.ca.cElems];
+            for (var index = 0u; index < result.Length; ++index)
+            {
+                PropVariantGetUInt64Elem(this, index, out result[index]);
+            }
+            return result;
+        }
+
+        public Single GetSingleValue()
+        {
+            return this.fltVal;
+        }
+
+        public Single[] GetSingleArrayValue()
+        {
+            var result = new Single[this.ca.cElems];
+            Marshal.Copy(this.ca.pElems, result, 0, result.Length);
+            return result;
+        }
+
+        public Double GetDoubleValue()
+        {
+            return this.dblVal;
+        }
+
+        public Double[] GetDoubleArrayValue()
+        {
+            var result = new Double[this.ca.cElems];
+            for (var index = 0u; index < result.Length; ++index)
+            {
+                PropVariantGetDoubleElem(this, index, out result[index]);
+            }
+            return result;
+        }
+
+        public bool GetBooleanValue()
+        {
+            return this.boolVal != 0;
+        }
+
+        public bool[] GetBooleanArrayValue()
+        {
+            var result = new bool[this.ca.cElems];
+            for (var index = 0u; index < result.Length; ++index)
+            {
+                PropVariantGetBooleanElem(this, index, out result[index]);
+            }
+            return result;
+        }
+
+        public DateTime GetDateTimeValue()
+        {
+            DateTime result;
+            FileTimeToDateTime(ref this.filetime, out result);
+            return result;
+        }
+
+        public DateTime[] GetDateTimeArrayValue()
+        {
+            var result = new DateTime[this.ca.cElems];
+            for (var index = 0u; index < result.Length; ++index)
+            {
+                FILETIME value;
+                PropVariantGetFileTimeElem(this, index, out value);
+                FileTimeToDateTime(ref value, out result[index]);
+            }
+            return result;
+        }
+
+        public byte[] GetBlobValue()
+        {
+            var result = new byte[this.ca.cElems];
+            Marshal.Copy(ca.pElems, result, 0, (int)this.ca.cElems);
+            return result;
+        }
+
+        public Guid GetGuidValue()
+        {
+            var guid = new byte[16];
+            Marshal.Copy(this.pclsidVal, guid, 0, 16);
+            return new Guid(guid);
+        }
+
+        public Guid[] GetGuidArrayValue()
+        {
+            var result = new Guid[this.ca.cElems];
+            for (var index = 0; index < this.ca.cElems; ++index)
+            {
+                var guid = new byte[16];
+                Marshal.Copy(this.ca.pElems, guid, index * 16, 16);
+                result[index] = new Guid(guid);
+            }
+            return result;
         }
 
         /// <summary>
         ///     値を取得します。
         /// </summary>
-        public object Value
+        public object GetValue()
         {
-            get
+            switch (this.varType)
             {
-                switch ((VarEnum)this.valueType)
-                {
-                    case VarEnum.VT_I1:
-                        return this.sbyteValue;
-                    case VarEnum.VT_UI1:
-                        return this.byteValue;
-                    case VarEnum.VT_I2:
-                        return this.shortValue;
-                    case VarEnum.VT_UI2:
-                        return this.ushortValue;
-                    case VarEnum.VT_I4:
-                    case VarEnum.VT_INT:
-                        return this.int32Value;
-                    case VarEnum.VT_UI4:
-                    case VarEnum.VT_UINT:
-                        return this.uint32Value;
-                    case VarEnum.VT_I8:
-                        return this.longValue;
-                    case VarEnum.VT_UI8:
-                        return this.ulongValue;
-                    case VarEnum.VT_R4:
-                        return this.floatValue;
-                    case VarEnum.VT_R8:
-                        return this.doubleValue;
-                    case VarEnum.VT_BOOL:
-                        return this.int32Value == -1;
-                    case VarEnum.VT_ERROR:
-                        return this.longValue;
-                    case VarEnum.VT_CY:
-                        return this.decimalValue;
-                    case VarEnum.VT_DATE:
-                        return DateTime.FromOADate(this.doubleValue);
-                    case VarEnum.VT_FILETIME:
-                        return DateTime.FromFileTime(this.longValue);
-                    case VarEnum.VT_BSTR:
-                        return Marshal.PtrToStringBSTR(this.ptr);
-                    case VarEnum.VT_BLOB:
-                        return GetBlobData();
-                    case VarEnum.VT_LPSTR:
-                        return Marshal.PtrToStringAnsi(this.ptr);
-                    case VarEnum.VT_LPWSTR:
-                        return Marshal.PtrToStringUni(this.ptr);
-                    case VarEnum.VT_UNKNOWN:
-                        return Marshal.GetObjectForIUnknown(this.ptr);
-                    case VarEnum.VT_DISPATCH:
-                        return Marshal.GetObjectForIUnknown(this.ptr);
-                    case VarEnum.VT_DECIMAL:
-                        return this.decimalValue;
-                    case VarEnum.VT_ARRAY | VarEnum.VT_UNKNOWN:
-                        return CrackSingleDimSafeArray(this.ptr);
-                    case (VarEnum.VT_VECTOR | VarEnum.VT_LPWSTR):
-                        return GetVector<string>();
-                    case (VarEnum.VT_VECTOR | VarEnum.VT_I2):
-                        return GetVector<Int16>();
-                    case (VarEnum.VT_VECTOR | VarEnum.VT_UI2):
-                        return GetVector<UInt16>();
-                    case (VarEnum.VT_VECTOR | VarEnum.VT_I4):
-                        return GetVector<Int32>();
-                    case (VarEnum.VT_VECTOR | VarEnum.VT_UI4):
-                        return GetVector<UInt32>();
-                    case (VarEnum.VT_VECTOR | VarEnum.VT_I8):
-                        return GetVector<Int64>();
-                    case (VarEnum.VT_VECTOR | VarEnum.VT_UI8):
-                        return GetVector<UInt64>();
-                    case (VarEnum.VT_VECTOR | VarEnum.VT_R4):
-                        return GetVector<float>();
-                    case (VarEnum.VT_VECTOR | VarEnum.VT_R8):
-                        return GetVector<Double>();
-                    case (VarEnum.VT_VECTOR | VarEnum.VT_BOOL):
-                        return GetVector<Boolean>();
-                    case (VarEnum.VT_VECTOR | VarEnum.VT_FILETIME):
-                        return GetVector<DateTime>();
-                    case (VarEnum.VT_VECTOR | VarEnum.VT_DECIMAL):
-                        return GetVector<Decimal>();
-                    default:
-                        return null;
-                }
+                case (ushort)VarEnum.VT_EMPTY:
+                    return null;
+
+                case (ushort)VarEnum.VT_I1:
+                    return GetInt8Value();
+
+                case (ushort)VarEnum.VT_UI1:
+                    return GetUInt8Value();
+
+                case (ushort)VarEnum.VT_I2:
+                    return GetInt16Value();
+
+                case (ushort)VarEnum.VT_UI2:
+                    return GetUInt16Value();
+
+                case (ushort)VarEnum.VT_I4:
+                case (ushort)VarEnum.VT_INT:
+                    return GetInt32Value();
+
+                case (ushort)VarEnum.VT_UI4:
+                case (ushort)VarEnum.VT_UINT:
+                    return GetUInt32Value();
+
+                case (ushort)VarEnum.VT_I8:
+                    return GetInt64Value();
+
+                case (ushort)VarEnum.VT_UI8:
+                    return GetUInt64Value();
+
+                case (ushort)VarEnum.VT_R4:
+                    return GetSingleValue();
+
+                case (ushort)VarEnum.VT_R8:
+                    return GetDoubleValue();
+
+                case (ushort)VarEnum.VT_BOOL:
+                    return GetBooleanValue();
+
+                case (ushort)VarEnum.VT_CLSID:
+                    return GetGuidValue();
+
+                case (ushort)VarEnum.VT_DATE:
+                    return DateTime.FromOADate(this.dblVal);
+
+                case (ushort)VarEnum.VT_FILETIME:
+                    return GetDateTimeValue();
+
+                case (ushort)VarEnum.VT_BLOB:
+                    return GetBlobValue();
+
+                case (ushort)VarEnum.VT_LPSTR:
+                case (ushort)VarEnum.VT_LPWSTR:
+                    return GetStringValue();
+
+                case (ushort)VarEnum.VT_UNKNOWN:
+                    return Marshal.GetObjectForIUnknown(this.punkVal);
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_I1:
+                    return GetInt8ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_UI1:
+                    return GetUInt8ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_I2:
+                    return GetInt16ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_UI2:
+                    return GetUInt16ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_I4:
+                    return GetInt32ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_UI4:
+                    return GetUInt32ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_I8:
+                    return GetInt64ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_UI8:
+                    return GetUInt64ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_R4:
+                    return GetSingleArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_R8:
+                    return GetDoubleArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_BOOL:
+                    return GetBooleanArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_FILETIME:
+                    return GetDateTimeArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_LPSTR:
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_LPWSTR:
+                    return GetStringArrayValue();
+
+                default:
+                    return null;
             }
         }
 
-        #region IUnknown Methods
-
-        internal void SetIUnknown(object value)
+        public T GetValue<T>()
         {
-            this.valueType = (ushort)VarEnum.VT_UNKNOWN;
-            this.ptr = Marshal.GetIUnknownForObject(value);
+            return (T)GetValue();
         }
 
-        internal void SetSafeArray(Array array)
+        public void Clear()
         {
-            Contract.Requires<ArgumentNullException>(array != null);
+            var tmp = this;
+            PropVariantClear(ref tmp);
 
-            const ushort vtUnknown = 13;
-            var psa = PropVariantNativeMethods.SafeArrayCreateVector(vtUnknown, 0, (uint)array.Length);
-            var pvData = PropVariantNativeMethods.SafeArrayAccessData(psa);
-
-            try
-            {
-                for (var index = 0; index < array.Length; ++index)
-                {
-                    var obj = array.GetValue(index);
-                    var punk = (obj != null) ? Marshal.GetIUnknownForObject(obj) : IntPtr.Zero;
-                    Marshal.WriteIntPtr(pvData, index*IntPtr.Size, punk);
-                }
-            }
-            finally
-            {
-                PropVariantNativeMethods.SafeArrayUnaccessData(psa);
-            }
-
-            this.valueType = (ushort)VarEnum.VT_ARRAY | (ushort)VarEnum.VT_UNKNOWN;
-            this.ptr = psa;
+            this.varType = (ushort)VarEnum.VT_EMPTY;
         }
 
-        #endregion
-
-        private static long GetFileTimeAsLong(ref System.Runtime.InteropServices.ComTypes.FILETIME value)
-        {
-            return (((long)value.dwHighDateTime) << 32) + value.dwLowDateTime;
-        }
-
-        private static System.Runtime.InteropServices.ComTypes.FILETIME DateTimeToFileTime(DateTime value)
+        private static void DateTimeToFileTime(DateTime value, out FILETIME filetime)
         {
             var hFt = value.ToFileTime();
-            return new System.Runtime.InteropServices.ComTypes.FILETIME
-            {
-                dwLowDateTime = (int)(hFt & 0xFFFFFFFF),
-                dwHighDateTime = (int)(hFt >> 32)
-            };
+            filetime.dwLowDateTime = (int)(hFt & 0xFFFFFFFF);
+            filetime.dwHighDateTime = (int)(hFt >> 32);
         }
 
-        private object GetBlobData()
+        private static void FileTimeToDateTime(ref FILETIME value, out DateTime dateTime)
         {
-            var blobData = new byte[this.int32Value];
-            var pBlobData = this.ptr2;
-            Marshal.Copy(pBlobData, blobData, 0, this.int32Value);
-
-            return blobData;
+            var filetime = ((long)(value.dwHighDateTime) << 32) | (uint)value.dwLowDateTime;
+            dateTime = DateTime.FromFileTime(filetime);
         }
-
-        public Array GetVector<T>()
-        {
-            var count = PropVariantNativeMethods.PropVariantGetElementCount(this);
-            if (count <= 0)
-            {
-                return null;
-            }
-
-            lock (_padlock)
-            {
-                if (_vectorActions == null)
-                {
-                    _vectorActions = GenerateVectorActions();
-                }
-            }
-
-            Action<PropVariant, Array, uint> action;
-            if (!_vectorActions.TryGetValue(typeof(T), out action))
-            {
-                throw new InvalidCastException();
-            }
-
-            Array array = new T[count];
-            for (uint index = 0; index < count; ++index)
-            {
-                action(this, array, index);
-            }
-
-            return array;
-        }
-
-        private static readonly Dictionary<Type, Func<object, PropVariant>> _cache =
-            new Dictionary<Type, Func<object, PropVariant>>();
-
-        private static readonly object _padlock = new object();
-
-        private static Func<object, PropVariant> GetDynamicConstructor(Type type)
-        {
-            lock (_padlock)
-            {
-                Func<object, PropVariant> action;
-                if (!_cache.TryGetValue(type, out action))
-                {
-                    var constructor = typeof(PropVariant).GetConstructor(new[] {type});
-                    if (constructor == null)
-                    {
-                        throw new ArgumentException(ErrorMessages.PropVariantTypeNotSupported);
-                    }
-
-                    var arg = Expression.Parameter(typeof(object), "arg");
-                    var create = Expression.New(constructor, Expression.Convert(arg, type));
-
-                    action = Expression.Lambda<Func<object, PropVariant>>(create, arg).Compile();
-                    _cache.Add(type, action);
-                }
-                return action;
-            }
-        }
-
-        private static Array CrackSingleDimSafeArray(IntPtr psa)
-        {
-            var dim = PropVariantNativeMethods.SafeArrayGetDim(psa);
-            if (dim != 1)
-            {
-                throw new ArgumentException(ErrorMessages.PropVariantMultiDimArray, "psa");
-            }
-
-            var lBound = PropVariantNativeMethods.SafeArrayGetLBound(psa, 1U);
-            var uBound = PropVariantNativeMethods.SafeArrayGetUBound(psa, 1U);
-
-            var array = new object[uBound - lBound + 1];
-            for (var index = lBound; index <= uBound; ++index)
-            {
-                array[index - lBound] = PropVariantNativeMethods.SafeArrayGetElement(psa, ref index);
-            }
-
-            return array;
-        }
-
-        #region Vector Action Chache
-
-        private static Dictionary<Type, Action<PropVariant, Array, uint>> _vectorActions = null;
-
-        private static Dictionary<Type, Action<PropVariant, Array, uint>> GenerateVectorActions()
-        {
-            var cache = new Dictionary<Type, Action<PropVariant, Array, uint>>();
-
-            cache.Add(typeof(Int16), (pv, array, i) =>
-            {
-                short val;
-                PropVariantNativeMethods.PropVariantGetInt16Elem(pv, i, out val);
-                array.SetValue(val, i);
-            });
-
-            cache.Add(typeof(UInt16), (pv, array, i) =>
-            {
-                ushort val;
-                PropVariantNativeMethods.PropVariantGetUInt16Elem(pv, i, out val);
-                array.SetValue(val, i);
-            });
-
-            cache.Add(typeof(Int32), (pv, array, i) =>
-            {
-                int val;
-                PropVariantNativeMethods.PropVariantGetInt32Elem(pv, i, out val);
-                array.SetValue(val, i);
-            });
-
-            cache.Add(typeof(UInt32), (pv, array, i) =>
-            {
-                uint val;
-                PropVariantNativeMethods.PropVariantGetUInt32Elem(pv, i, out val);
-                array.SetValue(val, i);
-            });
-
-            cache.Add(typeof(Int64), (pv, array, i) =>
-            {
-                long val;
-                PropVariantNativeMethods.PropVariantGetInt64Elem(pv, i, out val);
-                array.SetValue(val, i);
-            });
-
-            cache.Add(typeof(UInt64), (pv, array, i) =>
-            {
-                ulong val;
-                PropVariantNativeMethods.PropVariantGetUInt64Elem(pv, i, out val);
-                array.SetValue(val, i);
-            });
-
-            cache.Add(typeof(DateTime), (pv, array, i) =>
-            {
-                System.Runtime.InteropServices.ComTypes.FILETIME val;
-                PropVariantNativeMethods.PropVariantGetFileTimeElem(pv, i, out val);
-
-                var fileTime = GetFileTimeAsLong(ref val);
-
-                array.SetValue(DateTime.FromFileTime(fileTime), i);
-            });
-
-            cache.Add(typeof(Boolean), (pv, array, i) =>
-            {
-                bool val;
-                PropVariantNativeMethods.PropVariantGetBooleanElem(pv, i, out val);
-                array.SetValue(val, i);
-            });
-
-            cache.Add(typeof(Double), (pv, array, i) =>
-            {
-                double val;
-                PropVariantNativeMethods.PropVariantGetDoubleElem(pv, i, out val);
-                array.SetValue(val, i);
-            });
-
-            cache.Add(typeof(Single), (pv, array, i) => // float
-            {
-                var val = new float[1];
-                Marshal.Copy(pv.ptr2, val, (int)i, 1);
-                array.SetValue(val[0], (int)i);
-            });
-
-            cache.Add(typeof(Decimal), (pv, array, i) =>
-            {
-                var val = new int[4];
-                for (var a = 0; a < val.Length; a++)
-                {
-                    val[a] = Marshal.ReadInt32(pv.ptr2, (int)i*sizeof(decimal) + a*sizeof(int));
-                }
-                array.SetValue(new decimal(val), i);
-            });
-
-            cache.Add(typeof(String), (pv, array, i) =>
-            {
-                var val = string.Empty;
-                PropVariantNativeMethods.PropVariantGetStringElem(ref pv, i, out val);
-                array.SetValue(val, i);
-            });
-
-            return cache;
-        }
-
-        #endregion
 
         /// <summary>
         ///     <see cref="PropVariant" />の文字列表現を取得します。
@@ -654,7 +851,9 @@ namespace starshipxac.Shell.PropertySystem.Interop
         /// <returns><see cref="PropVariant" />の文字列表現。</returns>
         public override string ToString()
         {
-            return String.Format(CultureInfo.InvariantCulture, "{0}: {1}", this.Value, this.VarType.ToString());
+            return String.Format(CultureInfo.InvariantCulture, "{0}: {1}",
+                this.GetValue(),
+                ((VarEnum)this.varType).ToString());
         }
     }
 }

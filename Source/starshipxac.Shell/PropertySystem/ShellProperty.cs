@@ -227,7 +227,8 @@ namespace starshipxac.Shell.PropertySystem
                 {
                     using (var store = ShellPropertyStore.Create(this.ShellObject))
                     {
-                        using (var propVar = new PropVariant())
+                        var propVar = new PropVariant();
+                        try
                         {
                             store.GetPropVariant(this.PropertyKey, propVar);
 
@@ -236,6 +237,10 @@ namespace starshipxac.Shell.PropertySystem
                             {
                                 this.iconReference = new IconReference(referencePath);
                             }
+                        }
+                        finally
+                        {
+                            propVar.Clear();
                         }
                     }
                 }
@@ -331,11 +336,16 @@ namespace starshipxac.Shell.PropertySystem
         {
             using (var store = ShellPropertyStore.Create(this.ShellObject))
             {
-                using (var propVar = new PropVariant())
+                var propVar = new PropVariant();
+                try
                 {
                     store.GetPropVariant(this.PropertyKey, propVar);
 
                     return this.Description.GetDisplayText(propVar, formatFlags);
+                }
+                finally
+                {
+                    propVar.Clear();
                 }
             }
         }
@@ -344,7 +354,8 @@ namespace starshipxac.Shell.PropertySystem
         {
             using (var store = ShellPropertyStore.Create(this.ShellObject))
             {
-                using (var propVar = new PropVariant())
+                var propVar = new PropVariant();
+                try
                 {
                     store.GetPropVariant(this.PropertyKey, propVar);
 
@@ -354,6 +365,10 @@ namespace starshipxac.Shell.PropertySystem
                         return false;
                     }
                     return true;
+                }
+                finally
+                {
+                    propVar.Clear();
                 }
             }
         }

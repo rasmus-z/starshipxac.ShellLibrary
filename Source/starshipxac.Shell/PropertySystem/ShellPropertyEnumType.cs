@@ -65,10 +65,15 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (this.minValue == null)
                 {
-                    using (var propVar = new PropVariant())
+                    var propVar = new PropVariant();
+                    try
                     {
                         this.PropertyEnumTypeNative.GetRangeMinValue(propVar);
-                        this.minValue = propVar.Value;
+                        this.minValue = propVar.GetValue();
+                    }
+                    finally
+                    {
+                        propVar.Clear();
                     }
                 }
                 return this.minValue;
@@ -84,10 +89,15 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (this.setValue == null)
                 {
-                    using (var propVar = new PropVariant())
+                    var propVar = new PropVariant();
+                    try
                     {
                         this.PropertyEnumTypeNative.GetRangeSetValue(propVar);
-                        this.setValue = propVar.Value;
+                        this.setValue = propVar.GetValue();
+                    }
+                    finally
+                    {
+                        propVar.Clear();
                     }
                 }
                 return this.setValue;
@@ -103,10 +113,15 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (this.enumerationValue == null)
                 {
-                    using (var propVar = new PropVariant())
+                    var propVar = new PropVariant();
+                    try
                     {
                         this.PropertyEnumTypeNative.GetValue(propVar);
-                        this.enumerationValue = propVar.Value;
+                        this.enumerationValue = propVar.GetValue();
+                    }
+                    finally
+                    {
+                        propVar.Clear();
                     }
                 }
                 return this.enumerationValue;

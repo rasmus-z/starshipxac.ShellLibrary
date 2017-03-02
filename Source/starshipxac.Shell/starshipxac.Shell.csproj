@@ -243,6 +243,7 @@
     <Compile Include="PropertySystem\Interop\IPropertyStore.cs" />
     <Compile Include="PropertySystem\Interop\IPropertyStoreCache.cs" />
     <Compile Include="PropertySystem\Interop\IPropertyStoreCapabilities.cs" />
+    <Compile Include="PropertySystem\Interop\PROPARRAY.cs" />
     <Compile Include="PropertySystem\Interop\PROPDESC_AGGREGATION_TYPE.cs" />
     <Compile Include="PropertySystem\Interop\PROPDESC_CONDITION_TYPE.cs" />
     <Compile Include="PropertySystem\Interop\PROPDESC_DISPLAYTYPE.cs" />

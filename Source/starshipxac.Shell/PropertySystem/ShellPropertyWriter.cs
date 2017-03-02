@@ -101,9 +101,14 @@ namespace starshipxac.Shell.PropertySystem
             Contract.Requires<ArgumentNullException>(propertyKey != null);
             Contract.Requires<InvalidOperationException>(this.Store != null);
 
-            using (var propVar = PropVariant.FromObject(value))
+            var propVar = PropVariant.FromObject(value);
+            try
             {
                 this.Store.SetValue(propertyKey, propVar, allowTruncatedValue);
+            }
+            finally
+            {
+                propVar.Clear();
             }
         }
 
