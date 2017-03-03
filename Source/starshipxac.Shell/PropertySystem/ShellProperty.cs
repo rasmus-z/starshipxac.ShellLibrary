@@ -305,29 +305,6 @@ namespace starshipxac.Shell.PropertySystem
         }
 
         /// <summary>
-        ///     Clear property value.
-        /// </summary>
-        public void ClearValue()
-        {
-            try
-            {
-                using (var writableStore = ShellPropertyStore.CreateWritable(this.ShellObject))
-                {
-                    writableStore.ClearValue(this.PropertyKey);
-                    writableStore.Commit();
-                }
-            }
-            catch (InvalidComObjectException e)
-            {
-                throw new ShellException(ErrorMessages.ShellPropertyUnableToGetWritableProperty, e);
-            }
-            catch (InvalidCastException e)
-            {
-                throw new ShellException(ErrorMessages.ShellPropertyUnableToGetWritableProperty, e);
-            }
-        }
-
-        /// <summary>
         ///     Gets the text for displaying the property value.
         /// </summary>
         /// <param name="formatFlags">Format flags.</param>
@@ -370,6 +347,29 @@ namespace starshipxac.Shell.PropertySystem
                 {
                     propVar.Clear();
                 }
+            }
+        }
+
+        /// <summary>
+        ///     Clear property value.
+        /// </summary>
+        public void ClearValue()
+        {
+            try
+            {
+                using (var writableStore = ShellPropertyStore.CreateWritable(this.ShellObject))
+                {
+                    writableStore.ClearValue(this.PropertyKey);
+                    writableStore.Commit();
+                }
+            }
+            catch (InvalidComObjectException e)
+            {
+                throw new ShellException(ErrorMessages.ShellPropertyUnableToGetWritableProperty, e);
+            }
+            catch (InvalidCastException e)
+            {
+                throw new ShellException(ErrorMessages.ShellPropertyUnableToGetWritableProperty, e);
             }
         }
 
