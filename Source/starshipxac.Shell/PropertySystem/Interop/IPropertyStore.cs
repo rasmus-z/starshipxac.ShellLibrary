@@ -20,14 +20,14 @@ namespace starshipxac.Shell.PropertySystem.Interop
         HRESULT GetCount([Out] out uint propertyCount);
 
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        HRESULT GetAt([In] uint propertyIndex, out PROPERTYKEY key);
+        HRESULT GetAt([In] uint propertyIndex, [Out] out PROPERTYKEY key);
 
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        HRESULT GetValue([In] ref PROPERTYKEY key, [Out] PropVariant pv);
+        HRESULT GetValue([In] ref PROPERTYKEY key, [Out] out PropVariant pv);
 
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         [PreserveSig]
-        HRESULT SetValue([In] ref PROPERTYKEY key, [In] PropVariant pv);
+        HRESULT SetValue([In] ref PROPERTYKEY key, [In] ref PropVariant pv);
 
         [PreserveSig]
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]

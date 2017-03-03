@@ -227,12 +227,12 @@ namespace starshipxac.Shell.PropertySystem
                 {
                     using (var store = ShellPropertyStore.Create(this.ShellObject))
                     {
-                        var propVar = new PropVariant();
+                        var propVar = default(PropVariant);
                         try
                         {
-                            store.GetPropVariant(this.PropertyKey, propVar);
+                            store.GetPropVariant(this.PropertyKey, out propVar);
 
-                            var referencePath = this.Description.GetImageReferencePath(propVar);
+                            var referencePath = this.Description.GetImageReferencePath(ref propVar);
                             if (referencePath != null)
                             {
                                 this.iconReference = new IconReference(referencePath);
@@ -336,12 +336,12 @@ namespace starshipxac.Shell.PropertySystem
         {
             using (var store = ShellPropertyStore.Create(this.ShellObject))
             {
-                var propVar = new PropVariant();
+                var propVar = default(PropVariant);
                 try
                 {
-                    store.GetPropVariant(this.PropertyKey, propVar);
+                    store.GetPropVariant(this.PropertyKey, out propVar);
 
-                    return this.Description.GetDisplayText(propVar, formatFlags);
+                    return this.Description.GetDisplayText(ref propVar, formatFlags);
                 }
                 finally
                 {
@@ -354,12 +354,12 @@ namespace starshipxac.Shell.PropertySystem
         {
             using (var store = ShellPropertyStore.Create(this.ShellObject))
             {
-                var propVar = new PropVariant();
+                var propVar = default(PropVariant);
                 try
                 {
-                    store.GetPropVariant(this.PropertyKey, propVar);
+                    store.GetPropVariant(this.PropertyKey, out propVar);
 
-                    if (!this.Description.TryGetDisplayText(propVar, formatFlags, out text))
+                    if (!this.Description.TryGetDisplayText(ref propVar, formatFlags, out text))
                     {
                         text = String.Empty;
                         return false;

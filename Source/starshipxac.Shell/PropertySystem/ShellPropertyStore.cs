@@ -145,11 +145,11 @@ namespace starshipxac.Shell.PropertySystem
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
 
-            var propVar = new PropVariant();
+            var propVar = default(PropVariant);
             try
             {
                 var key = propertyKey.PropertyKeyNative;
-                this.propertyStoreNative.GetValue(ref key, propVar);
+                this.propertyStoreNative.GetValue(ref key, out propVar);
                 return propVar.GetValue();
             }
             finally
@@ -168,11 +168,11 @@ namespace starshipxac.Shell.PropertySystem
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
 
-            var propVar = new PropVariant();
+            var propVar = default(PropVariant);
             try
             {
                 var key = propertyKey.PropertyKeyNative;
-                this.propertyStoreNative.GetValue(ref key, propVar);
+                this.propertyStoreNative.GetValue(ref key, out propVar);
                 return propVar.GetValue<T>();
             }
             finally
@@ -186,12 +186,12 @@ namespace starshipxac.Shell.PropertySystem
         /// </summary>
         /// <param name="propertyKey">Property key.</param>
         /// <param name="propVariant"></param>
-        internal void GetPropVariant(ShellPropertyKey propertyKey, PropVariant propVariant)
+        internal void GetPropVariant(ShellPropertyKey propertyKey, out PropVariant propVariant)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
 
             var key = propertyKey.PropertyKeyNative;
-            this.propertyStoreNative.GetValue(ref key, propVariant);
+            this.propertyStoreNative.GetValue(ref key, out propVariant);
         }
 
         /// <summary>
@@ -199,24 +199,24 @@ namespace starshipxac.Shell.PropertySystem
         /// </summary>
         /// <param name="propertyKey">Property key.</param>
         /// <param name="propVar">Property value.</param>
-        internal void SetValue(ShellPropertyKey propertyKey, PropVariant propVar)
+        internal void SetValue(ShellPropertyKey propertyKey, ref PropVariant propVar)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
 
             var key = propertyKey.PropertyKeyNative;
-            var hr = this.propertyStoreNative.SetValue(ref key, propVar);
+            var hr = this.propertyStoreNative.SetValue(ref key, ref propVar);
             if (HRESULT.Failed(hr))
             {
                 throw new ShellException(ErrorMessages.ShellPropertySetValue, hr);
             }
         }
 
-        internal void SetValue(ShellPropertyKey propertyKey, PropVariant propVar, bool allowTruncatedValue)
+        internal void SetValue(ShellPropertyKey propertyKey, ref PropVariant propVar, bool allowTruncatedValue)
         {
             Contract.Requires<ArgumentNullException>(propertyKey != null);
 
             var key = propertyKey.PropertyKeyNative;
-            var hr = this.propertyStoreNative.SetValue(ref key, propVar);
+            var hr = this.propertyStoreNative.SetValue(ref key, ref propVar);
             if (HRESULT.Failed(hr))
             {
                 throw new ShellException(ErrorMessages.ShellPropertySetValue, hr);
@@ -248,7 +248,7 @@ namespace starshipxac.Shell.PropertySystem
             var propVar = new PropVariant();
             try
             {
-                SetValue(propertyKey, propVar);
+                SetValue(propertyKey, ref propVar);
             }
             finally
             {

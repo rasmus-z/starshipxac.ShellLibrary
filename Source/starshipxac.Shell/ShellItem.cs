@@ -399,10 +399,10 @@ namespace starshipxac.Shell
 
         internal object GetPropertyValue(PROPERTYKEY propertyKey)
         {
-            var propVar = new PropVariant();
+            var propVar = default(PropVariant);
             try
             {
-                this.ShellItemInterface.GetProperty(ref propertyKey, propVar);
+                this.ShellItemInterface.GetProperty(ref propertyKey, out propVar);
                 return propVar.GetValue();
             }
             finally
@@ -413,10 +413,10 @@ namespace starshipxac.Shell
 
         internal T GetPropertyValue<T>(PROPERTYKEY propertyKey)
         {
-            var propVar = new PropVariant();
+            var propVar = default(PropVariant);
             try
             {
-                this.ShellItemInterface.GetProperty(ref propertyKey, propVar);
+                this.ShellItemInterface.GetProperty(ref propertyKey, out propVar);
                 return propVar.GetValue<T>();
             }
             finally

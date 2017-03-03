@@ -20,13 +20,13 @@ namespace starshipxac.Shell.PropertySystem.Interop
         void GetEnumType([Out] out PROPENUMTYPE penumtype);
 
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        void GetValue([Out] PropVariant ppropvar);
+        void GetValue([Out] out PropVariant ppropvar);
 
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        void GetRangeMinValue([Out] PropVariant ppropvar);
+        void GetRangeMinValue([Out] out PropVariant ppropvar);
 
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        void GetRangeSetValue([Out] PropVariant ppropvar);
+        void GetRangeSetValue([Out] out PropVariant ppropvar);
 
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void GetDisplayText([Out] [MarshalAs(UnmanagedType.LPWStr)] out string ppszDisplay);

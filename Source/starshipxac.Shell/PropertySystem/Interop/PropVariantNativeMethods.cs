@@ -244,10 +244,10 @@ namespace starshipxac.Shell.PropertySystem.Interop
             [In] int flags,
             [In] ushort vt);
 
-        [DllImport("Ole32.dll", PreserveSig = false)]
-        internal static extern HRESULT PropVariantClear([In] [Out] ref PropVariant pvar);
+        [DllImport("Ole32.dll")]
+        internal static extern HRESULT PropVariantClear([In] ref PropVariant pvar);
 
-        [DllImport("Ole32.dll", PreserveSig = false)]
+        [DllImport("Ole32.dll")]
         internal static extern HRESULT PropVariantCopy([Out] out PropVariant pDst, [In] ref PropVariant pSrc);
 
 

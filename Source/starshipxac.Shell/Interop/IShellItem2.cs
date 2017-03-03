@@ -92,7 +92,7 @@ namespace starshipxac.Shell.Interop
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void GetProperty(
             [In] ref PROPERTYKEY key,
-            [Out] PropVariant ppropvar);
+            [Out] out PropVariant ppropvar);
 
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void GetCLSID(

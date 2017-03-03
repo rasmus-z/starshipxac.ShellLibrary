@@ -91,7 +91,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         [PreserveSig]
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
-        HRESULT FormatForDisplay([In] PropVariant propvar, [In] ref PROPDESC_FORMAT_FLAGS pdfFlags,
+        HRESULT FormatForDisplay([In] ref PropVariant propvar, [In] ref PROPDESC_FORMAT_FLAGS pdfFlags,
             [MarshalAs(UnmanagedType.LPWStr)] out string ppszDisplay);
 
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]

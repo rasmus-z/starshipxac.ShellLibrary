@@ -826,10 +826,13 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         public void Clear()
         {
-            var tmp = this;
-            PropVariantClear(ref tmp);
+            if (!this.IsNullOrEmpty)
+            {
+                var tmp = this;
+                PropVariantClear(ref tmp);
 
-            this.varType = (ushort)VarEnum.VT_EMPTY;
+                this.varType = (ushort)VarEnum.VT_EMPTY;
+            }
         }
 
         private static void DateTimeToFileTime(DateTime value, out FILETIME filetime)

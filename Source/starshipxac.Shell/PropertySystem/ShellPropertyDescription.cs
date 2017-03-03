@@ -431,13 +431,13 @@ namespace starshipxac.Shell.PropertySystem
             return result;
         }
 
-        internal string GetDisplayText(PropVariant propVariant, PropertyDescriptionFormatFlags formatFlags)
+        internal string GetDisplayText(ref PropVariant propVariant, PropertyDescriptionFormatFlags formatFlags)
         {
             var result = String.Empty;
             if (this.PropertyDescriptionNative != null)
             {
                 var flags = (PROPDESC_FORMAT_FLAGS)formatFlags;
-                var hr = this.PropertyDescriptionNative.FormatForDisplay(propVariant, ref flags, out result);
+                var hr = this.PropertyDescriptionNative.FormatForDisplay(ref propVariant, ref flags, out result);
                 if (HRESULT.Failed(hr))
                 {
                     result = String.Empty;
@@ -446,7 +446,7 @@ namespace starshipxac.Shell.PropertySystem
             return result;
         }
 
-        internal bool TryGetDisplayText(PropVariant propVariant, PropertyDescriptionFormatFlags formatFlags, out string result)
+        internal bool TryGetDisplayText(ref PropVariant propVariant, PropertyDescriptionFormatFlags formatFlags, out string result)
         {
             if (this.PropertyDescriptionNative == null)
             {
@@ -455,7 +455,7 @@ namespace starshipxac.Shell.PropertySystem
             }
 
             var flags = (PROPDESC_FORMAT_FLAGS)formatFlags;
-            var hr = this.PropertyDescriptionNative.FormatForDisplay(propVariant, ref flags, out result);
+            var hr = this.PropertyDescriptionNative.FormatForDisplay(ref propVariant, ref flags, out result);
             if (HRESULT.Failed(hr))
             {
                 result = null;
@@ -464,13 +464,10 @@ namespace starshipxac.Shell.PropertySystem
             return true;
         }
 
-        internal string GetImageReferencePath(PropVariant propVariant)
+        internal string GetImageReferencePath(ref PropVariant propVariant)
         {
             var result = default(string);
-            if (this.PropertyDescriptionNative != null)
-            {
-                ((IPropertyDescription2)this.PropertyDescriptionNative).GetImageReferenceForValue(propVariant, out result);
-            }
+            ((IPropertyDescription2)this.PropertyDescriptionNative)?.GetImageReferenceForValue(ref propVariant, out result);
             return result;
         }
     }

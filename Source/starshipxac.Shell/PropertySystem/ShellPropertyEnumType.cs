@@ -65,10 +65,10 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (this.minValue == null)
                 {
-                    var propVar = new PropVariant();
+                    var propVar = default(PropVariant);
                     try
                     {
-                        this.PropertyEnumTypeNative.GetRangeMinValue(propVar);
+                        this.PropertyEnumTypeNative.GetRangeMinValue(out propVar);
                         this.minValue = propVar.GetValue();
                     }
                     finally
@@ -89,10 +89,10 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (this.setValue == null)
                 {
-                    var propVar = new PropVariant();
+                    var propVar = default(PropVariant);
                     try
                     {
-                        this.PropertyEnumTypeNative.GetRangeSetValue(propVar);
+                        this.PropertyEnumTypeNative.GetRangeSetValue(out propVar);
                         this.setValue = propVar.GetValue();
                     }
                     finally
@@ -113,10 +113,10 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (this.enumerationValue == null)
                 {
-                    var propVar = new PropVariant();
+                    var propVar = default(PropVariant);
                     try
                     {
-                        this.PropertyEnumTypeNative.GetValue(propVar);
+                        this.PropertyEnumTypeNative.GetValue(out propVar);
                         this.enumerationValue = propVar.GetValue();
                     }
                     finally

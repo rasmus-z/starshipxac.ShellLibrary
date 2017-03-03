@@ -104,7 +104,7 @@ namespace starshipxac.Shell.PropertySystem
             var propVar = PropVariant.FromObject(value);
             try
             {
-                this.Store.SetValue(propertyKey, propVar, allowTruncatedValue);
+                this.Store.SetValue(propertyKey, ref propVar, allowTruncatedValue);
             }
             finally
             {

@@ -90,7 +90,7 @@ namespace starshipxac.Shell.PropertySystem.Interop
 
         [MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
         void GetImageReferenceForValue(
-            [In] PropVariant propvar,
+            [In] ref PropVariant propvar,
             [Out] [MarshalAs(UnmanagedType.LPWStr)] out string ppszImageRes);
 #pragma warning restore 108
     }
