@@ -469,6 +469,124 @@ namespace starshipxac.Shell.PropertySystem.Interop
         public bool IsNullOrEmpty => (this.varType == (ushort)VarEnum.VT_EMPTY) ||
                                      (this.varType == (ushort)VarEnum.VT_NULL);
 
+        /// <summary>
+        ///     値を取得します。
+        /// </summary>
+        public object GetValue()
+        {
+            #region Get Value
+
+            switch (this.varType)
+            {
+                case (ushort)VarEnum.VT_EMPTY:
+                    return null;
+
+                case (ushort)VarEnum.VT_I1:
+                    return GetInt8Value();
+
+                case (ushort)VarEnum.VT_UI1:
+                    return GetUInt8Value();
+
+                case (ushort)VarEnum.VT_I2:
+                    return GetInt16Value();
+
+                case (ushort)VarEnum.VT_UI2:
+                    return GetUInt16Value();
+
+                case (ushort)VarEnum.VT_I4:
+                case (ushort)VarEnum.VT_INT:
+                    return GetInt32Value();
+
+                case (ushort)VarEnum.VT_UI4:
+                case (ushort)VarEnum.VT_UINT:
+                    return GetUInt32Value();
+
+                case (ushort)VarEnum.VT_I8:
+                    return GetInt64Value();
+
+                case (ushort)VarEnum.VT_UI8:
+                    return GetUInt64Value();
+
+                case (ushort)VarEnum.VT_R4:
+                    return GetSingleValue();
+
+                case (ushort)VarEnum.VT_R8:
+                    return GetDoubleValue();
+
+                case (ushort)VarEnum.VT_BOOL:
+                    return GetBooleanValue();
+
+                case (ushort)VarEnum.VT_CLSID:
+                    return GetGuidValue();
+
+                case (ushort)VarEnum.VT_DATE:
+                    return DateTime.FromOADate(this.dblVal);
+
+                case (ushort)VarEnum.VT_FILETIME:
+                    return GetDateTimeValue();
+
+                case (ushort)VarEnum.VT_BLOB:
+                    return GetBlobValue();
+
+                case (ushort)VarEnum.VT_LPSTR:
+                case (ushort)VarEnum.VT_LPWSTR:
+                    return GetStringValue();
+
+                case (ushort)VarEnum.VT_UNKNOWN:
+                    return Marshal.GetObjectForIUnknown(this.punkVal);
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_I1:
+                    return GetInt8ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_UI1:
+                    return GetUInt8ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_I2:
+                    return GetInt16ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_UI2:
+                    return GetUInt16ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_I4:
+                    return GetInt32ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_UI4:
+                    return GetUInt32ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_I8:
+                    return GetInt64ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_UI8:
+                    return GetUInt64ArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_R4:
+                    return GetSingleArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_R8:
+                    return GetDoubleArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_BOOL:
+                    return GetBooleanArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_FILETIME:
+                    return GetDateTimeArrayValue();
+
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_LPSTR:
+                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_LPWSTR:
+                    return GetStringArrayValue();
+
+                default:
+                    return null;
+            }
+
+            #endregion
+        }
+
+        public T GetValue<T>()
+        {
+            return (T)GetValue();
+        }
+
         public string GetStringValue()
         {
             var result = default(string);
@@ -540,7 +658,6 @@ namespace starshipxac.Shell.PropertySystem.Interop
         public Int16[] GetInt16ArrayValue()
         {
             var result = new Int16[this.ca.cElems];
-            //Marshal.Copy(this.ca.pElems, result, 0, result.Length);
             for (var index = 0u; index < result.Length; ++index)
             {
                 PropVariantGetInt16Elem(this, index, out result[index]);
@@ -708,120 +825,6 @@ namespace starshipxac.Shell.PropertySystem.Interop
                 result[index] = new Guid(guid);
             }
             return result;
-        }
-
-        /// <summary>
-        ///     値を取得します。
-        /// </summary>
-        public object GetValue()
-        {
-            switch (this.varType)
-            {
-                case (ushort)VarEnum.VT_EMPTY:
-                    return null;
-
-                case (ushort)VarEnum.VT_I1:
-                    return GetInt8Value();
-
-                case (ushort)VarEnum.VT_UI1:
-                    return GetUInt8Value();
-
-                case (ushort)VarEnum.VT_I2:
-                    return GetInt16Value();
-
-                case (ushort)VarEnum.VT_UI2:
-                    return GetUInt16Value();
-
-                case (ushort)VarEnum.VT_I4:
-                case (ushort)VarEnum.VT_INT:
-                    return GetInt32Value();
-
-                case (ushort)VarEnum.VT_UI4:
-                case (ushort)VarEnum.VT_UINT:
-                    return GetUInt32Value();
-
-                case (ushort)VarEnum.VT_I8:
-                    return GetInt64Value();
-
-                case (ushort)VarEnum.VT_UI8:
-                    return GetUInt64Value();
-
-                case (ushort)VarEnum.VT_R4:
-                    return GetSingleValue();
-
-                case (ushort)VarEnum.VT_R8:
-                    return GetDoubleValue();
-
-                case (ushort)VarEnum.VT_BOOL:
-                    return GetBooleanValue();
-
-                case (ushort)VarEnum.VT_CLSID:
-                    return GetGuidValue();
-
-                case (ushort)VarEnum.VT_DATE:
-                    return DateTime.FromOADate(this.dblVal);
-
-                case (ushort)VarEnum.VT_FILETIME:
-                    return GetDateTimeValue();
-
-                case (ushort)VarEnum.VT_BLOB:
-                    return GetBlobValue();
-
-                case (ushort)VarEnum.VT_LPSTR:
-                case (ushort)VarEnum.VT_LPWSTR:
-                    return GetStringValue();
-
-                case (ushort)VarEnum.VT_UNKNOWN:
-                    return Marshal.GetObjectForIUnknown(this.punkVal);
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_I1:
-                    return GetInt8ArrayValue();
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_UI1:
-                    return GetUInt8ArrayValue();
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_I2:
-                    return GetInt16ArrayValue();
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_UI2:
-                    return GetUInt16ArrayValue();
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_I4:
-                    return GetInt32ArrayValue();
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_UI4:
-                    return GetUInt32ArrayValue();
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_I8:
-                    return GetInt64ArrayValue();
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_UI8:
-                    return GetUInt64ArrayValue();
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_R4:
-                    return GetSingleArrayValue();
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_R8:
-                    return GetDoubleArrayValue();
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_BOOL:
-                    return GetBooleanArrayValue();
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_FILETIME:
-                    return GetDateTimeArrayValue();
-
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_LPSTR:
-                case (ushort)VarEnum.VT_VECTOR | (ushort)VarEnum.VT_LPWSTR:
-                    return GetStringArrayValue();
-
-                default:
-                    return null;
-            }
-        }
-
-        public T GetValue<T>()
-        {
-            return (T)GetValue();
         }
 
         public void Clear()
