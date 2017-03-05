@@ -11,7 +11,6 @@ namespace starshipxac.Shell.PropertySystem
     /// </summary>
     public class ShellPropertyKey : IEquatable<ShellPropertyKey>
     {
-        private PROPERTYKEY propertyKeyNative;
         private string canonicalName;
 
         public ShellPropertyKey(string formatId, UInt32 propId)
@@ -22,19 +21,19 @@ namespace starshipxac.Shell.PropertySystem
 
         public ShellPropertyKey(Guid formatId, UInt32 propId)
         {
-            this.propertyKeyNative = new PROPERTYKEY(formatId, propId);
+            this.PropertyKeyNative = new PROPERTYKEY(formatId, propId);
             this.canonicalName = null;
         }
 
         internal ShellPropertyKey(PROPERTYKEY propertyKey)
         {
-            this.propertyKeyNative = propertyKey;
+            this.PropertyKeyNative = propertyKey;
             this.canonicalName = null;
         }
 
         internal ShellPropertyKey(PROPERTYKEY propertyKeyNative, string canonicalName)
         {
-            this.propertyKeyNative = propertyKeyNative;
+            this.PropertyKeyNative = propertyKeyNative;
             this.canonicalName = canonicalName;
         }
 
@@ -52,7 +51,7 @@ namespace starshipxac.Shell.PropertySystem
             return new ShellPropertyKey(propertyKey, canonicalName);
         }
 
-        internal PROPERTYKEY PropertyKeyNative => this.propertyKeyNative;
+        internal PROPERTYKEY PropertyKeyNative;
 
         /// <summary>
         ///     Get the property name.
@@ -63,7 +62,7 @@ namespace starshipxac.Shell.PropertySystem
             {
                 if (this.canonicalName == null)
                 {
-                    PropertySystemNativeMethods.PSGetNameFromPropertyKey(ref this.propertyKeyNative, out this.canonicalName);
+                    PropertySystemNativeMethods.PSGetNameFromPropertyKey(ref this.PropertyKeyNative, out this.canonicalName);
                     if (this.canonicalName == null)
                     {
                         this.canonicalName = String.Empty;
@@ -76,12 +75,12 @@ namespace starshipxac.Shell.PropertySystem
         /// <summary>
         ///     Get the property's <c>FormatID</c>.
         /// </summary>
-        public Guid FormatId => this.propertyKeyNative.fmtid;
+        public Guid FormatId => this.PropertyKeyNative.fmtid;
 
         /// <summary>
         ///     Get the property's <c>PropID</c>.
         /// </summary>
-        public UInt32 PropertyId => this.propertyKeyNative.pid;
+        public UInt32 PropertyId => this.PropertyKeyNative.pid;
 
         public static bool operator ==(ShellPropertyKey left, ShellPropertyKey right)
         {
@@ -103,7 +102,7 @@ namespace starshipxac.Shell.PropertySystem
             {
                 return true;
             }
-            return this.propertyKeyNative == other.propertyKeyNative;
+            return this.PropertyKeyNative == other.PropertyKeyNative;
         }
 
         public override bool Equals(object obj)

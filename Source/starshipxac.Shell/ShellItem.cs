@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using starshipxac.Shell.Interop;
 using starshipxac.Shell.Properties;
+using starshipxac.Shell.PropertySystem;
 using starshipxac.Shell.PropertySystem.Interop;
 
 namespace starshipxac.Shell
@@ -397,12 +398,12 @@ namespace starshipxac.Shell
             return result;
         }
 
-        internal object GetPropertyValue(PROPERTYKEY propertyKey)
+        internal object GetPropertyValue(ShellPropertyKey propertyKey)
         {
             var propVar = default(PropVariant);
             try
             {
-                this.ShellItemInterface.GetProperty(ref propertyKey, out propVar);
+                this.ShellItemInterface.GetProperty(ref propertyKey.PropertyKeyNative, out propVar);
                 return propVar.GetValue();
             }
             finally
@@ -411,12 +412,12 @@ namespace starshipxac.Shell
             }
         }
 
-        internal T GetPropertyValue<T>(PROPERTYKEY propertyKey)
+        internal T GetPropertyValue<T>(ShellPropertyKey propertyKey)
         {
             var propVar = default(PropVariant);
             try
             {
-                this.ShellItemInterface.GetProperty(ref propertyKey, out propVar);
+                this.ShellItemInterface.GetProperty(ref propertyKey.PropertyKeyNative, out propVar);
                 return propVar.GetValue<T>();
             }
             finally
