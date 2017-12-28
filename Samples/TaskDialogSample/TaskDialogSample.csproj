@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TaskDialogSample</RootNamespace>
     <AssemblyName>TaskDialogSample</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -43,13 +43,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ReactiveProperty, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ReactiveProperty.3.5.1\lib\net45\ReactiveProperty.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="ReactiveProperty, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ReactiveProperty.3.6.0\lib\net45\ReactiveProperty.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveProperty.NET45, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ReactiveProperty.3.5.1\lib\net45\ReactiveProperty.NET45.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="ReactiveProperty.NET45, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ReactiveProperty.3.6.0\lib\net45\ReactiveProperty.NET45.dll</HintPath>
     </Reference>
     <Reference Include="starshipxac.MinimalMVVM.NET45, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\minimalMVVM.1.1.4\lib\net45\starshipxac.MinimalMVVM.NET45.dll</HintPath>
